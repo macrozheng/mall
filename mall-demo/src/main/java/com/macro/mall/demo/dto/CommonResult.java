@@ -1,4 +1,4 @@
-package com.macro.mall.demo.bo;
+package com.macro.mall.demo.dto;
 
 import com.github.pagehelper.PageInfo;
 
