@@ -1,7 +1,7 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.macro.mall.dto.PmsBrandDto;
+import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.mapper.PmsBrandMapper;
 import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.PmsBrandExample;
@@ -26,16 +26,16 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     }
 
     @Override
-    public int createBrand(PmsBrandDto pmsBrandDto) {
+    public int createBrand(PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
-        BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
+        BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
         return brandMapper.insertSelective(pmsBrand);
     }
 
     @Override
-    public int updateBrand(Long id, PmsBrandDto pmsBrandDto) {
+    public int updateBrand(Long id, PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
-        BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
+        BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
         pmsBrand.setId(id);
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }

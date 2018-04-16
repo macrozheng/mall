@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 /**
  * 品牌传递参数
  */
-@ApiModel(value = "PmsBrandDto")
-public class PmsBrandDto {
+@ApiModel(value = "PmsBrandParam")
+public class PmsBrandParam {
     @ApiModelProperty(value = "品牌名称",required = true)
     @NotNull(message = "名称不能为空")
     private String name;

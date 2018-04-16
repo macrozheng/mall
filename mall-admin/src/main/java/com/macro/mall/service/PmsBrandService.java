@@ -1,6 +1,6 @@
 package com.macro.mall.service;
 
-import com.macro.mall.dto.PmsBrandDto;
+import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.model.PmsBrand;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.List;
 public interface PmsBrandService {
     List<PmsBrand> listAllBrand();
 
-    int createBrand(PmsBrandDto pmsBrandDto);
+    int createBrand(PmsBrandParam pmsBrandParam);
 
-    int updateBrand(Long id, PmsBrandDto pmsBrandDto);
+    int updateBrand(Long id, PmsBrandParam pmsBrandParam);
 
     int deleteBrand(Long id);
 
