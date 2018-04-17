@@ -19,7 +19,7 @@ public interface PmsBrandService {
 
     int deleteBrand(List<Long> ids);
 
-    List<PmsBrand> listBrand(String keyword,int pageNum, int pageSize);
+    List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize);
 
     PmsBrand getBrand(Long id);
 

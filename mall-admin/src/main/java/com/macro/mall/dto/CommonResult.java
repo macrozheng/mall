@@ -1,6 +1,7 @@
 package com.macro.mall.dto;
 
 import com.github.pagehelper.PageInfo;
+import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +38,7 @@ public class CommonResult {
         long totalPage = pageInfo.getTotal() / pageInfo.getPageSize();
         Map<String, Object> result = new HashMap<>();
         result.put("pageSize", pageInfo.getPageSize());
-        result.put("totalPage", totalPage);
+        result.put("totalPage", totalPage+1);
         result.put("pageNum", pageInfo.getPageNum());
         result.put("list", pageInfo.getList());
         this.code = SUCCESS;
@@ -63,6 +64,15 @@ public class CommonResult {
     public CommonResult validateFailed(String message) {
         this.code = VALIDATE_FAILED;
         this.message = message;
+        return this;
+    }
+
+    /**
+     * 参数验证失败使用
+     * @param result 错误信息
+     */
+    public CommonResult validateFailed(BindingResult result) {
+        validateFailed(result.getFieldError().getDefaultMessage());
         return this;
     }
 

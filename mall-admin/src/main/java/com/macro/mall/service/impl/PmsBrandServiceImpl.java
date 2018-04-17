@@ -65,9 +65,11 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        pmsBrandExample.setOrderByClause("sort asc");
+        pmsBrandExample.setOrderByClause("sort desc");
+        PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
+        criteria.andShowStatusEqualTo(1);
         if (!StringUtils.isEmpty(keyword)) {
-            pmsBrandExample.createCriteria().andNameLike("%" + keyword + "%");
+            criteria.andNameLike("%" + keyword + "%");
         }
         return brandMapper.selectByExample(pmsBrandExample);
     }

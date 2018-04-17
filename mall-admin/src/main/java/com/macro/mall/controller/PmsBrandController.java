@@ -3,6 +3,7 @@ package com.macro.mall.controller;
 import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.service.PmsBrandService;
+import com.macro.mall.validator.FlagValidator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -90,7 +91,7 @@ public class PmsBrandController {
     @ResponseBody
     public Object listBrand(@RequestParam(value = "keyword", required = false) String keyword,
                             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                            @RequestParam(value = "pageSize", defaultValue = "3") Integer pageSize) {
+                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
         return new CommonResult().pageSuccess(brandService.listBrand(keyword, pageNum, pageSize));
     }
 
@@ -118,7 +119,8 @@ public class PmsBrandController {
     @ApiOperation(value = "批量更新显示状态")
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
     @ResponseBody
-    public Object updateShowStatus(@RequestParam("ids") List<Long> ids, @RequestParam("showStatus") Integer showStatus) {
+    public Object updateShowStatus(@RequestParam("ids") List<Long> ids,
+                                   @RequestParam("showStatus") Integer showStatus) {
         int count = brandService.updateShowStatus(ids, showStatus);
         if (count > 0) {
             LOGGER.debug("updateShowStatus success:ids={}", ids);
@@ -132,7 +134,8 @@ public class PmsBrandController {
     @ApiOperation(value = "批量更新厂家制造商状态")
     @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.GET)
     @ResponseBody
-    public Object updateFactoryStatus(@RequestParam("ids") List<Long> ids, @RequestParam("factoryStatus") Integer factoryStatus) {
+    public Object updateFactoryStatus(@RequestParam("ids") List<Long> ids,
+                                      @RequestParam("factoryStatus") Integer factoryStatus) {
         int count = brandService.updateFactoryStatus(ids, factoryStatus);
         if (count > 0) {
             LOGGER.debug("updateFactoryStatus success:{}", ids);
