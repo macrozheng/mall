@@ -167,49 +167,48 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsProduct">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product (id, brand_id, product_category_id, 
-      feight_template_id, product_attribute_category_id, 
-      flash_promotion_id, name, pic, 
-      product_sn, delete_status, publish_status, 
-      new_status, recommand_status, verify_status, 
-      sort, sale, price, 
-      promotion_price, gift_point, use_point_limit, 
-      sub_title, original_price, stock, 
-      low_stock, unit, weight, 
-      preview_status, service_ids, keywords, 
-      note, album_pics, detail_title, 
-      flash_promotion_price, flash_promotion_count, 
-      flash_promotion_sort, promotion_start_time, 
-      promotion_end_time, promotion_per_limit, 
-      promotion_type, description, detail_desc, 
-      detail_html, detail_mobile_html)
-    values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, 
-      #{feightTemplateId,jdbcType=BIGINT}, #{productAttributeCategoryId,jdbcType=BIGINT}, 
-      #{flashPromotionId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
-      #{productSn,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, 
-      #{newStatus,jdbcType=INTEGER}, #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, 
-      #{sort,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
-      #{promotionPrice,jdbcType=DECIMAL}, #{giftPoint,jdbcType=INTEGER}, #{usePointLimit,jdbcType=INTEGER}, 
-      #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 
-      #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, 
-      #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
-      #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, #{detailTitle,jdbcType=VARCHAR}, 
-      #{flashPromotionPrice,jdbcType=DECIMAL}, #{flashPromotionCount,jdbcType=INTEGER}, 
-      #{flashPromotionSort,jdbcType=INTEGER}, #{promotionStartTime,jdbcType=TIMESTAMP}, 
-      #{promotionEndTime,jdbcType=TIMESTAMP}, #{promotionPerLimit,jdbcType=INTEGER}, 
-      #{promotionType,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, 
-      #{detailHtml,jdbcType=LONGVARCHAR}, #{detailMobileHtml,jdbcType=LONGVARCHAR})
+    insert into pms_product (brand_id, product_category_id, feight_template_id, 
+      product_attribute_category_id, flash_promotion_id, 
+      name, pic, product_sn, 
+      delete_status, publish_status, new_status, 
+      recommand_status, verify_status, sort, 
+      sale, price, promotion_price, 
+      gift_point, use_point_limit, sub_title, 
+      original_price, stock, low_stock, 
+      unit, weight, preview_status, 
+      service_ids, keywords, note, 
+      album_pics, detail_title, flash_promotion_price, 
+      flash_promotion_count, flash_promotion_sort, 
+      promotion_start_time, promotion_end_time, 
+      promotion_per_limit, promotion_type, description, 
+      detail_desc, detail_html, detail_mobile_html
+      )
+    values (#{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{feightTemplateId,jdbcType=BIGINT}, 
+      #{productAttributeCategoryId,jdbcType=BIGINT}, #{flashPromotionId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{productSn,jdbcType=VARCHAR}, 
+      #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, #{newStatus,jdbcType=INTEGER}, 
+      #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
+      #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{promotionPrice,jdbcType=DECIMAL}, 
+      #{giftPoint,jdbcType=INTEGER}, #{usePointLimit,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, 
+      #{originalPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{previewStatus,jdbcType=INTEGER}, 
+      #{serviceIds,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{albumPics,jdbcType=VARCHAR}, #{detailTitle,jdbcType=VARCHAR}, #{flashPromotionPrice,jdbcType=DECIMAL}, 
+      #{flashPromotionCount,jdbcType=INTEGER}, #{flashPromotionSort,jdbcType=INTEGER}, 
+      #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
+      #{promotionPerLimit,jdbcType=INTEGER}, #{promotionType,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}, 
+      #{detailDesc,jdbcType=LONGVARCHAR}, #{detailHtml,jdbcType=LONGVARCHAR}, #{detailMobileHtml,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProduct">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="brandId != null">
         brand_id,
       </if>
@@ -338,7 +337,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="brandId != null">
         #{brandId,jdbcType=BIGINT},
       </if>

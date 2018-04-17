@@ -113,29 +113,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.SmsCoupon">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_coupon (id, type, name, 
-      platform, count, amount, 
-      per_limit, min_point, start_time, 
-      end_time, use_type, note, 
-      publish_count, use_count, enable_time, 
-      code, member_level)
-    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{platform,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, 
-      #{perLimit,jdbcType=INTEGER}, #{minPoint,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{useType,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
-      #{publishCount,jdbcType=INTEGER}, #{useCount,jdbcType=INTEGER}, #{enableTime,jdbcType=TIMESTAMP}, 
-      #{code,jdbcType=VARCHAR}, #{memberLevel,jdbcType=INTEGER})
+    insert into sms_coupon (type, name, platform, 
+      count, amount, per_limit, 
+      min_point, start_time, end_time, 
+      use_type, note, publish_count, 
+      use_count, enable_time, code, 
+      member_level)
+    values (#{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{perLimit,jdbcType=INTEGER}, 
+      #{minPoint,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{useType,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{publishCount,jdbcType=INTEGER}, 
+      #{useCount,jdbcType=INTEGER}, #{enableTime,jdbcType=TIMESTAMP}, #{code,jdbcType=VARCHAR}, 
+      #{memberLevel,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCoupon">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_coupon
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="type != null">
         type,
       </if>
@@ -186,7 +185,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>

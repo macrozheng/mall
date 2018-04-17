@@ -103,23 +103,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsFeightTemplate">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_feight_template (id, name, charge_type, 
-      first_weight, first_fee, continue_weight, 
-      continme_fee, dest)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{chargeType,jdbcType=INTEGER}, 
-      #{firstWeight,jdbcType=DECIMAL}, #{firstFee,jdbcType=DECIMAL}, #{continueWeight,jdbcType=DECIMAL}, 
-      #{continmeFee,jdbcType=DECIMAL}, #{dest,jdbcType=VARCHAR})
+    insert into pms_feight_template (name, charge_type, first_weight, 
+      first_fee, continue_weight, continme_fee, 
+      dest)
+    values (#{name,jdbcType=VARCHAR}, #{chargeType,jdbcType=INTEGER}, #{firstWeight,jdbcType=DECIMAL}, 
+      #{firstFee,jdbcType=DECIMAL}, #{continueWeight,jdbcType=DECIMAL}, #{continmeFee,jdbcType=DECIMAL}, 
+      #{dest,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsFeightTemplate">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_feight_template
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="name != null">
         name,
       </if>
@@ -143,7 +142,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

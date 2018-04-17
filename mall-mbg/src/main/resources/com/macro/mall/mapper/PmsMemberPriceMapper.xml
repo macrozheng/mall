@@ -99,21 +99,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsMemberPrice">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_member_price (id, product_id, member_level_id, 
-      member_price)
-    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, 
-      #{memberPrice,jdbcType=DECIMAL})
+    insert into pms_member_price (product_id, member_level_id, member_price
+      )
+    values (#{productId,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, #{memberPrice,jdbcType=DECIMAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsMemberPrice">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_member_price
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="productId != null">
         product_id,
       </if>
@@ -125,7 +124,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="productId != null">
         #{productId,jdbcType=BIGINT},
       </if>

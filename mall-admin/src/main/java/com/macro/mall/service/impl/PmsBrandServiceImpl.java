@@ -9,6 +9,7 @@ import com.macro.mall.service.PmsBrandService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     public int createBrand(PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
+        //如果创建时首字母为空，取名称的第一个为首字母
+        if(StringUtils.isEmpty(pmsBrand.getFirstLetter())){
+            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0,1));
+        }
         return brandMapper.insertSelective(pmsBrand);
     }
 
@@ -37,6 +42,10 @@ public class PmsBrandServiceImpl implements PmsBrandService{
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
         pmsBrand.setId(id);
+        //如果创建时首字母为空，取名称的第一个为首字母
+        if(StringUtils.isEmpty(pmsBrand.getFirstLetter())){
+            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0,1));
+        }
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }
 
@@ -46,13 +55,33 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     }
 
     @Override
-    public List<PmsBrand> listBrand(int pageNum, int pageSize) {
+    public int deleteBrand(List<Long> ids) {
+        PmsBrandExample pmsBrandExample = new PmsBrandExample();
+        pmsBrandExample.createCriteria().andIdIn(ids);
+        return brandMapper.deleteByExample(pmsBrandExample);
+    }
+
+    @Override
+    public List<PmsBrand> listBrand(String keyword,int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return brandMapper.selectByExample(new PmsBrandExample());
+        PmsBrandExample pmsBrandExample = new PmsBrandExample();
+        if(!StringUtils.isEmpty(keyword)){
+            pmsBrandExample.createCriteria().andNameLike("%"+keyword+"%");
+        }
+        return brandMapper.selectByExample(pmsBrandExample);
     }
 
     @Override
     public PmsBrand getBrand(Long id) {
         return brandMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateShowStatus(List<Long> ids, Integer showStatus) {
+        PmsBrand pmsBrand = new PmsBrand();
+        pmsBrand.setShowStatus(showStatus);
+        PmsBrandExample pmsBrandExample = new PmsBrandExample();
+        pmsBrandExample.createCriteria().andIdIn(ids);
+        return brandMapper.updateByExampleSelective(pmsBrand,pmsBrandExample);
     }
 }

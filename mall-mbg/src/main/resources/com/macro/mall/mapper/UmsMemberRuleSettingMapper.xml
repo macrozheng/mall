@@ -103,23 +103,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberRuleSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_rule_setting (id, continue_sign_day, continue_sign_point, 
+    insert into ums_member_rule_setting (continue_sign_day, continue_sign_point, 
       consume_per_point, low_order_amount, max_point_per_order, 
       type)
-    values (#{id,jdbcType=BIGINT}, #{continueSignDay,jdbcType=INTEGER}, #{continueSignPoint,jdbcType=INTEGER}, 
+    values (#{continueSignDay,jdbcType=INTEGER}, #{continueSignPoint,jdbcType=INTEGER}, 
       #{consumePerPoint,jdbcType=DECIMAL}, #{lowOrderAmount,jdbcType=DECIMAL}, #{maxPointPerOrder,jdbcType=INTEGER}, 
       #{type,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberRuleSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_rule_setting
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="continueSignDay != null">
         continue_sign_day,
       </if>
@@ -140,7 +139,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="continueSignDay != null">
         #{continueSignDay,jdbcType=INTEGER},
       </if>

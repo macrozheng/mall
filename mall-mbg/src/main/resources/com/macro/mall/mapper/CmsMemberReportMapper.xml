@@ -94,23 +94,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsMemberReport">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_member_report (id, report_type, report_member_name, 
-      create_time, report_object, report_status, 
-      handle_status, note)
-    values (#{id,jdbcType=BIGINT}, #{reportType,jdbcType=INTEGER}, #{reportMemberName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{reportObject,jdbcType=VARCHAR}, #{reportStatus,jdbcType=INTEGER}, 
-      #{handleStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+    insert into cms_member_report (report_type, report_member_name, create_time, 
+      report_object, report_status, handle_status, 
+      note)
+    values (#{reportType,jdbcType=INTEGER}, #{reportMemberName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{reportObject,jdbcType=VARCHAR}, #{reportStatus,jdbcType=INTEGER}, #{handleStatus,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsMemberReport">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_member_report
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="reportType != null">
         report_type,
       </if>
@@ -134,7 +133,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="reportType != null">
         #{reportType,jdbcType=INTEGER},
       </if>

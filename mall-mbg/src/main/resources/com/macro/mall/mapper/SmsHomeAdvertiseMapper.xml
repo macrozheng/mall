@@ -107,25 +107,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.SmsHomeAdvertise">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_home_advertise (id, name, type, 
-      pic, start_time, end_time, 
-      status, click_count, order_count, 
-      url, note)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{pic,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER}, #{clickCount,jdbcType=INTEGER}, #{orderCount,jdbcType=INTEGER}, 
-      #{url,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR})
+    insert into sms_home_advertise (name, type, pic, 
+      start_time, end_time, status, 
+      click_count, order_count, url, 
+      note)
+    values (#{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{clickCount,jdbcType=INTEGER}, #{orderCount,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsHomeAdvertise">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_home_advertise
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="name != null">
         name,
       </if>
@@ -158,7 +157,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

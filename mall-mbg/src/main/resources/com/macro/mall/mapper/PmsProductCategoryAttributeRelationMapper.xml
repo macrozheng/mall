@@ -98,21 +98,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product_category_attribute_relation (id, product_category_id, product_attribute_id
+    insert into pms_product_category_attribute_relation (product_category_id, product_attribute_id
       )
-    values (#{id,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{productAttributeId,jdbcType=BIGINT}
+    values (#{productCategoryId,jdbcType=BIGINT}, #{productAttributeId,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_product_category_attribute_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="productCategoryId != null">
         product_category_id,
       </if>
@@ -121,7 +120,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="productCategoryId != null">
         #{productCategoryId,jdbcType=BIGINT},
       </if>

@@ -110,29 +110,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberLevel">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_level (id, name, growth_point, 
-      default_status, free_freight_point, comment_growth_point, 
-      priviledge_free_freight, priviledge_sign_in, 
-      priviledge_comment, priviledge_promotion, 
+    insert into ums_member_level (name, growth_point, default_status, 
+      free_freight_point, comment_growth_point, priviledge_free_freight, 
+      priviledge_sign_in, priviledge_comment, priviledge_promotion, 
       priviledge_member_price, priviledge_birthday, 
       note)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, 
-      #{defaultStatus,jdbcType=INTEGER}, #{freeFreightPoint,jdbcType=DECIMAL}, #{commentGrowthPoint,jdbcType=INTEGER}, 
-      #{priviledgeFreeFreight,jdbcType=INTEGER}, #{priviledgeSignIn,jdbcType=INTEGER}, 
-      #{priviledgeComment,jdbcType=INTEGER}, #{priviledgePromotion,jdbcType=INTEGER}, 
+    values (#{name,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, #{defaultStatus,jdbcType=INTEGER}, 
+      #{freeFreightPoint,jdbcType=DECIMAL}, #{commentGrowthPoint,jdbcType=INTEGER}, #{priviledgeFreeFreight,jdbcType=INTEGER}, 
+      #{priviledgeSignIn,jdbcType=INTEGER}, #{priviledgeComment,jdbcType=INTEGER}, #{priviledgePromotion,jdbcType=INTEGER}, 
       #{priviledgeMemberPrice,jdbcType=INTEGER}, #{priviledgeBirthday,jdbcType=INTEGER}, 
       #{note,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberLevel">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_level
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="name != null">
         name,
       </if>
@@ -171,7 +168,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

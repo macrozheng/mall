@@ -134,29 +134,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsComment">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_comment (id, product_id, member_nick_name, 
-      product_name, star, member_ip, 
-      create_time, show_status, product_attribute, 
-      collect_couont, read_count, pics, 
-      member_icon, replay_count, content
-      )
-    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{memberNickName,jdbcType=VARCHAR}, 
-      #{productName,jdbcType=VARCHAR}, #{star,jdbcType=INTEGER}, #{memberIp,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{showStatus,jdbcType=INTEGER}, #{productAttribute,jdbcType=VARCHAR}, 
-      #{collectCouont,jdbcType=INTEGER}, #{readCount,jdbcType=INTEGER}, #{pics,jdbcType=VARCHAR}, 
-      #{memberIcon,jdbcType=VARCHAR}, #{replayCount,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
-      )
+    insert into pms_comment (product_id, member_nick_name, product_name, 
+      star, member_ip, create_time, 
+      show_status, product_attribute, collect_couont, 
+      read_count, pics, member_icon, 
+      replay_count, content)
+    values (#{productId,jdbcType=BIGINT}, #{memberNickName,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{star,jdbcType=INTEGER}, #{memberIp,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{showStatus,jdbcType=INTEGER}, #{productAttribute,jdbcType=VARCHAR}, #{collectCouont,jdbcType=INTEGER}, 
+      #{readCount,jdbcType=INTEGER}, #{pics,jdbcType=VARCHAR}, #{memberIcon,jdbcType=VARCHAR}, 
+      #{replayCount,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsComment">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="productId != null">
         product_id,
       </if>
@@ -201,7 +198,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="productId != null">
         #{productId,jdbcType=BIGINT},
       </if>

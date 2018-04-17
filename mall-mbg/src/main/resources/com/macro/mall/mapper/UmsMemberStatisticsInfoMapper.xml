@@ -113,29 +113,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberStatisticsInfo">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_statistics_info (id, member_id, consume_amount, 
-      order_count, coupon_count, comment_count, 
-      return_order_count, login_count, attend_count, 
-      fans_count, collect_product_count, collect_subject_count, 
+    insert into ums_member_statistics_info (member_id, consume_amount, order_count, 
+      coupon_count, comment_count, return_order_count, 
+      login_count, attend_count, fans_count, 
+      collect_product_count, collect_subject_count, 
       collect_topic_count, collect_comment_count, 
       invite_friend_count, recent_order_time)
-    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{consumeAmount,jdbcType=DECIMAL}, 
-      #{orderCount,jdbcType=INTEGER}, #{couponCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
-      #{returnOrderCount,jdbcType=INTEGER}, #{loginCount,jdbcType=INTEGER}, #{attendCount,jdbcType=INTEGER}, 
-      #{fansCount,jdbcType=INTEGER}, #{collectProductCount,jdbcType=INTEGER}, #{collectSubjectCount,jdbcType=INTEGER}, 
+    values (#{memberId,jdbcType=BIGINT}, #{consumeAmount,jdbcType=DECIMAL}, #{orderCount,jdbcType=INTEGER}, 
+      #{couponCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, #{returnOrderCount,jdbcType=INTEGER}, 
+      #{loginCount,jdbcType=INTEGER}, #{attendCount,jdbcType=INTEGER}, #{fansCount,jdbcType=INTEGER}, 
+      #{collectProductCount,jdbcType=INTEGER}, #{collectSubjectCount,jdbcType=INTEGER}, 
       #{collectTopicCount,jdbcType=INTEGER}, #{collectCommentCount,jdbcType=INTEGER}, 
       #{inviteFriendCount,jdbcType=INTEGER}, #{recentOrderTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberStatisticsInfo">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_statistics_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberId != null">
         member_id,
       </if>
@@ -183,7 +182,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberId != null">
         #{memberId,jdbcType=BIGINT},
       </if>

@@ -98,21 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.SmsCouponProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_coupon_product_relation (id, coupon_id, product_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{couponId,jdbcType=INTEGER}, #{productId,jdbcType=BIGINT}
-      )
+    insert into sms_coupon_product_relation (coupon_id, product_id)
+    values (#{couponId,jdbcType=INTEGER}, #{productId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCouponProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_coupon_product_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="couponId != null">
         coupon_id,
       </if>
@@ -121,7 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="couponId != null">
         #{couponId,jdbcType=INTEGER},
       </if>

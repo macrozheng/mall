@@ -110,27 +110,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.OmsOrderItem">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oms_order_item (id, order_id, order_sn, 
-      product_id, proudct_pic, product_name, 
-      product_brand, product_sn, product_amount, 
-      product_count, product_real_amount, sp1, 
-      sp2, sp3)
-    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, 
-      #{productId,jdbcType=BIGINT}, #{proudctPic,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{productBrand,jdbcType=VARCHAR}, #{productSn,jdbcType=VARCHAR}, #{productAmount,jdbcType=DECIMAL}, 
-      #{productCount,jdbcType=INTEGER}, #{productRealAmount,jdbcType=DECIMAL}, #{sp1,jdbcType=VARCHAR}, 
-      #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR})
+    insert into oms_order_item (order_id, order_sn, product_id, 
+      proudct_pic, product_name, product_brand, 
+      product_sn, product_amount, product_count, 
+      product_real_amount, sp1, sp2, 
+      sp3)
+    values (#{orderId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, 
+      #{proudctPic,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productBrand,jdbcType=VARCHAR}, 
+      #{productSn,jdbcType=VARCHAR}, #{productAmount,jdbcType=DECIMAL}, #{productCount,jdbcType=INTEGER}, 
+      #{productRealAmount,jdbcType=DECIMAL}, #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, 
+      #{sp3,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrderItem">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_order_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="orderId != null">
         order_id,
       </if>
@@ -172,7 +171,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="orderId != null">
         #{orderId,jdbcType=BIGINT},
       </if>

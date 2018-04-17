@@ -102,23 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsTopicComment">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_topic_comment (id, member_nick_name, topic_id, 
-      member_icon, content, create_time, 
-      show_status)
-    values (#{id,jdbcType=BIGINT}, #{memberNickName,jdbcType=VARCHAR}, #{topicId,jdbcType=BIGINT}, 
-      #{memberIcon,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{showStatus,jdbcType=INTEGER})
+    insert into cms_topic_comment (member_nick_name, topic_id, member_icon, 
+      content, create_time, show_status
+      )
+    values (#{memberNickName,jdbcType=VARCHAR}, #{topicId,jdbcType=BIGINT}, #{memberIcon,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{showStatus,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsTopicComment">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_topic_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberNickName != null">
         member_nick_name,
       </if>
@@ -139,7 +138,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberNickName != null">
         #{memberNickName,jdbcType=VARCHAR},
       </if>

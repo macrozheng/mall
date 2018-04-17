@@ -100,21 +100,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberTask">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_task (id, name, growth, 
-      intergration, type)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{growth,jdbcType=INTEGER}, 
-      #{intergration,jdbcType=INTEGER}, #{type,jdbcType=INTEGER})
+    insert into ums_member_task (name, growth, intergration, 
+      type)
+    values (#{name,jdbcType=VARCHAR}, #{growth,jdbcType=INTEGER}, #{intergration,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberTask">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_task
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="name != null">
         name,
       </if>
@@ -129,7 +128,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

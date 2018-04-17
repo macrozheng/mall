@@ -104,23 +104,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsGrowthChangeHistory">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_growth_change_history (id, member_id, create_time, 
-      change_type, change_count, operate_man, 
-      operate_note, source_type)
-    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{changeType,jdbcType=INTEGER}, #{changeCount,jdbcType=INTEGER}, #{operateMan,jdbcType=VARCHAR}, 
-      #{operateNote,jdbcType=VARCHAR}, #{sourceType,jdbcType=INTEGER})
+    insert into ums_growth_change_history (member_id, create_time, change_type, 
+      change_count, operate_man, operate_note, 
+      source_type)
+    values (#{memberId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{changeType,jdbcType=INTEGER}, 
+      #{changeCount,jdbcType=INTEGER}, #{operateMan,jdbcType=VARCHAR}, #{operateNote,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsGrowthChangeHistory">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_growth_change_history
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberId != null">
         member_id,
       </if>
@@ -144,7 +143,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberId != null">
         #{memberId,jdbcType=BIGINT},
       </if>

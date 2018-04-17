@@ -102,23 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberReceiveAddress">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_receive_address (id, member_id, name, 
-      phone_number, address, post_code, 
-      default_status)
-    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{phoneNumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, 
-      #{defaultStatus,jdbcType=INTEGER})
+    insert into ums_member_receive_address (member_id, name, phone_number, 
+      address, post_code, default_status
+      )
+    values (#{memberId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{defaultStatus,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberReceiveAddress">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_receive_address
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberId != null">
         member_id,
       </if>
@@ -139,7 +138,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberId != null">
         #{memberId,jdbcType=BIGINT},
       </if>

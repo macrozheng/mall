@@ -100,21 +100,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsAdmin">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_admin (id, username, password, 
-      icon, email)
-    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{icon,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+    insert into ums_admin (username, password, icon, 
+      email)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsAdmin">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_admin
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="username != null">
         username,
       </if>
@@ -129,7 +128,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>

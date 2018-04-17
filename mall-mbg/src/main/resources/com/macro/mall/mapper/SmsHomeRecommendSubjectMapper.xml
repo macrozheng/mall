@@ -100,21 +100,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.SmsHomeRecommendSubject">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_home_recommend_subject (id, subject_id, subject_name, 
-      recommend_status, sort)
-    values (#{id,jdbcType=BIGINT}, #{subjectId,jdbcType=BIGINT}, #{subjectName,jdbcType=VARCHAR}, 
-      #{recommendStatus,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})
+    insert into sms_home_recommend_subject (subject_id, subject_name, recommend_status, 
+      sort)
+    values (#{subjectId,jdbcType=BIGINT}, #{subjectName,jdbcType=VARCHAR}, #{recommendStatus,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsHomeRecommendSubject">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_home_recommend_subject
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="subjectId != null">
         subject_id,
       </if>
@@ -129,7 +128,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="subjectId != null">
         #{subjectId,jdbcType=BIGINT},
       </if>

@@ -126,37 +126,34 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.OmsOrderReturnApply">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oms_order_return_apply (id, order_id, company_address_id, 
-      order_sn, create_time, member_username, 
-      return_amount, return_name, return_phone, 
-      status, handle_time, product_pic, 
-      product_name, brand_name, product_attr, 
-      product_count, reason, description, 
-      proof_pics, return_post_amount, return_post_status, 
-      confirm_return_amount, handle_note, handle_man, 
-      receive_man, receive_time, receive_note
-      )
-    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{companyAddressId,jdbcType=BIGINT}, 
-      #{orderSn,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{memberUsername,jdbcType=VARCHAR}, 
-      #{returnAmount,jdbcType=DECIMAL}, #{returnName,jdbcType=VARCHAR}, #{returnPhone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{handleTime,jdbcType=TIMESTAMP}, #{productPic,jdbcType=VARCHAR}, 
-      #{productName,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{productAttr,jdbcType=VARCHAR}, 
-      #{productCount,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{proofPics,jdbcType=VARCHAR}, #{returnPostAmount,jdbcType=DECIMAL}, #{returnPostStatus,jdbcType=INTEGER}, 
-      #{confirmReturnAmount,jdbcType=DECIMAL}, #{handleNote,jdbcType=VARCHAR}, #{handleMan,jdbcType=VARCHAR}, 
-      #{receiveMan,jdbcType=VARCHAR}, #{receiveTime,jdbcType=TIMESTAMP}, #{receiveNote,jdbcType=VARCHAR}
-      )
+    insert into oms_order_return_apply (order_id, company_address_id, order_sn, 
+      create_time, member_username, return_amount, 
+      return_name, return_phone, status, 
+      handle_time, product_pic, product_name, 
+      brand_name, product_attr, product_count, 
+      reason, description, proof_pics, 
+      return_post_amount, return_post_status, confirm_return_amount, 
+      handle_note, handle_man, receive_man, 
+      receive_time, receive_note)
+    values (#{orderId,jdbcType=BIGINT}, #{companyAddressId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{memberUsername,jdbcType=VARCHAR}, #{returnAmount,jdbcType=DECIMAL}, 
+      #{returnName,jdbcType=VARCHAR}, #{returnPhone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{productPic,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{brandName,jdbcType=VARCHAR}, #{productAttr,jdbcType=VARCHAR}, #{productCount,jdbcType=INTEGER}, 
+      #{reason,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{proofPics,jdbcType=VARCHAR}, 
+      #{returnPostAmount,jdbcType=DECIMAL}, #{returnPostStatus,jdbcType=INTEGER}, #{confirmReturnAmount,jdbcType=DECIMAL}, 
+      #{handleNote,jdbcType=VARCHAR}, #{handleMan,jdbcType=VARCHAR}, #{receiveMan,jdbcType=VARCHAR}, 
+      #{receiveTime,jdbcType=TIMESTAMP}, #{receiveNote,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrderReturnApply">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_order_return_apply
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="orderId != null">
         order_id,
       </if>
@@ -237,7 +234,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="orderId != null">
         #{orderId,jdbcType=BIGINT},
       </if>

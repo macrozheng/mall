@@ -100,21 +100,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_intergration_consume_setting (id, deduction_per_amount, max_percent_per_order, 
+    insert into ums_intergration_consume_setting (deduction_per_amount, max_percent_per_order, 
       use_unit, coupon_status)
-    values (#{id,jdbcType=BIGINT}, #{deductionPerAmount,jdbcType=INTEGER}, #{maxPercentPerOrder,jdbcType=INTEGER}, 
+    values (#{deductionPerAmount,jdbcType=INTEGER}, #{maxPercentPerOrder,jdbcType=INTEGER}, 
       #{useUnit,jdbcType=INTEGER}, #{couponStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_intergration_consume_setting
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="deductionPerAmount != null">
         deduction_per_amount,
       </if>
@@ -129,7 +128,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="deductionPerAmount != null">
         #{deductionPerAmount,jdbcType=INTEGER},
       </if>

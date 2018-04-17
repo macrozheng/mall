@@ -102,23 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.OmsOrderSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oms_order_setting (id, flash_order_overtime, normal_order_overtime, 
+    insert into oms_order_setting (flash_order_overtime, normal_order_overtime, 
       confirm_overtime, finish_overtime, comment_overtime
       )
-    values (#{id,jdbcType=BIGINT}, #{flashOrderOvertime,jdbcType=INTEGER}, #{normalOrderOvertime,jdbcType=INTEGER}, 
+    values (#{flashOrderOvertime,jdbcType=INTEGER}, #{normalOrderOvertime,jdbcType=INTEGER}, 
       #{confirmOvertime,jdbcType=INTEGER}, #{finishOvertime,jdbcType=INTEGER}, #{commentOvertime,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrderSetting">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_order_setting
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="flashOrderOvertime != null">
         flash_order_overtime,
       </if>
@@ -136,7 +135,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="flashOrderOvertime != null">
         #{flashOrderOvertime,jdbcType=INTEGER},
       </if>

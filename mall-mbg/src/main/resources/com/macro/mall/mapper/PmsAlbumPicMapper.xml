@@ -98,21 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsAlbumPic">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_album_pic (id, album_id, pic
-      )
-    values (#{id,jdbcType=BIGINT}, #{albumId,jdbcType=BIGINT}, #{pic,jdbcType=VARCHAR}
-      )
+    insert into pms_album_pic (album_id, pic)
+    values (#{albumId,jdbcType=BIGINT}, #{pic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsAlbumPic">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_album_pic
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="albumId != null">
         album_id,
       </if>
@@ -121,7 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="albumId != null">
         #{albumId,jdbcType=BIGINT},
       </if>

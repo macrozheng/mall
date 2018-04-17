@@ -34,7 +34,7 @@
                              targetProject="mall-mbg\src\main\java"/>
 
         <table tableName="%">
-            <generatedKey column="id" sqlStatement="MySql"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

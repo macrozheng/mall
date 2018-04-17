@@ -102,23 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.SmsFlashPromotionLog">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_flash_promotion_log (id, member_id, product_id, 
-      member_phone, product_name, subscribe_time, 
-      send_time)
-    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{productId,jdbcType=BIGINT}, 
-      #{memberPhone,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{subscribeTime,jdbcType=TIMESTAMP}, 
-      #{sendTime,jdbcType=TIMESTAMP})
+    insert into sms_flash_promotion_log (member_id, product_id, member_phone, 
+      product_name, subscribe_time, send_time
+      )
+    values (#{memberId,jdbcType=INTEGER}, #{productId,jdbcType=BIGINT}, #{memberPhone,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{subscribeTime,jdbcType=TIMESTAMP}, #{sendTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsFlashPromotionLog">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_flash_promotion_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberId != null">
         member_id,
       </if>
@@ -139,7 +138,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=INTEGER},
       <if test="memberId != null">
         #{memberId,jdbcType=INTEGER},
       </if>

@@ -124,23 +124,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsPrefrenceArea">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_prefrence_area (id, name, sub_title, 
-      sort, show_status, pic
-      )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=INTEGER}, #{showStatus,jdbcType=INTEGER}, #{pic,jdbcType=VARBINARY}
-      )
+    insert into cms_prefrence_area (name, sub_title, sort, 
+      show_status, pic)
+    values (#{name,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{showStatus,jdbcType=INTEGER}, #{pic,jdbcType=VARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsPrefrenceArea">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_prefrence_area
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="name != null">
         name,
       </if>
@@ -158,7 +155,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

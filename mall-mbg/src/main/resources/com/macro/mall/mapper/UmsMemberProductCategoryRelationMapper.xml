@@ -98,21 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMemberProductCategoryRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member_product_category_relation (id, member_id, product_category_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}
-      )
+    insert into ums_member_product_category_relation (member_id, product_category_id)
+    values (#{memberId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberProductCategoryRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_product_category_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberId != null">
         member_id,
       </if>
@@ -121,7 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberId != null">
         #{memberId,jdbcType=BIGINT},
       </if>

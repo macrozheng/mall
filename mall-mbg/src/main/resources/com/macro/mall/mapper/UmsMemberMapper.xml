@@ -116,31 +116,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.UmsMember">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_member (id, member_level_id, username, 
-      password, nickname, phone, 
-      status, create_time, icon, 
-      gender, birthday, city, 
-      job, personalized_signature, source_type, 
-      integration, growth, luckey_count, 
-      history_integration)
-    values (#{id,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{icon,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{city,jdbcType=VARCHAR}, 
-      #{job,jdbcType=VARCHAR}, #{personalizedSignature,jdbcType=VARCHAR}, #{sourceType,jdbcType=INTEGER}, 
-      #{integration,jdbcType=INTEGER}, #{growth,jdbcType=INTEGER}, #{luckeyCount,jdbcType=INTEGER}, 
-      #{historyIntegration,jdbcType=INTEGER})
+    insert into ums_member (member_level_id, username, password, 
+      nickname, phone, status, 
+      create_time, icon, gender, 
+      birthday, city, job, personalized_signature, 
+      source_type, integration, growth, 
+      luckey_count, history_integration)
+    values (#{memberLevelId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{icon,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=DATE}, #{city,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{personalizedSignature,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=INTEGER}, #{integration,jdbcType=INTEGER}, #{growth,jdbcType=INTEGER}, 
+      #{luckeyCount,jdbcType=INTEGER}, #{historyIntegration,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMember">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="memberLevelId != null">
         member_level_id,
       </if>
@@ -197,7 +194,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="memberLevelId != null">
         #{memberLevelId,jdbcType=BIGINT},
       </if>

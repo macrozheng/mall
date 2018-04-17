@@ -108,27 +108,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsProductOperateLog">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product_operate_log (id, product_id, price_old, 
-      price_new, sale_price_old, sale_price_new, 
-      gift_point_old, gift_point_new, use_point_limit_old, 
-      use_point_limit_new, operate_man, create_time
-      )
-    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{priceOld,jdbcType=DECIMAL}, 
-      #{priceNew,jdbcType=DECIMAL}, #{salePriceOld,jdbcType=DECIMAL}, #{salePriceNew,jdbcType=DECIMAL}, 
-      #{giftPointOld,jdbcType=INTEGER}, #{giftPointNew,jdbcType=INTEGER}, #{usePointLimitOld,jdbcType=INTEGER}, 
-      #{usePointLimitNew,jdbcType=INTEGER}, #{operateMan,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
+    insert into pms_product_operate_log (product_id, price_old, price_new, 
+      sale_price_old, sale_price_new, gift_point_old, 
+      gift_point_new, use_point_limit_old, use_point_limit_new, 
+      operate_man, create_time)
+    values (#{productId,jdbcType=BIGINT}, #{priceOld,jdbcType=DECIMAL}, #{priceNew,jdbcType=DECIMAL}, 
+      #{salePriceOld,jdbcType=DECIMAL}, #{salePriceNew,jdbcType=DECIMAL}, #{giftPointOld,jdbcType=INTEGER}, 
+      #{giftPointNew,jdbcType=INTEGER}, #{usePointLimitOld,jdbcType=INTEGER}, #{usePointLimitNew,jdbcType=INTEGER}, 
+      #{operateMan,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProductOperateLog">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_product_operate_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="productId != null">
         product_id,
       </if>
@@ -164,7 +161,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="productId != null">
         #{productId,jdbcType=BIGINT},
       </if>

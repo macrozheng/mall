@@ -98,21 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsSubjectProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_subject_product_relation (id, subject_id, product_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{subjectId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}
-      )
+    insert into cms_subject_product_relation (subject_id, product_id)
+    values (#{subjectId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsSubjectProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_subject_product_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="subjectId != null">
         subject_id,
       </if>
@@ -121,7 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="subjectId != null">
         #{subjectId,jdbcType=BIGINT},
       </if>

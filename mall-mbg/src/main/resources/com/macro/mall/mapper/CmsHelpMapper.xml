@@ -126,23 +126,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsHelp">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_help (id, category_id, icon, 
-      title, show_status, create_time, 
-      read_count, content)
-    values (#{id,jdbcType=BIGINT}, #{categoryId,jdbcType=BIGINT}, #{icon,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{showStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{readCount,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+    insert into cms_help (category_id, icon, title, 
+      show_status, create_time, read_count, 
+      content)
+    values (#{categoryId,jdbcType=BIGINT}, #{icon,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{showStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{readCount,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsHelp">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_help
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="categoryId != null">
         category_id,
       </if>
@@ -166,7 +165,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="categoryId != null">
         #{categoryId,jdbcType=BIGINT},
       </if>

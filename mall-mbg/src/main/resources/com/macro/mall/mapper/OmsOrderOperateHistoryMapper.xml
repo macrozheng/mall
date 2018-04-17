@@ -101,23 +101,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.OmsOrderOperateHistory">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oms_order_operate_history (id, order_id, operate_man, 
-      create_time, order_status, note
-      )
-    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{operateMan,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}
-      )
+    insert into oms_order_operate_history (order_id, operate_man, create_time, 
+      order_status, note)
+    values (#{orderId,jdbcType=BIGINT}, #{operateMan,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{orderStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrderOperateHistory">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_order_operate_history
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="orderId != null">
         order_id,
       </if>
@@ -135,7 +132,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="orderId != null">
         #{orderId,jdbcType=BIGINT},
       </if>

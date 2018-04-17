@@ -108,27 +108,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.PmsProductAttribute">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product_attribute (id, product_attribute_category_id, name, 
+    insert into pms_product_attribute (product_attribute_category_id, name, 
       select_type, input_type, input_list, 
       sort, filter_type, search_type, 
       related_status, hand_add_status, type
       )
-    values (#{id,jdbcType=BIGINT}, #{productAttributeCategoryId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+    values (#{productAttributeCategoryId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
       #{selectType,jdbcType=INTEGER}, #{inputType,jdbcType=INTEGER}, #{inputList,jdbcType=VARCHAR}, 
       #{sort,jdbcType=INTEGER}, #{filterType,jdbcType=INTEGER}, #{searchType,jdbcType=INTEGER}, 
       #{relatedStatus,jdbcType=INTEGER}, #{handAddStatus,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProductAttribute">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_product_attribute
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="productAttributeCategoryId != null">
         product_attribute_category_id,
       </if>
@@ -164,7 +163,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="productAttributeCategoryId != null">
         #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>

@@ -98,21 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.macro.mall.model.CmsPrefrenceAreaProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cms_prefrence_area_product_relation (id, prefrence_area_id, product_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{prefrenceAreaId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}
-      )
+    insert into cms_prefrence_area_product_relation (prefrence_area_id, product_id)
+    values (#{prefrenceAreaId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsPrefrenceAreaProductRelation">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_prefrence_area_product_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      id,
       <if test="prefrenceAreaId != null">
         prefrence_area_id,
       </if>
@@ -121,7 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{id,jdbcType=BIGINT},
       <if test="prefrenceAreaId != null">
         #{prefrenceAreaId,jdbcType=BIGINT},
       </if>
