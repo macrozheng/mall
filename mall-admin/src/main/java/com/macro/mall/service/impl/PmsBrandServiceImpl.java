@@ -17,7 +17,7 @@ import java.util.List;
  * 商品品牌Service实现类
  */
 @Service
-public class PmsBrandServiceImpl implements PmsBrandService{
+public class PmsBrandServiceImpl implements PmsBrandService {
     @Autowired
     private PmsBrandMapper brandMapper;
 
@@ -29,10 +29,10 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     @Override
     public int createBrand(PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
-        BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
+        BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         //如果创建时首字母为空，取名称的第一个为首字母
-        if(StringUtils.isEmpty(pmsBrand.getFirstLetter())){
-            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0,1));
+        if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
+            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
         return brandMapper.insertSelective(pmsBrand);
     }
@@ -40,11 +40,11 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     @Override
     public int updateBrand(Long id, PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
-        BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
+        BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         pmsBrand.setId(id);
         //如果创建时首字母为空，取名称的第一个为首字母
-        if(StringUtils.isEmpty(pmsBrand.getFirstLetter())){
-            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0,1));
+        if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
+            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }
@@ -62,11 +62,12 @@ public class PmsBrandServiceImpl implements PmsBrandService{
     }
 
     @Override
-    public List<PmsBrand> listBrand(String keyword,int pageNum, int pageSize) {
+    public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        if(!StringUtils.isEmpty(keyword)){
-            pmsBrandExample.createCriteria().andNameLike("%"+keyword+"%");
+        pmsBrandExample.setOrderByClause("sort asc");
+        if (!StringUtils.isEmpty(keyword)) {
+            pmsBrandExample.createCriteria().andNameLike("%" + keyword + "%");
         }
         return brandMapper.selectByExample(pmsBrandExample);
     }
@@ -82,6 +83,15 @@ public class PmsBrandServiceImpl implements PmsBrandService{
         pmsBrand.setShowStatus(showStatus);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
         pmsBrandExample.createCriteria().andIdIn(ids);
-        return brandMapper.updateByExampleSelective(pmsBrand,pmsBrandExample);
+        return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
+    }
+
+    @Override
+    public int updateFactoryStatus(List<Long> ids, Integer factoryStatus) {
+        PmsBrand pmsBrand = new PmsBrand();
+        pmsBrand.setFactoryStatus(factoryStatus);
+        PmsBrandExample pmsBrandExample = new PmsBrandExample();
+        pmsBrandExample.createCriteria().andIdIn(ids);
+        return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
     }
 }

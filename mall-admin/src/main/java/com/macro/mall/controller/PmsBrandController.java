@@ -128,4 +128,18 @@ public class PmsBrandController {
             return new CommonResult().failed();
         }
     }
+
+    @ApiOperation(value = "批量更新厂家制造商状态")
+    @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.GET)
+    @ResponseBody
+    public Object updateFactoryStatus(@RequestParam("ids") List<Long> ids, @RequestParam("factoryStatus") Integer factoryStatus) {
+        int count = brandService.updateFactoryStatus(ids, factoryStatus);
+        if (count > 0) {
+            LOGGER.debug("updateFactoryStatus success:{}", ids);
+            return new CommonResult().success(count);
+        } else {
+            LOGGER.debug("updateFactoryStatus failed:{}", ids);
+            return new CommonResult().failed();
+        }
+    }
 }
