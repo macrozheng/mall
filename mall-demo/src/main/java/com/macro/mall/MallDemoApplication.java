@@ -9,11 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @MapperScan("com.macro.mall.mapper")
-public class MallDemoApplication extends WebMvcConfigurerAdapter{
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
-    }
+public class MallDemoApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(MallDemoApplication.class, args);
 	}

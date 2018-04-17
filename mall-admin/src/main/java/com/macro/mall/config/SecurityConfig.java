@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//配置权限
 //                .antMatchers("/").access("hasRole('TEST')")//该路径需要TEST角色
-//                .antMatchers("/brand/list").authenticated()//该路径需要登录认证
+                .antMatchers("/").authenticated()//该路径需要登录认证
 //                .antMatchers("/brand/list").hasAuthority("TEST")//该路径需要TEST权限
                 .antMatchers("/**").permitAll()
                 .and()//启用基于http的认证
@@ -48,6 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .key("rememberMeKey")
                 .and()//关闭跨域伪造
                 .csrf()
+                .disable()
+                .headers()//去除X-Frame-Options
+                .frameOptions()
                 .disable();
     }
 

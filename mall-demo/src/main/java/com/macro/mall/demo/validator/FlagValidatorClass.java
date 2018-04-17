@@ -10,7 +10,7 @@ public class FlagValidatorClass implements ConstraintValidator<FlagValidator,Int
     private String[] values;
     @Override
     public void initialize(FlagValidator flagValidator) {
-        this.values = flagValidator.values();
+        this.values = flagValidator.value();
     }
 
     @Override

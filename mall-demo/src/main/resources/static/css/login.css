@@ -1,0 +1,21 @@
+body, html {height: 100%; font-family: 'Microsoft yahei'; font-size: 13px; font-weight: 400;}
+img {vertical-align: middle;}
+a, a:hover, a:active, a:focus {text-decoration: none; -webkit-user-drag: none;}
+a i{font-size: 13px;}
+
+body{background:#ECECEC;}
+body:before{height:50%;width:100%;position:absolute;top:0;left:0;background:#29a176;content:"";z-index:0}
+#login-window{position:relative;top:50%;left:50%;width:300px;height:200px;margin-left:-150px;margin-top:-100px;padding:35px 55px 35px 25px;z-index:10;background:#fff;box-shadow:0 1px 11px rgba(0,0,0,.27);border-radius:2px;}
+.m-b-20{margin-bottom:20px !important;}
+
+#login-bt{position:absolute;width:50px;height:50px;border-radius:50%;line-height:36px!important;top:50%;margin-top:-25px;right:-25px;background:#FF4F0F;}
+#login-bt i{font-size:23px;color:#fff;}
+
+.input-group-addon{border:none;background:none;font-size:16px;}
+.form-control{position:relative;font-size:13px;border:1px solid #e0e0e0;border-left:0;border-right:0;border-top:0;padding:0;background:#fff;height:35px;line-height:35px;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;box-shadow:none;}
+.form-control:active, .form-control:focus{box-shadow:none;}
+.fg-line{position:relative;vertical-align:top;display:inline-block;width:100%;}
+.fg-line:after{position:absolute;z-index:3;bottom:0;left:0;height:2px;width:0;content:"";-webkit-transition:all;-o-transition:all;transition:all;-webkit-transition-duration:.3s;transition-duration:.3s;background:#29a176;}
+.fg-line.fg-toggled:after{width:100%}
+
+input[type=checkbox].checkbix:checked+label>span:before{box-sizing: content-box;}

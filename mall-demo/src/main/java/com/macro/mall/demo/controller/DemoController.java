@@ -25,20 +25,6 @@ public class DemoController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoController.class);
 
-    @ApiOperation(value = "此处为首页")
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    @ResponseBody
-    public String hello() {
-        return "This is home!";
-    }
-
-    @ApiOperation(value = "获取品牌列表界面（网页显示）")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getBrandListPage(Model model) {
-        model.addAttribute("brandList", demoService.listAllBrand());
-        return "demo";
-    }
-
     @ApiOperation(value = "获取全部品牌列表")
     @RequestMapping(value = "/brand/listAll", method = RequestMethod.GET)
     @ResponseBody
