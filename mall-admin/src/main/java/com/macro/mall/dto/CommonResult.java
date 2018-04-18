@@ -1,6 +1,7 @@
 package com.macro.mall.dto;
 
 import com.github.pagehelper.PageInfo;
+import com.macro.mall.util.JsonUtils;
 import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
@@ -74,6 +75,11 @@ public class CommonResult {
     public CommonResult validateFailed(BindingResult result) {
         validateFailed(result.getFieldError().getDefaultMessage());
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtils.objectToJson(this);
     }
 
     public int getCode() {

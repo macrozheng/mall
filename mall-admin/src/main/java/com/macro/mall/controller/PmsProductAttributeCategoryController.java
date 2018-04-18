@@ -18,7 +18,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/productAttribute/category")
 public class PmsProductAttributeCategoryController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PmsProductAttributeCategoryController.class);
     @Autowired
     private PmsProductAttributeCategoryService productAttributeCategoryService;
 
@@ -28,10 +27,8 @@ public class PmsProductAttributeCategoryController {
     public Object create(@RequestParam String name) {
         int count = productAttributeCategoryService.create(name);
         if (count > 0) {
-            LOGGER.debug("create success name:{}", name);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("create failed name:{}", name);
             return new CommonResult().failed();
         }
     }
@@ -42,10 +39,8 @@ public class PmsProductAttributeCategoryController {
     public Object update(@PathVariable Long id, @RequestParam String name) {
         int count = productAttributeCategoryService.update(id, name);
         if (count > 0) {
-            LOGGER.debug("update success id:{}", id);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("update failed id:{}", id);
             return new CommonResult().failed();
         }
     }
@@ -56,10 +51,8 @@ public class PmsProductAttributeCategoryController {
     public Object delete(@PathVariable Long id) {
         int count = productAttributeCategoryService.delete(id);
         if (count > 0) {
-            LOGGER.debug("delete success name:{}", id);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("delete failed name:{}", id);
             return new CommonResult().failed();
         }
     }

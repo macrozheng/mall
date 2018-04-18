@@ -25,8 +25,6 @@ public class PmsBrandController {
     @Autowired
     private PmsBrandService brandService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PmsBrandController.class);
-
     @ApiOperation(value = "获取全部品牌列表")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
@@ -45,10 +43,8 @@ public class PmsBrandController {
         int count = brandService.createBrand(pmsBrand);
         if (count == 1) {
             commonResult = new CommonResult().success(pmsBrand);
-            LOGGER.debug("createBrand success:{}", pmsBrand);
         } else {
             commonResult = new CommonResult().failed();
-            LOGGER.debug("createBrand failed:{}", pmsBrand);
         }
         return commonResult;
     }
@@ -64,10 +60,8 @@ public class PmsBrandController {
         int count = brandService.updateBrand(id, pmsBrandParam);
         if (count == 1) {
             commonResult = new CommonResult().success(pmsBrandParam);
-            LOGGER.debug("updateBrand success:{}", pmsBrandParam);
         } else {
             commonResult = new CommonResult().failed();
-            LOGGER.debug("updateBrand failed:{}", pmsBrandParam);
         }
         return commonResult;
     }
@@ -78,10 +72,8 @@ public class PmsBrandController {
     public Object deleteBrand(@PathVariable("id") Long id) {
         int count = brandService.deleteBrand(id);
         if (count == 1) {
-            LOGGER.debug("deleteBrand success:id={}", id);
             return new CommonResult().success(null);
         } else {
-            LOGGER.debug("deleteBrand failed:id={}", id);
             return new CommonResult().failed();
         }
     }
@@ -108,10 +100,8 @@ public class PmsBrandController {
     public Object deleteBrandBatch(@RequestParam("ids") List<Long> ids) {
         int count = brandService.deleteBrand(ids);
         if (count > 0) {
-            LOGGER.debug("deleteBrandBatch success:ids={}", ids);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("deleteBrandBatch failed:ids={}", ids);
             return new CommonResult().failed();
         }
     }
@@ -123,10 +113,8 @@ public class PmsBrandController {
                                    @RequestParam("showStatus") Integer showStatus) {
         int count = brandService.updateShowStatus(ids, showStatus);
         if (count > 0) {
-            LOGGER.debug("updateShowStatus success:ids={}", ids);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("updateShowStatus failed:ids={}", ids);
             return new CommonResult().failed();
         }
     }
@@ -138,10 +126,8 @@ public class PmsBrandController {
                                       @RequestParam("factoryStatus") Integer factoryStatus) {
         int count = brandService.updateFactoryStatus(ids, factoryStatus);
         if (count > 0) {
-            LOGGER.debug("updateFactoryStatus success:{}", ids);
             return new CommonResult().success(count);
         } else {
-            LOGGER.debug("updateFactoryStatus failed:{}", ids);
             return new CommonResult().failed();
         }
     }
