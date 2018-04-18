@@ -65,10 +65,10 @@ public class PmsProductCategoryController {
     @ApiOperation("分页查询商品分类")
     @RequestMapping(value = "/list/{parentId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@PathVariable Long parentId,
+    public Object getList(@PathVariable Long parentId,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<PmsProductCategory> productCategoryList = productCategoryService.list(parentId, pageSize, pageNum);
+        List<PmsProductCategory> productCategoryList = productCategoryService.getList(parentId, pageSize, pageNum);
         return new CommonResult().pageSuccess(productCategoryList);
     }
 

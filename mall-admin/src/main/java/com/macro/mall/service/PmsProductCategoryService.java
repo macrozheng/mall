@@ -13,7 +13,7 @@ public interface PmsProductCategoryService {
 
     int update(Long id, PmsProductCategoryParam pmsProductCategoryParam);
 
-    List<PmsProductCategory> list(Long parentId, Integer pageSize, Integer pageNum);
+    List<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum);
 
     int delete(Long id);
 }

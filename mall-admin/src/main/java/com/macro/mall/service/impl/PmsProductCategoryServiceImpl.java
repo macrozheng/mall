@@ -39,7 +39,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     }
 
     @Override
-    public List<PmsProductCategory> list(Long parentId, Integer pageSize, Integer pageNum) {
+    public List<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         PmsProductCategoryExample example = new PmsProductCategoryExample();
         example.setOrderByClause("sort desc");
