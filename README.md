@@ -31,7 +31,7 @@ crud操作demo | ✔
 集成监控功能 | ✔
 包结构调整 | ✔
 SpringSecurity登录改为Restful形式 |
-SpringAOP通用日志处理 | 
+SpringAOP通用日志处理 | ✔
 
 ### 功能完善
 
