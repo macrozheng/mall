@@ -27,10 +27,8 @@ public class PmsProductCategoryController {
     @ApiOperation("添加产品分类")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@Validated @RequestBody PmsProductCategoryParam pmsProductCategoryParam, BindingResult result) {
-        if (result.hasErrors()) {
-            return new CommonResult().validateFailed(result);
-        }
+    public Object create(@Validated @RequestBody PmsProductCategoryParam pmsProductCategoryParam,
+                         BindingResult result) {
         int count = productCategoryService.create(pmsProductCategoryParam);
         if (count > 0) {
             return new CommonResult().success(count);
@@ -46,9 +44,6 @@ public class PmsProductCategoryController {
                          @Validated
                          @RequestBody PmsProductCategoryParam pmsProductCategoryParam,
                          BindingResult result) {
-        if (result.hasErrors()) {
-            return new CommonResult().validateFailed(result);
-        }
         int count = productCategoryService.update(id, pmsProductCategoryParam);
         if (count > 0) {
             return new CommonResult().success(count);

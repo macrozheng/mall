@@ -24,14 +24,14 @@ AdminLte | 前端模版
 集成SpringSecurity | ✔
 集成Swagger-UI | ✔
 集成Hibernator-Validator | ✔
-对通用返回结果进行封装 | ✔
-crud操作demo | ✔
-添加分页查询功能 | ✔
 集成日志功能 | ✔
 集成监控功能 | ✔
-包结构调整 | ✔
-SpringSecurity登录改为Restful形式 |
+crud操作demo | ✔
+合理规划包结构 | ✔
 SpringAOP通用日志处理 | ✔
+SpringAOP通用验证失败结果返回 | ✔
+CommonResult对通用返回结果进行封装 | ✔
+SpringSecurity登录改为Restful形式 |
 
 ### 功能完善
 
