@@ -4,6 +4,7 @@ import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.PmsProductCategoryParam;
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.service.PmsProductCategoryService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import java.util.List;
  * 商品分类模块Controller
  */
 @Controller
+@Api(tags = "PmsProductCategoryController",description = "商品分类管理")
 @RequestMapping("/productCategory")
 public class PmsProductCategoryController {
     @Autowired
