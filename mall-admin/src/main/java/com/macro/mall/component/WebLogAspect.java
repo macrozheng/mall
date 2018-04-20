@@ -1,7 +1,7 @@
 package com.macro.mall.component;
 
 import com.macro.mall.bo.WebLog;
-import com.macro.mall.util.JsonUtils;
+import com.macro.mall.util.JsonUtil;
 import com.macro.mall.util.RequestUtil;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.lang.JoinPoint;
@@ -13,16 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.*;
@@ -75,7 +72,7 @@ public class WebLogAspect {
         webLog.setStartTime(startTime.get());
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
-        LOGGER.info("{}", JsonUtils.objectToJson(webLog));
+        LOGGER.info("{}", JsonUtil.objectToJson(webLog));
         return result;
     }
 

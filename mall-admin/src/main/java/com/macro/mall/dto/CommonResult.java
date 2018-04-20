@@ -1,7 +1,7 @@
 package com.macro.mall.dto;
 
 import com.github.pagehelper.PageInfo;
-import com.macro.mall.util.JsonUtils;
+import com.macro.mall.util.JsonUtil;
 import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
@@ -79,7 +79,7 @@ public class CommonResult {
 
     @Override
     public String toString() {
-        return JsonUtils.objectToJson(this);
+        return JsonUtil.objectToJson(this);
     }
 
     public int getCode() {

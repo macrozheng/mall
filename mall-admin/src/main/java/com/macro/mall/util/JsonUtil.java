@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 淘淘商城自定义响应结构
  */
-public class JsonUtils {
+public class JsonUtil {
 
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
