@@ -27,7 +27,7 @@ public class BindingResultAspect {
             if (arg instanceof BindingResult) {
                 BindingResult result = (BindingResult) arg;
                 if (result.hasErrors()) {
-                    return new CommonResult().validateFailed(result.getFieldError().getDefaultMessage());
+                    return new CommonResult().validateFailed(result);
                 }
             }
         }
