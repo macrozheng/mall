@@ -7,10 +7,25 @@ public class UmsMemberTask implements Serializable {
 
     private String name;
 
+    /**
+     * 赠送成长值
+     *
+     * @mbggenerated
+     */
     private Integer growth;
 
+    /**
+     * 赠送积分
+     *
+     * @mbggenerated
+     */
     private Integer intergration;
 
+    /**
+     * 任务类型：0->新手任务；1->日常任务
+     *
+     * @mbggenerated
+     */
     private Integer type;
 
     private static final long serialVersionUID = 1L;

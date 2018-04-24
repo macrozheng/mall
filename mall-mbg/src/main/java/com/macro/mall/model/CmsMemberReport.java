@@ -6,16 +6,36 @@ import java.util.Date;
 public class CmsMemberReport implements Serializable {
     private Long id;
 
+    /**
+     * 举报类型：0->商品评价；1->话题内容；2->用户评论
+     *
+     * @mbggenerated
+     */
     private Integer reportType;
 
+    /**
+     * 举报人
+     *
+     * @mbggenerated
+     */
     private String reportMemberName;
 
     private Date createTime;
 
     private String reportObject;
 
+    /**
+     * 举报状态：0->未处理；1->已处理
+     *
+     * @mbggenerated
+     */
     private Integer reportStatus;
 
+    /**
+     * 处理结果：0->无效；1->有效；2->恶意
+     *
+     * @mbggenerated
+     */
     private Integer handleStatus;
 
     private String note;

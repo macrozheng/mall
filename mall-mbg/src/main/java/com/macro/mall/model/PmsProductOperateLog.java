@@ -17,6 +17,11 @@ public class PmsProductOperateLog implements Serializable {
 
     private BigDecimal salePriceNew;
 
+    /**
+     * 赠送的积分
+     *
+     * @mbggenerated
+     */
     private Integer giftPointOld;
 
     private Integer giftPointNew;
@@ -25,6 +30,11 @@ public class PmsProductOperateLog implements Serializable {
 
     private Integer usePointLimitNew;
 
+    /**
+     * 操作人
+     *
+     * @mbggenerated
+     */
     private String operateMan;
 
     private Date createTime;

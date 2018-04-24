@@ -9,20 +9,60 @@ public class UmsMemberStatisticsInfo implements Serializable {
 
     private Long memberId;
 
+    /**
+     * 累计消费金额
+     *
+     * @mbggenerated
+     */
     private BigDecimal consumeAmount;
 
+    /**
+     * 订单数量
+     *
+     * @mbggenerated
+     */
     private Integer orderCount;
 
+    /**
+     * 优惠券数量
+     *
+     * @mbggenerated
+     */
     private Integer couponCount;
 
+    /**
+     * 评价数
+     *
+     * @mbggenerated
+     */
     private Integer commentCount;
 
+    /**
+     * 退货数量
+     *
+     * @mbggenerated
+     */
     private Integer returnOrderCount;
 
+    /**
+     * 登录次数
+     *
+     * @mbggenerated
+     */
     private Integer loginCount;
 
+    /**
+     * 关注数量
+     *
+     * @mbggenerated
+     */
     private Integer attendCount;
 
+    /**
+     * 粉丝数量
+     *
+     * @mbggenerated
+     */
     private Integer fansCount;
 
     private Integer collectProductCount;
@@ -35,6 +75,11 @@ public class UmsMemberStatisticsInfo implements Serializable {
 
     private Integer inviteFriendCount;
 
+    /**
+     * 最后一次下订单时间
+     *
+     * @mbggenerated
+     */
     private Date recentOrderTime;
 
     private static final long serialVersionUID = 1L;

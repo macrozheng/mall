@@ -14,6 +14,11 @@ public class UmsMemberLoginLog implements Serializable {
 
     private String city;
 
+    /**
+     * 登录类型：0->PC；1->android;2->ios;3->小程序
+     *
+     * @mbggenerated
+     */
     private Integer loginType;
 
     private String province;

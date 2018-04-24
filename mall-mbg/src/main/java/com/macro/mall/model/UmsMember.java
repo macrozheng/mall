@@ -8,38 +8,123 @@ public class UmsMember implements Serializable {
 
     private Long memberLevelId;
 
+    /**
+     * 用户名
+     *
+     * @mbggenerated
+     */
     private String username;
 
+    /**
+     * 密码
+     *
+     * @mbggenerated
+     */
     private String password;
 
+    /**
+     * 昵称
+     *
+     * @mbggenerated
+     */
     private String nickname;
 
+    /**
+     * 手机号码
+     *
+     * @mbggenerated
+     */
     private String phone;
 
+    /**
+     * 帐号启用状态:0->禁用；1->启用
+     *
+     * @mbggenerated
+     */
     private Integer status;
 
+    /**
+     * 注册时间
+     *
+     * @mbggenerated
+     */
     private Date createTime;
 
+    /**
+     * 头像
+     *
+     * @mbggenerated
+     */
     private String icon;
 
+    /**
+     * 性别：0->未知；1->男；2->女
+     *
+     * @mbggenerated
+     */
     private Integer gender;
 
+    /**
+     * 生日
+     *
+     * @mbggenerated
+     */
     private Date birthday;
 
+    /**
+     * 所做城市
+     *
+     * @mbggenerated
+     */
     private String city;
 
+    /**
+     * 职业
+     *
+     * @mbggenerated
+     */
     private String job;
 
+    /**
+     * 个性签名
+     *
+     * @mbggenerated
+     */
     private String personalizedSignature;
 
+    /**
+     * 用户来源
+     *
+     * @mbggenerated
+     */
     private Integer sourceType;
 
+    /**
+     * 积分
+     *
+     * @mbggenerated
+     */
     private Integer integration;
 
+    /**
+     * 成长值
+     *
+     * @mbggenerated
+     */
     private Integer growth;
 
+    /**
+     * 剩余抽奖次数
+     *
+     * @mbggenerated
+     */
     private Integer luckeyCount;
 
+    /**
+     * 历史积分数量
+     *
+     * @mbggenerated
+     */
     private Integer historyIntegration;
 
     private static final long serialVersionUID = 1L;

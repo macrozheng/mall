@@ -9,6 +9,11 @@ public class PmsProductAttributeValue implements Serializable {
 
     private Long pmsProductAttributeId;
 
+    /**
+     * 存储的值
+     *
+     * @mbggenerated
+     */
     private String value;
 
     private static final long serialVersionUID = 1L;

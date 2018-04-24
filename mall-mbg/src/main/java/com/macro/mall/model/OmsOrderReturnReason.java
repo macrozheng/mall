@@ -5,10 +5,20 @@ import java.io.Serializable;
 public class OmsOrderReturnReason implements Serializable {
     private Long id;
 
+    /**
+     * 退货类型
+     *
+     * @mbggenerated
+     */
     private String name;
 
     private Integer sort;
 
+    /**
+     * 状态：0->不启用；1->启用
+     *
+     * @mbggenerated
+     */
     private Integer status;
 
     private static final long serialVersionUID = 1L;

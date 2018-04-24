@@ -14,6 +14,11 @@ public class SmsFlashPromotionLog implements Serializable {
 
     private String productName;
 
+    /**
+     * 会员订阅时间
+     *
+     * @mbggenerated
+     */
     private Date subscribeTime;
 
     private Date sendTime;

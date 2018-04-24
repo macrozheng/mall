@@ -10,6 +10,11 @@ public class PmsMemberPrice implements Serializable {
 
     private Long memberLevelId;
 
+    /**
+     * 会员价格
+     *
+     * @mbggenerated
+     */
     private BigDecimal memberPrice;
 
     private static final long serialVersionUID = 1L;

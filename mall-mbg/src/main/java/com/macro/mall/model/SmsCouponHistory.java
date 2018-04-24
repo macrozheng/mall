@@ -12,16 +12,41 @@ public class SmsCouponHistory implements Serializable {
 
     private String couponCode;
 
+    /**
+     * 领取人昵称
+     *
+     * @mbggenerated
+     */
     private String memberNickname;
 
+    /**
+     * 获取类型：0->后台赠送；1->主动获取
+     *
+     * @mbggenerated
+     */
     private Integer getType;
 
     private Date createTime;
 
+    /**
+     * 使用状态：0->未使用；1->已使用；2->已过期
+     *
+     * @mbggenerated
+     */
     private Integer useStatus;
 
+    /**
+     * 使用时间
+     *
+     * @mbggenerated
+     */
     private Date useTime;
 
+    /**
+     * 订单编号
+     *
+     * @mbggenerated
+     */
     private String orderId;
 
     private static final long serialVersionUID = 1L;

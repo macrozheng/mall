@@ -6,8 +6,18 @@ import java.math.BigDecimal;
 public class OmsOrderItem implements Serializable {
     private Long id;
 
+    /**
+     * 订单id
+     *
+     * @mbggenerated
+     */
     private Long orderId;
 
+    /**
+     * 订单编号
+     *
+     * @mbggenerated
+     */
     private String orderSn;
 
     private Long productId;
@@ -22,10 +32,25 @@ public class OmsOrderItem implements Serializable {
 
     private BigDecimal productAmount;
 
+    /**
+     * 购买数量
+     *
+     * @mbggenerated
+     */
     private Integer productCount;
 
+    /**
+     * 该商品经过优惠后的分解金额
+     *
+     * @mbggenerated
+     */
     private BigDecimal productRealAmount;
 
+    /**
+     * 商品的销售属性
+     *
+     * @mbggenerated
+     */
     private String sp1;
 
     private String sp2;

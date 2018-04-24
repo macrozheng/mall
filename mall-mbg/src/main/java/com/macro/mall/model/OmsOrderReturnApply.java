@@ -7,24 +7,54 @@ import java.util.Date;
 public class OmsOrderReturnApply implements Serializable {
     private Long id;
 
+    /**
+     * 订单id
+     *
+     * @mbggenerated
+     */
     private Long orderId;
 
     private Long companyAddressId;
 
+    /**
+     * 订单编号
+     *
+     * @mbggenerated
+     */
     private String orderSn;
 
     private Date createTime;
 
     private String memberUsername;
 
+    /**
+     * 退款金额
+     *
+     * @mbggenerated
+     */
     private BigDecimal returnAmount;
 
     private String returnName;
 
+    /**
+     * 退货人电话
+     *
+     * @mbggenerated
+     */
     private String returnPhone;
 
+    /**
+     * 申请状态：0->待处理；1->退货中；2->已完成；3->已拒绝
+     *
+     * @mbggenerated
+     */
     private Integer status;
 
+    /**
+     * 处理时间
+     *
+     * @mbggenerated
+     */
     private Date handleTime;
 
     private String productPic;
@@ -33,26 +63,81 @@ public class OmsOrderReturnApply implements Serializable {
 
     private String brandName;
 
+    /**
+     * 商品销售属性：颜色：红色；尺码：xl;
+     *
+     * @mbggenerated
+     */
     private String productAttr;
 
+    /**
+     * 退货数量
+     *
+     * @mbggenerated
+     */
     private Integer productCount;
 
+    /**
+     * 原因
+     *
+     * @mbggenerated
+     */
     private String reason;
 
+    /**
+     * 描述
+     *
+     * @mbggenerated
+     */
     private String description;
 
+    /**
+     * 凭证图片，以逗号隔开
+     *
+     * @mbggenerated
+     */
     private String proofPics;
 
+    /**
+     * 要退的邮费
+     *
+     * @mbggenerated
+     */
     private BigDecimal returnPostAmount;
 
+    /**
+     * 是否退邮费：0->不退；1->退
+     *
+     * @mbggenerated
+     */
     private Integer returnPostStatus;
 
+    /**
+     * 确认退款总金额
+     *
+     * @mbggenerated
+     */
     private BigDecimal confirmReturnAmount;
 
+    /**
+     * 处理备注
+     *
+     * @mbggenerated
+     */
     private String handleNote;
 
+    /**
+     * 处理人员
+     *
+     * @mbggenerated
+     */
     private String handleMan;
 
+    /**
+     * 收货人
+     *
+     * @mbggenerated
+     */
     private String receiveMan;
 
     private Date receiveTime;

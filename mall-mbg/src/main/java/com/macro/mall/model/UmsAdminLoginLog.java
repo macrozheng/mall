@@ -14,6 +14,11 @@ public class UmsAdminLoginLog implements Serializable {
 
     private String address;
 
+    /**
+     * 浏览器登录类型
+     *
+     * @mbggenerated
+     */
     private String userAgent;
 
     private static final long serialVersionUID = 1L;

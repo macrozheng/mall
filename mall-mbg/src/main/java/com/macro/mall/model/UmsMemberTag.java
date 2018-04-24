@@ -8,8 +8,18 @@ public class UmsMemberTag implements Serializable {
 
     private String name;
 
+    /**
+     * 自动打标签完成订单数量
+     *
+     * @mbggenerated
+     */
     private Integer finishOrderCount;
 
+    /**
+     * 自动打标签完成订单金额
+     *
+     * @mbggenerated
+     */
     private BigDecimal finishOrderAmount;
 
     private static final long serialVersionUID = 1L;

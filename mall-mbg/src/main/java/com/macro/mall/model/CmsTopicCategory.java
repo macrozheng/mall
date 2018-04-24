@@ -7,8 +7,18 @@ public class CmsTopicCategory implements Serializable {
 
     private String name;
 
+    /**
+     * 分类图标
+     *
+     * @mbggenerated
+     */
     private String icon;
 
+    /**
+     * 专题数量
+     *
+     * @mbggenerated
+     */
     private Integer subjectCount;
 
     private Integer showStatus;

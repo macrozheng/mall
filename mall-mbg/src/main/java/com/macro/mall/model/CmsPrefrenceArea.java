@@ -13,6 +13,11 @@ public class CmsPrefrenceArea implements Serializable {
 
     private Integer showStatus;
 
+    /**
+     * 展示图片
+     *
+     * @mbggenerated
+     */
     private byte[] pic;
 
     private static final long serialVersionUID = 1L;

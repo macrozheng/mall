@@ -10,10 +10,20 @@ public class PmsProductVertifyRecord implements Serializable {
 
     private Date createTime;
 
+    /**
+     * 审核人
+     *
+     * @mbggenerated
+     */
     private String vertifyMan;
 
     private Integer status;
 
+    /**
+     * 反馈详情
+     *
+     * @mbggenerated
+     */
     private String detail;
 
     private static final long serialVersionUID = 1L;

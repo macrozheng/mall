@@ -5,14 +5,39 @@ import java.io.Serializable;
 public class OmsCompanyAddress implements Serializable {
     private Long id;
 
+    /**
+     * 地址名称
+     *
+     * @mbggenerated
+     */
     private String addressName;
 
+    /**
+     * 默认发货地址：0->否；1->是
+     *
+     * @mbggenerated
+     */
     private Integer sendStatus;
 
+    /**
+     * 是否默认收货地址：0->否；1->是
+     *
+     * @mbggenerated
+     */
     private Integer receiveStatus;
 
+    /**
+     * 收发货人姓名
+     *
+     * @mbggenerated
+     */
     private String name;
 
+    /**
+     * 收货人电话
+     *
+     * @mbggenerated
+     */
     private String phone;
 
     private String province;

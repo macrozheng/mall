@@ -10,14 +10,39 @@ public class UmsIntegrationChangeHistory implements Serializable {
 
     private Date createTime;
 
+    /**
+     * 改变类型：0->增加；1->减少
+     *
+     * @mbggenerated
+     */
     private Integer changeType;
 
+    /**
+     * 积分改变数量
+     *
+     * @mbggenerated
+     */
     private Integer changeCount;
 
+    /**
+     * 操作人员
+     *
+     * @mbggenerated
+     */
     private String operateMan;
 
+    /**
+     * 操作备注
+     *
+     * @mbggenerated
+     */
     private String operateNote;
 
+    /**
+     * 积分来源：0->购物；1->管理员修改
+     *
+     * @mbggenerated
+     */
     private Integer sourceType;
 
     private static final long serialVersionUID = 1L;

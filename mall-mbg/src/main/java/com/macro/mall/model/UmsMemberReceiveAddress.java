@@ -7,14 +7,34 @@ public class UmsMemberReceiveAddress implements Serializable {
 
     private Long memberId;
 
+    /**
+     * 收货人名称
+     *
+     * @mbggenerated
+     */
     private String name;
 
     private String phoneNumber;
 
+    /**
+     * 收货地址
+     *
+     * @mbggenerated
+     */
     private String address;
 
+    /**
+     * 邮政编码
+     *
+     * @mbggenerated
+     */
     private String postCode;
 
+    /**
+     * 是否为默认
+     *
+     * @mbggenerated
+     */
     private Integer defaultStatus;
 
     private static final long serialVersionUID = 1L;

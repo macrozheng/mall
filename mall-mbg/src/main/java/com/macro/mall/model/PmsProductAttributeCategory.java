@@ -7,8 +7,18 @@ public class PmsProductAttributeCategory implements Serializable {
 
     private String name;
 
+    /**
+     * 属性数量
+     *
+     * @mbggenerated
+     */
     private Integer attributeCount;
 
+    /**
+     * 参数数量
+     *
+     * @mbggenerated
+     */
     private Integer paramCount;
 
     private static final long serialVersionUID = 1L;

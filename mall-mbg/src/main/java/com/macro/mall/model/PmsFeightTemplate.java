@@ -8,16 +8,36 @@ public class PmsFeightTemplate implements Serializable {
 
     private String name;
 
+    /**
+     * 计费类型:0->按重量；1->按件数
+     *
+     * @mbggenerated
+     */
     private Integer chargeType;
 
+    /**
+     * 首重kg
+     *
+     * @mbggenerated
+     */
     private BigDecimal firstWeight;
 
+    /**
+     * 首费（元）
+     *
+     * @mbggenerated
+     */
     private BigDecimal firstFee;
 
     private BigDecimal continueWeight;
 
     private BigDecimal continmeFee;
 
+    /**
+     * 目的地（省、市）
+     *
+     * @mbggenerated
+     */
     private String dest;
 
     private static final long serialVersionUID = 1L;

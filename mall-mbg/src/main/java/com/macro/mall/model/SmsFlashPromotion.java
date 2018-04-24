@@ -8,12 +8,32 @@ public class SmsFlashPromotion implements Serializable {
 
     private String title;
 
+    /**
+     * 开始时间
+     *
+     * @mbggenerated
+     */
     private Date startTime;
 
+    /**
+     * 结束时间
+     *
+     * @mbggenerated
+     */
     private Date endTime;
 
+    /**
+     * 上下线状态
+     *
+     * @mbggenerated
+     */
     private Integer status;
 
+    /**
+     * 秒杀时间段名称
+     *
+     * @mbggenerated
+     */
     private String timeName;
 
     private static final long serialVersionUID = 1L;

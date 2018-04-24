@@ -5,26 +5,56 @@ import java.io.Serializable;
 public class PmsProductCategory implements Serializable {
     private Long id;
 
+    /**
+     * 上机分类的编号：0表示一级分类
+     *
+     * @mbggenerated
+     */
     private Long parentId;
 
     private String name;
 
+    /**
+     * 分类级别：0->1级；1->2级
+     *
+     * @mbggenerated
+     */
     private Integer level;
 
     private Integer productCount;
 
     private String productUnit;
 
+    /**
+     * 是否显示在导航栏：0->不显示；1->显示
+     *
+     * @mbggenerated
+     */
     private Integer navStatus;
 
+    /**
+     * 显示状态：0->不显示；1->显示
+     *
+     * @mbggenerated
+     */
     private Integer showStatus;
 
     private Integer sort;
 
+    /**
+     * 图标
+     *
+     * @mbggenerated
+     */
     private String icon;
 
     private String keywords;
 
+    /**
+     * 描述
+     *
+     * @mbggenerated
+     */
     private String description;
 
     private static final long serialVersionUID = 1L;

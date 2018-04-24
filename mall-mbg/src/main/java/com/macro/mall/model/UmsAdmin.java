@@ -9,6 +9,11 @@ public class UmsAdmin implements Serializable {
 
     private String password;
 
+    /**
+     * 头像
+     *
+     * @mbggenerated
+     */
     private String icon;
 
     private String email;

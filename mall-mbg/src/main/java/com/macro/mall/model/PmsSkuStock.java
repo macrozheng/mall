@@ -8,22 +8,52 @@ public class PmsSkuStock implements Serializable {
 
     private Long productId;
 
+    /**
+     * sku编码
+     *
+     * @mbggenerated
+     */
     private String skuCode;
 
     private BigDecimal price;
 
+    /**
+     * 库存
+     *
+     * @mbggenerated
+     */
     private Integer stock;
 
+    /**
+     * 预警库存
+     *
+     * @mbggenerated
+     */
     private Integer lowStock;
 
+    /**
+     * 销售属性1
+     *
+     * @mbggenerated
+     */
     private String sp1;
 
     private String sp2;
 
     private String sp3;
 
+    /**
+     * 展示图片
+     *
+     * @mbggenerated
+     */
     private String pic;
 
+    /**
+     * 销量
+     *
+     * @mbggenerated
+     */
     private Integer sale;
 
     private static final long serialVersionUID = 1L;

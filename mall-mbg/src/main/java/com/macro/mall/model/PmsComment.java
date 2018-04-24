@@ -12,22 +12,47 @@ public class PmsComment implements Serializable {
 
     private String productName;
 
+    /**
+     * 评价星数：0->5
+     *
+     * @mbggenerated
+     */
     private Integer star;
 
+    /**
+     * 评价的ip
+     *
+     * @mbggenerated
+     */
     private String memberIp;
 
     private Date createTime;
 
     private Integer showStatus;
 
+    /**
+     * 购买时的商品属性
+     *
+     * @mbggenerated
+     */
     private String productAttribute;
 
     private Integer collectCouont;
 
     private Integer readCount;
 
+    /**
+     * 上传图片地址，以逗号隔开
+     *
+     * @mbggenerated
+     */
     private String pics;
 
+    /**
+     * 评论用户头像
+     *
+     * @mbggenerated
+     */
     private String memberIcon;
 
     private Integer replayCount;

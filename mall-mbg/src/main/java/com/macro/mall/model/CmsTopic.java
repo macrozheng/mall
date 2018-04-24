@@ -16,16 +16,41 @@ public class CmsTopic implements Serializable {
 
     private Date endTime;
 
+    /**
+     * 参与人数
+     *
+     * @mbggenerated
+     */
     private Integer attendCount;
 
+    /**
+     * 关注人数
+     *
+     * @mbggenerated
+     */
     private Integer attentionCount;
 
     private Integer readCount;
 
+    /**
+     * 奖品名称
+     *
+     * @mbggenerated
+     */
     private String awardName;
 
+    /**
+     * 参与方式
+     *
+     * @mbggenerated
+     */
     private String attendType;
 
+    /**
+     * 话题内容
+     *
+     * @mbggenerated
+     */
     private String content;
 
     private static final long serialVersionUID = 1L;

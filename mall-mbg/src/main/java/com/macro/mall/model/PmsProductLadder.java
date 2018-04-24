@@ -8,10 +8,25 @@ public class PmsProductLadder implements Serializable {
 
     private Long productId;
 
+    /**
+     * 满足的商品数量
+     *
+     * @mbggenerated
+     */
     private Integer count;
 
+    /**
+     * 折扣
+     *
+     * @mbggenerated
+     */
     private BigDecimal discount;
 
+    /**
+     * 折后价格
+     *
+     * @mbggenerated
+     */
     private BigDecimal price;
 
     private static final long serialVersionUID = 1L;
