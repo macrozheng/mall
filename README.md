@@ -32,7 +32,7 @@ SpringAOP通用日志处理 | ✔
 SpringAOP通用验证失败结果返回 | ✔
 CommonResult对通用返回结果进行封装 | ✔
 SpringSecurity登录改为Restful形式 |
-JWT登录、注册、获取token |
+JWT登录、注册、获取token | ✔
 
 ### 功能完善
 

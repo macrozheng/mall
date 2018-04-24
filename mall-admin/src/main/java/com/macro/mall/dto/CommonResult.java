@@ -12,9 +12,14 @@ import java.util.Map;
  * 通用返回对象
  */
 public class CommonResult {
+    //操作成功
     public static final int SUCCESS = 0;
+    //操作失败
     public static final int FAILED = 1;
+    //参数校验失败
     public static final int VALIDATE_FAILED = 2;
+    //认证失败
+    public static final int AUTHENTICATE_FAILED = 3;
     private int code;
     private String message;
     private Object data;
@@ -65,6 +70,18 @@ public class CommonResult {
     public CommonResult validateFailed(String message) {
         this.code = VALIDATE_FAILED;
         this.message = message;
+        return this;
+    }
+
+    /**
+     * 参数验证失败使用
+     *
+     * @param message 错误信息
+     */
+    public CommonResult authFailed(String message) {
+        this.code = AUTHENTICATE_FAILED;
+        this.message = "认证失败";
+        this.data = message;
         return this;
     }
 

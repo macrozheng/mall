@@ -47,7 +47,7 @@ public class UmsAdminController {
     public Object login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
-            new CommonResult().failed();
+            return new CommonResult().validateFailed("用户名或密码错误");
         }
         return new CommonResult().success(token);
     }
