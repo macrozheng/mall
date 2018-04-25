@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.PmsProductLadderDao">
+    <insert id="insertList">
+        INSERT INTO pms_product_ladder (product_id, count, discount, price) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.count,jdbcType=INTEGER},
+            #{item.discount,jdbcType=DECIMAL},
+            #{item.price,jdbcType=DECIMAL})
+        </foreach>
+    </insert>
+</mapper>

@@ -33,6 +33,8 @@ SpringAOP通用验证失败结果返回 | ✔
 CommonResult对通用返回结果进行封装 | ✔
 SpringSecurity登录改为Restful形式 | ✔
 JWT登录、注册、获取token | ✔
+JTA事务处理 |
+集成单元测试 | ✔
 
 ### 功能完善
 
@@ -62,6 +64,22 @@ JWT登录、注册、获取token | ✔
 - 分页查询全部商品属性
 
 ##### 商品管理
+
+###### 添加商品
+- 选择商品分类：根据商品分类id查找分类
+- 选择品牌：查询全部品牌
+- 选择运费模版：查询全部运费模版
+- 设置会员价格：查询所有会员等级，传入List<PmsMemberPrice>
+- 添加阶梯价格: 参数传入List<PmsProductLadder>
+- 设置满减价格: 参数传入List<PmsProductFullReduction>
+- 选择商品属性类别:获取所有商品属性分类，根据商品属性分类的id获取规格和参数(type=0->规格；type=1->参数)
+- 选择规格并生成库存信息：前端实现
+- 添加sku库存信息：参数传入List<PmsSkuStock>
+- 设置属性图片：设置到pic和album_pics字段中去
+- 添加商品参数：参数传入List<PmsProductAttributeValue>
+- 添加自定义商品规格：参数传入List<PmsProductAttributeValue>
+- 关联专题:参数传入List<CmsSubjectProductRelation>关系
+- 关联优选:参数传入List<CmsPrefrenceAreaProductRelation>关系
 
 #### 促销管理
 

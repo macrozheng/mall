@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 应用启动入口
  */
 @SpringBootApplication
-@MapperScan("com.macro.mall.mapper")
+@MapperScan({"com.macro.mall.mapper","com.macro.mall.dao"})
 public class MallAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(MallAdminApplication.class, args);
