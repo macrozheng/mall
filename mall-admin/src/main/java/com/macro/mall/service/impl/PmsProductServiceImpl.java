@@ -20,7 +20,7 @@ import java.util.List;
  * 商品管理Service实现类
  */
 @Service
-public class PmsProductServiceImpl implements PmsProductService{
+public class PmsProductServiceImpl implements PmsProductService {
     @Autowired
     private PmsProductMapper productMapper;
     @Autowired
@@ -29,6 +29,7 @@ public class PmsProductServiceImpl implements PmsProductService{
     private PmsProductLadderDao productLadderDao;
     @Autowired
     private PmsProductFullReductionDao productFullReductionDao;
+
     @Override
     public int create(PmsProductParam productParam) {
         int count;
@@ -38,43 +39,39 @@ public class PmsProductServiceImpl implements PmsProductService{
         productMapper.insertSelective(product);
         //根据促销类型设置价格：、阶梯价格、满减价格
         Long productId = product.getId();
-        if(product.getPromotionType()==2){
-            //会员价格
-            List<PmsMemberPrice> memberPriceList = productParam.getPmsMemberPriceList();
-            if(!CollectionUtils.isEmpty(memberPriceList)){
-                for(PmsMemberPrice pmsMemberPrice: memberPriceList){
-                    pmsMemberPrice.setId(null);
-                    pmsMemberPrice.setProductId(productId);
-                }
-                memberPriceDao.insertList(memberPriceList);
+        //会员价格
+        List<PmsMemberPrice> memberPriceList = productParam.getPmsMemberPriceList();
+        if (!CollectionUtils.isEmpty(memberPriceList)) {
+            for (PmsMemberPrice pmsMemberPrice : memberPriceList) {
+                pmsMemberPrice.setId(null);
+                pmsMemberPrice.setProductId(productId);
             }
-        }else if(product.getPromotionType()==3){
-            //阶梯价格
-            List<PmsProductLadder> productLadderList = productParam.getProductLadderList();
-            if(!CollectionUtils.isEmpty(productLadderList)){
-                for(PmsProductLadder productLadder:productLadderList){
-                    productLadder.setId(null);
-                    productLadder.setProductId(productId);
-                }
-                productLadderDao.insertList(productLadderList);
+            memberPriceDao.insertList(memberPriceList);
+        }
+        //阶梯价格
+        List<PmsProductLadder> productLadderList = productParam.getProductLadderList();
+        if (!CollectionUtils.isEmpty(productLadderList)) {
+            for (PmsProductLadder productLadder : productLadderList) {
+                productLadder.setId(null);
+                productLadder.setProductId(productId);
             }
-        }else if(product.getPromotionType()==4){
-            //满减价格
-            List<PmsProductFullReduction> productFullReductionList = productParam.getPmsProductFullReductionList();
-            if(!CollectionUtils.isEmpty(productFullReductionList)){
-                for (PmsProductFullReduction productFullReduction: productFullReductionList) {
-                    productFullReduction.setId(null);
-                    productFullReduction.setProductId(productId);
-                }
-                productFullReductionDao.insertList(productFullReductionList);
+            productLadderDao.insertList(productLadderList);
+        }
+        //满减价格
+        List<PmsProductFullReduction> productFullReductionList = productParam.getPmsProductFullReductionList();
+        if (!CollectionUtils.isEmpty(productFullReductionList)) {
+            for (PmsProductFullReduction productFullReduction : productFullReductionList) {
+                productFullReduction.setId(null);
+                productFullReduction.setProductId(productId);
             }
+            productFullReductionDao.insertList(productFullReductionList);
         }
         //添加sku库存信息
         //添加商品参数
         //添加自定义商品规格
         //关联专题
         //关联优选
-        count=1;
+        count = 1;
         return count;
     }
 }

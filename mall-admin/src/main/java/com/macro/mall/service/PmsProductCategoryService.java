@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 产品分类Service
+ * Created by macro on 2018/4/26.
  */
 public interface PmsProductCategoryService {
     int create(PmsProductCategoryParam pmsProductCategoryParam);

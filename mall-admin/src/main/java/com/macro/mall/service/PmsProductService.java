@@ -4,6 +4,7 @@ import com.macro.mall.dto.PmsProductParam;
 
 /**
  * 商品管理Service
+ * Created by macro on 2018/4/26.
  */
 public interface PmsProductService {
     /**

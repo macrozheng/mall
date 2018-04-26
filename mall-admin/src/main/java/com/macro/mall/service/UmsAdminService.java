@@ -5,6 +5,7 @@ import com.macro.mall.model.UmsAdmin;
 
 /**
  * 后台管理员Service
+ * Created by macro on 2018/4/26.
  */
 public interface UmsAdminService {
     /**

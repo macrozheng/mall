@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * 商品属性管理Controller
+ * Created by macro on 2018/4/26.
  */
 @Controller
 @Api(tags = "PmsProductAttributeController", description = "商品属性管理")

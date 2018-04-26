@@ -13,6 +13,7 @@ import java.io.IOException;
 
 /**
  * 用于Rest请求是返回自定义错误信息
+ * Created by macro on 2018/4/26.
  */
 @Component
 public class RestfulAccessDeniedHandler implements AccessDeniedHandler{

@@ -217,7 +217,7 @@ public class PmsProduct implements Serializable {
     private Integer promotionPerLimit;
 
     /**
-     * 促销类型：0->使用促销价；1->使用会员价；2->使用阶梯价格；3->使用满减价格
+     * 促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格
      *
      * @mbggenerated
      */

@@ -2,6 +2,7 @@ package com.macro.mall.bo;
 
 /**
  * Controller层的日志封装类
+ * Created by macro on 2018/4/26.
  */
 public class WebLog {
     /**

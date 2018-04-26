@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 商品属性分类Controller
+ * Created by macro on 2018/4/26.
  */
 @Controller
 @Api(tags = "PmsProductAttributeCategoryController",description = "商品属性分类管理")

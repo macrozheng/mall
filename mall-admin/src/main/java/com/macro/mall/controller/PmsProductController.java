@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 商品管理Controller
+ * Created by macro on 2018/4/26.
  */
 @Controller
 @Api(tags = "PmsProductController", description = "商品管理")
