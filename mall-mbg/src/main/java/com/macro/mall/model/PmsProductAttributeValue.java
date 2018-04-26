@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class PmsProductAttributeValue implements Serializable {
     private Long id;
 
-    private Long pmsProductId;
+    private Long productId;
 
-    private Long pmsProductAttributeId;
+    private Long productAttributeId;
 
     /**
      * 存储的值
@@ -26,20 +26,20 @@ public class PmsProductAttributeValue implements Serializable {
         this.id = id;
     }
 
-    public Long getPmsProductId() {
-        return pmsProductId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setPmsProductId(Long pmsProductId) {
-        this.pmsProductId = pmsProductId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public Long getPmsProductAttributeId() {
-        return pmsProductAttributeId;
+    public Long getProductAttributeId() {
+        return productAttributeId;
     }
 
-    public void setPmsProductAttributeId(Long pmsProductAttributeId) {
-        this.pmsProductAttributeId = pmsProductAttributeId;
+    public void setProductAttributeId(Long productAttributeId) {
+        this.productAttributeId = productAttributeId;
     }
 
     public String getValue() {
@@ -57,8 +57,8 @@ public class PmsProductAttributeValue implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", pmsProductId=").append(pmsProductId);
-        sb.append(", pmsProductAttributeId=").append(pmsProductAttributeId);
+        sb.append(", productId=").append(productId);
+        sb.append(", productAttributeId=").append(productAttributeId);
         sb.append(", value=").append(value);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

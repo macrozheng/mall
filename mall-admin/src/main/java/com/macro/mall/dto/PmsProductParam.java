@@ -17,13 +17,13 @@ public class PmsProductParam {
     @ApiModelProperty("商品阶梯价格设置")
     private List<PmsProductLadder> productLadderList;
     @ApiModelProperty("商品满减价格设置")
-    private List<PmsProductFullReduction> pmsProductFullReductionList;
+    private List<PmsProductFullReduction> productFullReductionList;
     @ApiModelProperty("商品会员价格设置")
-    private List<PmsMemberPrice> pmsMemberPriceList;
+    private List<PmsMemberPrice> memberPriceList;
     @ApiModelProperty("商品的sku库存信息")
     private List<PmsSkuStock> skuStockList;
     @ApiModelProperty("商品参数及自定义规格属性")
-    private List<PmsProductAttributeValue> pmsProductAttributeValueList;
+    private List<PmsProductAttributeValue> productAttributeValueList;
     @ApiModelProperty("专题和商品关系")
     private List<CmsSubjectProductRelation> subjectProductRelationList;
     @ApiModelProperty("优选专区和商品的关系")
@@ -45,20 +45,20 @@ public class PmsProductParam {
         this.productLadderList = productLadderList;
     }
 
-    public List<PmsProductFullReduction> getPmsProductFullReductionList() {
-        return pmsProductFullReductionList;
+    public List<PmsProductFullReduction> getProductFullReductionList() {
+        return productFullReductionList;
     }
 
-    public void setPmsProductFullReductionList(List<PmsProductFullReduction> pmsProductFullReductionList) {
-        this.pmsProductFullReductionList = pmsProductFullReductionList;
+    public void setProductFullReductionList(List<PmsProductFullReduction> productFullReductionList) {
+        this.productFullReductionList = productFullReductionList;
     }
 
-    public List<PmsMemberPrice> getPmsMemberPriceList() {
-        return pmsMemberPriceList;
+    public List<PmsMemberPrice> getMemberPriceList() {
+        return memberPriceList;
     }
 
-    public void setPmsMemberPriceList(List<PmsMemberPrice> pmsMemberPriceList) {
-        this.pmsMemberPriceList = pmsMemberPriceList;
+    public void setMemberPriceList(List<PmsMemberPrice> memberPriceList) {
+        this.memberPriceList = memberPriceList;
     }
 
     public List<PmsSkuStock> getSkuStockList() {
@@ -69,12 +69,12 @@ public class PmsProductParam {
         this.skuStockList = skuStockList;
     }
 
-    public List<PmsProductAttributeValue> getPmsProductAttributeValueList() {
-        return pmsProductAttributeValueList;
+    public List<PmsProductAttributeValue> getProductAttributeValueList() {
+        return productAttributeValueList;
     }
 
-    public void setPmsProductAttributeValueList(List<PmsProductAttributeValue> pmsProductAttributeValueList) {
-        this.pmsProductAttributeValueList = pmsProductAttributeValueList;
+    public void setProductAttributeValueList(List<PmsProductAttributeValue> productAttributeValueList) {
+        this.productAttributeValueList = productAttributeValueList;
     }
 
     public List<CmsSubjectProductRelation> getSubjectProductRelationList() {
