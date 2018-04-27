@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface PmsProductCategoryService {
     int create(PmsProductCategoryParam pmsProductCategoryParam);
-
+    @Transactional
     int update(Long id, PmsProductCategoryParam pmsProductCategoryParam);
 
     List<PmsProductCategory> getList(Long parentId, Integer pageSize, Integer pageNum);

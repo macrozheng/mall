@@ -2,6 +2,7 @@ package com.macro.mall.service;
 
 import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.model.PmsBrand;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface PmsBrandService {
     List<PmsBrand> listAllBrand();
 
     int createBrand(PmsBrandParam pmsBrandParam);
-
+    @Transactional
     int updateBrand(Long id, PmsBrandParam pmsBrandParam);
 
     int deleteBrand(Long id);

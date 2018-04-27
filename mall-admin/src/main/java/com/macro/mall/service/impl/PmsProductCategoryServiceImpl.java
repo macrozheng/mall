@@ -3,8 +3,11 @@ package com.macro.mall.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dto.PmsProductCategoryParam;
 import com.macro.mall.mapper.PmsProductCategoryMapper;
+import com.macro.mall.mapper.PmsProductMapper;
+import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.model.PmsProductCategoryExample;
+import com.macro.mall.model.PmsProductExample;
 import com.macro.mall.service.PmsProductCategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ import java.util.List;
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {
     @Autowired
     private PmsProductCategoryMapper productCategoryMapper;
+    @Autowired
+    private PmsProductMapper productMapper;
 
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
@@ -36,6 +41,12 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         productCategory.setId(id);
         BeanUtils.copyProperties(pmsProductCategoryParam, productCategory);
         setCategoryLevel(productCategory);
+        //更新商品分类时要更新商品中的名称
+        PmsProduct product = new PmsProduct();
+        product.setProductCategoryName(productCategory.getName());
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria().andProductCategoryIdEqualTo(id);
+        productMapper.updateByExampleSelective(product,example);
         return productCategoryMapper.updateByPrimaryKeySelective(productCategory);
     }
 

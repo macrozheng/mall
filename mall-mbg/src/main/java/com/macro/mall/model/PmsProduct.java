@@ -224,6 +224,20 @@ public class PmsProduct implements Serializable {
     private Integer promotionType;
 
     /**
+     * 品牌名称
+     *
+     * @mbggenerated
+     */
+    private String brandName;
+
+    /**
+     * 商品分类名称
+     *
+     * @mbggenerated
+     */
+    private String productCategoryName;
+
+    /**
      * 商品描述
      *
      * @mbggenerated
@@ -560,6 +574,22 @@ public class PmsProduct implements Serializable {
         this.promotionType = promotionType;
     }
 
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getProductCategoryName() {
+        return productCategoryName;
+    }
+
+    public void setProductCategoryName(String productCategoryName) {
+        this.productCategoryName = productCategoryName;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -637,6 +667,8 @@ public class PmsProduct implements Serializable {
         sb.append(", promotionEndTime=").append(promotionEndTime);
         sb.append(", promotionPerLimit=").append(promotionPerLimit);
         sb.append(", promotionType=").append(promotionType);
+        sb.append(", brandName=").append(brandName);
+        sb.append(", productCategoryName=").append(productCategoryName);
         sb.append(", description=").append(description);
         sb.append(", detailDesc=").append(detailDesc);
         sb.append(", detailHtml=").append(detailHtml);

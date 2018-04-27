@@ -51,7 +51,7 @@ public class PmsBrandController {
     @ApiOperation(value = "更新品牌")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object updateBrand(@PathVariable("id") Long id,
+    public Object update(@PathVariable("id") Long id,
                               @Validated @RequestBody PmsBrandParam pmsBrandParam,
                               BindingResult result) {
         CommonResult commonResult;

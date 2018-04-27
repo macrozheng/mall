@@ -3,8 +3,11 @@ package com.macro.mall.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.mapper.PmsBrandMapper;
+import com.macro.mall.mapper.PmsProductMapper;
 import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.PmsBrandExample;
+import com.macro.mall.model.PmsProduct;
+import com.macro.mall.model.PmsProductExample;
 import com.macro.mall.service.PmsBrandService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,8 @@ import java.util.List;
 public class PmsBrandServiceImpl implements PmsBrandService {
     @Autowired
     private PmsBrandMapper brandMapper;
+    @Autowired
+    private PmsProductMapper productMapper;
 
     @Override
     public List<PmsBrand> listAllBrand() {
@@ -47,6 +52,12 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
             pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
+        //更新品牌时要更新商品中的品牌名称
+        PmsProduct product = new PmsProduct();
+        product.setBrandName(pmsBrand.getName());
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria().andBrandIdEqualTo(id);
+        productMapper.updateByExampleSelective(product,example);
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }
 
