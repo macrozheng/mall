@@ -15,6 +15,10 @@ Swagger-UI | 文档生产工具
 Hibernator-Validator | 验证框架
 Vue | 前端框架
 Element | 前端模版
+Elasticsearch | 搜索引擎
+RabbitMq | 消息队列
+Redis | 分布式缓存
+MongoDb | noSql数据库
 
 ### 框架搭建
 功能 | 完成 
@@ -89,7 +93,7 @@ JTA事务处理 | ✔
 - 查询商品关联信息：商品关联专题和关联优选
 - 修改商品信息：商品属性分类及规格不可修改，只支持单个sku的修改、删除、新增；商品属性分类及规格可以修改：修改后同时显示原sku库存及属性分类
 
-###### 商品分页查询
+###### 商品分页查询(完成)
 - 商品的状态：全部商品、已上架、未上架、待审核、未通过 (publishStatus verifyStatus)
 - 商品名称(%name%)
 - 商品货号(productSn)
