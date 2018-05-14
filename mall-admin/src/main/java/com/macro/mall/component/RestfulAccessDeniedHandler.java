@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 用于Rest请求是返回自定义错误信息
+ * 当访问接口没有权限时，自定义的返回结果
  * Created by macro on 2018/4/26.
  */
 @Component
@@ -21,7 +21,9 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler{
     public void handle(HttpServletRequest request,
                        HttpServletResponse response,
                        AccessDeniedException e) throws IOException, ServletException {
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-        response.getWriter().println(JsonUtil.objectToJson(new CommonResult().authFailed(e.getMessage())));
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().println(JsonUtil.objectToJson(new CommonResult().forbidden(e.getMessage())));
+        response.getWriter().flush();
     }
 }

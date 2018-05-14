@@ -9,6 +9,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 后台用户管理
@@ -28,8 +33,12 @@ import javax.servlet.http.HttpServletRequest;
 public class UmsAdminController {
     @Autowired
     private UmsAdminService adminService;
+    @Autowired
+    private UserDetailsService userDetailsService;
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
 
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -50,7 +59,10 @@ public class UmsAdminController {
         if (token == null) {
             return new CommonResult().validateFailed("用户名或密码错误");
         }
-        return new CommonResult().success(token);
+        Map<String,String> tokenMap = new HashMap<>();
+        tokenMap.put("token",token);
+        tokenMap.put("tokenHead",tokenHead);
+        return new CommonResult().success(tokenMap);
     }
 
     @ApiOperation(value = "刷新token")
@@ -62,6 +74,28 @@ public class UmsAdminController {
         if (refreshToken == null) {
             return new CommonResult().failed();
         }
-        return new CommonResult().success(token);
+        Map<String,String> tokenMap = new HashMap<>();
+        tokenMap.put("token",token);
+        tokenMap.put("tokenHead",tokenHead);
+        return new CommonResult().success(tokenMap);
+    }
+
+    @ApiOperation(value = "获取用户信息")
+    @RequestMapping(value = "/info",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getAdminInfo(Principal principal){
+        String username = principal.getName();
+        UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
+        Map<String,Object> data = new HashMap<>();
+        data.put("username",umsAdmin.getUsername());
+        data.put("roles",new String[]{"TEST"});
+        data.put("icon",umsAdmin.getIcon());
+        return new CommonResult().success(data);
+    }
+    @ApiOperation(value = "登出功能")
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    @ResponseBody
+    public Object logout(){
+        return new CommonResult().success(null);
     }
 }

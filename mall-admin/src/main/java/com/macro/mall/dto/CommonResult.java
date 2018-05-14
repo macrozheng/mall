@@ -14,13 +14,15 @@ import java.util.Map;
  */
 public class CommonResult {
     //操作成功
-    public static final int SUCCESS = 0;
+    public static final int SUCCESS = 200;
     //操作失败
-    public static final int FAILED = 1;
+    public static final int FAILED = 500;
     //参数校验失败
-    public static final int VALIDATE_FAILED = 2;
-    //认证失败
-    public static final int AUTHENTICATE_FAILED = 3;
+    public static final int VALIDATE_FAILED = 404;
+    //未认证
+    public static final int UNAUTHORIZED = 401;
+    //未授权
+    public static final int  FORBIDDEN = 403;
     private int code;
     private String message;
     private Object data;
@@ -75,13 +77,25 @@ public class CommonResult {
     }
 
     /**
-     * 参数验证失败使用
+     * 未登录时使用
      *
      * @param message 错误信息
      */
-    public CommonResult authFailed(String message) {
-        this.code = AUTHENTICATE_FAILED;
-        this.message = "认证失败";
+    public CommonResult unauthorized(String message) {
+        this.code = UNAUTHORIZED;
+        this.message = "暂未登录或token已经过期";
+        this.data = message;
+        return this;
+    }
+
+    /**
+     * 未授权时使用
+     *
+     * @param message 错误信息
+     */
+    public CommonResult forbidden(String message) {
+        this.code = FORBIDDEN;
+        this.message = "没有相关权限";
         this.data = message;
         return this;
     }
