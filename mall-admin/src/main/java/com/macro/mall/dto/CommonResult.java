@@ -44,10 +44,10 @@ public class CommonResult {
      */
     public CommonResult pageSuccess(List data) {
         PageInfo pageInfo = new PageInfo(data);
-        long totalPage = pageInfo.getTotal() / pageInfo.getPageSize();
         Map<String, Object> result = new HashMap<>();
         result.put("pageSize", pageInfo.getPageSize());
-        result.put("totalPage", totalPage+1);
+        result.put("totalPage", pageInfo.getPages());
+        result.put("total", pageInfo.getTotal());
         result.put("pageNum", pageInfo.getPageNum());
         result.put("list", pageInfo.getList());
         this.code = SUCCESS;
