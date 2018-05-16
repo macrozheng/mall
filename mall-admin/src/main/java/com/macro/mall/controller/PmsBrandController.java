@@ -118,7 +118,7 @@ public class PmsBrandController {
     }
 
     @ApiOperation(value = "批量更新厂家制造商状态")
-    @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.GET)
+    @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
     @ResponseBody
     public Object updateFactoryStatus(@RequestParam("ids") List<Long> ids,
                                       @RequestParam("factoryStatus") Integer factoryStatus) {
