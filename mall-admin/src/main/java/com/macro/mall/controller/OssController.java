@@ -32,9 +32,7 @@ public class OssController {
 		return new CommonResult().success(result);
 	}
 
-	/**
-	 * 上传成功回调方法
-	 */
+	@ApiOperation(value = "oss上传成功回调")
 	@RequestMapping(value = "callback",method = RequestMethod.POST)
 	@ResponseBody
 	public Object callback(HttpServletRequest request) {

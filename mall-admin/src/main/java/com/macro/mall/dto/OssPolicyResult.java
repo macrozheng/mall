@@ -1,6 +1,7 @@
 package com.macro.mall.dto;
 
 /**
+ * 获取OSS上传授权返回结果
  * Created by macro on 2018/5/17.
  */
 public class OssPolicyResult {
@@ -8,8 +9,7 @@ public class OssPolicyResult {
     private String policy;
     private String signature;
     private String dir;
-    private String callback;
-    private String action;
+    private String host;
 
     public String getAccessKeyId() {
         return accessKeyId;
@@ -43,19 +43,11 @@ public class OssPolicyResult {
         this.dir = dir;
     }
 
-    public String getCallback() {
-        return callback;
+    public String getHost() {
+        return host;
     }
 
-    public void setCallback(String callback) {
-        this.callback = callback;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
+    public void setHost(String host) {
+        this.host = host;
     }
 }

@@ -106,7 +106,7 @@ $(function() {
 			{field: 'email', title: '邮箱', sortable: true, halign: 'center'},
 			{field: 'address', title: '地址', sortable: true, halign: 'center'},
 			{field: 'remark', title: '备注', sortable: true, halign: 'center'},
-			{field: 'action', title: '操作', halign: 'center', align: 'center', formatter: 'actionFormatter', events: 'actionEvents', clickToSelect: false}
+			{field: 'host', title: '操作', halign: 'center', align: 'center', formatter: 'actionFormatter', events: 'actionEvents', clickToSelect: false}
 		]
 	}).on('all.bs.table', function (e, name, args) {
 		$('[data-toggle="tooltip"]').tooltip();
@@ -153,7 +153,7 @@ function createAction() {
 			confirm: {
 				text: '确认',
 				btnClass: 'waves-effect waves-button',
-				action: function () {
+				host: function () {
 					$.alert('确认');
 				}
 			},
@@ -190,7 +190,7 @@ function updateAction() {
 				confirm: {
 					text: '确认',
 					btnClass: 'waves-effect waves-button',
-					action: function () {
+					host: function () {
 						$.alert('确认');
 					}
 				},
@@ -228,7 +228,7 @@ function deleteAction() {
 				confirm: {
 					text: '确认',
 					btnClass: 'waves-effect waves-button',
-					action: function () {
+					host: function () {
 						var ids = new Array();
 						for (var i in rows) {
 							ids.push(rows[i].systemId);
