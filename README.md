@@ -50,8 +50,11 @@ SpringSecurity登录改为Restful形式 | ✔
 JWT登录、注册、获取token | ✔
 JTA事务处理 | ✔
 集成单元测试 | ✔
-OSS上传功能 |
+OSS上传功能 | ✔
+优化po和dto的定义使用 |
 SpringSecurity权限管理功能 |
+Elasticsearch搜索功能 |
+MongoDb 日志存储功能 |
 
 ### 后台功能
 
