@@ -29,6 +29,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
         PmsProductCategory productCategory = new PmsProductCategory();
+        productCategory.setProductCount(0);
         BeanUtils.copyProperties(pmsProductCategoryParam, productCategory);
         //没有父分类时为一级分类
         setCategoryLevel(productCategory);
@@ -62,6 +63,11 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Override
     public int delete(Long id) {
         return productCategoryMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public PmsProductCategory getItem(Long id) {
+        return productCategoryMapper.selectByPrimaryKey(id);
     }
 
     /**

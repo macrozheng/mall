@@ -65,8 +65,16 @@ public class PmsProductCategoryController {
         return new CommonResult().pageSuccess(productCategoryList);
     }
 
+    @ApiOperation("根据id获取商品分类")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getItem(@PathVariable Long id) {
+        PmsProductCategory productCategory = productCategoryService.getItem(id);
+        return new CommonResult().success(productCategory);
+    }
+
     @ApiOperation("删除商品分类")
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Object delete(@PathVariable Long id) {
         int count = productCategoryService.delete(id);
