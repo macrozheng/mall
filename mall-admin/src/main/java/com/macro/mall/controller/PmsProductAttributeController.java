@@ -2,6 +2,7 @@ package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.PmsProductAttributeParam;
+import com.macro.mall.dto.ProductAttrInfo;
 import com.macro.mall.model.PmsProductAttribute;
 import com.macro.mall.service.PmsProductAttributeService;
 import io.swagger.annotations.Api;
@@ -82,5 +83,13 @@ public class PmsProductAttributeController {
         } else {
             return new CommonResult().failed();
         }
+    }
+
+    @ApiOperation("根据商品分类的id获取商品属性及属性分类")
+    @RequestMapping(value = "/attrInfo/{productCategoryId}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getAttrInfo(@PathVariable Long productCategoryId){
+        List<ProductAttrInfo> productAttrInfoList = productAttributeService.getProductAttrInfo(productCategoryId);
+        return new CommonResult().success(productAttrInfoList);
     }
 }

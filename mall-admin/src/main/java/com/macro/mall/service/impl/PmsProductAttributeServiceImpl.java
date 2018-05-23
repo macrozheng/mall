@@ -1,7 +1,9 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.macro.mall.dao.PmsProductAttributeDao;
 import com.macro.mall.dto.PmsProductAttributeParam;
+import com.macro.mall.dto.ProductAttrInfo;
 import com.macro.mall.mapper.PmsProductAttributeCategoryMapper;
 import com.macro.mall.mapper.PmsProductAttributeMapper;
 import com.macro.mall.model.PmsProductAttribute;
@@ -24,6 +26,8 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
     private PmsProductAttributeMapper productAttributeMapper;
     @Autowired
     private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
+    @Autowired
+    private PmsProductAttributeDao productAttributeDao;
 
     @Override
     public List<PmsProductAttribute> getList(Long cid, Integer type, Integer pageSize, Integer pageNum) {
@@ -88,5 +92,10 @@ public class PmsProductAttributeServiceImpl implements PmsProductAttributeServic
         }
         productAttributeCategoryMapper.updateByPrimaryKey(pmsProductAttributeCategory);
         return count;
+    }
+
+    @Override
+    public List<ProductAttrInfo> getProductAttrInfo(Long productCategoryId) {
+        return productAttributeDao.getProductAttrInfo(productCategoryId);
     }
 }

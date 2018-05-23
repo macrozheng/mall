@@ -1,18 +1,18 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.macro.mall.dao.PmsProductCategoryAttributeRelationDao;
 import com.macro.mall.dto.PmsProductCategoryParam;
 import com.macro.mall.mapper.PmsProductCategoryMapper;
 import com.macro.mall.mapper.PmsProductMapper;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductCategory;
-import com.macro.mall.model.PmsProductCategoryExample;
-import com.macro.mall.model.PmsProductExample;
+import com.macro.mall.model.*;
 import com.macro.mall.service.PmsProductCategoryService;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +25,8 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     private PmsProductCategoryMapper productCategoryMapper;
     @Autowired
     private PmsProductMapper productMapper;
+    @Autowired
+    private PmsProductCategoryAttributeRelationDao pmsProductCategoryAttributeRelationDao;
 
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
@@ -33,7 +35,20 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         BeanUtils.copyProperties(pmsProductCategoryParam, productCategory);
         //没有父分类时为一级分类
         setCategoryLevel(productCategory);
-        return productCategoryMapper.insertSelective(productCategory);
+        int count = productCategoryMapper.insertSelective(productCategory);
+        //创建筛选属性关联
+        List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
+        if(!CollectionUtils.isEmpty(productAttributeIdList)){
+            List<PmsProductCategoryAttributeRelation> relationList = new ArrayList<>();
+            for (Long productAttrId : productAttributeIdList) {
+                PmsProductCategoryAttributeRelation relation = new PmsProductCategoryAttributeRelation();
+                relation.setProductAttributeId(productAttrId);
+                relation.setProductCategoryId(productCategory.getId());
+                relationList.add(relation);
+            }
+            pmsProductCategoryAttributeRelationDao.insertList(relationList);
+        }
+        return count;
     }
 
     @Override
@@ -68,6 +83,24 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Override
     public PmsProductCategory getItem(Long id) {
         return productCategoryMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateNavStatus(List<Long> ids, Integer navStatus) {
+        PmsProductCategory productCategory = new PmsProductCategory();
+        productCategory.setNavStatus(navStatus);
+        PmsProductCategoryExample example = new PmsProductCategoryExample();
+        example.createCriteria().andIdIn(ids);
+        return productCategoryMapper.updateByExampleSelective(productCategory, example);
+    }
+
+    @Override
+    public int updateShowStatus(List<Long> ids, Integer showStatus) {
+        PmsProductCategory productCategory = new PmsProductCategory();
+        productCategory.setShowStatus(showStatus);
+        PmsProductCategoryExample example = new PmsProductCategoryExample();
+        example.createCriteria().andIdIn(ids);
+        return productCategoryMapper.updateByExampleSelective(productCategory, example);
     }
 
     /**

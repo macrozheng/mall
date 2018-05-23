@@ -21,7 +21,7 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 @Controller
-@Api(tags = "PmsProductCategoryController",description = "商品分类管理")
+@Api(tags = "PmsProductCategoryController", description = "商品分类管理")
 @RequestMapping("/productCategory")
 public class PmsProductCategoryController {
     @Autowired
@@ -30,9 +30,9 @@ public class PmsProductCategoryController {
     @ApiOperation("添加产品分类")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@Validated @RequestBody PmsProductCategoryParam pmsProductCategoryParam,
+    public Object create(@Validated @RequestBody PmsProductCategoryParam productCategoryParam,
                          BindingResult result) {
-        int count = productCategoryService.create(pmsProductCategoryParam);
+        int count = productCategoryService.create(productCategoryParam);
         if (count > 0) {
             return new CommonResult().success(count);
         } else {
@@ -45,9 +45,9 @@ public class PmsProductCategoryController {
     @ResponseBody
     public Object update(@PathVariable Long id,
                          @Validated
-                         @RequestBody PmsProductCategoryParam pmsProductCategoryParam,
+                         @RequestBody PmsProductCategoryParam productCategoryParam,
                          BindingResult result) {
-        int count = productCategoryService.update(id, pmsProductCategoryParam);
+        int count = productCategoryService.update(id, productCategoryParam);
         if (count > 0) {
             return new CommonResult().success(count);
         } else {
@@ -59,8 +59,8 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/list/{parentId}", method = RequestMethod.GET)
     @ResponseBody
     public Object getList(@PathVariable Long parentId,
-                       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+                          @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                          @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<PmsProductCategory> productCategoryList = productCategoryService.getList(parentId, pageSize, pageNum);
         return new CommonResult().pageSuccess(productCategoryList);
     }
@@ -78,6 +78,30 @@ public class PmsProductCategoryController {
     @ResponseBody
     public Object delete(@PathVariable Long id) {
         int count = productCategoryService.delete(id);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
+
+    @ApiOperation("修改导航栏显示状态")
+    @RequestMapping(value = "/update/navStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateNavStatus(@RequestParam("ids") List<Long> ids, @RequestParam("navStatus") Integer navStatus) {
+        int count = productCategoryService.updateNavStatus(ids, navStatus);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
+
+    @ApiOperation("修改显示状态")
+    @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateShowStatus(@RequestParam("ids") List<Long> ids, @RequestParam("showStatus") Integer showStatus) {
+        int count = productCategoryService.updateShowStatus(ids, showStatus);
         if (count > 0) {
             return new CommonResult().success(count);
         } else {

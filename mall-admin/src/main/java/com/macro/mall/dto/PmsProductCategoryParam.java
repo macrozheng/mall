@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Min;
+import java.util.List;
 
 /**
  * 添加更新产品分类的参数
@@ -33,6 +34,8 @@ public class PmsProductCategoryParam {
     private String keywords;
     @ApiModelProperty("描述")
     private String description;
+    @ApiModelProperty("产品相关筛选属性集合")
+    private List<Long> productAttributeIdList;
 
     public Long getParentId() {
         return parentId;
@@ -104,5 +107,13 @@ public class PmsProductCategoryParam {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Long> getProductAttributeIdList() {
+        return productAttributeIdList;
+    }
+
+    public void setProductAttributeIdList(List<Long> productAttributeIdList) {
+        this.productAttributeIdList = productAttributeIdList;
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.PmsProductCategoryAttributeRelationDao">
+    <!--批量新增回写主键支持-->
+    <insert id="insertList">
+        INSERT INTO pms_product_category_attribute_relation (product_category_id, product_attribute_id) VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.productCategoryId,jdbcType=BIGINT},
+            #{item.productAttributeId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+</mapper>

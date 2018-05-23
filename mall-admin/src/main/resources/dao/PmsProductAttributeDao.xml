@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.PmsProductAttributeDao">
+    <select id="getProductAttrInfo" resultType="com.macro.mall.dto.ProductAttrInfo">
+        SELECT
+            pa.id  attributeId,
+            pac.id attributeCategoryId
+        FROM
+            pms_product_category_attribute_relation pcar
+            LEFT JOIN pms_product_attribute pa ON pa.id = pcar.product_attribute_id
+            LEFT JOIN pms_product_attribute_category pac ON pa.product_attribute_category_id = pac.id
+        WHERE
+            pcar.product_category_id = #{id}
+    </select>
+</mapper>
