@@ -3,6 +3,7 @@ package com.macro.mall.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.PmsProductCategoryAttributeRelationDao;
 import com.macro.mall.dto.PmsProductCategoryParam;
+import com.macro.mall.mapper.PmsProductCategoryAttributeRelationMapper;
 import com.macro.mall.mapper.PmsProductCategoryMapper;
 import com.macro.mall.mapper.PmsProductMapper;
 import com.macro.mall.model.*;
@@ -26,8 +27,9 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Autowired
     private PmsProductMapper productMapper;
     @Autowired
-    private PmsProductCategoryAttributeRelationDao pmsProductCategoryAttributeRelationDao;
-
+    private PmsProductCategoryAttributeRelationDao productCategoryAttributeRelationDao;
+    @Autowired
+    private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
         PmsProductCategory productCategory = new PmsProductCategory();
@@ -39,16 +41,25 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         //创建筛选属性关联
         List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
         if(!CollectionUtils.isEmpty(productAttributeIdList)){
-            List<PmsProductCategoryAttributeRelation> relationList = new ArrayList<>();
-            for (Long productAttrId : productAttributeIdList) {
-                PmsProductCategoryAttributeRelation relation = new PmsProductCategoryAttributeRelation();
-                relation.setProductAttributeId(productAttrId);
-                relation.setProductCategoryId(productCategory.getId());
-                relationList.add(relation);
-            }
-            pmsProductCategoryAttributeRelationDao.insertList(relationList);
+            insertRelationList(productCategory.getId(), productAttributeIdList);
         }
         return count;
+    }
+
+    /**
+     * 批量插入商品分类与筛选属性关系表
+     * @param productCategoryId 商品分类id
+     * @param productAttributeIdList 相关商品筛选属性id集合
+     */
+    private void insertRelationList(Long productCategoryId, List<Long> productAttributeIdList) {
+        List<PmsProductCategoryAttributeRelation> relationList = new ArrayList<>();
+        for (Long productAttrId : productAttributeIdList) {
+            PmsProductCategoryAttributeRelation relation = new PmsProductCategoryAttributeRelation();
+            relation.setProductAttributeId(productAttrId);
+            relation.setProductCategoryId(productCategoryId);
+            relationList.add(relation);
+        }
+        productCategoryAttributeRelationDao.insertList(relationList);
     }
 
     @Override
@@ -63,6 +74,17 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andProductCategoryIdEqualTo(id);
         productMapper.updateByExampleSelective(product,example);
+        //同时更新筛选属性的信息
+        if(!CollectionUtils.isEmpty(pmsProductCategoryParam.getProductAttributeIdList())){
+            PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
+            relationExample.createCriteria().andProductCategoryIdEqualTo(id);
+            productCategoryAttributeRelationMapper.deleteByExample(relationExample);
+            insertRelationList(id,pmsProductCategoryParam.getProductAttributeIdList());
+        }else{
+            PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
+            relationExample.createCriteria().andProductCategoryIdEqualTo(id);
+            productCategoryAttributeRelationMapper.deleteByExample(relationExample);
+        }
         return productCategoryMapper.updateByPrimaryKeySelective(productCategory);
     }
 
