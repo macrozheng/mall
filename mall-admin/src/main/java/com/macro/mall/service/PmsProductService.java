@@ -45,4 +45,12 @@ public interface PmsProductService {
      */
     @Transactional
     int updateVerifyStatus(List<Long> ids, Integer verifyStatus, String detail);
+
+    int updatePublishStatus(List<Long> ids, Integer publishStatus);
+
+    int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
+
+    int updateNewStatus(List<Long> ids, Integer newStatus);
+
+    int updateDeleteStatus(List<Long> ids, Integer deleteStatus);
 }

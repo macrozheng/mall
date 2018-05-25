@@ -2,6 +2,7 @@ package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.PmsProductCategoryParam;
+import com.macro.mall.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.service.PmsProductCategoryService;
 import io.swagger.annotations.Api;
@@ -107,5 +108,13 @@ public class PmsProductCategoryController {
         } else {
             return new CommonResult().failed();
         }
+    }
+
+    @ApiOperation("查询所有一级分类及子分类")
+    @RequestMapping(value = "/list/withChildren", method = RequestMethod.GET)
+    @ResponseBody
+    public Object listWithChildren() {
+        List<PmsProductCategoryWithChildrenItem> list = productCategoryService.listWithChildren();
+        return new CommonResult().success(list);
     }
 }

@@ -1,6 +1,7 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.PmsProductCategoryParam;
+import com.macro.mall.dto.PmsProductCategoryWithChildrenItem;
 import com.macro.mall.model.PmsProductCategory;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -28,4 +29,6 @@ public interface PmsProductCategoryService {
     int updateNavStatus(List<Long> ids, Integer navStatus);
 
     int updateShowStatus(List<Long> ids, Integer showStatus);
+
+    List<PmsProductCategoryWithChildrenItem> listWithChildren();
 }

@@ -82,4 +82,56 @@ public class PmsProductController {
             return new CommonResult().failed();
         }
     }
+
+    @ApiOperation("批量上下架")
+    @RequestMapping(value = "/update/publishStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updatePublishStatus(@RequestParam("ids") List<Long> ids,
+                                     @RequestParam("publishStatus") Integer publishStatus) {
+        int count = productService.updatePublishStatus(ids, publishStatus);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
+
+    @ApiOperation("批量推荐商品")
+    @RequestMapping(value = "/update/recommendStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateRecommendStatus(@RequestParam("ids") List<Long> ids,
+                                      @RequestParam("recommendStatus") Integer recommendStatus) {
+        int count = productService.updateRecommendStatus(ids, recommendStatus);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
+
+    @ApiOperation("批量设为新品")
+    @RequestMapping(value = "/update/newStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateNewStatus(@RequestParam("ids") List<Long> ids,
+                                        @RequestParam("newStatus") Integer newStatus) {
+        int count = productService.updateNewStatus(ids, newStatus);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
+
+    @ApiOperation("批量修改删除状态")
+    @RequestMapping(value = "/update/deleteStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateDeleteStatus(@RequestParam("ids") List<Long> ids,
+                                  @RequestParam("deleteStatus") Integer deleteStatus) {
+        int count = productService.updateDeleteStatus(ids, deleteStatus);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        } else {
+            return new CommonResult().failed();
+        }
+    }
 }
