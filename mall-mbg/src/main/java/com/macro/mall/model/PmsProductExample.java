@@ -1216,6 +1216,66 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
+        public Criteria andGiftGrowthIsNull() {
+            addCriterion("gift_growth is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthIsNotNull() {
+            addCriterion("gift_growth is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthEqualTo(Integer value) {
+            addCriterion("gift_growth =", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthNotEqualTo(Integer value) {
+            addCriterion("gift_growth <>", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthGreaterThan(Integer value) {
+            addCriterion("gift_growth >", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gift_growth >=", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthLessThan(Integer value) {
+            addCriterion("gift_growth <", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthLessThanOrEqualTo(Integer value) {
+            addCriterion("gift_growth <=", value, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthIn(List<Integer> values) {
+            addCriterion("gift_growth in", values, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthNotIn(List<Integer> values) {
+            addCriterion("gift_growth not in", values, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthBetween(Integer value1, Integer value2) {
+            addCriterion("gift_growth between", value1, value2, "giftGrowth");
+            return (Criteria) this;
+        }
+
+        public Criteria andGiftGrowthNotBetween(Integer value1, Integer value2) {
+            addCriterion("gift_growth not between", value1, value2, "giftGrowth");
+            return (Criteria) this;
+        }
+
         public Criteria andGiftPointIsNull() {
             addCriterion("gift_point is null");
             return (Criteria) this;

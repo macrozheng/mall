@@ -92,6 +92,13 @@ public class PmsProduct implements Serializable {
     private BigDecimal promotionPrice;
 
     /**
+     * 赠送的成长值
+     *
+     * @mbggenerated
+     */
+    private Integer giftGrowth;
+
+    /**
      * 赠送的积分
      *
      * @mbggenerated
@@ -406,6 +413,14 @@ public class PmsProduct implements Serializable {
         this.promotionPrice = promotionPrice;
     }
 
+    public Integer getGiftGrowth() {
+        return giftGrowth;
+    }
+
+    public void setGiftGrowth(Integer giftGrowth) {
+        this.giftGrowth = giftGrowth;
+    }
+
     public Integer getGiftPoint() {
         return giftPoint;
     }
@@ -646,6 +661,7 @@ public class PmsProduct implements Serializable {
         sb.append(", sale=").append(sale);
         sb.append(", price=").append(price);
         sb.append(", promotionPrice=").append(promotionPrice);
+        sb.append(", giftGrowth=").append(giftGrowth);
         sb.append(", giftPoint=").append(giftPoint);
         sb.append(", usePointLimit=").append(usePointLimit);
         sb.append(", subTitle=").append(subTitle);

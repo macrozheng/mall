@@ -20,6 +20,7 @@
     <result column="sale" jdbcType="INTEGER" property="sale" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="promotion_price" jdbcType="DECIMAL" property="promotionPrice" />
+    <result column="gift_growth" jdbcType="INTEGER" property="giftGrowth" />
     <result column="gift_point" jdbcType="INTEGER" property="giftPoint" />
     <result column="use_point_limit" jdbcType="INTEGER" property="usePointLimit" />
     <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
@@ -111,11 +112,11 @@
   <sql id="Base_Column_List">
     id, brand_id, product_category_id, feight_template_id, product_attribute_category_id, 
     flash_promotion_id, name, pic, product_sn, delete_status, publish_status, new_status, 
-    recommand_status, verify_status, sort, sale, price, promotion_price, gift_point, 
-    use_point_limit, sub_title, original_price, stock, low_stock, unit, weight, preview_status, 
-    service_ids, keywords, note, album_pics, detail_title, flash_promotion_price, flash_promotion_count, 
-    flash_promotion_sort, promotion_start_time, promotion_end_time, promotion_per_limit, 
-    promotion_type, brand_name, product_category_name
+    recommand_status, verify_status, sort, sale, price, promotion_price, gift_growth, 
+    gift_point, use_point_limit, sub_title, original_price, stock, low_stock, unit, weight, 
+    preview_status, service_ids, keywords, note, album_pics, detail_title, flash_promotion_price, 
+    flash_promotion_count, flash_promotion_sort, promotion_start_time, promotion_end_time, 
+    promotion_per_limit, promotion_type, brand_name, product_category_name
   </sql>
   <sql id="Blob_Column_List">
     description, detail_desc, detail_html, detail_mobile_html
@@ -178,32 +179,34 @@
       delete_status, publish_status, new_status, 
       recommand_status, verify_status, sort, 
       sale, price, promotion_price, 
-      gift_point, use_point_limit, sub_title, 
-      original_price, stock, low_stock, 
-      unit, weight, preview_status, 
-      service_ids, keywords, note, 
-      album_pics, detail_title, flash_promotion_price, 
-      flash_promotion_count, flash_promotion_sort, 
-      promotion_start_time, promotion_end_time, 
-      promotion_per_limit, promotion_type, brand_name, 
-      product_category_name, description, detail_desc, 
-      detail_html, detail_mobile_html)
+      gift_growth, gift_point, use_point_limit, 
+      sub_title, original_price, stock, 
+      low_stock, unit, weight, 
+      preview_status, service_ids, keywords, 
+      note, album_pics, detail_title, 
+      flash_promotion_price, flash_promotion_count, 
+      flash_promotion_sort, promotion_start_time, 
+      promotion_end_time, promotion_per_limit, 
+      promotion_type, brand_name, product_category_name, 
+      description, detail_desc, detail_html, 
+      detail_mobile_html)
     values (#{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{feightTemplateId,jdbcType=BIGINT}, 
       #{productAttributeCategoryId,jdbcType=BIGINT}, #{flashPromotionId,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{productSn,jdbcType=VARCHAR}, 
       #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, #{newStatus,jdbcType=INTEGER}, 
       #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
       #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{promotionPrice,jdbcType=DECIMAL}, 
-      #{giftPoint,jdbcType=INTEGER}, #{usePointLimit,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, 
-      #{originalPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, 
-      #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{previewStatus,jdbcType=INTEGER}, 
-      #{serviceIds,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
-      #{albumPics,jdbcType=VARCHAR}, #{detailTitle,jdbcType=VARCHAR}, #{flashPromotionPrice,jdbcType=DECIMAL}, 
-      #{flashPromotionCount,jdbcType=INTEGER}, #{flashPromotionSort,jdbcType=INTEGER}, 
-      #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
-      #{promotionPerLimit,jdbcType=INTEGER}, #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
-      #{productCategoryName,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, 
-      #{detailHtml,jdbcType=LONGVARCHAR}, #{detailMobileHtml,jdbcType=LONGVARCHAR})
+      #{giftGrowth,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, #{usePointLimit,jdbcType=INTEGER}, 
+      #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 
+      #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, 
+      #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, #{detailTitle,jdbcType=VARCHAR}, 
+      #{flashPromotionPrice,jdbcType=DECIMAL}, #{flashPromotionCount,jdbcType=INTEGER}, 
+      #{flashPromotionSort,jdbcType=INTEGER}, #{promotionStartTime,jdbcType=TIMESTAMP}, 
+      #{promotionEndTime,jdbcType=TIMESTAMP}, #{promotionPerLimit,jdbcType=INTEGER}, 
+      #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, #{productCategoryName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, #{detailHtml,jdbcType=LONGVARCHAR}, 
+      #{detailMobileHtml,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -261,6 +264,9 @@
       </if>
       <if test="promotionPrice != null">
         promotion_price,
+      </if>
+      <if test="giftGrowth != null">
+        gift_growth,
       </if>
       <if test="giftPoint != null">
         gift_point,
@@ -395,6 +401,9 @@
       </if>
       <if test="promotionPrice != null">
         #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="giftGrowth != null">
+        #{giftGrowth,jdbcType=INTEGER},
       </if>
       <if test="giftPoint != null">
         #{giftPoint,jdbcType=INTEGER},
@@ -542,6 +551,9 @@
       <if test="record.promotionPrice != null">
         promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
       </if>
+      <if test="record.giftGrowth != null">
+        gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
+      </if>
       <if test="record.giftPoint != null">
         gift_point = #{record.giftPoint,jdbcType=INTEGER},
       </if>
@@ -648,6 +660,7 @@
       sale = #{record.sale,jdbcType=INTEGER},
       price = #{record.price,jdbcType=DECIMAL},
       promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
       gift_point = #{record.giftPoint,jdbcType=INTEGER},
       use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
       sub_title = #{record.subTitle,jdbcType=VARCHAR},
@@ -699,6 +712,7 @@
       sale = #{record.sale,jdbcType=INTEGER},
       price = #{record.price,jdbcType=DECIMAL},
       promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
       gift_point = #{record.giftPoint,jdbcType=INTEGER},
       use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
       sub_title = #{record.subTitle,jdbcType=VARCHAR},
@@ -779,6 +793,9 @@
       </if>
       <if test="promotionPrice != null">
         promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="giftGrowth != null">
+        gift_growth = #{giftGrowth,jdbcType=INTEGER},
       </if>
       <if test="giftPoint != null">
         gift_point = #{giftPoint,jdbcType=INTEGER},
@@ -883,6 +900,7 @@
       sale = #{sale,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{giftGrowth,jdbcType=INTEGER},
       gift_point = #{giftPoint,jdbcType=INTEGER},
       use_point_limit = #{usePointLimit,jdbcType=INTEGER},
       sub_title = #{subTitle,jdbcType=VARCHAR},
@@ -931,6 +949,7 @@
       sale = #{sale,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{giftGrowth,jdbcType=INTEGER},
       gift_point = #{giftPoint,jdbcType=INTEGER},
       use_point_limit = #{usePointLimit,jdbcType=INTEGER},
       sub_title = #{subTitle,jdbcType=VARCHAR},
