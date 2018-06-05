@@ -6,6 +6,7 @@
     <result column="product_id" jdbcType="BIGINT" property="productId" />
     <result column="member_level_id" jdbcType="BIGINT" property="memberLevelId" />
     <result column="member_price" jdbcType="DECIMAL" property="memberPrice" />
+    <result column="member_level_name" jdbcType="VARCHAR" property="memberLevelName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, member_level_id, member_price
+    id, product_id, member_level_id, member_price, member_level_name
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.PmsMemberPriceExample" resultMap="BaseResultMap">
     select
@@ -102,10 +103,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_member_price (product_id, member_level_id, member_price
-      )
-    values (#{productId,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, #{memberPrice,jdbcType=DECIMAL}
-      )
+    insert into pms_member_price (product_id, member_level_id, member_price, 
+      member_level_name)
+    values (#{productId,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, #{memberPrice,jdbcType=DECIMAL}, 
+      #{memberLevelName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsMemberPrice">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -122,6 +123,9 @@
       <if test="memberPrice != null">
         member_price,
       </if>
+      <if test="memberLevelName != null">
+        member_level_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="memberPrice != null">
         #{memberPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="memberLevelName != null">
+        #{memberLevelName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.memberPrice != null">
         member_price = #{record.memberPrice,jdbcType=DECIMAL},
       </if>
+      <if test="record.memberLevelName != null">
+        member_level_name = #{record.memberLevelName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set id = #{record.id,jdbcType=BIGINT},
       product_id = #{record.productId,jdbcType=BIGINT},
       member_level_id = #{record.memberLevelId,jdbcType=BIGINT},
-      member_price = #{record.memberPrice,jdbcType=DECIMAL}
+      member_price = #{record.memberPrice,jdbcType=DECIMAL},
+      member_level_name = #{record.memberLevelName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="memberPrice != null">
         member_price = #{memberPrice,jdbcType=DECIMAL},
       </if>
+      <if test="memberLevelName != null">
+        member_level_name = #{memberLevelName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -190,7 +204,8 @@
     update pms_member_price
     set product_id = #{productId,jdbcType=BIGINT},
       member_level_id = #{memberLevelId,jdbcType=BIGINT},
-      member_price = #{memberPrice,jdbcType=DECIMAL}
+      member_price = #{memberPrice,jdbcType=DECIMAL},
+      member_level_name = #{memberLevelName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

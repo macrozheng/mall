@@ -344,6 +344,76 @@ public class PmsMemberPriceExample {
             addCriterion("member_price not between", value1, value2, "memberPrice");
             return (Criteria) this;
         }
+
+        public Criteria andMemberLevelNameIsNull() {
+            addCriterion("member_level_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameIsNotNull() {
+            addCriterion("member_level_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameEqualTo(String value) {
+            addCriterion("member_level_name =", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameNotEqualTo(String value) {
+            addCriterion("member_level_name <>", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameGreaterThan(String value) {
+            addCriterion("member_level_name >", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameGreaterThanOrEqualTo(String value) {
+            addCriterion("member_level_name >=", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameLessThan(String value) {
+            addCriterion("member_level_name <", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameLessThanOrEqualTo(String value) {
+            addCriterion("member_level_name <=", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameLike(String value) {
+            addCriterion("member_level_name like", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameNotLike(String value) {
+            addCriterion("member_level_name not like", value, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameIn(List<String> values) {
+            addCriterion("member_level_name in", values, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameNotIn(List<String> values) {
+            addCriterion("member_level_name not in", values, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameBetween(String value1, String value2) {
+            addCriterion("member_level_name between", value1, value2, "memberLevelName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemberLevelNameNotBetween(String value1, String value2) {
+            addCriterion("member_level_name not between", value1, value2, "memberLevelName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -55,6 +55,7 @@ OSS上传功能 | ✔
 SpringSecurity权限管理功能 |
 Elasticsearch搜索功能 |
 MongoDb 日志存储功能 |
+数字型ID生成 |
 
 ### 后台功能
 

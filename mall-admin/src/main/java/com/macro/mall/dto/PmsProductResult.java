@@ -10,18 +10,11 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 public class PmsProductResult extends PmsProductParam{
-    private String feightTemplateName;
+    //商品所选分类的父id
+    private Long cateParentId;
     private String productAttributeCategoryName;
     private List<CmsSubject> subjectList;
     private List<CmsPrefrenceArea> prefrenceAreaList;
-
-    public String getFeightTemplateName() {
-        return feightTemplateName;
-    }
-
-    public void setFeightTemplateName(String feightTemplateName) {
-        this.feightTemplateName = feightTemplateName;
-    }
 
     public String getProductAttributeCategoryName() {
         return productAttributeCategoryName;
@@ -45,5 +38,13 @@ public class PmsProductResult extends PmsProductParam{
 
     public void setPrefrenceAreaList(List<CmsPrefrenceArea> prefrenceAreaList) {
         this.prefrenceAreaList = prefrenceAreaList;
+    }
+
+    public Long getCateParentId() {
+        return cateParentId;
+    }
+
+    public void setCateParentId(Long cateParentId) {
+        this.cateParentId = cateParentId;
     }
 }

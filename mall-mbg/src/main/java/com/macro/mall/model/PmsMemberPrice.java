@@ -17,6 +17,8 @@ public class PmsMemberPrice implements Serializable {
      */
     private BigDecimal memberPrice;
 
+    private String memberLevelName;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -51,6 +53,14 @@ public class PmsMemberPrice implements Serializable {
         this.memberPrice = memberPrice;
     }
 
+    public String getMemberLevelName() {
+        return memberLevelName;
+    }
+
+    public void setMemberLevelName(String memberLevelName) {
+        this.memberLevelName = memberLevelName;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -61,6 +71,7 @@ public class PmsMemberPrice implements Serializable {
         sb.append(", productId=").append(productId);
         sb.append(", memberLevelId=").append(memberLevelId);
         sb.append(", memberPrice=").append(memberPrice);
+        sb.append(", memberLevelName=").append(memberLevelName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
