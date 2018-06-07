@@ -17,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,6 +79,8 @@ public class PmsProductServiceImpl implements PmsProductService {
         relateAndInsertList(productLadderDao, productParam.getProductLadderList(), productId);
         //满减价格
         relateAndInsertList(productFullReductionDao, productParam.getProductFullReductionList(), productId);
+        //处理sku的编码
+        handleSkuStockCode(productParam.getSkuStockList(),productId);
         //添加sku库存信息
         relateAndInsertList(skuStockDao, productParam.getSkuStockList(), productId);
         //添加商品参数,添加自定义商品规格
@@ -88,6 +91,24 @@ public class PmsProductServiceImpl implements PmsProductService {
         relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
         count = 1;
         return count;
+    }
+
+    private void handleSkuStockCode(List<PmsSkuStock> skuStockList, Long productId) {
+        if(CollectionUtils.isEmpty(skuStockList))return;
+        for(int i=0;i<skuStockList.size();i++){
+            PmsSkuStock skuStock = skuStockList.get(i);
+            if(StringUtils.isEmpty(skuStock.getSkuCode())){
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                StringBuilder sb = new StringBuilder();
+                //日期
+                sb.append(sdf.format(new Date()));
+                //四位商品id
+                sb.append(String.format("%04d", productId));
+                //三位索引id
+                sb.append(String.format("%03d", i+1));
+                skuStock.setSkuCode(sb.toString());
+            }
+        }
     }
 
     @Override
@@ -121,6 +142,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         PmsSkuStockExample skuStockExample = new PmsSkuStockExample();
         skuStockExample.createCriteria().andProductIdEqualTo(id);
         skuStockMapper.deleteByExample(skuStockExample);
+        handleSkuStockCode(productParam.getSkuStockList(),id);
         relateAndInsertList(skuStockDao, productParam.getSkuStockList(), id);
         //修改商品参数,添加自定义商品规格
         PmsProductAttributeValueExample productAttributeValueExample = new PmsProductAttributeValueExample();

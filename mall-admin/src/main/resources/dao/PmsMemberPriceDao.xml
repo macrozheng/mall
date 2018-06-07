@@ -3,11 +3,12 @@
 <mapper namespace="com.macro.mall.dao.PmsMemberPriceDao">
     <!--批量新增回写主键支持-->
     <insert id="insertList">
-        INSERT INTO pms_member_price (product_id, member_level_id, member_price) VALUES
+        INSERT INTO pms_member_price (product_id, member_level_id, member_price,member_level_name) VALUES
         <foreach collection="list" separator="," item="item" index="index">
             (#{item.productId,jdbcType=BIGINT},
             #{item.memberLevelId,jdbcType=BIGINT},
-            #{item.memberPrice,jdbcType=DECIMAL})
+            #{item.memberPrice,jdbcType=DECIMAL},
+            #{item.memberLevelName,jdbcType=VARCHAR})
         </foreach>
     </insert>
 </mapper>
