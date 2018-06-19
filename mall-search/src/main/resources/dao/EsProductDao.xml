@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.search.dao.EsProductDao">
+    <resultMap id="esProductListMap" type="com.macro.mall.search.domain.EsProduct" autoMapping="true">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <collection property="attrValueList" columnPrefix="attr_" resultMap="com.macro.mall.mapper.PmsProductAttributeValueMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="getAllEsProductList" resultMap="esProductListMap">
+        select
+            p.id id,
+            p.product_sn productSn,
+            p.brand_id brandId,
+            p.brand_name brandName,
+            p.product_category_id productCategoryId,
+            p.product_category_name productCategoryName,
+            p.pic pic,
+            p.name name,
+            p.sub_title subTitle,
+            p.price price,
+            p.sale sale,
+            p.new_status newStatus,
+            p.recommand_status recommandStatus,
+            p.stock stock,
+            p.promotion_type promotionType,
+            p.sort sort,
+            a.id attr_id,
+            a.value attr_value
+        from pms_product p
+        left join pms_product_attribute_value a on p.id = a.product_id
+        where delete_status = 0 and publish_status = 1
+    </select>
+</mapper>
