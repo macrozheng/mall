@@ -20,7 +20,7 @@ public class MallSearchApplicationTests {
     }
     @Test
     public void testGetAllEsProductList(){
-        List<EsProduct> esProductList = productDao.getAllEsProductList();
+        List<EsProduct> esProductList = productDao.getAllEsProductList(null);
         System.out.print(esProductList);
     }
 

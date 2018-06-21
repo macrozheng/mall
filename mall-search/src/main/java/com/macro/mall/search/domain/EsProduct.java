@@ -1,5 +1,6 @@
 package com.macro.mall.search.domain;
 
+import com.macro.mall.model.PmsProductAttributeValue;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class EsProduct implements Serializable {
     private String pic;
     private String name;
     private String subTitle;
+    private String keywords;
     private BigDecimal price;
     private Integer sale;
     private Integer newStatus;
@@ -29,7 +31,7 @@ public class EsProduct implements Serializable {
     private Integer stock;
     private Integer promotionType;
     private Integer sort;
-    private List<EsProductAttrValue> attrValueList;
+    private List<PmsProductAttributeValue> attrValueList;
 
     public Long getId() {
         return id;
@@ -159,32 +161,19 @@ public class EsProduct implements Serializable {
         this.sort = sort;
     }
 
-    public List<EsProductAttrValue> getAttrValueList() {
+    public List<PmsProductAttributeValue> getAttrValueList() {
         return attrValueList;
     }
 
-    public void setAttrValueList(List<EsProductAttrValue> attrValueList) {
+    public void setAttrValueList(List<PmsProductAttributeValue> attrValueList) {
         this.attrValueList = attrValueList;
     }
 
-    static class EsProductAttrValue {
-        private Long id;
-        private String value;
+    public String getKeywords() {
+        return keywords;
+    }
 
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
-        }
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 }

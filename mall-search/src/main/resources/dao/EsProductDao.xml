@@ -23,11 +23,16 @@
             p.recommand_status recommandStatus,
             p.stock stock,
             p.promotion_type promotionType,
+            P.keywords keywords
             p.sort sort,
             a.id attr_id,
-            a.value attr_value
+            a.value attr_value,
+            a.product_attribute_id attr_product_attribute_id
         from pms_product p
         left join pms_product_attribute_value a on p.id = a.product_id
         where delete_status = 0 and publish_status = 1
+        <if test="id!=null">
+            and p.id=#{id}
+        </if>
     </select>
 </mapper>
