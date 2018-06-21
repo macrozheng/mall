@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-06-07 17:20:57
+Date: 2018-06-21 10:11:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -198,7 +198,7 @@ CREATE TABLE `cms_subject_product_relation` (
   `subject_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='专题商品关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='专题商品关系表';
 
 -- ----------------------------
 -- Records of cms_subject_product_relation
@@ -210,12 +210,12 @@ INSERT INTO `cms_subject_product_relation` VALUES ('4', '1', '18');
 INSERT INTO `cms_subject_product_relation` VALUES ('5', '1', '7');
 INSERT INTO `cms_subject_product_relation` VALUES ('6', '2', '7');
 INSERT INTO `cms_subject_product_relation` VALUES ('7', '1', '22');
-INSERT INTO `cms_subject_product_relation` VALUES ('23', '2', '26');
-INSERT INTO `cms_subject_product_relation` VALUES ('24', '3', '26');
-INSERT INTO `cms_subject_product_relation` VALUES ('25', '6', '26');
 INSERT INTO `cms_subject_product_relation` VALUES ('29', '1', '23');
 INSERT INTO `cms_subject_product_relation` VALUES ('30', '4', '23');
 INSERT INTO `cms_subject_product_relation` VALUES ('31', '5', '23');
+INSERT INTO `cms_subject_product_relation` VALUES ('35', '2', '26');
+INSERT INTO `cms_subject_product_relation` VALUES ('36', '3', '26');
+INSERT INTO `cms_subject_product_relation` VALUES ('37', '6', '26');
 
 -- ----------------------------
 -- Table structure for cms_topic
@@ -514,7 +514,7 @@ CREATE TABLE `pms_brand` (
   `big_pic` varchar(255) DEFAULT NULL COMMENT '专区大图',
   `brand_story` text COMMENT '品牌故事',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COMMENT='品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='品牌表';
 
 -- ----------------------------
 -- Records of pms_brand
@@ -524,11 +524,12 @@ INSERT INTO `pms_brand` VALUES ('2', '三星', 'S', '100', '1', '1', '100', '100
 INSERT INTO `pms_brand` VALUES ('3', '华为', 'H', '100', '1', '0', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg (2).jpg', null, 'Victoria\'s Secret的故事');
 INSERT INTO `pms_brand` VALUES ('4', '格力', 'G', '30', '1', '0', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg (3).jpg', null, 'Victoria\'s Secret的故事');
 INSERT INTO `pms_brand` VALUES ('5', '方太', 'F', '20', '1', '0', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg (4).jpg', null, 'Victoria\'s Secret的故事');
-INSERT INTO `pms_brand` VALUES ('6', '小米手机', 'M', '500', '1', '1', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5a912944N474afb7a.png', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5afd7778Nf7800b75.jpg', '小米手机的故事');
+INSERT INTO `pms_brand` VALUES ('6', '小米', 'M', '500', '1', '1', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5a912944N474afb7a.png', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5afd7778Nf7800b75.jpg', '小米手机的故事');
 INSERT INTO `pms_brand` VALUES ('21', 'OPPO', 'O', '0', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg(6).jpg', '', 'string');
 INSERT INTO `pms_brand` VALUES ('49', '七匹狼', 'S', '200', '1', '0', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/1522738681.jpg', null, 'BOOB的故事');
 INSERT INTO `pms_brand` VALUES ('50', '海澜之家', 'H', '200', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/LOGO1024.png', '', '海澜之家的故事');
 INSERT INTO `pms_brand` VALUES ('51', '苹果', 'A', '200', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '苹果的故事');
+INSERT INTO `pms_brand` VALUES ('58', 'NIKE', 'N', '0', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/timg (51).jpg', '', 'NIKE的故事');
 
 -- ----------------------------
 -- Table structure for pms_comment
@@ -607,7 +608,7 @@ CREATE TABLE `pms_member_price` (
   `member_price` decimal(10,2) DEFAULT NULL COMMENT '会员价格',
   `member_level_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8 COMMENT='商品会员价格表';
+) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 COMMENT='商品会员价格表';
 
 -- ----------------------------
 -- Records of pms_member_price
@@ -629,12 +630,42 @@ INSERT INTO `pms_member_price` VALUES ('54', '22', '3', null, null);
 INSERT INTO `pms_member_price` VALUES ('58', '24', '1', null, null);
 INSERT INTO `pms_member_price` VALUES ('59', '24', '2', null, null);
 INSERT INTO `pms_member_price` VALUES ('60', '24', '3', null, null);
-INSERT INTO `pms_member_price` VALUES ('106', '26', '1', null, '黄金会员');
-INSERT INTO `pms_member_price` VALUES ('107', '26', '2', null, '白金会员');
-INSERT INTO `pms_member_price` VALUES ('108', '26', '3', null, '钻石会员');
 INSERT INTO `pms_member_price` VALUES ('112', '23', '1', '88.00', '黄金会员');
 INSERT INTO `pms_member_price` VALUES ('113', '23', '2', '88.00', '白金会员');
 INSERT INTO `pms_member_price` VALUES ('114', '23', '3', '66.00', '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('115', '27', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('116', '27', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('117', '27', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('127', '28', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('128', '28', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('129', '28', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('130', '29', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('131', '29', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('132', '29', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('142', '31', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('143', '31', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('144', '31', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('148', '32', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('149', '32', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('150', '32', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('151', '26', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('152', '26', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('153', '26', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('154', '33', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('155', '33', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('156', '33', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('169', '36', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('170', '36', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('171', '36', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('172', '35', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('173', '35', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('174', '35', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('175', '34', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('176', '34', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('177', '34', '3', null, '钻石会员');
+INSERT INTO `pms_member_price` VALUES ('178', '30', '1', null, '黄金会员');
+INSERT INTO `pms_member_price` VALUES ('179', '30', '2', null, '白金会员');
+INSERT INTO `pms_member_price` VALUES ('180', '30', '3', null, '钻石会员');
 
 -- ----------------------------
 -- Table structure for pms_product
@@ -688,30 +719,40 @@ CREATE TABLE `pms_product` (
   `brand_name` varchar(255) DEFAULT NULL COMMENT '品牌名称',
   `product_category_name` varchar(255) DEFAULT NULL COMMENT '商品分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='商品信息';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='商品信息';
 
 -- ----------------------------
 -- Records of pms_product
 -- ----------------------------
-INSERT INTO `pms_product` VALUES ('1', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '1', '1', '1', '1', '100', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
-INSERT INTO `pms_product` VALUES ('2', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤2', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86578', '0', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤2', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
-INSERT INTO `pms_product` VALUES ('3', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86579', '0', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤3', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
-INSERT INTO `pms_product` VALUES ('4', '1', '1', '0', '0', '0', '银色星芒刺绣网纱底裤4', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86580', '0', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤4', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('5', '1', '1', '0', '0', '0', '银色星芒刺绣网纱底裤5', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86581', '0', '0', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤5', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('6', '1', '1', '0', '0', '0', '银色星芒刺绣网纱底裤6', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86582', '0', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤6', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('7', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('8', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('9', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('10', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('11', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('12', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫2', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('13', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('14', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('18', '1', '1', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '0', '0', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '服装');
-INSERT INTO `pms_product` VALUES ('22', '6', '7', '0', '1', '0', 'test', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', '', '1', '1', '0', '0', '0', '0', '0', '0.00', null, '0', '0', '0', 'test', '', '0.00', '0', '0', '', '0.00', '1', '1,2', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '', '外套');
-INSERT INTO `pms_product` VALUES ('23', '6', '19', '0', '1', '0', '毛衫测试', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', 'NO.1098', '0', '1', '1', '1', '0', '0', '0', '99.00', null, '99', '99', '1000', '毛衫测试11', 'xxx', '109.00', '100', '0', '件', '1000.00', '1', '1,2,3', '毛衫测试', '毛衫测试', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg,http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', '毛衫测试', '毛衫测试', '<p><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/155x54.bmp\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/APP登录bg1080.jpg\" width=\"500\" height=\"500\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/APP登录界面.jpg\" width=\"500\" height=\"500\" /></p>', '', '0.00', '0', '0', null, null, '0', '2', '小米手机', '外套');
-INSERT INTO `pms_product` VALUES ('24', '6', '7', '0', null, '0', 'xxx', '', '', '1', '0', '0', '0', '0', '0', '0', '0.00', null, '0', '0', '0', 'xxx', '', '0.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米手机', '外套');
-INSERT INTO `pms_product` VALUES ('26', '3', '19', '0', '3', '0', '华为P20', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ac1bf58Ndefaac16.jpg', '6946605', '0', '1', '1', '1', '0', '100', '0', '3788.00', null, '3788', '3788', '0', '华为 HUAWEI P20 AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待', '', '4288.00', '1000', '0', '件', '0.00', '1', '2,3,1', '', '', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ab46a3cN616bdc41.jpg,http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ac1bf5fN2522b9dc.jpg', '', '', '<p><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44f1cNf51f3bb0.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44fa8Nfcf71c10.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44fa9N40e78ee0.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad457f4N1c94bdda.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad457f5Nd30de41d.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5b10fb0eN0eb053fb.jpg\" /></p>', '', '0.00', '0', '0', null, null, '0', '0', '华为', '外套');
+INSERT INTO `pms_product` VALUES ('1', '49', '7', '0', '0', '0', '银色星芒刺绣网纱底裤', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '1', '1', '1', '1', '100', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '七匹狼', '外套');
+INSERT INTO `pms_product` VALUES ('2', '49', '7', '0', '0', '0', '银色星芒刺绣网纱底裤2', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86578', '1', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤2', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '<p>银色星芒刺绣网纱底裤</p>', '<p>银色星芒刺绣网纱底裤</p>', null, null, null, null, null, null, '0', '七匹狼', '外套');
+INSERT INTO `pms_product` VALUES ('3', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86579', '1', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤3', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('4', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤4', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86580', '1', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤4', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('5', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤5', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86581', '1', '0', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤5', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('6', '1', '7', '0', '0', '0', '银色星芒刺绣网纱底裤6', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86582', '1', '1', '1', '1', '1', '1', '0', '100.00', null, null, '100', null, '111', '111', '120.00', '100', '20', '件', '1000.00', '0', null, '银色星芒刺绣网纱底裤6', '银色星芒刺绣网纱底裤', null, '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', '银色星芒刺绣网纱底裤', null, null, null, null, null, null, '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('7', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('8', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('9', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('10', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '0', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('11', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('12', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫2', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('13', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '1', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('14', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('18', '1', '7', '0', '1', '0', '女式超柔软拉毛运动开衫3', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png', 'No86577', '1', '0', '0', '1', '0', '0', '0', '249.00', '0.00', null, '100', '0', '匠心剪裁，垂感质地', '匠心剪裁，垂感质地', '299.00', '100', '0', '件', '0.00', '0', 'string', '女式超柔软拉毛运动开衫', 'string', 'string', 'string', 'string', 'string', 'string', '0.00', '0', '0', '2018-04-26 10:41:03', '2018-04-26 10:41:03', '0', '0', '万和', '外套');
+INSERT INTO `pms_product` VALUES ('22', '6', '7', '0', '1', '0', 'test', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', '', '1', '1', '0', '0', '0', '0', '0', '0.00', null, '0', '0', '0', 'test', '', '0.00', '0', '0', '', '0.00', '1', '1,2', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米', '外套');
+INSERT INTO `pms_product` VALUES ('23', '6', '19', '0', '1', '0', '毛衫测试', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', 'NO.1098', '1', '1', '1', '1', '0', '0', '0', '99.00', null, '99', '99', '1000', '毛衫测试11', 'xxx', '109.00', '100', '0', '件', '1000.00', '1', '1,2,3', '毛衫测试', '毛衫测试', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg,http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', '毛衫测试', '毛衫测试', '<p><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/155x54.bmp\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/APP登录bg1080.jpg\" width=\"500\" height=\"500\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/APP登录界面.jpg\" width=\"500\" height=\"500\" /></p>', '', '0.00', '0', '0', null, null, '0', '2', '小米', '手机数码');
+INSERT INTO `pms_product` VALUES ('24', '6', '7', '0', null, '0', 'xxx', '', '', '1', '0', '0', '0', '0', '0', '0', '0.00', null, '0', '0', '0', 'xxx', '', '0.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米', '外套');
+INSERT INTO `pms_product` VALUES ('26', '3', '19', '0', '3', '0', '华为 HUAWEI P20 ', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ac1bf58Ndefaac16.jpg', '6946605', '0', '1', '1', '1', '0', '100', '0', '3788.00', null, '3788', '3788', '0', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', '', '4288.00', '1000', '0', '件', '0.00', '1', '2,3,1', '', '', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ab46a3cN616bdc41.jpg,http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ac1bf5fN2522b9dc.jpg', '', '', '<p><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44f1cNf51f3bb0.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44fa8Nfcf71c10.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad44fa9N40e78ee0.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad457f4N1c94bdda.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ad457f5Nd30de41d.jpg\" /><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5b10fb0eN0eb053fb.jpg\" /></p>', '', '0.00', '0', '0', null, null, '0', '0', '华为', '手机数码');
+INSERT INTO `pms_product` VALUES ('27', '6', '19', '0', '3', '0', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/xiaomi.jpg', '7437788', '0', '1', '1', '1', '0', '0', '0', '2699.00', null, '0', '0', '0', '骁龙845处理器，红外人脸解锁，AI变焦双摄，AI语音助手小米6X低至1299，点击抢购', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '2699.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '<p><img class=\"wscnph\" src=\"http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5b2254e8N414e6d3a.jpg\" width=\"500\" /></p>', '', '0.00', '0', '0', null, null, '0', '0', '小米', '手机数码');
+INSERT INTO `pms_product` VALUES ('28', '6', '19', '0', '3', '0', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5a9d248cN071f4959.jpg', '7437789', '0', '1', '1', '1', '0', '0', '0', '649.00', null, '0', '0', '0', '8天超长待机，137g轻巧机身，高通骁龙处理器小米6X低至1299，点击抢购', '', '649.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米', '手机数码');
+INSERT INTO `pms_product` VALUES ('29', '51', '19', '0', '3', '0', 'Apple iPhone 8 Plus 64GB 红色特别版 移动联通电信4G手机', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5acc5248N6a5f81cd.jpg', '7437799', '0', '1', '1', '0', '0', '0', '0', '5499.00', null, '0', '0', '0', '【限时限量抢购】Apple产品年中狂欢节，好物尽享，美在智慧！速来 >> 勾选[保障服务][原厂保2年]，获得AppleCare+全方位服务计划，原厂延保售后无忧。', '', '5499.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '苹果', '手机数码');
+INSERT INTO `pms_product` VALUES ('30', '50', '8', '0', '1', '0', 'HLA海澜之家简约动物印花短袖T恤', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'HNTBJ2E042A', '0', '1', '1', '1', '0', '0', '0', '98.00', null, '0', '0', '0', '2018夏季新品微弹舒适新款短T男生 6月6日-6月20日，满300减30，参与互动赢百元礼券，立即分享赢大奖', '', '98.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '海澜之家', 'T恤');
+INSERT INTO `pms_product` VALUES ('31', '50', '8', '0', '1', '0', 'HLA海澜之家蓝灰花纹圆领针织布短袖T恤', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ac98b64N70acd82f.jpg!cc_350x449.jpg', 'HNTBJ2E080A', '0', '1', '0', '0', '0', '0', '0', '98.00', null, '0', '0', '0', '2018夏季新品短袖T恤男HNTBJ2E080A 蓝灰花纹80 175/92A/L80A 蓝灰花纹80 175/92A/L', '', '98.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '海澜之家', 'T恤');
+INSERT INTO `pms_product` VALUES ('32', '50', '8', '0', null, '0', 'HLA海澜之家短袖T恤男基础款', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5a51eb88Na4797877.jpg', 'HNTBJ2E153A', '0', '1', '0', '0', '0', '0', '0', '68.00', null, '0', '0', '0', 'HLA海澜之家短袖T恤男基础款简约圆领HNTBJ2E153A藏青(F3)175/92A(50)', '', '68.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '海澜之家', 'T恤');
+INSERT INTO `pms_product` VALUES ('33', '6', '35', '0', null, '0', '小米（MI）小米电视4A ', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5b02804dN66004d73.jpg', '4609652', '0', '1', '0', '0', '0', '0', '0', '2499.00', null, '0', '0', '0', '小米（MI）小米电视4A 55英寸 L55M5-AZ/L55M5-AD 2GB+8GB HDR 4K超高清 人工智能网络液晶平板电视', '', '2499.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米', '手机数码');
+INSERT INTO `pms_product` VALUES ('34', '6', '35', '0', null, '0', '小米（MI）小米电视4A 65英寸', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5b028530N51eee7d4.jpg', '4609660', '0', '1', '0', '0', '0', '0', '0', '3999.00', null, '0', '0', '0', ' L65M5-AZ/L65M5-AD 2GB+8GB HDR 4K超高清 人工智能网络液晶平板电视', '', '3999.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', '小米', '手机数码');
+INSERT INTO `pms_product` VALUES ('35', '58', '29', '0', null, '0', '耐克NIKE 男子 休闲鞋 ROSHE RUN 运动鞋 511881-010黑色41码', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5b235bb9Nf606460b.jpg', '6799342', '0', '1', '0', '0', '0', '0', '0', '369.00', null, '0', '0', '0', '耐克NIKE 男子 休闲鞋 ROSHE RUN 运动鞋 511881-010黑色41码', '', '369.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', 'NIKE', '男鞋');
+INSERT INTO `pms_product` VALUES ('36', '58', '29', '0', null, '0', '耐克NIKE 男子 气垫 休闲鞋 AIR MAX 90 ESSENTIAL 运动鞋 AJ1285-101白色41码', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5b19403eN9f0b3cb8.jpg', '6799345', '0', '1', '1', '1', '0', '0', '0', '499.00', null, '0', '0', '0', '耐克NIKE 男子 气垫 休闲鞋 AIR MAX 90 ESSENTIAL 运动鞋 AJ1285-101白色41码', '', '499.00', '0', '0', '', '0.00', '0', '', '', '', '', '', '', '', '', '0.00', '0', '0', null, null, '0', '0', 'NIKE', '男鞋');
 
 -- ----------------------------
 -- Table structure for pms_product_attribute
@@ -798,7 +839,7 @@ CREATE TABLE `pms_product_attribute_value` (
   `product_attribute_id` bigint(20) DEFAULT NULL,
   `value` varchar(64) DEFAULT NULL COMMENT '存储的值',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 COMMENT='存储产品参数信息的表';
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8 COMMENT='存储产品参数信息的表';
 
 -- ----------------------------
 -- Records of pms_product_attribute_value
@@ -819,26 +860,57 @@ INSERT INTO `pms_product_attribute_value` VALUES ('13', '22', '25', '春季');
 INSERT INTO `pms_product_attribute_value` VALUES ('14', '22', '37', '青年');
 INSERT INTO `pms_product_attribute_value` VALUES ('15', '22', '38', '2018年春');
 INSERT INTO `pms_product_attribute_value` VALUES ('16', '22', '39', '长袖');
-INSERT INTO `pms_product_attribute_value` VALUES ('83', '1', '13', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('84', '1', '14', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('85', '1', '15', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('86', '1', '16', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('87', '1', '17', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('88', '1', '18', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('89', '1', '19', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('90', '1', '20', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('91', '1', '21', null);
-INSERT INTO `pms_product_attribute_value` VALUES ('113', '26', '43', '金色,银色');
-INSERT INTO `pms_product_attribute_value` VALUES ('114', '26', '45', '5.0');
-INSERT INTO `pms_product_attribute_value` VALUES ('115', '26', '46', '4G');
-INSERT INTO `pms_product_attribute_value` VALUES ('116', '26', '47', 'Android');
-INSERT INTO `pms_product_attribute_value` VALUES ('117', '26', '48', '3000');
 INSERT INTO `pms_product_attribute_value` VALUES ('124', '23', '7', '米白色,浅黄色');
 INSERT INTO `pms_product_attribute_value` VALUES ('125', '23', '24', 'no1098');
 INSERT INTO `pms_product_attribute_value` VALUES ('126', '23', '25', '春季');
 INSERT INTO `pms_product_attribute_value` VALUES ('127', '23', '37', '青年');
 INSERT INTO `pms_product_attribute_value` VALUES ('128', '23', '38', '2018年春');
 INSERT INTO `pms_product_attribute_value` VALUES ('129', '23', '39', '长袖');
+INSERT INTO `pms_product_attribute_value` VALUES ('130', '1', '13', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('131', '1', '14', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('132', '1', '15', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('133', '1', '16', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('134', '1', '17', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('135', '1', '18', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('136', '1', '19', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('137', '1', '20', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('138', '1', '21', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('139', '2', '13', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('140', '2', '14', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('141', '2', '15', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('142', '2', '16', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('143', '2', '17', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('144', '2', '18', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('145', '2', '19', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('146', '2', '20', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('147', '2', '21', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('148', '27', '45', '5.8');
+INSERT INTO `pms_product_attribute_value` VALUES ('149', '27', '46', '4G');
+INSERT INTO `pms_product_attribute_value` VALUES ('150', '27', '47', 'Android');
+INSERT INTO `pms_product_attribute_value` VALUES ('151', '27', '48', '3000ml');
+INSERT INTO `pms_product_attribute_value` VALUES ('165', '28', '45', '5.0');
+INSERT INTO `pms_product_attribute_value` VALUES ('166', '28', '46', '4G');
+INSERT INTO `pms_product_attribute_value` VALUES ('167', '28', '47', 'Android');
+INSERT INTO `pms_product_attribute_value` VALUES ('168', '28', '48', '2800ml');
+INSERT INTO `pms_product_attribute_value` VALUES ('169', '29', '45', '4.7');
+INSERT INTO `pms_product_attribute_value` VALUES ('170', '29', '46', '4G');
+INSERT INTO `pms_product_attribute_value` VALUES ('171', '29', '47', 'IOS');
+INSERT INTO `pms_product_attribute_value` VALUES ('172', '29', '48', '1960ml');
+INSERT INTO `pms_product_attribute_value` VALUES ('183', '31', '24', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('184', '31', '25', '夏季');
+INSERT INTO `pms_product_attribute_value` VALUES ('185', '31', '37', '青年');
+INSERT INTO `pms_product_attribute_value` VALUES ('186', '31', '38', '2018年夏');
+INSERT INTO `pms_product_attribute_value` VALUES ('187', '31', '39', '短袖');
+INSERT INTO `pms_product_attribute_value` VALUES ('193', '26', '43', '金色,银色');
+INSERT INTO `pms_product_attribute_value` VALUES ('194', '26', '45', '5.0');
+INSERT INTO `pms_product_attribute_value` VALUES ('195', '26', '46', '4G');
+INSERT INTO `pms_product_attribute_value` VALUES ('196', '26', '47', 'Android');
+INSERT INTO `pms_product_attribute_value` VALUES ('197', '26', '48', '3000');
+INSERT INTO `pms_product_attribute_value` VALUES ('198', '30', '24', null);
+INSERT INTO `pms_product_attribute_value` VALUES ('199', '30', '25', '夏季');
+INSERT INTO `pms_product_attribute_value` VALUES ('200', '30', '37', '青年');
+INSERT INTO `pms_product_attribute_value` VALUES ('201', '30', '38', '2018年夏');
+INSERT INTO `pms_product_attribute_value` VALUES ('202', '30', '39', '短袖');
 
 -- ----------------------------
 -- Table structure for pms_product_category
@@ -930,7 +1002,7 @@ CREATE TABLE `pms_product_full_reduction` (
   `full_price` decimal(10,2) DEFAULT NULL,
   `reduce_price` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='产品满减表(只针对同商品)';
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COMMENT='产品满减表(只针对同商品)';
 
 -- ----------------------------
 -- Records of pms_product_full_reduction
@@ -948,8 +1020,18 @@ INSERT INTO `pms_product_full_reduction` VALUES ('10', '7', '200.00', '50.00');
 INSERT INTO `pms_product_full_reduction` VALUES ('11', '7', '300.00', '100.00');
 INSERT INTO `pms_product_full_reduction` VALUES ('14', '22', '0.00', '0.00');
 INSERT INTO `pms_product_full_reduction` VALUES ('16', '24', '0.00', '0.00');
-INSERT INTO `pms_product_full_reduction` VALUES ('32', '26', '0.00', '0.00');
 INSERT INTO `pms_product_full_reduction` VALUES ('34', '23', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('35', '27', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('39', '28', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('40', '29', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('44', '31', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('46', '32', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('47', '26', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('48', '33', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('53', '36', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('54', '35', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('55', '34', '0.00', '0.00');
+INSERT INTO `pms_product_full_reduction` VALUES ('56', '30', '0.00', '0.00');
 
 -- ----------------------------
 -- Table structure for pms_product_ladder
@@ -962,7 +1044,7 @@ CREATE TABLE `pms_product_ladder` (
   `discount` decimal(10,2) DEFAULT NULL COMMENT '折扣',
   `price` decimal(10,2) DEFAULT NULL COMMENT '折后价格',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='产品阶梯价格表(只针对同商品)';
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='产品阶梯价格表(只针对同商品)';
 
 -- ----------------------------
 -- Records of pms_product_ladder
@@ -980,8 +1062,18 @@ INSERT INTO `pms_product_ladder` VALUES ('14', '7', '4', '0.60', '0.00');
 INSERT INTO `pms_product_ladder` VALUES ('15', '7', '5', '0.50', '0.00');
 INSERT INTO `pms_product_ladder` VALUES ('18', '22', '0', '0.00', '0.00');
 INSERT INTO `pms_product_ladder` VALUES ('20', '24', '0', '0.00', '0.00');
-INSERT INTO `pms_product_ladder` VALUES ('36', '26', '0', '0.00', '0.00');
 INSERT INTO `pms_product_ladder` VALUES ('38', '23', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('39', '27', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('43', '28', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('44', '29', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('48', '31', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('50', '32', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('51', '26', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('52', '33', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('57', '36', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('58', '35', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('59', '34', '0', '0.00', '0.00');
+INSERT INTO `pms_product_ladder` VALUES ('60', '30', '0', '0.00', '0.00');
 
 -- ----------------------------
 -- Table structure for pms_product_operate_log
@@ -1044,7 +1136,7 @@ CREATE TABLE `pms_sku_stock` (
   `pic` varchar(255) DEFAULT NULL COMMENT '展示图片',
   `sale` int(11) DEFAULT NULL COMMENT '销量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COMMENT='sku的库存';
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COMMENT='sku的库存';
 
 -- ----------------------------
 -- Records of pms_sku_stock
@@ -1062,14 +1154,14 @@ INSERT INTO `pms_sku_stock` VALUES ('10', '7', 'string', '0.00', '0', '0', 'stri
 INSERT INTO `pms_sku_stock` VALUES ('11', '7', 'string', '0.00', '0', '0', 'string', 'string', 'sp33', 'string', '0');
 INSERT INTO `pms_sku_stock` VALUES ('12', '22', '111', '99.00', null, null, 'x', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', null);
 INSERT INTO `pms_sku_stock` VALUES ('13', '22', '112', '99.00', null, null, 'xx', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2018032614134591_20180326141345650 (4).png', null);
-INSERT INTO `pms_sku_stock` VALUES ('70', '26', '201806070026001', '3788.00', null, null, '金色', '16G', null, null, null);
-INSERT INTO `pms_sku_stock` VALUES ('71', '26', '201806070026002', '3788.00', null, null, '金色', '32G', null, null, null);
-INSERT INTO `pms_sku_stock` VALUES ('72', '26', '201806070026003', '3788.00', null, null, '银色', '16G', null, null, null);
-INSERT INTO `pms_sku_stock` VALUES ('73', '26', '201806070026004', '3788.00', null, null, '银色', '32G', null, null, null);
 INSERT INTO `pms_sku_stock` VALUES ('78', '23', '201806070023001', '99.00', null, null, '米白色', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', null);
 INSERT INTO `pms_sku_stock` VALUES ('79', '23', '201806070023002', '99.00', null, null, '米白色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', null);
 INSERT INTO `pms_sku_stock` VALUES ('80', '23', '201806070023003', '99.00', null, null, '浅黄色', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null);
 INSERT INTO `pms_sku_stock` VALUES ('81', '23', '201806070023004', '99.00', null, null, '浅黄色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null);
+INSERT INTO `pms_sku_stock` VALUES ('86', '26', '201806070026001', '3788.00', null, null, '金色', '16G', null, null, null);
+INSERT INTO `pms_sku_stock` VALUES ('87', '26', '201806070026002', '3788.00', null, null, '金色', '32G', null, null, null);
+INSERT INTO `pms_sku_stock` VALUES ('88', '26', '201806070026003', '3788.00', null, null, '银色', '16G', null, null, null);
+INSERT INTO `pms_sku_stock` VALUES ('89', '26', '201806070026004', '3788.00', null, null, '银色', '32G', null, null, null);
 
 -- ----------------------------
 -- Table structure for sms_coupon
@@ -1296,7 +1388,7 @@ CREATE TABLE `ums_admin` (
 -- ----------------------------
 -- Records of ums_admin
 -- ----------------------------
-INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://img3.imgtn.bdimg.com/it/u=1760172527,1473711532&fm=27&gp=0.jpg', null);
+INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null);
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log
