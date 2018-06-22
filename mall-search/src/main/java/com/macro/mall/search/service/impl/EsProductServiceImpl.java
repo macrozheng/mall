@@ -105,11 +105,11 @@ public class EsProductServiceImpl implements EsProductService {
         }
         //搜索
         FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
-                .add(QueryBuilders.matchPhraseQuery("name", keyword),
+                .add(QueryBuilders.matchQuery("name", keyword),
                         ScoreFunctionBuilders.weightFactorFunction(1000))
-                .add(QueryBuilders.matchPhraseQuery("subTitle", keyword),
+                .add(QueryBuilders.matchQuery("subTitle", keyword),
                         ScoreFunctionBuilders.weightFactorFunction(500))
-                .add(QueryBuilders.matchPhraseQuery("keywords", keyword),
+                .add(QueryBuilders.matchQuery("keywords", keyword),
                         ScoreFunctionBuilders.weightFactorFunction(200))
                 .scoreMode("sum").setMinScore(10f);
         if (StringUtils.isEmpty(keyword)) {
