@@ -1,6 +1,5 @@
 package com.macro.mall.search.domain;
 
-import com.macro.mall.model.PmsProductAttributeValue;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -42,7 +41,8 @@ public class EsProduct implements Serializable {
     private Integer stock;
     private Integer promotionType;
     private Integer sort;
-    private List<PmsProductAttributeValue> attrValueList;
+    @Field(type =FieldType.Nested)
+    private List<EsProductAttributeValue> attrValueList;
 
     public Long getId() {
         return id;
@@ -172,11 +172,11 @@ public class EsProduct implements Serializable {
         this.sort = sort;
     }
 
-    public List<PmsProductAttributeValue> getAttrValueList() {
+    public List<EsProductAttributeValue> getAttrValueList() {
         return attrValueList;
     }
 
-    public void setAttrValueList(List<PmsProductAttributeValue> attrValueList) {
+    public void setAttrValueList(List<EsProductAttributeValue> attrValueList) {
         this.attrValueList = attrValueList;
     }
 

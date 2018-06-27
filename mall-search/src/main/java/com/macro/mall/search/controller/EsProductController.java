@@ -2,6 +2,7 @@ package com.macro.mall.search.controller;
 
 import com.macro.mall.search.domain.CommonResult;
 import com.macro.mall.search.domain.EsProduct;
+import com.macro.mall.search.domain.EsProductRelatedInfo;
 import com.macro.mall.search.service.EsProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -83,5 +84,23 @@ public class EsProductController {
                          @RequestParam(required = false, defaultValue = "0") Integer sort) {
         Page<EsProduct> esProductPage = esProductService.search(keyword, brandId, productCategoryId, pageNum, pageSize, sort);
         return new CommonResult().pageSuccess(esProductPage);
+    }
+
+    @ApiOperation(value = "根据商品id推荐商品")
+    @RequestMapping(value = "/recommend/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object recommend(@PathVariable Long id,
+                            @RequestParam(required = false, defaultValue = "0") Integer pageNum,
+                            @RequestParam(required = false, defaultValue = "5") Integer pageSize){
+        Page<EsProduct> esProductPage = esProductService.recommend(id, pageNum, pageSize);
+        return new CommonResult().pageSuccess(esProductPage);
+    }
+
+    @ApiOperation(value = "获取搜索的相关品牌、分类及筛选属性")
+    @RequestMapping(value = "/search/relate",method = RequestMethod.GET)
+    @ResponseBody
+    public Object searchRelatedInfo(@RequestParam(required = false) String keyword){
+        EsProductRelatedInfo productRelatedInfo = esProductService.searchRelatedInfo(keyword);
+        return new CommonResult().success(productRelatedInfo);
     }
 }

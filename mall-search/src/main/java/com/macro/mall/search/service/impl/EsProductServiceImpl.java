@@ -2,20 +2,31 @@ package com.macro.mall.search.service.impl;
 
 import com.macro.mall.search.dao.EsProductDao;
 import com.macro.mall.search.domain.EsProduct;
+import com.macro.mall.search.domain.EsProductRelatedInfo;
 import com.macro.mall.search.repository.EsProductRepository;
 import com.macro.mall.search.service.EsProductService;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
+import org.elasticsearch.search.aggregations.AbstractAggregationBuilder;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.filter.InternalFilter;
+import org.elasticsearch.search.aggregations.bucket.terms.LongTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
@@ -25,6 +36,7 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -33,11 +45,13 @@ import java.util.List;
  */
 @Service
 public class EsProductServiceImpl implements EsProductService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EsProductServiceImpl.class);
     @Autowired
     private EsProductDao productDao;
     @Autowired
     private EsProductRepository productRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(EsProductServiceImpl.class);
+    @Autowired
+    private ElasticsearchTemplate elasticsearchTemplate;
     @Override
     public int importAll() {
         List<EsProduct> esProductList = productDao.getAllEsProductList(null);
@@ -106,12 +120,13 @@ public class EsProductServiceImpl implements EsProductService {
         //搜索
         FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
                 .add(QueryBuilders.matchQuery("name", keyword),
-                        ScoreFunctionBuilders.weightFactorFunction(1000))
+                        ScoreFunctionBuilders.weightFactorFunction(10))
                 .add(QueryBuilders.matchQuery("subTitle", keyword),
-                        ScoreFunctionBuilders.weightFactorFunction(500))
+                        ScoreFunctionBuilders.weightFactorFunction(5))
                 .add(QueryBuilders.matchQuery("keywords", keyword),
-                        ScoreFunctionBuilders.weightFactorFunction(200))
-                .scoreMode("sum").setMinScore(10f);
+                        ScoreFunctionBuilders.weightFactorFunction(2))
+                .scoreMode("sum")
+                .setMinScore(2);
         if (StringUtils.isEmpty(keyword)) {
             nativeSearchQueryBuilder.withQuery(QueryBuilders.matchAllQuery());
         } else {
@@ -137,7 +152,111 @@ public class EsProductServiceImpl implements EsProductService {
         nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
         nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
         NativeSearchQuery searchQuery = nativeSearchQueryBuilder.build();
-//        LOGGER.info("DSL:{}", searchQuery.getQuery().toString());
+        LOGGER.info("DSL:{}", searchQuery.getQuery().toString());
         return productRepository.search(searchQuery);
+    }
+
+    @Override
+    public Page<EsProduct> recommend(Long id, Integer pageNum, Integer pageSize) {
+        Pageable pageable = new PageRequest(pageNum, pageSize);
+        List<EsProduct> esProductList = productDao.getAllEsProductList(id);
+        if (esProductList.size() > 0) {
+            EsProduct esProduct = esProductList.get(0);
+            String keyword = esProduct.getName();
+            Long brandId = esProduct.getBrandId();
+            Long productCategoryId = esProduct.getProductCategoryId();
+            //根据商品标题、品牌、分类进行搜索
+            FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
+                    .add(QueryBuilders.matchQuery("name",keyword),ScoreFunctionBuilders.weightFactorFunction(8))
+                    .add(QueryBuilders.matchQuery("subTitle",keyword),ScoreFunctionBuilders.weightFactorFunction(2))
+                    .add(QueryBuilders.matchQuery("keywords",keyword),ScoreFunctionBuilders.weightFactorFunction(2))
+                    .add(QueryBuilders.termQuery("brandId",brandId),ScoreFunctionBuilders.weightFactorFunction(10))
+                    .add(QueryBuilders.matchQuery("productCategoryId",productCategoryId),ScoreFunctionBuilders.weightFactorFunction(6))
+                    .scoreMode("sum")
+                    .setMinScore(2);
+            NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
+            builder.withQuery(functionScoreQueryBuilder);
+            builder.withPageable(pageable);
+            NativeSearchQuery searchQuery = builder.build();
+            LOGGER.info("DSL:{}", searchQuery.getQuery().toString());
+            return productRepository.search(searchQuery);
+        }
+        return new PageImpl<>(null);
+    }
+
+    @Override
+    public EsProductRelatedInfo searchRelatedInfo(String keyword) {
+        NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
+        //搜索条件
+        if(StringUtils.isEmpty(keyword)){
+            builder.withQuery(QueryBuilders.matchAllQuery());
+        }else{
+            builder.withQuery(QueryBuilders.multiMatchQuery(keyword,"name","subTitle","keywords"));
+        }
+        //聚合搜索品牌名称
+        builder.addAggregation(AggregationBuilders.terms("brandNames").field("brandName"));
+        //集合搜索分类名称
+        builder.addAggregation(AggregationBuilders.terms("productCategoryNames").field("productCategoryName"));
+        //聚合搜索商品属性，去除type=1的属性
+        AbstractAggregationBuilder aggregationBuilder = AggregationBuilders.nested("allAttrValues")
+                .path("attrValueList")
+                .subAggregation(AggregationBuilders.filter("productAttrs")
+                .filter(QueryBuilders.termQuery("attrValueList.type",1))
+                .subAggregation(AggregationBuilders.terms("attrIds")
+                        .field("attrValueList.productAttributeId")
+                        .subAggregation(AggregationBuilders.terms("attrValues")
+                                .field("attrValueList.value"))
+                        .subAggregation(AggregationBuilders.terms("attrNames")
+                                .field("attrValueList.name"))));
+        builder.addAggregation(aggregationBuilder);
+        NativeSearchQuery searchQuery = builder.build();
+        return elasticsearchTemplate.query(searchQuery, response -> {
+            LOGGER.info("DSL:{}",searchQuery.getQuery().toString());
+            return convertProductRelatedInfo(response);
+        });
+    }
+
+    /**
+     * 将返回结果转换为对象
+     */
+    private EsProductRelatedInfo convertProductRelatedInfo(SearchResponse response) {
+        EsProductRelatedInfo productRelatedInfo = new EsProductRelatedInfo();
+        Map<String, Aggregation> aggregationMap = response.getAggregations().getAsMap();
+        //设置品牌
+        Aggregation brandNames = aggregationMap.get("brandNames");
+        List<String> brandNameList = new ArrayList<>();
+        for(int i = 0; i<((StringTerms) brandNames).getBuckets().size(); i++){
+            brandNameList.add(((StringTerms) brandNames).getBuckets().get(i).getKeyAsString());
+        }
+        productRelatedInfo.setBrandNames(brandNameList);
+        //设置分类
+        Aggregation productCategoryNames = aggregationMap.get("productCategoryNames");
+        List<String> productCategoryNameList = new ArrayList<>();
+        for(int i=0;i<((StringTerms) productCategoryNames).getBuckets().size();i++){
+            productCategoryNameList.add(((StringTerms) productCategoryNames).getBuckets().get(i).getKeyAsString());
+        }
+        productRelatedInfo.setProductCategoryNames(productCategoryNameList);
+        //设置参数
+        Aggregation productAttrs = aggregationMap.get("allAttrValues");
+        List<Terms.Bucket> attrIds = ((LongTerms) ((InternalFilter)productAttrs.getProperty("productAttrs")).getAggregations().getProperty("attrIds")).getBuckets();
+        List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
+        for (Terms.Bucket attrId : attrIds) {
+            EsProductRelatedInfo.ProductAttr attr = new EsProductRelatedInfo.ProductAttr();
+            attr.setAttrId((Long) attrId.getKey());
+            List<String> attrValueList = new ArrayList<>();
+            List<Terms.Bucket> attrValues = ((StringTerms) attrId.getAggregations().get("attrValues")).getBuckets();
+            List<Terms.Bucket> attrNames = ((StringTerms) attrId.getAggregations().get("attrNames")).getBuckets();
+            for (Terms.Bucket attrValue : attrValues) {
+                attrValueList.add(attrValue.getKeyAsString());
+            }
+            attr.setAttrValues(attrValueList);
+            if(!CollectionUtils.isEmpty(attrNames)){
+                String attrName = attrNames.get(0).getKeyAsString();
+                attr.setAttrName(attrName);
+            }
+            attrList.add(attr);
+        }
+        productRelatedInfo.setProductAttrs(attrList);
+        return productRelatedInfo;
     }
 }

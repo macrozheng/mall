@@ -1,6 +1,7 @@
 package com.macro.mall.search.service;
 
 import com.macro.mall.search.domain.EsProduct;
+import com.macro.mall.search.domain.EsProductRelatedInfo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -39,4 +40,14 @@ public interface EsProductService {
      * 根据关键字搜索名称或者副标题复合查询
      */
     Page<EsProduct> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize,Integer sort);
+
+    /**
+     * 根据商品id推荐相关商品
+     */
+    Page<EsProduct> recommend(Long id, Integer pageNum, Integer pageSize);
+
+    /**
+     * 获取搜索词相关品牌、分类、属性
+     */
+    EsProductRelatedInfo searchRelatedInfo(String keyword);
 }

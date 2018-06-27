@@ -3,7 +3,12 @@
 <mapper namespace="com.macro.mall.search.dao.EsProductDao">
     <resultMap id="esProductListMap" type="com.macro.mall.search.domain.EsProduct" autoMapping="true">
         <id column="id" jdbcType="BIGINT" property="id" />
-        <collection property="attrValueList" columnPrefix="attr_" resultMap="com.macro.mall.mapper.PmsProductAttributeValueMapper.BaseResultMap">
+        <collection property="attrValueList" columnPrefix="attr_" ofType="com.macro.mall.search.domain.EsProductAttributeValue">
+            <id column="id" property="id" jdbcType="BIGINT"/>
+            <result column="product_attribute_id" property="productAttributeId" jdbcType="BIGINT"/>
+            <result column="value" property="value" jdbcType="VARCHAR"/>
+            <result column="type" property="type"/>
+            <result column="name" property="name"/>
         </collection>
     </resultMap>
     <select id="getAllEsProductList" resultMap="esProductListMap">
@@ -25,11 +30,14 @@
             p.promotion_type promotionType,
             P.keywords keywords,
             p.sort sort,
-            a.id attr_id,
-            a.value attr_value,
-            a.product_attribute_id attr_product_attribute_id
+            pav.id attr_id,
+            pav.value attr_value,
+            pav.product_attribute_id attr_product_attribute_id,
+            pa.type attr_type,
+            pa.name attr_name
         from pms_product p
-        left join pms_product_attribute_value a on p.id = a.product_id
+        left join pms_product_attribute_value pav on p.id = pav.product_id
+        left join pms_product_attribute pa on pav.product_attribute_id= pa.id
         where delete_status = 0 and publish_status = 1
         <if test="id!=null">
             and p.id=#{id}
