@@ -48,7 +48,7 @@ public class MemberCollectionController {
     @ApiOperation("显示关注列表")
     @RequestMapping(value = "/listProduct/{memberId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@PathVariable Long memberId) {
+    public Object listProduct(@PathVariable Long memberId) {
         List<MemberProductCollection> memberProductCollectionList = memberCollectionService.listProduct(memberId);
         return new CommonResult().success(memberProductCollectionList);
     }
