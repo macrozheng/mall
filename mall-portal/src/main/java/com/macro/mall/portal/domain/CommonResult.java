@@ -31,6 +31,16 @@ public class CommonResult {
     }
 
     /**
+     * 普通成功返回
+     */
+    public CommonResult success(String message,Object data) {
+        this.code = SUCCESS;
+        this.message = message;
+        this.data = data;
+        return this;
+    }
+
+    /**
      * 返回分页成功数据
      */
     public CommonResult pageSuccess(Page pageInfo) {
@@ -52,6 +62,12 @@ public class CommonResult {
     public CommonResult failed() {
         this.code = FAILED;
         this.message = "操作失败";
+        return this;
+    }
+
+    public CommonResult failed(String message){
+        this.code = FAILED;
+        this.message = message;
         return this;
     }
 
