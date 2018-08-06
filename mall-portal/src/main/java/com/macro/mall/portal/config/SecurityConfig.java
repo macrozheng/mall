@@ -1,6 +1,7 @@
 package com.macro.mall.portal.config;
 
 import com.macro.mall.model.UmsMember;
+import com.macro.mall.portal.component.*;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()// 除上面外的所有请求全部需要鉴权认证
                 .authenticated()
                 .and()
-                .csrf().disable();
+                .exceptionHandling()
+                .accessDeniedHandler(new GoAccessDeniedHandler())
+                .authenticationEntryPoint(new GoAuthenticationEntryPoint())
+                .and()
+                .formLogin()
+                .loginPage("/sso/login")
+                .successHandler(new GoAuthenticationSuccessHandler())
+                .failureHandler(new GoAuthenticationFailureHandler())
+                .and()
+                .logout()
+                .logoutUrl("/sso/logout")
+                .logoutSuccessHandler(new GoLogoutSuccessHandler())
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+//                .and()
+//                .requiresChannel()
+//                .antMatchers("/sso/*").requiresSecure()
+//                .anyRequest().requiresInsecure()
+//                .and()
+//                .rememberMe()
+//                .tokenValiditySeconds(1800)
+//                .key("token_key")
+                .and()
+                .csrf()
+                .disable();//开启basic认证登录后可以调用需要认证的接口
     }
 
     @Override

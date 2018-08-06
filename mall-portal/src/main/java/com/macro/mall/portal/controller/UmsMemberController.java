@@ -22,12 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UmsMemberController {
     @Autowired
     private UmsMemberService memberService;
-    @ApiOperation("登录")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public Object login(@RequestParam String username, @RequestParam String password) {
-        return memberService.login(username,password);
-    }
 
     @ApiOperation("注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -36,8 +30,8 @@ public class UmsMemberController {
                            @RequestParam String password,
                            @RequestParam String telephone,
                            @RequestParam String authCode) {
-        UmsMember member = memberService.register(username,password,telephone,authCode);
-        if(member!=null){
+        UmsMember member = memberService.register(username, password, telephone, authCode);
+        if (member != null) {
             return new CommonResult().success(member);
         }
         return new CommonResult().failed();
@@ -56,13 +50,6 @@ public class UmsMemberController {
     public Object updatePassword(@RequestParam String telephone,
                                  @RequestParam String password,
                                  @RequestParam String authCode) {
-        return null;
-    }
-
-    @ApiOperation("登出操作")
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    @ResponseBody
-    public Object logout() {
-        return null;
+        return memberService.updatePassword(telephone,password,authCode);
     }
 }

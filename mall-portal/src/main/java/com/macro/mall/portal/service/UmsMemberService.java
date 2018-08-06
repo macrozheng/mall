@@ -21,12 +21,13 @@ public interface UmsMemberService {
     UmsMember register(String username, String password, String telephone, String authCode);
 
     /**
-     * 登录操作
-     */
-    CommonResult login(String username, String password);
-
-    /**
      * 生成验证码
      */
     CommonResult generateAuthCode(String telephone);
+
+    /**
+     * 修改密码
+     */
+    @Transactional
+    CommonResult updatePassword(String telephone, String password, String authCode);
 }

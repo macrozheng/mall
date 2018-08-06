@@ -8,19 +8,14 @@ import com.macro.mall.model.UmsMemberLevel;
 import com.macro.mall.model.UmsMemberLevelExample;
 import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.service.UmsMemberService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 会员管理Service实现类
@@ -34,9 +29,6 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     private UmsMemberLevelMapper memberLevelMapper;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberServiceImpl.class);
 
     @Override
     public UmsMember getByUsername(String username) {
@@ -79,22 +71,29 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     }
 
     @Override
-    public CommonResult login(String username, String password) {
-        CommonResult result;
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(username, passwordEncoder.encodePassword(password, null));
-        try {
-            authenticationManager.authenticate(authentication);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            result = new CommonResult().success("登录成功");
-        } catch (AuthenticationException e) {
-            LOGGER.warn("登录异常:{}", e.getMessage());
-            result = new CommonResult().failed("登录异常:"+e.getMessage());
+    public CommonResult generateAuthCode(String telephone) {
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for(int i=0;i<6;i++){
+            sb.append(random.nextInt(10));
         }
-        return result;
+        // TODO: 2018/8/6 验证码进行存储
+        return new CommonResult().success("获取验证码成功",sb.toString());
     }
 
     @Override
-    public CommonResult generateAuthCode(String telephone) {
-        return null;
+    public CommonResult updatePassword(String telephone, String password, String authCode) {
+        UmsMemberExample example = new UmsMemberExample();
+        example.createCriteria().andPhoneEqualTo(telephone);
+        List<UmsMember> memberList = memberMapper.selectByExample(example);
+        if(CollectionUtils.isEmpty(memberList)){
+            return new CommonResult().failed("该账号不存在");
+        }
+        // TODO: 2018/8/6 验证验证码
+        UmsMember umsMember = memberList.get(0);
+        umsMember.setPassword(passwordEncoder.encodePassword(password,null));
+        memberMapper.updateByPrimaryKeySelective(umsMember);
+        return new CommonResult().success("密码修改成功",null);
     }
+
 }
