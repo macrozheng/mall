@@ -4,6 +4,7 @@ import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.CartProduct;
 import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.service.OmsCartItemService;
+import com.macro.mall.portal.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,14 @@ import java.util.List;
 public class OmsCartItemController {
     @Autowired
     private OmsCartItemService cartItemService;
+    @Autowired
+    private UmsMemberService memberService;
 
     @ApiOperation("添加商品到购物车")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public Object add(@RequestBody OmsCartItem cartItem) {
+        cartItem.setMemberId(memberService.getCurrentMember().getId());
         int count = cartItemService.add(cartItem);
         if (count > 0) {
             return new CommonResult().success(count);
@@ -35,10 +39,10 @@ public class OmsCartItemController {
     }
 
     @ApiOperation("获取某个会员的购物车列表")
-    @RequestMapping(value = "/list/{memberId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@PathVariable Long memberId) {
-        List<OmsCartItem> cartItemList = cartItemService.list(memberId);
+    public Object list() {
+        List<OmsCartItem> cartItemList = cartItemService.list(memberService.getCurrentMember().getId());
         return new CommonResult().success(cartItemList);
     }
 
@@ -46,9 +50,8 @@ public class OmsCartItemController {
     @RequestMapping(value = "/update/quantity", method = RequestMethod.GET)
     @ResponseBody
     public Object updateQuantity(@RequestParam Long id,
-                                 @RequestParam Long memberId,
                                  @RequestParam Integer quantity) {
-        int count = cartItemService.updateQuantity(id,memberId,quantity);
+        int count = cartItemService.updateQuantity(id,memberService.getCurrentMember().getId(),quantity);
         if (count > 0) {
             return new CommonResult().success(count);
         }
@@ -67,6 +70,7 @@ public class OmsCartItemController {
     @RequestMapping(value = "/update/attr", method = RequestMethod.POST)
     @ResponseBody
     public Object updateAttr(@RequestBody OmsCartItem cartItem) {
+        cartItem.setMemberId(memberService.getCurrentMember().getId());
         int count = cartItemService.updateAttr(cartItem);
         if (count > 0) {
             return new CommonResult().success(count);
@@ -77,8 +81,8 @@ public class OmsCartItemController {
     @ApiOperation("删除购物车中的某个商品")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public Object delete(@RequestParam Long memberId,@RequestParam("ids") List<Long> ids) {
-        int count = cartItemService.delete(memberId,ids);
+    public Object delete(@RequestParam("ids") List<Long> ids) {
+        int count = cartItemService.delete(memberService.getCurrentMember().getId(),ids);
         if (count > 0) {
             return new CommonResult().success(count);
         }

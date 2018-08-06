@@ -30,4 +30,6 @@ public interface UmsMemberService {
      */
     @Transactional
     CommonResult updatePassword(String telephone, String password, String authCode);
+
+    UmsMember getCurrentMember();
 }

@@ -54,4 +54,8 @@ public class MemberDetails implements UserDetails {
     public boolean isEnabled() {
         return umsMember.getStatus()==1;
     }
+
+    public UmsMember getUmsMember() {
+        return umsMember;
+    }
 }

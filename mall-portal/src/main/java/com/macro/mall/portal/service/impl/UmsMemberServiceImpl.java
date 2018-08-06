@@ -7,9 +7,13 @@ import com.macro.mall.model.UmsMemberExample;
 import com.macro.mall.model.UmsMemberLevel;
 import com.macro.mall.model.UmsMemberLevelExample;
 import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -94,6 +98,14 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         umsMember.setPassword(passwordEncoder.encodePassword(password,null));
         memberMapper.updateByPrimaryKeySelective(umsMember);
         return new CommonResult().success("密码修改成功",null);
+    }
+
+    @Override
+    public UmsMember getCurrentMember() {
+        SecurityContext ctx = SecurityContextHolder.getContext();
+        Authentication auth = ctx.getAuthentication();
+        MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+        return memberDetails.getUmsMember();
     }
 
 }
