@@ -1,7 +1,5 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.model.UmsMember;
-import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,11 +28,7 @@ public class UmsMemberController {
                            @RequestParam String password,
                            @RequestParam String telephone,
                            @RequestParam String authCode) {
-        UmsMember member = memberService.register(username, password, telephone, authCode);
-        if (member != null) {
-            return new CommonResult().success(member);
-        }
-        return new CommonResult().failed();
+        return memberService.register(username, password, telephone, authCode);
     }
 
     @ApiOperation("获取验证码")

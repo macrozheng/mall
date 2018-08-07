@@ -50,13 +50,14 @@ JWT登录、注册、获取token | ✔
 JTA事务处理 | ✔
 集成单元测试 | ✔
 OSS上传功能 | ✔
-SpringSecurity权限管理功能 |
 Elasticsearch搜索功能 | ✔
-Elasticsearch日志收集功能 |
+SpringSecurity权限管理功能 |
+HTTPS支持 | ✔
+日志收集功能 |
 数字型ID生成 |
-HTTPS支持 |
 定时任务支持 |
 RestTemplate服务间调用 |
+docker容器化部署 |
 
 ### 后台功能
 
@@ -283,7 +284,7 @@ RestTemplate服务间调用 |
 - 在线支付选择支付方式：支付宝、微信、银联、ApplePay
 - 支付完成后修改订单状态为已支付、扣除库存
 
-#### 会员模块（我的）
+#### 会员模块（我的）✔
 
 > **我的关注**
 

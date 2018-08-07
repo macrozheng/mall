@@ -18,7 +18,7 @@ public interface UmsMemberService {
      * 用户注册
      */
     @Transactional
-    UmsMember register(String username, String password, String telephone, String authCode);
+    CommonResult register(String username, String password, String telephone, String authCode);
 
     /**
      * 生成验证码
@@ -31,5 +31,8 @@ public interface UmsMemberService {
     @Transactional
     CommonResult updatePassword(String telephone, String password, String authCode);
 
+    /**
+     * 获取当前登录会员
+     */
     UmsMember getCurrentMember();
 }
