@@ -26,14 +26,15 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
 
     @Override
     public int add(OmsCartItem cartItem) {
+        int count;
         OmsCartItem existCartItem = getCartItem(cartItem);
         if (existCartItem == null) {
-            cartItemMapper.insert(cartItem);
+            count = cartItemMapper.insert(cartItem);
         } else {
             existCartItem.setQuantity(existCartItem.getQuantity() + cartItem.getQuantity());
-            cartItemMapper.updateByPrimaryKey(existCartItem);
+            count = cartItemMapper.updateByPrimaryKey(existCartItem);
         }
-        return 1;
+        return count;
     }
 
     /**
