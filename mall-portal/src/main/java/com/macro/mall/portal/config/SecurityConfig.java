@@ -45,6 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/sso/*")// 对登录注册要允许匿名访问
                 .permitAll()
+                .antMatchers("/member/**")// 测试mongo时开启
+                .permitAll()
                 .anyRequest()// 除上面外的所有请求全部需要鉴权认证
                 .authenticated()
                 .and()
