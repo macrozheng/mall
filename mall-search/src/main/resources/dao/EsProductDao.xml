@@ -28,7 +28,7 @@
             p.recommand_status recommandStatus,
             p.stock stock,
             p.promotion_type promotionType,
-            P.keywords keywords,
+            p.keywords keywords,
             p.sort sort,
             pav.id attr_id,
             pav.value attr_value,

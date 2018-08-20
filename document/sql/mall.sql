@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-06-21 10:11:27
+Date: 2018-08-20 13:53:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -138,7 +138,7 @@ CREATE TABLE `cms_subject` (
   `content` text,
   `forward_count` int(11) DEFAULT NULL COMMENT '转发数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='专题表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='专题表';
 
 -- ----------------------------
 -- Records of cms_subject
@@ -277,6 +277,41 @@ CREATE TABLE `cms_topic_comment` (
 -- ----------------------------
 -- Records of cms_topic_comment
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for oms_cart_item
+-- ----------------------------
+DROP TABLE IF EXISTS `oms_cart_item`;
+CREATE TABLE `oms_cart_item` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `product_id` bigint(20) DEFAULT NULL,
+  `product_sku_id` bigint(20) DEFAULT NULL,
+  `member_id` bigint(20) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL COMMENT '购买数量',
+  `price` decimal(10,2) DEFAULT NULL COMMENT '添加到购物车的价格',
+  `sp1` varchar(200) DEFAULT NULL COMMENT '销售属性1',
+  `sp2` varchar(200) DEFAULT NULL COMMENT '销售属性2',
+  `sp3` varchar(200) DEFAULT NULL COMMENT '销售属性3',
+  `product_pic` varchar(1000) DEFAULT NULL COMMENT '商品主图',
+  `product_name` varchar(500) DEFAULT NULL COMMENT '商品名称',
+  `product_sub_title` varchar(500) DEFAULT NULL COMMENT '商品副标题（卖点）',
+  `product_sku_code` varchar(200) DEFAULT NULL COMMENT '商品sku条码',
+  `member_nickname` varchar(500) DEFAULT NULL COMMENT '会员昵称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `modify_date` datetime DEFAULT NULL COMMENT '修改时间',
+  `delete_status` int(1) DEFAULT '0' COMMENT '是否删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='购物车表';
+
+-- ----------------------------
+-- Records of oms_cart_item
+-- ----------------------------
+INSERT INTO `oms_cart_item` VALUES ('3', '26', null, '1', '4', '3788.00', null, null, null, null, '华为 HUAWEI P20', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', null, 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '1');
+INSERT INTO `oms_cart_item` VALUES ('4', '26', null, '1', '2', '3788.00', '金色', '16G', null, null, '华为 HUAWEI P20', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', null, 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '1');
+INSERT INTO `oms_cart_item` VALUES ('5', '27', null, '1', '4', '2699.00', null, null, null, null, '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '骁龙845处理器，红外人脸解锁，AI变焦双摄，AI语音助手小米6X低至1299，点击抢购', null, 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '0');
+INSERT INTO `oms_cart_item` VALUES ('6', '26', '86', '1', '2', '3788.00', '金色', '16G', null, null, '华为 HUAWEI P20', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', '201806070026001', 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '1');
+INSERT INTO `oms_cart_item` VALUES ('7', '26', '89', '1', '3', '3788.00', '银色', '32G', null, null, '华为 HUAWEI P20', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', '201806070026004', 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '1');
+INSERT INTO `oms_cart_item` VALUES ('8', '26', '88', '1', '4', '3788.00', '银色', '16G', null, null, '华为 HUAWEI P20', 'AI智慧全面屏 6GB +64GB 亮黑色 全网通版 移动联通电信4G手机 双卡双待手机 双卡双待', '201806070026003', 'windir', '2018-08-02 10:23:09', '2018-08-02 10:23:09', '0');
 
 -- ----------------------------
 -- Table structure for oms_company_address
@@ -608,7 +643,7 @@ CREATE TABLE `pms_member_price` (
   `member_price` decimal(10,2) DEFAULT NULL COMMENT '会员价格',
   `member_level_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 COMMENT='商品会员价格表';
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8 COMMENT='商品会员价格表';
 
 -- ----------------------------
 -- Records of pms_member_price
@@ -816,7 +851,7 @@ CREATE TABLE `pms_product_attribute_category` (
   `attribute_count` int(11) DEFAULT '0' COMMENT '属性数量',
   `param_count` int(11) DEFAULT '0' COMMENT '参数数量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='产品属性分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='产品属性分类表';
 
 -- ----------------------------
 -- Records of pms_product_attribute_category
@@ -837,7 +872,7 @@ CREATE TABLE `pms_product_attribute_value` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_id` bigint(20) DEFAULT NULL,
   `product_attribute_id` bigint(20) DEFAULT NULL,
-  `value` varchar(64) DEFAULT NULL COMMENT '存储的值',
+  `value` varchar(64) DEFAULT NULL COMMENT '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8 COMMENT='存储产品参数信息的表';
 
@@ -1489,12 +1524,16 @@ CREATE TABLE `ums_member` (
   `growth` int(11) DEFAULT NULL COMMENT '成长值',
   `luckey_count` int(11) DEFAULT NULL COMMENT '剩余抽奖次数',
   `history_integration` int(11) DEFAULT NULL COMMENT '历史积分数量',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员表';
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_username` (`username`),
+  UNIQUE KEY `idx_phone` (`phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of ums_member
 -- ----------------------------
+INSERT INTO `ums_member` VALUES ('1', '4', 'test', '202cb962ac59075b964b07152d234b70', 'windir', '18061581849', '1', '2018-08-02 10:35:44', null, '1', '2009-06-01', '上海', '学生', 'test', null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('3', '4', 'test1', '698d51a19d8a121ce581499d7b701668', null, '18061581848', '1', '2018-08-03 16:46:38', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for ums_member_level

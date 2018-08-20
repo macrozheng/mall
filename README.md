@@ -9,7 +9,7 @@
 Spring Boot | 容器+MVC框架
 Spring Security | 认证和授权框架
 MyBatis | ORM框架  
-MyBatisGenerator | 代码生成  
+MyBatisGenerator | 数据层代码生成  
 PageHelper | MyBatis物理分页插件  
 Swagger-UI | 文档生产工具
 Hibernator-Validator | 验证框架
@@ -17,6 +17,7 @@ Elasticsearch | 搜索引擎
 RabbitMq | 消息队列
 Redis | 分布式缓存
 MongoDb | NoSql数据库
+Docker | 应用容器引擎
 
 ### 前端技术
 
@@ -51,13 +52,14 @@ JTA事务处理 | ✔
 集成单元测试 | ✔
 OSS上传功能 | ✔
 Elasticsearch搜索功能 | ✔
-SpringSecurity权限管理功能 |
 HTTPS支持 | ✔
-日志收集功能 |
-数字型ID生成 |
-定时任务支持 |
+SpringSecurity权限管理功能 |
+ELK日志收集功能 |
+Redis数字型ID生成 |
+SpringTask定时任务支持 |
 RestTemplate服务间调用 |
-docker容器化部署 |
+docker容器化部署 | ✔
+配置区分生产和测试环境 | ✔
 
 ### 后台功能
 

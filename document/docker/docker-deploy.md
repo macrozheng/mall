@@ -110,3 +110,21 @@ docker pull mongo:3.2
 docker run -p 27017:27017 --name mongo -v $PWD/db:/data/db -d mongo:3.2
 ###使用mongo命令进入容器
 docker exec -it mongo mongo
+
+##SpringBoot应用部署
+**docker容器间进行连接才能互相访问**
+###部署mall-admin
+docker run -p 8080:8080 --name mall-admin \
+--link mysql:db \
+-d mall/mall-admin:0.0.1-SNAPSHOT
+###部署mall-search
+docker run -p 8081:8081 --name mall-search \
+--link elasticsearch:es \
+--link mysql:db \
+-d mall/mall-search:0.0.1-SNAPSHOT
+###部署mall-port
+docker run -p 8085:8085 --name mall-portal \
+--link mysql:db \
+--link redis:redis \
+--link mongo:mongo \
+-d mall/mall-portal:0.0.1-SNAPSHOT
