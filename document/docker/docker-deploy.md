@@ -27,7 +27,7 @@ docker pull mysql:5.7
 ###创建实例并启动
 docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/log:/var/log/mysql \
--v /mydata/mysql/data:/var/lib/mysql/ \
+-v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
 -e MYSQL_ROOT_PASSWORD=123456  \
 -d mysql:5.7
@@ -85,7 +85,10 @@ rabbitmq:management
 ###下载镜像文件
 docker pull elasticsearch:2.4
 ###创建实例并运行
-docker run -p 9200:9200 -p 9300:9300 --name elasticsearch -d elasticsearch:2.4
+docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
+-v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
+-v /mydata/elasticsearch/data:/usr/share/elasticsearch/data \
+-d elasticsearch:2.4
 ###测试
 访问会返回版本信息：http://192.168.1.66:9200/
 ###安装目录位置
@@ -111,7 +114,7 @@ docker run -p 27017:27017 --name mongo -v $PWD/db:/data/db -d mongo:3.2
 ###使用mongo命令进入容器
 docker exec -it mongo mongo
 
-##SpringBoot应用部署
+##SpringBoot应用命令部署
 **docker容器间进行连接才能互相访问**
 ###部署mall-admin
 docker run -p 8080:8080 --name mall-admin \
@@ -128,3 +131,9 @@ docker run -p 8085:8085 --name mall-portal \
 --link redis:redis \
 --link mongo:mongo \
 -d mall/mall-portal:0.0.1-SNAPSHOT
+
+##SpringBoot应用自动化部署
+###部署文件
+document/docker/docker-compose.yml
+###部署命令
+docker-compose up -d
