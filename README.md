@@ -61,6 +61,20 @@ RestTemplate服务间调用 |
 docker容器化部署 | ✔
 配置区分生产和测试环境 | ✔
 
+### 使用工具
+
+工具 | 下载地址 
+----|----
+开发工具idea | https://www.jetbrains.com/idea/download
+redis客户端连接工具 | https://redisdesktop.com/download
+mongo客户端连接工具 | https://robomongo.org/download
+本地host管理 | https://oldj.github.io/SwitchHosts/
+Linux远程连接工具 | http://www.netsarang.com/download/software.html
+数据库连接工具 | http://www.formysql.com/xiazai.html
+数据库设计工具 | http://powerdesigner.de/
+原型设计工具 | https://www.axure.com/
+思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
+
 ### 后台功能
 
 #### 后台登录功能 ✔
