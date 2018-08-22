@@ -27,7 +27,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.macro</groupId>
+            <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

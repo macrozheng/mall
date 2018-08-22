@@ -13,6 +13,8 @@
     <result column="sp3" jdbcType="VARCHAR" property="sp3" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
     <result column="sale" jdbcType="INTEGER" property="sale" />
+    <result column="promotion_price" jdbcType="DECIMAL" property="promotionPrice" />
+    <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, sku_code, price, stock, low_stock, sp1, sp2, sp3, pic, sale
+    id, product_id, sku_code, price, stock, low_stock, sp1, sp2, sp3, pic, sale, promotion_price, 
+    lock_stock
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.PmsSkuStockExample" resultMap="BaseResultMap">
     select
@@ -111,12 +114,12 @@
     </selectKey>
     insert into pms_sku_stock (product_id, sku_code, price, 
       stock, low_stock, sp1, 
-      sp2, sp3, pic, sale
-      )
+      sp2, sp3, pic, sale, 
+      promotion_price, lock_stock)
     values (#{productId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
       #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{sp1,jdbcType=VARCHAR}, 
-      #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{sale,jdbcType=INTEGER}
-      )
+      #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{sale,jdbcType=INTEGER}, 
+      #{promotionPrice,jdbcType=DECIMAL}, #{lockStock,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsSkuStock">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -154,6 +157,12 @@
       <if test="sale != null">
         sale,
       </if>
+      <if test="promotionPrice != null">
+        promotion_price,
+      </if>
+      <if test="lockStock != null">
+        lock_stock,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -185,6 +194,12 @@
       </if>
       <if test="sale != null">
         #{sale,jdbcType=INTEGER},
+      </if>
+      <if test="promotionPrice != null">
+        #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="lockStock != null">
+        #{lockStock,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -230,6 +245,12 @@
       <if test="record.sale != null">
         sale = #{record.sale,jdbcType=INTEGER},
       </if>
+      <if test="record.promotionPrice != null">
+        promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lockStock != null">
+        lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -247,7 +268,9 @@
       sp2 = #{record.sp2,jdbcType=VARCHAR},
       sp3 = #{record.sp3,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
-      sale = #{record.sale,jdbcType=INTEGER}
+      sale = #{record.sale,jdbcType=INTEGER},
+      promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
+      lock_stock = #{record.lockStock,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -285,6 +308,12 @@
       <if test="sale != null">
         sale = #{sale,jdbcType=INTEGER},
       </if>
+      <if test="promotionPrice != null">
+        promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="lockStock != null">
+        lock_stock = #{lockStock,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -299,7 +328,9 @@
       sp2 = #{sp2,jdbcType=VARCHAR},
       sp3 = #{sp3,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
-      sale = #{sale,jdbcType=INTEGER}
+      sale = #{sale,jdbcType=INTEGER},
+      promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+      lock_stock = #{lockStock,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

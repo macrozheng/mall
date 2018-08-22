@@ -56,6 +56,20 @@ public class PmsSkuStock implements Serializable {
      */
     private Integer sale;
 
+    /**
+     * 单品促销价格
+     *
+     * @mbggenerated
+     */
+    private BigDecimal promotionPrice;
+
+    /**
+     * 锁定库存
+     *
+     * @mbggenerated
+     */
+    private Integer lockStock;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -146,6 +160,22 @@ public class PmsSkuStock implements Serializable {
         this.sale = sale;
     }
 
+    public BigDecimal getPromotionPrice() {
+        return promotionPrice;
+    }
+
+    public void setPromotionPrice(BigDecimal promotionPrice) {
+        this.promotionPrice = promotionPrice;
+    }
+
+    public Integer getLockStock() {
+        return lockStock;
+    }
+
+    public void setLockStock(Integer lockStock) {
+        this.lockStock = lockStock;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -163,6 +193,8 @@ public class PmsSkuStock implements Serializable {
         sb.append(", sp3=").append(sp3);
         sb.append(", pic=").append(pic);
         sb.append(", sale=").append(sale);
+        sb.append(", promotionPrice=").append(promotionPrice);
+        sb.append(", lockStock=").append(lockStock);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
