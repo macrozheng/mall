@@ -53,13 +53,13 @@ JTA事务处理 | ✔
 OSS上传功能 | ✔
 Elasticsearch搜索功能 | ✔
 HTTPS支持 | ✔
-SpringSecurity权限管理功能 |
 ELK日志收集功能 |
 Redis数字型ID生成 |
-SpringTask定时任务支持 |
+SpringTask定时任务支持 | ✔
 RestTemplate服务间调用 |
 docker容器化部署 | ✔
 配置区分生产和测试环境 | ✔
+SpringSecurity权限管理功能 |
 
 ### 使用工具
 
