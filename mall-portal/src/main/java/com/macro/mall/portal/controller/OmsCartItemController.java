@@ -2,6 +2,7 @@ package com.macro.mall.portal.controller;
 
 import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.CartProduct;
+import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.service.OmsCartItemService;
 import com.macro.mall.portal.service.UmsMemberService;
@@ -30,7 +31,6 @@ public class OmsCartItemController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public Object add(@RequestBody OmsCartItem cartItem) {
-        cartItem.setMemberId(memberService.getCurrentMember().getId());
         int count = cartItemService.add(cartItem);
         if (count > 0) {
             return new CommonResult().success(count);
@@ -44,6 +44,14 @@ public class OmsCartItemController {
     public Object list() {
         List<OmsCartItem> cartItemList = cartItemService.list(memberService.getCurrentMember().getId());
         return new CommonResult().success(cartItemList);
+    }
+
+    @ApiOperation("获取某个会员的购物车列表,包括促销信息")
+    @RequestMapping(value = "/list/promotion", method = RequestMethod.GET)
+    @ResponseBody
+    public Object listPromotion() {
+        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId());
+        return new CommonResult().success(cartPromotionItemList);
     }
 
     @ApiOperation("修改购物车中某个商品的数量")
@@ -70,7 +78,6 @@ public class OmsCartItemController {
     @RequestMapping(value = "/update/attr", method = RequestMethod.POST)
     @ResponseBody
     public Object updateAttr(@RequestBody OmsCartItem cartItem) {
-        cartItem.setMemberId(memberService.getCurrentMember().getId());
         int count = cartItemService.updateAttr(cartItem);
         if (count > 0) {
             return new CommonResult().success(count);
@@ -83,6 +90,17 @@ public class OmsCartItemController {
     @ResponseBody
     public Object delete(@RequestParam("ids") List<Long> ids) {
         int count = cartItemService.delete(memberService.getCurrentMember().getId(),ids);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
+
+    @ApiOperation("清空购物车")
+    @RequestMapping(value = "/clear", method = RequestMethod.POST)
+    @ResponseBody
+    public Object clear() {
+        int count = cartItemService.clear(memberService.getCurrentMember().getId());
         if (count > 0) {
             return new CommonResult().success(count);
         }

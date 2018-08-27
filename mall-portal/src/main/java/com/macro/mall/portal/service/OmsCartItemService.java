@@ -2,6 +2,7 @@ package com.macro.mall.portal.service;
 
 import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.CartProduct;
+import com.macro.mall.portal.domain.CartPromotionItem;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -23,6 +24,11 @@ public interface OmsCartItemService {
     List<OmsCartItem> list(Long memberId);
 
     /**
+     * 获取包含促销活动信息的购物车列表
+     */
+    List<CartPromotionItem> listPromotion(Long memberId);
+
+    /**
      * 修改某个购物车商品的数量
      */
     int updateQuantity(Long id, Long memberId, Integer quantity);
@@ -42,4 +48,9 @@ public interface OmsCartItemService {
      */
     @Transactional
     int updateAttr(OmsCartItem cartItem);
+
+    /**
+     * 清空购物车
+     */
+    int clear(Long memberId);
 }
