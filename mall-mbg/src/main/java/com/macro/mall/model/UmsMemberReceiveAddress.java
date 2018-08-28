@@ -17,11 +17,11 @@ public class UmsMemberReceiveAddress implements Serializable {
     private String phoneNumber;
 
     /**
-     * 收货地址
+     * 是否为默认
      *
      * @mbggenerated
      */
-    private String address;
+    private Integer defaultStatus;
 
     /**
      * 邮政编码
@@ -31,11 +31,32 @@ public class UmsMemberReceiveAddress implements Serializable {
     private String postCode;
 
     /**
-     * 是否为默认
+     * 省份/直辖市
      *
      * @mbggenerated
      */
-    private Integer defaultStatus;
+    private String province;
+
+    /**
+     * 城市
+     *
+     * @mbggenerated
+     */
+    private String city;
+
+    /**
+     * 区
+     *
+     * @mbggenerated
+     */
+    private String region;
+
+    /**
+     * 详细地址(街道)
+     *
+     * @mbggenerated
+     */
+    private String detailAddress;
 
     private static final long serialVersionUID = 1L;
 
@@ -71,12 +92,12 @@ public class UmsMemberReceiveAddress implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getDefaultStatus() {
+        return defaultStatus;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDefaultStatus(Integer defaultStatus) {
+        this.defaultStatus = defaultStatus;
     }
 
     public String getPostCode() {
@@ -87,12 +108,36 @@ public class UmsMemberReceiveAddress implements Serializable {
         this.postCode = postCode;
     }
 
-    public Integer getDefaultStatus() {
-        return defaultStatus;
+    public String getProvince() {
+        return province;
     }
 
-    public void setDefaultStatus(Integer defaultStatus) {
-        this.defaultStatus = defaultStatus;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getDetailAddress() {
+        return detailAddress;
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
     }
 
     @Override
@@ -105,9 +150,12 @@ public class UmsMemberReceiveAddress implements Serializable {
         sb.append(", memberId=").append(memberId);
         sb.append(", name=").append(name);
         sb.append(", phoneNumber=").append(phoneNumber);
-        sb.append(", address=").append(address);
-        sb.append(", postCode=").append(postCode);
         sb.append(", defaultStatus=").append(defaultStatus);
+        sb.append(", postCode=").append(postCode);
+        sb.append(", province=").append(province);
+        sb.append(", city=").append(city);
+        sb.append(", region=").append(region);
+        sb.append(", detailAddress=").append(detailAddress);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
