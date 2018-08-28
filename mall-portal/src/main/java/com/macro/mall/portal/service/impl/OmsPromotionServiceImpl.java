@@ -8,10 +8,12 @@ import com.macro.mall.portal.dao.PortalProductDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.domain.PromotionProduct;
 import com.macro.mall.portal.service.OmsPromotionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -40,7 +42,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                 //单品促销
                 for (OmsCartItem item : itemList) {
                     CartPromotionItem cartPromotionItem = new CartPromotionItem();
-                    cartPromotionItem.setCartItem(item);
+                    BeanUtils.copyProperties(item,cartPromotionItem);
                     cartPromotionItem.setPromotionMessage("单品促销");
                     //商品原价-促销价
                     cartPromotionItem.setReduceAmount(getOriginalPrice(promotionProduct, item.getProductSkuId()).subtract(getSinglePromotionPrice(promotionProduct, item.getProductSkuId())));
@@ -53,7 +55,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                 if(ladder!=null){
                     for (OmsCartItem item : itemList) {
                         CartPromotionItem cartPromotionItem = new CartPromotionItem();
-                        cartPromotionItem.setCartItem(item);
+                        BeanUtils.copyProperties(item,cartPromotionItem);
                         String message = getLadderPromotionMessage(ladder);
                         cartPromotionItem.setPromotionMessage(message);
                         //商品原价-折扣金额*商品原价
@@ -72,11 +74,12 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                 if(fullReduction!=null){
                     for (OmsCartItem item : itemList) {
                         CartPromotionItem cartPromotionItem = new CartPromotionItem();
-                        cartPromotionItem.setCartItem(item);
+                        BeanUtils.copyProperties(item,cartPromotionItem);
                         String message = getFullReductionPromotionMessage(fullReduction);
                         cartPromotionItem.setPromotionMessage(message);
                         //(商品原价/总价)*满减金额
-                        BigDecimal reduceAmount = (getOriginalPrice(promotionProduct,item.getProductSkuId()).divide(totalAmount)).multiply(fullReduction.getReducePrice());
+                        BigDecimal originalPrice = getOriginalPrice(promotionProduct, item.getProductSkuId());
+                        BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN).multiply(fullReduction.getReducePrice());
                         cartPromotionItem.setReduceAmount(reduceAmount);
                         cartPromotionItemList.add(cartPromotionItem);
                     }
@@ -108,7 +111,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
     private Map<Long, List<OmsCartItem>> groupCartItemBySpu(List<OmsCartItem> cartItemList) {
         Map<Long, List<OmsCartItem>> productCartMap = new TreeMap<>();
         for (OmsCartItem cartItem : cartItemList) {
-            List<OmsCartItem> productCartItemList = productCartMap.get(cartItem.getId());
+            List<OmsCartItem> productCartItemList = productCartMap.get(cartItem.getProductId());
             if (productCartItemList == null) {
                 productCartItemList = new ArrayList<>();
                 productCartItemList.add(cartItem);
@@ -141,7 +144,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
     private void handleNoReduce(List<CartPromotionItem> cartPromotionItemList, List<OmsCartItem> itemList) {
         for (OmsCartItem item : itemList) {
             CartPromotionItem cartPromotionItem = new CartPromotionItem();
-            cartPromotionItem.setCartItem(item);
+            BeanUtils.copyProperties(item,cartPromotionItem);
             cartPromotionItem.setPromotionMessage("无优惠");
             cartPromotionItem.setReduceAmount(new BigDecimal(0));
             cartPromotionItemList.add(cartPromotionItem);
@@ -228,7 +231,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
      */
     private BigDecimal getSinglePromotionPrice(PromotionProduct promotionProduct, Long productSkuId) {
         for (PmsSkuStock skuStock : promotionProduct.getSkuStockList()) {
-            if (productSkuId == skuStock.getId()) {
+            if (productSkuId.equals(skuStock.getId()) ) {
                 return skuStock.getPromotionPrice();
             }
         }
