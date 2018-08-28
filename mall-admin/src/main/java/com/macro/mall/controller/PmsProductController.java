@@ -5,7 +5,6 @@ import com.macro.mall.dto.PmsProductParam;
 import com.macro.mall.dto.PmsProductQueryParam;
 import com.macro.mall.dto.PmsProductResult;
 import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductVertifyRecord;
 import com.macro.mall.service.PmsProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -60,7 +59,7 @@ public class PmsProductController {
     }
 
     @ApiOperation("查询商品")
-    @RequestMapping(value = "list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public Object getList(PmsProductQueryParam productQueryParam,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,

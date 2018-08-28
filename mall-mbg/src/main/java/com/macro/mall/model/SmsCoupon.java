@@ -21,7 +21,7 @@ public class SmsCoupon implements Serializable {
      *
      * @mbggenerated
      */
-    private String platform;
+    private Integer platform;
 
     /**
      * 数量
@@ -137,11 +137,11 @@ public class SmsCoupon implements Serializable {
         this.name = name;
     }
 
-    public String getPlatform() {
+    public Integer getPlatform() {
         return platform;
     }
 
-    public void setPlatform(String platform) {
+    public void setPlatform(Integer platform) {
         this.platform = platform;
     }
 

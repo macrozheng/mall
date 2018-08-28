@@ -3,7 +3,7 @@
 <mapper namespace="com.macro.mall.mapper.SmsCouponProductRelationMapper">
   <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsCouponProductRelation">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
     <result column="product_id" jdbcType="BIGINT" property="productId" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -102,7 +102,7 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into sms_coupon_product_relation (coupon_id, product_id)
-    values (#{couponId,jdbcType=INTEGER}, #{productId,jdbcType=BIGINT})
+    values (#{couponId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCouponProductRelation">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -119,7 +119,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="couponId != null">
-        #{couponId,jdbcType=INTEGER},
+        #{couponId,jdbcType=BIGINT},
       </if>
       <if test="productId != null">
         #{productId,jdbcType=BIGINT},
@@ -139,7 +139,7 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.couponId != null">
-        coupon_id = #{record.couponId,jdbcType=INTEGER},
+        coupon_id = #{record.couponId,jdbcType=BIGINT},
       </if>
       <if test="record.productId != null">
         product_id = #{record.productId,jdbcType=BIGINT},
@@ -152,7 +152,7 @@
   <update id="updateByExample" parameterType="map">
     update sms_coupon_product_relation
     set id = #{record.id,jdbcType=BIGINT},
-      coupon_id = #{record.couponId,jdbcType=INTEGER},
+      coupon_id = #{record.couponId,jdbcType=BIGINT},
       product_id = #{record.productId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -162,7 +162,7 @@
     update sms_coupon_product_relation
     <set>
       <if test="couponId != null">
-        coupon_id = #{couponId,jdbcType=INTEGER},
+        coupon_id = #{couponId,jdbcType=BIGINT},
       </if>
       <if test="productId != null">
         product_id = #{productId,jdbcType=BIGINT},
@@ -172,7 +172,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsCouponProductRelation">
     update sms_coupon_product_relation
-    set coupon_id = #{couponId,jdbcType=INTEGER},
+    set coupon_id = #{couponId,jdbcType=BIGINT},
       product_id = #{productId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

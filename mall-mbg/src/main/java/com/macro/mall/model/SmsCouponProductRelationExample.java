@@ -174,52 +174,52 @@ public class SmsCouponProductRelationExample {
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdEqualTo(Integer value) {
+        public Criteria andCouponIdEqualTo(Long value) {
             addCriterion("coupon_id =", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotEqualTo(Integer value) {
+        public Criteria andCouponIdNotEqualTo(Long value) {
             addCriterion("coupon_id <>", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdGreaterThan(Integer value) {
+        public Criteria andCouponIdGreaterThan(Long value) {
             addCriterion("coupon_id >", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCouponIdGreaterThanOrEqualTo(Long value) {
             addCriterion("coupon_id >=", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdLessThan(Integer value) {
+        public Criteria andCouponIdLessThan(Long value) {
             addCriterion("coupon_id <", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCouponIdLessThanOrEqualTo(Long value) {
             addCriterion("coupon_id <=", value, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdIn(List<Integer> values) {
+        public Criteria andCouponIdIn(List<Long> values) {
             addCriterion("coupon_id in", values, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotIn(List<Integer> values) {
+        public Criteria andCouponIdNotIn(List<Long> values) {
             addCriterion("coupon_id not in", values, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdBetween(Integer value1, Integer value2) {
+        public Criteria andCouponIdBetween(Long value1, Long value2) {
             addCriterion("coupon_id between", value1, value2, "couponId");
             return (Criteria) this;
         }
 
-        public Criteria andCouponIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCouponIdNotBetween(Long value1, Long value2) {
             addCriterion("coupon_id not between", value1, value2, "couponId");
             return (Criteria) this;
         }

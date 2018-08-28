@@ -5,7 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="platform" jdbcType="INTEGER" property="platform" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="amount" jdbcType="DECIMAL" property="amount" />
     <result column="per_limit" jdbcType="INTEGER" property="perLimit" />
@@ -123,7 +123,7 @@
       use_type, note, publish_count, 
       use_count, receive_count, enable_time, 
       code, member_level)
-    values (#{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+    values (#{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{platform,jdbcType=INTEGER}, 
       #{count,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{perLimit,jdbcType=INTEGER}, 
       #{minPoint,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
       #{useType,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{publishCount,jdbcType=INTEGER}, 
@@ -196,7 +196,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="platform != null">
-        #{platform,jdbcType=VARCHAR},
+        #{platform,jdbcType=INTEGER},
       </if>
       <if test="count != null">
         #{count,jdbcType=INTEGER},
@@ -261,7 +261,7 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.platform != null">
-        platform = #{record.platform,jdbcType=VARCHAR},
+        platform = #{record.platform,jdbcType=INTEGER},
       </if>
       <if test="record.count != null">
         count = #{record.count,jdbcType=INTEGER},
@@ -315,7 +315,7 @@
     set id = #{record.id,jdbcType=BIGINT},
       type = #{record.type,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      platform = #{record.platform,jdbcType=VARCHAR},
+      platform = #{record.platform,jdbcType=INTEGER},
       count = #{record.count,jdbcType=INTEGER},
       amount = #{record.amount,jdbcType=DECIMAL},
       per_limit = #{record.perLimit,jdbcType=INTEGER},
@@ -344,7 +344,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="platform != null">
-        platform = #{platform,jdbcType=VARCHAR},
+        platform = #{platform,jdbcType=INTEGER},
       </if>
       <if test="count != null">
         count = #{count,jdbcType=INTEGER},
@@ -395,7 +395,7 @@
     update sms_coupon
     set type = #{type,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
-      platform = #{platform,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DECIMAL},
       per_limit = #{perLimit,jdbcType=INTEGER},
