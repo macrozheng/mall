@@ -976,6 +976,66 @@ public class SmsCouponExample {
             return (Criteria) this;
         }
 
+        public Criteria andReceiveCountIsNull() {
+            addCriterion("receive_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountIsNotNull() {
+            addCriterion("receive_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountEqualTo(Integer value) {
+            addCriterion("receive_count =", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountNotEqualTo(Integer value) {
+            addCriterion("receive_count <>", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountGreaterThan(Integer value) {
+            addCriterion("receive_count >", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("receive_count >=", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountLessThan(Integer value) {
+            addCriterion("receive_count <", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountLessThanOrEqualTo(Integer value) {
+            addCriterion("receive_count <=", value, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountIn(List<Integer> values) {
+            addCriterion("receive_count in", values, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountNotIn(List<Integer> values) {
+            addCriterion("receive_count not in", values, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountBetween(Integer value1, Integer value2) {
+            addCriterion("receive_count between", value1, value2, "receiveCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("receive_count not between", value1, value2, "receiveCount");
+            return (Criteria) this;
+        }
+
         public Criteria andEnableTimeIsNull() {
             addCriterion("enable_time is null");
             return (Criteria) this;

@@ -84,6 +84,13 @@ public class SmsCoupon implements Serializable {
     private Integer useCount;
 
     /**
+     * 领取数量
+     *
+     * @mbggenerated
+     */
+    private Integer receiveCount;
+
+    /**
      * 可以领取的日期
      *
      * @mbggenerated
@@ -218,6 +225,14 @@ public class SmsCoupon implements Serializable {
         this.useCount = useCount;
     }
 
+    public Integer getReceiveCount() {
+        return receiveCount;
+    }
+
+    public void setReceiveCount(Integer receiveCount) {
+        this.receiveCount = receiveCount;
+    }
+
     public Date getEnableTime() {
         return enableTime;
     }
@@ -262,6 +277,7 @@ public class SmsCoupon implements Serializable {
         sb.append(", note=").append(note);
         sb.append(", publishCount=").append(publishCount);
         sb.append(", useCount=").append(useCount);
+        sb.append(", receiveCount=").append(receiveCount);
         sb.append(", enableTime=").append(enableTime);
         sb.append(", code=").append(code);
         sb.append(", memberLevel=").append(memberLevel);
