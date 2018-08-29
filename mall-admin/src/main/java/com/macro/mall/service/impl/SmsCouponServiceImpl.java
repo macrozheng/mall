@@ -1,6 +1,7 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.macro.mall.dao.SmsCouponDao;
 import com.macro.mall.dao.SmsCouponProductCategoryRelationDao;
 import com.macro.mall.dao.SmsCouponProductRelationDao;
 import com.macro.mall.dto.SmsCouponParam;
@@ -31,6 +32,8 @@ public class SmsCouponServiceImpl implements SmsCouponService {
     private SmsCouponProductRelationDao productRelationDao;
     @Autowired
     private SmsCouponProductCategoryRelationDao productCategoryRelationDao;
+    @Autowired
+    private SmsCouponDao couponDao;
     @Override
     public int add(SmsCouponParam couponParam) {
         //插入优惠券表
@@ -111,5 +114,10 @@ public class SmsCouponServiceImpl implements SmsCouponService {
         }
         PageHelper.startPage(pageNum,pageSize);
         return couponMapper.selectByExample(example);
+    }
+
+    @Override
+    public SmsCouponParam getItem(Long id) {
+        return couponDao.getItem(id);
     }
 }

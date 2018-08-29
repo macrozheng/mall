@@ -19,6 +19,7 @@
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
     <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -81,7 +82,7 @@
   <sql id="Base_Column_List">
     id, product_id, product_sku_id, member_id, quantity, price, sp1, sp2, sp3, product_pic, 
     product_name, product_sub_title, product_sku_code, member_nickname, create_date, 
-    modify_date, delete_status
+    modify_date, delete_status, product_category_id
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsCartItemExample" resultMap="BaseResultMap">
     select
@@ -122,13 +123,13 @@
       sp2, sp3, product_pic, 
       product_name, product_sub_title, product_sku_code, 
       member_nickname, create_date, modify_date, 
-      delete_status)
+      delete_status, product_category_id)
     values (#{productId,jdbcType=BIGINT}, #{productSkuId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
       #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{sp1,jdbcType=VARCHAR}, 
       #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, 
       #{productName,jdbcType=VARCHAR}, #{productSubTitle,jdbcType=VARCHAR}, #{productSkuCode,jdbcType=VARCHAR}, 
       #{memberNickname,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
-      #{deleteStatus,jdbcType=INTEGER})
+      #{deleteStatus,jdbcType=INTEGER}, #{productCategoryId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsCartItem">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -184,6 +185,9 @@
       <if test="deleteStatus != null">
         delete_status,
       </if>
+      <if test="productCategoryId != null">
+        product_category_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -233,6 +237,9 @@
       </if>
       <if test="deleteStatus != null">
         #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="productCategoryId != null">
+        #{productCategoryId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -296,6 +303,9 @@
       <if test="record.deleteStatus != null">
         delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.productCategoryId != null">
+        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -319,7 +329,8 @@
       member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER}
+      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      product_category_id = #{record.productCategoryId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -375,6 +386,9 @@
       <if test="deleteStatus != null">
         delete_status = #{deleteStatus,jdbcType=INTEGER},
       </if>
+      <if test="productCategoryId != null">
+        product_category_id = #{productCategoryId,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -395,7 +409,8 @@
       member_nickname = #{memberNickname,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       modify_date = #{modifyDate,jdbcType=TIMESTAMP},
-      delete_status = #{deleteStatus,jdbcType=INTEGER}
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      product_category_id = #{productCategoryId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

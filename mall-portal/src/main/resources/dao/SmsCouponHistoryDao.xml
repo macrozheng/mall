@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.portal.dao.SmsCouponHistoryDao">
+    <resultMap id="couponHistoryDetailMap" type="com.macro.mall.portal.domain.SmsCouponHistoryDetail"
+               extends="com.macro.mall.mapper.SmsCouponHistoryMapper.BaseResultMap">
+        <association property="coupon" resultMap="com.macro.mall.mapper.SmsCouponMapper.BaseResultMap" columnPrefix="c_">
+        </association>
+        <collection property="productRelationList" columnPrefix="cpr_" resultMap="com.macro.mall.mapper.SmsCouponProductRelationMapper.BaseResultMap">
+        </collection>
+        <collection property="categoryRelationList" columnPrefix="cpcr_" resultMap="com.macro.mall.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="getDetailList" resultMap="couponHistoryDetailMap">
+        SELECT
+            ch.*,
+            c.id c_id,
+            c.name c_name,
+            c.amount c_amount,
+            c.min_point c_min_point,
+            c.platform c_platform,
+            c.start_time c_start_time,
+            c.end_time c_end_time,
+            c.note c_note,
+            c.use_type c_use_type,
+            c.type c_type,
+            cpr.id cpr_id,cpr.product_id cpr_product_id,
+            cpcr.id cpcr_id,cpcr.product_category_id cpcr_product_category_id
+        FROM
+            sms_coupon_history ch
+            LEFT JOIN sms_coupon c ON ch.coupon_id = c.id
+            LEFT JOIN sms_coupon_product_relation cpr ON cpr.coupon_id = c.id
+            LEFT JOIN sms_coupon_product_category_relation cpcr ON cpcr.coupon_id = c.id
+        WHERE ch.member_id = #{memberId}
+    </select>
+</mapper>

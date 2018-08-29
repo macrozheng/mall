@@ -104,6 +104,13 @@ public class OmsCartItem implements Serializable {
      */
     private Integer deleteStatus;
 
+    /**
+     * 商品分类
+     *
+     * @mbggenerated
+     */
+    private Long productCategoryId;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -242,6 +249,14 @@ public class OmsCartItem implements Serializable {
         this.deleteStatus = deleteStatus;
     }
 
+    public Long getProductCategoryId() {
+        return productCategoryId;
+    }
+
+    public void setProductCategoryId(Long productCategoryId) {
+        this.productCategoryId = productCategoryId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -265,6 +280,7 @@ public class OmsCartItem implements Serializable {
         sb.append(", createDate=").append(createDate);
         sb.append(", modifyDate=").append(modifyDate);
         sb.append(", deleteStatus=").append(deleteStatus);
+        sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

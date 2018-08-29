@@ -66,4 +66,12 @@ public class SmsCouponController {
         List<SmsCoupon> couponList = couponService.list(name,type,pageSize,pageNum);
         return new CommonResult().pageSuccess(couponList);
     }
+
+    @ApiOperation("获取单个优惠券的详细信息")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getItem(@PathVariable Long id) {
+        SmsCouponParam couponParam = couponService.getItem(id);
+        return new CommonResult().success(couponParam);
+    }
 }

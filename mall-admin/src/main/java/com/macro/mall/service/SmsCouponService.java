@@ -33,4 +33,10 @@ public interface SmsCouponService {
      * 分页获取优惠券列表
      */
     List<SmsCoupon> list(String name, Integer type, Integer pageSize, Integer pageNum);
+
+    /**
+     * 获取优惠券详情
+     * @param id 优惠券表id
+     */
+    SmsCouponParam getItem(Long id);
 }
