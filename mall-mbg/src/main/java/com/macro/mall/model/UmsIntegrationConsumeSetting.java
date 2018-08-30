@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.io.Serializable;
 
-public class UmsIntergrationConsumeSetting implements Serializable {
+public class UmsIntegrationConsumeSetting implements Serializable {
     private Long id;
 
     /**

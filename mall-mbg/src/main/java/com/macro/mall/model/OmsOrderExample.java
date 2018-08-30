@@ -546,6 +546,66 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPayAmountIsNull() {
+            addCriterion("pay_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountIsNotNull() {
+            addCriterion("pay_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountEqualTo(BigDecimal value) {
+            addCriterion("pay_amount =", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountNotEqualTo(BigDecimal value) {
+            addCriterion("pay_amount <>", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountGreaterThan(BigDecimal value) {
+            addCriterion("pay_amount >", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("pay_amount >=", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountLessThan(BigDecimal value) {
+            addCriterion("pay_amount <", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("pay_amount <=", value, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountIn(List<BigDecimal> values) {
+            addCriterion("pay_amount in", values, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountNotIn(List<BigDecimal> values) {
+            addCriterion("pay_amount not in", values, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("pay_amount between", value1, value2, "payAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("pay_amount not between", value1, value2, "payAmount");
+            return (Criteria) this;
+        }
+
         public Criteria andFreightAmountIsNull() {
             addCriterion("freight_amount is null");
             return (Criteria) this;
@@ -2433,6 +2493,66 @@ public class OmsOrderExample {
 
         public Criteria andConfirmStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("confirm_status not between", value1, value2, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNull() {
+            addCriterion("delete_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNotNull() {
+            addCriterion("delete_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusEqualTo(Integer value) {
+            addCriterion("delete_status =", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotEqualTo(Integer value) {
+            addCriterion("delete_status <>", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThan(Integer value) {
+            addCriterion("delete_status >", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("delete_status >=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThan(Integer value) {
+            addCriterion("delete_status <", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("delete_status <=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIn(List<Integer> values) {
+            addCriterion("delete_status in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotIn(List<Integer> values) {
+            addCriterion("delete_status not in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status between", value1, value2, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status not between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
     }

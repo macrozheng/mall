@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.macro.mall.mapper.UmsIntergrationConsumeSettingMapper">
-  <resultMap id="BaseResultMap" type="com.macro.mall.model.UmsIntergrationConsumeSetting">
+<mapper namespace="com.macro.mall.mapper.UmsIntegrationConsumeSettingMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.UmsIntegrationConsumeSetting">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="deduction_per_amount" jdbcType="INTEGER" property="deductionPerAmount" />
     <result column="max_percent_per_order" jdbcType="INTEGER" property="maxPercentPerOrder" />
@@ -69,13 +69,13 @@
   <sql id="Base_Column_List">
     id, deduction_per_amount, max_percent_per_order, use_unit, coupon_status
   </sql>
-  <select id="selectByExample" parameterType="com.macro.mall.model.UmsIntergrationConsumeSettingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.macro.mall.model.UmsIntegrationConsumeSettingExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ums_intergration_consume_setting
+    from ums_integration_consume_setting
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,33 +86,33 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ums_intergration_consume_setting
+    from ums_integration_consume_setting
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ums_intergration_consume_setting
+    delete from ums_integration_consume_setting
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.macro.mall.model.UmsIntergrationConsumeSettingExample">
-    delete from ums_intergration_consume_setting
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.UmsIntegrationConsumeSettingExample">
+    delete from ums_integration_consume_setting
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
+  <insert id="insert" parameterType="com.macro.mall.model.UmsIntegrationConsumeSetting">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_intergration_consume_setting (deduction_per_amount, max_percent_per_order, 
+    insert into ums_integration_consume_setting (deduction_per_amount, max_percent_per_order, 
       use_unit, coupon_status)
     values (#{deductionPerAmount,jdbcType=INTEGER}, #{maxPercentPerOrder,jdbcType=INTEGER}, 
       #{useUnit,jdbcType=INTEGER}, #{couponStatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
+  <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntegrationConsumeSetting">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ums_intergration_consume_setting
+    insert into ums_integration_consume_setting
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="deductionPerAmount != null">
         deduction_per_amount,
@@ -142,14 +142,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntergrationConsumeSettingExample" resultType="java.lang.Integer">
-    select count(*) from ums_intergration_consume_setting
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationConsumeSettingExample" resultType="java.lang.Integer">
+    select count(*) from ums_integration_consume_setting
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update ums_intergration_consume_setting
+    update ums_integration_consume_setting
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -172,7 +172,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update ums_intergration_consume_setting
+    update ums_integration_consume_setting
     set id = #{record.id,jdbcType=BIGINT},
       deduction_per_amount = #{record.deductionPerAmount,jdbcType=INTEGER},
       max_percent_per_order = #{record.maxPercentPerOrder,jdbcType=INTEGER},
@@ -182,8 +182,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
-    update ums_intergration_consume_setting
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.UmsIntegrationConsumeSetting">
+    update ums_integration_consume_setting
     <set>
       <if test="deductionPerAmount != null">
         deduction_per_amount = #{deductionPerAmount,jdbcType=INTEGER},
@@ -200,8 +200,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.UmsIntergrationConsumeSetting">
-    update ums_intergration_consume_setting
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.UmsIntegrationConsumeSetting">
+    update ums_integration_consume_setting
     set deduction_per_amount = #{deductionPerAmount,jdbcType=INTEGER},
       max_percent_per_order = #{maxPercentPerOrder,jdbcType=INTEGER},
       use_unit = #{useUnit,jdbcType=INTEGER},

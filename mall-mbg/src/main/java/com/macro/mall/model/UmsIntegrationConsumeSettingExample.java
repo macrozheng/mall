@@ -3,14 +3,14 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UmsIntergrationConsumeSettingExample {
+public class UmsIntegrationConsumeSettingExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UmsIntergrationConsumeSettingExample() {
+    public UmsIntegrationConsumeSettingExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

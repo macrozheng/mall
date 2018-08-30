@@ -45,6 +45,13 @@ public class OmsOrder implements Serializable {
     private BigDecimal totalAmount;
 
     /**
+     * 应付金额（实际支付金额）
+     *
+     * @mbggenerated
+     */
+    private BigDecimal payAmount;
+
+    /**
      * 运费金额
      *
      * @mbggenerated
@@ -247,6 +254,13 @@ public class OmsOrder implements Serializable {
      */
     private Integer confirmStatus;
 
+    /**
+     * 删除状态：0->未删除；1->已删除
+     *
+     * @mbggenerated
+     */
+    private Integer deleteStatus;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -303,6 +317,14 @@ public class OmsOrder implements Serializable {
 
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public BigDecimal getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(BigDecimal payAmount) {
+        this.payAmount = payAmount;
     }
 
     public BigDecimal getFreightAmount() {
@@ -537,6 +559,14 @@ public class OmsOrder implements Serializable {
         this.confirmStatus = confirmStatus;
     }
 
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -550,6 +580,7 @@ public class OmsOrder implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", memberUsername=").append(memberUsername);
         sb.append(", totalAmount=").append(totalAmount);
+        sb.append(", payAmount=").append(payAmount);
         sb.append(", freightAmount=").append(freightAmount);
         sb.append(", promotionAmount=").append(promotionAmount);
         sb.append(", integrationAmount=").append(integrationAmount);
@@ -579,6 +610,7 @@ public class OmsOrder implements Serializable {
         sb.append(", receiverDetailAddress=").append(receiverDetailAddress);
         sb.append(", note=").append(note);
         sb.append(", confirmStatus=").append(confirmStatus);
+        sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
