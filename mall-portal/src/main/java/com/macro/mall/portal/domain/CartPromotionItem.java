@@ -13,7 +13,8 @@ public class CartPromotionItem extends OmsCartItem{
     private String promotionMessage;
     //促销活动减去的金额，针对每个商品
     private BigDecimal reduceAmount;
-
+    //商品的真实库存（剩余库存-锁定库存）
+    private Integer realStock;
     public String getPromotionMessage() {
         return promotionMessage;
     }
@@ -28,5 +29,13 @@ public class CartPromotionItem extends OmsCartItem{
 
     public void setReduceAmount(BigDecimal reduceAmount) {
         this.reduceAmount = reduceAmount;
+    }
+
+    public Integer getRealStock() {
+        return realStock;
+    }
+
+    public void setRealStock(Integer realStock) {
+        this.realStock = realStock;
     }
 }
