@@ -31,5 +31,6 @@
             LEFT JOIN sms_coupon_product_relation cpr ON cpr.coupon_id = c.id
             LEFT JOIN sms_coupon_product_category_relation cpcr ON cpcr.coupon_id = c.id
         WHERE ch.member_id = #{memberId}
+        AND ch.use_status = 0
     </select>
 </mapper>

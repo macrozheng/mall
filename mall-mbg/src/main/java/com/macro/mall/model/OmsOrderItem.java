@@ -22,7 +22,7 @@ public class OmsOrderItem implements Serializable {
 
     private Long productId;
 
-    private String proudctPic;
+    private String productPic;
 
     private String productName;
 
@@ -30,21 +30,40 @@ public class OmsOrderItem implements Serializable {
 
     private String productSn;
 
-    private BigDecimal productAmount;
+    /**
+     * 销售价格
+     *
+     * @mbggenerated
+     */
+    private BigDecimal productPrice;
 
     /**
      * 购买数量
      *
      * @mbggenerated
      */
-    private Integer productCount;
+    private Integer productQuantity;
 
     /**
-     * 该商品经过优惠后的分解金额
+     * 商品sku编号
      *
      * @mbggenerated
      */
-    private BigDecimal productRealAmount;
+    private Long productSkuId;
+
+    /**
+     * 商品sku条码
+     *
+     * @mbggenerated
+     */
+    private String productSkuCode;
+
+    /**
+     * 商品分类id
+     *
+     * @mbggenerated
+     */
+    private Long productCategoryId;
 
     /**
      * 商品的销售属性
@@ -56,6 +75,45 @@ public class OmsOrderItem implements Serializable {
     private String sp2;
 
     private String sp3;
+
+    /**
+     * 商品促销名称
+     *
+     * @mbggenerated
+     */
+    private String promotionName;
+
+    /**
+     * 商品促销分解金额
+     *
+     * @mbggenerated
+     */
+    private BigDecimal promotionAmount;
+
+    /**
+     * 优惠券优惠分解金额
+     *
+     * @mbggenerated
+     */
+    private BigDecimal couponAmount;
+
+    /**
+     * 积分优惠分解金额
+     *
+     * @mbggenerated
+     */
+    private BigDecimal integrationAmount;
+
+    /**
+     * 该商品经过优惠后的分解金额
+     *
+     * @mbggenerated
+     */
+    private BigDecimal realAmount;
+
+    private Integer giftIntegration;
+
+    private Integer giftGrowth;
 
     private static final long serialVersionUID = 1L;
 
@@ -91,12 +149,12 @@ public class OmsOrderItem implements Serializable {
         this.productId = productId;
     }
 
-    public String getProudctPic() {
-        return proudctPic;
+    public String getProductPic() {
+        return productPic;
     }
 
-    public void setProudctPic(String proudctPic) {
-        this.proudctPic = proudctPic;
+    public void setProductPic(String productPic) {
+        this.productPic = productPic;
     }
 
     public String getProductName() {
@@ -123,28 +181,44 @@ public class OmsOrderItem implements Serializable {
         this.productSn = productSn;
     }
 
-    public BigDecimal getProductAmount() {
-        return productAmount;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setProductAmount(BigDecimal productAmount) {
-        this.productAmount = productAmount;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public Integer getProductCount() {
-        return productCount;
+    public Integer getProductQuantity() {
+        return productQuantity;
     }
 
-    public void setProductCount(Integer productCount) {
-        this.productCount = productCount;
+    public void setProductQuantity(Integer productQuantity) {
+        this.productQuantity = productQuantity;
     }
 
-    public BigDecimal getProductRealAmount() {
-        return productRealAmount;
+    public Long getProductSkuId() {
+        return productSkuId;
     }
 
-    public void setProductRealAmount(BigDecimal productRealAmount) {
-        this.productRealAmount = productRealAmount;
+    public void setProductSkuId(Long productSkuId) {
+        this.productSkuId = productSkuId;
+    }
+
+    public String getProductSkuCode() {
+        return productSkuCode;
+    }
+
+    public void setProductSkuCode(String productSkuCode) {
+        this.productSkuCode = productSkuCode;
+    }
+
+    public Long getProductCategoryId() {
+        return productCategoryId;
+    }
+
+    public void setProductCategoryId(Long productCategoryId) {
+        this.productCategoryId = productCategoryId;
     }
 
     public String getSp1() {
@@ -171,6 +245,62 @@ public class OmsOrderItem implements Serializable {
         this.sp3 = sp3;
     }
 
+    public String getPromotionName() {
+        return promotionName;
+    }
+
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
+    }
+
+    public BigDecimal getPromotionAmount() {
+        return promotionAmount;
+    }
+
+    public void setPromotionAmount(BigDecimal promotionAmount) {
+        this.promotionAmount = promotionAmount;
+    }
+
+    public BigDecimal getCouponAmount() {
+        return couponAmount;
+    }
+
+    public void setCouponAmount(BigDecimal couponAmount) {
+        this.couponAmount = couponAmount;
+    }
+
+    public BigDecimal getIntegrationAmount() {
+        return integrationAmount;
+    }
+
+    public void setIntegrationAmount(BigDecimal integrationAmount) {
+        this.integrationAmount = integrationAmount;
+    }
+
+    public BigDecimal getRealAmount() {
+        return realAmount;
+    }
+
+    public void setRealAmount(BigDecimal realAmount) {
+        this.realAmount = realAmount;
+    }
+
+    public Integer getGiftIntegration() {
+        return giftIntegration;
+    }
+
+    public void setGiftIntegration(Integer giftIntegration) {
+        this.giftIntegration = giftIntegration;
+    }
+
+    public Integer getGiftGrowth() {
+        return giftGrowth;
+    }
+
+    public void setGiftGrowth(Integer giftGrowth) {
+        this.giftGrowth = giftGrowth;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -181,16 +311,25 @@ public class OmsOrderItem implements Serializable {
         sb.append(", orderId=").append(orderId);
         sb.append(", orderSn=").append(orderSn);
         sb.append(", productId=").append(productId);
-        sb.append(", proudctPic=").append(proudctPic);
+        sb.append(", productPic=").append(productPic);
         sb.append(", productName=").append(productName);
         sb.append(", productBrand=").append(productBrand);
         sb.append(", productSn=").append(productSn);
-        sb.append(", productAmount=").append(productAmount);
-        sb.append(", productCount=").append(productCount);
-        sb.append(", productRealAmount=").append(productRealAmount);
+        sb.append(", productPrice=").append(productPrice);
+        sb.append(", productQuantity=").append(productQuantity);
+        sb.append(", productSkuId=").append(productSkuId);
+        sb.append(", productSkuCode=").append(productSkuCode);
+        sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", sp1=").append(sp1);
         sb.append(", sp2=").append(sp2);
         sb.append(", sp3=").append(sp3);
+        sb.append(", promotionName=").append(promotionName);
+        sb.append(", promotionAmount=").append(promotionAmount);
+        sb.append(", couponAmount=").append(couponAmount);
+        sb.append(", integrationAmount=").append(integrationAmount);
+        sb.append(", realAmount=").append(realAmount);
+        sb.append(", giftIntegration=").append(giftIntegration);
+        sb.append(", giftGrowth=").append(giftGrowth);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

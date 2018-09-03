@@ -11,6 +11,7 @@ import com.macro.mall.portal.service.OmsPromotionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -49,6 +50,8 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                     BigDecimal originalPrice = skuStock.getPrice();
                     cartPromotionItem.setReduceAmount(originalPrice.subtract(skuStock.getPromotionPrice()));
                     cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
+                    cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
+                    cartPromotionItem.setGrowth(promotionProduct.getGiftGrowth());
                     cartPromotionItemList.add(cartPromotionItem);
                 }
             } else if (promotionType == 3) {
@@ -67,6 +70,8 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         BigDecimal reduceAmount = originalPrice.subtract(ladder.getDiscount().multiply(originalPrice));
                         cartPromotionItem.setReduceAmount(reduceAmount);
                         cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
+                        cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
+                        cartPromotionItem.setGrowth(promotionProduct.getGiftGrowth());
                         cartPromotionItemList.add(cartPromotionItem);
                     }
                 }else{
@@ -88,6 +93,8 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN).multiply(fullReduction.getReducePrice());
                         cartPromotionItem.setReduceAmount(reduceAmount);
                         cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
+                        cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
+                        cartPromotionItem.setGrowth(promotionProduct.getGiftGrowth());
                         cartPromotionItemList.add(cartPromotionItem);
                     }
                 }else{
@@ -156,6 +163,8 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
             cartPromotionItem.setReduceAmount(new BigDecimal(0));
             PmsSkuStock skuStock = getOriginalPrice(promotionProduct,item.getProductSkuId());
             cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
+            cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
+            cartPromotionItem.setGrowth(promotionProduct.getGiftGrowth());
             cartPromotionItemList.add(cartPromotionItem);
         }
     }

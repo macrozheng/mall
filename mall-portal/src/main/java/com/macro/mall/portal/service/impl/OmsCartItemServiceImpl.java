@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -85,7 +86,11 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
     @Override
     public List<CartPromotionItem> listPromotion(Long memberId) {
         List<OmsCartItem> cartItemList = list(memberId);
-        return promotionService.calcCartPromotion(cartItemList);
+        List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
+        if(!CollectionUtils.isEmpty(cartItemList)){
+            cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
+        }
+        return cartPromotionItemList;
     }
 
     @Override

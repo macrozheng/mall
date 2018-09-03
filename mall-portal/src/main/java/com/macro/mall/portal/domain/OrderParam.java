@@ -10,7 +10,7 @@ public class OrderParam {
     //优惠券id
     private Long couponId;
     //使用的积分数
-    private Integer useIngegration;
+    private Integer useIntegration;
     //支付方式
     private Integer payType;
 
@@ -30,19 +30,19 @@ public class OrderParam {
         this.couponId = couponId;
     }
 
-    public Integer getUseIngegration() {
-        return useIngegration;
-    }
-
-    public void setUseIngegration(Integer useIngegration) {
-        this.useIngegration = useIngegration;
-    }
-
     public Integer getPayType() {
         return payType;
     }
 
     public void setPayType(Integer payType) {
         this.payType = payType;
+    }
+
+    public Integer getUseIntegration() {
+        return useIntegration;
+    }
+
+    public void setUseIntegration(Integer useIntegration) {
+        this.useIntegration = useIntegration;
     }
 }
