@@ -53,12 +53,12 @@ JTA事务处理 | ✔
 OSS上传功能 | ✔
 Elasticsearch搜索功能 | ✔
 HTTPS支持 | ✔
-ELK日志收集功能 |
-Redis数字型ID生成 |
+Redis数字型ID生成 | ✔
 SpringTask定时任务支持 | ✔
 RestTemplate服务间调用 |
 docker容器化部署 | ✔
 配置区分生产和测试环境 | ✔
+ELK日志收集功能 |
 SpringSecurity权限管理功能 |
 
 ### 使用工具
@@ -273,9 +273,9 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 
 - 根据用户搜索记录聚合生成热搜词
 
-#### 购物流程
+#### 购物流程 ✔
 
-> **购物车** ✔
+> **购物车** 
 
 - 添加商品到购物车
 - 购物车商品列表（商品主图、商品名称、商品数量、商品规格）
@@ -283,7 +283,7 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 - 购物车中商品重选规格
 - 购物车中商品删除功能
 
-> **生成确认单** ✔
+> **生成确认单** 
 
 - 生成确认单信息：收货信息、商品信息、价格信息、发票信息、支付方式
 - 选择收货地址：默认收货地址
@@ -292,7 +292,7 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 - 选择支付方式：在线支付及货到付款
 - 计算应付金额：合计+运费-优惠券抵扣-积分抵扣-活动优惠
 
-> **提交订单** ✔
+> **提交订单** 
 
 - 将确认单信息转化为订单
 - 删除购物车中相关商品
@@ -306,7 +306,6 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 > **取消订单（未支付情况下）**
 
 - 订单超时后自动取消订单，解除商品库存锁定，返还优惠券，积分
-- 用户自己取消订单，解除商品库存锁定，返还优惠券，积分
 
 #### 会员模块（我的）✔
 

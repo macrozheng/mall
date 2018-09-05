@@ -25,4 +25,11 @@ public interface RedisService {
      * 删除数据
      */
     void remove(String key);
+
+    /**
+     * 自增操作
+     * @param delta 自增步长
+     */
+    Long increment(String key, long delta);
+
 }

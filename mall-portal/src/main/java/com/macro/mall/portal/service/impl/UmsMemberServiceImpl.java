@@ -55,6 +55,11 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     }
 
     @Override
+    public UmsMember getById(Long id) {
+        return memberMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public CommonResult register(String username, String password, String telephone, String authCode) {
         //验证验证码
         if(!verifyAuthCode(authCode,telephone)){
@@ -125,6 +130,15 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
         return memberDetails.getUmsMember();
     }
+
+    @Override
+    public void updateIntegration(Long id, Integer integration) {
+        UmsMember record=new UmsMember();
+        record.setId(id);
+        record.setIntegration(integration);
+        memberMapper.updateByPrimaryKeySelective(record);
+    }
+
     //对输入的验证码进行校验
     private boolean verifyAuthCode(String authCode, String telephone){
         if(StringUtils.isEmpty(authCode)){

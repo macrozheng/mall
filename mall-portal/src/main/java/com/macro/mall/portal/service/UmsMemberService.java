@@ -15,6 +15,11 @@ public interface UmsMemberService {
     UmsMember getByUsername(String username);
 
     /**
+     * 根据会员编号获取会员
+     */
+    UmsMember getById(Long id);
+
+    /**
      * 用户注册
      */
     @Transactional
@@ -35,4 +40,9 @@ public interface UmsMemberService {
      * 获取当前登录会员
      */
     UmsMember getCurrentMember();
+
+    /**
+     * 根据会员id修改会员积分
+     */
+    void updateIntegration(Long id,Integer integration);
 }

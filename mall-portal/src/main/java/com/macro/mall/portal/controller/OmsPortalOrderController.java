@@ -8,10 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 订单管理Controller
@@ -36,5 +33,18 @@ public class OmsPortalOrderController {
     @ResponseBody
     public Object generateOrder(@RequestBody OrderParam orderParam){
         return portalOrderService.generateOrder(orderParam);
+    }
+    @ApiOperation("支付成功的回调")
+    @RequestMapping(value = "/paySuccess",method = RequestMethod.POST)
+    @ResponseBody
+    public Object paySuccess(@RequestParam Long orderId){
+        return portalOrderService.paySuccess(orderId);
+    }
+
+    @ApiOperation("自动取消超时订单")
+    @RequestMapping(value = "/cancelTimeOutOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public Object cancelTimeOutOrder(){
+        return portalOrderService.cancelTimeOutOrder();
     }
 }

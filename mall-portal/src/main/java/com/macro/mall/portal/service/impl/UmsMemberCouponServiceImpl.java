@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * 会员优惠券管理Service实现类
@@ -56,7 +54,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         //生成领取优惠券历史
         SmsCouponHistory couponHistory = new SmsCouponHistory();
         couponHistory.setCouponId(couponId);
-        couponHistory.setCouponCode(coupon.getCode());
+        couponHistory.setCouponCode(generateCouponCode(currentMember.getId()));
         couponHistory.setCreateTime(now);
         couponHistory.setMemberId(currentMember.getId());
         couponHistory.setMemberNickname(currentMember.getNickname());
@@ -70,6 +68,26 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         coupon.setReceiveCount(coupon.getReceiveCount()==null?1:coupon.getReceiveCount()+1);
         couponMapper.updateByPrimaryKey(coupon);
         return new CommonResult().success("领取成功",null);
+    }
+
+    /**
+     * 16位优惠码生成：时间戳后8位+4位随机数+用户id后4位
+     */
+    private String generateCouponCode(Long memberId) {
+        StringBuilder sb = new StringBuilder();
+        Long currentTimeMillis = System.currentTimeMillis();
+        String timeMillisStr = currentTimeMillis.toString();
+        sb.append(timeMillisStr.substring(timeMillisStr.length() - 8));
+        for (int i = 0; i < 4; i++) {
+            sb.append(new Random().nextInt(10));
+        }
+        String memberIdStr = memberId.toString();
+        if (memberIdStr.length() <= 4) {
+            sb.append(String.format("%04d", memberId));
+        } else {
+            sb.append(memberIdStr.substring(memberIdStr.length()-4));
+        }
+        return sb.toString();
     }
 
     @Override

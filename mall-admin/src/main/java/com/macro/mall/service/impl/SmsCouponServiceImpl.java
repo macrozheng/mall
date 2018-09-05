@@ -37,7 +37,6 @@ public class SmsCouponServiceImpl implements SmsCouponService {
     @Override
     public int add(SmsCouponParam couponParam) {
         //插入优惠券表
-        // TODO: 2018/8/28 生成优惠券条码
         int count = couponMapper.insert(couponParam);
         //插入优惠券和商品关系表
         if(couponParam.getUseType().equals(2)){

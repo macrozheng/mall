@@ -2555,6 +2555,66 @@ public class OmsOrderExample {
             addCriterion("delete_status not between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
+
+        public Criteria andUseIntegrationIsNull() {
+            addCriterion("use_integration is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationIsNotNull() {
+            addCriterion("use_integration is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationEqualTo(Integer value) {
+            addCriterion("use_integration =", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationNotEqualTo(Integer value) {
+            addCriterion("use_integration <>", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationGreaterThan(Integer value) {
+            addCriterion("use_integration >", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationGreaterThanOrEqualTo(Integer value) {
+            addCriterion("use_integration >=", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationLessThan(Integer value) {
+            addCriterion("use_integration <", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationLessThanOrEqualTo(Integer value) {
+            addCriterion("use_integration <=", value, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationIn(List<Integer> values) {
+            addCriterion("use_integration in", values, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationNotIn(List<Integer> values) {
+            addCriterion("use_integration not in", values, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationBetween(Integer value1, Integer value2) {
+            addCriterion("use_integration between", value1, value2, "useIntegration");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseIntegrationNotBetween(Integer value1, Integer value2) {
+            addCriterion("use_integration not between", value1, value2, "useIntegration");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

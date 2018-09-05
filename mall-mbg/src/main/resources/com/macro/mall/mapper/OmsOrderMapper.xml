@@ -40,6 +40,7 @@
     <result column="note" jdbcType="VARCHAR" property="note" />
     <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
     <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="use_integration" jdbcType="INTEGER" property="useIntegration" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -105,7 +106,8 @@
     pay_type, source_type, status, order_type, delivery_company, delivery_sn, auto_confirm_day, 
     integration, growth, promotion_info, bill_type, bill_header, bill_content, bill_receiver_phone, 
     bill_receiver_email, receiver_name, receiver_phone, receiver_post_code, receiver_province, 
-    receiver_city, receiver_region, receiver_detail_address, note, confirm_status, delete_status
+    receiver_city, receiver_region, receiver_detail_address, note, confirm_status, delete_status, 
+    use_integration
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsOrderExample" resultMap="BaseResultMap">
     select
@@ -153,7 +155,7 @@
       receiver_name, receiver_phone, receiver_post_code, 
       receiver_province, receiver_city, receiver_region, 
       receiver_detail_address, note, confirm_status, 
-      delete_status)
+      delete_status, use_integration)
     values (#{memberId,jdbcType=BIGINT}, #{couponId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{memberUsername,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
       #{payAmount,jdbcType=DECIMAL}, #{freightAmount,jdbcType=DECIMAL}, #{promotionAmount,jdbcType=DECIMAL}, 
@@ -166,7 +168,7 @@
       #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, #{receiverPostCode,jdbcType=VARCHAR}, 
       #{receiverProvince,jdbcType=VARCHAR}, #{receiverCity,jdbcType=VARCHAR}, #{receiverRegion,jdbcType=VARCHAR}, 
       #{receiverDetailAddress,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{confirmStatus,jdbcType=INTEGER}, 
-      #{deleteStatus,jdbcType=INTEGER})
+      #{deleteStatus,jdbcType=INTEGER}, #{useIntegration,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrder">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -285,6 +287,9 @@
       <if test="deleteStatus != null">
         delete_status,
       </if>
+      <if test="useIntegration != null">
+        use_integration,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="memberId != null">
@@ -397,6 +402,9 @@
       </if>
       <if test="deleteStatus != null">
         #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="useIntegration != null">
+        #{useIntegration,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -523,6 +531,9 @@
       <if test="record.deleteStatus != null">
         delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.useIntegration != null">
+        use_integration = #{record.useIntegration,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -567,7 +578,8 @@
       receiver_detail_address = #{record.receiverDetailAddress,jdbcType=VARCHAR},
       note = #{record.note,jdbcType=VARCHAR},
       confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER}
+      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      use_integration = #{record.useIntegration,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -686,6 +698,9 @@
       <if test="deleteStatus != null">
         delete_status = #{deleteStatus,jdbcType=INTEGER},
       </if>
+      <if test="useIntegration != null">
+        use_integration = #{useIntegration,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -727,7 +742,8 @@
       receiver_detail_address = #{receiverDetailAddress,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR},
       confirm_status = #{confirmStatus,jdbcType=INTEGER},
-      delete_status = #{deleteStatus,jdbcType=INTEGER}
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      use_integration = #{useIntegration,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

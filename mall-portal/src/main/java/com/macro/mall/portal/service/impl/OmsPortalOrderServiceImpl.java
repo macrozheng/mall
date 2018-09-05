@@ -1,20 +1,20 @@
 package com.macro.mall.portal.service.impl;
 
-import com.macro.mall.mapper.OmsOrderMapper;
-import com.macro.mall.mapper.PmsSkuStockMapper;
-import com.macro.mall.mapper.SmsCouponHistoryMapper;
-import com.macro.mall.mapper.UmsIntegrationConsumeSettingMapper;
+import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
+import com.macro.mall.portal.dao.PortalOrderDao;
 import com.macro.mall.portal.dao.PortalOrderItemDao;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.*;
 import com.macro.mall.portal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -43,7 +43,14 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private PortalOrderItemDao orderItemDao;
     @Autowired
     private SmsCouponHistoryMapper couponHistoryMapper;
-
+    @Autowired
+    private RedisService redisService;
+    @Value("${redis.key.prefix.orderId}")
+    private String REDIS_KEY_PREFIX_ORDER_ID;
+    @Autowired
+    private PortalOrderDao portalOrderDao;
+    @Autowired
+    private OmsOrderSettingMapper orderSettingMapper;
     @Override
     public ConfirmOrderResult generateConfirmOrder() {
         ConfirmOrderResult result = new ConfirmOrderResult();
@@ -184,21 +191,92 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         order.setIntegration(calcGifIntegration(orderItemList));
         //计算赠送成长值
         order.setGrowth(calcGiftGrowth(orderItemList));
-        // TODO: 2018/9/3 order_sn,bill_*,delivery_*
+        //生成订单号
+        order.setOrderSn(generateOrderSn(order));
+        // TODO: 2018/9/3 bill_*,delivery_*
         //插入order表和order_item表
         orderMapper.insert(order);
         for (OmsOrderItem orderItem : orderItemList) {
             orderItem.setOrderId(order.getId());
+            orderItem.setOrderSn(order.getOrderSn());
         }
         orderItemDao.insertList(orderItemList);
-        //更新优惠券使用状态
-        updateCouponStatus(orderParam.getCouponId(),currentMember);
+        //如使用优惠券更新优惠券使用状态
+        if(orderParam.getCouponId()!=null){
+            updateCouponStatus(orderParam.getCouponId(),currentMember.getId(),1);
+        }
+        //如使用积分需要扣除积分
+        if(orderParam.getUseIntegration()!=null){
+            order.setUseIntegration(orderParam.getUseIntegration());
+            memberService.updateIntegration(currentMember.getId(),currentMember.getIntegration()-orderParam.getUseIntegration());
+        }
         //删除购物车中的下单商品
         deleteCartItemList(cartPromotionItemList,currentMember);
         Map<String,Object> result = new HashMap<>();
         result.put("order",order);
         result.put("orderItemList",orderItemList);
         return new CommonResult().success("下单成功", result);
+    }
+
+    @Override
+    public CommonResult paySuccess(Long orderId) {
+        //修改订单支付状态
+        OmsOrder order = new OmsOrder();
+        order.setId(orderId);
+        order.setStatus(1);
+        orderMapper.updateByPrimaryKeySelective(order);
+        //恢复所有下单商品的锁定库存，扣减真实库存
+        OmsOrderDetail orderDetail = portalOrderDao.getDetail(orderId);
+        int count = portalOrderDao.updateSkuStock(orderDetail.getOrderItemList());
+        return new CommonResult().success("支付成功",count);
+    }
+
+    @Override
+    public CommonResult cancelTimeOutOrder() {
+        OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
+        //查询超时、未支付的订单及订单详情
+        List<OmsOrderDetail> timeOutOrders = portalOrderDao.getTimeOutOrders(orderSetting.getNormalOrderOvertime());
+        if(CollectionUtils.isEmpty(timeOutOrders)){
+            return new CommonResult().failed("暂无超时订单");
+        }
+        //修改订单状态为交易取消
+        List<Long> ids = new ArrayList<>();
+        for (OmsOrderDetail timeOutOrder : timeOutOrders) {
+            ids.add(timeOutOrder.getId());
+        }
+        portalOrderDao.updateOrderStatus(ids,4);
+        for (OmsOrderDetail timeOutOrder : timeOutOrders) {
+            //解除订单商品库存锁定
+            portalOrderDao.releaseSkuStockLock(timeOutOrder.getOrderItemList());
+            //修改优惠券使用状态
+            updateCouponStatus(timeOutOrder.getCouponId(),timeOutOrder.getMemberId(),0);
+            //返还使用积分
+            if(timeOutOrder.getUseIntegration()!=null){
+                UmsMember member = memberService.getById(timeOutOrder.getMemberId());
+                memberService.updateIntegration(timeOutOrder.getMemberId(),member.getIntegration()+timeOutOrder.getUseIntegration());
+            }
+        }
+        return new CommonResult().success(null);
+    }
+
+    /**
+     * 生成18位订单编号:8位日期+2位平台号码+2位支付方式+6位以上自增id
+     */
+    private String generateOrderSn(OmsOrder order) {
+        StringBuilder sb = new StringBuilder();
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        String key = REDIS_KEY_PREFIX_ORDER_ID + date;
+        Long increment = redisService.increment(key, 1);
+        sb.append(date);
+        sb.append(String.format("%02d",order.getSourceType()));
+        sb.append(String.format("%02d",order.getPayType()));
+        String incrementStr = increment.toString();
+        if(incrementStr.length()<=6){
+            sb.append(String.format("%06d",increment));
+        }else{
+            sb.append(incrementStr);
+        }
+        return sb.toString();
     }
 
     /**
@@ -235,22 +313,22 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     }
 
     /**
-     * 更新sms_coupon_history的可用信息
+     * 将优惠券信息更改为指定状态
      * @param couponId 优惠券id
-     * @param currentMember 当前会员
+     * @param memberId 会员id
+     * @param useStatus 0->未使用；1->已使用
      */
-    private void updateCouponStatus(Long couponId, UmsMember currentMember) {
-        SmsCouponHistory record = new SmsCouponHistory();
-        record.setUseStatus(1);
-        //查询第一张未使用优惠券
+    private void updateCouponStatus(Long couponId, Long memberId,Integer useStatus) {
+        if(couponId==null)return;
+        //查询第一张优惠券
         SmsCouponHistoryExample example = new SmsCouponHistoryExample();
-        example.createCriteria().andMemberIdEqualTo(currentMember.getId())
-                .andCouponIdEqualTo(couponId).andUseStatusEqualTo(0);
+        example.createCriteria().andMemberIdEqualTo(memberId)
+                .andCouponIdEqualTo(couponId).andUseStatusEqualTo(useStatus==0?1:0);
         List<SmsCouponHistory> couponHistoryList = couponHistoryMapper.selectByExample(example);
         if(!CollectionUtils.isEmpty(couponHistoryList)){
             SmsCouponHistory couponHistory = couponHistoryList.get(0);
             couponHistory.setUseTime(new Date());
-            couponHistory.setUseStatus(1);
+            couponHistory.setUseStatus(useStatus);
             couponHistoryMapper.updateByPrimaryKeySelective(couponHistory);
         }
     }

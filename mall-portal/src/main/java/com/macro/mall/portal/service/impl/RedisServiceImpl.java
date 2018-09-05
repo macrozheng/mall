@@ -35,4 +35,9 @@ public class RedisServiceImpl implements RedisService {
     public void remove(String key) {
         stringRedisTemplate.delete(key);
     }
+
+    @Override
+    public Long increment(String key, long delta) {
+        return stringRedisTemplate.opsForValue().increment(key,delta);
+    }
 }

@@ -261,6 +261,13 @@ public class OmsOrder implements Serializable {
      */
     private Integer deleteStatus;
 
+    /**
+     * 下单时使用的积分
+     *
+     * @mbggenerated
+     */
+    private Integer useIntegration;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -567,6 +574,14 @@ public class OmsOrder implements Serializable {
         this.deleteStatus = deleteStatus;
     }
 
+    public Integer getUseIntegration() {
+        return useIntegration;
+    }
+
+    public void setUseIntegration(Integer useIntegration) {
+        this.useIntegration = useIntegration;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -611,6 +626,7 @@ public class OmsOrder implements Serializable {
         sb.append(", note=").append(note);
         sb.append(", confirmStatus=").append(confirmStatus);
         sb.append(", deleteStatus=").append(deleteStatus);
+        sb.append(", useIntegration=").append(useIntegration);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

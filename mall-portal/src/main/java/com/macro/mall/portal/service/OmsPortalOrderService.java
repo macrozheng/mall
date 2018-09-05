@@ -20,4 +20,16 @@ public interface OmsPortalOrderService {
      */
     @Transactional
     CommonResult generateOrder(OrderParam orderParam);
+
+    /**
+     * 支付成功后的回调
+     */
+    @Transactional
+    CommonResult paySuccess(Long orderId);
+
+    /**
+     * 自动取消超时订单
+     */
+    @Transactional
+    CommonResult cancelTimeOutOrder();
 }
