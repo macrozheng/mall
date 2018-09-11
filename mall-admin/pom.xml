@@ -85,6 +85,12 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>2.5.0</version>
         </dependency>
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.8</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -4,6 +4,7 @@ import com.macro.mall.bo.WebLog;
 import com.macro.mall.util.JsonUtil;
 import com.macro.mall.util.RequestUtil;
 import io.swagger.annotations.ApiOperation;
+import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -22,7 +23,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 统一日志处理切面
@@ -53,7 +57,7 @@ public class WebLogAspect {
         //获取当前请求对象
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        //记录请求信息(可以记录到数据库中)
+        //记录请求信息(通过logstash传入elasticsearch)
         WebLog webLog = new WebLog();
         Object result = joinPoint.proceed();
         Signature signature = joinPoint.getSignature();
@@ -73,7 +77,14 @@ public class WebLogAspect {
         webLog.setStartTime(startTime.get());
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
-        LOGGER.info("{}", JsonUtil.objectToJson(webLog));
+        Map<String,Object> logMap = new HashMap<>();
+        logMap.put("url",webLog.getUrl());
+        logMap.put("method",webLog.getMethod());
+        logMap.put("parameter",webLog.getParameter());
+        logMap.put("spendTime",webLog.getSpendTime());
+        logMap.put("description",webLog.getDescription());
+        //        LOGGER.info("{}", JsonUtil.objectToJson(webLog));
+        LOGGER.info(Markers.appendEntries(logMap),JsonUtil.objectToJson(webLog));
         return result;
     }
 

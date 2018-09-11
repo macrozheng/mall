@@ -55,10 +55,11 @@ Elasticsearch搜索功能 | ✔
 HTTPS支持 | ✔
 Redis数字型ID生成 | ✔
 SpringTask定时任务支持 | ✔
-RestTemplate服务间调用 |
 docker容器化部署 | ✔
 配置区分生产和测试环境 | ✔
-ELK日志收集功能 |
+ELK日志收集功能 | ✔
+RestTemplate服务间调用 |
+RabbitMq异步通信 |
 SpringSecurity权限管理功能 |
 
 ### 使用工具
