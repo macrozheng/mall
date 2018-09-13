@@ -18,6 +18,7 @@ RabbitMq | 消息队列
 Redis | 分布式缓存
 MongoDb | NoSql数据库
 Docker | 应用容器引擎
+Druid | 数据库连接池
 
 ### 前端技术
 
