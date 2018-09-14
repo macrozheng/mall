@@ -32,4 +32,10 @@ public interface OmsPortalOrderService {
      */
     @Transactional
     CommonResult cancelTimeOutOrder();
+
+    /**
+     * 取消单个超时订单
+     */
+    @Transactional
+    void cancelOrder(Long orderId);
 }

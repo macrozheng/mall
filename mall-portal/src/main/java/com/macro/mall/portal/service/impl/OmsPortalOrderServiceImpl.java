@@ -2,6 +2,7 @@ package com.macro.mall.portal.service.impl;
 
 import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
+import com.macro.mall.portal.component.CancelOrderSender;
 import com.macro.mall.portal.dao.PortalOrderDao;
 import com.macro.mall.portal.dao.PortalOrderItemDao;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
@@ -51,6 +52,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private PortalOrderDao portalOrderDao;
     @Autowired
     private OmsOrderSettingMapper orderSettingMapper;
+    @Autowired
+    private OmsOrderItemMapper orderItemMapper;
+
     @Override
     public ConfirmOrderResult generateConfirmOrder() {
         ConfirmOrderResult result = new ConfirmOrderResult();
@@ -257,6 +261,35 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             }
         }
         return new CommonResult().success(null);
+    }
+
+    @Override
+    public void cancelOrder(Long orderId) {
+        //查询为付款的取消订单
+        OmsOrderExample example = new OmsOrderExample();
+        example.createCriteria().andIdEqualTo(orderId).andStatusEqualTo(0).andDeleteStatusEqualTo(0);
+        List<OmsOrder> cancelOrderList = orderMapper.selectByExample(example);
+        if(CollectionUtils.isEmpty(cancelOrderList)){
+            return;
+        }
+        OmsOrder cancelOrder = cancelOrderList.get(0);
+        if(cancelOrder!=null){
+            //修改订单状态为取消
+            cancelOrder.setStatus(4);
+            orderMapper.updateByPrimaryKeySelective(cancelOrder);
+            OmsOrderItemExample orderItemExample=new OmsOrderItemExample();
+            orderItemExample.createCriteria().andOrderIdEqualTo(orderId);
+            List<OmsOrderItem> orderItemList = orderItemMapper.selectByExample(orderItemExample);
+            //解除订单商品库存锁定
+            portalOrderDao.releaseSkuStockLock(orderItemList);
+            //修改优惠券使用状态
+            updateCouponStatus(cancelOrder.getCouponId(),cancelOrder.getMemberId(),0);
+            //返还使用积分
+            if(cancelOrder.getUseIntegration()!=null){
+                UmsMember member = memberService.getById(cancelOrder.getMemberId());
+                memberService.updateIntegration(cancelOrder.getMemberId(),member.getIntegration()+cancelOrder.getUseIntegration());
+            }
+        }
     }
 
     /**
