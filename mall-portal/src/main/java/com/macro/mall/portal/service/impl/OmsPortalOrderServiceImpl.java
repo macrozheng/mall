@@ -54,6 +54,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private OmsOrderSettingMapper orderSettingMapper;
     @Autowired
     private OmsOrderItemMapper orderItemMapper;
+    @Autowired
+    private CancelOrderSender cancelOrderSender;
 
     @Override
     public ConfirmOrderResult generateConfirmOrder() {
@@ -290,6 +292,15 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
                 memberService.updateIntegration(cancelOrder.getMemberId(),member.getIntegration()+cancelOrder.getUseIntegration());
             }
         }
+    }
+
+    @Override
+    public void sendDelayMessageCancelOrder(Long orderId) {
+        //获取订单超时时间
+        OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
+        long delayTimes = orderSetting.getNormalOrderOvertime()*60*1000;
+        //发送延迟消息
+        cancelOrderSender.sendMessage(orderId,delayTimes);
     }
 
     /**

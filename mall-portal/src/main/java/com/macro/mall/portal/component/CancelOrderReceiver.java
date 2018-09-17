@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
  * Created by macro on 2018/9/14.
  */
 @Component
-@RabbitListener(queues = "${rabbitmq.queue.name.cancelOrder}")
+@RabbitListener(queues = "mall.order.cancel")
 public class CancelOrderReceiver {
     private static Logger LOGGER =LoggerFactory.getLogger(CancelOrderReceiver.class);
     @Autowired
     private OmsPortalOrderService portalOrderService;
     @RabbitHandler
-    public void process(Long orderId){
+    public void handle(Long orderId){
         portalOrderService.cancelOrder(orderId);
         LOGGER.info("process orderId:{}",orderId);
     }

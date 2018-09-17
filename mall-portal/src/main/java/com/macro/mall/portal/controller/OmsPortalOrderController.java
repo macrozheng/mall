@@ -1,6 +1,5 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.portal.component.CancelOrderSender;
 import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 public class OmsPortalOrderController {
     @Autowired
     private OmsPortalOrderService portalOrderService;
-    @Autowired
-    private CancelOrderSender cancelOrderSender;
     @ApiOperation("根据购物车信息生成确认单信息")
     @RequestMapping(value = "/generateConfirmOrder",method = RequestMethod.POST)
     @ResponseBody
@@ -55,7 +52,7 @@ public class OmsPortalOrderController {
     @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
     @ResponseBody
     public Object cancelOrder(Long orderId){
-        cancelOrderSender.send(orderId);
+        portalOrderService.sendDelayMessageCancelOrder(orderId);
         return new CommonResult().success(null);
     }
 }
