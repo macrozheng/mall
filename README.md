@@ -59,9 +59,11 @@ SpringTask定时任务支持 | ✔
 docker容器化部署 | ✔
 配置区分生产和测试环境 | ✔
 ELK日志收集功能 | ✔
-RestTemplate服务间调用 |
-RabbitMq异步通信 |
+RabbitMq异步通信 | ✔
+RestTemplate服务间调用 | ✔
 SpringSecurity权限管理功能 |
+集成SpringCloud |
+集成SpringCloudSecurity |
 
 ### 使用工具
 
