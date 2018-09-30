@@ -7,8 +7,6 @@ import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.service.PmsProductCategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -75,7 +73,7 @@ public class PmsProductCategoryController {
     }
 
     @ApiOperation("删除商品分类")
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object delete(@PathVariable Long id) {
         int count = productCategoryService.delete(id);

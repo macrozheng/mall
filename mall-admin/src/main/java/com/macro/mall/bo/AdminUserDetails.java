@@ -52,6 +52,6 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return umsAdmin.getStatus().equals(1);
     }
 }

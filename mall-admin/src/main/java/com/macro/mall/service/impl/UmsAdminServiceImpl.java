@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.mapper.UmsAdminMapper;
 import com.macro.mall.model.UmsAdmin;
@@ -20,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -95,5 +97,32 @@ public class UmsAdminServiceImpl implements UmsAdminService{
             return jwtTokenUtil.refreshToken(token);
         }
         return null;
+    }
+
+    @Override
+    public UmsAdmin getItem(Long id) {
+        return adminMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<UmsAdmin> list(String name, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum,pageSize);
+        UmsAdminExample example = new UmsAdminExample();
+        UmsAdminExample.Criteria criteria = example.createCriteria();
+        if(!StringUtils.isEmpty(name)){
+            criteria.andUsernameLike("%"+name+"%");
+            example.or(example.createCriteria().andNickNameLike("%"+name+"%"));
+        }
+        return adminMapper.selectByExample(example);
+    }
+
+    @Override
+    public int update(Long id, UmsAdmin admin) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Long id) {
+        return 0;
     }
 }
