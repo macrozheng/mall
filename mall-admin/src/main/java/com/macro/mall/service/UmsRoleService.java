@@ -36,4 +36,9 @@ public interface UmsRoleService {
      */
     @Transactional
     int updatePermission(Long roleId, List<Long> permissionIds);
+
+    /**
+     * 获取角色列表
+     */
+    List<UmsRole> list();
 }

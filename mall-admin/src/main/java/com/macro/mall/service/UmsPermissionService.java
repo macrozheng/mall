@@ -29,4 +29,9 @@ public interface UmsPermissionService {
      * 以层级结构返回所有权限
      */
     List<UmsPermissionNode> treeList();
+
+    /**
+     * 获取所有权限
+     */
+    List<UmsPermission> list();
 }

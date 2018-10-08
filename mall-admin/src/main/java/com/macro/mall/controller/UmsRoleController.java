@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @Api(tags = "UmsRoleController", description = "后台用户角色管理")
-@RequestMapping("/admin/role")
+@RequestMapping("/role")
 public class UmsRoleController {
     @Autowired
     private UmsRoleService roleService;
@@ -74,6 +74,14 @@ public class UmsRoleController {
             return new CommonResult().success(count);
         }
         return new CommonResult().failed();
+    }
+
+    @ApiOperation("获取所有角色")
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @ResponseBody
+    public Object list(){
+        List<UmsRole> roleList = roleService.list();
+        return new CommonResult().success(roleList);
     }
 
 }

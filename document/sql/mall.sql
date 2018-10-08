@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-09-05 17:02:45
+Date: 2018-10-08 16:49:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -387,7 +387,7 @@ CREATE TABLE `oms_order` (
 -- Records of oms_order
 -- ----------------------------
 INSERT INTO `oms_order` VALUES ('12', '1', '2', null, '2018-09-05 12:24:27', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '1', '0', null, null, null, '0', null, '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', null);
-INSERT INTO `oms_order` VALUES ('13', '1', '2', null, '2018-09-05 14:24:29', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '4', '0', null, null, null, '0', null, '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', '1000');
+INSERT INTO `oms_order` VALUES ('13', '1', '2', null, '2018-09-05 14:24:29', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '1', '0', null, null, null, '0', null, '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', '1000');
 INSERT INTO `oms_order` VALUES ('14', '1', '2', null, '2018-09-03 16:57:40', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '4', '0', null, null, null, '18682', '18682', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', null);
 INSERT INTO `oms_order` VALUES ('15', '1', '2', null, '2018-09-03 17:03:00', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '4', '0', null, null, null, '18682', '18682', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', null);
 INSERT INTO `oms_order` VALUES ('16', '1', '2', null, '2018-09-04 16:16:16', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', null, '0', '1', '4', '0', null, null, null, '18682', '18682', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', null);
@@ -594,7 +594,7 @@ CREATE TABLE `pms_brand` (
   `big_pic` varchar(255) DEFAULT NULL COMMENT '专区大图',
   `brand_story` text COMMENT '品牌故事',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='品牌表';
 
 -- ----------------------------
 -- Records of pms_brand
@@ -896,7 +896,7 @@ CREATE TABLE `pms_product_attribute_category` (
   `attribute_count` int(11) DEFAULT '0' COMMENT '属性数量',
   `param_count` int(11) DEFAULT '0' COMMENT '参数数量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='产品属性分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='产品属性分类表';
 
 -- ----------------------------
 -- Records of pms_product_attribute_category
@@ -1245,19 +1245,19 @@ INSERT INTO `pms_sku_stock` VALUES ('78', '23', '201806070023001', '99.00', '0',
 INSERT INTO `pms_sku_stock` VALUES ('79', '23', '201806070023002', '99.00', '0', null, '米白色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('80', '23', '201806070023003', '99.00', '0', null, '浅黄色', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('81', '23', '201806070023004', '99.00', '0', null, '浅黄色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('90', '26', '201806070026001', '3788.00', '499', null, '金色', '16G', null, null, null, '3588.00', '-4');
+INSERT INTO `pms_sku_stock` VALUES ('90', '26', '201806070026001', '3788.00', '499', null, '金色', '16G', null, null, null, '3588.00', '-6');
 INSERT INTO `pms_sku_stock` VALUES ('91', '26', '201806070026002', '3999.00', '500', null, '金色', '32G', null, null, null, '3799.00', '0');
 INSERT INTO `pms_sku_stock` VALUES ('92', '26', '201806070026003', '3788.00', '500', null, '银色', '16G', null, null, null, '3588.00', '0');
 INSERT INTO `pms_sku_stock` VALUES ('93', '26', '201806070026004', '3999.00', '500', null, '银色', '32G', null, null, null, '3799.00', '0');
-INSERT INTO `pms_sku_stock` VALUES ('98', '27', '201808270027001', '2699.00', '97', null, '黑色', '32G', null, null, null, null, '-12');
+INSERT INTO `pms_sku_stock` VALUES ('98', '27', '201808270027001', '2699.00', '97', null, '黑色', '32G', null, null, null, null, '-18');
 INSERT INTO `pms_sku_stock` VALUES ('99', '27', '201808270027002', '2999.00', '100', null, '黑色', '64G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('100', '27', '201808270027003', '2699.00', '100', null, '蓝色', '32G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('101', '27', '201808270027004', '2999.00', '100', null, '蓝色', '64G', null, null, null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('102', '28', '201808270028001', '649.00', '99', null, '金色', '16G', null, null, null, null, '-4');
-INSERT INTO `pms_sku_stock` VALUES ('103', '28', '201808270028002', '699.00', '99', null, '金色', '32G', null, null, null, null, '-4');
+INSERT INTO `pms_sku_stock` VALUES ('102', '28', '201808270028001', '649.00', '99', null, '金色', '16G', null, null, null, null, '-6');
+INSERT INTO `pms_sku_stock` VALUES ('103', '28', '201808270028002', '699.00', '99', null, '金色', '32G', null, null, null, null, '-6');
 INSERT INTO `pms_sku_stock` VALUES ('104', '28', '201808270028003', '649.00', '100', null, '银色', '16G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('105', '28', '201808270028004', '699.00', '100', null, '银色', '32G', null, null, null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('106', '29', '201808270029001', '5499.00', '99', null, '金色', '32G', null, null, null, null, '-4');
+INSERT INTO `pms_sku_stock` VALUES ('106', '29', '201808270029001', '5499.00', '99', null, '金色', '32G', null, null, null, null, '-6');
 INSERT INTO `pms_sku_stock` VALUES ('107', '29', '201808270029002', '6299.00', '100', null, '金色', '64G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('108', '29', '201808270029003', '5499.00', '100', null, '银色', '32G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('109', '29', '201808270029004', '6299.00', '100', null, '银色', '64G', null, null, null, null, '0');
@@ -1497,14 +1497,20 @@ CREATE TABLE `ums_admin` (
   `username` varchar(64) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `icon` varchar(500) DEFAULT NULL COMMENT '头像',
-  `email` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
+  `nick_name` varchar(200) DEFAULT NULL COMMENT '昵称',
+  `note` varchar(500) DEFAULT NULL COMMENT '备注信息',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
+  `status` int(1) DEFAULT '1' COMMENT '帐号启用状态：0->禁用；1->启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
 
 -- ----------------------------
 -- Records of ums_admin
 -- ----------------------------
-INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null);
+INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
+INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-10-08 13:33:16', '1');
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log
@@ -1523,6 +1529,40 @@ CREATE TABLE `ums_admin_login_log` (
 -- ----------------------------
 -- Records of ums_admin_login_log
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for ums_admin_permission_relation
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_admin_permission_relation`;
+CREATE TABLE `ums_admin_permission_relation` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `admin_id` bigint(20) DEFAULT NULL,
+  `permission_id` bigint(20) DEFAULT NULL,
+  `type` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='后台用户和权限关系表(除角色中定义的权限以外的加减权限)';
+
+-- ----------------------------
+-- Records of ums_admin_permission_relation
+-- ----------------------------
+INSERT INTO `ums_admin_permission_relation` VALUES ('24', '3', '9', '1');
+INSERT INTO `ums_admin_permission_relation` VALUES ('25', '3', '8', '-1');
+
+-- ----------------------------
+-- Table structure for ums_admin_role_relation
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_admin_role_relation`;
+CREATE TABLE `ums_admin_role_relation` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `admin_id` bigint(20) DEFAULT NULL,
+  `role_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='后台用户和角色关系表';
+
+-- ----------------------------
+-- Records of ums_admin_role_relation
+-- ----------------------------
+INSERT INTO `ums_admin_role_relation` VALUES ('13', '3', '1');
 
 -- ----------------------------
 -- Table structure for ums_growth_change_history
@@ -1615,7 +1655,7 @@ CREATE TABLE `ums_member` (
 -- ----------------------------
 -- Records of ums_member
 -- ----------------------------
-INSERT INTO `ums_member` VALUES ('1', '4', 'test', '202cb962ac59075b964b07152d234b70', 'windir', '18061581849', '1', '2018-08-02 10:35:44', null, '1', '2009-06-01', '上海', '学生', 'test', null, '3000', null, null, null);
+INSERT INTO `ums_member` VALUES ('1', '4', 'test', '202cb962ac59075b964b07152d234b70', 'windir', '18061581849', '1', '2018-08-02 10:35:44', null, '1', '2009-06-01', '上海', '学生', 'test', null, '5000', null, null, null);
 INSERT INTO `ums_member` VALUES ('3', '4', 'test1', '698d51a19d8a121ce581499d7b701668', null, '18061581848', '1', '2018-08-03 16:46:38', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
@@ -1800,3 +1840,98 @@ CREATE TABLE `ums_member_task` (
 -- ----------------------------
 -- Records of ums_member_task
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for ums_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_permission`;
+CREATE TABLE `ums_permission` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pid` bigint(20) DEFAULT NULL COMMENT '父级权限id',
+  `name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `value` varchar(200) DEFAULT NULL COMMENT '权限值',
+  `icon` varchar(500) DEFAULT NULL COMMENT '图标',
+  `type` int(1) DEFAULT NULL COMMENT '权限类型：0->目录；1->菜单；2->按钮（接口绑定权限）',
+  `uri` varchar(200) DEFAULT NULL COMMENT '前端资源路径',
+  `status` int(1) DEFAULT NULL COMMENT '启用状态；0->禁用；1->启用',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `sort` int(11) DEFAULT NULL COMMENT '排序',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='后台用户权限表';
+
+-- ----------------------------
+-- Records of ums_permission
+-- ----------------------------
+INSERT INTO `ums_permission` VALUES ('1', '0', '商品', null, null, '0', null, '1', '2018-09-29 16:15:14', '0');
+INSERT INTO `ums_permission` VALUES ('2', '1', '商品列表', 'pms:product:read', null, '1', '/pms/product/index', '1', '2018-09-29 16:17:01', '0');
+INSERT INTO `ums_permission` VALUES ('3', '1', '添加商品', 'pms:product:create', null, '1', '/pms/product/add', '1', '2018-09-29 16:18:51', '0');
+INSERT INTO `ums_permission` VALUES ('4', '1', '商品分类', 'pms:productCategory:read', null, '1', '/pms/productCate/index', '1', '2018-09-29 16:23:07', '0');
+INSERT INTO `ums_permission` VALUES ('5', '1', '商品类型', 'pms:productAttribute:read', null, '1', '/pms/productAttr/index', '1', '2018-09-29 16:24:43', '0');
+INSERT INTO `ums_permission` VALUES ('6', '1', '品牌管理', 'pms:brand:read', null, '1', '/pms/brand/index', '1', '2018-09-29 16:25:45', '0');
+INSERT INTO `ums_permission` VALUES ('7', '2', '编辑商品', 'pms:product:update', null, '2', '/pms/product/updateProduct', '1', '2018-09-29 16:34:23', '0');
+INSERT INTO `ums_permission` VALUES ('8', '2', '删除商品', 'pms:product:delete', null, '2', '/pms/product/delete', '1', '2018-09-29 16:38:33', '0');
+INSERT INTO `ums_permission` VALUES ('9', '4', '添加商品分类', 'pms:productCategory:create', null, '2', '/pms/productCate/create', '1', '2018-09-29 16:43:23', '0');
+INSERT INTO `ums_permission` VALUES ('10', '4', '修改商品分类', 'pms:productCategory:update', null, '2', '/pms/productCate/update', '1', '2018-09-29 16:43:55', '0');
+INSERT INTO `ums_permission` VALUES ('11', '4', '删除商品分类', 'pms:productCategory:delete', null, '2', '/pms/productAttr/delete', '1', '2018-09-29 16:44:38', '0');
+INSERT INTO `ums_permission` VALUES ('12', '5', '添加商品类型', 'pms:productAttribute:create', null, '2', '/pms/productAttr/create', '1', '2018-09-29 16:45:25', '0');
+INSERT INTO `ums_permission` VALUES ('13', '5', '修改商品类型', 'pms:productAttribute:update', null, '2', '/pms/productAttr/update', '1', '2018-09-29 16:48:08', '0');
+INSERT INTO `ums_permission` VALUES ('14', '5', '删除商品类型', 'pms:productAttribute:delete', null, '2', '/pms/productAttr/delete', '1', '2018-09-29 16:48:44', '0');
+INSERT INTO `ums_permission` VALUES ('15', '6', '添加品牌', 'pms:brand:create', null, '2', '/pms/brand/add', '1', '2018-09-29 16:49:34', '0');
+INSERT INTO `ums_permission` VALUES ('16', '6', '修改品牌', 'pms:brand:update', null, '2', '/pms/brand/update', '1', '2018-09-29 16:50:55', '0');
+INSERT INTO `ums_permission` VALUES ('17', '6', '删除品牌', 'pms:brand:delete', null, '2', '/pms/brand/delete', '1', '2018-09-29 16:50:59', '0');
+INSERT INTO `ums_permission` VALUES ('18', '0', '首页', null, null, '0', null, '1', '2018-09-29 16:51:57', '0');
+
+-- ----------------------------
+-- Table structure for ums_role
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_role`;
+CREATE TABLE `ums_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `description` varchar(500) DEFAULT NULL COMMENT '描述',
+  `admin_count` int(11) DEFAULT NULL COMMENT '后台用户数量',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `status` int(1) DEFAULT '1' COMMENT '启用状态：0->禁用；1->启用',
+  `sort` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
+
+-- ----------------------------
+-- Records of ums_role
+-- ----------------------------
+INSERT INTO `ums_role` VALUES ('1', '商品管理员', '商品管理员', '0', '2018-09-30 15:46:11', '1', '0');
+INSERT INTO `ums_role` VALUES ('2', '商品分类管理员', '商品分类管理员', '0', '2018-09-30 15:53:45', '1', '0');
+INSERT INTO `ums_role` VALUES ('3', '商品类型管理员', '商品类型管理员', '0', '2018-09-30 15:53:56', '1', '0');
+INSERT INTO `ums_role` VALUES ('4', '品牌管理员', '品牌管理员', '0', '2018-09-30 15:54:12', '1', '0');
+
+-- ----------------------------
+-- Table structure for ums_role_permission_relation
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_role_permission_relation`;
+CREATE TABLE `ums_role_permission_relation` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role_id` bigint(20) DEFAULT NULL,
+  `permission_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='后台用户角色和权限关系表';
+
+-- ----------------------------
+-- Records of ums_role_permission_relation
+-- ----------------------------
+INSERT INTO `ums_role_permission_relation` VALUES ('1', '1', '1');
+INSERT INTO `ums_role_permission_relation` VALUES ('2', '1', '2');
+INSERT INTO `ums_role_permission_relation` VALUES ('3', '1', '3');
+INSERT INTO `ums_role_permission_relation` VALUES ('4', '1', '7');
+INSERT INTO `ums_role_permission_relation` VALUES ('5', '1', '8');
+INSERT INTO `ums_role_permission_relation` VALUES ('6', '2', '4');
+INSERT INTO `ums_role_permission_relation` VALUES ('7', '2', '9');
+INSERT INTO `ums_role_permission_relation` VALUES ('8', '2', '10');
+INSERT INTO `ums_role_permission_relation` VALUES ('9', '2', '11');
+INSERT INTO `ums_role_permission_relation` VALUES ('10', '3', '5');
+INSERT INTO `ums_role_permission_relation` VALUES ('11', '3', '12');
+INSERT INTO `ums_role_permission_relation` VALUES ('12', '3', '13');
+INSERT INTO `ums_role_permission_relation` VALUES ('13', '3', '14');
+INSERT INTO `ums_role_permission_relation` VALUES ('14', '4', '6');
+INSERT INTO `ums_role_permission_relation` VALUES ('15', '4', '15');
+INSERT INTO `ums_role_permission_relation` VALUES ('16', '4', '16');
+INSERT INTO `ums_role_permission_relation` VALUES ('17', '4', '17');

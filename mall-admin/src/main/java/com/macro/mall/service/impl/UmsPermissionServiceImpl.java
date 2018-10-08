@@ -52,6 +52,11 @@ public class UmsPermissionServiceImpl implements UmsPermissionService {
         return result;
     }
 
+    @Override
+    public List<UmsPermission> list() {
+        return permissionMapper.selectByExample(new UmsPermissionExample());
+    }
+
     /**
      * 将权限转换为带有子级的权限对象
      * 当找不到子级权限的时候map操作不会再递归调用covert

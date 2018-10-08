@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @Api(tags = "UmsPermissionController", description = "后台用户权限管理")
-@RequestMapping("/admin/permission")
+@RequestMapping("/permission")
 public class UmsPermissionController {
     @Autowired
     private UmsPermissionService permissionService;
@@ -61,5 +61,13 @@ public class UmsPermissionController {
     public Object treeList() {
         List<UmsPermissionNode> permissionNodeList = permissionService.treeList();
         return new CommonResult().success(permissionNodeList);
+    }
+
+    @ApiOperation("获取所有权限列表")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public Object list() {
+        List<UmsPermission> permissionList = permissionService.list();
+        return new CommonResult().success(permissionList);
     }
 }

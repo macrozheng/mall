@@ -67,4 +67,9 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         }
         return rolePermissionRelationDao.insertList(relationList);
     }
+
+    @Override
+    public List<UmsRole> list() {
+        return roleMapper.selectByExample(new UmsRoleExample());
+    }
 }

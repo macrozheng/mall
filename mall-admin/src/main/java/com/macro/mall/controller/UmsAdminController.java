@@ -4,12 +4,13 @@ import com.macro.mall.dto.CommonResult;
 import com.macro.mall.dto.UmsAdminLoginParam;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsPermission;
+import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,6 @@ import java.util.Map;
 public class UmsAdminController {
     @Autowired
     private UmsAdminService adminService;
-    @Autowired
-    private UserDetailsService userDetailsService;
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
@@ -81,7 +80,7 @@ public class UmsAdminController {
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
     public Object getAdminInfo(Principal principal) {
-        String username = principal.getName();
+        String  username = principal.getName();
         UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
         Map<String, Object> data = new HashMap<>();
         data.put("username", umsAdmin.getUsername());
@@ -100,7 +99,7 @@ public class UmsAdminController {
     @ApiOperation("根据用户名或姓名分页获取用户列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@RequestParam("name") String name,
+    public Object list(@RequestParam(value = "name",required = false) String name,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum){
         List<UmsAdmin> adminList = adminService.list(name,pageSize,pageNum);
@@ -135,5 +134,45 @@ public class UmsAdminController {
             return new CommonResult().success(count);
         }
         return new CommonResult().failed();
+    }
+
+    @ApiOperation("给用户分配角色")
+    @RequestMapping(value = "/role/update",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateRole(@RequestParam("adminId") Long adminId,
+                             @RequestParam("roleIds") List<Long> roleIds){
+        int count = adminService.updateRole(adminId,roleIds);
+        if(count>=0){
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
+
+    @ApiOperation("获取指定用户的角色")
+    @RequestMapping(value = "/role/{adminId}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getRoleList(@PathVariable Long adminId){
+        List<UmsRole> roleList = adminService.getRoleList(adminId);
+        return new CommonResult().success(roleList);
+    }
+
+    @ApiOperation("给用户分配+-权限")
+    @RequestMapping(value = "/permission/update",method = RequestMethod.POST)
+    @ResponseBody
+    public Object updatePermission(@RequestParam Long adminId,
+                                   @RequestParam("permissionIds") List<Long> permissionIds){
+        int count = adminService.updatePermission(adminId,permissionIds);
+        if(count>0){
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
+
+    @ApiOperation("获取用户所有权限（包括+-权限）")
+    @RequestMapping(value = "/permission/{adminId}",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getPermissionList(@PathVariable Long adminId){
+        List<UmsPermission> permissionList = adminService.getPermissionList(adminId);
+        return new CommonResult().success(permissionList);
     }
 }

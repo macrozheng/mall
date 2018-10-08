@@ -2,6 +2,9 @@ package com.macro.mall.service;
 
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsPermission;
+import com.macro.mall.model.UmsRole;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -53,4 +56,26 @@ public interface UmsAdminService {
      * 删除指定用户
      */
     int delete(Long id);
+
+    /**
+     * 修改用户角色关系
+     */
+    @Transactional
+    int updateRole(Long adminId, List<Long> roleIds);
+
+    /**
+     * 获取用户对于角色
+     */
+    List<UmsRole> getRoleList(Long adminId);
+
+    /**
+     * 修改用户的+-权限
+     */
+    @Transactional
+    int updatePermission(Long adminId, List<Long> permissionIds);
+
+    /**
+     * 获取用户所有权限（包括角色权限和+-权限）
+     */
+    List<UmsPermission> getPermissionList(Long adminId);
 }
