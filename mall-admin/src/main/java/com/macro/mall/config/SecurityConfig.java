@@ -5,6 +5,7 @@ import com.macro.mall.component.JwtAuthenticationTokenFilter;
 import com.macro.mall.component.RestAuthenticationEntryPoint;
 import com.macro.mall.component.RestfulAccessDeniedHandler;
 import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsPermission;
 import com.macro.mall.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -14,17 +15,19 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
+import java.util.List;
 
 
 /**
@@ -33,6 +36,7 @@ import org.springframework.web.filter.CorsFilter;
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UmsAdminService adminService;
@@ -92,15 +96,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                UmsAdmin admin = adminService.getAdminByUsername(username);
-                if (admin != null) {
-                    return new AdminUserDetails(admin);
-                }
-                throw new UsernameNotFoundException("用户名或密码错误");
+        return username -> {
+            UmsAdmin admin = adminService.getAdminByUsername(username);
+            if (admin != null) {
+                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
+                return new AdminUserDetails(admin,permissionList);
             }
+            throw new UsernameNotFoundException("用户名或密码错误");
         };
     }
 

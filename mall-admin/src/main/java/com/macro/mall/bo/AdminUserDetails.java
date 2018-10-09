@@ -1,12 +1,14 @@
 package com.macro.mall.bo;
 
 import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsPermission;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * SpringSecurity需要的用户详情
@@ -14,15 +16,19 @@ import java.util.Collection;
  */
 public class AdminUserDetails implements UserDetails {
     private UmsAdmin umsAdmin;
-
-    public AdminUserDetails(UmsAdmin umsAdmin) {
+    private List<UmsPermission> permissionList;
+    public AdminUserDetails(UmsAdmin umsAdmin,List<UmsPermission> permissionList) {
         this.umsAdmin = umsAdmin;
+        this.permissionList = permissionList;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //返回当前用户的权限
-        return Arrays.asList(new SimpleGrantedAuthority("TEST"));
+        return permissionList.stream()
+                .filter(permission -> permission.getValue()!=null)
+                .map(permission ->new SimpleGrantedAuthority(permission.getValue()))
+                .collect(Collectors.toList());
     }
 
     @Override

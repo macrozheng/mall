@@ -61,9 +61,8 @@ docker容器化部署 | ✔
 ELK日志收集功能 | ✔
 RabbitMq异步通信 | ✔
 RestTemplate服务间调用 | ✔
-SpringSecurity权限管理功能 |
+SpringSecurity权限管理功能 | ✔
 集成SpringCloud |
-集成SpringCloudSecurity |
 
 ### 使用工具
 
@@ -235,7 +234,7 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 
 #### 订单管理
 
-#### 权限管理
+#### 权限管理 ✔
 
 > **权限管理**
 
