@@ -1,6 +1,7 @@
 package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
+import com.macro.mall.dto.OmsOrderDeliveryParam;
 import com.macro.mall.dto.OmsOrderDetail;
 import com.macro.mall.dto.OmsOrderQueryParam;
 import com.macro.mall.model.OmsOrder;
@@ -37,8 +38,8 @@ public class OmsOrderController {
     @ApiOperation("批量发货")
     @RequestMapping(value = "/update/delivery", method = RequestMethod.POST)
     @ResponseBody
-    public Object delivery(@RequestParam("ids") List<Long> ids) {
-        int count = orderService.delivery(ids);
+    public Object delivery(@RequestBody List<OmsOrderDeliveryParam> deliveryParamList) {
+        int count = orderService.delivery(deliveryParamList);
         if (count > 0) {
             return new CommonResult().success(count);
         }
@@ -48,8 +49,8 @@ public class OmsOrderController {
     @ApiOperation("批量关闭订单")
     @RequestMapping(value = "/update/close", method = RequestMethod.POST)
     @ResponseBody
-    public Object close(@RequestParam("ids") List<Long> ids) {
-        int count = orderService.close(ids);
+    public Object close(@RequestParam("ids") List<Long> ids,@RequestParam String note) {
+        int count = orderService.close(ids,note);
         if (count > 0) {
             return new CommonResult().success(count);
         }

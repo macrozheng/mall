@@ -230,6 +230,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         OmsOrder order = new OmsOrder();
         order.setId(orderId);
         order.setStatus(1);
+        order.setPaymentTime(new Date());
         orderMapper.updateByPrimaryKeySelective(order);
         //恢复所有下单商品的锁定库存，扣减真实库存
         OmsOrderDetail orderDetail = portalOrderDao.getDetail(orderId);

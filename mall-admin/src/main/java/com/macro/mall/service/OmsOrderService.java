@@ -1,8 +1,10 @@
 package com.macro.mall.service;
 
+import com.macro.mall.dto.OmsOrderDeliveryParam;
 import com.macro.mall.dto.OmsOrderDetail;
 import com.macro.mall.dto.OmsOrderQueryParam;
 import com.macro.mall.model.OmsOrder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,12 +21,14 @@ public interface OmsOrderService {
     /**
      * 批量发货
      */
-    int delivery(List<Long> ids);
+    @Transactional
+    int delivery(List<OmsOrderDeliveryParam> deliveryParamList);
 
     /**
      * 批量关闭订单
      */
-    int close(List<Long> ids);
+    @Transactional
+    int close(List<Long> ids, String note);
 
     /**
      * 批量删除订单

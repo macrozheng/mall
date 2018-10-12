@@ -2615,6 +2615,306 @@ public class OmsOrderExample {
             addCriterion("use_integration not between", value1, value2, "useIntegration");
             return (Criteria) this;
         }
+
+        public Criteria andPaymentTimeIsNull() {
+            addCriterion("payment_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeIsNotNull() {
+            addCriterion("payment_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeEqualTo(Date value) {
+            addCriterion("payment_time =", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeNotEqualTo(Date value) {
+            addCriterion("payment_time <>", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeGreaterThan(Date value) {
+            addCriterion("payment_time >", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("payment_time >=", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeLessThan(Date value) {
+            addCriterion("payment_time <", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeLessThanOrEqualTo(Date value) {
+            addCriterion("payment_time <=", value, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeIn(List<Date> values) {
+            addCriterion("payment_time in", values, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeNotIn(List<Date> values) {
+            addCriterion("payment_time not in", values, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeBetween(Date value1, Date value2) {
+            addCriterion("payment_time between", value1, value2, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentTimeNotBetween(Date value1, Date value2) {
+            addCriterion("payment_time not between", value1, value2, "paymentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeIsNull() {
+            addCriterion("delivery_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeIsNotNull() {
+            addCriterion("delivery_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeEqualTo(Date value) {
+            addCriterion("delivery_time =", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeNotEqualTo(Date value) {
+            addCriterion("delivery_time <>", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeGreaterThan(Date value) {
+            addCriterion("delivery_time >", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("delivery_time >=", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeLessThan(Date value) {
+            addCriterion("delivery_time <", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeLessThanOrEqualTo(Date value) {
+            addCriterion("delivery_time <=", value, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeIn(List<Date> values) {
+            addCriterion("delivery_time in", values, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeNotIn(List<Date> values) {
+            addCriterion("delivery_time not in", values, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeBetween(Date value1, Date value2) {
+            addCriterion("delivery_time between", value1, value2, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeliveryTimeNotBetween(Date value1, Date value2) {
+            addCriterion("delivery_time not between", value1, value2, "deliveryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeIsNull() {
+            addCriterion("receive_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeIsNotNull() {
+            addCriterion("receive_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeEqualTo(Date value) {
+            addCriterion("receive_time =", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeNotEqualTo(Date value) {
+            addCriterion("receive_time <>", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeGreaterThan(Date value) {
+            addCriterion("receive_time >", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("receive_time >=", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeLessThan(Date value) {
+            addCriterion("receive_time <", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeLessThanOrEqualTo(Date value) {
+            addCriterion("receive_time <=", value, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeIn(List<Date> values) {
+            addCriterion("receive_time in", values, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeNotIn(List<Date> values) {
+            addCriterion("receive_time not in", values, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeBetween(Date value1, Date value2) {
+            addCriterion("receive_time between", value1, value2, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveTimeNotBetween(Date value1, Date value2) {
+            addCriterion("receive_time not between", value1, value2, "receiveTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeIsNull() {
+            addCriterion("comment_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeIsNotNull() {
+            addCriterion("comment_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeEqualTo(Date value) {
+            addCriterion("comment_time =", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeNotEqualTo(Date value) {
+            addCriterion("comment_time <>", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeGreaterThan(Date value) {
+            addCriterion("comment_time >", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("comment_time >=", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeLessThan(Date value) {
+            addCriterion("comment_time <", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeLessThanOrEqualTo(Date value) {
+            addCriterion("comment_time <=", value, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeIn(List<Date> values) {
+            addCriterion("comment_time in", values, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeNotIn(List<Date> values) {
+            addCriterion("comment_time not in", values, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeBetween(Date value1, Date value2) {
+            addCriterion("comment_time between", value1, value2, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentTimeNotBetween(Date value1, Date value2) {
+            addCriterion("comment_time not between", value1, value2, "commentTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeIsNull() {
+            addCriterion("modify_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeIsNotNull() {
+            addCriterion("modify_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeEqualTo(Date value) {
+            addCriterion("modify_time =", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeNotEqualTo(Date value) {
+            addCriterion("modify_time <>", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeGreaterThan(Date value) {
+            addCriterion("modify_time >", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("modify_time >=", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeLessThan(Date value) {
+            addCriterion("modify_time <", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeLessThanOrEqualTo(Date value) {
+            addCriterion("modify_time <=", value, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeIn(List<Date> values) {
+            addCriterion("modify_time in", values, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeNotIn(List<Date> values) {
+            addCriterion("modify_time not in", values, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeBetween(Date value1, Date value2) {
+            addCriterion("modify_time between", value1, value2, "modifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andModifyTimeNotBetween(Date value1, Date value2) {
+            addCriterion("modify_time not between", value1, value2, "modifyTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -4,8 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 /**
  * 订单查询参数
  * Created by macro on 2018/10/11.
@@ -24,5 +22,5 @@ public class OmsOrderQueryParam {
     @ApiModelProperty(value = "订单来源：0->PC订单；1->app订单")
     private Integer sourceType;
     @ApiModelProperty(value = "订单提交时间")
-    private Date createTime;
+    private String createTime;
 }

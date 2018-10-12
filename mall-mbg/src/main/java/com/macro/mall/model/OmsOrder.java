@@ -268,6 +268,41 @@ public class OmsOrder implements Serializable {
      */
     private Integer useIntegration;
 
+    /**
+     * 支付时间
+     *
+     * @mbggenerated
+     */
+    private Date paymentTime;
+
+    /**
+     * 发货时间
+     *
+     * @mbggenerated
+     */
+    private Date deliveryTime;
+
+    /**
+     * 确认收货时间
+     *
+     * @mbggenerated
+     */
+    private Date receiveTime;
+
+    /**
+     * 评价时间
+     *
+     * @mbggenerated
+     */
+    private Date commentTime;
+
+    /**
+     * 修改时间
+     *
+     * @mbggenerated
+     */
+    private Date modifyTime;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -582,6 +617,46 @@ public class OmsOrder implements Serializable {
         this.useIntegration = useIntegration;
     }
 
+    public Date getPaymentTime() {
+        return paymentTime;
+    }
+
+    public void setPaymentTime(Date paymentTime) {
+        this.paymentTime = paymentTime;
+    }
+
+    public Date getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Date getReceiveTime() {
+        return receiveTime;
+    }
+
+    public void setReceiveTime(Date receiveTime) {
+        this.receiveTime = receiveTime;
+    }
+
+    public Date getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(Date commentTime) {
+        this.commentTime = commentTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -627,6 +702,11 @@ public class OmsOrder implements Serializable {
         sb.append(", confirmStatus=").append(confirmStatus);
         sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", useIntegration=").append(useIntegration);
+        sb.append(", paymentTime=").append(paymentTime);
+        sb.append(", deliveryTime=").append(deliveryTime);
+        sb.append(", receiveTime=").append(receiveTime);
+        sb.append(", commentTime=").append(commentTime);
+        sb.append(", modifyTime=").append(modifyTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
