@@ -703,6 +703,76 @@ public class OmsCompanyAddressExample {
             addCriterion("region not between", value1, value2, "region");
             return (Criteria) this;
         }
+
+        public Criteria andDetailAddressIsNull() {
+            addCriterion("detail_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressIsNotNull() {
+            addCriterion("detail_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressEqualTo(String value) {
+            addCriterion("detail_address =", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressNotEqualTo(String value) {
+            addCriterion("detail_address <>", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressGreaterThan(String value) {
+            addCriterion("detail_address >", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("detail_address >=", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressLessThan(String value) {
+            addCriterion("detail_address <", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressLessThanOrEqualTo(String value) {
+            addCriterion("detail_address <=", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressLike(String value) {
+            addCriterion("detail_address like", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressNotLike(String value) {
+            addCriterion("detail_address not like", value, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressIn(List<String> values) {
+            addCriterion("detail_address in", values, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressNotIn(List<String> values) {
+            addCriterion("detail_address not in", values, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressBetween(String value1, String value2) {
+            addCriterion("detail_address between", value1, value2, "detailAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailAddressNotBetween(String value1, String value2) {
+            addCriterion("detail_address not between", value1, value2, "detailAddress");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

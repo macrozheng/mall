@@ -286,6 +286,66 @@ public class OmsOrderReturnApplyExample {
             return (Criteria) this;
         }
 
+        public Criteria andProductIdIsNull() {
+            addCriterion("product_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdIsNotNull() {
+            addCriterion("product_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdEqualTo(Long value) {
+            addCriterion("product_id =", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdNotEqualTo(Long value) {
+            addCriterion("product_id <>", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdGreaterThan(Long value) {
+            addCriterion("product_id >", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("product_id >=", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdLessThan(Long value) {
+            addCriterion("product_id <", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdLessThanOrEqualTo(Long value) {
+            addCriterion("product_id <=", value, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdIn(List<Long> values) {
+            addCriterion("product_id in", values, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdNotIn(List<Long> values) {
+            addCriterion("product_id not in", values, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdBetween(Long value1, Long value2) {
+            addCriterion("product_id between", value1, value2, "productId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductIdNotBetween(Long value1, Long value2) {
+            addCriterion("product_id not between", value1, value2, "productId");
+            return (Criteria) this;
+        }
+
         public Criteria andOrderSnIsNull() {
             addCriterion("order_sn is null");
             return (Criteria) this;
@@ -946,73 +1006,73 @@ public class OmsOrderReturnApplyExample {
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameIsNull() {
-            addCriterion("brand_name is null");
+        public Criteria andProductBrandIsNull() {
+            addCriterion("product_brand is null");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameIsNotNull() {
-            addCriterion("brand_name is not null");
+        public Criteria andProductBrandIsNotNull() {
+            addCriterion("product_brand is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameEqualTo(String value) {
-            addCriterion("brand_name =", value, "brandName");
+        public Criteria andProductBrandEqualTo(String value) {
+            addCriterion("product_brand =", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameNotEqualTo(String value) {
-            addCriterion("brand_name <>", value, "brandName");
+        public Criteria andProductBrandNotEqualTo(String value) {
+            addCriterion("product_brand <>", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameGreaterThan(String value) {
-            addCriterion("brand_name >", value, "brandName");
+        public Criteria andProductBrandGreaterThan(String value) {
+            addCriterion("product_brand >", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameGreaterThanOrEqualTo(String value) {
-            addCriterion("brand_name >=", value, "brandName");
+        public Criteria andProductBrandGreaterThanOrEqualTo(String value) {
+            addCriterion("product_brand >=", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameLessThan(String value) {
-            addCriterion("brand_name <", value, "brandName");
+        public Criteria andProductBrandLessThan(String value) {
+            addCriterion("product_brand <", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameLessThanOrEqualTo(String value) {
-            addCriterion("brand_name <=", value, "brandName");
+        public Criteria andProductBrandLessThanOrEqualTo(String value) {
+            addCriterion("product_brand <=", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameLike(String value) {
-            addCriterion("brand_name like", value, "brandName");
+        public Criteria andProductBrandLike(String value) {
+            addCriterion("product_brand like", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameNotLike(String value) {
-            addCriterion("brand_name not like", value, "brandName");
+        public Criteria andProductBrandNotLike(String value) {
+            addCriterion("product_brand not like", value, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameIn(List<String> values) {
-            addCriterion("brand_name in", values, "brandName");
+        public Criteria andProductBrandIn(List<String> values) {
+            addCriterion("product_brand in", values, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameNotIn(List<String> values) {
-            addCriterion("brand_name not in", values, "brandName");
+        public Criteria andProductBrandNotIn(List<String> values) {
+            addCriterion("product_brand not in", values, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameBetween(String value1, String value2) {
-            addCriterion("brand_name between", value1, value2, "brandName");
+        public Criteria andProductBrandBetween(String value1, String value2) {
+            addCriterion("product_brand between", value1, value2, "productBrand");
             return (Criteria) this;
         }
 
-        public Criteria andBrandNameNotBetween(String value1, String value2) {
-            addCriterion("brand_name not between", value1, value2, "brandName");
+        public Criteria andProductBrandNotBetween(String value1, String value2) {
+            addCriterion("product_brand not between", value1, value2, "productBrand");
             return (Criteria) this;
         }
 
@@ -1143,6 +1203,126 @@ public class OmsOrderReturnApplyExample {
 
         public Criteria andProductCountNotBetween(Integer value1, Integer value2) {
             addCriterion("product_count not between", value1, value2, "productCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceIsNull() {
+            addCriterion("product_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceIsNotNull() {
+            addCriterion("product_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceEqualTo(BigDecimal value) {
+            addCriterion("product_price =", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceNotEqualTo(BigDecimal value) {
+            addCriterion("product_price <>", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceGreaterThan(BigDecimal value) {
+            addCriterion("product_price >", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("product_price >=", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceLessThan(BigDecimal value) {
+            addCriterion("product_price <", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("product_price <=", value, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceIn(List<BigDecimal> values) {
+            addCriterion("product_price in", values, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceNotIn(List<BigDecimal> values) {
+            addCriterion("product_price not in", values, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("product_price between", value1, value2, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("product_price not between", value1, value2, "productPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceIsNull() {
+            addCriterion("product_real_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceIsNotNull() {
+            addCriterion("product_real_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceEqualTo(BigDecimal value) {
+            addCriterion("product_real_price =", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceNotEqualTo(BigDecimal value) {
+            addCriterion("product_real_price <>", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceGreaterThan(BigDecimal value) {
+            addCriterion("product_real_price >", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("product_real_price >=", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceLessThan(BigDecimal value) {
+            addCriterion("product_real_price <", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("product_real_price <=", value, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceIn(List<BigDecimal> values) {
+            addCriterion("product_real_price in", values, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceNotIn(List<BigDecimal> values) {
+            addCriterion("product_real_price not in", values, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("product_real_price between", value1, value2, "productRealPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductRealPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("product_real_price not between", value1, value2, "productRealPrice");
             return (Criteria) this;
         }
 
@@ -1353,186 +1533,6 @@ public class OmsOrderReturnApplyExample {
 
         public Criteria andProofPicsNotBetween(String value1, String value2) {
             addCriterion("proof_pics not between", value1, value2, "proofPics");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountIsNull() {
-            addCriterion("return_post_amount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountIsNotNull() {
-            addCriterion("return_post_amount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountEqualTo(BigDecimal value) {
-            addCriterion("return_post_amount =", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountNotEqualTo(BigDecimal value) {
-            addCriterion("return_post_amount <>", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountGreaterThan(BigDecimal value) {
-            addCriterion("return_post_amount >", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("return_post_amount >=", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountLessThan(BigDecimal value) {
-            addCriterion("return_post_amount <", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("return_post_amount <=", value, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountIn(List<BigDecimal> values) {
-            addCriterion("return_post_amount in", values, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountNotIn(List<BigDecimal> values) {
-            addCriterion("return_post_amount not in", values, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("return_post_amount between", value1, value2, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostAmountNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("return_post_amount not between", value1, value2, "returnPostAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusIsNull() {
-            addCriterion("return_post_status is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusIsNotNull() {
-            addCriterion("return_post_status is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusEqualTo(Integer value) {
-            addCriterion("return_post_status =", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusNotEqualTo(Integer value) {
-            addCriterion("return_post_status <>", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusGreaterThan(Integer value) {
-            addCriterion("return_post_status >", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("return_post_status >=", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusLessThan(Integer value) {
-            addCriterion("return_post_status <", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("return_post_status <=", value, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusIn(List<Integer> values) {
-            addCriterion("return_post_status in", values, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusNotIn(List<Integer> values) {
-            addCriterion("return_post_status not in", values, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusBetween(Integer value1, Integer value2) {
-            addCriterion("return_post_status between", value1, value2, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andReturnPostStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("return_post_status not between", value1, value2, "returnPostStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountIsNull() {
-            addCriterion("confirm_return_amount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountIsNotNull() {
-            addCriterion("confirm_return_amount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountEqualTo(BigDecimal value) {
-            addCriterion("confirm_return_amount =", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountNotEqualTo(BigDecimal value) {
-            addCriterion("confirm_return_amount <>", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountGreaterThan(BigDecimal value) {
-            addCriterion("confirm_return_amount >", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("confirm_return_amount >=", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountLessThan(BigDecimal value) {
-            addCriterion("confirm_return_amount <", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("confirm_return_amount <=", value, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountIn(List<BigDecimal> values) {
-            addCriterion("confirm_return_amount in", values, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountNotIn(List<BigDecimal> values) {
-            addCriterion("confirm_return_amount not in", values, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("confirm_return_amount between", value1, value2, "confirmReturnAmount");
-            return (Criteria) this;
-        }
-
-        public Criteria andConfirmReturnAmountNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("confirm_return_amount not between", value1, value2, "confirmReturnAmount");
             return (Criteria) this;
         }
 

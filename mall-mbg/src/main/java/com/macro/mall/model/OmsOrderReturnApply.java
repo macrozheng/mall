@@ -14,7 +14,19 @@ public class OmsOrderReturnApply implements Serializable {
      */
     private Long orderId;
 
+    /**
+     * 收货地址表id
+     *
+     * @mbggenerated
+     */
     private Long companyAddressId;
+
+    /**
+     * 退货商品id
+     *
+     * @mbggenerated
+     */
+    private Long productId;
 
     /**
      * 订单编号
@@ -23,8 +35,18 @@ public class OmsOrderReturnApply implements Serializable {
      */
     private String orderSn;
 
+    /**
+     * 申请时间
+     *
+     * @mbggenerated
+     */
     private Date createTime;
 
+    /**
+     * 会员用户名
+     *
+     * @mbggenerated
+     */
     private String memberUsername;
 
     /**
@@ -34,6 +56,11 @@ public class OmsOrderReturnApply implements Serializable {
      */
     private BigDecimal returnAmount;
 
+    /**
+     * 退货人姓名
+     *
+     * @mbggenerated
+     */
     private String returnName;
 
     /**
@@ -57,11 +84,26 @@ public class OmsOrderReturnApply implements Serializable {
      */
     private Date handleTime;
 
+    /**
+     * 商品图片
+     *
+     * @mbggenerated
+     */
     private String productPic;
 
+    /**
+     * 商品名称
+     *
+     * @mbggenerated
+     */
     private String productName;
 
-    private String brandName;
+    /**
+     * 商品品牌
+     *
+     * @mbggenerated
+     */
+    private String productBrand;
 
     /**
      * 商品销售属性：颜色：红色；尺码：xl;
@@ -76,6 +118,20 @@ public class OmsOrderReturnApply implements Serializable {
      * @mbggenerated
      */
     private Integer productCount;
+
+    /**
+     * 商品单价
+     *
+     * @mbggenerated
+     */
+    private BigDecimal productPrice;
+
+    /**
+     * 商品实际支付单价
+     *
+     * @mbggenerated
+     */
+    private BigDecimal productRealPrice;
 
     /**
      * 原因
@@ -99,27 +155,6 @@ public class OmsOrderReturnApply implements Serializable {
     private String proofPics;
 
     /**
-     * 要退的邮费
-     *
-     * @mbggenerated
-     */
-    private BigDecimal returnPostAmount;
-
-    /**
-     * 是否退邮费：0->不退；1->退
-     *
-     * @mbggenerated
-     */
-    private Integer returnPostStatus;
-
-    /**
-     * 确认退款总金额
-     *
-     * @mbggenerated
-     */
-    private BigDecimal confirmReturnAmount;
-
-    /**
      * 处理备注
      *
      * @mbggenerated
@@ -140,8 +175,18 @@ public class OmsOrderReturnApply implements Serializable {
      */
     private String receiveMan;
 
+    /**
+     * 收货时间
+     *
+     * @mbggenerated
+     */
     private Date receiveTime;
 
+    /**
+     * 收货备注
+     *
+     * @mbggenerated
+     */
     private String receiveNote;
 
     private static final long serialVersionUID = 1L;
@@ -168,6 +213,14 @@ public class OmsOrderReturnApply implements Serializable {
 
     public void setCompanyAddressId(Long companyAddressId) {
         this.companyAddressId = companyAddressId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getOrderSn() {
@@ -250,12 +303,12 @@ public class OmsOrderReturnApply implements Serializable {
         this.productName = productName;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public String getProductBrand() {
+        return productBrand;
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setProductBrand(String productBrand) {
+        this.productBrand = productBrand;
     }
 
     public String getProductAttr() {
@@ -272,6 +325,22 @@ public class OmsOrderReturnApply implements Serializable {
 
     public void setProductCount(Integer productCount) {
         this.productCount = productCount;
+    }
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public BigDecimal getProductRealPrice() {
+        return productRealPrice;
+    }
+
+    public void setProductRealPrice(BigDecimal productRealPrice) {
+        this.productRealPrice = productRealPrice;
     }
 
     public String getReason() {
@@ -296,30 +365,6 @@ public class OmsOrderReturnApply implements Serializable {
 
     public void setProofPics(String proofPics) {
         this.proofPics = proofPics;
-    }
-
-    public BigDecimal getReturnPostAmount() {
-        return returnPostAmount;
-    }
-
-    public void setReturnPostAmount(BigDecimal returnPostAmount) {
-        this.returnPostAmount = returnPostAmount;
-    }
-
-    public Integer getReturnPostStatus() {
-        return returnPostStatus;
-    }
-
-    public void setReturnPostStatus(Integer returnPostStatus) {
-        this.returnPostStatus = returnPostStatus;
-    }
-
-    public BigDecimal getConfirmReturnAmount() {
-        return confirmReturnAmount;
-    }
-
-    public void setConfirmReturnAmount(BigDecimal confirmReturnAmount) {
-        this.confirmReturnAmount = confirmReturnAmount;
     }
 
     public String getHandleNote() {
@@ -371,6 +416,7 @@ public class OmsOrderReturnApply implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", orderId=").append(orderId);
         sb.append(", companyAddressId=").append(companyAddressId);
+        sb.append(", productId=").append(productId);
         sb.append(", orderSn=").append(orderSn);
         sb.append(", createTime=").append(createTime);
         sb.append(", memberUsername=").append(memberUsername);
@@ -381,15 +427,14 @@ public class OmsOrderReturnApply implements Serializable {
         sb.append(", handleTime=").append(handleTime);
         sb.append(", productPic=").append(productPic);
         sb.append(", productName=").append(productName);
-        sb.append(", brandName=").append(brandName);
+        sb.append(", productBrand=").append(productBrand);
         sb.append(", productAttr=").append(productAttr);
         sb.append(", productCount=").append(productCount);
+        sb.append(", productPrice=").append(productPrice);
+        sb.append(", productRealPrice=").append(productRealPrice);
         sb.append(", reason=").append(reason);
         sb.append(", description=").append(description);
         sb.append(", proofPics=").append(proofPics);
-        sb.append(", returnPostAmount=").append(returnPostAmount);
-        sb.append(", returnPostStatus=").append(returnPostStatus);
-        sb.append(", confirmReturnAmount=").append(confirmReturnAmount);
         sb.append(", handleNote=").append(handleNote);
         sb.append(", handleMan=").append(handleMan);
         sb.append(", receiveMan=").append(receiveMan);

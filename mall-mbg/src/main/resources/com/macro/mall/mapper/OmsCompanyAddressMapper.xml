@@ -11,6 +11,7 @@
     <result column="province" jdbcType="VARCHAR" property="province" />
     <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="detail_address" jdbcType="VARCHAR" property="detailAddress" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, address_name, send_status, receive_status, name, phone, province, city, region
+    id, address_name, send_status, receive_status, name, phone, province, city, region, 
+    detail_address
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsCompanyAddressExample" resultMap="BaseResultMap">
     select
@@ -109,10 +111,12 @@
     </selectKey>
     insert into oms_company_address (address_name, send_status, receive_status, 
       name, phone, province, 
-      city, region)
+      city, region, detail_address
+      )
     values (#{addressName,jdbcType=VARCHAR}, #{sendStatus,jdbcType=INTEGER}, #{receiveStatus,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR})
+      #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{detailAddress,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsCompanyAddress">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -144,6 +148,9 @@
       <if test="region != null">
         region,
       </if>
+      <if test="detailAddress != null">
+        detail_address,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="addressName != null">
@@ -169,6 +176,9 @@
       </if>
       <if test="region != null">
         #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null">
+        #{detailAddress,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -208,6 +218,9 @@
       <if test="record.region != null">
         region = #{record.region,jdbcType=VARCHAR},
       </if>
+      <if test="record.detailAddress != null">
+        detail_address = #{record.detailAddress,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -223,7 +236,8 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},
-      region = #{record.region,jdbcType=VARCHAR}
+      region = #{record.region,jdbcType=VARCHAR},
+      detail_address = #{record.detailAddress,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -255,6 +269,9 @@
       <if test="region != null">
         region = #{region,jdbcType=VARCHAR},
       </if>
+      <if test="detailAddress != null">
+        detail_address = #{detailAddress,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -267,7 +284,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
-      region = #{region,jdbcType=VARCHAR}
+      region = #{region,jdbcType=VARCHAR},
+      detail_address = #{detailAddress,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

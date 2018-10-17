@@ -40,11 +40,33 @@ public class OmsCompanyAddress implements Serializable {
      */
     private String phone;
 
+    /**
+     * 省/直辖市
+     *
+     * @mbggenerated
+     */
     private String province;
 
+    /**
+     * 市
+     *
+     * @mbggenerated
+     */
     private String city;
 
+    /**
+     * 区
+     *
+     * @mbggenerated
+     */
     private String region;
+
+    /**
+     * 详细地址
+     *
+     * @mbggenerated
+     */
+    private String detailAddress;
 
     private static final long serialVersionUID = 1L;
 
@@ -120,6 +142,14 @@ public class OmsCompanyAddress implements Serializable {
         this.region = region;
     }
 
+    public String getDetailAddress() {
+        return detailAddress;
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -135,6 +165,7 @@ public class OmsCompanyAddress implements Serializable {
         sb.append(", province=").append(province);
         sb.append(", city=").append(city);
         sb.append(", region=").append(region);
+        sb.append(", detailAddress=").append(detailAddress);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
