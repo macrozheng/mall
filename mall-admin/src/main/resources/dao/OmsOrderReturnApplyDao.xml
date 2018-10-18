@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.OmsOrderReturnApplyDao">
+    <resultMap id="returnApplyDetailResultMap" type="com.macro.mall.dto.OmsOrderReturnApplyResult" extends="com.macro.mall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
+        <association property="companyAddress" resultMap="com.macro.mall.mapper.OmsCompanyAddressMapper.BaseResultMap" columnPrefix="ca_"/>
+    </resultMap>
+    <select id="getList" resultMap="com.macro.mall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
+        SELECT
+        id,
+        create_time,
+        member_username,
+        product_real_price,
+        product_count,
+        return_name,
+        status,
+        handle_time
+        FROM
+        oms_order_return_apply
+        WHERE
+        1 = 1
+        <if test="queryParam.id!=null">
+            AND id = #{queryParam.id}
+        </if>
+        <if test="queryParam.status!=null">
+            AND status = #{queryParam.status}
+        </if>
+        <if test="queryParam.status!=null">
+            AND status = #{queryParam.status}
+        </if>
+        <if test="queryParam.handleMan!=null and queryParam.handleMan!=''">
+            AND handle_man = #{queryParam.handleMan}
+        </if>
+        <if test="queryParam.createTime!=null and queryParam.createTime!=''">
+            AND create_time LIKE CONCAT(#{queryParam.createTime}, '%')
+        </if>
+        <if test="queryParam.handleTime!=null and queryParam.handleTime!=''">
+            AND handle_time LIKE CONCAT(#{queryParam.handleTime}, '%')
+        </if>
+        <if test="queryParam.receiverKeyword!=null and queryParam.receiverKeyword!=''">
+            AND (return_name LIKE concat("%",#{queryParam.receiverKeyword},"%")
+            OR return_phone LIKE concat("%",#{queryParam.receiverKeyword},"%"))
+        </if>
+    </select>
+    <select id="getDetail" resultMap="returnApplyDetailResultMap">
+        SELECT
+            ra.*, ca.id ca_id,
+                  ca.address_name ca_address_name,
+                  ca.`name` ca_name,
+                  ca.phone ca_phone,
+                  ca.province ca_province,
+                  ca.city ca_city,
+                  ca.region ca_region,
+                  ca.detail_address ca_detail_address
+        FROM
+            oms_order_return_apply ra
+            LEFT JOIN oms_company_address ca ON ra.company_address_id = ca.id
+        WHERE ra.id=#{id};
+    </select>
+</mapper>
