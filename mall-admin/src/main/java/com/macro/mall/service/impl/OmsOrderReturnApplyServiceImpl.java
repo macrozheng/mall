@@ -44,7 +44,7 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
         OmsOrderReturnApply returnApply = new OmsOrderReturnApply();
         if(status.equals(1)){
             //确认退货
-            returnApply.setId(statusParam.getId());
+            returnApply.setId(id);
             returnApply.setStatus(1);
             returnApply.setReturnAmount(statusParam.getReturnAmount());
             returnApply.setCompanyAddressId(statusParam.getCompanyAddressId());
@@ -53,14 +53,14 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
             returnApply.setHandleNote(statusParam.getHandleNote());
         }else if(status.equals(2)){
             //完成退货
-            returnApply.setId(statusParam.getId());
+            returnApply.setId(id);
             returnApply.setStatus(2);
             returnApply.setReceiveTime(new Date());
             returnApply.setReceiveMan(statusParam.getReceiveMan());
             returnApply.setReceiveNote(statusParam.getReceiveNote());
         }else if(status.equals(3)){
             //拒绝退货
-            returnApply.setId(statusParam.getId());
+            returnApply.setId(id);
             returnApply.setStatus(3);
             returnApply.setHandleTime(new Date());
             returnApply.setHandleMan(statusParam.getHandleMan());
