@@ -93,6 +93,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderItem.setProductId(cartPromotionItem.getProductId());
             orderItem.setProductName(cartPromotionItem.getProductName());
             orderItem.setProductPic(cartPromotionItem.getProductPic());
+            orderItem.setProductAttr(cartPromotionItem.getProductAttr());
             orderItem.setProductBrand(cartPromotionItem.getProductBrand());
             orderItem.setProductSn(cartPromotionItem.getProductSn());
             orderItem.setProductPrice(cartPromotionItem.getPrice());
@@ -151,6 +152,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         lockStock(cartPromotionItemList);
         //根据商品合计、运费、活动优惠、优惠券、积分计算应付金额
         OmsOrder order = new OmsOrder();
+        order.setDiscountAmount(new BigDecimal(0));
         order.setTotalAmount(calcTotalAmount(orderItemList));
         order.setFreightAmount(new BigDecimal(0));
         order.setPromotionAmount(calcPromotionAmount(orderItemList));

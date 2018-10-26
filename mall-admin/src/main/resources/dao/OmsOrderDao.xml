@@ -73,6 +73,7 @@
             oi.product_brand item_product_brand,
             oi.product_price item_product_price,
             oi.product_quantity item_product_quantity,
+            oi.product_attr item_product_attr,
             oi.sp1 item_sp1,
             oi.sp2 item_sp2,
             oi.sp3 item_sp3,
@@ -87,5 +88,6 @@
             LEFT JOIN oms_order_operate_history oh ON o.id = oh.order_id
         WHERE
             o.id = #{id}
+        ORDER BY oi.id ASC,oh.create_time DESC
     </select>
 </mapper>

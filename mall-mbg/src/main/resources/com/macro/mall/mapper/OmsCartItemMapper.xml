@@ -22,6 +22,7 @@
     <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
     <result column="product_brand" jdbcType="VARCHAR" property="productBrand" />
     <result column="product_sn" jdbcType="VARCHAR" property="productSn" />
+    <result column="product_attr" jdbcType="VARCHAR" property="productAttr" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -84,7 +85,7 @@
   <sql id="Base_Column_List">
     id, product_id, product_sku_id, member_id, quantity, price, sp1, sp2, sp3, product_pic, 
     product_name, product_sub_title, product_sku_code, member_nickname, create_date, 
-    modify_date, delete_status, product_category_id, product_brand, product_sn
+    modify_date, delete_status, product_category_id, product_brand, product_sn, product_attr
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsCartItemExample" resultMap="BaseResultMap">
     select
@@ -126,14 +127,14 @@
       product_name, product_sub_title, product_sku_code, 
       member_nickname, create_date, modify_date, 
       delete_status, product_category_id, product_brand, 
-      product_sn)
+      product_sn, product_attr)
     values (#{productId,jdbcType=BIGINT}, #{productSkuId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
       #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{sp1,jdbcType=VARCHAR}, 
       #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, 
       #{productName,jdbcType=VARCHAR}, #{productSubTitle,jdbcType=VARCHAR}, #{productSkuCode,jdbcType=VARCHAR}, 
       #{memberNickname,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{deleteStatus,jdbcType=INTEGER}, #{productCategoryId,jdbcType=BIGINT}, #{productBrand,jdbcType=VARCHAR}, 
-      #{productSn,jdbcType=VARCHAR})
+      #{productSn,jdbcType=VARCHAR}, #{productAttr,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsCartItem">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -198,6 +199,9 @@
       <if test="productSn != null">
         product_sn,
       </if>
+      <if test="productAttr != null">
+        product_attr,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -256,6 +260,9 @@
       </if>
       <if test="productSn != null">
         #{productSn,jdbcType=VARCHAR},
+      </if>
+      <if test="productAttr != null">
+        #{productAttr,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -328,6 +335,9 @@
       <if test="record.productSn != null">
         product_sn = #{record.productSn,jdbcType=VARCHAR},
       </if>
+      <if test="record.productAttr != null">
+        product_attr = #{record.productAttr,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -354,7 +364,8 @@
       delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
       product_brand = #{record.productBrand,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR}
+      product_sn = #{record.productSn,jdbcType=VARCHAR},
+      product_attr = #{record.productAttr,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -419,6 +430,9 @@
       <if test="productSn != null">
         product_sn = #{productSn,jdbcType=VARCHAR},
       </if>
+      <if test="productAttr != null">
+        product_attr = #{productAttr,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -442,7 +456,8 @@
       delete_status = #{deleteStatus,jdbcType=INTEGER},
       product_category_id = #{productCategoryId,jdbcType=BIGINT},
       product_brand = #{productBrand,jdbcType=VARCHAR},
-      product_sn = #{productSn,jdbcType=VARCHAR}
+      product_sn = #{productSn,jdbcType=VARCHAR},
+      product_attr = #{productAttr,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

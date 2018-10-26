@@ -115,6 +115,13 @@ public class OmsCartItem implements Serializable {
 
     private String productSn;
 
+    /**
+     * 商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]
+     *
+     * @mbggenerated
+     */
+    private String productAttr;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -277,6 +284,14 @@ public class OmsCartItem implements Serializable {
         this.productSn = productSn;
     }
 
+    public String getProductAttr() {
+        return productAttr;
+    }
+
+    public void setProductAttr(String productAttr) {
+        this.productAttr = productAttr;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -303,6 +318,7 @@ public class OmsCartItem implements Serializable {
         sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", productBrand=").append(productBrand);
         sb.append(", productSn=").append(productSn);
+        sb.append(", productAttr=").append(productAttr);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

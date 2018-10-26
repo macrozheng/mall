@@ -25,6 +25,7 @@
     <result column="real_amount" jdbcType="DECIMAL" property="realAmount" />
     <result column="gift_integration" jdbcType="INTEGER" property="giftIntegration" />
     <result column="gift_growth" jdbcType="INTEGER" property="giftGrowth" />
+    <result column="product_attr" jdbcType="VARCHAR" property="productAttr" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -88,7 +89,7 @@
     id, order_id, order_sn, product_id, product_pic, product_name, product_brand, product_sn, 
     product_price, product_quantity, product_sku_id, product_sku_code, product_category_id, 
     sp1, sp2, sp3, promotion_name, promotion_amount, coupon_amount, integration_amount, 
-    real_amount, gift_integration, gift_growth
+    real_amount, gift_integration, gift_growth, product_attr
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsOrderItemExample" resultMap="BaseResultMap">
     select
@@ -130,16 +131,16 @@
       product_sku_id, product_sku_code, product_category_id, 
       sp1, sp2, sp3, promotion_name, 
       promotion_amount, coupon_amount, integration_amount, 
-      real_amount, gift_integration, gift_growth
-      )
+      real_amount, gift_integration, gift_growth, 
+      product_attr)
     values (#{orderId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, 
       #{productPic,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productBrand,jdbcType=VARCHAR}, 
       #{productSn,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, #{productQuantity,jdbcType=INTEGER}, 
       #{productSkuId,jdbcType=BIGINT}, #{productSkuCode,jdbcType=VARCHAR}, #{productCategoryId,jdbcType=BIGINT}, 
       #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{promotionName,jdbcType=VARCHAR}, 
       #{promotionAmount,jdbcType=DECIMAL}, #{couponAmount,jdbcType=DECIMAL}, #{integrationAmount,jdbcType=DECIMAL}, 
-      #{realAmount,jdbcType=DECIMAL}, #{giftIntegration,jdbcType=INTEGER}, #{giftGrowth,jdbcType=INTEGER}
-      )
+      #{realAmount,jdbcType=DECIMAL}, #{giftIntegration,jdbcType=INTEGER}, #{giftGrowth,jdbcType=INTEGER}, 
+      #{productAttr,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.OmsOrderItem">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -213,6 +214,9 @@
       <if test="giftGrowth != null">
         gift_growth,
       </if>
+      <if test="productAttr != null">
+        product_attr,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="orderId != null">
@@ -280,6 +284,9 @@
       </if>
       <if test="giftGrowth != null">
         #{giftGrowth,jdbcType=INTEGER},
+      </if>
+      <if test="productAttr != null">
+        #{productAttr,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -361,6 +368,9 @@
       <if test="record.giftGrowth != null">
         gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
       </if>
+      <if test="record.productAttr != null">
+        product_attr = #{record.productAttr,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -390,7 +400,8 @@
       integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
       real_amount = #{record.realAmount,jdbcType=DECIMAL},
       gift_integration = #{record.giftIntegration,jdbcType=INTEGER},
-      gift_growth = #{record.giftGrowth,jdbcType=INTEGER}
+      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
+      product_attr = #{record.productAttr,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -464,6 +475,9 @@
       <if test="giftGrowth != null">
         gift_growth = #{giftGrowth,jdbcType=INTEGER},
       </if>
+      <if test="productAttr != null">
+        product_attr = #{productAttr,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -490,7 +504,8 @@
       integration_amount = #{integrationAmount,jdbcType=DECIMAL},
       real_amount = #{realAmount,jdbcType=DECIMAL},
       gift_integration = #{giftIntegration,jdbcType=INTEGER},
-      gift_growth = #{giftGrowth,jdbcType=INTEGER}
+      gift_growth = #{giftGrowth,jdbcType=INTEGER},
+      product_attr = #{productAttr,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

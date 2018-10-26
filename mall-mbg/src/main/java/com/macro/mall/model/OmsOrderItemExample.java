@@ -1584,6 +1584,76 @@ public class OmsOrderItemExample {
             addCriterion("gift_growth not between", value1, value2, "giftGrowth");
             return (Criteria) this;
         }
+
+        public Criteria andProductAttrIsNull() {
+            addCriterion("product_attr is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrIsNotNull() {
+            addCriterion("product_attr is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrEqualTo(String value) {
+            addCriterion("product_attr =", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrNotEqualTo(String value) {
+            addCriterion("product_attr <>", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrGreaterThan(String value) {
+            addCriterion("product_attr >", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrGreaterThanOrEqualTo(String value) {
+            addCriterion("product_attr >=", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrLessThan(String value) {
+            addCriterion("product_attr <", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrLessThanOrEqualTo(String value) {
+            addCriterion("product_attr <=", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrLike(String value) {
+            addCriterion("product_attr like", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrNotLike(String value) {
+            addCriterion("product_attr not like", value, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrIn(List<String> values) {
+            addCriterion("product_attr in", values, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrNotIn(List<String> values) {
+            addCriterion("product_attr not in", values, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrBetween(String value1, String value2) {
+            addCriterion("product_attr between", value1, value2, "productAttr");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttrNotBetween(String value1, String value2) {
+            addCriterion("product_attr not between", value1, value2, "productAttr");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
