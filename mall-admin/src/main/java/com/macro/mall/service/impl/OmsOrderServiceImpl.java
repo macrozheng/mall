@@ -3,9 +3,7 @@ package com.macro.mall.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.OmsOrderDao;
 import com.macro.mall.dao.OmsOrderOperateHistoryDao;
-import com.macro.mall.dto.OmsOrderDeliveryParam;
-import com.macro.mall.dto.OmsOrderDetail;
-import com.macro.mall.dto.OmsOrderQueryParam;
+import com.macro.mall.dto.*;
 import com.macro.mall.mapper.OmsOrderMapper;
 import com.macro.mall.model.OmsOrder;
 import com.macro.mall.model.OmsOrderExample;
@@ -88,5 +86,30 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     @Override
     public OmsOrderDetail detail(Long id) {
         return orderDao.getDetail(id);
+    }
+
+    @Override
+    public int updateReceiverInfo(OmsReceiverInfoParam receiverInfoParam) {
+        OmsOrder order = new OmsOrder();
+        order.setId(receiverInfoParam.getOrderId());
+        order.setReceiverName(receiverInfoParam.getReceiverName());
+        order.setReceiverPhone(receiverInfoParam.getReceiverPhone());
+        order.setReceiverPostCode(receiverInfoParam.getReceiverPostCode());
+        order.setReceiverDetailAddress(receiverInfoParam.getReceiverDetailAddress());
+        order.setReceiverProvince(receiverInfoParam.getReceiverProvince());
+        order.setReceiverCity(receiverInfoParam.getReceiverCity());
+        order.setReceiverRegion(receiverInfoParam.getReceiverRegion());
+        order.setModifyTime(new Date());
+        return orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+    @Override
+    public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
+        OmsOrder order = new OmsOrder();
+        order.setId(moneyInfoParam.getOrderId());
+        order.setFreightAmount(moneyInfoParam.getFreightAmount());
+        order.setDiscountAmount(moneyInfoParam.getDiscountAmount());
+        order.setModifyTime(new Date());
+        return orderMapper.updateByPrimaryKeySelective(order);
     }
 }

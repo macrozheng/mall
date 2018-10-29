@@ -1,8 +1,6 @@
 package com.macro.mall.service;
 
-import com.macro.mall.dto.OmsOrderDeliveryParam;
-import com.macro.mall.dto.OmsOrderDetail;
-import com.macro.mall.dto.OmsOrderQueryParam;
+import com.macro.mall.dto.*;
 import com.macro.mall.model.OmsOrder;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,4 +37,14 @@ public interface OmsOrderService {
      * 获取指定订单详情
      */
     OmsOrderDetail detail(Long id);
+
+    /**
+     * 修改订单收货人信息
+     */
+    int updateReceiverInfo(OmsReceiverInfoParam receiverInfoParam);
+
+    /**
+     * 修改订单费用信息
+     */
+    int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam);
 }

@@ -1,9 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
-import com.macro.mall.dto.OmsOrderDeliveryParam;
-import com.macro.mall.dto.OmsOrderDetail;
-import com.macro.mall.dto.OmsOrderQueryParam;
+import com.macro.mall.dto.*;
 import com.macro.mall.model.OmsOrder;
 import com.macro.mall.service.OmsOrderService;
 import io.swagger.annotations.Api;
@@ -74,5 +71,27 @@ public class OmsOrderController {
     public Object detail(@PathVariable Long id) {
         OmsOrderDetail orderDetailResult = orderService.detail(id);
         return new CommonResult().success(orderDetailResult);
+    }
+
+    @ApiOperation("修改收货人信息")
+    @RequestMapping(value = "/update/receiverInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateReceiverInfo(@RequestBody OmsReceiverInfoParam receiverInfoParam) {
+        int count = orderService.updateReceiverInfo(receiverInfoParam);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
+
+    @ApiOperation("修改订单费用信息")
+    @RequestMapping(value = "/update/moneyInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateReceiverInfo(@RequestBody OmsMoneyInfoParam moneyInfoParam) {
+        int count = orderService.updateMoneyInfo(moneyInfoParam);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
     }
 }
