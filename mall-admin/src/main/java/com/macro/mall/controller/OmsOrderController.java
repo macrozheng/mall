@@ -94,4 +94,17 @@ public class OmsOrderController {
         }
         return new CommonResult().failed();
     }
+
+    @ApiOperation("备注订单")
+    @RequestMapping(value = "/update/note", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updateNote(@RequestParam("id") Long id,
+                             @RequestParam("note") String note,
+                             @RequestParam("status") Integer status) {
+        int count = orderService.updateNote(id,note,status);
+        if (count > 0) {
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
 }

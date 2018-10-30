@@ -18,4 +18,5 @@ public class OmsReceiverInfoParam {
     private String receiverProvince;
     private String receiverCity;
     private String receiverRegion;
+    private Integer status;
 }

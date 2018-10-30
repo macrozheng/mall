@@ -5,6 +5,7 @@ import com.macro.mall.dao.OmsOrderDao;
 import com.macro.mall.dao.OmsOrderOperateHistoryDao;
 import com.macro.mall.dto.*;
 import com.macro.mall.mapper.OmsOrderMapper;
+import com.macro.mall.mapper.OmsOrderOperateHistoryMapper;
 import com.macro.mall.model.OmsOrder;
 import com.macro.mall.model.OmsOrderExample;
 import com.macro.mall.model.OmsOrderOperateHistory;
@@ -28,6 +29,8 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private OmsOrderDao orderDao;
     @Autowired
     private OmsOrderOperateHistoryDao orderOperateHistoryDao;
+    @Autowired
+    private OmsOrderOperateHistoryMapper orderOperateHistoryMapper;
 
     @Override
     public List<OmsOrder> list(OmsOrderQueryParam queryParam, Integer pageSize, Integer pageNum) {
@@ -100,7 +103,16 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         order.setReceiverCity(receiverInfoParam.getReceiverCity());
         order.setReceiverRegion(receiverInfoParam.getReceiverRegion());
         order.setModifyTime(new Date());
-        return orderMapper.updateByPrimaryKeySelective(order);
+        int count = orderMapper.updateByPrimaryKeySelective(order);
+        //插入操作记录
+        OmsOrderOperateHistory history = new OmsOrderOperateHistory();
+        history.setOrderId(receiverInfoParam.getOrderId());
+        history.setCreateTime(new Date());
+        history.setOperateMan("后台管理员");
+        history.setOrderStatus(receiverInfoParam.getStatus());
+        history.setNote("修改收货人信息");
+        orderOperateHistoryMapper.insert(history);
+        return count;
     }
 
     @Override
@@ -110,6 +122,32 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         order.setFreightAmount(moneyInfoParam.getFreightAmount());
         order.setDiscountAmount(moneyInfoParam.getDiscountAmount());
         order.setModifyTime(new Date());
-        return orderMapper.updateByPrimaryKeySelective(order);
+        int count = orderMapper.updateByPrimaryKeySelective(order);
+        //插入操作记录
+        OmsOrderOperateHistory history = new OmsOrderOperateHistory();
+        history.setOrderId(moneyInfoParam.getOrderId());
+        history.setCreateTime(new Date());
+        history.setOperateMan("后台管理员");
+        history.setOrderStatus(moneyInfoParam.getStatus());
+        history.setNote("修改费用信息");
+        orderOperateHistoryMapper.insert(history);
+        return count;
+    }
+
+    @Override
+    public int updateNote(Long id, String note, Integer status) {
+        OmsOrder order = new OmsOrder();
+        order.setId(id);
+        order.setNote(note);
+        order.setModifyTime(new Date());
+        int count = orderMapper.updateByPrimaryKeySelective(order);
+        OmsOrderOperateHistory history = new OmsOrderOperateHistory();
+        history.setOrderId(id);
+        history.setCreateTime(new Date());
+        history.setOperateMan("后台管理员");
+        history.setOrderStatus(status);
+        history.setNote("修改备注信息："+note);
+        orderOperateHistoryMapper.insert(history);
+        return count;
     }
 }

@@ -15,4 +15,5 @@ public class OmsMoneyInfoParam {
     private Long orderId;
     private BigDecimal freightAmount;
     private BigDecimal discountAmount;
+    private Integer status;
 }
