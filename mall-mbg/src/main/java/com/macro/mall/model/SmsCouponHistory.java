@@ -47,7 +47,14 @@ public class SmsCouponHistory implements Serializable {
      *
      * @mbggenerated
      */
-    private String orderId;
+    private Long orderId;
+
+    /**
+     * 订单号码
+     *
+     * @mbggenerated
+     */
+    private String orderSn;
 
     private static final long serialVersionUID = 1L;
 
@@ -123,12 +130,20 @@ public class SmsCouponHistory implements Serializable {
         this.useTime = useTime;
     }
 
-    public String getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public String getOrderSn() {
+        return orderSn;
+    }
+
+    public void setOrderSn(String orderSn) {
+        this.orderSn = orderSn;
     }
 
     @Override
@@ -147,6 +162,7 @@ public class SmsCouponHistory implements Serializable {
         sb.append(", useStatus=").append(useStatus);
         sb.append(", useTime=").append(useTime);
         sb.append(", orderId=").append(orderId);
+        sb.append(", orderSn=").append(orderSn);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

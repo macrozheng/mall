@@ -62,7 +62,7 @@ public class SmsCouponController {
             @RequestParam(value = "name",required = false) String name,
             @RequestParam(value = "type",required = false) Integer type,
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<SmsCoupon> couponList = couponService.list(name,type,pageSize,pageNum);
         return new CommonResult().pageSuccess(couponList);
     }

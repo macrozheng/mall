@@ -11,7 +11,8 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="use_status" jdbcType="INTEGER" property="useStatus" />
     <result column="use_time" jdbcType="TIMESTAMP" property="useTime" />
-    <result column="order_id" jdbcType="CHAR" property="orderId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, coupon_id, member_id, coupon_code, member_nickname, get_type, create_time, use_status, 
-    use_time, order_id
+    use_time, order_id, order_sn
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.SmsCouponHistoryExample" resultMap="BaseResultMap">
     select
@@ -111,12 +112,12 @@
     </selectKey>
     insert into sms_coupon_history (coupon_id, member_id, coupon_code, 
       member_nickname, get_type, create_time, 
-      use_status, use_time, order_id
-      )
+      use_status, use_time, order_id, 
+      order_sn)
     values (#{couponId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{couponCode,jdbcType=VARCHAR}, 
       #{memberNickname,jdbcType=VARCHAR}, #{getType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{useStatus,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, #{orderId,jdbcType=CHAR}
-      )
+      #{useStatus,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, #{orderId,jdbcType=BIGINT}, 
+      #{orderSn,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCouponHistory">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -151,6 +152,9 @@
       <if test="orderId != null">
         order_id,
       </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="couponId != null">
@@ -178,7 +182,10 @@
         #{useTime,jdbcType=TIMESTAMP},
       </if>
       <if test="orderId != null">
-        #{orderId,jdbcType=CHAR},
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -219,7 +226,10 @@
         use_time = #{record.useTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=CHAR},
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderSn != null">
+        order_sn = #{record.orderSn,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -237,7 +247,8 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       use_status = #{record.useStatus,jdbcType=INTEGER},
       use_time = #{record.useTime,jdbcType=TIMESTAMP},
-      order_id = #{record.orderId,jdbcType=CHAR}
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      order_sn = #{record.orderSn,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,7 +281,10 @@
         use_time = #{useTime,jdbcType=TIMESTAMP},
       </if>
       <if test="orderId != null">
-        order_id = #{orderId,jdbcType=CHAR},
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -285,7 +299,8 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       use_status = #{useStatus,jdbcType=INTEGER},
       use_time = #{useTime,jdbcType=TIMESTAMP},
-      order_id = #{orderId,jdbcType=CHAR}
+      order_id = #{orderId,jdbcType=BIGINT},
+      order_sn = #{orderSn,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
