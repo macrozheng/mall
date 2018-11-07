@@ -1,20 +1,20 @@
 package com.macro.mall.service;
 
-import com.macro.mall.model.SmsHomeNewProduct;
+import com.macro.mall.model.SmsHomeRecommendProduct;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * 首页新品管理Service
- * Created by macro on 2018/11/6.
+ * 首页人气推荐管理Service
+ * Created by macro on 2018/11/7.
  */
-public interface SmsHomeNewProductService {
+public interface SmsHomeRecommendProductService {
     /**
      * 添加首页推荐
      */
     @Transactional
-    int create(List<SmsHomeNewProduct> homeNewProductList);
+    int create(List<SmsHomeRecommendProduct> homeRecommendProductList);
 
     /**
      * 修改推荐排序
@@ -34,5 +34,5 @@ public interface SmsHomeNewProductService {
     /**
      * 分页查询推荐
      */
-    List<SmsHomeNewProduct> list(String productName, Integer recommendStatus, Integer pageSize, Integer pageNum);
+    List<SmsHomeRecommendProduct> list(String productName, Integer recommendStatus, Integer pageSize, Integer pageNum);
 }

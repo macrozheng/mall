@@ -56,6 +56,13 @@ public class SmsHomeAdvertise implements Serializable {
      */
     private String note;
 
+    /**
+     * 排序
+     *
+     * @mbggenerated
+     */
+    private Integer sort;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -146,6 +153,14 @@ public class SmsHomeAdvertise implements Serializable {
         this.note = note;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -163,6 +178,7 @@ public class SmsHomeAdvertise implements Serializable {
         sb.append(", orderCount=").append(orderCount);
         sb.append(", url=").append(url);
         sb.append(", note=").append(note);
+        sb.append(", sort=").append(sort);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -1,8 +1,8 @@
 package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
-import com.macro.mall.model.SmsHomeNewProduct;
-import com.macro.mall.service.SmsHomeNewProductService;
+import com.macro.mall.model.SmsHomeRecommendSubject;
+import com.macro.mall.service.SmsHomeRecommendSubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 首页新品管理Controller
+ * 首页专题推荐管理Controller
  * Created by macro on 2018/11/6.
  */
 @Controller
-@Api(tags = "SmsHomeNewProductController", description = "首页新品管理")
-@RequestMapping("/home/newProduct")
-public class SmsHomeNewProductController {
+@Api(tags = "SmsHomeRecommendSubjectController", description = "首页专题推荐管理")
+@RequestMapping("/home/recommendSubject")
+public class SmsHomeRecommendSubjectController {
     @Autowired
-    private SmsHomeNewProductService homeNewProductService;
-    @ApiOperation("添加首页推荐品牌")
+    private SmsHomeRecommendSubjectService recommendSubjectService;
+    @ApiOperation("添加首页推荐专题")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@RequestBody List<SmsHomeNewProduct> homeBrandList) {
-        int count = homeNewProductService.create(homeBrandList);
+    public Object create(@RequestBody List<SmsHomeRecommendSubject> homeBrandList) {
+        int count = recommendSubjectService.create(homeBrandList);
         if(count>0){
             return new CommonResult().success(count);
         }
@@ -36,7 +36,7 @@ public class SmsHomeNewProductController {
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object updateSort(@PathVariable Long id, Integer sort) {
-        int count = homeNewProductService.updateSort(id,sort);
+        int count = recommendSubjectService.updateSort(id,sort);
         if(count>0){
             return new CommonResult().success(count);
         }
@@ -47,7 +47,7 @@ public class SmsHomeNewProductController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public Object delete(@RequestParam("ids") List<Long> ids) {
-        int count = homeNewProductService.delete(ids);
+        int count = recommendSubjectService.delete(ids);
         if(count>0){
             return new CommonResult().success(count);
         }
@@ -58,7 +58,7 @@ public class SmsHomeNewProductController {
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
     public Object updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
-        int count = homeNewProductService.updateRecommendStatus(ids,recommendStatus);
+        int count = recommendSubjectService.updateRecommendStatus(ids,recommendStatus);
         if(count>0){
             return new CommonResult().success(count);
         }
@@ -68,11 +68,11 @@ public class SmsHomeNewProductController {
     @ApiOperation("分页查询推荐")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@RequestParam(value = "productName", required = false) String productName,
+    public Object list(@RequestParam(value = "subjectName", required = false) String subjectName,
                        @RequestParam(value = "recommendStatus", required = false) Integer recommendStatus,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<SmsHomeNewProduct> homeBrandList = homeNewProductService.list(productName,recommendStatus,pageSize,pageNum);
+        List<SmsHomeRecommendSubject> homeBrandList = recommendSubjectService.list(subjectName,recommendStatus,pageSize,pageNum);
         return new CommonResult().pageSuccess(homeBrandList);
     }
 }
