@@ -111,13 +111,6 @@ public class SmsCoupon implements Serializable {
      */
     private Integer memberLevel;
 
-    /**
-     * 发行数量：0->表示无限制
-     *
-     * @mbggenerated
-     */
-    private Integer distributionCount;
-
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -264,14 +257,6 @@ public class SmsCoupon implements Serializable {
         this.memberLevel = memberLevel;
     }
 
-    public Integer getDistributionCount() {
-        return distributionCount;
-    }
-
-    public void setDistributionCount(Integer distributionCount) {
-        this.distributionCount = distributionCount;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -296,7 +281,6 @@ public class SmsCoupon implements Serializable {
         sb.append(", enableTime=").append(enableTime);
         sb.append(", code=").append(code);
         sb.append(", memberLevel=").append(memberLevel);
-        sb.append(", distributionCount=").append(distributionCount);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -1215,66 +1215,6 @@ public class SmsCouponExample {
             addCriterion("member_level not between", value1, value2, "memberLevel");
             return (Criteria) this;
         }
-
-        public Criteria andDistributionCountIsNull() {
-            addCriterion("distribution_count is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountIsNotNull() {
-            addCriterion("distribution_count is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountEqualTo(Integer value) {
-            addCriterion("distribution_count =", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountNotEqualTo(Integer value) {
-            addCriterion("distribution_count <>", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountGreaterThan(Integer value) {
-            addCriterion("distribution_count >", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("distribution_count >=", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountLessThan(Integer value) {
-            addCriterion("distribution_count <", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountLessThanOrEqualTo(Integer value) {
-            addCriterion("distribution_count <=", value, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountIn(List<Integer> values) {
-            addCriterion("distribution_count in", values, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountNotIn(List<Integer> values) {
-            addCriterion("distribution_count not in", values, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountBetween(Integer value1, Integer value2) {
-            addCriterion("distribution_count between", value1, value2, "distributionCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andDistributionCountNotBetween(Integer value1, Integer value2) {
-            addCriterion("distribution_count not between", value1, value2, "distributionCount");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

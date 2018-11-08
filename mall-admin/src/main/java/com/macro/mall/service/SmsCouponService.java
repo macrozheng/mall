@@ -15,7 +15,7 @@ public interface SmsCouponService {
      * 添加优惠券
      */
     @Transactional
-    int add(SmsCouponParam couponParam);
+    int create(SmsCouponParam couponParam);
 
     /**
      * 根据优惠券id删除优惠券

@@ -35,7 +35,10 @@ public class SmsCouponServiceImpl implements SmsCouponService {
     @Autowired
     private SmsCouponDao couponDao;
     @Override
-    public int add(SmsCouponParam couponParam) {
+    public int create(SmsCouponParam couponParam) {
+        couponParam.setCount(couponParam.getPublishCount());
+        couponParam.setUseCount(0);
+        couponParam.setReceiveCount(0);
         //插入优惠券表
         int count = couponMapper.insert(couponParam);
         //插入优惠券和商品关系表

@@ -20,7 +20,6 @@
     <result column="enable_time" jdbcType="TIMESTAMP" property="enableTime" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="member_level" jdbcType="INTEGER" property="memberLevel" />
-    <result column="distribution_count" jdbcType="INTEGER" property="distributionCount" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,8 +81,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, type, name, platform, count, amount, per_limit, min_point, start_time, end_time, 
-    use_type, note, publish_count, use_count, receive_count, enable_time, code, member_level, 
-    distribution_count
+    use_type, note, publish_count, use_count, receive_count, enable_time, code, member_level
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.SmsCouponExample" resultMap="BaseResultMap">
     select
@@ -124,15 +122,13 @@
       min_point, start_time, end_time, 
       use_type, note, publish_count, 
       use_count, receive_count, enable_time, 
-      code, member_level, distribution_count
-      )
+      code, member_level)
     values (#{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{platform,jdbcType=INTEGER}, 
       #{count,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{perLimit,jdbcType=INTEGER}, 
       #{minPoint,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
       #{useType,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{publishCount,jdbcType=INTEGER}, 
       #{useCount,jdbcType=INTEGER}, #{receiveCount,jdbcType=INTEGER}, #{enableTime,jdbcType=TIMESTAMP}, 
-      #{code,jdbcType=VARCHAR}, #{memberLevel,jdbcType=INTEGER}, #{distributionCount,jdbcType=INTEGER}
-      )
+      #{code,jdbcType=VARCHAR}, #{memberLevel,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCoupon">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -191,9 +187,6 @@
       <if test="memberLevel != null">
         member_level,
       </if>
-      <if test="distributionCount != null">
-        distribution_count,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="type != null">
@@ -246,9 +239,6 @@
       </if>
       <if test="memberLevel != null">
         #{memberLevel,jdbcType=INTEGER},
-      </if>
-      <if test="distributionCount != null">
-        #{distributionCount,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -315,9 +305,6 @@
       <if test="record.memberLevel != null">
         member_level = #{record.memberLevel,jdbcType=INTEGER},
       </if>
-      <if test="record.distributionCount != null">
-        distribution_count = #{record.distributionCount,jdbcType=INTEGER},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -342,8 +329,7 @@
       receive_count = #{record.receiveCount,jdbcType=INTEGER},
       enable_time = #{record.enableTime,jdbcType=TIMESTAMP},
       code = #{record.code,jdbcType=VARCHAR},
-      member_level = #{record.memberLevel,jdbcType=INTEGER},
-      distribution_count = #{record.distributionCount,jdbcType=INTEGER}
+      member_level = #{record.memberLevel,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -402,9 +388,6 @@
       <if test="memberLevel != null">
         member_level = #{memberLevel,jdbcType=INTEGER},
       </if>
-      <if test="distributionCount != null">
-        distribution_count = #{distributionCount,jdbcType=INTEGER},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -426,8 +409,7 @@
       receive_count = #{receiveCount,jdbcType=INTEGER},
       enable_time = #{enableTime,jdbcType=TIMESTAMP},
       code = #{code,jdbcType=VARCHAR},
-      member_level = #{memberLevel,jdbcType=INTEGER},
-      distribution_count = #{distributionCount,jdbcType=INTEGER}
+      member_level = #{memberLevel,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

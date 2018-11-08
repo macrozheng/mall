@@ -23,10 +23,10 @@ public class SmsCouponController {
     @Autowired
     private SmsCouponService couponService;
     @ApiOperation("添加优惠券")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public Object add(@RequestBody SmsCouponParam couponParam) {
-        int count = couponService.add(couponParam);
+        int count = couponService.create(couponParam);
         if(count>0){
             return new CommonResult().success(count);
         }
