@@ -9,6 +9,20 @@ public class SmsCouponProductCategoryRelation implements Serializable {
 
     private Long productCategoryId;
 
+    /**
+     * 产品分类名称
+     *
+     * @mbggenerated
+     */
+    private String productCategoryName;
+
+    /**
+     * 父分类名称
+     *
+     * @mbggenerated
+     */
+    private String parentCategoryName;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -35,6 +49,22 @@ public class SmsCouponProductCategoryRelation implements Serializable {
         this.productCategoryId = productCategoryId;
     }
 
+    public String getProductCategoryName() {
+        return productCategoryName;
+    }
+
+    public void setProductCategoryName(String productCategoryName) {
+        this.productCategoryName = productCategoryName;
+    }
+
+    public String getParentCategoryName() {
+        return parentCategoryName;
+    }
+
+    public void setParentCategoryName(String parentCategoryName) {
+        this.parentCategoryName = parentCategoryName;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -44,6 +74,8 @@ public class SmsCouponProductCategoryRelation implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", couponId=").append(couponId);
         sb.append(", productCategoryId=").append(productCategoryId);
+        sb.append(", productCategoryName=").append(productCategoryName);
+        sb.append(", parentCategoryName=").append(parentCategoryName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

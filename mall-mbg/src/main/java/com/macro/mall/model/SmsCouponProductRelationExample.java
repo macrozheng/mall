@@ -283,6 +283,146 @@ public class SmsCouponProductRelationExample {
             addCriterion("product_id not between", value1, value2, "productId");
             return (Criteria) this;
         }
+
+        public Criteria andProductNameIsNull() {
+            addCriterion("product_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameIsNotNull() {
+            addCriterion("product_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameEqualTo(String value) {
+            addCriterion("product_name =", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameNotEqualTo(String value) {
+            addCriterion("product_name <>", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameGreaterThan(String value) {
+            addCriterion("product_name >", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameGreaterThanOrEqualTo(String value) {
+            addCriterion("product_name >=", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameLessThan(String value) {
+            addCriterion("product_name <", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameLessThanOrEqualTo(String value) {
+            addCriterion("product_name <=", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameLike(String value) {
+            addCriterion("product_name like", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameNotLike(String value) {
+            addCriterion("product_name not like", value, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameIn(List<String> values) {
+            addCriterion("product_name in", values, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameNotIn(List<String> values) {
+            addCriterion("product_name not in", values, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameBetween(String value1, String value2) {
+            addCriterion("product_name between", value1, value2, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductNameNotBetween(String value1, String value2) {
+            addCriterion("product_name not between", value1, value2, "productName");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnIsNull() {
+            addCriterion("product_sn is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnIsNotNull() {
+            addCriterion("product_sn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnEqualTo(String value) {
+            addCriterion("product_sn =", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnNotEqualTo(String value) {
+            addCriterion("product_sn <>", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnGreaterThan(String value) {
+            addCriterion("product_sn >", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnGreaterThanOrEqualTo(String value) {
+            addCriterion("product_sn >=", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnLessThan(String value) {
+            addCriterion("product_sn <", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnLessThanOrEqualTo(String value) {
+            addCriterion("product_sn <=", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnLike(String value) {
+            addCriterion("product_sn like", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnNotLike(String value) {
+            addCriterion("product_sn not like", value, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnIn(List<String> values) {
+            addCriterion("product_sn in", values, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnNotIn(List<String> values) {
+            addCriterion("product_sn not in", values, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnBetween(String value1, String value2) {
+            addCriterion("product_sn between", value1, value2, "productSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductSnNotBetween(String value1, String value2) {
+            addCriterion("product_sn not between", value1, value2, "productSn");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

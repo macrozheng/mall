@@ -73,6 +73,14 @@ public class PmsProductController {
         return new CommonResult().pageSuccess(productList);
     }
 
+    @ApiOperation("根据商品名称或货号模糊查询")
+    @RequestMapping(value = "/simpleList", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getList(String  keyword) {
+        List<PmsProduct> productList = productService.list(keyword);
+        return new CommonResult().success(productList);
+    }
+
     @ApiOperation("批量修改审核状态")
     @RequestMapping(value = "/update/verifyStatus",method = RequestMethod.POST)
     @ResponseBody

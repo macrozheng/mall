@@ -248,6 +248,18 @@ public class PmsProductServiceImpl implements PmsProductService {
         return productMapper.updateByExampleSelective(record, example);
     }
 
+    @Override
+    public List<PmsProduct> list(String keyword) {
+        PmsProductExample productExample = new PmsProductExample();
+        PmsProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andDeleteStatusEqualTo(0);
+        if(!StringUtils.isEmpty(keyword)){
+            criteria.andNameLike("%" + keyword + "%");
+            productExample.or().andDeleteStatusEqualTo(0).andProductSnLike("%" + keyword + "%");
+        }
+        return productMapper.selectByExample(productExample);
+    }
+
     /**
      * @deprecated 旧版创建
      */

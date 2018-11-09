@@ -9,6 +9,20 @@ public class SmsCouponProductRelation implements Serializable {
 
     private Long productId;
 
+    /**
+     * 商品名称
+     *
+     * @mbggenerated
+     */
+    private String productName;
+
+    /**
+     * 商品编码
+     *
+     * @mbggenerated
+     */
+    private String productSn;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -35,6 +49,22 @@ public class SmsCouponProductRelation implements Serializable {
         this.productId = productId;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductSn() {
+        return productSn;
+    }
+
+    public void setProductSn(String productSn) {
+        this.productSn = productSn;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -44,6 +74,8 @@ public class SmsCouponProductRelation implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", couponId=").append(couponId);
         sb.append(", productId=").append(productId);
+        sb.append(", productName=").append(productName);
+        sb.append(", productSn=").append(productSn);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

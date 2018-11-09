@@ -5,6 +5,8 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
     <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
+    <result column="product_category_name" jdbcType="VARCHAR" property="productCategoryName" />
+    <result column="parent_category_name" jdbcType="VARCHAR" property="parentCategoryName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, coupon_id, product_category_id
+    id, coupon_id, product_category_id, product_category_name, parent_category_name
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.SmsCouponProductCategoryRelationExample" resultMap="BaseResultMap">
     select
@@ -101,8 +103,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sms_coupon_product_category_relation (coupon_id, product_category_id)
-    values (#{couponId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT})
+    insert into sms_coupon_product_category_relation (coupon_id, product_category_id, product_category_name, 
+      parent_category_name)
+    values (#{couponId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{productCategoryName,jdbcType=VARCHAR}, 
+      #{parentCategoryName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.SmsCouponProductCategoryRelation">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -116,6 +120,12 @@
       <if test="productCategoryId != null">
         product_category_id,
       </if>
+      <if test="productCategoryName != null">
+        product_category_name,
+      </if>
+      <if test="parentCategoryName != null">
+        parent_category_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="couponId != null">
@@ -123,6 +133,12 @@
       </if>
       <if test="productCategoryId != null">
         #{productCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="productCategoryName != null">
+        #{productCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCategoryName != null">
+        #{parentCategoryName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,6 +160,12 @@
       <if test="record.productCategoryId != null">
         product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
       </if>
+      <if test="record.productCategoryName != null">
+        product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentCategoryName != null">
+        parent_category_name = #{record.parentCategoryName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -153,7 +175,9 @@
     update sms_coupon_product_category_relation
     set id = #{record.id,jdbcType=BIGINT},
       coupon_id = #{record.couponId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT}
+      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+      parent_category_name = #{record.parentCategoryName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,13 +191,21 @@
       <if test="productCategoryId != null">
         product_category_id = #{productCategoryId,jdbcType=BIGINT},
       </if>
+      <if test="productCategoryName != null">
+        product_category_name = #{productCategoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCategoryName != null">
+        parent_category_name = #{parentCategoryName,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsCouponProductCategoryRelation">
     update sms_coupon_product_category_relation
     set coupon_id = #{couponId,jdbcType=BIGINT},
-      product_category_id = #{productCategoryId,jdbcType=BIGINT}
+      product_category_id = #{productCategoryId,jdbcType=BIGINT},
+      product_category_name = #{productCategoryName,jdbcType=VARCHAR},
+      parent_category_name = #{parentCategoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

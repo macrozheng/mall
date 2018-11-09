@@ -12,8 +12,12 @@
             c.*,
             cpr.id                   cpr_id,
             cpr.product_id           cpr_product_id,
+            cpr.product_name         cpr_product_name,
+            cpr.product_sn           cpr_product_sn,
             cpcr.id                  cpcr_id,
-            cpcr.product_category_id cpcr_product_category_id
+            cpcr.product_category_id cpcr_product_category_id,
+            cpcr.product_category_name cpcr_product_category_name,
+            cpcr.parent_category_name cpcr_parent_category_name
         FROM
             sms_coupon c
             LEFT JOIN sms_coupon_product_relation cpr ON c.id = cpr.coupon_id
