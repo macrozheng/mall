@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-11-05 13:08:37
+Date: 2018-11-12 14:45:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -396,7 +396,7 @@ CREATE TABLE `oms_order` (
 -- ----------------------------
 -- Records of oms_order
 -- ----------------------------
-INSERT INTO `oms_order` VALUES ('12', '1', '2', '201809150101000001', '2018-09-15 12:24:27', 'test', '18732.00', '16377.75', '20.00', '2344.25', '0.00', '10.00', '10.00', '0', '1', '0', '0', '', '', '15', '13284', '13284', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '江苏省', '常州市', '天宁区', '东晓街道', 'xxx', '0', '0', null, null, null, null, null, '2018-10-30 14:43:49');
+INSERT INTO `oms_order` VALUES ('12', '1', '2', '201809150101000001', '2018-09-15 12:24:27', 'test', '18732.00', '16377.75', '20.00', '2344.25', '0.00', '10.00', '10.00', '0', '1', '4', '0', '', '', '15', '13284', '13284', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '江苏省', '常州市', '天宁区', '东晓街道', 'xxx', '0', '0', null, null, null, null, null, '2018-10-30 14:43:49');
 INSERT INTO `oms_order` VALUES ('13', '1', '2', '201809150102000002', '2018-09-15 14:24:29', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', '0.00', '1', '1', '1', '0', '', '', '15', '13284', '13284', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', '1000', '2018-10-11 14:04:19', null, null, null, null);
 INSERT INTO `oms_order` VALUES ('14', '1', '2', '201809130101000001', '2018-09-13 16:57:40', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', '0.00', '2', '1', '2', '0', '顺丰快递', '201707196398345', '15', '13284', '13284', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '0', '0', null, '2018-10-13 13:44:04', '2018-10-16 13:43:41', null, null, null);
 INSERT INTO `oms_order` VALUES ('15', '1', '2', '201809130102000002', '2018-09-13 17:03:00', 'test', '18732.00', '16377.75', '0.00', '2344.25', '0.00', '10.00', '0.00', '1', '1', '3', '0', '顺丰快递', '201707196398346', '15', '13284', '13284', '单品促销,打折优惠：满3件，打7.50折,满减优惠：满1000.00元，减120.00元,满减优惠：满1000.00元，减120.00元,无优惠', null, null, null, null, null, '大梨', '18033441849', '518000', '广东省', '深圳市', '福田区', '东晓街道', null, '1', '0', null, '2018-10-13 13:44:54', '2018-10-16 13:45:01', '2018-10-18 14:05:31', null, null);
@@ -1315,19 +1315,19 @@ INSERT INTO `pms_sku_stock` VALUES ('78', '23', '201806070023001', '99.00', '0',
 INSERT INTO `pms_sku_stock` VALUES ('79', '23', '201806070023002', '99.00', '0', null, '米白色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/1522738681.jpg', null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('80', '23', '201806070023003', '99.00', '0', null, '浅黄色', 'M', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('81', '23', '201806070023004', '99.00', '0', null, '浅黄色', 'X', null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180604/2017091716493787_20170917164937650 (1).png', null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('90', '26', '201806070026001', '3788.00', '499', null, '金色', '16G', null, null, null, '3588.00', '-7');
+INSERT INTO `pms_sku_stock` VALUES ('90', '26', '201806070026001', '3788.00', '499', null, '金色', '16G', null, null, null, '3588.00', '-8');
 INSERT INTO `pms_sku_stock` VALUES ('91', '26', '201806070026002', '3999.00', '500', null, '金色', '32G', null, null, null, '3799.00', '0');
 INSERT INTO `pms_sku_stock` VALUES ('92', '26', '201806070026003', '3788.00', '500', null, '银色', '16G', null, null, null, '3588.00', '0');
 INSERT INTO `pms_sku_stock` VALUES ('93', '26', '201806070026004', '3999.00', '500', null, '银色', '32G', null, null, null, '3799.00', '0');
-INSERT INTO `pms_sku_stock` VALUES ('98', '27', '201808270027001', '2699.00', '97', null, '黑色', '32G', null, null, null, null, '-21');
+INSERT INTO `pms_sku_stock` VALUES ('98', '27', '201808270027001', '2699.00', '97', null, '黑色', '32G', null, null, null, null, '-24');
 INSERT INTO `pms_sku_stock` VALUES ('99', '27', '201808270027002', '2999.00', '100', null, '黑色', '64G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('100', '27', '201808270027003', '2699.00', '100', null, '蓝色', '32G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('101', '27', '201808270027004', '2999.00', '100', null, '蓝色', '64G', null, null, null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('102', '28', '201808270028001', '649.00', '99', null, '金色', '16G', null, null, null, null, '-7');
-INSERT INTO `pms_sku_stock` VALUES ('103', '28', '201808270028002', '699.00', '99', null, '金色', '32G', null, null, null, null, '-7');
+INSERT INTO `pms_sku_stock` VALUES ('102', '28', '201808270028001', '649.00', '99', null, '金色', '16G', null, null, null, null, '-8');
+INSERT INTO `pms_sku_stock` VALUES ('103', '28', '201808270028002', '699.00', '99', null, '金色', '32G', null, null, null, null, '-8');
 INSERT INTO `pms_sku_stock` VALUES ('104', '28', '201808270028003', '649.00', '100', null, '银色', '16G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('105', '28', '201808270028004', '699.00', '100', null, '银色', '32G', null, null, null, null, '0');
-INSERT INTO `pms_sku_stock` VALUES ('106', '29', '201808270029001', '5499.00', '99', null, '金色', '32G', null, null, null, null, '-7');
+INSERT INTO `pms_sku_stock` VALUES ('106', '29', '201808270029001', '5499.00', '99', null, '金色', '32G', null, null, null, null, '-8');
 INSERT INTO `pms_sku_stock` VALUES ('107', '29', '201808270029002', '6299.00', '100', null, '金色', '64G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('108', '29', '201808270029003', '5499.00', '100', null, '银色', '32G', null, null, null, null, '0');
 INSERT INTO `pms_sku_stock` VALUES ('109', '29', '201808270029004', '6299.00', '100', null, '银色', '64G', null, null, null, null, '0');
@@ -1356,15 +1356,23 @@ CREATE TABLE `sms_coupon` (
   `code` varchar(64) DEFAULT NULL COMMENT '优惠码',
   `member_level` int(1) DEFAULT NULL COMMENT '可领取的会员类型：0->无限时',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='优惠卷表';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='优惠卷表';
 
 -- ----------------------------
 -- Records of sms_coupon
 -- ----------------------------
-INSERT INTO `sms_coupon` VALUES ('2', '0', '全品类通用券', '0', '99', '10.00', '1', '100.00', '2018-08-27 16:40:47', '2018-09-15 16:40:47', '0', '满100减10', '100', '0', '1', '2018-08-27 16:40:47', null, null);
-INSERT INTO `sms_coupon` VALUES ('3', '0', '小米手机专用券', '0', '99', '50.00', '1', '1000.00', '2018-08-27 16:40:47', '2018-09-15 16:40:47', '2', '小米手机专用优惠券', '100', '0', '1', '2018-08-27 16:40:47', null, null);
-INSERT INTO `sms_coupon` VALUES ('4', '0', '手机品类专用券', '0', '99', '300.00', '1', '2000.00', '2018-08-27 16:40:47', '2018-09-15 16:40:47', '1', '手机分类专用优惠券', '100', '0', '1', '2018-08-27 16:40:47', null, null);
+INSERT INTO `sms_coupon` VALUES ('2', '0', '全品类通用券', '0', '92', '10.00', '1', '100.00', '2018-08-27 16:40:47', '2018-11-23 16:40:47', '0', '满100减10', '100', '0', '8', '2018-08-27 16:40:47', null, null);
+INSERT INTO `sms_coupon` VALUES ('3', '0', '小米手机专用券', '0', '92', '50.00', '1', '1000.00', '2018-08-27 16:40:47', '2018-11-16 16:40:47', '2', '小米手机专用优惠券', '100', '0', '8', '2018-08-27 16:40:47', null, null);
+INSERT INTO `sms_coupon` VALUES ('4', '0', '手机品类专用券', '0', '92', '300.00', '1', '2000.00', '2018-08-27 16:40:47', '2018-09-15 16:40:47', '1', '手机分类专用优惠券', '100', '0', '8', '2018-08-27 16:40:47', null, null);
 INSERT INTO `sms_coupon` VALUES ('7', '0', 'T恤分类专用优惠券', '0', '93', '50.00', '1', '500.00', '2018-08-27 16:40:47', '2018-08-15 16:40:47', '1', '满500减50', '100', '0', '7', '2018-08-27 16:40:47', null, null);
+INSERT INTO `sms_coupon` VALUES ('8', '0', '新优惠券', '0', '100', '100.00', '1', '1000.00', '2018-11-08 00:00:00', '2018-11-27 00:00:00', '0', '测试', '100', '0', '1', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('9', '0', '全品类通用券', '0', '100', '5.00', '1', '100.00', '2018-11-08 00:00:00', '2018-11-10 00:00:00', '0', null, '100', '0', '1', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('10', '0', '全品类通用券', '0', '100', '15.00', '1', '200.00', '2018-11-08 00:00:00', '2018-11-10 00:00:00', '0', null, '100', '0', '1', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('11', '0', '全品类通用券', '0', '1000', '50.00', '1', '1000.00', '2018-11-08 00:00:00', '2018-11-10 00:00:00', '0', null, '1000', '0', '0', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('12', '0', '移动端全品类通用券', '1', '1', '10.00', '1', '100.00', '2018-11-08 00:00:00', '2018-11-10 00:00:00', '0', null, '100', '0', '0', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('19', '0', '手机分类专用', '0', '100', '100.00', '1', '1000.00', '2018-11-09 00:00:00', '2018-11-17 00:00:00', '1', '手机分类专用', '100', '0', '0', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('20', '0', '小米手机专用', '0', '100', '200.00', '1', '1000.00', '2018-11-09 00:00:00', '2018-11-24 00:00:00', '2', '小米手机专用', '100', '0', '0', null, null, null);
+INSERT INTO `sms_coupon` VALUES ('21', '0', 'xxx', '0', '100', '10.00', '1', '100.00', '2018-11-09 00:00:00', '2018-11-30 00:00:00', '2', null, '100', '0', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for sms_coupon_history
@@ -1380,19 +1388,41 @@ CREATE TABLE `sms_coupon_history` (
   `create_time` datetime DEFAULT NULL,
   `use_status` int(1) DEFAULT NULL COMMENT '使用状态：0->未使用；1->已使用；2->已过期',
   `use_time` datetime DEFAULT NULL COMMENT '使用时间',
-  `order_id` char(10) DEFAULT NULL COMMENT '订单编号',
+  `order_id` bigint(20) DEFAULT NULL COMMENT '订单编号',
+  `order_sn` varchar(100) DEFAULT NULL COMMENT '订单号码',
   PRIMARY KEY (`id`),
   KEY `idx_member_id` (`member_id`) USING BTREE,
   KEY `idx_coupon_id` (`coupon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='优惠券使用、领取历史表';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='优惠券使用、领取历史表';
 
 -- ----------------------------
 -- Records of sms_coupon_history
 -- ----------------------------
-INSERT INTO `sms_coupon_history` VALUES ('2', '2', '1', null, 'windir', '1', '2018-08-29 14:04:12', '0', '2018-09-04 16:16:16', null);
-INSERT INTO `sms_coupon_history` VALUES ('3', '3', '1', null, 'windir', '1', '2018-08-29 14:04:29', '0', null, null);
-INSERT INTO `sms_coupon_history` VALUES ('4', '4', '1', null, 'windir', '1', '2018-08-29 14:04:32', '0', null, null);
-INSERT INTO `sms_coupon_history` VALUES ('11', '7', '1', '4931048380330001', 'windir', '1', '2018-09-04 16:21:50', '0', null, null);
+INSERT INTO `sms_coupon_history` VALUES ('2', '2', '1', '4931048380330002', 'windir', '1', '2018-08-29 14:04:12', '1', '2018-11-12 14:38:47', '12', '201809150101000001');
+INSERT INTO `sms_coupon_history` VALUES ('3', '3', '1', '4931048380330003', 'windir', '1', '2018-08-29 14:04:29', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('4', '4', '1', '4931048380330004', 'windir', '1', '2018-08-29 14:04:32', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('11', '7', '1', '4931048380330001', 'windir', '1', '2018-09-04 16:21:50', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('12', '2', '4', '0340981248320004', 'zhensan', '1', '2018-11-12 14:16:50', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('13', '3', '4', '0342977234360004', 'zhensan', '1', '2018-11-12 14:17:10', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('14', '4', '4', '0343342928830004', 'zhensan', '1', '2018-11-12 14:17:13', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('15', '2', '5', '0351883832180005', 'lisi', '1', '2018-11-12 14:18:39', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('16', '3', '5', '0352201672680005', 'lisi', '1', '2018-11-12 14:18:42', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('17', '4', '5', '0352505810180005', 'lisi', '1', '2018-11-12 14:18:45', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('18', '2', '6', '0356114588380006', 'wangwu', '1', '2018-11-12 14:19:21', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('19', '3', '6', '0356382856920006', 'wangwu', '1', '2018-11-12 14:19:24', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('20', '4', '6', '0356656798470006', 'wangwu', '1', '2018-11-12 14:19:27', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('21', '2', '3', '0363644984620003', 'windy', '1', '2018-11-12 14:20:36', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('22', '3', '3', '0363932820300003', 'windy', '1', '2018-11-12 14:20:39', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('23', '4', '3', '0364238275840003', 'windy', '1', '2018-11-12 14:20:42', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('24', '2', '7', '0385034833070007', 'lion', '1', '2018-11-12 14:24:10', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('25', '3', '7', '0385350208650007', 'lion', '1', '2018-11-12 14:24:13', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('26', '4', '7', '0385632733900007', 'lion', '1', '2018-11-12 14:24:16', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('27', '2', '8', '0388779132990008', 'shari', '1', '2018-11-12 14:24:48', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('28', '3', '8', '0388943658810008', 'shari', '1', '2018-11-12 14:24:49', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('29', '4', '8', '0389069398320008', 'shari', '1', '2018-11-12 14:24:51', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('30', '2', '9', '0390753935250009', 'aewen', '1', '2018-11-12 14:25:08', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('31', '3', '9', '0390882954470009', 'aewen', '1', '2018-11-12 14:25:09', '0', null, null, null);
+INSERT INTO `sms_coupon_history` VALUES ('32', '4', '9', '0391025542810009', 'aewen', '1', '2018-11-12 14:25:10', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for sms_coupon_product_category_relation
@@ -1402,15 +1432,15 @@ CREATE TABLE `sms_coupon_product_category_relation` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `coupon_id` bigint(20) DEFAULT NULL,
   `product_category_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_cid_pcid` (`coupon_id`,`product_category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品分类关系表';
+  `product_category_name` varchar(200) DEFAULT NULL COMMENT '产品分类名称',
+  `parent_category_name` varchar(200) DEFAULT NULL COMMENT '父分类名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品分类关系表';
 
 -- ----------------------------
 -- Records of sms_coupon_product_category_relation
 -- ----------------------------
-INSERT INTO `sms_coupon_product_category_relation` VALUES ('1', '4', '19');
-INSERT INTO `sms_coupon_product_category_relation` VALUES ('5', '7', '8');
+INSERT INTO `sms_coupon_product_category_relation` VALUES ('4', '19', '30', '手机配件', '手机数码');
 
 -- ----------------------------
 -- Table structure for sms_coupon_product_relation
@@ -1420,15 +1450,15 @@ CREATE TABLE `sms_coupon_product_relation` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `coupon_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_cid_pid` (`coupon_id`,`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品的关系表';
+  `product_name` varchar(500) DEFAULT NULL COMMENT '商品名称',
+  `product_sn` varchar(200) DEFAULT NULL COMMENT '商品编码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='优惠券和产品的关系表';
 
 -- ----------------------------
 -- Records of sms_coupon_product_relation
 -- ----------------------------
-INSERT INTO `sms_coupon_product_relation` VALUES ('1', '3', '27');
-INSERT INTO `sms_coupon_product_relation` VALUES ('2', '3', '28');
+INSERT INTO `sms_coupon_product_relation` VALUES ('9', '21', '33', '小米（MI）小米电视4A ', '4609652');
 
 -- ----------------------------
 -- Table structure for sms_flash_promotion
@@ -1483,8 +1513,9 @@ CREATE TABLE `sms_home_advertise` (
   `order_count` int(11) DEFAULT NULL COMMENT '下单数',
   `url` varchar(500) DEFAULT NULL COMMENT '链接地址',
   `note` varchar(500) DEFAULT NULL COMMENT '备注',
+  `sort` int(11) DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='首页轮播广告表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='首页轮播广告表';
 
 -- ----------------------------
 -- Records of sms_home_advertise
@@ -1501,11 +1532,19 @@ CREATE TABLE `sms_home_brand` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='首页推荐品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='首页推荐品牌表';
 
 -- ----------------------------
 -- Records of sms_home_brand
 -- ----------------------------
+INSERT INTO `sms_home_brand` VALUES ('1', '1', '万和', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('2', '2', '三星', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('3', '3', '华为', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('4', '4', '格力', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('5', '5', '方太', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('6', '6', '小米', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('8', '5', '方太', '0', '100');
+INSERT INTO `sms_home_brand` VALUES ('9', '6', '小米', '0', '0');
 
 -- ----------------------------
 -- Table structure for sms_home_new_product
@@ -1518,11 +1557,13 @@ CREATE TABLE `sms_home_new_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='新鲜好物表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='新鲜好物表';
 
 -- ----------------------------
 -- Records of sms_home_new_product
 -- ----------------------------
+INSERT INTO `sms_home_new_product` VALUES ('2', '27', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '0', '0');
+INSERT INTO `sms_home_new_product` VALUES ('3', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '1', '100');
 
 -- ----------------------------
 -- Table structure for sms_home_recommend_product
@@ -1535,11 +1576,12 @@ CREATE TABLE `sms_home_recommend_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人气推荐商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='人气推荐商品表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_product
 -- ----------------------------
+INSERT INTO `sms_home_recommend_product` VALUES ('2', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '0', '0');
 
 -- ----------------------------
 -- Table structure for sms_home_recommend_subject
@@ -1552,11 +1594,14 @@ CREATE TABLE `sms_home_recommend_subject` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='首页推荐专题表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='首页推荐专题表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_subject
 -- ----------------------------
+INSERT INTO `sms_home_recommend_subject` VALUES ('1', '1', 'polo衬衫的也时尚', '0', '100');
+INSERT INTO `sms_home_recommend_subject` VALUES ('2', '2', '大牌手机低价秒', '0', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('3', '3', '晓龙845新品上市', '1', '0');
 
 -- ----------------------------
 -- Table structure for ums_admin
@@ -1580,7 +1625,7 @@ CREATE TABLE `ums_admin` (
 -- Records of ums_admin
 -- ----------------------------
 INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
-INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-10-30 10:21:02', '1');
+INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-11-12 13:59:11', '1');
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log
@@ -1720,13 +1765,19 @@ CREATE TABLE `ums_member` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_username` (`username`),
   UNIQUE KEY `idx_phone` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of ums_member
 -- ----------------------------
 INSERT INTO `ums_member` VALUES ('1', '4', 'test', '202cb962ac59075b964b07152d234b70', 'windir', '18061581849', '1', '2018-08-02 10:35:44', null, '1', '2009-06-01', '上海', '学生', 'test', null, '5000', null, null, null);
-INSERT INTO `ums_member` VALUES ('3', '4', 'test1', '698d51a19d8a121ce581499d7b701668', null, '18061581848', '1', '2018-08-03 16:46:38', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('3', '4', 'windy', 'e10adc3949ba59abbe56e057f20f883e', 'windy', '18061581848', '1', '2018-08-03 16:46:38', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('4', '4', 'zhengsan', 'e10adc3949ba59abbe56e057f20f883e', 'zhengsan', '18061581847', '1', '2018-11-12 14:12:04', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('5', '4', 'lisi', 'e10adc3949ba59abbe56e057f20f883e', 'lisi', '18061581841', '1', '2018-11-12 14:12:38', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('6', '4', 'wangwu', 'e10adc3949ba59abbe56e057f20f883e', 'wangwu', '18061581842', '1', '2018-11-12 14:13:09', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('7', '4', 'lion', 'e10adc3949ba59abbe56e057f20f883e', 'lion', '18061581845', '1', '2018-11-12 14:21:39', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('8', '4', 'shari', 'e10adc3949ba59abbe56e057f20f883e', 'shari', '18061581844', '1', '2018-11-12 14:22:00', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `ums_member` VALUES ('9', '4', 'aewen', 'e10adc3949ba59abbe56e057f20f883e', 'aewen', '18061581843', '1', '2018-11-12 14:22:55', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for ums_member_level
