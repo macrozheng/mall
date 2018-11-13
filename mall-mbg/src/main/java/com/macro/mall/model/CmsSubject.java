@@ -57,6 +57,13 @@ public class CmsSubject implements Serializable {
      */
     private Integer forwardCount;
 
+    /**
+     * 专题分类名称
+     *
+     * @mbggenerated
+     */
+    private String categoryName;
+
     private String content;
 
     private static final long serialVersionUID = 1L;
@@ -173,6 +180,14 @@ public class CmsSubject implements Serializable {
         this.forwardCount = forwardCount;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public String getContent() {
         return content;
     }
@@ -201,6 +216,7 @@ public class CmsSubject implements Serializable {
         sb.append(", description=").append(description);
         sb.append(", showStatus=").append(showStatus);
         sb.append(", forwardCount=").append(forwardCount);
+        sb.append(", categoryName=").append(categoryName);
         sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

@@ -16,6 +16,7 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="show_status" jdbcType="INTEGER" property="showStatus" />
     <result column="forward_count" jdbcType="INTEGER" property="forwardCount" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.macro.mall.model.CmsSubject">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -80,7 +81,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, category_id, title, pic, product_count, recommend_status, create_time, collect_count, 
-    read_count, comment_count, album_pics, description, show_status, forward_count
+    read_count, comment_count, album_pics, description, show_status, forward_count, category_name
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -141,12 +142,14 @@
       product_count, recommend_status, create_time, 
       collect_count, read_count, comment_count, 
       album_pics, description, show_status, 
-      forward_count, content)
+      forward_count, category_name, content
+      )
     values (#{categoryId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
       #{productCount,jdbcType=INTEGER}, #{recommendStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{collectCount,jdbcType=INTEGER}, #{readCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
       #{albumPics,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{showStatus,jdbcType=INTEGER}, 
-      #{forwardCount,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+      #{forwardCount,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsSubject">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -193,6 +196,9 @@
       <if test="forwardCount != null">
         forward_count,
       </if>
+      <if test="categoryName != null">
+        category_name,
+      </if>
       <if test="content != null">
         content,
       </if>
@@ -236,6 +242,9 @@
       </if>
       <if test="forwardCount != null">
         #{forwardCount,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -293,6 +302,9 @@
       <if test="record.forwardCount != null">
         forward_count = #{record.forwardCount,jdbcType=INTEGER},
       </if>
+      <if test="record.categoryName != null">
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
+      </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
       </if>
@@ -317,6 +329,7 @@
       description = #{record.description,jdbcType=VARCHAR},
       show_status = #{record.showStatus,jdbcType=INTEGER},
       forward_count = #{record.forwardCount,jdbcType=INTEGER},
+      category_name = #{record.categoryName,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -337,7 +350,8 @@
       album_pics = #{record.albumPics,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
       show_status = #{record.showStatus,jdbcType=INTEGER},
-      forward_count = #{record.forwardCount,jdbcType=INTEGER}
+      forward_count = #{record.forwardCount,jdbcType=INTEGER},
+      category_name = #{record.categoryName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -384,6 +398,9 @@
       <if test="forwardCount != null">
         forward_count = #{forwardCount,jdbcType=INTEGER},
       </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -405,6 +422,7 @@
       description = #{description,jdbcType=VARCHAR},
       show_status = #{showStatus,jdbcType=INTEGER},
       forward_count = #{forwardCount,jdbcType=INTEGER},
+      category_name = #{categoryName,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -422,7 +440,8 @@
       album_pics = #{albumPics,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       show_status = #{showStatus,jdbcType=INTEGER},
-      forward_count = #{forwardCount,jdbcType=INTEGER}
+      forward_count = #{forwardCount,jdbcType=INTEGER},
+      category_name = #{categoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
