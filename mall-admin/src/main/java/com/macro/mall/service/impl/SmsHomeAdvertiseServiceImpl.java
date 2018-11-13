@@ -25,6 +25,8 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
 
     @Override
     public int create(SmsHomeAdvertise advertise) {
+        advertise.setClickCount(0);
+        advertise.setOrderCount(0);
         return advertiseMapper.insert(advertise);
     }
 
@@ -51,7 +53,7 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
     @Override
     public int update(Long id, SmsHomeAdvertise advertise) {
         advertise.setId(id);
-        return advertiseMapper.updateByPrimaryKey(advertise);
+        return advertiseMapper.updateByPrimaryKeySelective(advertise);
     }
 
     @Override

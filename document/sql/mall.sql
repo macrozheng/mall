@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-11-12 14:45:12
+Date: 2018-11-13 17:07:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -137,18 +137,19 @@ CREATE TABLE `cms_subject` (
   `show_status` int(1) DEFAULT NULL COMMENT '显示状态：0->不显示；1->显示',
   `content` text,
   `forward_count` int(11) DEFAULT NULL COMMENT '转发数',
+  `category_name` varchar(200) DEFAULT NULL COMMENT '专题分类名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='专题表';
 
 -- ----------------------------
 -- Records of cms_subject
 -- ----------------------------
-INSERT INTO `cms_subject` VALUES ('1', '1', 'polo衬衫的也时尚', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_subject` VALUES ('2', '2', '大牌手机低价秒', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_subject` VALUES ('3', '2', '晓龙845新品上市', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_subject` VALUES ('4', '1', '夏天应该穿什么', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_subject` VALUES ('5', '1', '夏季精选', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `cms_subject` VALUES ('6', '2', '品牌手机降价', null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `cms_subject` VALUES ('1', '1', 'polo衬衫的也时尚', null, null, null, '2018-11-11 13:26:55', null, null, null, null, null, null, null, null, '服装专题');
+INSERT INTO `cms_subject` VALUES ('2', '2', '大牌手机低价秒', null, null, null, '2018-11-12 13:27:00', null, null, null, null, null, null, null, null, '手机专题');
+INSERT INTO `cms_subject` VALUES ('3', '2', '晓龙845新品上市', null, null, null, '2018-11-13 13:27:05', null, null, null, null, null, null, null, null, '手机专题');
+INSERT INTO `cms_subject` VALUES ('4', '1', '夏天应该穿什么', null, null, null, '2018-11-01 13:27:09', null, null, null, null, null, null, null, null, '服装专题');
+INSERT INTO `cms_subject` VALUES ('5', '1', '夏季精选', null, null, null, '2018-11-06 13:27:18', null, null, null, null, null, null, null, null, '服装专题');
+INSERT INTO `cms_subject` VALUES ('6', '2', '品牌手机降价', null, null, null, '2018-11-07 13:27:21', null, null, null, null, null, null, null, null, '手机专题');
 
 -- ----------------------------
 -- Table structure for cms_subject_category
@@ -675,11 +676,11 @@ INSERT INTO `pms_brand` VALUES ('3', '华为', 'H', '100', '1', '0', '100', '100
 INSERT INTO `pms_brand` VALUES ('4', '格力', 'G', '30', '1', '0', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg (3).jpg', null, 'Victoria\'s Secret的故事');
 INSERT INTO `pms_brand` VALUES ('5', '方太', 'F', '20', '1', '0', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg (4).jpg', null, 'Victoria\'s Secret的故事');
 INSERT INTO `pms_brand` VALUES ('6', '小米', 'M', '500', '1', '1', '100', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5a912944N474afb7a.png', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/5afd7778Nf7800b75.jpg', '小米手机的故事');
-INSERT INTO `pms_brand` VALUES ('21', 'OPPO', 'O', '0', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg(6).jpg', '', 'string');
-INSERT INTO `pms_brand` VALUES ('49', '七匹狼', 'S', '200', '1', '0', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/1522738681.jpg', null, 'BOOB的故事');
-INSERT INTO `pms_brand` VALUES ('50', '海澜之家', 'H', '200', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/LOGO1024.png', '', '海澜之家的故事');
-INSERT INTO `pms_brand` VALUES ('51', '苹果', 'A', '200', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '苹果的故事');
-INSERT INTO `pms_brand` VALUES ('58', 'NIKE', 'N', '0', '1', '1', null, null, 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/timg (51).jpg', '', 'NIKE的故事');
+INSERT INTO `pms_brand` VALUES ('21', 'OPPO', 'O', '0', '1', '1', '88', '500', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg(6).jpg', '', 'string');
+INSERT INTO `pms_brand` VALUES ('49', '七匹狼', 'S', '200', '1', '0', '77', '400', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180518/1522738681.jpg', null, 'BOOB的故事');
+INSERT INTO `pms_brand` VALUES ('50', '海澜之家', 'H', '200', '1', '1', '66', '300', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/LOGO1024.png', '', '海澜之家的故事');
+INSERT INTO `pms_brand` VALUES ('51', '苹果', 'A', '200', '1', '1', '55', '200', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '苹果的故事');
+INSERT INTO `pms_brand` VALUES ('58', 'NIKE', 'N', '0', '1', '1', '33', '100', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/timg (51).jpg', '', 'NIKE的故事');
 
 -- ----------------------------
 -- Table structure for pms_comment
@@ -1515,11 +1516,17 @@ CREATE TABLE `sms_home_advertise` (
   `note` varchar(500) DEFAULT NULL COMMENT '备注',
   `sort` int(11) DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='首页轮播广告表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='首页轮播广告表';
 
 -- ----------------------------
 -- Records of sms_home_advertise
 -- ----------------------------
+INSERT INTO `sms_home_advertise` VALUES ('2', '夏季大热促销', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/xiaomi.jpg', '2018-11-01 14:01:37', '2018-11-15 14:01:37', '0', '0', '0', null, '夏季大热促销', '0');
+INSERT INTO `sms_home_advertise` VALUES ('3', '夏季大热促销1', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/5ac1bf58Ndefaac16.jpg', '2018-11-13 14:01:37', '2018-11-13 14:01:37', '0', '0', '0', null, '夏季大热促销1', '0');
+INSERT INTO `sms_home_advertise` VALUES ('4', '夏季大热促销2', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5a9d248cN071f4959.jpg', '2018-11-13 14:01:37', '2018-11-13 14:01:37', '1', '0', '0', null, '夏季大热促销2', '0');
+INSERT INTO `sms_home_advertise` VALUES ('9', '电影推荐广告', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20181113/movie_ad.jpg', '2018-11-01 00:00:00', '2018-11-24 00:00:00', '1', '0', '0', 'www.baidu.com', '电影推荐广告', '100');
+INSERT INTO `sms_home_advertise` VALUES ('10', '汽车促销广告', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20181113/car_ad.jpg', '2018-11-13 00:00:00', '2018-11-24 00:00:00', '1', '0', '0', 'xxx', null, '99');
+INSERT INTO `sms_home_advertise` VALUES ('11', '汽车推荐广告', '1', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20181113/car_ad2.jpg', '2018-11-13 00:00:00', '2018-11-30 00:00:00', '1', '0', '0', 'xxx', null, '98');
 
 -- ----------------------------
 -- Table structure for sms_home_brand
@@ -1532,19 +1539,24 @@ CREATE TABLE `sms_home_brand` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='首页推荐品牌表';
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='首页推荐品牌表';
 
 -- ----------------------------
 -- Records of sms_home_brand
 -- ----------------------------
-INSERT INTO `sms_home_brand` VALUES ('1', '1', '万和', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('1', '1', '万和', '1', '200');
 INSERT INTO `sms_home_brand` VALUES ('2', '2', '三星', '1', '0');
-INSERT INTO `sms_home_brand` VALUES ('3', '3', '华为', '1', '0');
-INSERT INTO `sms_home_brand` VALUES ('4', '4', '格力', '1', '0');
-INSERT INTO `sms_home_brand` VALUES ('5', '5', '方太', '1', '0');
-INSERT INTO `sms_home_brand` VALUES ('6', '6', '小米', '1', '0');
-INSERT INTO `sms_home_brand` VALUES ('8', '5', '方太', '0', '100');
-INSERT INTO `sms_home_brand` VALUES ('9', '6', '小米', '0', '0');
+INSERT INTO `sms_home_brand` VALUES ('6', '6', '小米', '1', '300');
+INSERT INTO `sms_home_brand` VALUES ('8', '5', '方太', '1', '100');
+INSERT INTO `sms_home_brand` VALUES ('31', '49', '七匹狼', '0', '0');
+INSERT INTO `sms_home_brand` VALUES ('32', '50', '海澜之家', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('33', '51', '苹果', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('34', '2', '三星', '0', '0');
+INSERT INTO `sms_home_brand` VALUES ('35', '3', '华为', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('36', '4', '格力', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('37', '5', '方太', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('38', '1', '万和', '1', '0');
+INSERT INTO `sms_home_brand` VALUES ('39', '21', 'OPPO', '1', '0');
 
 -- ----------------------------
 -- Table structure for sms_home_new_product
@@ -1557,13 +1569,17 @@ CREATE TABLE `sms_home_new_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='新鲜好物表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='新鲜好物表';
 
 -- ----------------------------
 -- Records of sms_home_new_product
 -- ----------------------------
-INSERT INTO `sms_home_new_product` VALUES ('2', '27', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '0', '0');
-INSERT INTO `sms_home_new_product` VALUES ('3', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '1', '100');
+INSERT INTO `sms_home_new_product` VALUES ('2', '27', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '1', '200');
+INSERT INTO `sms_home_new_product` VALUES ('8', '26', '华为 HUAWEI P20 ', '0', '0');
+INSERT INTO `sms_home_new_product` VALUES ('9', '27', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '1', '0');
+INSERT INTO `sms_home_new_product` VALUES ('10', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '1', '0');
+INSERT INTO `sms_home_new_product` VALUES ('11', '29', 'Apple iPhone 8 Plus 64GB 红色特别版 移动联通电信4G手机', '1', '0');
+INSERT INTO `sms_home_new_product` VALUES ('12', '30', 'HLA海澜之家简约动物印花短袖T恤', '1', '0');
 
 -- ----------------------------
 -- Table structure for sms_home_recommend_product
@@ -1576,12 +1592,16 @@ CREATE TABLE `sms_home_recommend_product` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='人气推荐商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='人气推荐商品表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_product
 -- ----------------------------
-INSERT INTO `sms_home_recommend_product` VALUES ('2', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '0', '0');
+INSERT INTO `sms_home_recommend_product` VALUES ('3', '26', '华为 HUAWEI P20 ', '1', '0');
+INSERT INTO `sms_home_recommend_product` VALUES ('4', '27', '小米8 全面屏游戏智能手机 6GB+64GB 黑色 全网通4G 双卡双待', '1', '0');
+INSERT INTO `sms_home_recommend_product` VALUES ('5', '28', '小米 红米5A 全网通版 3GB+32GB 香槟金 移动联通电信4G手机 双卡双待', '1', '0');
+INSERT INTO `sms_home_recommend_product` VALUES ('6', '29', 'Apple iPhone 8 Plus 64GB 红色特别版 移动联通电信4G手机', '1', '0');
+INSERT INTO `sms_home_recommend_product` VALUES ('7', '30', 'HLA海澜之家简约动物印花短袖T恤', '1', '100');
 
 -- ----------------------------
 -- Table structure for sms_home_recommend_subject
@@ -1594,14 +1614,17 @@ CREATE TABLE `sms_home_recommend_subject` (
   `recommend_status` int(1) DEFAULT NULL,
   `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='首页推荐专题表';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='首页推荐专题表';
 
 -- ----------------------------
 -- Records of sms_home_recommend_subject
 -- ----------------------------
-INSERT INTO `sms_home_recommend_subject` VALUES ('1', '1', 'polo衬衫的也时尚', '0', '100');
-INSERT INTO `sms_home_recommend_subject` VALUES ('2', '2', '大牌手机低价秒', '0', '0');
-INSERT INTO `sms_home_recommend_subject` VALUES ('3', '3', '晓龙845新品上市', '1', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('14', '1', 'polo衬衫的也时尚', '1', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('15', '2', '大牌手机低价秒', '1', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('16', '3', '晓龙845新品上市', '1', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('17', '4', '夏天应该穿什么', '1', '0');
+INSERT INTO `sms_home_recommend_subject` VALUES ('18', '5', '夏季精选', '1', '100');
+INSERT INTO `sms_home_recommend_subject` VALUES ('19', '6', '品牌手机降价', '1', '0');
 
 -- ----------------------------
 -- Table structure for ums_admin
@@ -1625,7 +1648,7 @@ CREATE TABLE `ums_admin` (
 -- Records of ums_admin
 -- ----------------------------
 INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
-INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-11-12 13:59:11', '1');
+INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-11-13 09:49:27', '1');
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log

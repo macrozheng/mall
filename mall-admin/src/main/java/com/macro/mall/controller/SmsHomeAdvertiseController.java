@@ -53,7 +53,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("获取广告详情")
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Object getItem(@PathVariable Long id) {
         SmsHomeAdvertise advertise = advertiseService.getItem(id);
