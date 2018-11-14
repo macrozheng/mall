@@ -15,13 +15,6 @@ public class PmsProduct implements Serializable {
 
     private Long productAttributeCategoryId;
 
-    /**
-     * 限时购id
-     *
-     * @mbggenerated
-     */
-    private Integer flashPromotionId;
-
     private String name;
 
     private String pic;
@@ -182,27 +175,6 @@ public class PmsProduct implements Serializable {
     private String detailTitle;
 
     /**
-     * 限时购价格
-     *
-     * @mbggenerated
-     */
-    private BigDecimal flashPromotionPrice;
-
-    /**
-     * 限时购数量
-     *
-     * @mbggenerated
-     */
-    private Integer flashPromotionCount;
-
-    /**
-     * 限时购排序
-     *
-     * @mbggenerated
-     */
-    private Integer flashPromotionSort;
-
-    /**
      * 促销开始时间
      *
      * @mbggenerated
@@ -224,7 +196,7 @@ public class PmsProduct implements Serializable {
     private Integer promotionPerLimit;
 
     /**
-     * 促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格
+     * 促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购
      *
      * @mbggenerated
      */
@@ -307,14 +279,6 @@ public class PmsProduct implements Serializable {
 
     public void setProductAttributeCategoryId(Long productAttributeCategoryId) {
         this.productAttributeCategoryId = productAttributeCategoryId;
-    }
-
-    public Integer getFlashPromotionId() {
-        return flashPromotionId;
-    }
-
-    public void setFlashPromotionId(Integer flashPromotionId) {
-        this.flashPromotionId = flashPromotionId;
     }
 
     public String getName() {
@@ -533,30 +497,6 @@ public class PmsProduct implements Serializable {
         this.detailTitle = detailTitle;
     }
 
-    public BigDecimal getFlashPromotionPrice() {
-        return flashPromotionPrice;
-    }
-
-    public void setFlashPromotionPrice(BigDecimal flashPromotionPrice) {
-        this.flashPromotionPrice = flashPromotionPrice;
-    }
-
-    public Integer getFlashPromotionCount() {
-        return flashPromotionCount;
-    }
-
-    public void setFlashPromotionCount(Integer flashPromotionCount) {
-        this.flashPromotionCount = flashPromotionCount;
-    }
-
-    public Integer getFlashPromotionSort() {
-        return flashPromotionSort;
-    }
-
-    public void setFlashPromotionSort(Integer flashPromotionSort) {
-        this.flashPromotionSort = flashPromotionSort;
-    }
-
     public Date getPromotionStartTime() {
         return promotionStartTime;
     }
@@ -648,7 +588,6 @@ public class PmsProduct implements Serializable {
         sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", feightTemplateId=").append(feightTemplateId);
         sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
-        sb.append(", flashPromotionId=").append(flashPromotionId);
         sb.append(", name=").append(name);
         sb.append(", pic=").append(pic);
         sb.append(", productSn=").append(productSn);
@@ -676,9 +615,6 @@ public class PmsProduct implements Serializable {
         sb.append(", note=").append(note);
         sb.append(", albumPics=").append(albumPics);
         sb.append(", detailTitle=").append(detailTitle);
-        sb.append(", flashPromotionPrice=").append(flashPromotionPrice);
-        sb.append(", flashPromotionCount=").append(flashPromotionCount);
-        sb.append(", flashPromotionSort=").append(flashPromotionSort);
         sb.append(", promotionStartTime=").append(promotionStartTime);
         sb.append(", promotionEndTime=").append(promotionEndTime);
         sb.append(", promotionPerLimit=").append(promotionPerLimit);

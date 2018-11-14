@@ -7,7 +7,6 @@
     <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
     <result column="feight_template_id" jdbcType="BIGINT" property="feightTemplateId" />
     <result column="product_attribute_category_id" jdbcType="BIGINT" property="productAttributeCategoryId" />
-    <result column="flash_promotion_id" jdbcType="INTEGER" property="flashPromotionId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
     <result column="product_sn" jdbcType="VARCHAR" property="productSn" />
@@ -35,9 +34,6 @@
     <result column="note" jdbcType="VARCHAR" property="note" />
     <result column="album_pics" jdbcType="VARCHAR" property="albumPics" />
     <result column="detail_title" jdbcType="VARCHAR" property="detailTitle" />
-    <result column="flash_promotion_price" jdbcType="DECIMAL" property="flashPromotionPrice" />
-    <result column="flash_promotion_count" jdbcType="INTEGER" property="flashPromotionCount" />
-    <result column="flash_promotion_sort" jdbcType="INTEGER" property="flashPromotionSort" />
     <result column="promotion_start_time" jdbcType="TIMESTAMP" property="promotionStartTime" />
     <result column="promotion_end_time" jdbcType="TIMESTAMP" property="promotionEndTime" />
     <result column="promotion_per_limit" jdbcType="INTEGER" property="promotionPerLimit" />
@@ -111,11 +107,10 @@
   </sql>
   <sql id="Base_Column_List">
     id, brand_id, product_category_id, feight_template_id, product_attribute_category_id, 
-    flash_promotion_id, name, pic, product_sn, delete_status, publish_status, new_status, 
-    recommand_status, verify_status, sort, sale, price, promotion_price, gift_growth, 
-    gift_point, use_point_limit, sub_title, original_price, stock, low_stock, unit, weight, 
-    preview_status, service_ids, keywords, note, album_pics, detail_title, flash_promotion_price, 
-    flash_promotion_count, flash_promotion_sort, promotion_start_time, promotion_end_time, 
+    name, pic, product_sn, delete_status, publish_status, new_status, recommand_status, 
+    verify_status, sort, sale, price, promotion_price, gift_growth, gift_point, use_point_limit, 
+    sub_title, original_price, stock, low_stock, unit, weight, preview_status, service_ids, 
+    keywords, note, album_pics, detail_title, promotion_start_time, promotion_end_time, 
     promotion_per_limit, promotion_type, brand_name, product_category_name
   </sql>
   <sql id="Blob_Column_List">
@@ -174,39 +169,33 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_product (brand_id, product_category_id, feight_template_id, 
-      product_attribute_category_id, flash_promotion_id, 
-      name, pic, product_sn, 
-      delete_status, publish_status, new_status, 
-      recommand_status, verify_status, sort, 
-      sale, price, promotion_price, 
-      gift_growth, gift_point, use_point_limit, 
-      sub_title, original_price, stock, 
-      low_stock, unit, weight, 
-      preview_status, service_ids, keywords, 
-      note, album_pics, detail_title, 
-      flash_promotion_price, flash_promotion_count, 
-      flash_promotion_sort, promotion_start_time, 
-      promotion_end_time, promotion_per_limit, 
-      promotion_type, brand_name, product_category_name, 
-      description, detail_desc, detail_html, 
-      detail_mobile_html)
+      product_attribute_category_id, name, pic, 
+      product_sn, delete_status, publish_status, 
+      new_status, recommand_status, verify_status, 
+      sort, sale, price, 
+      promotion_price, gift_growth, gift_point, 
+      use_point_limit, sub_title, original_price, 
+      stock, low_stock, unit, 
+      weight, preview_status, service_ids, 
+      keywords, note, album_pics, 
+      detail_title, promotion_start_time, promotion_end_time, 
+      promotion_per_limit, promotion_type, brand_name, 
+      product_category_name, description, detail_desc, 
+      detail_html, detail_mobile_html)
     values (#{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{feightTemplateId,jdbcType=BIGINT}, 
-      #{productAttributeCategoryId,jdbcType=BIGINT}, #{flashPromotionId,jdbcType=INTEGER}, 
-      #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{productSn,jdbcType=VARCHAR}, 
-      #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, #{newStatus,jdbcType=INTEGER}, 
-      #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
-      #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{promotionPrice,jdbcType=DECIMAL}, 
-      #{giftGrowth,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, #{usePointLimit,jdbcType=INTEGER}, 
-      #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 
-      #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, 
-      #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
-      #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, #{detailTitle,jdbcType=VARCHAR}, 
-      #{flashPromotionPrice,jdbcType=DECIMAL}, #{flashPromotionCount,jdbcType=INTEGER}, 
-      #{flashPromotionSort,jdbcType=INTEGER}, #{promotionStartTime,jdbcType=TIMESTAMP}, 
-      #{promotionEndTime,jdbcType=TIMESTAMP}, #{promotionPerLimit,jdbcType=INTEGER}, 
-      #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, #{productCategoryName,jdbcType=VARCHAR}, 
-      #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, #{detailHtml,jdbcType=LONGVARCHAR}, 
-      #{detailMobileHtml,jdbcType=LONGVARCHAR})
+      #{productAttributeCategoryId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{productSn,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, 
+      #{newStatus,jdbcType=INTEGER}, #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{promotionPrice,jdbcType=DECIMAL}, #{giftGrowth,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, 
+      #{usePointLimit,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, 
+      #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=DECIMAL}, #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, 
+      #{detailTitle,jdbcType=VARCHAR}, #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
+      #{promotionPerLimit,jdbcType=INTEGER}, #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
+      #{productCategoryName,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, 
+      #{detailHtml,jdbcType=LONGVARCHAR}, #{detailMobileHtml,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -225,9 +214,6 @@
       </if>
       <if test="productAttributeCategoryId != null">
         product_attribute_category_id,
-      </if>
-      <if test="flashPromotionId != null">
-        flash_promotion_id,
       </if>
       <if test="name != null">
         name,
@@ -310,15 +296,6 @@
       <if test="detailTitle != null">
         detail_title,
       </if>
-      <if test="flashPromotionPrice != null">
-        flash_promotion_price,
-      </if>
-      <if test="flashPromotionCount != null">
-        flash_promotion_count,
-      </if>
-      <if test="flashPromotionSort != null">
-        flash_promotion_sort,
-      </if>
       <if test="promotionStartTime != null">
         promotion_start_time,
       </if>
@@ -362,9 +339,6 @@
       </if>
       <if test="productAttributeCategoryId != null">
         #{productAttributeCategoryId,jdbcType=BIGINT},
-      </if>
-      <if test="flashPromotionId != null">
-        #{flashPromotionId,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -447,15 +421,6 @@
       <if test="detailTitle != null">
         #{detailTitle,jdbcType=VARCHAR},
       </if>
-      <if test="flashPromotionPrice != null">
-        #{flashPromotionPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="flashPromotionCount != null">
-        #{flashPromotionCount,jdbcType=INTEGER},
-      </if>
-      <if test="flashPromotionSort != null">
-        #{flashPromotionSort,jdbcType=INTEGER},
-      </if>
       <if test="promotionStartTime != null">
         #{promotionStartTime,jdbcType=TIMESTAMP},
       </if>
@@ -511,9 +476,6 @@
       </if>
       <if test="record.productAttributeCategoryId != null">
         product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      </if>
-      <if test="record.flashPromotionId != null">
-        flash_promotion_id = #{record.flashPromotionId,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -596,15 +558,6 @@
       <if test="record.detailTitle != null">
         detail_title = #{record.detailTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.flashPromotionPrice != null">
-        flash_promotion_price = #{record.flashPromotionPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.flashPromotionCount != null">
-        flash_promotion_count = #{record.flashPromotionCount,jdbcType=INTEGER},
-      </if>
-      <if test="record.flashPromotionSort != null">
-        flash_promotion_sort = #{record.flashPromotionSort,jdbcType=INTEGER},
-      </if>
       <if test="record.promotionStartTime != null">
         promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       </if>
@@ -647,7 +600,6 @@
       product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
       feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
       product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      flash_promotion_id = #{record.flashPromotionId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       product_sn = #{record.productSn,jdbcType=VARCHAR},
@@ -675,9 +627,6 @@
       note = #{record.note,jdbcType=VARCHAR},
       album_pics = #{record.albumPics,jdbcType=VARCHAR},
       detail_title = #{record.detailTitle,jdbcType=VARCHAR},
-      flash_promotion_price = #{record.flashPromotionPrice,jdbcType=DECIMAL},
-      flash_promotion_count = #{record.flashPromotionCount,jdbcType=INTEGER},
-      flash_promotion_sort = #{record.flashPromotionSort,jdbcType=INTEGER},
       promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
@@ -699,7 +648,6 @@
       product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
       feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
       product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      flash_promotion_id = #{record.flashPromotionId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       product_sn = #{record.productSn,jdbcType=VARCHAR},
@@ -727,9 +675,6 @@
       note = #{record.note,jdbcType=VARCHAR},
       album_pics = #{record.albumPics,jdbcType=VARCHAR},
       detail_title = #{record.detailTitle,jdbcType=VARCHAR},
-      flash_promotion_price = #{record.flashPromotionPrice,jdbcType=DECIMAL},
-      flash_promotion_count = #{record.flashPromotionCount,jdbcType=INTEGER},
-      flash_promotion_sort = #{record.flashPromotionSort,jdbcType=INTEGER},
       promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
@@ -754,9 +699,6 @@
       </if>
       <if test="productAttributeCategoryId != null">
         product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
-      </if>
-      <if test="flashPromotionId != null">
-        flash_promotion_id = #{flashPromotionId,jdbcType=INTEGER},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -839,15 +781,6 @@
       <if test="detailTitle != null">
         detail_title = #{detailTitle,jdbcType=VARCHAR},
       </if>
-      <if test="flashPromotionPrice != null">
-        flash_promotion_price = #{flashPromotionPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="flashPromotionCount != null">
-        flash_promotion_count = #{flashPromotionCount,jdbcType=INTEGER},
-      </if>
-      <if test="flashPromotionSort != null">
-        flash_promotion_sort = #{flashPromotionSort,jdbcType=INTEGER},
-      </if>
       <if test="promotionStartTime != null">
         promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       </if>
@@ -887,7 +820,6 @@
       product_category_id = #{productCategoryId,jdbcType=BIGINT},
       feight_template_id = #{feightTemplateId,jdbcType=BIGINT},
       product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
-      flash_promotion_id = #{flashPromotionId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       product_sn = #{productSn,jdbcType=VARCHAR},
@@ -915,9 +847,6 @@
       note = #{note,jdbcType=VARCHAR},
       album_pics = #{albumPics,jdbcType=VARCHAR},
       detail_title = #{detailTitle,jdbcType=VARCHAR},
-      flash_promotion_price = #{flashPromotionPrice,jdbcType=DECIMAL},
-      flash_promotion_count = #{flashPromotionCount,jdbcType=INTEGER},
-      flash_promotion_sort = #{flashPromotionSort,jdbcType=INTEGER},
       promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
@@ -936,7 +865,6 @@
       product_category_id = #{productCategoryId,jdbcType=BIGINT},
       feight_template_id = #{feightTemplateId,jdbcType=BIGINT},
       product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
-      flash_promotion_id = #{flashPromotionId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       product_sn = #{productSn,jdbcType=VARCHAR},
@@ -964,9 +892,6 @@
       note = #{note,jdbcType=VARCHAR},
       album_pics = #{albumPics,jdbcType=VARCHAR},
       detail_title = #{detailTitle,jdbcType=VARCHAR},
-      flash_promotion_price = #{flashPromotionPrice,jdbcType=DECIMAL},
-      flash_promotion_count = #{flashPromotionCount,jdbcType=INTEGER},
-      flash_promotion_sort = #{flashPromotionSort,jdbcType=INTEGER},
       promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},

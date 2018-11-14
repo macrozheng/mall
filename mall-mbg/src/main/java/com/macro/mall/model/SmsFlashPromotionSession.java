@@ -3,34 +3,44 @@ package com.macro.mall.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SmsFlashPromotion implements Serializable {
+public class SmsFlashPromotionSession implements Serializable {
+    /**
+     * 编号
+     *
+     * @mbggenerated
+     */
     private Long id;
 
-    private String title;
-
     /**
-     * 开始日期
+     * 场次名称
      *
      * @mbggenerated
      */
-    private Date startDate;
+    private String name;
 
     /**
-     * 结束日期
+     * 每日开始时间
      *
      * @mbggenerated
      */
-    private Date endDate;
+    private Date startTime;
 
     /**
-     * 上下线状态
+     * 每日结束时间
+     *
+     * @mbggenerated
+     */
+    private Date endTime;
+
+    /**
+     * 启用状态：0->不启用；1->启用
      *
      * @mbggenerated
      */
     private Integer status;
 
     /**
-     * 秒杀时间段名称
+     * 创建时间
      *
      * @mbggenerated
      */
@@ -46,28 +56,28 @@ public class SmsFlashPromotion implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public Integer getStatus() {
@@ -93,9 +103,9 @@ public class SmsFlashPromotion implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
-        sb.append(", startDate=").append(startDate);
-        sb.append(", endDate=").append(endDate);
+        sb.append(", name=").append(name);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", endTime=").append(endTime);
         sb.append(", status=").append(status);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
