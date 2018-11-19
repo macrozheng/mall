@@ -5,6 +5,7 @@ import com.macro.mall.dao.SmsFlashPromotionProductRelationDao;
 import com.macro.mall.dto.SmsFlashPromotionProduct;
 import com.macro.mall.mapper.SmsFlashPromotionProductRelationMapper;
 import com.macro.mall.model.SmsFlashPromotionProductRelation;
+import com.macro.mall.model.SmsFlashPromotionProductRelationExample;
 import com.macro.mall.service.SmsFlashPromotionProductRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,14 @@ public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashProm
     public List<SmsFlashPromotionProduct> list(Long flashPromotionId, Long flashPromotionSessionId, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum,pageSize);
         return relationDao.getList(flashPromotionId,flashPromotionSessionId);
+    }
+
+    @Override
+    public int getCount(Long flashPromotionId, Long flashPromotionSessionId) {
+        SmsFlashPromotionProductRelationExample example = new SmsFlashPromotionProductRelationExample();
+        example.createCriteria()
+                .andFlashPromotionIdEqualTo(flashPromotionId)
+                .andFlashPromotionSessionIdEqualTo(flashPromotionSessionId);
+        return relationMapper.countByExample(example);
     }
 }

@@ -10,6 +10,9 @@
             r.flash_promotion_price,
             r.flash_promotion_count,
             r.flash_promotion_limit,
+            r.flash_promotion_id,
+            r.flash_promotion_session_id,
+            r.product_id,
             r.sort,
             p.id p_id,
             p.`name` p_name,
@@ -22,5 +25,6 @@
         WHERE
             r.flash_promotion_id = #{flashPromotionId}
             AND r.flash_promotion_session_id = #{flashPromotionSessionId}
+        ORDER BY r.sort DESC
     </select>
 </mapper>

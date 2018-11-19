@@ -1,5 +1,6 @@
 package com.macro.mall.service;
 
+import com.macro.mall.dto.SmsFlashPromotionSessionDetail;
 import com.macro.mall.model.SmsFlashPromotionSession;
 
 import java.util.List;
@@ -37,5 +38,10 @@ public interface SmsFlashPromotionSessionService {
     /**
      * 根据启用状态获取场次列表
      */
-    List<SmsFlashPromotionSession> list(Integer status);
+    List<SmsFlashPromotionSession> list();
+
+    /**
+     * 获取全部可选场次及其数量
+     */
+    List<SmsFlashPromotionSessionDetail> selectList(Long flashPromotionId);
 }

@@ -39,4 +39,12 @@ public interface SmsFlashPromotionProductRelationService {
      * @param flashPromotionSessionId 限时购场次id
      */
     List<SmsFlashPromotionProduct> list(Long flashPromotionId, Long flashPromotionSessionId, Integer pageSize, Integer pageNum);
+
+    /**
+     * 根据活动和场次id获取商品关系数量
+     * @param flashPromotionId
+     * @param flashPromotionSessionId
+     * @return
+     */
+    int getCount(Long flashPromotionId,Long flashPromotionSessionId);
 }

@@ -1,6 +1,7 @@
 package com.macro.mall.controller;
 
 import com.macro.mall.dto.CommonResult;
+import com.macro.mall.dto.SmsFlashPromotionSessionDetail;
 import com.macro.mall.model.SmsFlashPromotionSession;
 import com.macro.mall.service.SmsFlashPromotionSessionService;
 import io.swagger.annotations.Api;
@@ -73,11 +74,19 @@ public class SmsFlashPromotionSessionController {
         return new CommonResult().success(promotionSession);
     }
 
-    @ApiOperation("根据状态获取全部场次")
+    @ApiOperation("获取全部场次")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(Integer status) {
-        List<SmsFlashPromotionSession> promotionSessionList = flashPromotionSessionService.list(status);
-        return new CommonResult().pageSuccess(promotionSessionList);
+    public Object list() {
+        List<SmsFlashPromotionSession> promotionSessionList = flashPromotionSessionService.list();
+        return new CommonResult().success(promotionSessionList);
+    }
+
+    @ApiOperation("获取全部可选场次及其数量")
+    @RequestMapping(value = "/selectList", method = RequestMethod.GET)
+    @ResponseBody
+    public Object selectList(Long flashPromotionId) {
+        List<SmsFlashPromotionSessionDetail> promotionSessionList = flashPromotionSessionService.selectList(flashPromotionId);
+        return new CommonResult().success(promotionSessionList);
     }
 }
