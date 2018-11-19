@@ -77,6 +77,7 @@ Linux远程连接工具 | http://www.netsarang.com/download/software.html
 数据库设计工具 | http://powerdesigner.de/
 原型设计工具 | https://www.axure.com/
 思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
+gif录制工具 | https://www.screentogif.com/
 
 ### 后台功能
 
