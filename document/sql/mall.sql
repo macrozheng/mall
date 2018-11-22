@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-11-19 16:09:46
+Date: 2018-11-22 16:32:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1714,7 +1714,7 @@ CREATE TABLE `ums_admin` (
 -- Records of ums_admin
 -- ----------------------------
 INSERT INTO `ums_admin` VALUES ('1', 'test', '202cb962ac59075b964b07152d234b70', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
-INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-11-19 10:33:47', '1');
+INSERT INTO `ums_admin` VALUES ('3', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180607/timg.jpg', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2018-11-22 16:24:41', '1');
 
 -- ----------------------------
 -- Table structure for ums_admin_login_log
