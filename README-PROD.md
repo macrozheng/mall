@@ -2,19 +2,19 @@
 
 ## 前言
 
-`mall`项目致力于打造一个完整的电商系统，包括前台商城系统和后台管理系统，采用现阶段流行技术实现。
+`mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
 
 ## 项目介绍
 
-`mall`项目是一套电商业务系统，包括前台商城系统及后台管理系统，基于SpringBoot+MyBatis实现。
+`mall`项目是一套电商系统，包括前台商城系统及后台管理系统，基于SpringBoot+MyBatis实现。
 前台商城系统包含用户中心、会员成长、优惠券、积分、运营推广、内容推荐、商品展示、订单流程、订单管理、售后及服务等模块。
-后台管理系统包括商品、订单、用户、促销、运营、内容、统计、财务、设置、权限等管理系统模块。
+后台管理系统包含商品、订单、用户、促销、运营、内容、统计、财务、设置、权限等管理系统模块。
 
 ### 项目演示
 
 > 后台管理系统
 
-- 前端项目地址：https://github.com/macrozheng/mall-admin-web
+- 前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web
 - [后台管理系统功能演示.gif](document/resource/mall-admin.gif)
 
 ### 组织结构
@@ -109,3 +109,26 @@ Elasticsearch | 2.4 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
 RabbitMq | 5.25 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html
+
+### 搭建步骤
+
+> 本地环境搭建
+
+- 本地安装开发环境中的所有工具并启动，采用默认配置即可;
+- 克隆源代码到本地，使用IDEA打开，并完成编译;
+- 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
+- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication即可,
+  接口文档地址：http://localhost:8080/swagger-ui.html;
+- 启动mall-search项目：直接运行com.macro.mall.search.MallSearchApplication即可，
+  接口文档地址：http://localhost:8081/swagger-ui.html;
+- 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication即可，
+  接口文档地址：http://localhost:8085/swagger-ui.html;
+- 克隆`mall-admin-web`项目，并导入到IDEA中并完成编译，[mall-admin-web](https://github.com/macrozheng/mall-admin-web);
+- 运行命令：npm run dev,访问地址：http://localhost:8090即可打开后台管理系统页面。
+
+> docker环境部署
+
+- 安装CenterOs7.2在VirtualBox虚拟机中；
+- 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
+- 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/docker/docker.md)中的使用maven构建Docker镜像；
+- 参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
