@@ -124,7 +124,8 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication即可，
   接口文档地址：http://localhost:8085/swagger-ui.html;
 - 克隆`mall-admin-web`项目，并导入到IDEA中并完成编译，[mall-admin-web](https://github.com/macrozheng/mall-admin-web);
-- 运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面。
+- 运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面；
+- ELK日志收集系统的搭建：参考[elk.md](document/elk/elk.md)。
 
 > docker环境部署
 
