@@ -133,3 +133,9 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
 - 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/docker/docker.md)中的使用maven构建Docker镜像；
 - 参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
+
+## 许可证
+
+[MIT](https://github.com/macrozheng/mall/blob/master/LICENSE)
+
+Copyright (c) 2018-present macrozheng
