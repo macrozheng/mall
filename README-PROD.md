@@ -117,14 +117,14 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 本地安装开发环境中的所有工具并启动，采用默认配置即可;
 - 克隆源代码到本地，使用IDEA打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
-- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication即可,
+- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication即可，
   接口文档地址：http://localhost:8080/swagger-ui.html;
 - 启动mall-search项目：直接运行com.macro.mall.search.MallSearchApplication即可，
   接口文档地址：http://localhost:8081/swagger-ui.html;
 - 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication即可，
   接口文档地址：http://localhost:8085/swagger-ui.html;
 - 克隆`mall-admin-web`项目，并导入到IDEA中并完成编译，[mall-admin-web](https://github.com/macrozheng/mall-admin-web);
-- 运行命令：npm run dev,访问地址：http://localhost:8090即可打开后台管理系统页面。
+- 运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面。
 
 > docker环境部署
 
