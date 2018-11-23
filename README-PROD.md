@@ -70,23 +70,23 @@ nprogress | 进度条控件 | [https://github.com/rstacruz/nprogress](https://gi
 
 > 订单管理
 
-![功能结构图](document/resource/mind_order.jpg)
+[功能结构图](document/resource/mind_order.jpg)
 
 > 促销管理
 
-![功能结构图](document/resource/mind_sale.jpg)
+[功能结构图](document/resource/mind_sale.jpg)
 
 > 内容管理
 
-![功能结构图](document/resource/mind_content.jpg)
+[功能结构图](document/resource/mind_content.jpg)
 
 > 用户管理
 
-![功能结构图](document/resource/mind_member.jpg)
+[功能结构图](document/resource/mind_member.jpg)
 
 ##### 前台商城系统 `mall-portal`
 
-![功能结构图](document/resource/mind_portal.jpg)
+[功能结构图](document/resource/mind_portal.jpg)
 
 ## 环境搭建
 ### 开发工具
