@@ -66,7 +66,7 @@ nprogress | 进度条控件 | [https://github.com/rstacruz/nprogress](https://gi
 
 > 商品管理
 
-[功能结构图](document/resource/mind_order.jpg)
+[功能结构图](document/resource/mind_product.jpg)
 
 > 订单管理
 
