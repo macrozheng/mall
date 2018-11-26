@@ -135,5 +135,5 @@ docker run -p 8085:8085 --name mall-portal \
 ## SpringBoot应用自动化部署
 ### 部署文件
 document/docker/docker-compose.yml
-###部署命令
+### 部署命令
 docker-compose up -d
