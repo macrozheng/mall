@@ -73,31 +73,31 @@ docker run -p 80:80 --name nginx \
 -v /mydata/nginx/conf:/etc/nginx \
 -d nginx:1.10
 
-##rabbitmq安装
-###下载镜像文件
+## rabbitmq安装
+### 下载镜像文件
 docker pull rabbitmq:management
-###创建实例并启动
+### 创建实例并启动
 docker run -d --name rabbitmq --publish 5671:5671 \
  --publish 5672:5672 --publish 4369:4369 --publish 25672:25672 --publish 15671:15671 --publish 15672:15672 \
 rabbitmq:management
 
-##elasticsearch安装
-###下载镜像文件
+## elasticsearch安装
+### 下载镜像文件
 docker pull elasticsearch:2.4
-###创建实例并运行
+### 创建实例并运行
 docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
 -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data \
 -d elasticsearch:2.4
-###测试
+### 测试
 访问会返回版本信息：http://192.168.1.66:9200/
-###安装目录位置
+### 安装目录位置
 /usr/share/elasticsearch
-###安装head插件
+### 安装head插件
 1. 进入docker内部bash:docker exec -it elasticsearch /bin/bash
 2. 安装插件：plugin install mobz/elasticsearch-head
 3. 测试：http://192.168.1.66:9200/_plugin/head/
-###安装中文分词器IKAnalyzer
+### 安装中文分词器IKAnalyzer
 1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4
 2. 上传后拷贝到容器中：docker container cp elasticsearch-analysis-ik-1.10.6.tar.gz elasticsearch:/usr/share/elasticsearch/plugins
 3. 进行解压操作：tar -xvf elasticsearch-analysis-ik-1.10.6.tar.gz
@@ -106,34 +106,34 @@ docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 POST:http://192.168.1.66:9200/_analyze
 JSON:{"analyzer":"ik","text":"联想是全球最大的笔记本厂商"}
 
-##mongodb安装
-###下载镜像文件
+## mongodb安装
+### 下载镜像文件
 docker pull mongo:3.2
-###创建实例并运行
+### 创建实例并运行
 docker run -p 27017:27017 --name mongo -v $PWD/db:/data/db -d mongo:3.2
-###使用mongo命令进入容器
+### 使用mongo命令进入容器
 docker exec -it mongo mongo
 
-##SpringBoot应用命令部署
+## SpringBoot应用命令部署
 **docker容器间进行连接才能互相访问**
-###部署mall-admin
+### 部署mall-admin
 docker run -p 8080:8080 --name mall-admin \
 --link mysql:db \
 -d mall/mall-admin:0.0.1-SNAPSHOT
-###部署mall-search
+### 部署mall-search
 docker run -p 8081:8081 --name mall-search \
 --link elasticsearch:es \
 --link mysql:db \
 -d mall/mall-search:0.0.1-SNAPSHOT
-###部署mall-port
+### 部署mall-port
 docker run -p 8085:8085 --name mall-portal \
 --link mysql:db \
 --link redis:redis \
 --link mongo:mongo \
 -d mall/mall-portal:0.0.1-SNAPSHOT
 
-##SpringBoot应用自动化部署
-###部署文件
+## SpringBoot应用自动化部署
+### 部署文件
 document/docker/docker-compose.yml
 ###部署命令
 docker-compose up -d
