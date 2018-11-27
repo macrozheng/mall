@@ -3,7 +3,7 @@
 ## Docker 镜像常用命令
 ### 搜索镜像
 docker search java
-###下载镜像
+### 下载镜像
 docker pull java:8
 docker pull macro/eureka-server:0.0.1
 ### 列出镜像
