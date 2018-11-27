@@ -110,6 +110,7 @@ Axure | 原型设计工具 | https://www.axure.com/
 MindMaster | 思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
 ScreenToGif | gif录制工具 | https://www.screentogif.com/
 ProcessOn | 流程图绘制工具 | https://www.processon.com/
+PicPick | 屏幕取色工具 | https://picpick.app/zh/
 
 ### 开发环境
 
