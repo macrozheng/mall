@@ -8,7 +8,7 @@
 
 `mall`项目是一套电商系统，包括前台商城系统及后台管理系统，基于SpringBoot+MyBatis实现。
 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。
-后台管理系统包含商品、订单、用户、促销、运营、内容、统计、财务、设置、权限等管理模块。
+后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。
 
 ### 项目演示
 
@@ -89,6 +89,10 @@ nprogress | 进度条控件 | [https://github.com/rstacruz/nprogress](https://gi
 
 [功能结构图-前台.jpg](document/resource/mind_portal.jpg)
 
+#### 开发进度
+
+![项目开发进度图](document/resource/mall_dev_flow.png)
+
 ## 环境搭建
 
 ### 开发工具
@@ -147,4 +151,4 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 [MIT](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
-Copyright (c) 2018-present macrozheng
+Copyright (c) 2018-2019 macrozheng
