@@ -15,7 +15,11 @@
 > 后台管理系统
 
 - 前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web
-- 后台管理系统功能演示：[后台管理系统功能演示.gif](document/resource/mall-admin.gif)
+- ![后台管理系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-admin.gif)
+
+> 前台商城系统
+
+![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif])
 
 ### 组织结构
 
