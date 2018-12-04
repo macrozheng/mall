@@ -20,6 +20,8 @@
 
 > 前台商城系统
 
+前端项目`mall-app-web`演示地址：[www.macro.com/mall-app/mainpage.html](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall-app/mainpage.html)
+
 ![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif)
 
 ### 组织结构
