@@ -136,13 +136,13 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 本地安装开发环境中的所有工具并启动，采用默认配置即可;
 - 克隆源代码到本地，使用IDEA打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
-- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication即可，
+- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication的main方法即可，
   接口文档地址：http://localhost:8080/swagger-ui.html;
-- 启动mall-search项目：直接运行com.macro.mall.search.MallSearchApplication即可，
+- 启动mall-search项目：直接运行com.macro.mall.search.MallSearchApplication的main方法即可，
   接口文档地址：http://localhost:8081/swagger-ui.html;
-- 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication即可，
+- 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication的main方法即可，
   接口文档地址：http://localhost:8085/swagger-ui.html;
-- 克隆`mall-admin-web`项目，并导入到IDEA中并完成编译，[mall-admin-web](https://github.com/macrozheng/mall-admin-web);
+- 克隆`mall-admin-web`项目，并导入到IDEA中并完成编译[传送门](https://github.com/macrozheng/mall-admin-web);
 - 运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面；
 - ELK日志收集系统的搭建：参考[elk.md](document/elk/elk.md)。
 
@@ -151,7 +151,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 安装CenterOs7.2在VirtualBox虚拟机中；
 - 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
 - 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/docker/docker.md)中的使用maven构建Docker镜像；
-- 参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
+- 部署步骤参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
 
 ## 许可证
 
