@@ -8,7 +8,9 @@
 
 > 或者您可以 "follow" 一下，该项目将持续更新，不断完善功能。
 
-> 如有问题或者好的建议可以在 Issues 中提，或者加群[959351312](959351312)。
+> 项目交流QQ群：[959351312](http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ)。
+
+> 如有问题或者好的建议可以在 Issues 中提。
 
 ## 前言
 
