@@ -11,6 +11,7 @@
 - 查看运行状态：systemctl status httpd.service
 - 设置开机启动：systemctl enable httpd.service
 - 禁止开机启动：systemctl disable httpd.service
+- 查看系统安装的服务：systemctl list-units --type=service
 
 ## 文件管理
 
