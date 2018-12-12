@@ -4,14 +4,14 @@
 ### 搜索镜像
 docker search java
 ### 下载镜像
-docker pull java:8
-docker pull macro/eureka-server:0.0.1
+- docker pull java:8
+- docker pull macro/eureka-server:0.0.1
 ### 列出镜像
 docker images
 ### 删除镜像
-docker rmi java
-docker rmi -f java 
-docker rmi -f $(docker images)
+- docker rmi java
+- docker rmi -f java 
+- docker rmi -f $(docker images)
 
 ## Docker 容器常用命令
 ### 新建并启动容器
@@ -25,11 +25,11 @@ docker kill $ContainerId
 ### 启动已停止的容器
 docker start $ContainerId
 ### 进入容器
-docker inspect --format "{{.State.Pid}}" $ContainerId
-nsenter --target "$pid" --mount --uts --ipc --net --pid
+- docker inspect --format "{{.State.Pid}}" $ContainerId
+- nsenter --target "$pid" --mount --uts --ipc --net --pid
 ### 删除容器
-docker rm $ContainerId
-docker rm -f $(docker ps -a -q)
+- docker rm $ContainerId
+- docker rm -f $(docker ps -a -q)
 
 ## Docker Registry
 ### Docker Registry 2.0搭建
