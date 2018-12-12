@@ -61,3 +61,13 @@ delete from emp where ename='zhangsan'
 ### 字符集相关
 - 查看字符集：show variables like 'character%'
 - 创建数据库时指定字符集：create database test1 character set utf8
+
+### 权限相关
+- 授予所有数据库的所有权限：grant all privileges on *.* to z1@localhost identified by '123'
+- 授予所有数据库的所有权限(包括grant)：grant all privileges on *.* to z1@localhost with grant option
+- 授予SUPER PROCESS FILE权限：grant super,process,file on *.* to z3@localhost
+- 只授予登录权限：grant usage on *.* to z4@localhost
+- 查看账号权限：show grants for z1@localhost
+- 修改自己的密码：set password = password('123')
+- 管理员修改他人密码：set password for 'z1'@'localhost' = password('123')
+- 删除账号：drop user z2@localhost
