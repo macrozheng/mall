@@ -4,6 +4,16 @@
 
 关于IDEA的安装与使用具体参考[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
 
+## Eclipse
+
+- 导入项目，以maven项目形式导入  
+    ![eclipse_import_1.png](https://github.com/macrozheng/mall/blob/master/document/resource/eclipse_import_1.png)  
+    ![eclipse_import_2.png](https://github.com/macrozheng/mall/blob/master/document/resource/eclipse_import_2.png)
+- 安装lombok插件，下载地址：https://projectlombok.org/downloads/lombok.jar  
+- 下载完后双击，使用java程序打开
+- 下载后选择eclipe.exe的安装路径安装，安装后重启Eclipse
+- 启动项目：右击com.macro.mall.MallAdminApplication的main方法，选择run as Java Application
+
 ## mysql
 
 - 下载地址：https://dev.mysql.com/downloads/mysql/5.7.html#downloads

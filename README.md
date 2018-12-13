@@ -152,7 +152,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 > 本地环境搭建
 
 - 本地安装开发环境中的所有工具并启动，具体参考[deploy-windows.md](document/reference/deploy-windows.md);
-- 克隆源代码到本地，使用IDEA打开，并完成编译;
+- 克隆源代码到本地，使用IDEA或Eclipse打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
 - 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication的main方法即可，
   接口文档地址：http://localhost:8080/swagger-ui.html;
