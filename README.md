@@ -34,7 +34,9 @@
 
 > 前台商城系统
 
-前端项目`mall-app-web`演示地址：[http://39.98.69.210/mall-app/mainpage.html](http://39.98.69.210/mall-app/mainpage.html)
+前端项目`mall-app-web`地址：敬请期待......
+
+项目演示地址：[http://39.98.69.210/mall-app/mainpage.html](http://39.98.69.210/mall-app/mainpage.html)
 
 ![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif)
 
@@ -43,9 +45,9 @@
 ``` lua
 mall
 ├── mall-mbg -- MyBatisGenerator生成的数据库操作代码
-├── mall-admin -- 后台商城管理系统
+├── mall-admin -- 后台商城管理系统接口
 ├── mall-search -- 基于Elasticsearch的商品搜索系统
-├── mall-portal -- 前台商城系统
+├── mall-portal -- 前台商城系统接口
 └── mall-demo -- 框架搭建时的测试代码
 ```
 
