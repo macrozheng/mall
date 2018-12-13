@@ -1,4 +1,8 @@
-# windows下环境安装
+# windows下环境搭建
+
+## IDEA
+
+关于IDEA的安装与使用具体参考[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
 
 ## mysql
 
