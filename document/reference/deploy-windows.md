@@ -54,8 +54,11 @@
 - 访问地址查看是否安装成功：http://127.0.0.1:15672/
 - 输入账号密码登录：guest guest
 - 创建用户并设置其角色为管理员：mall mall
+    ![rabbitmq_install_2.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_2.png)
 - 创建virtual host:/mall
+    ![rabbitmq_install_3.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_3.png)
 - 给mall用户配置范围该virtual host的权限
+    ![rabbitmq_install_4.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_4.png)
 
 ## mall-admin
 
