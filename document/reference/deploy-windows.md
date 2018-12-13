@@ -36,8 +36,7 @@
     storage:
         dbPath: c:\mongodb\data\db
     ```
-- 安装为服务：C:\mongodb\bin\mongod.exe --config "C:\mongodb\mongod.cfg" --install
-- 安装为服务：F:\developer\IDE\idea\mongodb-bundle\mongodb-server\bin\mongod.exe --config "F:\developer\IDE\idea\mongodb-bundle\mongodb-server\mongod.cfg" --install
+- 安装为服务（运行命令需要用管理员权限）：C:\mongodb\bin\mongod.exe --config "C:\mongodb\mongod.cfg" --install
 - 启动服务：net start MongoDB
 - 关闭服务：net stop MongoDB
 - 移除服务：C:\mongodb\bin\mongod.exe --remove

@@ -149,7 +149,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 > 本地环境搭建
 
-- 本地安装开发环境中的所有工具并启动，采用默认配置即可;
+- 本地安装开发环境中的所有工具并启动，具体参考[deploy-windows.md](document/reference/deploy-windows.md);
 - 克隆源代码到本地，使用IDEA打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
 - 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication的main方法即可，
@@ -168,6 +168,20 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
 - 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/reference/docker.md)中的使用maven构建Docker镜像；
 - 部署步骤参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
+
+## 参考资料
+
+- [Spring实战（第4版）](https://book.douban.com/subject/26767354/)
+- [Spring Boot实战](https://book.douban.com/subject/26857423/)
+- [Spring Cloud微服务实战](https://book.douban.com/subject/27025912/)
+- [Spring Cloud与Docker微服务架构实战](https://book.douban.com/subject/27028228/)
+- [Spring Data实战](https://book.douban.com/subject/25975186/)
+- [MyBatis从入门到精通](https://book.douban.com/subject/27074809/)
+- [深入浅出MySQL](https://book.douban.com/subject/25817684/)
+- [循序渐进Linux（第2版）](https://book.douban.com/subject/26758194/)
+- [Elasticsearch 技术解析与实战](https://book.douban.com/subject/26967826/)
+- [MongoDB实战(第二版)](https://book.douban.com/subject/27061123/)
+- [Kubernetes权威指南](https://book.douban.com/subject/26902153/)
 
 ## 许可证
 
