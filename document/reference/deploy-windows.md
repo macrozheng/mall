@@ -2,7 +2,8 @@
 
 ## IDEA
 
-关于IDEA的安装与使用具体参考[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
+- 关于IDEA的安装与使用具体参考[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
+- 搜索插件仓库，安装插件lombok
 
 ## Eclipse
 
