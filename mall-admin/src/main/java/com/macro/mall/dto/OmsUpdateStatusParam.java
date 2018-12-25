@@ -1,8 +1,6 @@
 package com.macro.mall.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -10,8 +8,7 @@ import java.math.BigDecimal;
  * 确认收货提交参数
  * Created by macro on 2018/10/18.
  */
-@Getter
-@Setter
+
 public class OmsUpdateStatusParam {
     @ApiModelProperty("服务单号")
     private Long id;
@@ -29,4 +26,68 @@ public class OmsUpdateStatusParam {
     private String receiveMan;
     @ApiModelProperty("申请状态：1->退货中；2->已完成；3->已拒绝")
     private Integer status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCompanyAddressId() {
+        return companyAddressId;
+    }
+
+    public void setCompanyAddressId(Long companyAddressId) {
+        this.companyAddressId = companyAddressId;
+    }
+
+    public BigDecimal getReturnAmount() {
+        return returnAmount;
+    }
+
+    public void setReturnAmount(BigDecimal returnAmount) {
+        this.returnAmount = returnAmount;
+    }
+
+    public String getHandleNote() {
+        return handleNote;
+    }
+
+    public void setHandleNote(String handleNote) {
+        this.handleNote = handleNote;
+    }
+
+    public String getHandleMan() {
+        return handleMan;
+    }
+
+    public void setHandleMan(String handleMan) {
+        this.handleMan = handleMan;
+    }
+
+    public String getReceiveNote() {
+        return receiveNote;
+    }
+
+    public void setReceiveNote(String receiveNote) {
+        this.receiveNote = receiveNote;
+    }
+
+    public String getReceiveMan() {
+        return receiveMan;
+    }
+
+    public void setReceiveMan(String receiveMan) {
+        this.receiveMan = receiveMan;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }
