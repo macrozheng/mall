@@ -9,3 +9,7 @@ target/
 .settings/
 .classpath
 .project
+
+/**/*.properties
+/**/*.xml
+mall-portal/src/main/resources/application-prod.properties
