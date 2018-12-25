@@ -10,6 +10,5 @@ target/
 .classpath
 .project
 
-/**/*.properties
-/**/*.xml
-mall-portal/src/main/resources/application-prod.properties
+*.properties
+*.xml
