@@ -30,6 +30,8 @@ docker start $ContainerId
 ### 删除容器
 - docker rm $ContainerId
 - docker rm -f $(docker ps -a -q)
+### 查看启动错误日志
+docker logs $ContainerIdName(或者$ContainerId)
 
 ## Docker Registry
 ### Docker Registry 2.0搭建

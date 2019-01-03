@@ -60,7 +60,7 @@ delete from emp where ename='zhangsan'
 
 ### 字符集相关
 - 查看字符集：show variables like 'character%'
-- 创建数据库时指定字符集：create database test1 character set utf8
+- 创建数据库时指定字符集：create database mall character set utf8
 
 ### 权限相关
 - 授予所有数据库的所有权限：grant all privileges on *.* to z1@localhost identified by '123'
