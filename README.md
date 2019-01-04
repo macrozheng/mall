@@ -28,7 +28,7 @@
 
 前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web 
 
-项目演示地址： [http://39.98.69.210/index.html](http://39.98.69.210/index.html)  
+项目演示地址： [http://39.98.190.128/index.html](http://39.98.190.128/index.html)  
   
 ![后台管理系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-admin.gif)
 
@@ -36,7 +36,7 @@
 
 前端项目`mall-app-web`地址：敬请期待......
 
-项目演示地址：[http://39.98.69.210/mall-app/mainpage.html](http://39.98.69.210/mall-app/mainpage.html)
+项目演示地址：[http://39.98.190.128/mall-app/mainpage.html](http://39.98.190.128/mall-app/mainpage.html)
 
 ![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif)
 

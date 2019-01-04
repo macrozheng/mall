@@ -32,6 +32,8 @@ docker start $ContainerId
 - docker rm -f $(docker ps -a -q)
 ### 查看启动错误日志
 docker logs $ContainerIdName(或者$ContainerId)
+### 查看容器的IP地址（172.17.0.*）
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ContainerId
 
 ## Docker Registry
 ### Docker Registry 2.0搭建
@@ -52,7 +54,7 @@ docker tag macro/eureka-server:0.0.1 localhost:5000/macro/eureka-server:0.0.1
 - tip：
     pom.xml修改<imageName>192.168.1.71:5000/macro/${project.artifactId}:${project.version}</imageName>
 - tip：
-    docker要支持http:echo '{ "insecure-registries":["192.168.1.71:5000"] }' > /etc/docker/daemon.json 
+    docker要支持http:echo '{ "insecure-registries":["39.98.190.128:5000"] }' > /etc/docker/daemon.json 
 ### 修改Docker镜像存放位置
 1. 查看Docker的存放位置：docker info | grep "Docker Root Dir"（默认为/var/lib/docker）
 2. 关闭Docker服务：systemctl stop docker
