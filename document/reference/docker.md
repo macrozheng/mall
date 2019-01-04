@@ -34,6 +34,8 @@ docker start $ContainerId
 docker logs $ContainerIdName(或者$ContainerId)
 ### 查看容器的IP地址（172.17.0.*）
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ContainerId
+### 同步宿主机时间到容器
+docker cp /etc/localtime $ContainerName:/etc/
 
 ## Docker Registry
 ### Docker Registry 2.0搭建

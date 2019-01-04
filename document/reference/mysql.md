@@ -62,6 +62,11 @@ delete from emp where ename='zhangsan'
 - 查看字符集：show variables like 'character%'
 - 创建数据库时指定字符集：create database mall character set utf8
 
+### 修改时区
+- 修改mysql全局时区为北京时间，即我们所在的东8区：set global time_zone = '+8:00';
+- 修改当前会话时区：set time_zone = '+8:00'
+- 立即生效：flush privileges
+
 ### 权限相关
 - 授予所有数据库的所有权限：grant all privileges on *.* to z1@localhost identified by '123'
 - 授予所有数据库的所有权限(包括grant)：grant all privileges on *.* to z1@localhost with grant option
