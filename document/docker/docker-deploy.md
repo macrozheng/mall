@@ -122,17 +122,26 @@ docker exec -it mongo mongo
 ### 部署mall-admin
 docker run -p 8080:8080 --name mall-admin \
 --link mysql:db \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/admin/logs:/var/logs \
 -d mall/mall-admin:0.0.1-SNAPSHOT
 ### 部署mall-search
 docker run -p 8081:8081 --name mall-search \
 --link elasticsearch:es \
 --link mysql:db \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/search/logs:/var/logs \
 -d mall/mall-search:0.0.1-SNAPSHOT
 ### 部署mall-port
 docker run -p 8085:8085 --name mall-portal \
 --link mysql:db \
 --link redis:redis \
 --link mongo:mongo \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/portal/logs:/var/logs \
 -d mall/mall-portal:0.0.1-SNAPSHOT
 
 ## SpringBoot应用自动化部署
