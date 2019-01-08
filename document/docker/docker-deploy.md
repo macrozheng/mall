@@ -100,14 +100,15 @@ docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 2. 安装插件：plugin install mobz/elasticsearch-head
 3. 测试：http://192.168.1.66:9200/_plugin/head/
 ### 安装中文分词器IKAnalyzer
-1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4的zip包，并解压后重新压缩为.tar.gz文件
+1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4 的zip包，并解压后重新压缩为.tar.gz文件
 2. 上传后拷贝到容器中：docker container cp elasticsearch-analysis-ik-1.10.6.tar.gz elasticsearch:/usr/share/elasticsearch/plugins
 3. 进入容器压缩文件所在目录：docker exec -it elasticsearch /bin/bash
 4. 进行解压操作：tar -xvf elasticsearch-analysis-ik-1.10.6.tar.gz
 5. 重新启动容器：docker restart elasticsearch
 6. 测试：
-POST:http://192.168.1.66:9200/_analyze
-JSON:{"analyzer":"ik","text":"联想是全球最大的笔记本厂商"}
+    - 访问header插件：打开地址http://192.168.1.66:9200/_plugin/head/ 
+    - 选择复合查询，输入地址：POST:http://192.168.1.66:9200/_analyze 
+    - 输入参数：JSON:{"analyzer":"ik","text":"我们是大数据开发人员"}
 
 ## mongodb安装
 ### 下载镜像文件
