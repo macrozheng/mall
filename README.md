@@ -190,3 +190,11 @@ nginx | 1.10 | http://nginx.org/en/download.html
 [MIT](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
 Copyright (c) 2018-2019 macrozheng
+### Code Visualization:
+
+Here is a cool visualization of the code evolution
+
+ [![Watch the video](https://img.youtube.com/vi/D9LSO2BAre0/0.jpg)](https://www.youtube.com/watch?v=D9LSO2BAre0)
+
+ [https://www.youtube.com/watch?v=D9LSO2BAre0](https://www.youtube.com/watch?v=D9LSO2BAre0)
+
