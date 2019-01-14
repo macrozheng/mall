@@ -166,7 +166,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 > docker环境部署
 
-- 安装CenterOs7.2在VirtualBox虚拟机中；
+- 在VirtualBox或其他环境中安装CenterOs7.2;
 - 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
 - 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/reference/docker.md)中的使用maven构建Docker镜像;
 - 部署步骤参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
