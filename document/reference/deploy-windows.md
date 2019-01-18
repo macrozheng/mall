@@ -78,6 +78,7 @@
 
 - 启动项目：直接运行com.macro.mall.MallAdminApplication的main方法即可
 - 接口文档地址：http://localhost:8080/swagger-ui.html
+- 文件上传需要配置OSS:将mall-admin\src\main\resources\application.properties文件中以aliyun.oss.开头的配置改为你自己的配置
 
 ## mall-search
 
