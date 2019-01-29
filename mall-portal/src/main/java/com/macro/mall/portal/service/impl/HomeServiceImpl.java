@@ -1,19 +1,18 @@
 package com.macro.mall.portal.service.impl;
 
-import com.macro.mall.mapper.SmsFlashPromotionMapper;
-import com.macro.mall.mapper.SmsFlashPromotionSessionMapper;
-import com.macro.mall.mapper.SmsHomeAdvertiseMapper;
+import com.github.pagehelper.PageHelper;
+import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
 import com.macro.mall.portal.dao.HomeDao;
 import com.macro.mall.portal.domain.FlashPromotionProduct;
 import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.domain.HomeFlashPromotion;
 import com.macro.mall.portal.service.HomeService;
+import com.macro.mall.portal.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +30,12 @@ public class HomeServiceImpl implements HomeService {
     private SmsFlashPromotionMapper flashPromotionMapper;
     @Autowired
     private SmsFlashPromotionSessionMapper promotionSessionMapper;
+    @Autowired
+    private PmsProductMapper productMapper;
+    @Autowired
+    private PmsProductCategoryMapper productCategoryMapper;
+    @Autowired
+    private CmsSubjectMapper subjectMapper;
 
     @Override
     public HomeContentResult content() {
@@ -48,6 +53,39 @@ public class HomeServiceImpl implements HomeService {
         //获取推荐专题
         result.setSubjectList(homeDao.getRecommendSubjectList(0,4));
         return result;
+    }
+
+    @Override
+    public List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum) {
+        // TODO: 2019/1/29 暂时默认推荐所有商品
+        PageHelper.startPage(pageNum,pageSize);
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria()
+                .andDeleteStatusEqualTo(0)
+                .andPublishStatusEqualTo(1);
+        return productMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<PmsProductCategory> getProductCateList(Long parentId) {
+        PmsProductCategoryExample example = new PmsProductCategoryExample();
+        example.createCriteria()
+                .andShowStatusEqualTo(1)
+                .andParentIdEqualTo(parentId);
+        example.setOrderByClause("sort desc");
+        return productCategoryMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<CmsSubject> getSubjectList(Long cateId, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum,pageSize);
+        CmsSubjectExample example = new CmsSubjectExample();
+        CmsSubjectExample.Criteria criteria = example.createCriteria();
+        criteria.andShowStatusEqualTo(1);
+        if(cateId!=null){
+            criteria.andCategoryIdEqualTo(cateId);
+        }
+        return subjectMapper.selectByExample(example);
     }
 
     private HomeFlashPromotion getHomeFlashPromotion() {
@@ -88,26 +126,6 @@ public class HomeServiceImpl implements HomeService {
         return null;
     }
 
-    //从当前日期中提取日期时间戳
-    private Date getDate(Date now) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        return calendar.getTime();
-    }
-
-    //从当前日期中提取时间时间戳
-    private Date getTime(Date now) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        calendar.set(Calendar.YEAR, 1970);
-        calendar.set(Calendar.MONTH, 0);
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        return calendar.getTime();
-    }
-
     private List<SmsHomeAdvertise> getHomeAdvertiseList() {
         SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
         example.createCriteria().andTypeEqualTo(1).andStatusEqualTo(1);
@@ -117,7 +135,7 @@ public class HomeServiceImpl implements HomeService {
 
     //根据时间获取秒杀活动
     private SmsFlashPromotion getFlashPromotion(Date date) {
-        Date currDate = getDate(date);
+        Date currDate = DateUtil.getDate(date);
         SmsFlashPromotionExample example = new SmsFlashPromotionExample();
         example.createCriteria()
                 .andStatusEqualTo(1)
@@ -132,7 +150,7 @@ public class HomeServiceImpl implements HomeService {
 
     //根据时间获取秒杀场次
     private SmsFlashPromotionSession getFlashPromotionSession(Date date) {
-        Date currTime = getTime(date);
+        Date currTime = DateUtil.getTime(date);
         SmsFlashPromotionSessionExample sessionExample = new SmsFlashPromotionSessionExample();
         sessionExample.createCriteria()
                 .andStartTimeLessThanOrEqualTo(currTime)
