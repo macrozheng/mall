@@ -38,9 +38,15 @@ public class HomeServiceImpl implements HomeService {
         //获取首页广告
         result.setAdvertiseList(getHomeAdvertiseList());
         //获取推荐品牌
-        result.setBrandList(homeDao.getRecommendBrand());
+        result.setBrandList(homeDao.getRecommendBrandList(0,4));
         //获取秒杀信息
         result.setHomeFlashPromotion(getHomeFlashPromotion());
+        //获取新品推荐
+        result.setNewProductList(homeDao.getNewProductList(0,4));
+        //获取人气推荐
+        result.setHotProductList(homeDao.getHotProductList(0,4));
+        //获取推荐专题
+        result.setSubjectList(homeDao.getRecommendSubjectList(0,4));
         return result;
     }
 
