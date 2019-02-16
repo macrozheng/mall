@@ -12,6 +12,8 @@
 
 > 如有问题或者好的建议可以在 Issues 中提。
 
+> 码云项目地址：[https://gitee.com/macrozheng/mall](https://gitee.com/macrozheng/mall)
+
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
