@@ -12,6 +12,8 @@
 
 > 如有问题或者好的建议可以在 Issues 中提。
 
+> 码云项目地址：[https://gitee.com/macrozheng/mall](https://gitee.com/macrozheng/mall)
+
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
@@ -30,7 +32,7 @@
 
 项目演示地址： [http://39.98.190.128/index.html](http://39.98.190.128/index.html)  
   
-![后台管理系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-admin.gif)
+![后台管理系统功能演示.gif](/document/resource/mall-admin.gif)
 
 > 前台商城系统
 
@@ -38,7 +40,7 @@
 
 项目演示地址：[http://39.98.190.128/mall-app/mainpage.html](http://39.98.190.128/mall-app/mainpage.html)
 
-![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif)
+![前台商城系统功能演示.gif](/document/resource/mall-app.gif)
 
 ### 组织结构
 
@@ -71,7 +73,7 @@ MongoDb | NoSql数据库 | [https://www.mongodb.com/](https://www.mongodb.com/)
 Docker | 应用容器引擎 | [https://www.docker.com/](https://www.docker.com/)
 Druid | 数据库连接池 | [https://github.com/alibaba/druid](https://github.com/alibaba/druid)
 OSS | 对象存储 | [https://github.com/aliyun/aliyun-oss-java-sdk](https://github.com/aliyun/aliyun-oss-java-sdk)
-JWT | JTW登录支持 | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt)
+JWT | JWT登录支持 | [https://github.com/jwtk/jjwt](https://github.com/jwtk/jjwt)
 LogStash | 日志收集 | [https://github.com/logstash/logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder)
 Lombok | 简化对象封装工具 | [https://github.com/rzwitserloot/lombok](https://github.com/rzwitserloot/lombok)
 
@@ -142,7 +144,7 @@ PicPick | 屏幕取色工具 | https://picpick.app/zh/
 JDK | 1.8 | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 Mysql | 5.7 | https://www.mysql.com/
 Redis | 3.2 | https://redis.io/download
-Elasticsearch | 2.4 | https://www.elastic.co/downloads
+Elasticsearch | 2.4.6 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
 RabbitMq | 5.25 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html
@@ -166,7 +168,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 > docker环境部署
 
-- 安装CenterOs7.2在VirtualBox虚拟机中；
+- 在VirtualBox或其他环境中安装CenterOs7.2;
 - 配置本地host:参考[host.txt](document/docker/host.txt),将ip地址改为虚拟机的ip地址;
 - 使用maven构建`mall-admin`、`mall-search`、`mall-portal`的docker镜像，参考[docker.md](document/reference/docker.md)中的使用maven构建Docker镜像;
 - 部署步骤参考[docker-deploy.md](document/docker/docker-deploy.md)进行部署。
