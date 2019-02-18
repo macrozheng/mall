@@ -12,6 +12,8 @@
 
 > 如有问题或者好的建议可以在 Issues 中提。
 
+> 码云项目地址：[https://gitee.com/macrozheng/mall](https://gitee.com/macrozheng/mall)
+
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
@@ -30,7 +32,7 @@
 
 项目演示地址： [http://39.98.190.128/index.html](http://39.98.190.128/index.html)  
   
-![后台管理系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-admin.gif)
+![后台管理系统功能演示.gif](/document/resource/mall-admin.gif)
 
 > 前台商城系统
 
@@ -38,7 +40,7 @@
 
 项目演示地址：[http://39.98.190.128/mall-app/mainpage.html](http://39.98.190.128/mall-app/mainpage.html)
 
-![前台商城系统功能演示.gif](https://github.com/macrozheng/mall/blob/master/document/resource/mall-app.gif)
+![前台商城系统功能演示.gif](/document/resource/mall-app.gif)
 
 ### 组织结构
 
@@ -142,7 +144,7 @@ PicPick | 屏幕取色工具 | https://picpick.app/zh/
 JDK | 1.8 | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 Mysql | 5.7 | https://www.mysql.com/
 Redis | 3.2 | https://redis.io/download
-Elasticsearch | 2.4 | https://www.elastic.co/downloads
+Elasticsearch | 2.4.6 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
 RabbitMq | 5.25 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html

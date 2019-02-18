@@ -36,6 +36,11 @@ docker logs $ContainerIdName(或者$ContainerId)
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ContainerId
 ### 同步宿主机时间到容器
 docker cp /etc/localtime $ContainerName:/etc/
+### 在宿主机查看docker使用cpu、内存、网络、io情况
+- 查看指定容器情况：docker stats $ContainerName
+- 查看所有容器情况：docker stats -a
+### 进入docker内部的bash
+docker exec -it $ContainerName /bin/bash
 
 ## Docker Registry
 ### Docker Registry 2.0搭建
