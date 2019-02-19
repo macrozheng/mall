@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev #默认为开发环境
+#===server start===
+server:
+  port: 8081
+#===server end===
+
+logging:
+  level:
+    root: info
+
+#===mybatis start===
+mybatis:
+  mapper-locations: classpath:dao/*.xml,classpath*:com/**/mapper/*.xml
+#===mybatis end===

@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev #默认为开发环境
+#===server start===
+http:
+  port: 8085
+#===server end===
+
+
+#===mybatis start===
+mybatis:
+  mapper-locations: classpath:dao/*.xml,classpath*:com/**/mapper/*.xml
+#===mybatis end===
+
+#===redis custom key start===
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+      orderId: "portal:orderId:"
+
+authCode:
+  expire:
+    seconds: 90
+#===redis custom key end===
+
+#===rabbitmq queue name start===
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: "cancelOrderQueue"
+#===rabbitmq queue name end===
+
+
+

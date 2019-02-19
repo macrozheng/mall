@@ -1,7 +1,6 @@
-#默认为开发环境
 spring:
   profiles:
-    active: dev
+    active: dev #默认为开发环境
 #===thymeleaf start===
   thymeleaf:
     mode: HTML5
