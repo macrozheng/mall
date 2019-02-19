@@ -1,0 +1,50 @@
+#默认为开发环境
+spring:
+  profiles:
+    active: dev
+#===thymeleaf start===
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false #开发时关闭缓存,不然没法看到实时页面
+#===thymeleaf end==
+
+#===mybatis start===
+mybatis:
+  mapper-locations: classpath:dao/*.xml,classpath*:com/**/mapper/*.xml
+#===mybatis end===
+
+#===log start===
+#日志配置DEBUG,INFO,WARN,ERROR
+logging:
+  level:
+    root: info
+    com.macro.mall: debug #单独配置日志级别
+  path: /var/logs #配置日志生成路径
+  file: demo_log.log #配置日志文件名称
+#===log end===
+
+
+
+#===JWT start===
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer #JWT负载中拿到开头
+#===JWT end===
+
+#===OSS start===
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: test
+    accessKeySecret: test
+    bucketName: macro-oss
+    policy.expire: 300
+    maxSize: 10
+    callback: http://localhost:8080/aliyun/oss/callback
+    dir.prefix: mall/images/
+#===OSS end===
