@@ -73,6 +73,13 @@
     ![rabbitmq_install_3.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_3.png)
 - 给mall用户配置范围该virtual host的权限
     ![rabbitmq_install_4.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_4.png)
+    
+## OSS
+
+- 该项目文件上传采用OSS，需要自行注册OSS账号并配置
+- 首先将mall-admin\src\main\resources\application.properties文件中以aliyun.oss.开头的配置改为你自己的配置
+- OSS上传文件需要配置跨域资源共享(CORS)规则，参考文档：https://help.aliyun.com/document_detail/31928.html
+- 上传方式采用服务端签名后直传的形式，参考文档：https://help.aliyun.com/document_detail/31926.html
 
 ## mall-admin
 

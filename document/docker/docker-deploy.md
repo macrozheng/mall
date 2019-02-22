@@ -15,6 +15,8 @@ yum install docker-ce
 4. 启动docker:
 systemctl start docker
 注：常见命令见macro/spring-cloud-demo中的docker.md
+5. 安装上传下载插件：
+yum -y install lrzsz
 ### docker compose安装
 1. 下载地址：https://github.com/docker/compose/releases
 2. 安装地址：/usr/local/bin/docker-compose
@@ -29,16 +31,16 @@ docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/log:/var/log/mysql \
 -v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
--e MYSQL_ROOT_PASSWORD=123456  \
+-e MYSQL_ROOT_PASSWORD=root  \
 -d mysql:5.7
 > 参数说明
 - -p 3306:3306：将容器的3306端口映射到主机的3306端口
 - -v /mydata/mysql/conf:/etc/mysql：将配置文件夹挂在到主机
 - -v /mydata/mysql/log:/var/log/mysql：将日志文件夹挂载到主机
 - -v /mydata/mysql/data:/var/lib/mysql/：将配置文件夹挂载到主机
-- -e MYSQL_ROOT_PASSWORD=123456：初始化root用户的密码
+- -e MYSQL_ROOT_PASSWORD=root：初始化root用户的密码
 ### 通过容器的mysql命令行工具连接
-docker exec -it mysql mysql -uroot -p123456
+docker exec -it mysql mysql -uroot -proot
 ### 设置远程访问
 grant all privileges on *.* to 'root' @'%' identified by 'root';
 flush privileges;
@@ -60,13 +62,13 @@ docker pull nginx:1.10
 docker run -p 80:80 --name nginx \
 -v /mydata/nginx/html:/usr/share/nginx/html \
 -v /mydata/nginx/logs:/var/log/nginx  \
--v /mydata/nginx/conf:/etc/nginx \
 -d nginx:1.10
 ### 修改nginx配置
 1. 将容器内的配置文件拷贝到当前目录：docker container cp nginx:/etc/nginx .
 2. 修改文件名称：mv nginx conf
 3. 终止容器：docker stop nginx
-4. 执行以下命令：
+4. 执行命令删除原容器：docker rm $ContainerId
+5. 执行以下命令：
 docker run -p 80:80 --name nginx \
 -v /mydata/nginx/html:/usr/share/nginx/html \
 -v /mydata/nginx/logs:/var/log/nginx  \
@@ -98,19 +100,21 @@ docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 2. 安装插件：plugin install mobz/elasticsearch-head
 3. 测试：http://192.168.1.66:9200/_plugin/head/
 ### 安装中文分词器IKAnalyzer
-1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4
+1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4 的zip包，并解压后重新压缩为.tar.gz文件
 2. 上传后拷贝到容器中：docker container cp elasticsearch-analysis-ik-1.10.6.tar.gz elasticsearch:/usr/share/elasticsearch/plugins
-3. 进行解压操作：tar -xvf elasticsearch-analysis-ik-1.10.6.tar.gz
-4. 重新启动容器：docker restart elasticsearch
-5. 测试：
-POST:http://192.168.1.66:9200/_analyze
-JSON:{"analyzer":"ik","text":"联想是全球最大的笔记本厂商"}
+3. 进入容器压缩文件所在目录：docker exec -it elasticsearch /bin/bash
+4. 进行解压操作：tar -xvf elasticsearch-analysis-ik-1.10.6.tar.gz
+5. 重新启动容器：docker restart elasticsearch
+6. 测试：
+    - 访问header插件：打开地址http://192.168.1.66:9200/_plugin/head/ 
+    - 选择复合查询，输入地址：POST:http://192.168.1.66:9200/_analyze 
+    - 输入参数：JSON:{"analyzer":"ik","text":"我们是大数据开发人员"}
 
 ## mongodb安装
 ### 下载镜像文件
 docker pull mongo:3.2
 ### 创建实例并运行
-docker run -p 27017:27017 --name mongo -v $PWD/db:/data/db -d mongo:3.2
+docker run -p 27017:27017 --name mongo -v /mydata/mongo/db:/data/db -d mongo:3.2
 ### 使用mongo命令进入容器
 docker exec -it mongo mongo
 
@@ -119,17 +123,26 @@ docker exec -it mongo mongo
 ### 部署mall-admin
 docker run -p 8080:8080 --name mall-admin \
 --link mysql:db \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/admin/logs:/var/logs \
 -d mall/mall-admin:0.0.1-SNAPSHOT
 ### 部署mall-search
 docker run -p 8081:8081 --name mall-search \
 --link elasticsearch:es \
 --link mysql:db \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/search/logs:/var/logs \
 -d mall/mall-search:0.0.1-SNAPSHOT
 ### 部署mall-port
 docker run -p 8085:8085 --name mall-portal \
 --link mysql:db \
 --link redis:redis \
 --link mongo:mongo \
+-v /etc/timezone:/etc/timezone \
+-v /etc/localtime:/etc/localtime \
+-v /mydata/app/portal/logs:/var/logs \
 -d mall/mall-portal:0.0.1-SNAPSHOT
 
 ## SpringBoot应用自动化部署
