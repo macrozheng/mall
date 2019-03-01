@@ -150,7 +150,6 @@ public class EsProductServiceImpl implements EsProductService {
             nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
         }
         nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
-        nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));
         NativeSearchQuery searchQuery = nativeSearchQueryBuilder.build();
         LOGGER.info("DSL:{}", searchQuery.getQuery().toString());
         return productRepository.search(searchQuery);

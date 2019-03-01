@@ -473,8 +473,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         if (useIntegration.compareTo(currentMember.getIntegration()) > 0) {
             return zeroAmount;
         }
-        //根据积分使用规则判断使用可用
-        //是否可用于优惠券共用
+        //根据积分使用规则判断是否可用
+        //是否可与优惠券共用
         UmsIntegrationConsumeSetting integrationConsumeSetting = integrationConsumeSettingMapper.selectByPrimaryKey(1L);
         if (hasCoupon && integrationConsumeSetting.getCouponStatus().equals(0)) {
             //不可与优惠券共用
