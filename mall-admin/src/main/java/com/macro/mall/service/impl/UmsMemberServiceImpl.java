@@ -2,6 +2,7 @@ package com.macro.mall.service.impl;
 
 import java.util.List;
 
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import com.macro.mall.mapper.UmsMemberMapper;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.model.UmsMemberExample;
 import com.macro.mall.service.UmsMemberService;
+import com.macro.mall.util.MD5Util;
 /**
  *会员管理实现类
  * @author Administrator
@@ -26,6 +28,7 @@ public class UmsMemberServiceImpl implements UmsMemberService{
 		
 		UmsMember member = memberParam;
 		member.setId(null);
+		member.setPassword(MD5Util.MD5EncodeUtf8(memberParam.getPassword()));
 		int count =memberMapper.insertSelective(member);
 		return count;
 	}

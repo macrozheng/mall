@@ -50,8 +50,8 @@ public class UmsMemberController {
 	    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
 	    @ResponseBody
 	    @PreAuthorize("hasAuthority('ums:member:update')")
-	    public Object update(@PathVariable Long id, @RequestBody UmsMemberParam memberParam, BindingResult bindingResult) {
-	        int count = memberService.update(id, memberParam);
+	    public Object update(@PathVariable Long id, @RequestBody UmsMember member, BindingResult bindingResult) {
+	        int count = memberService.update(id, member);
 	        if (count > 0) {
 	            return new CommonResult().success(count);
 	        } else {
@@ -84,6 +84,18 @@ public class UmsMemberController {
 	    public Object updateStatus(@RequestParam("id") Long id,
 	                                  @RequestParam("status") Integer status) {
 	        int count = memberService.updateVerifyStatus(id, status);
+	        if (count > 0) {
+	            return new CommonResult().success(count);
+	        } else {
+	            return new CommonResult().failed();
+	        }
+	    }
+	    @ApiOperation("删除会员账户")
+	    @RequestMapping(value = "/update/delete",method = RequestMethod.POST)
+	    @ResponseBody
+	    @PreAuthorize("hasAuthority('ums:member:delete')")
+	    public Object updateDeleteStatus(@RequestParam("id") Long id) {
+	        int count = memberService.deleteMember(id);
 	        if (count > 0) {
 	            return new CommonResult().success(count);
 	        } else {

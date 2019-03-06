@@ -2184,3 +2184,18 @@ INSERT INTO `ums_role_permission_relation` VALUES ('14', '4', '6');
 INSERT INTO `ums_role_permission_relation` VALUES ('15', '4', '15');
 INSERT INTO `ums_role_permission_relation` VALUES ('16', '4', '16');
 INSERT INTO `ums_role_permission_relation` VALUES ('17', '4', '17');
+
+
+
+
+INSERT INTO `ums_permission` VALUES ('19', '0', '会员列表', 'ums:member:read', null, '1', '/ums/member/index', '1', '2019-03-06 14:10:04', '0');
+INSERT INTO `ums_permission` VALUES ('20', '19', '添加会员', 'ums:member:create', null, '2', '/ums/member/create', '1', '2019-03-06 14:10:04', '0');
+INSERT INTO `ums_permission` VALUES ('21', '19', '修改会员', 'ums:member:update', null, '2', '/ums/member/update', '1', '2019-03-06 14:10:04', '0');
+INSERT INTO `ums_permission` VALUES ('22', '19', '删除会员', 'ums:member:delete', null, '2', '/ums/member/delete', '1', '2019-03-06 14:10:04', '0');
+
+
+INSERT INTO `ums_role` VALUES ('5', '超级管理员', '全菜单管理员', '0', '2019-03-06 14:33:03', '1', '1');
+INSERT INTO `ums_role_permission_relation` VALUES ('18', '5', '19');
+INSERT INTO `ums_role_permission_relation` VALUES ('19', '5', '20');
+INSERT INTO `ums_role_permission_relation` VALUES ('20', '5', '21');
+INSERT INTO `ums_role_permission_relation` VALUES ('21', '5', '22');
