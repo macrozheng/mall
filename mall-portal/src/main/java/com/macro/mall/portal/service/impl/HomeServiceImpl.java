@@ -52,6 +52,8 @@ public class HomeServiceImpl implements HomeService {
         result.setHotProductList(homeDao.getHotProductList(0,4));
         //获取推荐专题
         result.setSubjectList(homeDao.getRecommendSubjectList(0,4));
+        //获取商品分类
+        result.setProductCategoryList(getProductCateList(0L));
         return result;
     }
 
