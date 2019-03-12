@@ -1,9 +1,6 @@
 package com.macro.mall.portal.domain;
 
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsBrand;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.SmsHomeAdvertise;
+import com.macro.mall.model.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,4 +25,6 @@ public class HomeContentResult {
     private List<PmsProduct> hotProductList;
     //推荐专题
     private List<CmsSubject> subjectList;
+    //获取分类信息
+    private  List<PmsProductCategory> productCategoryList;
 }

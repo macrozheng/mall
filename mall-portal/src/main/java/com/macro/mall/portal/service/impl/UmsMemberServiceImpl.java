@@ -10,12 +10,20 @@ import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.RedisService;
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.portal.util.JwtTokenUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -30,6 +38,7 @@ import java.util.Random;
  */
 @Service
 public class UmsMemberServiceImpl implements UmsMemberService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberServiceImpl.class);
     @Autowired
     private UmsMemberMapper memberMapper;
     @Autowired
@@ -42,6 +51,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     private String REDIS_KEY_PREFIX_AUTH_CODE;
     @Value("${authCode.expire.seconds}")
     private Long AUTH_CODE_EXPIRE_SECONDS;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     @Override
     public UmsMember getByUsername(String username) {
@@ -147,5 +162,19 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
         return authCode.equals(realAuthCode);
     }
-
+    @Override
+    public String login(String username, String password) {
+        String token = null;
+        //密码需要客户端加密后传递
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, passwordEncoder.encodePassword(password, null));
+        try {
+            Authentication authentication = authenticationManager.authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            token = jwtTokenUtil.generateToken(userDetails);
+        } catch (AuthenticationException e) {
+            LOGGER.warn("登录异常:{}", e.getMessage());
+        }
+        return token;
+    }
 }

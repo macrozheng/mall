@@ -56,11 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .accessDeniedHandler(new GoAccessDeniedHandler())
                 .authenticationEntryPoint(new GoAuthenticationEntryPoint())
-                .and()
-                .formLogin()
-                .loginPage("/sso/login")
-                .successHandler(new GoAuthenticationSuccessHandler())
-                .failureHandler(new GoAuthenticationFailureHandler())
+//                .and()
+//                .formLogin()
+//                .loginPage("/sso/login")
+//                .successHandler(new GoAuthenticationSuccessHandler())
+//                .failureHandler(new GoAuthenticationFailureHandler())
                 .and()
                 .logout()
                 .logoutUrl("/sso/logout")
@@ -96,15 +96,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return username->{
                 UmsMember member = memberService.getByUsername(username);
                 if(member!=null){
                     return new MemberDetails(member);
                 }
                 throw new UsernameNotFoundException("用户名或密码错误");
-            }
         };
     }
 }
