@@ -286,7 +286,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderItemExample.createCriteria().andOrderIdEqualTo(orderId);
             List<OmsOrderItem> orderItemList = orderItemMapper.selectByExample(orderItemExample);
             //解除订单商品库存锁定
-            portalOrderDao.releaseSkuStockLock(orderItemList);
+            if(!CollectionUtils.isEmpty(orderItemList)){
+                portalOrderDao.releaseSkuStockLock(orderItemList);
+            }
             //修改优惠券使用状态
             updateCouponStatus(cancelOrder.getCouponId(),cancelOrder.getMemberId(),0);
             //返还使用积分
