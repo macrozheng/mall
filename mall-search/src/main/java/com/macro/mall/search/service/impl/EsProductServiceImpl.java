@@ -118,16 +118,6 @@ public class EsProductServiceImpl implements EsProductService {
             }
             nativeSearchQueryBuilder.withFilter(boolQueryBuilder);
         }
-        //elasticsearch2.4.6的用法
-//        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
-//                .add(QueryBuilders.matchQuery("name", keyword),
-//                        ScoreFunctionBuilders.weightFactorFunction(10))
-//                .add(QueryBuilders.matchQuery("subTitle", keyword),
-//                        ScoreFunctionBuilders.weightFactorFunction(5))
-//                .add(QueryBuilders.matchQuery("keywords", keyword),
-//                        ScoreFunctionBuilders.weightFactorFunction(2))
-//                .scoreMode("sum")
-//                .setMinScore(2);
         //搜索
         if (StringUtils.isEmpty(keyword)) {
             nativeSearchQueryBuilder.withQuery(QueryBuilders.matchAllQuery());
@@ -179,15 +169,6 @@ public class EsProductServiceImpl implements EsProductService {
             Long brandId = esProduct.getBrandId();
             Long productCategoryId = esProduct.getProductCategoryId();
             //根据商品标题、品牌、分类进行搜索
-            //elasticsearch2.4.6的用法
-//            FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
-//                    .add(QueryBuilders.matchQuery("name",keyword),ScoreFunctionBuilders.weightFactorFunction(8))
-//                    .add(QueryBuilders.matchQuery("subTitle",keyword),ScoreFunctionBuilders.weightFactorFunction(2))
-//                    .add(QueryBuilders.matchQuery("keywords",keyword),ScoreFunctionBuilders.weightFactorFunction(2))
-//                    .add(QueryBuilders.termQuery("brandId",brandId),ScoreFunctionBuilders.weightFactorFunction(10))
-//                    .add(QueryBuilders.matchQuery("productCategoryId",productCategoryId),ScoreFunctionBuilders.weightFactorFunction(6))
-//                    .scoreMode("sum")
-//                    .setMinScore(2);
             List<FunctionScoreQueryBuilder.FilterFunctionBuilder> filterFunctionBuilders = new ArrayList<>();
             filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("name", keyword),
                     ScoreFunctionBuilders.weightFactorFunction(8)));
