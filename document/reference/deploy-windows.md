@@ -25,17 +25,19 @@
 
 - 下载地址：https://github.com/MicrosoftArchive/redis/releases
 - 下载后按提示进行安装
+- 启动redis:redis-server.exe redis.windows.conf
 
 ## elasticsearch
 
-- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-6
+- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-6-2-2
 - 下载.zip文件，解压到指定目录
-- 安装head插件，在elasticsearch-2.4.6\bin目录下执行以下命令：plugin install mobz/elasticsearch-head
-- 安装中文分词插件：https://github.com/medcl/elasticsearch-analysis-ik
-- 下载地址：https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v1.10.6/elasticsearch-analysis-ik-1.10.6.zip
-- 解压并拷贝到elasticsearch-2.4.6\plugins目录下
-- 启动elasticsearch:运行elasticsearch-2.4.6\bin\elasticsearch.bat
+- 安装head插件，具体参考：https://github.com/mobz/elasticsearch-head
+- 中文分词插件地址：https://github.com/medcl/elasticsearch-analysis-ik
+- 安装中文分词插件，在elasticsearch-6.2.2\bin目录下执行以下命令：
+elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.2/elasticsearch-analysis-ik-6.2.2.zip
+- 启动elasticsearch:运行elasticsearch-6.2.2\bin\elasticsearch.bat
 - 打开该地址测试是否安装成功：http://localhost:9200/_plugin/head/
+- 不使用head插件的可以使用kibana，请下载6.2.2版本，具体参考：https://www.elastic.co/downloads/kibana
 
 ## mongodb
 

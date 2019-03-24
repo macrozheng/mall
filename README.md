@@ -144,9 +144,9 @@ PicPick | 屏幕取色工具 | https://picpick.app/zh/
 JDK | 1.8 | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 Mysql | 5.7 | https://www.mysql.com/
 Redis | 3.2 | https://redis.io/download
-Elasticsearch | 2.4.6 | https://www.elastic.co/downloads
+Elasticsearch | 6.2.2 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
-RabbitMq | 5.25 | http://www.rabbitmq.com/download.html
+RabbitMq | 3.4.1 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html
 
 ### 搭建步骤

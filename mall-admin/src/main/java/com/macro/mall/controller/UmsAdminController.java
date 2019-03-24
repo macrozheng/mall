@@ -114,7 +114,7 @@ public class UmsAdminController {
         return new CommonResult().success(admin);
     }
 
-    @ApiOperation("获取指定用户信息")
+    @ApiOperation("修改指定用户信息")
     @RequestMapping(value = "/update/{id}",method = RequestMethod.POST)
     @ResponseBody
     public Object update(@PathVariable Long id,@RequestBody UmsAdmin admin){
