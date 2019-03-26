@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev #默认为开发环境
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: test
+    accessKeySecret: test
+    bucketName: macro-oss
+    policy:
+      expire: 300
+    maxSize: 10
+    callback: http://localhost:8080/aliyun/oss/callback
+    dir:
+      prefix: mall/images/
+
+logging:
+  level:
+    root: info #日志配置DEBUG,INFO,WARN,ERROR
+    com.macro.mall: debug
+#  file: demo_log.log #配置日志生成路径
+#  path: /var/logs #配置日志文件名称

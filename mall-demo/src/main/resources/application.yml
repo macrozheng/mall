@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    cache: false #开发时关闭缓存,不然没法看到实时页面
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+logging:
+  level:
+    root: info #日志配置DEBUG,INFO,WARN,ERROR
+    com.macro.mall: debug
+#  file: demo_log.log #配置日志生成路径
+#  path: /var/logs #配置日志文件名称
+
+host:
+  mall:
+   admin: http://localhost:8080
