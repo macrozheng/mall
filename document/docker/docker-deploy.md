@@ -85,12 +85,12 @@ rabbitmq:management
 
 ## elasticsearch安装
 ### 下载镜像文件
-docker pull elasticsearch:6.2.2
+docker pull elasticsearch:6.4.0
 ### 创建实例并运行
 docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
 -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data \
--d elasticsearch:6.2.2
+-d elasticsearch:6.4.0
 ### 测试
 访问会返回版本信息：http://192.168.1.66:9200/
 ### 安装目录位置
