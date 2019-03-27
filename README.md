@@ -4,9 +4,9 @@
 
 > 基于SpringBoot+MyBatis的电商系统，包括前台商城系统及后台管理系统。
 
-> 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！
+> 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下,谢谢！
 
-> 该项目已由coding特别赞助，支持的可以点下赞助商链接，谢谢！
+> 该项目已由`CODING`特别赞助，支持的可以点下赞助商链接，谢谢！
 
 > 项目交流QQ群：[553018255](http://qm.qq.com/cgi-bin/qm/qr?k=M5Edq2TiJL_ShcOEeYjwcmdGmq4zZrd_)、[959351312(满)](http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ)。
 
