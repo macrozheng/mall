@@ -6,11 +6,9 @@
 
 > 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！
 
-> 或者您可以 "follow" 一下，该项目将持续更新，不断完善功能。
+> 该项目已由coding特别赞助，支持的可以点下赞助商链接，谢谢！
 
 > 项目交流QQ群：[553018255](http://qm.qq.com/cgi-bin/qm/qr?k=M5Edq2TiJL_ShcOEeYjwcmdGmq4zZrd_)、[959351312(满)](http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ)。
-
-> 如有问题或者好的建议可以在 Issues 中提。
 
 > 码云项目地址：[https://gitee.com/macrozheng/mall](https://gitee.com/macrozheng/mall)
 
@@ -23,6 +21,14 @@
 `mall`项目是一套电商系统，包括前台商城系统及后台管理系统，基于SpringBoot+MyBatis实现。
 前台商城系统包含首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等模块。
 后台管理系统包含商品管理、订单管理、会员管理、促销管理、运营管理、内容管理、统计报表、财务管理、权限管理、设置等模块。
+
+## 特别赞助商
+
+<p align="center">
+<a href="https://e.coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
+  <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.jpg" width=""/>
+ </a>
+</p>
 
 ### 项目演示
 
