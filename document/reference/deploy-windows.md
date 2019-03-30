@@ -31,13 +31,14 @@
 
 - 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-6-2-2
 - 下载.zip文件，解压到指定目录
-- 安装head插件，具体参考：https://github.com/mobz/elasticsearch-head
+- 安装kibana，用于在浏览器中访问es,请下载6.2.2版本，具体参考：https://www.elastic.co/downloads/kibana
+- 下载.zip包后解压即可，运行bin\kibana.bat，访问http://localhost:5601 查看是否安装成功
 - 中文分词插件地址：https://github.com/medcl/elasticsearch-analysis-ik
 - 安装中文分词插件，在elasticsearch-6.2.2\bin目录下执行以下命令：
 elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.2/elasticsearch-analysis-ik-6.2.2.zip
 - 启动elasticsearch:运行elasticsearch-6.2.2\bin\elasticsearch.bat
-- 打开该地址测试是否安装成功：http://localhost:9200/_plugin/head/
-- 不使用head插件的可以使用kibana，请下载6.2.2版本，具体参考：https://www.elastic.co/downloads/kibana
+- 不使用kibana的可以安装head插件，具体参考：https://github.com/mobz/elasticsearch-head
+- 注意：如果你修改了mall-search中的es的cluster-name: mall-es，你需要在elasticsearch-6.2.2\config\elasticsearch.yml文件中修改cluster.name: mall-es
 
 ## mongodb
 
