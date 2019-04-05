@@ -63,11 +63,10 @@ elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/
 
 ## rabbitmq
 
-- 安装Erlang：http://www.erlang.org/download/otp_win64_17.3.exe
-- 下载rabbitmq:http://www.rabbitmq.com/releases/rabbitmq-server/v3.4.1/rabbitmq-server-3.4.1.exe
-- 按照提示进行安装，安装完成后左下角搜索rabbitmq，点击如下命令进行安装  
-    ![rabbitmq_install_1.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_1.png)
-- 输入命令启用管理工具：rabbitmq-plugins enable rabbitmq_management
+- 安装Erlang：http://erlang.org/download/otp_win64_21.3.exe
+- 下载rabbitmq：https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe
+- 按照提示进行安装，安装完成后进入rabbitmq的安装目录:D:\RabbitMQ Server\rabbitmq_server-3.7.14\sbin
+- 在地址栏输入cmd并回车启动命令行输入以下命令：rabbitmq-plugins enable rabbitmq_management
 - 访问地址查看是否安装成功：http://127.0.0.1:15672/
 - 输入账号密码登录：guest guest
 - 创建用户并设置其角色为管理员：mall mall
@@ -76,6 +75,10 @@ elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/
     ![rabbitmq_install_3.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_3.png)
 - 给mall用户配置范围该virtual host的权限
     ![rabbitmq_install_4.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_4.png)
+- rabbitmq安装延迟消息插件（可不装）：
+    - 下载延迟消息插件（rabbitmq_delayed_message_exchange）：https://www.rabbitmq.com/community-plugins.html
+    - 复制插件到插件目录：D:\RabbitMQ Server\rabbitmq_server-3.7.14\plugins
+    - 在sbin目录下运行如下命令启用插件：rabbitmq-plugins enable rabbitmq_delayed_message_exchange
     
 ## OSS
 

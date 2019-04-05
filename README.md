@@ -152,7 +152,7 @@ Mysql | 5.7 | https://www.mysql.com/
 Redis | 3.2 | https://redis.io/download
 Elasticsearch | 6.2.2 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
-RabbitMq | 3.4.1 | http://www.rabbitmq.com/download.html
+RabbitMq | 3.7.14 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html
 
 ### 搭建步骤
