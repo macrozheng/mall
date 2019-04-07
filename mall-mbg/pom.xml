@@ -23,13 +23,13 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.2</version>
+            <version>3.4.6</version>
         </dependency>
         <!--Mysql数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>8.0.15</version>
         </dependency>
     </dependencies>
 

@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.10</version>
         </dependency>
         <!--Swagger-UI API文档生产工具-->
         <dependency>
@@ -68,12 +68,7 @@
         <!--redis依赖配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
-            <version>1.3.8.RELEASE</version>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!--集成druid连接池-->
         <dependency>
