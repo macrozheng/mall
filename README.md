@@ -4,19 +4,25 @@
 
 > 基于SpringBoot+MyBatis的电商系统，包括前台商城系统及后台管理系统。
 
-> 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！
+> 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下,谢谢！
 
-> 或者您可以 "follow" 一下，该项目将持续更新，不断完善功能。
+> 该项目已由`CODING`特别赞助，支持的可以点下赞助商链接，浏览`2~3`个页面即可，谢谢！
 
 > 项目交流QQ群：[553018255](http://qm.qq.com/cgi-bin/qm/qr?k=M5Edq2TiJL_ShcOEeYjwcmdGmq4zZrd_)、[959351312(满)](http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ)。
-
-> 如有问题或者好的建议可以在 Issues 中提。
 
 > 码云项目地址：[https://gitee.com/macrozheng/mall](https://gitee.com/macrozheng/mall)
 
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
+
+## 特别赞助商
+
+<p align="left">
+<a href="https://e.coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
+  <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.jpg" width=""/>
+ </a>
+</p>
 
 ## 项目介绍
 
@@ -146,7 +152,7 @@ Mysql | 5.7 | https://www.mysql.com/
 Redis | 3.2 | https://redis.io/download
 Elasticsearch | 6.2.2 | https://www.elastic.co/downloads
 MongoDb | 3.2 | https://www.mongodb.com/download-center
-RabbitMq | 3.4.1 | http://www.rabbitmq.com/download.html
+RabbitMq | 3.7.14 | http://www.rabbitmq.com/download.html
 nginx | 1.10 | http://nginx.org/en/download.html
 
 ### 搭建步骤
