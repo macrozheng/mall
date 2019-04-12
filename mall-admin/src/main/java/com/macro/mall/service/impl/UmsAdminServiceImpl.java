@@ -91,8 +91,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             return null;
         }
         //将密码进行加密操作
-        String md5Password = passwordEncoder.encode(umsAdmin.getPassword());
-        umsAdmin.setPassword(md5Password);
+        String encodePassword = passwordEncoder.encode(umsAdmin.getPassword());
+        umsAdmin.setPassword(encodePassword);
         adminMapper.insert(umsAdmin);
         return umsAdmin;
     }
@@ -172,7 +172,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public int update(Long id, UmsAdmin admin) {
         admin.setId(id);
-        return adminMapper.updateByPrimaryKey(admin);
+        //密码已经加密处理，需要单独修改
+        admin.setPassword(null);
+        return adminMapper.updateByPrimaryKeySelective(admin);
     }
 
     @Override

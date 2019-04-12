@@ -1,6 +1,7 @@
 package com.macro.mall.search.domain;
 
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 
@@ -13,12 +14,12 @@ public class EsProductAttributeValue implements Serializable {
     private Long id;
     private Long productAttributeId;
     //属性值
-    @Field(index = false)
+    @Field(type = FieldType.Keyword)
     private String value;
     //属性参数：0->规格；1->参数
     private Integer type;
     //属性名称
-    @Field(index = false)
+    @Field(type=FieldType.Keyword)
     private String name;
     public Long getId() {
         return id;
