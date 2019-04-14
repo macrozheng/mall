@@ -20,7 +20,7 @@
 
 <p align="left">
 <a href="https://e.coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
-  <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.jpg" width=""/>
+  <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.png" width=""/>
  </a>
 </p>
 
@@ -201,6 +201,6 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 ## 许可证
 
-[MIT](https://github.com/macrozheng/mall/blob/master/LICENSE)
+[Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
 Copyright (c) 2018-2019 macrozheng
