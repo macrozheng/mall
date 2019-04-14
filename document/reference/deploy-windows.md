@@ -12,7 +12,7 @@
     ![eclipse_import_2.png](https://github.com/macrozheng/mall/blob/master/document/resource/eclipse_import_2.png)
 - 安装lombok插件，下载地址：https://projectlombok.org/downloads/lombok.jar  
 - 下载完后双击，使用java程序打开
-- 按照提示选择eclipe.exe的安装路径安装插件，完成后重启Eclipse
+- 按照提示选择eclipse.exe的安装路径安装插件，完成后重启Eclipse
 - 启动项目：右击com.macro.mall.MallAdminApplication的main方法，选择run as Java Application
 
 ## mysql
