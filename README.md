@@ -19,7 +19,7 @@
 ## 特别赞助商
 
 <p align="left">
-<a href="https://e.coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
+<a href="https://coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
   <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.png" width=""/>
  </a>
 </p>
