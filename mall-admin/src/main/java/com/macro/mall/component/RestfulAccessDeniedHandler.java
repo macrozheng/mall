@@ -1,6 +1,6 @@
 package com.macro.mall.component;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.util.JsonUtil;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -23,7 +23,7 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler{
                        AccessDeniedException e) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println(JsonUtil.objectToJson(new CommonResult().forbidden(e.getMessage())));
+        response.getWriter().println(JsonUtil.objectToJson(CommonResult.forbidden(e.getMessage())));
         response.getWriter().flush();
     }
 }

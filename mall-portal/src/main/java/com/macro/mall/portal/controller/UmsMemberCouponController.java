@@ -1,8 +1,8 @@
 package com.macro.mall.portal.controller;
 
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.SmsCouponHistory;
 import com.macro.mall.portal.domain.CartPromotionItem;
-import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.SmsCouponHistoryDetail;
 import com.macro.mall.portal.service.OmsCartItemService;
 import com.macro.mall.portal.service.UmsMemberCouponService;
@@ -34,7 +34,7 @@ public class UmsMemberCouponController {
     @ApiOperation("领取指定优惠券")
     @RequestMapping(value = "/add/{couponId}", method = RequestMethod.POST)
     @ResponseBody
-    public Object add(@PathVariable Long couponId) {
+    public CommonResult add(@PathVariable Long couponId) {
         return memberCouponService.add(couponId);
     }
 
@@ -43,9 +43,9 @@ public class UmsMemberCouponController {
             allowableValues = "0,1,2", paramType = "query", dataType = "integer")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(@RequestParam(value = "useStatus", required = false) Integer useStatus) {
+    public CommonResult<List<SmsCouponHistory>> list(@RequestParam(value = "useStatus", required = false) Integer useStatus) {
         List<SmsCouponHistory> couponHistoryList = memberCouponService.list(useStatus);
-        return new CommonResult().success(couponHistoryList);
+        return CommonResult.success(couponHistoryList);
     }
 
     @ApiOperation("获取登录会员购物车的相关优惠券")
@@ -53,9 +53,9 @@ public class UmsMemberCouponController {
             defaultValue = "1", allowableValues = "0,1", paramType = "query", dataType = "integer")
     @RequestMapping(value = "/list/cart/{type}", method = RequestMethod.GET)
     @ResponseBody
-    public Object listCart(@PathVariable Integer type) {
+    public CommonResult<List<SmsCouponHistoryDetail>> listCart(@PathVariable Integer type) {
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId());
         List<SmsCouponHistoryDetail> couponHistoryList = memberCouponService.listCart(cartPromotionItemList, type);
-        return new CommonResult().success(couponHistoryList);
+        return CommonResult.success(couponHistoryList);
     }
 }

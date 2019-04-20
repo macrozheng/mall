@@ -1,6 +1,7 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonPage;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.SmsCouponParam;
 import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.service.SmsCouponService;
@@ -25,53 +26,53 @@ public class SmsCouponController {
     @ApiOperation("添加优惠券")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object add(@RequestBody SmsCouponParam couponParam) {
+    public CommonResult add(@RequestBody SmsCouponParam couponParam) {
         int count = couponService.create(couponParam);
         if(count>0){
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("删除优惠券")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object delete(@PathVariable Long id) {
+    public CommonResult delete(@PathVariable Long id) {
         int count = couponService.delete(id);
         if(count>0){
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("修改优惠券")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object update(@PathVariable Long id,@RequestBody SmsCouponParam couponParam) {
+    public CommonResult update(@PathVariable Long id,@RequestBody SmsCouponParam couponParam) {
         int count = couponService.update(id,couponParam);
         if(count>0){
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("根据优惠券名称和类型分页获取优惠券列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(
+    public CommonResult<CommonPage<SmsCoupon>> list(
             @RequestParam(value = "name",required = false) String name,
             @RequestParam(value = "type",required = false) Integer type,
             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<SmsCoupon> couponList = couponService.list(name,type,pageSize,pageNum);
-        return new CommonResult().pageSuccess(couponList);
+        return CommonResult.success(CommonPage.restPage(couponList));
     }
 
     @ApiOperation("获取单个优惠券的详细信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getItem(@PathVariable Long id) {
+    public CommonResult<SmsCouponParam> getItem(@PathVariable Long id) {
         SmsCouponParam couponParam = couponService.getItem(id);
-        return new CommonResult().success(couponParam);
+        return CommonResult.success(couponParam);
     }
 }
