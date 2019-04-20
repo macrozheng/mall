@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,11 +17,7 @@ public class PmsCommentReplay implements Serializable {
 
     private Date createTime;
 
-    /**
-     * 评论人员类型；0->会员；1->管理员
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "评论人员类型；0->会员；1->管理员")
     private Integer type;
 
     private static final long serialVersionUID = 1L;
