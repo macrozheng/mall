@@ -8,88 +8,84 @@ public class CommonResult<T> {
     private String message;
     private T data;
 
+    protected CommonResult() {
+    }
+
+    protected CommonResult(long code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
     /**
-     * 普通成功返回
+     * 成功返回结果
      *
      * @param data 获取的数据
      */
     public static <T> CommonResult<T> success(T data) {
-        CommonResult<T> result = new CommonResult<T>();
-        result.setCode(ResultCode.SUCCESS.getCode());
-        result.setMessage(ResultCode.SUCCESS.getMsg());
-        result.setData(data);
-        return result;
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
 
     /**
-     * 普通成功返回
+     * 成功返回结果
      *
      * @param data 获取的数据
+     * @param  message 提示信息
      */
-    public static <T> CommonResult<T> success(T data,String message) {
-        CommonResult<T> result = new CommonResult<T>();
-        result.setCode(ResultCode.SUCCESS.getCode());
-        result.setMessage(message);
-        result.setData(data);
-        return result;
+    public static <T> CommonResult<T> success(T data, String message) {
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
     /**
-     * 通过错误码对象构造返回结果
+     * 失败返回结果
+     * @param errorCode 错误码
      */
     public static <T> CommonResult<T> failed(IErrorCode errorCode) {
-        CommonResult<T> result = new CommonResult<T>();
-        result.setCode(errorCode.getCode());
-        result.setMessage(errorCode.getMsg());
-        return result;
+        return new CommonResult<T>(errorCode.getCode(), errorCode.getMessage(), null);
     }
 
     /**
-     * 普通失败提示信息
+     * 失败返回结果
+     * @param message 提示信息
      */
     public static <T> CommonResult<T> failed(String message) {
-        CommonResult<T> result = new CommonResult<T>();
-        result.setCode(ResultCode.FAILED.getCode());
-        result.setMessage(message);
-        return result;
+        return new CommonResult<T>(ResultCode.FAILED.getCode(), message, null);
     }
 
     /**
-     * 普通操作失败
+     * 失败返回结果
      */
     public static <T> CommonResult<T> failed() {
         return failed(ResultCode.FAILED);
     }
 
     /**
-     * 参数验证失败使用
+     * 参数验证失败返回结果
      */
     public static <T> CommonResult<T> validateFailed() {
         return failed(ResultCode.VALIDATE_FAILED);
     }
 
     /**
-     * 参数验证失败使用
+     * 参数验证失败返回结果
+     * @param message 提示信息
      */
     public static <T> CommonResult<T> validateFailed(String message) {
-        CommonResult<T> result = new CommonResult<T>();
-        result.setCode(ResultCode.FAILED.getCode());
-        result.setMessage(message);
-        return result;
+        return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
     }
 
     /**
-     * 用户没有登录
+     * 未登录返回结果
      */
-    public static <T> CommonResult<T> unauthorized() {
-        return failed(ResultCode.UNAUTHORIZED);
+    public static <T> CommonResult<T> unauthorized(T data) {
+        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
     }
 
     /**
-     * 用户没有相应权限
+     * 未授权返回结果
      */
-    public static <T> CommonResult<T> forbidden() {
-        return failed(ResultCode.UNAUTHORIZED);
+    public static <T> CommonResult<T> forbidden(T data) {
+        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
     public long getCode() {

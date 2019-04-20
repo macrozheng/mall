@@ -1,6 +1,6 @@
 package com.macro.mall.component;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.util.JsonUtil;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -21,7 +21,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println(JsonUtil.objectToJson(new CommonResult().unauthorized(authException.getMessage())));
+        response.getWriter().println(JsonUtil.objectToJson(CommonResult.unauthorized(authException.getMessage())));
         response.getWriter().flush();
     }
 }

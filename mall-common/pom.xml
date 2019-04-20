@@ -32,7 +32,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
             <version>2.1.5.RELEASE</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
