@@ -40,20 +40,20 @@ services:
       - /mydata/nginx/logs:/var/log/nginx
       - /mydata/nginx/conf:/etc/nginx
   mall-admin:
-    image: mall/mall-admin:0.0.1-SNAPSHOT
+    image: mall/mall-admin:1.0-SNAPSHOT
     ports:
       - 8080:8080
     links:
       - mysql:db
   mall-search:
-    image: mall/mall-search:0.0.1-SNAPSHOT
+    image: mall/mall-search:1.0-SNAPSHOT
     ports:
       - 8081:8081
     links:
       - elasticsearch:es
       - mysql:db
   mall-portal:
-    image: mall/mall-portal:0.0.1-SNAPSHOT
+    image: mall/mall-portal:1.0-SNAPSHOT
     ports:
       - 8085:8085
     links:

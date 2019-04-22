@@ -123,7 +123,7 @@ docker run -p 8080:8080 --name mall-admin \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/admin/logs:/var/logs \
--d mall/mall-admin:0.0.1-SNAPSHOT
+-d mall/mall-admin:1.0-SNAPSHOT
 ### 部署mall-search
 docker run -p 8081:8081 --name mall-search \
 --link elasticsearch:es \
@@ -131,7 +131,7 @@ docker run -p 8081:8081 --name mall-search \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/search/logs:/var/logs \
--d mall/mall-search:0.0.1-SNAPSHOT
+-d mall/mall-search:1.0-SNAPSHOT
 ### 部署mall-port
 docker run -p 8085:8085 --name mall-portal \
 --link mysql:db \
@@ -140,7 +140,7 @@ docker run -p 8085:8085 --name mall-portal \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/portal/logs:/var/logs \
--d mall/mall-portal:0.0.1-SNAPSHOT
+-d mall/mall-portal:1.0-SNAPSHOT
 
 ## SpringBoot应用自动化部署
 ### 部署文件
