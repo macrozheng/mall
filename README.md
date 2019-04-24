@@ -6,7 +6,7 @@
 
 > 如果该项目对您有帮助，您可以点右上角 "Star" 支持一下,谢谢！
 
-> 该项目已由`CODING`特别赞助，支持的可以点下赞助商链接，浏览`2~3`个页面即可，谢谢！
+> 该项目已由`CODING`特别赞助，支持的可以点下赞助商链接，探索下功能即可，谢谢！
 
 > 项目交流QQ群：[553018255](http://qm.qq.com/cgi-bin/qm/qr?k=M5Edq2TiJL_ShcOEeYjwcmdGmq4zZrd_)、[959351312(满)](http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ)。
 
