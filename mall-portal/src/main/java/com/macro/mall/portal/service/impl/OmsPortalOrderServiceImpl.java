@@ -613,7 +613,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      */
     private boolean hasStock(List<CartPromotionItem> cartPromotionItemList) {
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
-            if (cartPromotionItem.getRealStock() <= 0) {
+            if (cartPromotionItem.getRealStock()==null||cartPromotionItem.getRealStock() <= 0) {
                 return false;
             }
         }
