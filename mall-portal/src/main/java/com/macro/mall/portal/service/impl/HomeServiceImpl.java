@@ -36,6 +36,12 @@ public class HomeServiceImpl implements HomeService {
     private PmsProductCategoryMapper productCategoryMapper;
     @Autowired
     private CmsSubjectMapper subjectMapper;
+    @Autowired
+    private PmsBrandMapper pmsBrandMapper;
+    @Autowired
+    private PmsProductMapper pmsProductMapper;
+    @Autowired
+    private PmsProductMapper pmsAllProductMapper;
 
     @Override
     public HomeContentResult content() {
@@ -53,6 +59,37 @@ public class HomeServiceImpl implements HomeService {
         //获取推荐专题
         result.setSubjectList(homeDao.getRecommendSubjectList(0,4));
         return result;
+    }
+
+    @Override
+    public List<PmsBrand> getBrand() {
+        return pmsBrandMapper.selectByExample(new PmsBrandExample());
+    }
+
+    @Override
+    public List<PmsProduct> getProduct(Long brandId){
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria()
+                .andBrandIdEqualTo(brandId);
+        return pmsProductMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<PmsProduct> getAllProduct(){
+        return pmsProductMapper.selectByExample(new PmsProductExample());
+    }
+
+    @Override
+    public PmsProduct getProductDetail(Long productId){
+        PmsProductExample example = new PmsProductExample();
+        List<PmsProduct> pmsProductList;
+        example.createCriteria()
+                .andIdEqualTo(productId);
+        pmsProductList = pmsProductMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(pmsProductList)) {
+            return pmsProductList.get(0);
+        }
+        return null;
     }
 
     @Override

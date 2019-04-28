@@ -2,6 +2,7 @@ package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.CmsSubject;
+import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.portal.domain.HomeContentResult;
@@ -31,6 +32,34 @@ public class HomeController {
     public CommonResult<HomeContentResult> content() {
         HomeContentResult contentResult = homeService.content();
         return CommonResult.success(contentResult);
+    }
+
+    @ApiOperation("获取分类信息")
+    @RequestMapping(value = "/brand", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsBrand>> getBrand() {
+        return CommonResult.success( homeService.getBrand());
+    }
+
+    @ApiOperation("获取品牌类商品信息")
+    @RequestMapping(value = "/product/{brandId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProduct>> getProduct(@PathVariable Long brandId) {
+        return CommonResult.success( homeService.getProduct(brandId));
+    }
+
+    @ApiOperation("获取All商品信息")
+    @RequestMapping(value = "/product/all", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProduct>> getAllProduct() {
+        return CommonResult.success( homeService.getAllProduct());
+    }
+
+    @ApiOperation("获取单个商品详细信息")
+    @RequestMapping(value = "/product/detail/{productId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsProduct> getProductDetail(@PathVariable Long productId) {
+        return CommonResult.success( homeService.getProductDetail(productId));
     }
 
     @ApiOperation("分页获取推荐商品")

@@ -65,4 +65,18 @@ public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddre
         }
         return null;
     }
+
+    @Override
+    public UmsMemberReceiveAddress getDefaultAddress(){
+        UmsMember currentMember = memberService.getCurrentMember();
+        UmsMemberReceiveAddressExample example = new UmsMemberReceiveAddressExample();
+        example.createCriteria().andMemberIdEqualTo(currentMember.getId()).andDefaultStatusEqualTo(1);
+
+        List<UmsMemberReceiveAddress>  umsMemberReceiveAddressList = addressMapper.selectByExample(example);
+
+        if (!CollectionUtils.isEmpty(umsMemberReceiveAddressList)) {
+            return umsMemberReceiveAddressList.get(0);
+        }
+        return null;
+    }
 }

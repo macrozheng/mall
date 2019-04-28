@@ -70,4 +70,12 @@ public class UmsMemberReceiveAddressController {
         UmsMemberReceiveAddress address = memberReceiveAddressService.getItem(id);
         return CommonResult.success(address);
     }
+
+    @ApiOperation("默认收货地址")
+    @RequestMapping(value = "/default/address", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<UmsMemberReceiveAddress> getDefaultAddress() {
+        UmsMemberReceiveAddress address = memberReceiveAddressService.getDefaultAddress();
+        return CommonResult.success(address);
+    }
 }

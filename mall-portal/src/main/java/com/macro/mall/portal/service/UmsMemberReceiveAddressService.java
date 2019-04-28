@@ -37,4 +37,9 @@ public interface UmsMemberReceiveAddressService {
      * @param id 地址id
      */
     UmsMemberReceiveAddress getItem(Long id);
+
+    /**
+     * 获取默认地址
+     */
+    public UmsMemberReceiveAddress getDefaultAddress();
 }

@@ -1,8 +1,6 @@
 package com.macro.mall.portal.service;
 
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductCategory;
+import com.macro.mall.model.*;
 import com.macro.mall.portal.domain.HomeContentResult;
 
 import java.util.List;
@@ -22,6 +20,26 @@ public interface HomeService {
      * 首页商品推荐
      */
     List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum);
+
+    /**
+     * 获取品牌信息
+     * */
+    public List<PmsBrand> getBrand();
+
+    /**
+     * 获取商品信息
+     * */
+    public List<PmsProduct> getProduct(Long brandId);
+
+    /**
+     * 获取全部商品信息
+     * */
+    public List<PmsProduct> getAllProduct();
+
+    /**
+     * 获取商品详细信息
+     * */
+    public PmsProduct getProductDetail(Long productId);
 
     /**
      * 获取商品分类
