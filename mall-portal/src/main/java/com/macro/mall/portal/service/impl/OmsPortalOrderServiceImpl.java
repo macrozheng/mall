@@ -651,4 +651,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         return omsOrderMapper.selectByExample(example);
     }
 
+    public List<OmsOrderItem> getOrderItem(Long id){
+        OmsOrderItemExample example = new OmsOrderItemExample();
+        example.createCriteria().andOrderIdEqualTo(id);
+        return orderItemMapper.selectByExample(example);
+    }
 }

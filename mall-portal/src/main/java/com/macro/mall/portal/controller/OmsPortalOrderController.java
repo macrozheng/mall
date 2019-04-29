@@ -2,6 +2,7 @@ package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.OmsOrder;
+import com.macro.mall.model.OmsOrderItem;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import com.macro.mall.portal.service.OmsPortalOrderService;
@@ -65,5 +66,13 @@ public class OmsPortalOrderController {
     public CommonResult<List<OmsOrder>> generateOrderList(){
         List<OmsOrder> orderListResult = portalOrderService.getOrderList();
         return CommonResult.success(orderListResult);
+    }
+
+    @ApiOperation("获取订单item")
+    @RequestMapping(value = "/getOrderItem/{orderId}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<OmsOrderItem>> generateOrderItems(@PathVariable Long orderId){
+        List<OmsOrderItem> orderItemResult = portalOrderService.getOrderItem(orderId);
+        return CommonResult.success(orderItemResult);
     }
 }

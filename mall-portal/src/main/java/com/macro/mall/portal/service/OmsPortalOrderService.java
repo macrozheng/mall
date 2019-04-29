@@ -2,6 +2,7 @@ package com.macro.mall.portal.service;
 
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.OmsOrder;
+import com.macro.mall.model.OmsOrderItem;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,4 +52,9 @@ public interface OmsPortalOrderService {
     * 获取订单list
     * */
     public List<OmsOrder> getOrderList();
+
+    /*
+* 获取订单item
+* */
+    public List<OmsOrderItem> getOrderItem(Long id);
 }
