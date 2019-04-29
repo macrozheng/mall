@@ -56,6 +56,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Autowired
     private OmsOrderItemMapper orderItemMapper;
     @Autowired
+    private OmsOrderMapper omsOrderMapper;
+    @Autowired
     private CancelOrderSender cancelOrderSender;
 
     @Override
@@ -88,6 +90,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         //获取购物车及优惠信息
         UmsMember currentMember = memberService.getCurrentMember();
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId());
+        System.out.printf("currentMember.getId() ="+currentMember.getId());
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
             //生成下单商品信息
             OmsOrderItem orderItem = new OmsOrderItem();
@@ -136,6 +139,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         } else {
             //使用积分
             BigDecimal totalAmount = calcTotalAmount(orderItemList);
+            System.out.printf("getUseIntegrationAmount getUseIntegration = "+orderParam.getUseIntegration()+" currentMember="+totalAmount+" currentMember"+currentMember+" getCouponId="+orderParam.getCouponId()+"\n");
             BigDecimal integrationAmount = getUseIntegrationAmount(orderParam.getUseIntegration(), totalAmount, currentMember, orderParam.getCouponId() != null);
             if (integrationAmount.compareTo(new BigDecimal(0)) == 0) {
                 return CommonResult.failed("积分不可用");
@@ -472,8 +476,10 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      * @param hasCoupon      是否已经使用优惠券
      */
     private BigDecimal getUseIntegrationAmount(Integer useIntegration, BigDecimal totalAmount, UmsMember currentMember, boolean hasCoupon) {
+        System.out.printf("getUseIntegrationAmount hasCoupon = "+hasCoupon);
         BigDecimal zeroAmount = new BigDecimal(0);
         //判断用户是否有这么多积分
+
         if (useIntegration.compareTo(currentMember.getIntegration()) > 0) {
             return zeroAmount;
         }
@@ -636,6 +642,13 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         calcAmount.setPromotionAmount(promotionAmount);
         calcAmount.setPayAmount(totalAmount.subtract(promotionAmount));
         return calcAmount;
+    }
+
+    public List<OmsOrder> getOrderList() {
+        UmsMember currentMember =memberService.getCurrentMember();
+        OmsOrderExample example = new OmsOrderExample();
+        example.createCriteria().andMemberIdEqualTo(currentMember.getId());
+        return omsOrderMapper.selectByExample(example);
     }
 
 }

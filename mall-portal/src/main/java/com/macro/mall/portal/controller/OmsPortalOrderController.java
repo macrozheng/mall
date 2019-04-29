@@ -1,6 +1,7 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.model.OmsOrder;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import com.macro.mall.portal.service.OmsPortalOrderService;
@@ -9,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 订单管理Controller
@@ -54,5 +57,13 @@ public class OmsPortalOrderController {
     public CommonResult cancelOrder(Long orderId){
         portalOrderService.sendDelayMessageCancelOrder(orderId);
         return CommonResult.success(null);
+    }
+
+    @ApiOperation("获取订单列表")
+    @RequestMapping(value = "/getOrderList",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<OmsOrder>> generateOrderList(){
+        List<OmsOrder> orderListResult = portalOrderService.getOrderList();
+        return CommonResult.success(orderListResult);
     }
 }
