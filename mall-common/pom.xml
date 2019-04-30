@@ -33,6 +33,12 @@
             <artifactId>spring-data-commons</artifactId>
             <version>2.1.5.RELEASE</version>
         </dependency>
+        <!--Hutool Java工具包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.5.7</version>
+        </dependency>
     </dependencies>
 
 </project>

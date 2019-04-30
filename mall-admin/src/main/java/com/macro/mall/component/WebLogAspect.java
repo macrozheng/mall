@@ -1,8 +1,10 @@
 package com.macro.mall.component;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.URLUtil;
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONUtil;
 import com.macro.mall.bo.WebLog;
-import com.macro.mall.util.JsonUtil;
-import com.macro.mall.util.RequestUtil;
 import io.swagger.annotations.ApiOperation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
@@ -68,7 +70,8 @@ public class WebLogAspect {
             webLog.setDescription(log.value());
         }
         long endTime = System.currentTimeMillis();
-        webLog.setBasePath(RequestUtil.getBasePath(request));
+        String urlStr = request.getRequestURL().toString();
+        webLog.setBasePath(StrUtil.removeSuffix(urlStr, URLUtil.url(urlStr).getPath()));
         webLog.setIp(request.getRemoteUser());
         webLog.setMethod(request.getMethod());
         webLog.setParameter(getParameter(method, joinPoint.getArgs()));
@@ -83,8 +86,8 @@ public class WebLogAspect {
         logMap.put("parameter",webLog.getParameter());
         logMap.put("spendTime",webLog.getSpendTime());
         logMap.put("description",webLog.getDescription());
-        //        LOGGER.info("{}", JsonUtil.objectToJson(webLog));
-        LOGGER.info(Markers.appendEntries(logMap),JsonUtil.objectToJson(webLog));
+//        LOGGER.info("{}", JSONUtil.parse(webLog));
+        LOGGER.info(Markers.appendEntries(logMap), JSONUtil.parse(webLog).toString());
         return result;
     }
 
