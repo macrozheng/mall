@@ -227,7 +227,7 @@
 		{
 			"name": "根据购物车信息生成确认单",
 			"request": {
-				"url": "{{portal.mall}}/order/confirmOrder",
+				"url": "{{portal.mall}}/order/generateConfirmOrder",
 				"method": "POST",
 				"header": [],
 				"body": {},
