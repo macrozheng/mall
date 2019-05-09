@@ -1,6 +1,7 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.model.SmsCouponHistory;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.domain.SmsCouponHistoryDetail;
@@ -46,6 +47,14 @@ public class UmsMemberCouponController {
     public CommonResult<List<SmsCouponHistory>> list(@RequestParam(value = "useStatus", required = false) Integer useStatus) {
         List<SmsCouponHistory> couponHistoryList = memberCouponService.list(useStatus);
         return CommonResult.success(couponHistoryList);
+    }
+
+    @ApiOperation("获取优惠券info")
+    @RequestMapping(value = "/info/{couponId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<SmsCoupon>> getCouponInfo(@PathVariable Long couponId) {
+        List<SmsCoupon> couponInfo = memberCouponService.getCouponInfo(couponId);
+        return CommonResult.success(couponInfo);
     }
 
     @ApiOperation("获取登录会员购物车的相关优惠券")

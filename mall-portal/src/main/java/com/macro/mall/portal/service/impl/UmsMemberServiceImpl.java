@@ -10,6 +10,7 @@ import com.macro.mall.model.UmsMemberLevelExample;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.RedisService;
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.portal.util.SendMessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -102,6 +103,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         //验证码绑定手机号并存储到redis
         redisService.set(REDIS_KEY_PREFIX_AUTH_CODE+telephone,sb.toString());
         redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE+telephone,AUTH_CODE_EXPIRE_SECONDS);
+
+        int timeout =5;
+        Integer resultCode = SendMessageUtil.send("blueskyfw","d41d8cd98f00b204e980",telephone,"尊敬的用户，您好，您正在注册都市果园，您的验证码为："+sb.toString()+"，请于"+timeout+"分钟内正确输入，如非本人操作，请忽略此短信。");
+        if(resultCode <= 0){
+            return null;
+        }
         return CommonResult.success(sb.toString(),"获取验证码成功");
     }
 
@@ -147,5 +154,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
         return authCode.equals(realAuthCode);
     }
-
+    public static String createRandomNum(int num){
+        String randomNumStr = "";
+        for(int i = 0; i < num;i ++){
+            int randomNum = (int)(Math.random() * 10);
+            randomNumStr += randomNum;
+        }
+        return randomNumStr;
+    }
 }

@@ -11,6 +11,7 @@ import com.macro.mall.portal.service.UmsMemberCouponService;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -29,6 +30,8 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     private SmsCouponHistoryMapper couponHistoryMapper;
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
+    @Autowired
+    private SmsCouponMapper smsCouponMapper;
     @Override
     public CommonResult add(Long couponId) {
         UmsMember currentMember = memberService.getCurrentMember();
@@ -70,6 +73,18 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         return CommonResult.success(null,"领取成功");
     }
 
+    @Override
+    public List<SmsCoupon> getCouponInfo(Long couponId){
+        SmsCouponExample example = new SmsCouponExample();
+        List<SmsCoupon> smsCouponList;
+        example.createCriteria()
+                .andIdEqualTo(couponId);
+        smsCouponList = smsCouponMapper.selectByExample(example);
+//        if (!CollectionUtils.isEmpty(smsCouponList)) {
+//            return smsCouponList.get(0);
+//        }
+        return smsCouponList;
+    }
     /**
      * 16位优惠码生成：时间戳后8位+4位随机数+用户id后4位
      */
