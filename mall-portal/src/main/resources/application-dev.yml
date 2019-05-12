@@ -43,7 +43,7 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    virtual-host: /mall
+    virtual-host: /
     username: mall
     password: mall
     publisher-confirms: true #如果对异步消息需要回调必须设置为true

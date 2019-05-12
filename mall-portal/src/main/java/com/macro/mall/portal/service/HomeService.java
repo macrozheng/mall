@@ -42,6 +42,11 @@ public interface HomeService {
     public PmsProduct getProductDetail(Long productId);
 
     /**
+     * 获取商品详细信息
+     * */
+    public PmsSkuStock getSkuStock(Long productId);
+
+    /**
      * 获取商品分类
      * @param parentId 0:获取一级分类；其他：获取指定二级分类
      */

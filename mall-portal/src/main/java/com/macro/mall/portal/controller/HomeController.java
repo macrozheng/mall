@@ -1,10 +1,7 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsBrand;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductCategory;
+import com.macro.mall.model.*;
 import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.service.HomeService;
 import io.swagger.annotations.Api;
@@ -60,6 +57,13 @@ public class HomeController {
     @ResponseBody
     public CommonResult<PmsProduct> getProductDetail(@PathVariable Long productId) {
         return CommonResult.success( homeService.getProductDetail(productId));
+    }
+
+    @ApiOperation("获取商品库存信息")
+    @RequestMapping(value = "/product/sku/{productId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsSkuStock> getSkuStock(@PathVariable Long productId) {
+        return CommonResult.success( homeService.getSkuStock(productId));
     }
 
     @ApiOperation("分页获取推荐商品")

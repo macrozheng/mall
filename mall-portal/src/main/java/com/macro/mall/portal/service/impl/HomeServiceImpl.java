@@ -41,6 +41,8 @@ public class HomeServiceImpl implements HomeService {
     @Autowired
     private PmsProductMapper pmsProductMapper;
     @Autowired
+    private PmsSkuStockMapper pmsSkuStockMapper;
+    @Autowired
     private PmsProductMapper pmsAllProductMapper;
 
     @Override
@@ -88,6 +90,19 @@ public class HomeServiceImpl implements HomeService {
         pmsProductList = pmsProductMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(pmsProductList)) {
             return pmsProductList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public PmsSkuStock getSkuStock(Long productId){
+        PmsSkuStockExample example = new PmsSkuStockExample();
+        List<PmsSkuStock> pmsSkuStockList;
+        example.createCriteria()
+                .andProductIdEqualTo(productId);
+        pmsSkuStockList = pmsSkuStockMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(pmsSkuStockList)) {
+            return pmsSkuStockList.get(0);
         }
         return null;
     }
