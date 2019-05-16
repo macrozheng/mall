@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -8,66 +9,34 @@ public class PmsSkuStock implements Serializable {
 
     private Long productId;
 
-    /**
-     * sku编码
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "sku编码")
     private String skuCode;
 
     private BigDecimal price;
 
-    /**
-     * 库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "库存")
     private Integer stock;
 
-    /**
-     * 预警库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "预警库存")
     private Integer lowStock;
 
-    /**
-     * 销售属性1
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "销售属性1")
     private String sp1;
 
     private String sp2;
 
     private String sp3;
 
-    /**
-     * 展示图片
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "展示图片")
     private String pic;
 
-    /**
-     * 销量
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "销量")
     private Integer sale;
 
-    /**
-     * 单品促销价格
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "单品促销价格")
     private BigDecimal promotionPrice;
 
-    /**
-     * 锁定库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "锁定库存")
     private Integer lockStock;
 
     private static final long serialVersionUID = 1L;

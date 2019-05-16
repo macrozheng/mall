@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,47 +13,27 @@ public class PmsComment implements Serializable {
 
     private String productName;
 
-    /**
-     * 评价星数：0->5
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "评价星数：0->5")
     private Integer star;
 
-    /**
-     * 评价的ip
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "评价的ip")
     private String memberIp;
 
     private Date createTime;
 
     private Integer showStatus;
 
-    /**
-     * 购买时的商品属性
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "购买时的商品属性")
     private String productAttribute;
 
     private Integer collectCouont;
 
     private Integer readCount;
 
-    /**
-     * 上传图片地址，以逗号隔开
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "上传图片地址，以逗号隔开")
     private String pics;
 
-    /**
-     * 评论用户头像
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "评论用户头像")
     private String memberIcon;
 
     private Integer replayCount;

@@ -1,6 +1,6 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.MemberProductCollection;
 import com.macro.mall.portal.service.MemberCollectionService;
 import io.swagger.annotations.Api;
@@ -21,35 +21,36 @@ import java.util.List;
 public class MemberCollectionController {
     @Autowired
     private MemberCollectionService memberCollectionService;
+
     @ApiOperation("添加商品收藏")
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     @ResponseBody
-    public Object addProduct(@RequestBody MemberProductCollection productCollection) {
+    public CommonResult addProduct(@RequestBody MemberProductCollection productCollection) {
         int count = memberCollectionService.addProduct(productCollection);
-        if(count>0){
-            return new CommonResult().success(count);
-        }else{
-            return new CommonResult().failed();
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
         }
     }
 
     @ApiOperation("删除收藏商品")
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.POST)
     @ResponseBody
-    public Object deleteProduct(Long memberId, Long productId) {
-        int count = memberCollectionService.deleteProduct(memberId,productId);
-        if(count>0){
-            return new CommonResult().success(count);
-        }else{
-            return new CommonResult().failed();
+    public CommonResult deleteProduct(Long memberId, Long productId) {
+        int count = memberCollectionService.deleteProduct(memberId, productId);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
         }
     }
 
     @ApiOperation("显示关注列表")
     @RequestMapping(value = "/listProduct/{memberId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object listProduct(@PathVariable Long memberId) {
+    public CommonResult<List<MemberProductCollection>> listProduct(@PathVariable Long memberId) {
         List<MemberProductCollection> memberProductCollectionList = memberCollectionService.listProduct(memberId);
-        return new CommonResult().success(memberProductCollectionList);
+        return CommonResult.success(memberProductCollectionList);
     }
 }
