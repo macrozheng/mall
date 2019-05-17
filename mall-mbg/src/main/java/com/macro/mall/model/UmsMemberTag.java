@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -8,18 +9,10 @@ public class UmsMemberTag implements Serializable {
 
     private String name;
 
-    /**
-     * 自动打标签完成订单数量
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "自动打标签完成订单数量")
     private Integer finishOrderCount;
 
-    /**
-     * 自动打标签完成订单金额
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "自动打标签完成订单金额")
     private BigDecimal finishOrderAmount;
 
     private static final long serialVersionUID = 1L;

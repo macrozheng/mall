@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.SmsFlashPromotionSessionDetail;
 import com.macro.mall.model.SmsFlashPromotionSession;
 import com.macro.mall.service.SmsFlashPromotionSessionService;
@@ -22,71 +22,72 @@ import java.util.List;
 public class SmsFlashPromotionSessionController {
     @Autowired
     private SmsFlashPromotionSessionService flashPromotionSessionService;
+
     @ApiOperation("添加场次")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@RequestBody SmsFlashPromotionSession promotionSession) {
+    public CommonResult create(@RequestBody SmsFlashPromotionSession promotionSession) {
         int count = flashPromotionSessionService.create(promotionSession);
-        if(count>0){
-            return new CommonResult().success(count);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("修改场次")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object update(@PathVariable Long id, @RequestBody SmsFlashPromotionSession promotionSession) {
-        int count = flashPromotionSessionService.update(id,promotionSession);
-        if(count>0){
-            return new CommonResult().success(count);
+    public CommonResult update(@PathVariable Long id, @RequestBody SmsFlashPromotionSession promotionSession) {
+        int count = flashPromotionSessionService.update(id, promotionSession);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("修改启用状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object updateStatus(@PathVariable Long id, Integer status) {
-        int count = flashPromotionSessionService.updateStatus(id,status);
-        if(count>0){
-            return new CommonResult().success(count);
+    public CommonResult updateStatus(@PathVariable Long id, Integer status) {
+        int count = flashPromotionSessionService.updateStatus(id, status);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("删除场次")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object delete(@PathVariable Long id) {
+    public CommonResult delete(@PathVariable Long id) {
         int count = flashPromotionSessionService.delete(id);
-        if(count>0){
-            return new CommonResult().success(count);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("获取场次详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getItem(@PathVariable Long id) {
+    public CommonResult<SmsFlashPromotionSession> getItem(@PathVariable Long id) {
         SmsFlashPromotionSession promotionSession = flashPromotionSessionService.getItem(id);
-        return new CommonResult().success(promotionSession);
+        return CommonResult.success(promotionSession);
     }
 
     @ApiOperation("获取全部场次")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list() {
+    public CommonResult<List<SmsFlashPromotionSession>> list() {
         List<SmsFlashPromotionSession> promotionSessionList = flashPromotionSessionService.list();
-        return new CommonResult().success(promotionSessionList);
+        return CommonResult.success(promotionSessionList);
     }
 
     @ApiOperation("获取全部可选场次及其数量")
     @RequestMapping(value = "/selectList", method = RequestMethod.GET)
     @ResponseBody
-    public Object selectList(Long flashPromotionId) {
+    public CommonResult<List<SmsFlashPromotionSessionDetail>> selectList(Long flashPromotionId) {
         List<SmsFlashPromotionSessionDetail> promotionSessionList = flashPromotionSessionService.selectList(flashPromotionId);
-        return new CommonResult().success(promotionSessionList);
+        return CommonResult.success(promotionSessionList);
     }
 }

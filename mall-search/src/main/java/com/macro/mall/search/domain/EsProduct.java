@@ -3,7 +3,6 @@ package com.macro.mall.search.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
@@ -19,20 +18,20 @@ public class EsProduct implements Serializable {
     private static final long serialVersionUID = -1L;
     @Id
     private Long id;
-    @Field(index = FieldIndex.not_analyzed,type = FieldType.String)
+    @Field(type = FieldType.Keyword)
     private String productSn;
     private Long brandId;
-    @Field(index = FieldIndex.not_analyzed,type = FieldType.String)
+    @Field(type = FieldType.Keyword)
     private String brandName;
     private Long productCategoryId;
-    @Field(index = FieldIndex.not_analyzed,type = FieldType.String)
+    @Field(type = FieldType.Keyword)
     private String productCategoryName;
     private String pic;
-    @Field(analyzer = "ik_max_word",type = FieldType.String)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String name;
-    @Field(analyzer = "ik_max_word",type = FieldType.String)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String subTitle;
-    @Field(analyzer = "ik_max_word",type = FieldType.String)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String keywords;
     private BigDecimal price;
     private Integer sale;

@@ -1,21 +1,21 @@
 package com.macro.mall.portal.service.impl;
 
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.mapper.UmsMemberLevelMapper;
 import com.macro.mall.mapper.UmsMemberMapper;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.model.UmsMemberExample;
 import com.macro.mall.model.UmsMemberLevel;
 import com.macro.mall.model.UmsMemberLevelExample;
-import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.RedisService;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -40,7 +40,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     private RedisService redisService;
     @Value("${redis.key.prefix.authCode}")
     private String REDIS_KEY_PREFIX_AUTH_CODE;
-    @Value("${authCode.expire.seconds}")
+    @Value("${redis.key.expire.authCode}")
     private Long AUTH_CODE_EXPIRE_SECONDS;
 
     @Override
@@ -63,7 +63,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     public CommonResult register(String username, String password, String telephone, String authCode) {
         //验证验证码
         if(!verifyAuthCode(authCode,telephone)){
-            return new CommonResult().failed("验证码错误");
+            return CommonResult.failed("验证码错误");
         }
         //查询是否已有该用户
         UmsMemberExample example = new UmsMemberExample();
@@ -71,13 +71,13 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         example.or(example.createCriteria().andPhoneEqualTo(telephone));
         List<UmsMember> umsMembers = memberMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(umsMembers)) {
-            return new CommonResult().failed("该用户已经存在");
+            return CommonResult.failed("该用户已经存在");
         }
         //没有该用户进行添加操作
         UmsMember umsMember = new UmsMember();
         umsMember.setUsername(username);
         umsMember.setPhone(telephone);
-        umsMember.setPassword(passwordEncoder.encodePassword(password, null));
+        umsMember.setPassword(passwordEncoder.encode(password));
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
         //获取默认会员等级并设置
@@ -89,7 +89,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         }
         memberMapper.insert(umsMember);
         umsMember.setPassword(null);
-        return new CommonResult().success("注册成功",null);
+        return CommonResult.success(null,"注册成功");
     }
 
     @Override
@@ -102,7 +102,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         //验证码绑定手机号并存储到redis
         redisService.set(REDIS_KEY_PREFIX_AUTH_CODE+telephone,sb.toString());
         redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE+telephone,AUTH_CODE_EXPIRE_SECONDS);
-        return new CommonResult().success("获取验证码成功",sb.toString());
+        return CommonResult.success(sb.toString(),"获取验证码成功");
     }
 
     @Override
@@ -111,16 +111,16 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         example.createCriteria().andPhoneEqualTo(telephone);
         List<UmsMember> memberList = memberMapper.selectByExample(example);
         if(CollectionUtils.isEmpty(memberList)){
-            return new CommonResult().failed("该账号不存在");
+            return CommonResult.failed("该账号不存在");
         }
         //验证验证码
         if(!verifyAuthCode(authCode,telephone)){
-            return new CommonResult().failed("验证码错误");
+            return CommonResult.failed("验证码错误");
         }
         UmsMember umsMember = memberList.get(0);
-        umsMember.setPassword(passwordEncoder.encodePassword(password,null));
+        umsMember.setPassword(passwordEncoder.encode(password));
         memberMapper.updateByPrimaryKeySelective(umsMember);
-        return new CommonResult().success("密码修改成功",null);
+        return CommonResult.success(null,"密码修改成功");
     }
 
     @Override
