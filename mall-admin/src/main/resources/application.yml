@@ -16,9 +16,9 @@ jwt:
 aliyun:
   oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com
-    accessKeyId: test
-    accessKeySecret: test
-    bucketName: macro-oss
+    accessKeyId: LTAIg3YoiassnBLY
+    accessKeySecret: JTYjlrTVrmPhbvGBp27aAESPmIx9jz
+    bucketName: myfruitmall
     policy:
       expire: 300
     maxSize: 10
