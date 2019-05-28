@@ -15,16 +15,16 @@ jwt:
 
 aliyun:
   oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com
-    accessKeyId: test
-    accessKeySecret: test
-    bucketName: macro-oss
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
+    accessKeyId: test # 访问身份验证中用到用户标识
+    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: macro-oss # oss的存储空间
     policy:
-      expire: 300
-    maxSize: 10
-    callback: http://localhost:8080/aliyun/oss/callback
+      expire: 300 # 签名有效期(S)
+    maxSize: 10 # 上传文件大小(M)
+    callback: http://39.98.190.128:8080/aliyun/oss/callback # 文件上传成功后的回调地址
     dir:
-      prefix: mall/images/
+      prefix: mall/images/ # 上传文件夹路径前缀
 
 logging:
   level:
