@@ -14,8 +14,6 @@
 
 ## 特别赞助商
 
-> 本项目已由`CODING`特别赞助，支持的可以点下赞助商链接，探索下功能即可，谢谢！
-
 <p align="left">
 <a href="https://coding.net/?utm_source=macrozheng&utm_medium=banner&utm_campaign=march2019" target="_blank">
   <img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/coding.png" width=""/>
