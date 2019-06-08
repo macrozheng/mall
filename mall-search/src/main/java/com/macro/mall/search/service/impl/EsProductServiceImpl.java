@@ -15,6 +15,7 @@ import org.elasticsearch.search.aggregations.AbstractAggregationBuilder;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.filter.InternalFilter;
+import org.elasticsearch.search.aggregations.bucket.nested.InternalNested;
 import org.elasticsearch.search.aggregations.bucket.terms.LongTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
@@ -247,25 +248,25 @@ public class EsProductServiceImpl implements EsProductService {
         productRelatedInfo.setProductCategoryNames(productCategoryNameList);
         //设置参数
         Aggregation productAttrs = aggregationMap.get("allAttrValues");
-//        List<Terms.Bucket> attrIds = ((LongTerms) ((InternalFilter)productAttrs.getProperty("productAttrs")).getAggregations().getProperty("attrIds")).getBuckets();
-//        List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
-//        for (Terms.Bucket attrId : attrIds) {
-//            EsProductRelatedInfo.ProductAttr attr = new EsProductRelatedInfo.ProductAttr();
-//            attr.setAttrId((Long) attrId.getKey());
-//            List<String> attrValueList = new ArrayList<>();
-//            List<Terms.Bucket> attrValues = ((StringTerms) attrId.getAggregations().get("attrValues")).getBuckets();
-//            List<Terms.Bucket> attrNames = ((StringTerms) attrId.getAggregations().get("attrNames")).getBuckets();
-//            for (Terms.Bucket attrValue : attrValues) {
-//                attrValueList.add(attrValue.getKeyAsString());
-//            }
-//            attr.setAttrValues(attrValueList);
-//            if(!CollectionUtils.isEmpty(attrNames)){
-//                String attrName = attrNames.get(0).getKeyAsString();
-//                attr.setAttrName(attrName);
-//            }
-//            attrList.add(attr);
-//        }
-//        productRelatedInfo.setProductAttrs(attrList);
+        List<LongTerms.Bucket> attrIds = ((LongTerms) ((InternalFilter) ((InternalNested) productAttrs).getProperty("productAttrs")).getProperty("attrIds")).getBuckets();
+        List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
+        for (Terms.Bucket attrId : attrIds) {
+            EsProductRelatedInfo.ProductAttr attr = new EsProductRelatedInfo.ProductAttr();
+            attr.setAttrId((Long) attrId.getKey());
+            List<String> attrValueList = new ArrayList<>();
+            List<StringTerms.Bucket> attrValues = ((StringTerms) attrId.getAggregations().get("attrValues")).getBuckets();
+            List<StringTerms.Bucket> attrNames = ((StringTerms) attrId.getAggregations().get("attrNames")).getBuckets();
+            for (Terms.Bucket attrValue : attrValues) {
+                attrValueList.add(attrValue.getKeyAsString());
+            }
+            attr.setAttrValues(attrValueList);
+            if(!CollectionUtils.isEmpty(attrNames)){
+                String attrName = attrNames.get(0).getKeyAsString();
+                attr.setAttrName(attrName);
+            }
+            attrList.add(attr);
+        }
+        productRelatedInfo.setProductAttrs(attrList);
         return productRelatedInfo;
     }
 }
