@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.OmsCompanyAddress;
 import com.macro.mall.service.OmsCompanyAddressService;
 import io.swagger.annotations.Api;
@@ -25,10 +25,10 @@ public class OmsCompanyAddressController {
     private OmsCompanyAddressService companyAddressService;
 
     @ApiOperation("获取所有收货地址")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list() {
+    public CommonResult<List<OmsCompanyAddress>> list() {
         List<OmsCompanyAddress> companyAddressList = companyAddressService.list();
-        return new CommonResult().success(companyAddressList);
+        return CommonResult.success(companyAddressList);
     }
 }

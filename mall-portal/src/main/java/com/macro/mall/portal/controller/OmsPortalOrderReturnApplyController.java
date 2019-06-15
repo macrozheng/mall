@@ -1,6 +1,6 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.OmsOrderReturnApplyParam;
 import com.macro.mall.portal.service.OmsPortalOrderReturnApplyService;
 import io.swagger.annotations.Api;
@@ -26,11 +26,11 @@ public class OmsPortalOrderReturnApplyController {
     @ApiOperation("申请退货")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@RequestBody OmsOrderReturnApplyParam returnApply) {
+    public CommonResult create(@RequestBody OmsOrderReturnApplyParam returnApply) {
         int count = returnApplyService.create(returnApply);
         if (count > 0) {
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 }
