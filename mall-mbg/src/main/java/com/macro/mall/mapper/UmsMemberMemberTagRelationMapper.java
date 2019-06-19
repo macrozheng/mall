@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberMemberTagRelationMapper {
-    int countByExample(UmsMemberMemberTagRelationExample example);
+    long countByExample(UmsMemberMemberTagRelationExample example);
 
     int deleteByExample(UmsMemberMemberTagRelationExample example);
 

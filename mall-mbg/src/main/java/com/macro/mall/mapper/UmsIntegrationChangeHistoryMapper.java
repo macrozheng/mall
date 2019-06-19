@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsIntegrationChangeHistoryMapper {
-    int countByExample(UmsIntegrationChangeHistoryExample example);
+    long countByExample(UmsIntegrationChangeHistoryExample example);
 
     int deleteByExample(UmsIntegrationChangeHistoryExample example);
 

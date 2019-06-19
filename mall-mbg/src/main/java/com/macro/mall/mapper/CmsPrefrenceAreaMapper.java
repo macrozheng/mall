@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsPrefrenceAreaMapper {
-    int countByExample(CmsPrefrenceAreaExample example);
+    long countByExample(CmsPrefrenceAreaExample example);
 
     int deleteByExample(CmsPrefrenceAreaExample example);
 

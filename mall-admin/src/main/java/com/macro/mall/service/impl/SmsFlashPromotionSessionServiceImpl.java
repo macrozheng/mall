@@ -70,7 +70,7 @@ public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSes
         for (SmsFlashPromotionSession promotionSession : list) {
             SmsFlashPromotionSessionDetail detail = new SmsFlashPromotionSessionDetail();
             BeanUtils.copyProperties(promotionSession, detail);
-            int count = relationService.getCount(flashPromotionId, promotionSession.getId());
+            long count = relationService.getCount(flashPromotionId, promotionSession.getId());
             detail.setProductCount(count);
             result.add(detail);
         }
