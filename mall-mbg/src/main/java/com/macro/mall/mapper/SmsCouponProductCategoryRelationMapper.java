@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsCouponProductCategoryRelationMapper {
-    int countByExample(SmsCouponProductCategoryRelationExample example);
+    long countByExample(SmsCouponProductCategoryRelationExample example);
 
     int deleteByExample(SmsCouponProductCategoryRelationExample example);
 

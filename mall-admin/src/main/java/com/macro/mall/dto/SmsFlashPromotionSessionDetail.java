@@ -11,5 +11,5 @@ import lombok.Setter;
 public class SmsFlashPromotionSessionDetail extends SmsFlashPromotionSession {
     @Setter
     @Getter
-    private Integer productCount;
+    private Long productCount;
 }

@@ -53,7 +53,7 @@ public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashProm
     }
 
     @Override
-    public int getCount(Long flashPromotionId, Long flashPromotionSessionId) {
+    public long getCount(Long flashPromotionId, Long flashPromotionSessionId) {
         SmsFlashPromotionProductRelationExample example = new SmsFlashPromotionProductRelationExample();
         example.createCriteria()
                 .andFlashPromotionIdEqualTo(flashPromotionId)
