@@ -15,10 +15,10 @@ jwt:
 
 aliyun:
   oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
-    accessKeyId: test # 访问身份验证中用到用户标识
-    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: macro-oss # oss的存储空间
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAIg3YoiassnBLY
+    accessKeySecret: JTYjlrTVrmPhbvGBp27aAESPmIx9jz
+    bucketName: myfruitmall
     policy:
       expire: 300 # 签名有效期(S)
     maxSize: 10 # 上传文件大小(M)
