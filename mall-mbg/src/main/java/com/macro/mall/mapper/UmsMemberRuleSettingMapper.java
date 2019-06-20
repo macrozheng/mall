@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberRuleSettingMapper {
-    int countByExample(UmsMemberRuleSettingExample example);
+    long countByExample(UmsMemberRuleSettingExample example);
 
     int deleteByExample(UmsMemberRuleSettingExample example);
 

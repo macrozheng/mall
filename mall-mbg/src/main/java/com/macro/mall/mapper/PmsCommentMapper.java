@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsCommentMapper {
-    int countByExample(PmsCommentExample example);
+    long countByExample(PmsCommentExample example);
 
     int deleteByExample(PmsCommentExample example);
 
