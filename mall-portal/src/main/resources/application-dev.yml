@@ -41,7 +41,7 @@ spring:
     timeout: 3000ms # 连接超时时间（毫秒）
 
   rabbitmq:
-    host: localhost
+    host: 192.168.1.156
     port: 5672
     virtual-host: /
     username: mall
@@ -54,4 +54,7 @@ logging:
     org.springframework.data.mongodb.core: debug
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
+
+my:
+  security: demo-login.html
 

@@ -1,12 +1,16 @@
 package com.macro.mall.portal.config;
 
 import com.macro.mall.model.UmsMember;
+import com.macro.mall.portal.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.macro.mall.portal.authentication.properties.SecurityConstants;
+import com.macro.mall.portal.authentication.validate.ValidateCodeSecurityConfig;
 import com.macro.mall.portal.component.*;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,12 +28,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
+@Order(Integer.MIN_VALUE)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UmsMemberService memberService;
+
+    @Autowired
+    private ValidateCodeSecurityConfig validateCodeSecurityConfig;
+
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .apply(validateCodeSecurityConfig)
+                .and()
+                .apply(smsCodeAuthenticationSecurityConfig)
+                .and().
+                authorizeRequests()
                 .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
                         "/",
                         "/*.html",
@@ -39,6 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js",
                         "/swagger-resources/**",
                         "/v2/api-docs/**"
+                )
+                .permitAll()
+                .antMatchers(HttpMethod.POST,
+                        "/sso/authentication/mobile/**/*",
+                        "/sso/authentication/mobile/*"
                 )
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
@@ -58,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(new GoAuthenticationEntryPoint())
                 .and()
                 .formLogin()
-                .loginPage("/sso/login")
+                .loginPage("/sso/authentication/mobile")
                 .successHandler(new GoAuthenticationSuccessHandler())
                 .failureHandler(new GoAuthenticationFailureHandler())
                 .and()
@@ -67,16 +89,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(new GoLogoutSuccessHandler())
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-//                .and()
-//                .requiresChannel()
-//                .antMatchers("/sso/*")
-//                .requiresSecure()
-//                .anyRequest()
-//                .requiresInsecure()
-//                .and()
-//                .rememberMe()
-//                .tokenValiditySeconds(1800)
-//                .key("token_key")
                 .and()
                 .csrf()
                 .disable();//开启basic认证登录后可以调用需要认证的接口
@@ -103,7 +115,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 if(member!=null){
                     return new MemberDetails(member);
                 }
-                throw new UsernameNotFoundException("用户名或密码错误");
+                throw new UsernameNotFoundException("ff用户名或密码错误");
             }
         };
     }

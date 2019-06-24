@@ -46,3 +46,5 @@ spring:
 logging:
   path: /var/logs
 
+my:
+  security: demo-login.html
