@@ -85,7 +85,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     protected abstract void send(ServletWebRequest request, C validateCode) throws Exception;
 
     /**
-     * 根据请求的url获取校验码的类型
+     * 根据请求的url获取校验码的类型password
      *
      * @param request
      * @return

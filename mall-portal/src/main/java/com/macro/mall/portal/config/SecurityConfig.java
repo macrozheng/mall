@@ -46,32 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService myUserDetailsService;
-//    @Autowired
-//    private ValidateCodeSecurityConfig validateCodeSecurityConfig;
-//
-//    @Autowired
-//    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
-
-//    @Autowired
-//    private SpringSocialConfigurer tihomSocialSecurityConfig;
-
-//    @Autowired
-//    private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-//                .apply(validateCodeSecurityConfig)
-//                .and()
-//                .apply(smsCodeAuthenticationSecurityConfig)
-//                .and().
-//                .apply(tihomSocialSecurityConfig)
-//                .and()
-//                .apply(tihomSocialSecurityConfig)
-//                .and()
-//                .apply(openIdAuthenticationSecurityConfig)
-//                .and()
-                .apply(validateCodeSecurityConfig)
+        http.apply(validateCodeSecurityConfig)
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
@@ -145,6 +123,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 UmsMember member = memberService.getByUsername(username);
+                System.out.printf("userDetailsServicefffffffff ="+member+" \n");
                 if(member!=null){
                     return new MemberDetails(member);
                 }

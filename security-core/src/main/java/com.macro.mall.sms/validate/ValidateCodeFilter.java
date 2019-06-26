@@ -5,6 +5,7 @@ import com.macro.mall.sms.properties.SecurityProperties;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,7 +31,13 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      * 验证码校验失败处理器
      */
 //    @Autowired
-//    private AuthenticationFailureHandler authenticationFailureHandler;
+    private GoAuthenticationFailureHandler authenticationFailureHandler;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Value("${redis.key.prefix.authCode}")
+    private String REDIS_KEY_PREFIX_AUTH_CODE;
 
     /**
      * 系统中的校验码处理器
@@ -78,15 +85,20 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-//        ValidateCodeType type = getValidateCodeType(request);
+        ValidateCodeType type = getValidateCodeType(request);
+        logger.info("fffffffffffffffffffffwwwwwwwwwwwww");
+        authenticationFailureHandler = new GoAuthenticationFailureHandler();
+        if(redisService.get(REDIS_KEY_PREFIX_AUTH_CODE+request.getParameter("mobile")) != request.getParameter("password")){
+//            throw new ValidateCodeException( "验证码不匹配");
+        }
 //        if (type != null) {
 //            logger.info("校验请求(" + request.getRequestURI() + ")中的验证码,验证码类型" + type);
 //            try {
-//                /*validateCodeProcessorHolder.findValidateCodeProcessor(type)
+                /*validateCodeProcessorHolder.findValidateCodeProcessor(type)
 //                        .validate(new ServletWebRequest(request, response));*/
 //                logger.info("验证码校验通过");
 //            } catch (ValidateCodeException exception) {
-////                authenticationFailureHandler.onAuthenticationFailure(request, response, exception);
+//                authenticationFailureHandler.onAuthenticationFailure(request, response, exception);
 //                logger.info("验证码校验通过err");
 //                return;
 //            }
@@ -116,9 +128,9 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     }
 
 
-//    public void setAuthenticationFailureHandler(AuthenticationFailureHandler authenticationFailureHandler) {
-//        this.authenticationFailureHandler = authenticationFailureHandler;
-//    }
+    public void setAuthenticationFailureHandler(GoAuthenticationFailureHandler authenticationFailureHandler) {
+        this.authenticationFailureHandler = authenticationFailureHandler;
+    }
 
     public void setSecurityProperties(SecurityProperties securityProperties) {
         this.securityProperties = securityProperties;

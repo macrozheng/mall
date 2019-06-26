@@ -8,13 +8,8 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.Assert;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @Author: HanLong
@@ -37,15 +32,8 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
         super(new AntPathRequestMatcher(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE, "POST"));
     }
 
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        super.doFilter(req, res, chain);
-        logger.info("attemptAuthenticationffffffwwww");
-    }
-
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
-        logger.info("attemptAuthenticationffffff");
         // 请求方式校验
         if (postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
@@ -53,7 +41,6 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
 
         // 获取请求中的参数值
         String mobile = obtainMobile(request);
-        logger.info("attemptAuthenticationffffff mobile="+mobile);
         if (mobile == null) {
             mobile = "";
         }
