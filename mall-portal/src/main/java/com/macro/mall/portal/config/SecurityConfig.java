@@ -1,13 +1,14 @@
 package com.macro.mall.portal.config;
 
 import com.macro.mall.model.UmsMember;
-import com.macro.mall.portal.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import com.macro.mall.portal.authentication.properties.SecurityConstants;
-import com.macro.mall.portal.authentication.validate.ValidateCodeSecurityConfig;
 import com.macro.mall.portal.component.*;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.sms.authentication.sms.SmsCodeAuthenticationSecurityConfig;
+import com.macro.mall.sms.properties.SecurityProperties;
+import com.macro.mall.sms.validate.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -29,24 +30,56 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @Order(Integer.MIN_VALUE)
+@EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UmsMemberService memberService;
 
     @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+
+    @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
     @Autowired
-    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+    private SecurityProperties securityProperties;
+
+    @Autowired
+    private UserDetailsService myUserDetailsService;
+//    @Autowired
+//    private ValidateCodeSecurityConfig validateCodeSecurityConfig;
+//
+//    @Autowired
+//    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+
+//    @Autowired
+//    private SpringSocialConfigurer tihomSocialSecurityConfig;
+
+//    @Autowired
+//    private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+//                .apply(validateCodeSecurityConfig)
+//                .and()
+//                .apply(smsCodeAuthenticationSecurityConfig)
+//                .and().
+//                .apply(tihomSocialSecurityConfig)
+//                .and()
+//                .apply(tihomSocialSecurityConfig)
+//                .and()
+//                .apply(openIdAuthenticationSecurityConfig)
+//                .and()
                 .apply(validateCodeSecurityConfig)
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfig)
-                .and().
-                authorizeRequests()
+                .and()
+                .rememberMe()                                   // 记住我相关配置
+                .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
+                .userDetailsService(myUserDetailsService)
+                .and()
+                .authorizeRequests()
                 .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
                         "/",
                         "/*.html",
