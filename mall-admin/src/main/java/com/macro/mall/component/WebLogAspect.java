@@ -39,7 +39,6 @@ import java.util.Map;
 @Order(1)
 public class WebLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
-    private ThreadLocal<Long> startTime = new ThreadLocal<>();
 
     @Pointcut("execution(public * com.macro.mall.controller.*.*(..))")
     public void webLog() {
@@ -47,7 +46,6 @@ public class WebLogAspect {
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
-        startTime.set(System.currentTimeMillis());
     }
 
     @AfterReturning(value = "webLog()", returning = "ret")
@@ -56,6 +54,7 @@ public class WebLogAspect {
 
     @Around("webLog()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
         //获取当前请求对象
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -76,8 +75,8 @@ public class WebLogAspect {
         webLog.setMethod(request.getMethod());
         webLog.setParameter(getParameter(method, joinPoint.getArgs()));
         webLog.setResult(result);
-        webLog.setSpendTime((int) (endTime - startTime.get()));
-        webLog.setStartTime(startTime.get());
+        webLog.setSpendTime((int) (endTime - startTime));
+        webLog.setStartTime(startTime);
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
         Map<String,Object> logMap = new HashMap<>();
