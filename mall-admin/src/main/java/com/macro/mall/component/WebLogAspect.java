@@ -102,6 +102,7 @@ public class WebLogAspect {
             if (requestBody != null) {
                 argList.add(args[i]);
             }
+            //将RequestParam注解修饰的参数作为请求参数
             RequestParam requestParam = parameters[i].getAnnotation(RequestParam.class);
             if (requestParam != null) {
                 Map<String, Object> map = new HashMap<>();
