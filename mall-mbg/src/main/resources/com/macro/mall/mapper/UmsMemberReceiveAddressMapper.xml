@@ -12,6 +12,7 @@
     <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="region" jdbcType="VARCHAR" property="region" />
     <result column="detail_address" jdbcType="VARCHAR" property="detailAddress" />
+    <result column="default_store" jdbcType="VARCHAR" property="defaultStore" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, member_id, name, phone_number, default_status, post_code, province, city, region, 
-    detail_address
+    detail_address, default_store
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.UmsMemberReceiveAddressExample" resultMap="BaseResultMap">
     select
@@ -111,12 +112,12 @@
     </selectKey>
     insert into ums_member_receive_address (member_id, name, phone_number, 
       default_status, post_code, province, 
-      city, region, detail_address
-      )
+      city, region, detail_address, 
+      default_store)
     values (#{memberId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
       #{defaultStatus,jdbcType=INTEGER}, #{postCode,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{detailAddress,jdbcType=VARCHAR}
-      )
+      #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{detailAddress,jdbcType=VARCHAR}, 
+      #{defaultStore,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.UmsMemberReceiveAddress">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -151,6 +152,9 @@
       <if test="detailAddress != null">
         detail_address,
       </if>
+      <if test="defaultStore != null">
+        default_store,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="memberId != null">
@@ -179,6 +183,9 @@
       </if>
       <if test="detailAddress != null">
         #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultStore != null">
+        #{defaultStore,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -221,6 +228,9 @@
       <if test="record.detailAddress != null">
         detail_address = #{record.detailAddress,jdbcType=VARCHAR},
       </if>
+      <if test="record.defaultStore != null">
+        default_store = #{record.defaultStore,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +247,8 @@
       province = #{record.province,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},
       region = #{record.region,jdbcType=VARCHAR},
-      detail_address = #{record.detailAddress,jdbcType=VARCHAR}
+      detail_address = #{record.detailAddress,jdbcType=VARCHAR},
+      default_store = #{record.defaultStore,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,6 +283,9 @@
       <if test="detailAddress != null">
         detail_address = #{detailAddress,jdbcType=VARCHAR},
       </if>
+      <if test="defaultStore != null">
+        default_store = #{defaultStore,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -285,7 +299,8 @@
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       region = #{region,jdbcType=VARCHAR},
-      detail_address = #{detailAddress,jdbcType=VARCHAR}
+      detail_address = #{detailAddress,jdbcType=VARCHAR},
+      default_store = #{defaultStore,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

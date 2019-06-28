@@ -773,6 +773,76 @@ public class UmsMemberReceiveAddressExample {
             addCriterion("detail_address not between", value1, value2, "detailAddress");
             return (Criteria) this;
         }
+
+        public Criteria andDefaultStoreIsNull() {
+            addCriterion("default_store is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreIsNotNull() {
+            addCriterion("default_store is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreEqualTo(String value) {
+            addCriterion("default_store =", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreNotEqualTo(String value) {
+            addCriterion("default_store <>", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreGreaterThan(String value) {
+            addCriterion("default_store >", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreGreaterThanOrEqualTo(String value) {
+            addCriterion("default_store >=", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreLessThan(String value) {
+            addCriterion("default_store <", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreLessThanOrEqualTo(String value) {
+            addCriterion("default_store <=", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreLike(String value) {
+            addCriterion("default_store like", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreNotLike(String value) {
+            addCriterion("default_store not like", value, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreIn(List<String> values) {
+            addCriterion("default_store in", values, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreNotIn(List<String> values) {
+            addCriterion("default_store not in", values, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreBetween(String value1, String value2) {
+            addCriterion("default_store between", value1, value2, "defaultStore");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultStoreNotBetween(String value1, String value2) {
+            addCriterion("default_store not between", value1, value2, "defaultStore");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

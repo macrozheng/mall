@@ -123,7 +123,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 UmsMember member = memberService.getByUsername(username);
-                System.out.printf("userDetailsServicefffffffff ="+member+" \n");
                 if(member!=null){
                     return new MemberDetails(member);
                 }

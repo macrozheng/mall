@@ -31,6 +31,8 @@ public class UmsMemberReceiveAddress implements Serializable {
     @ApiModelProperty(value = "详细地址(街道)")
     private String detailAddress;
 
+    private String defaultStore;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -113,6 +115,14 @@ public class UmsMemberReceiveAddress implements Serializable {
         this.detailAddress = detailAddress;
     }
 
+    public String getDefaultStore() {
+        return defaultStore;
+    }
+
+    public void setDefaultStore(String defaultStore) {
+        this.defaultStore = defaultStore;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -129,6 +139,7 @@ public class UmsMemberReceiveAddress implements Serializable {
         sb.append(", city=").append(city);
         sb.append(", region=").append(region);
         sb.append(", detailAddress=").append(detailAddress);
+        sb.append(", defaultStore=").append(defaultStore);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
