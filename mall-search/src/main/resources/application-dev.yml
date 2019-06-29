@@ -16,4 +16,12 @@ spring:
     elasticsearch:
       repositories:
         enabled: true
-      cluster-nodes: 127.0.0.1:9300
+      cluster-nodes: localhost:9300
+      cluster-name: docker-cluster
+  application: 
+    name: mall-search
+
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8000/eureka/
