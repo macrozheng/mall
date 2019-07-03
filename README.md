@@ -170,7 +170,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译[传送门](https://github.com/macrozheng/mall-admin-web);
 - 在IDEA命令行中运行命令：npm install,下载相关依赖;
 - 在IDEA命令行中运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面;
-- ELK日志收集系统的搭建：参考[elk.md](document/elk/elk.md)。
+- ELK日志收集系统的搭建：参考[SpringBoot应用整合ELK实现日志收集](https://mp.weixin.qq.com/s/ll_A6ddBaU99LSYmKdttYw)；
 
 > Docker环境部署
 
