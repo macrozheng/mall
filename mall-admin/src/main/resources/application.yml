@@ -1,11 +1,14 @@
+server:
+  port: 8088
+
 spring:
   profiles:
     active: dev #默认为开发环境
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/mapper/*.xml
+    -classpath: dao/*.xml
+    -classpath*: com/**/mapper/*.xml
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

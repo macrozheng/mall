@@ -4,8 +4,8 @@ spring:
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/mapper/*.xml
+    -classpath: dao/*.xml
+    -classpath*: com/**/mapper/*.xml
 
 http:
   port: 8085 # http服务端口
