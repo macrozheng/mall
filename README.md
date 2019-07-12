@@ -3,6 +3,7 @@
 <p>
   <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-macrozheng-blue.svg" alt="公众号"></a>
   <a href="https://github.com/macrozheng/mall-learning"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B-mall--learning-green.svg" alt="学习教程"></a>
+  <a href="https://github.com/macrozheng/mall-admin-web"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-mall--admin--web-green.svg" alt="前端项目"></a>
   <a href="http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/QQ%E7%BE%A4-959351312-red.svg" alt="QQ群"></a>
   <a href="http://qm.qq.com/cgi-bin/qm/qr?k=M5Edq2TiJL_ShcOEeYjwcmdGmq4zZrd_"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/QQ%E7%BE%A4-553018255-red.svg" alt="QQ群"></a>
   <a href="https://gitee.com/macrozheng/mall"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg" alt="码云"></a>
@@ -156,7 +157,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 
 > Windows环境部署
 
-- Windows环境搭建请参考：[mall在Windows环境下的部署](https://mp.weixin.qq.com/s/Q9ybpfq8IEdbZmvlaMXJdg);
+- Windows环境搭建请参考：[mall在Windows环境下的部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_windows.md);
 - 安装Windows环境下的所有工具并启动(只启动mall-admin,仅需安装mysql);
 - 克隆源代码到本地，使用IDEA或Eclipse打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
@@ -169,14 +170,15 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译[传送门](https://github.com/macrozheng/mall-admin-web);
 - 在IDEA命令行中运行命令：npm install,下载相关依赖;
 - 在IDEA命令行中运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面;
-- ELK日志收集系统的搭建：参考[elk.md](document/elk/elk.md)。
+- ELK日志收集系统的搭建：参考[SpringBoot应用整合ELK实现日志收集](https://mp.weixin.qq.com/s/ll_A6ddBaU99LSYmKdttYw)；
 
 > Docker环境部署
 
 - 在VirtualBox或其他环境中安装CenterOs7.6;
-- Docker环境的安装请参考:[开发者必备Docker命令](https://mp.weixin.qq.com/s/d_CuljDTJq680NTndAay8g)；
-- 本项目Docker镜像构建请参考:[使用Maven插件构建Docker镜像](https://mp.weixin.qq.com/s/q2KDzHbPkf3Q0EY8qYjYgw)；
-- 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://mp.weixin.qq.com/s/0fVMK107i5bBq8kGQqg8KA)。
+- Docker环境的安装请参考:[开发者必备Docker命令](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker.md)；
+- 本项目Docker镜像构建请参考:[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md)；
+- 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md)；
+- 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker_compose.md)。
 
 ## 项目相关文档
 
