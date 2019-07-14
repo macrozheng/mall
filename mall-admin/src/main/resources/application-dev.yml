@@ -12,3 +12,16 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
+        
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true #如果对异步消息需要回调必须设置为truee
+        
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8000/eureka/
+      

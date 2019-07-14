@@ -35,4 +35,16 @@ public enum QueueEnum {
         this.name = name;
         this.routeKey = routeKey;
     }
+
+	public String getExchange() {
+		return this.exchange;
+	}
+
+	public String getRouteKey() {
+		return this.routeKey;
+	}
+
+	public String getName() {
+		return this.name;
+	}
 }

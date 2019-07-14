@@ -25,6 +25,10 @@ public interface EsProductService {
      * 根据id创建商品
      */
     EsProduct create(Long id);
+    /**
+     * 通过mq创建商品
+     */
+    EsProduct create(EsProduct product);
 
     /**
      * 批量删除商品

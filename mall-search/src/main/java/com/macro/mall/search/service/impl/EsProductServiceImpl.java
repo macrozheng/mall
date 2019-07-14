@@ -83,6 +83,11 @@ public class EsProductServiceImpl implements EsProductService {
         return result;
     }
 
+	@Override
+	public EsProduct create(EsProduct poduct) {
+		this.productRepository.save(poduct);
+		return poduct;
+	}
     @Override
     public void delete(List<Long> ids) {
         if (!CollectionUtils.isEmpty(ids)) {

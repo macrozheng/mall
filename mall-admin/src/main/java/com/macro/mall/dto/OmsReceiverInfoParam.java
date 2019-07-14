@@ -17,6 +17,60 @@ public class OmsReceiverInfoParam {
     private String receiverDetailAddress;
     private String receiverProvince;
     private String receiverCity;
-    private String receiverRegion;
+    public String getReceiverName() {
+		return receiverName;
+	}
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+	public String getReceiverPhone() {
+		return receiverPhone;
+	}
+	public void setReceiverPhone(String receiverPhone) {
+		this.receiverPhone = receiverPhone;
+	}
+	public String getReceiverPostCode() {
+		return receiverPostCode;
+	}
+	public void setReceiverPostCode(String receiverPostCode) {
+		this.receiverPostCode = receiverPostCode;
+	}
+	public String getReceiverDetailAddress() {
+		return receiverDetailAddress;
+	}
+	public void setReceiverDetailAddress(String receiverDetailAddress) {
+		this.receiverDetailAddress = receiverDetailAddress;
+	}
+	public String getReceiverProvince() {
+		return receiverProvince;
+	}
+	public void setReceiverProvince(String receiverProvince) {
+		this.receiverProvince = receiverProvince;
+	}
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+	public void setReceiverRegion(String receiverRegion) {
+		this.receiverRegion = receiverRegion;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	private String receiverRegion;
     private Integer status;
+	public Long getOrderId() {
+		return this.orderId;
+	}
+	public Integer getStatus() {
+		return this.status;
+	}
+	public String getReceiverRegion() {
+		return this.receiverRegion;
+	}
 }
