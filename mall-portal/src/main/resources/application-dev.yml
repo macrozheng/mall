@@ -8,7 +8,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3307/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
     druid:
@@ -47,6 +47,8 @@ spring:
     username: admin
     password: admin
     publisher-confirms: true #如果对异步消息需要回调必须设置为true
+    queue:
+      es-product: com.macro.mall.service.PmsProductService
 
 # 日志配置
 logging:
@@ -54,4 +56,4 @@ logging:
     org.springframework.data.mongodb.core: debug
     com.macro.mall.mapper: debug
     com.macro.mall.portal.dao: debug
-
+    

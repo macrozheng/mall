@@ -20,7 +20,7 @@ public class EsProductMsgListener {
 	@Autowired
 	public EsProductService esProductService;
 	
-	@RabbitListener(queues = "${queue.es-product}")
+	@RabbitListener(queues = "${spring.rabbitmq.queue.es-product}")
     public void handle(Message message){
 		String smsg=new String(message.getBody());
 		System.out.printf("%s", smsg);
