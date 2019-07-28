@@ -64,7 +64,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         BeanUtils.copyProperties(item,cartPromotionItem);
                         String message = getLadderPromotionMessage(ladder);
                         cartPromotionItem.setPromotionMessage(message);
-                        //商品原价-折扣金额*商品原价
+                        //商品原价-折扣*商品原价
                         PmsSkuStock skuStock = getOriginalPrice(promotionProduct,item.getProductSkuId());
                         BigDecimal originalPrice = skuStock.getPrice();
                         BigDecimal reduceAmount = originalPrice.subtract(ladder.getDiscount().multiply(originalPrice));

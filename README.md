@@ -139,7 +139,8 @@ Axure | 原型设计工具 | https://www.axure.com/
 MindMaster | 思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
 ScreenToGif | gif录制工具 | https://www.screentogif.com/
 ProcessOn | 流程图绘制工具 | https://www.processon.com/
-PicPick | 屏幕取色工具 | https://picpick.app/zh/
+PicPick | 图片处理工具 | https://picpick.app/zh/
+Snipaste | 屏幕截图工具 | https://www.snipaste.com/
 
 ### 开发环境
 
@@ -158,25 +159,16 @@ nginx | 1.10 | http://nginx.org/en/download.html
 > Windows环境部署
 
 - Windows环境搭建请参考：[mall在Windows环境下的部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_windows.md);
-- 安装Windows环境下的所有工具并启动(只启动mall-admin,仅需安装mysql);
-- 克隆源代码到本地，使用IDEA或Eclipse打开，并完成编译;
-- 在mysql中新建mall数据库，导入document/sql下的mall.sql文件；
-- 启动mall-admin项目：直接运行com.macro.mall.MallAdminApplication的main方法即可，
-  接口文档地址：http://localhost:8080/swagger-ui.html;
-- 启动mall-search项目：直接运行com.macro.mall.search.MallSearchApplication的main方法即可，
-  接口文档地址：http://localhost:8081/swagger-ui.html;
-- 启动mall-portal项目：直接运行com.macro.mall.portal.MallPortalApplication的main方法即可，
-  接口文档地址：http://localhost:8085/swagger-ui.html;
+- 注意：只启动mall-admin,仅需安装mysql即可;
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译[传送门](https://github.com/macrozheng/mall-admin-web);
-- 在IDEA命令行中运行命令：npm install,下载相关依赖;
-- 在IDEA命令行中运行命令：npm run dev,访问地址：[http://localhost:8090](http://localhost:8090) 即可打开后台管理系统页面;
-- ELK日志收集系统的搭建：参考[SpringBoot应用整合ELK实现日志收集](https://mp.weixin.qq.com/s/ll_A6ddBaU99LSYmKdttYw)；
+- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_web.md)
+- ELK日志收集系统的搭建请参考：[SpringBoot应用整合ELK实现日志收集](https://github.com/macrozheng/mall-learning/blob/master/docs/technology/mall_tiny_elk.md)。
 
 > Docker环境部署
 
 - 在VirtualBox或其他环境中安装CenterOs7.6;
-- Docker环境的安装请参考:[开发者必备Docker命令](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker.md)；
-- 本项目Docker镜像构建请参考:[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md)；
+- Docker环境的安装请参考：[开发者必备Docker命令](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker.md)；
+- 本项目Docker镜像构建请参考：[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md)；
 - 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md)；
 - 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker_compose.md)。
 
