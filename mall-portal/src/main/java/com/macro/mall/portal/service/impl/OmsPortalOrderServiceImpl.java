@@ -386,7 +386,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
     private void handleRealAmount(List<OmsOrderItem> orderItemList) {
         for (OmsOrderItem orderItem : orderItemList) {
-            //原价-促销价格-优惠券抵扣-积分抵扣
+            //原价-促销优惠-优惠券抵扣-积分抵扣
             BigDecimal realAmount = orderItem.getProductPrice()
                     .subtract(orderItem.getPromotionAmount())
                     .subtract(orderItem.getCouponAmount())

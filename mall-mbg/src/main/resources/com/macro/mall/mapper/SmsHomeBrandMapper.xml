@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.SmsHomeBrandExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.SmsHomeBrandExample" resultType="java.lang.Long">
     select count(*) from sms_home_brand
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
