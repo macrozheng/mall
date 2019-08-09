@@ -1,11 +1,11 @@
 package com.macro.mall.portal.service.impl;
 
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.mapper.SmsCouponHistoryMapper;
 import com.macro.mall.mapper.SmsCouponMapper;
 import com.macro.mall.model.*;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
-import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.SmsCouponHistoryDetail;
 import com.macro.mall.portal.service.UmsMemberCouponService;
 import com.macro.mall.portal.service.UmsMemberService;
@@ -35,21 +35,21 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         //获取优惠券信息，判断数量
         SmsCoupon coupon = couponMapper.selectByPrimaryKey(couponId);
         if(coupon==null){
-            return new CommonResult().failed("优惠券不存在");
+            return CommonResult.failed("优惠券不存在");
         }
         if(coupon.getCount()<=0){
-            return new CommonResult().failed("优惠券已经领完了");
+            return CommonResult.failed("优惠券已经领完了");
         }
         Date now = new Date();
         if(now.before(coupon.getEnableTime())){
-            return new CommonResult().failed("优惠券还没到领取时间");
+            return CommonResult.failed("优惠券还没到领取时间");
         }
         //判断用户领取的优惠券数量是否超过限制
         SmsCouponHistoryExample couponHistoryExample = new SmsCouponHistoryExample();
         couponHistoryExample.createCriteria().andCouponIdEqualTo(couponId).andMemberIdEqualTo(currentMember.getId());
-        int count = couponHistoryMapper.countByExample(couponHistoryExample);
+        long count = couponHistoryMapper.countByExample(couponHistoryExample);
         if(count>=coupon.getPerLimit()){
-            return new CommonResult().failed("您已经领取过该优惠券");
+            return CommonResult.failed("您已经领取过该优惠券");
         }
         //生成领取优惠券历史
         SmsCouponHistory couponHistory = new SmsCouponHistory();
@@ -67,7 +67,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         coupon.setCount(coupon.getCount()-1);
         coupon.setReceiveCount(coupon.getReceiveCount()==null?1:coupon.getReceiveCount()+1);
         couponMapper.updateByPrimaryKey(coupon);
-        return new CommonResult().success("领取成功",null);
+        return CommonResult.success(null,"领取成功");
     }
 
     /**

@@ -14,7 +14,7 @@ https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce
 4. 启动docker:
 systemctl start docker
-注：常见命令见macro/spring-cloud-demo中的docker.md
+注：常见命令见document/reference文件夹中的docker.md
 5. 安装上传下载插件：
 yum -y install lrzsz
 ### docker compose安装
@@ -25,7 +25,7 @@ yum -y install lrzsz
 
 ## mysql安装
 ### 下载镜像文件
-docker pull mysql:5.7
+docker pull mysql:5.7 
 ### 创建实例并启动
 docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/log:/var/log/mysql \
@@ -85,27 +85,24 @@ rabbitmq:management
 
 ## elasticsearch安装
 ### 下载镜像文件
-docker pull elasticsearch:2.4
+docker pull elasticsearch:6.4.0
 ### 创建实例并运行
 docker run -p 9200:9200 -p 9300:9300 --name elasticsearch \
 -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
 -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data \
--d elasticsearch:2.4
+-d elasticsearch:6.4.0
 ### 测试
 访问会返回版本信息：http://192.168.1.66:9200/
 ### 安装目录位置
 /usr/share/elasticsearch
-### 安装head插件
+### 安装head插件(可以不安装，仅用于测试)
 1. 进入docker内部bash:docker exec -it elasticsearch /bin/bash
-2. 安装插件：plugin install mobz/elasticsearch-head
+2. 安装插件，具体参考：https://github.com/mobz/elasticsearch-head
 3. 测试：http://192.168.1.66:9200/_plugin/head/
 ### 安装中文分词器IKAnalyzer
-1. 下载中文分词器：https://github.com/medcl/elasticsearch-analysis-ik/releases?after=v5.6.4 的zip包，并解压后重新压缩为.tar.gz文件
-2. 上传后拷贝到容器中：docker container cp elasticsearch-analysis-ik-1.10.6.tar.gz elasticsearch:/usr/share/elasticsearch/plugins
-3. 进入容器压缩文件所在目录：docker exec -it elasticsearch /bin/bash
-4. 进行解压操作：tar -xvf elasticsearch-analysis-ik-1.10.6.tar.gz
-5. 重新启动容器：docker restart elasticsearch
-6. 测试：
+1. 进入docker内部bash:docker exec -it elasticsearch /bin/bash
+2. 安装中文分词插件，执行以下命令：elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.2/elasticsearch-analysis-ik-6.2.2.zip
+3. 测试：
     - 访问header插件：打开地址http://192.168.1.66:9200/_plugin/head/ 
     - 选择复合查询，输入地址：POST:http://192.168.1.66:9200/_analyze 
     - 输入参数：JSON:{"analyzer":"ik","text":"我们是大数据开发人员"}
@@ -126,7 +123,7 @@ docker run -p 8080:8080 --name mall-admin \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/admin/logs:/var/logs \
--d mall/mall-admin:0.0.1-SNAPSHOT
+-d mall/mall-admin:1.0-SNAPSHOT
 ### 部署mall-search
 docker run -p 8081:8081 --name mall-search \
 --link elasticsearch:es \
@@ -134,7 +131,7 @@ docker run -p 8081:8081 --name mall-search \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/search/logs:/var/logs \
--d mall/mall-search:0.0.1-SNAPSHOT
+-d mall/mall-search:1.0-SNAPSHOT
 ### 部署mall-port
 docker run -p 8085:8085 --name mall-portal \
 --link mysql:db \
@@ -143,7 +140,7 @@ docker run -p 8085:8085 --name mall-portal \
 -v /etc/timezone:/etc/timezone \
 -v /etc/localtime:/etc/localtime \
 -v /mydata/app/portal/logs:/var/logs \
--d mall/mall-portal:0.0.1-SNAPSHOT
+-d mall/mall-portal:1.0-SNAPSHOT
 
 ## SpringBoot应用自动化部署
 ### 部署文件

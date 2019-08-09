@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsRoleService;
@@ -26,62 +26,62 @@ public class UmsRoleController {
     @ApiOperation("添加角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@RequestBody UmsRole role) {
+    public CommonResult create(@RequestBody UmsRole role) {
         int count = roleService.create(role);
-        if(count>0){
-            return new CommonResult().success(count);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("修改角色")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public Object update(@PathVariable Long id, @RequestBody UmsRole role) {
-        int count = roleService.update(id,role);
-        if(count>0){
-            return new CommonResult().success(count);
+    public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
+        int count = roleService.update(id, role);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("批量删除角色")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public Object delete(@RequestParam("ids") List<Long> ids) {
+    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
         int count = roleService.delete(ids);
-        if(count>0){
-            return new CommonResult().success(count);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("获取相应角色权限")
     @RequestMapping(value = "/permission/{roleId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getPermissionList(@PathVariable Long roleId) {
-        List<UmsPermission> permissionList =roleService.getPermissionList(roleId);
-        return new CommonResult().success(permissionList);
+    public CommonResult<List<UmsPermission>> getPermissionList(@PathVariable Long roleId) {
+        List<UmsPermission> permissionList = roleService.getPermissionList(roleId);
+        return CommonResult.success(permissionList);
     }
 
     @ApiOperation("修改角色权限")
     @RequestMapping(value = "/permission/update", method = RequestMethod.POST)
     @ResponseBody
-    public Object updatePermission(@RequestParam Long roleId,
-                                   @RequestParam("permissionIds") List<Long> permissionIds) {
-        int count = roleService.updatePermission(roleId,permissionIds);
-        if(count>0){
-            return new CommonResult().success(count);
+    public CommonResult updatePermission(@RequestParam Long roleId,
+                                         @RequestParam("permissionIds") List<Long> permissionIds) {
+        int count = roleService.updatePermission(roleId, permissionIds);
+        if (count > 0) {
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation("获取所有角色")
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public Object list(){
+    public Object list() {
         List<UmsRole> roleList = roleService.list();
-        return new CommonResult().success(roleList);
+        return CommonResult.success(roleList);
     }
 
 }

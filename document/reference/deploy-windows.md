@@ -12,7 +12,7 @@
     ![eclipse_import_2.png](https://github.com/macrozheng/mall/blob/master/document/resource/eclipse_import_2.png)
 - 安装lombok插件，下载地址：https://projectlombok.org/downloads/lombok.jar  
 - 下载完后双击，使用java程序打开
-- 按照提示选择eclipe.exe的安装路径安装插件，完成后重启Eclipse
+- 按照提示选择eclipse.exe的安装路径安装插件，完成后重启Eclipse
 - 启动项目：右击com.macro.mall.MallAdminApplication的main方法，选择run as Java Application
 
 ## mysql
@@ -25,17 +25,20 @@
 
 - 下载地址：https://github.com/MicrosoftArchive/redis/releases
 - 下载后按提示进行安装
+- 启动redis:redis-server.exe redis.windows.conf
 
 ## elasticsearch
 
-- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-6
+- 下载地址：https://www.elastic.co/downloads/past-releases/elasticsearch-6-2-2
 - 下载.zip文件，解压到指定目录
-- 安装head插件，在elasticsearch-2.4.6\bin目录下执行以下命令：plugin install mobz/elasticsearch-head
-- 安装中文分词插件：https://github.com/medcl/elasticsearch-analysis-ik
-- 下载地址：https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v1.10.6/elasticsearch-analysis-ik-1.10.6.zip
-- 解压并拷贝到elasticsearch-2.4.6\plugins目录下
-- 启动elasticsearch:运行elasticsearch-2.4.6\bin\elasticsearch.bat
-- 打开该地址测试是否安装成功：http://localhost:9200/_plugin/head/
+- 安装kibana，用于在浏览器中访问es,请下载6.2.2版本，具体参考：https://www.elastic.co/downloads/kibana
+- 下载.zip包后解压即可，运行bin\kibana.bat，访问http://localhost:5601 查看是否安装成功
+- 中文分词插件地址：https://github.com/medcl/elasticsearch-analysis-ik
+- 安装中文分词插件，在elasticsearch-6.2.2\bin目录下执行以下命令：
+elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.2/elasticsearch-analysis-ik-6.2.2.zip
+- 启动elasticsearch:运行elasticsearch-6.2.2\bin\elasticsearch.bat
+- 不使用kibana的可以安装head插件，具体参考：https://github.com/mobz/elasticsearch-head
+- 注意：如果你修改了mall-search中的es的cluster-name: mall-es，你需要在elasticsearch-6.2.2\config\elasticsearch.yml文件中修改cluster.name: mall-es
 
 ## mongodb
 
@@ -60,11 +63,10 @@
 
 ## rabbitmq
 
-- 安装Erlang：http://www.erlang.org/download/otp_win64_17.3.exe
-- 下载rabbitmq:http://www.rabbitmq.com/releases/rabbitmq-server/v3.4.1/rabbitmq-server-3.4.1.exe
-- 按照提示进行安装，安装完成后左下角搜索rabbitmq，点击如下命令进行安装  
-    ![rabbitmq_install_1.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_1.png)
-- 输入命令启用管理工具：rabbitmq-plugins enable rabbitmq_management
+- 安装Erlang：http://erlang.org/download/otp_win64_21.3.exe
+- 下载rabbitmq：https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe
+- 按照提示进行安装，安装完成后进入rabbitmq的安装目录:D:\RabbitMQ Server\rabbitmq_server-3.7.14\sbin
+- 在地址栏输入cmd并回车启动命令行输入以下命令：rabbitmq-plugins enable rabbitmq_management
 - 访问地址查看是否安装成功：http://127.0.0.1:15672/
 - 输入账号密码登录：guest guest
 - 创建用户并设置其角色为管理员：mall mall
@@ -73,6 +75,10 @@
     ![rabbitmq_install_3.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_3.png)
 - 给mall用户配置范围该virtual host的权限
     ![rabbitmq_install_4.png](https://github.com/macrozheng/mall/blob/master/document/resource/rabbitmq_install_4.png)
+- rabbitmq安装延迟消息插件（可不装）：
+    - 下载延迟消息插件（rabbitmq_delayed_message_exchange）：https://www.rabbitmq.com/community-plugins.html
+    - 复制插件到插件目录：D:\RabbitMQ Server\rabbitmq_server-3.7.14\plugins
+    - 在sbin目录下运行如下命令启用插件：rabbitmq-plugins enable rabbitmq_delayed_message_exchange
     
 ## OSS
 
