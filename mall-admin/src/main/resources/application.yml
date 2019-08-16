@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 
 spring:
   profiles:
@@ -7,8 +7,8 @@ spring:
 
 mybatis:
   mapper-locations:
-    -classpath: dao/*.xml
-    -classpath*: com/**/mapper/*.xml
+    - classpath:dao/*.xml
+    - classpath:com/**/mapper/*.xml
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
@@ -21,7 +21,7 @@ aliyun:
     endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
     accessKeyId: test # 访问身份验证中用到用户标识
     accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: macro-oss # oss的存储空间
+    bucketName: mircle-0008 # oss的存储空间
     policy:
       expire: 300 # 签名有效期(S)
     maxSize: 10 # 上传文件大小(M)

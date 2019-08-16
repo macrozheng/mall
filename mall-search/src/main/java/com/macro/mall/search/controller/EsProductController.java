@@ -27,7 +27,7 @@ public class EsProductController {
     private EsProductService esProductService;
 
     @ApiOperation(value = "导入所有数据库中商品到ES")
-    @RequestMapping(value = "/importAll", method = RequestMethod.POST)
+    @RequestMapping(value = "/importAll", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public CommonResult<Integer> importAllList() {
         int count = esProductService.importAll();

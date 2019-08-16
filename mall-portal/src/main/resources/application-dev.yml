@@ -1,5 +1,5 @@
 server:
-  port: 8843 #开发环境会开启https
+  port: 8553 #开发环境会开启https
   ssl:
     key-store: keystore.p12
     key-alias: tomcat
