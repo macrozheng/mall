@@ -13,6 +13,11 @@
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
 
+## 项目文档
+
+- 文档地址：[https://macrozheng.github.io/mall-learning](https://macrozheng.github.io/mall-learning)
+- 备用地址：[https://macrozheng.gitee.io/mall-learning](https://macrozheng.gitee.io/mall-learning)
+
 ## 特别赞助商
 
 <p align="left">
@@ -161,7 +166,7 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - Windows环境搭建请参考：[mall在Windows环境下的部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_windows.md);
 - 注意：只启动mall-admin,仅需安装mysql即可;
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译[传送门](https://github.com/macrozheng/mall-admin-web);
-- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_web.md)
+- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_web.md);
 - ELK日志收集系统的搭建请参考：[SpringBoot应用整合ELK实现日志收集](https://github.com/macrozheng/mall-learning/blob/master/docs/technology/mall_tiny_elk.md)。
 
 > Docker环境部署
@@ -171,10 +176,6 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 本项目Docker镜像构建请参考：[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md)；
 - 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md)；
 - 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker_compose.md)。
-
-## 项目相关文档
-
-具体详见`mall-learning`:[https://github.com/macrozheng/mall-learning](https://github.com/macrozheng/mall-learning)
 
 ## 参考资料
 
