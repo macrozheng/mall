@@ -13,6 +13,11 @@
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
 
+## 项目文档
+
+- 文档地址：[https://macrozheng.github.io/mall-learning](https://macrozheng.github.io/mall-learning)
+- 备用地址：[https://macrozheng.gitee.io/mall-learning](https://macrozheng.gitee.io/mall-learning)
+
 ## 特别赞助商
 
 <p align="left">
@@ -171,10 +176,6 @@ nginx | 1.10 | http://nginx.org/en/download.html
 - 本项目Docker镜像构建请参考：[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md)；
 - 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md)；
 - 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker_compose.md)。
-
-## 项目相关文档
-
-具体详见`mall-learning`:[https://github.com/macrozheng/mall-learning](https://github.com/macrozheng/mall-learning)
 
 ## 参考资料
 
