@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsHomeRecommendSubjectMapper {
-    int countByExample(SmsHomeRecommendSubjectExample example);
+    long countByExample(SmsHomeRecommendSubjectExample example);
 
     int deleteByExample(SmsHomeRecommendSubjectExample example);
 

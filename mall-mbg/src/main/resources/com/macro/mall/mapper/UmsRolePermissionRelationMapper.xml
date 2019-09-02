@@ -126,7 +126,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.UmsRolePermissionRelationExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsRolePermissionRelationExample" resultType="java.lang.Long">
     select count(*) from ums_role_permission_relation
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

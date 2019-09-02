@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderSettingMapper {
-    int countByExample(OmsOrderSettingExample example);
+    long countByExample(OmsOrderSettingExample example);
 
     int deleteByExample(OmsOrderSettingExample example);
 

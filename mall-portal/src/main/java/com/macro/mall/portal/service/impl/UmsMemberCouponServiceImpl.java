@@ -47,7 +47,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         //判断用户领取的优惠券数量是否超过限制
         SmsCouponHistoryExample couponHistoryExample = new SmsCouponHistoryExample();
         couponHistoryExample.createCriteria().andCouponIdEqualTo(couponId).andMemberIdEqualTo(currentMember.getId());
-        int count = couponHistoryMapper.countByExample(couponHistoryExample);
+        long count = couponHistoryMapper.countByExample(couponHistoryExample);
         if(count>=coupon.getPerLimit()){
             return CommonResult.failed("您已经领取过该优惠券");
         }

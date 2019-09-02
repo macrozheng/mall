@@ -14,7 +14,7 @@ https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce
 4. 启动docker:
 systemctl start docker
-注：常见命令见macro/spring-cloud-demo中的docker.md
+注：常见命令见document/reference文件夹中的docker.md
 5. 安装上传下载插件：
 yum -y install lrzsz
 ### docker compose安装
@@ -25,7 +25,7 @@ yum -y install lrzsz
 
 ## mysql安装
 ### 下载镜像文件
-docker pull mysql:5.7
+docker pull mysql:5.7 
 ### 创建实例并启动
 docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/log:/var/log/mysql \
