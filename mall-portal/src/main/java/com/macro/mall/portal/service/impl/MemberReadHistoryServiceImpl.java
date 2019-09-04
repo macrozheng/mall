@@ -34,7 +34,7 @@ public class MemberReadHistoryServiceImpl implements MemberReadHistoryService {
             memberReadHistory.setId(id);
             deleteList.add(memberReadHistory);
         }
-        memberReadHistoryRepository.delete(deleteList);
+        memberReadHistoryRepository.deleteAll(deleteList);
         return ids.size();
     }
 

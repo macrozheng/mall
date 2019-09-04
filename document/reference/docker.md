@@ -1,4 +1,4 @@
-# Docker笔记
+# Docker入门手册
 
 ## Docker 镜像常用命令
 ### 搜索镜像
@@ -30,6 +30,17 @@ docker start $ContainerId
 ### 删除容器
 - docker rm $ContainerId
 - docker rm -f $(docker ps -a -q)
+### 查看启动错误日志
+docker logs $ContainerIdName(或者$ContainerId)
+### 查看容器的IP地址（172.17.0.*）
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ContainerId
+### 同步宿主机时间到容器
+docker cp /etc/localtime $ContainerName:/etc/
+### 在宿主机查看docker使用cpu、内存、网络、io情况
+- 查看指定容器情况：docker stats $ContainerName
+- 查看所有容器情况：docker stats -a
+### 进入docker内部的bash
+docker exec -it $ContainerName /bin/bash
 
 ## Docker Registry
 ### Docker Registry 2.0搭建
@@ -50,7 +61,7 @@ docker tag macro/eureka-server:0.0.1 localhost:5000/macro/eureka-server:0.0.1
 - tip：
     pom.xml修改<imageName>192.168.1.71:5000/macro/${project.artifactId}:${project.version}</imageName>
 - tip：
-    docker要支持http:echo '{ "insecure-registries":["192.168.1.71:5000"] }' > /etc/docker/daemon.json 
+    docker要支持http:echo '{ "insecure-registries":["39.98.190.128:5000"] }' > /etc/docker/daemon.json 
 ### 修改Docker镜像存放位置
 1. 查看Docker的存放位置：docker info | grep "Docker Root Dir"（默认为/var/lib/docker）
 2. 关闭Docker服务：systemctl stop docker

@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductAttributeCategoryMapper {
-    int countByExample(PmsProductAttributeCategoryExample example);
+    long countByExample(PmsProductAttributeCategoryExample example);
 
     int deleteByExample(PmsProductAttributeCategoryExample example);
 

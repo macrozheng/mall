@@ -156,7 +156,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.CmsMemberReportExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.CmsMemberReportExample" resultType="java.lang.Long">
     select count(*) from cms_member_report
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

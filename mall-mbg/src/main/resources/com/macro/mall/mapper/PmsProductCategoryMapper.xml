@@ -219,7 +219,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.PmsProductCategoryExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.PmsProductCategoryExample" resultType="java.lang.Long">
     select count(*) from pms_product_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

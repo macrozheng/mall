@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.UmsMemberLevel;
 import com.macro.mall.service.UmsMemberLevelService;
 import io.swagger.annotations.Api;
@@ -19,16 +19,17 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 @Controller
-@Api(tags = "UmsMemberLevelController",description = "会员等级管理")
+@Api(tags = "UmsMemberLevelController", description = "会员等级管理")
 @RequestMapping("/memberLevel")
 public class UmsMemberLevelController {
     @Autowired
     private UmsMemberLevelService memberLevelService;
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ApiOperation("查询所有会员等级")
     @ResponseBody
-    public Object list(@RequestParam("defaultStatus") Integer defaultStatus){
+    public CommonResult<List<UmsMemberLevel>> list(@RequestParam("defaultStatus") Integer defaultStatus) {
         List<UmsMemberLevel> memberLevelList = memberLevelService.list(defaultStatus);
-        return new CommonResult().success(memberLevelList);
+        return CommonResult.success(memberLevelList);
     }
 }

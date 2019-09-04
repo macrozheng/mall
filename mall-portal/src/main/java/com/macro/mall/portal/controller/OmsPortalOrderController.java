@@ -1,6 +1,6 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import com.macro.mall.portal.service.OmsPortalOrderService;
@@ -23,9 +23,9 @@ public class OmsPortalOrderController {
     @ApiOperation("根据购物车信息生成确认单信息")
     @RequestMapping(value = "/generateConfirmOrder",method = RequestMethod.POST)
     @ResponseBody
-    public Object generateConfirmOrder(){
+    public CommonResult<ConfirmOrderResult> generateConfirmOrder(){
         ConfirmOrderResult confirmOrderResult = portalOrderService.generateConfirmOrder();
-        return new CommonResult().success(confirmOrderResult);
+        return CommonResult.success(confirmOrderResult);
     }
 
     @ApiOperation("根据购物车信息生成订单")
@@ -51,8 +51,8 @@ public class OmsPortalOrderController {
     @ApiOperation("取消单个超时订单")
     @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
     @ResponseBody
-    public Object cancelOrder(Long orderId){
+    public CommonResult cancelOrder(Long orderId){
         portalOrderService.sendDelayMessageCancelOrder(orderId);
-        return new CommonResult().success(null);
+        return CommonResult.success(null);
     }
 }
