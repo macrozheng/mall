@@ -43,4 +43,9 @@ public interface OmsPortalOrderService {
      * 发送延迟消息取消订单
      */
     void sendDelayMessageCancelOrder(Long orderId);
+
+    /**
+     * 优惠券信息更改为指定状态
+     */
+    void updateCouponStatus(Long couponId, Long memberId, Integer useStatus);
 }

@@ -4,6 +4,8 @@ import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
 import com.macro.mall.portal.component.CancelOrderSender;
+import com.macro.mall.portal.component.OrderDelayedTask;
+import com.macro.mall.portal.component.OrderQueueManager;
 import com.macro.mall.portal.dao.PortalOrderDao;
 import com.macro.mall.portal.dao.PortalOrderItemDao;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
@@ -18,6 +20,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 前台订单管理Service
@@ -205,6 +208,10 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         // TODO: 2018/9/3 bill_*,delivery_*
         //插入order表和order_item表
         orderMapper.insert(order);
+        //放入延时队列
+        OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
+        OrderDelayedTask delayedTask = new OrderDelayedTask(order, TimeUnit.MINUTES.toMillis(orderSetting.getNormalOrderOvertime()));
+        OrderQueueManager.getInstance().setQueue(delayedTask);
         for (OmsOrderItem orderItem : orderItemList) {
             orderItem.setOrderId(order.getId());
             orderItem.setOrderSn(order.getOrderSn());
@@ -238,6 +245,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         //恢复所有下单商品的锁定库存，扣减真实库存
         OmsOrderDetail orderDetail = portalOrderDao.getDetail(orderId);
         int count = portalOrderDao.updateSkuStock(orderDetail.getOrderItemList());
+        OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
+        OrderQueueManager.getInstance().removeQueue(new OrderDelayedTask(order, TimeUnit.MINUTES.toMillis(orderSetting.getNormalOrderOvertime())));
         return CommonResult.success(count,"支付成功");
     }
 
@@ -369,7 +378,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      * @param memberId  会员id
      * @param useStatus 0->未使用；1->已使用
      */
-    private void updateCouponStatus(Long couponId, Long memberId, Integer useStatus) {
+    @Override
+    public void updateCouponStatus(Long couponId, Long memberId, Integer useStatus) {
         if (couponId == null) return;
         //查询第一张优惠券
         SmsCouponHistoryExample example = new SmsCouponHistoryExample();
