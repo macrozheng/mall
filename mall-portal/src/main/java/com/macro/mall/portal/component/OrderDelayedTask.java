@@ -12,9 +12,12 @@ public class OrderDelayedTask implements Delayed {
     /**延时时间 单位 timeunit.milliseconds**/
     private long timeout;
 
+    private long expire;
+
     public OrderDelayedTask(OmsOrder order, long timeout){
         this.omsOrder = order;
         this.timeout = timeout;
+        this.expire = System.currentTimeMillis() + timeout;
     }
 
     public OmsOrder getOmsOrder() {
@@ -23,7 +26,7 @@ public class OrderDelayedTask implements Delayed {
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return unit.convert(omsOrder.getCreateTime().getTime() - timeout,TimeUnit.MILLISECONDS);
+        return unit.convert(expire - System.currentTimeMillis(),TimeUnit.MILLISECONDS);
     }
 
     @Override
