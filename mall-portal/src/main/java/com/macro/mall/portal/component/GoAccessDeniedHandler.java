@@ -17,7 +17,7 @@ public class GoAccessDeniedHandler implements AccessDeniedHandler{
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
         response.setHeader("Content-Type", "application/json;charset=utf-8");
-        response.getWriter().print(JSONUtil.parse(CommonResult.unauthorized(accessDeniedException.getMessage())));
+        response.getWriter().print(JSONUtil.parse(CommonResult.forbidden(accessDeniedException.getMessage())));
         response.getWriter().flush();
     }
 }
