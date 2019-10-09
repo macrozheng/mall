@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsAlbumPicMapper {
-    int countByExample(PmsAlbumPicExample example);
+    long countByExample(PmsAlbumPicExample example);
 
     int deleteByExample(PmsAlbumPicExample example);
 

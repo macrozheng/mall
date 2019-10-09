@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsGrowthChangeHistoryMapper {
-    int countByExample(UmsGrowthChangeHistoryExample example);
+    long countByExample(UmsGrowthChangeHistoryExample example);
 
     int deleteByExample(UmsGrowthChangeHistoryExample example);
 

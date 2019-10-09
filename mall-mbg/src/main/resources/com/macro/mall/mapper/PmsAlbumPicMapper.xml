@@ -126,7 +126,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.PmsAlbumPicExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.PmsAlbumPicExample" resultType="java.lang.Long">
     select count(*) from pms_album_pic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

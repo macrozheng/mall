@@ -35,6 +35,13 @@ spring:
         min-idle: 0 # 连接池中的最小空闲连接
     timeout: 0ms # 连接超时时间（毫秒）
 
+  rabbitmq:
+    host: rabbit
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
 # 日志配置
 logging:
   path: /var/logs

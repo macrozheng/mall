@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsCompanyAddressMapper {
-    int countByExample(OmsCompanyAddressExample example);
+    long countByExample(OmsCompanyAddressExample example);
 
     int deleteByExample(OmsCompanyAddressExample example);
 

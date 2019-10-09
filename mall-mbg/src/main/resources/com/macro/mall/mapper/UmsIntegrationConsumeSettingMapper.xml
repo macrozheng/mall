@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationConsumeSettingExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationConsumeSettingExample" resultType="java.lang.Long">
     select count(*) from ums_integration_consume_setting
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
