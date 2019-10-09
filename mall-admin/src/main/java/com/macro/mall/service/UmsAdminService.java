@@ -1,6 +1,7 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.UmsAdminParam;
+import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsRole;
@@ -78,4 +79,9 @@ public interface UmsAdminService {
      * 获取用户所有权限（包括角色权限和+-权限）
      */
     List<UmsPermission> getPermissionList(Long adminId);
+
+    /**
+     * 修改密码
+     */
+    int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
 }

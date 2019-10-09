@@ -1,9 +1,12 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.UmsAdminPermissionRelationDao;
 import com.macro.mall.dao.UmsAdminRoleRelationDao;
 import com.macro.mall.dto.UmsAdminParam;
+import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.mapper.UmsAdminLoginLogMapper;
 import com.macro.mall.mapper.UmsAdminMapper;
 import com.macro.mall.mapper.UmsAdminPermissionRelationMapper;
@@ -248,5 +251,27 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public List<UmsPermission> getPermissionList(Long adminId) {
         return adminRoleRelationDao.getPermissionList(adminId);
+    }
+
+    @Override
+    public int updatePassword(UpdateAdminPasswordParam param) {
+        if(StrUtil.isEmpty(param.getUsername())
+                ||StrUtil.isEmpty(param.getOldPassword())
+                ||StrUtil.isEmpty(param.getNewPassword())){
+            return -1;
+        }
+        UmsAdminExample example = new UmsAdminExample();
+        example.createCriteria().andUsernameEqualTo(param.getUsername());
+        List<UmsAdmin> adminList = adminMapper.selectByExample(example);
+        if(CollUtil.isEmpty(adminList)){
+            return -2;
+        }
+        UmsAdmin umsAdmin = adminList.get(0);
+        if(!passwordEncoder.matches(param.getOldPassword(),umsAdmin.getPassword())){
+            return -3;
+        }
+        umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
+        adminMapper.updateByPrimaryKey(umsAdmin);
+        return 1;
     }
 }
