@@ -28,7 +28,6 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,7 +58,8 @@
                     <!--<imageName>mall/${project.artifactId}:${project.version}</imageName>-->
                     <!--<dockerHost>http://192.168.3.101:2375</dockerHost>-->
                     <!--<baseImage>java:8</baseImage>-->
-                    <!--<entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
+                    <!--<entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]-->
+                    <!--</entryPoint>-->
                     <!--<resources>-->
                         <!--<resource>-->
                             <!--<targetPath>/</targetPath>-->

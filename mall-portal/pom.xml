@@ -28,15 +28,15 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--mongodb依赖配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <!--redis依赖配置-->
         <dependency>
@@ -47,12 +47,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <!--lombok依赖-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -79,7 +73,8 @@
                     <!--<imageName>mall/${project.artifactId}:${project.version}</imageName>-->
                     <!--<dockerHost>http://192.168.3.101:2375</dockerHost>-->
                     <!--<baseImage>java:8</baseImage>-->
-                    <!--<entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
+                    <!--<entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]-->
+                    <!--</entryPoint>-->
                     <!--<resources>-->
                         <!--<resource>-->
                             <!--<targetPath>/</targetPath>-->

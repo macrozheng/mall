@@ -25,7 +25,6 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,11 +34,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!--logstash日志收集插件-->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>4.8</version>
         </dependency>
     </dependencies>
 
