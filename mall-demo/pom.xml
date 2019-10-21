@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>mall-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>mall-demo for mall</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
