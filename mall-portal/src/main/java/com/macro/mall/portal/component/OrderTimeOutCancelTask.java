@@ -1,6 +1,6 @@
 package com.macro.mall.portal.component;
 
-import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.service.OmsPortalOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

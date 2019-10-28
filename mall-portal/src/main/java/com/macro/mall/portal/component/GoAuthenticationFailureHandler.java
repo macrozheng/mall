@@ -1,5 +1,7 @@
 package com.macro.mall.portal.component;
 
+import cn.hutool.json.JSONUtil;
+import com.macro.mall.common.api.CommonResult;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
@@ -15,7 +17,7 @@ public class GoAuthenticationFailureHandler implements AuthenticationFailureHand
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         response.setHeader("Content-Type", "application/json;charset=utf-8");
-        response.getWriter().print("{\"code\":500,\"message\":\""+"登录失败："+exception.getMessage()+"\"}");
+        response.getWriter().print(JSONUtil.parse(CommonResult.failed("登录失败，用户名或密码错误！")));
         response.getWriter().flush();
     }
 }

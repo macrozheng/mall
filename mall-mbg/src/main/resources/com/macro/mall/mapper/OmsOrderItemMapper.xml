@@ -290,7 +290,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.OmsOrderItemExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.OmsOrderItemExample" resultType="java.lang.Long">
     select count(*) from oms_order_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

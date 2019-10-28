@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderReturnReasonMapper {
-    int countByExample(OmsOrderReturnReasonExample example);
+    long countByExample(OmsOrderReturnReasonExample example);
 
     int deleteByExample(OmsOrderReturnReasonExample example);
 

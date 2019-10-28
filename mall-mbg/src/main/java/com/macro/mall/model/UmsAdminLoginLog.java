@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,11 +15,7 @@ public class UmsAdminLoginLog implements Serializable {
 
     private String address;
 
-    /**
-     * 浏览器登录类型
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "浏览器登录类型")
     private String userAgent;
 
     private static final long serialVersionUID = 1L;

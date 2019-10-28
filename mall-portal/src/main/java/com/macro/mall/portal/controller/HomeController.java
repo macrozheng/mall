@@ -1,9 +1,9 @@
 package com.macro.mall.portal.controller;
 
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.CmsSubject;
 import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductCategory;
-import com.macro.mall.portal.domain.CommonResult;
 import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.service.HomeService;
 import io.swagger.annotations.Api;
@@ -28,35 +28,35 @@ public class HomeController {
     @ApiOperation("首页内容页信息展示")
     @RequestMapping(value = "/content", method = RequestMethod.GET)
     @ResponseBody
-    public Object content() {
+    public CommonResult<HomeContentResult> content() {
         HomeContentResult contentResult = homeService.content();
-        return new CommonResult().success(contentResult);
+        return CommonResult.success(contentResult);
     }
 
     @ApiOperation("分页获取推荐商品")
     @RequestMapping(value = "/recommendProductList", method = RequestMethod.GET)
     @ResponseBody
-    public Object recommendProductList(@RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
-                                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public CommonResult<List<PmsProduct>> recommendProductList(@RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
+                                                               @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<PmsProduct> productList = homeService.recommendProductList(pageSize, pageNum);
-        return new CommonResult().success(productList);
+        return CommonResult.success(productList);
     }
 
     @ApiOperation("获取首页商品分类")
     @RequestMapping(value = "/productCateList/{parentId}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getProductCateList(@PathVariable Long parentId) {
+    public CommonResult<List<PmsProductCategory>> getProductCateList(@PathVariable Long parentId) {
         List<PmsProductCategory> productCategoryList = homeService.getProductCateList(parentId);
-        return new CommonResult().success(productCategoryList);
+        return CommonResult.success(productCategoryList);
     }
 
     @ApiOperation("根据分类获取专题")
     @RequestMapping(value = "/subjectList", method = RequestMethod.GET)
     @ResponseBody
-    public Object getSubjectList(@RequestParam(required = false) Long cateId,
-                                 @RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
-                                 @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public CommonResult<List<CmsSubject>> getSubjectList(@RequestParam(required = false) Long cateId,
+                                                         @RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
+                                                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<CmsSubject> subjectList = homeService.getSubjectList(cateId,pageSize,pageNum);
-        return new CommonResult().success(subjectList);
+        return CommonResult.success(subjectList);
     }
 }
