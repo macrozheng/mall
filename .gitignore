@@ -9,15 +9,3 @@ target/
 .settings/
 .classpath
 .project
-
-# Maven #
-target/
-
-# IDEA #
-.idea/
-*.iml
-
-# Eclipse #
-.settings/
-.classpath
-.project
