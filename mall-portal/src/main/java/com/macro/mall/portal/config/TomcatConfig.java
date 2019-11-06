@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
  * tomcat相关配置
  * Created by macro on 2018/8/7.
  */
-@Profile("dev")
+@Profile("https")
 @Configuration
 public class TomcatConfig {
     @Value("${http.port}")
