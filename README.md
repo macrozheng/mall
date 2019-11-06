@@ -147,7 +147,7 @@ mall
 | Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
 | MongoDb       | 3.2    | https://www.mongodb.com/download-center                      |
 | RabbitMq      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
-| nginx         | 1.10   | http://nginx.org/en/download.html                            |
+| Nginx         | 1.10   | http://nginx.org/en/download.html                            |
 
 ### 搭建步骤
 
