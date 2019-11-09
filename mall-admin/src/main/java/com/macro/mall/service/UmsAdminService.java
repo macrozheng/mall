@@ -5,6 +5,7 @@ import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsRole;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -84,4 +85,9 @@ public interface UmsAdminService {
      * 修改密码
      */
     int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
+
+    /**
+     * 获取用户信息
+     */
+    UserDetails loadUserByUsername(String username);
 }
