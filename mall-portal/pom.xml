@@ -30,8 +30,8 @@
             <artifactId>mall-mbg</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>mall-security</artifactId>
         </dependency>
         <!--mongodb依赖配置-->
         <dependency>
