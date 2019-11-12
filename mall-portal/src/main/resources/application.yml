@@ -7,8 +7,6 @@ mybatis:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
 
-http:
-  port: 8085 # http服务端口
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mall-portal-secret #JWT加解密使用的密钥
