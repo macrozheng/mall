@@ -15,10 +15,11 @@ jwt:
 
 aliyun:
   oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
-    accessKeyId: test # 访问身份验证中用到用户标识
-    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: macro-oss # oss的存储空间
+    endpoint: oss-cn-beijing.aliyuncs.com # oss对外服务的访问域名
+    accessKeyId: zxl_lzz_love@1554228083340418.onaliyun.com
+    # 访问身份验证中用到用户标识
+    accessKeySecret: LTAI4FggwoSdqJoK4y7xTbUC # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: mallsso # oss的存储空间
     policy:
       expire: 300 # 签名有效期(S)
     maxSize: 10 # 上传文件大小(M)
