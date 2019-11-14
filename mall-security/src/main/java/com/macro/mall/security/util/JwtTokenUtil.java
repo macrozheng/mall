@@ -1,11 +1,12 @@
-package com.macro.mall.util;
+package com.macro.mall.security.util;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +23,6 @@ import java.util.Map;
  * HMACSHA512(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
  * Created by macro on 2018/4/26.
  */
-@Component
 public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "sub";
@@ -31,6 +31,8 @@ public class JwtTokenUtil {
     private String secret;
     @Value("${jwt.expiration}")
     private Long expiration;
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
 
     /**
      * 根据负责生成JWT的token
@@ -54,7 +56,7 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            LOGGER.info("JWT格式验证失败:{}",token);
+            LOGGER.info("JWT格式验证失败:{}", token);
         }
         return claims;
     }
@@ -73,7 +75,7 @@ public class JwtTokenUtil {
         String username;
         try {
             Claims claims = getClaimsFromToken(token);
-            username =  claims.getSubject();
+            username = claims.getSubject();
         } catch (Exception e) {
             username = null;
         }
@@ -120,16 +122,23 @@ public class JwtTokenUtil {
     /**
      * 判断token是否可以被刷新
      */
-    public boolean canRefresh(String token) {
+    private boolean canRefresh(String token) {
         return !isTokenExpired(token);
     }
 
+
     /**
-     * 刷新token
+     * 当原来的token没过期是可以刷新
+     *
+     * @param oldToken 带tokenHead的token
      */
-    public String refreshToken(String token) {
-        Claims claims = getClaimsFromToken(token);
-        claims.put(CLAIM_KEY_CREATED, new Date());
-        return generateToken(claims);
+    public String refreshHeadToken(String oldToken) {
+        String token = oldToken.substring(tokenHead.length());
+        if (canRefresh(token)) {
+            Claims claims = getClaimsFromToken(token);
+            claims.put(CLAIM_KEY_CREATED, new Date());
+            return generateToken(claims);
+        }
+        return null;
     }
 }

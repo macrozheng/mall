@@ -1,10 +1,5 @@
 server:
-  port: 8443 #开发环境会开启https
-  ssl:
-    key-store: keystore.p12
-    key-alias: tomcat
-    key-store-password: 123456
-    key-store-type: PKCS12
+  port: 8085
 
 spring:
   datasource:
