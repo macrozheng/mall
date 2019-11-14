@@ -10,11 +10,19 @@ import com.macro.mall.model.UmsMemberLevelExample;
 import com.macro.mall.portal.domain.MemberDetails;
 import com.macro.mall.portal.service.RedisService;
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.security.util.JwtTokenUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -30,12 +38,15 @@ import java.util.Random;
  */
 @Service
 public class UmsMemberServiceImpl implements UmsMemberService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberServiceImpl.class);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private UmsMemberMapper memberMapper;
     @Autowired
     private UmsMemberLevelMapper memberLevelMapper;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     @Autowired
     private RedisService redisService;
     @Value("${redis.key.prefix.authCode}")
@@ -137,6 +148,33 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         record.setId(id);
         record.setIntegration(integration);
         memberMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        UmsMember member = getByUsername(username);
+        if(member!=null){
+            return new MemberDetails(member);
+        }
+        throw new UsernameNotFoundException("用户名或密码错误");
+    }
+
+    @Override
+    public String login(String username, String password) {
+        String token = null;
+        //密码需要客户端加密后传递
+        try {
+            UserDetails userDetails = loadUserByUsername(username);
+            if(!passwordEncoder.matches(password,userDetails.getPassword())){
+                throw new BadCredentialsException("密码不正确");
+            }
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            token = jwtTokenUtil.generateToken(userDetails);
+        } catch (AuthenticationException e) {
+            LOGGER.warn("登录异常:{}", e.getMessage());
+        }
+        return token;
     }
 
     //对输入的验证码进行校验

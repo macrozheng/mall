@@ -1,37 +1,6 @@
-# mall
+# mall 功能完成进度
 
-## 技术选型
-
-### 后端技术
-
-技术 | 名称 
-----|----
-Spring Boot | 容器+MVC框架
-Spring Security | 认证和授权框架
-MyBatis | ORM框架  
-MyBatisGenerator | 数据层代码生成  
-PageHelper | MyBatis物理分页插件  
-Swagger-UI | 文档生产工具
-Hibernator-Validator | 验证框架
-Elasticsearch | 搜索引擎
-RabbitMq | 消息队列
-Redis | 分布式缓存
-MongoDb | NoSql数据库
-Docker | 应用容器引擎
-Druid | 数据库连接池
-
-### 前端技术
-
-技术 | 名称 
-----|----
-Vue | 前端框架
-Vue-router | 路由框架
-Vuex | 全局状态管理框架
-Element | 前端UI框架
-Axios | 前端HTTP框架
-Js-cookie | cookie管理工具
-
-### 框架搭建
+## 框架搭建
 
 功能 | 完成 
 ----|----
@@ -64,30 +33,15 @@ RestTemplate服务间调用 | ✔
 SpringSecurity权限管理功能 | ✔
 集成SpringCloud |
 
-### 使用工具
+## 后台功能
 
-工具 | 下载地址 
-----|----
-开发工具idea | https://www.jetbrains.com/idea/download
-redis客户端连接工具 | https://redisdesktop.com/download
-mongo客户端连接工具 | https://robomongo.org/download
-本地host管理 | https://oldj.github.io/SwitchHosts/
-Linux远程连接工具 | http://www.netsarang.com/download/software.html
-数据库连接工具 | http://www.formysql.com/xiazai.html
-数据库设计工具 | http://powerdesigner.de/
-原型设计工具 | https://www.axure.com/
-思维导图设计工具 | http://www.edrawsoft.cn/mindmaster
-gif录制工具 | https://www.screentogif.com/
-
-### 后台功能
-
-#### 后台登录功能 ✔
+### 后台登录功能 
 
 - 后台用户注册功能
 - 后台用户登录后获取token
 - 刷新token功能
 
-#### 商品管理 ✔
+### 商品管理 
 
 > **商品分类管理**
 
@@ -190,7 +144,7 @@ gif录制工具 | https://www.screentogif.com/
 - 专题精选：专题列表展示、是否推荐、排序、删除、多选加入专题
 - 广告管理：广告列表展示、是否上线、排序、删除、添加编辑广告
 
-#### 内容管理
+### 内容管理
 
 > **专题管理**
 
@@ -214,7 +168,7 @@ gif录制工具 | https://www.screentogif.com/
 - 添加、编辑帮助：选择帮助分类
 - 帮助分类管理：控制显示、排序、编辑删除分类
 
-#### 用户管理
+### 用户管理
 
 > **用户管理**
 
@@ -231,7 +185,7 @@ gif录制工具 | https://www.screentogif.com/
 - 任务奖励设置：新手任务、日常任务
 - 更多规则设置：成长值规则、积分规则、积分消费设置
 
-#### 订单管理
+### 订单管理
 
 > **订单列表**
 
@@ -270,7 +224,7 @@ gif录制工具 | https://www.screentogif.com/
 - 添加、编辑原因：同上
 - 批量操作：删除
 
-#### 权限管理 ✔
+### 权限管理
 
 > **权限管理**
 
@@ -286,9 +240,9 @@ gif录制工具 | https://www.screentogif.com/
 美工 | 首页、商品
 客服 | 首页、商品、订单
 
-### 前台功能
+## 前台功能
 
-#### 商品搜索 ✔
+### 商品搜索
 
 > **综合搜索功能**
 
@@ -312,7 +266,7 @@ gif录制工具 | https://www.screentogif.com/
 
 - 根据用户搜索记录聚合生成热搜词
 
-#### 购物流程 ✔
+### 购物流程
 
 > **购物车** 
 
@@ -346,7 +300,7 @@ gif录制工具 | https://www.screentogif.com/
 
 - 订单超时后自动取消订单，解除商品库存锁定，返还优惠券，积分
 
-#### 会员模块（我的）✔
+#### 会员模块（我的）
 
 > **我的关注**
 
