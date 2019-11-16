@@ -15,8 +15,8 @@
 
 ## 项目文档
 
-- 文档地址：[https://macrozheng.github.io/mall-learning](https://macrozheng.github.io/mall-learning)
-- 备用地址：[https://macrozheng.gitee.io/mall-learning](https://macrozheng.gitee.io/mall-learning)
+- 文档地址：[http://www.macrozheng.com](http://www.macrozheng.com)
+- 备用地址：[https://macrozheng.github.io/mall-learning](https://macrozheng.github.io/mall-learning)
 
 ## 项目介绍
 
@@ -28,7 +28,7 @@
 
 前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web
 
-项目演示地址： [http://39.98.190.128/index.html](http://39.98.190.128/index.html)  
+项目演示地址： [http://www.macrozheng.com/admin/index.html](http://www.macrozheng.com/admin/index.html)  
 
 ![后台管理系统功能演示.gif](/document/resource/mall-admin.gif)
 
@@ -36,7 +36,7 @@
 
 前端项目`mall-app-web`地址：敬请期待......
 
-项目演示地址：[http://39.98.190.128/mall-app/mainpage.html](http://39.98.190.128/mall-app/mainpage.html)
+项目演示地址：[http://www.macrozheng.com/app/index.html](http://www.macrozheng.com/app/index.html)
 
 ![前台商城系统功能演示.gif](/document/resource/mall-app.gif)
 
