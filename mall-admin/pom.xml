@@ -50,7 +50,7 @@
             <!--<plugin>-->
                 <!--<groupId>com.spotify</groupId>-->
                 <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>1.1.0</version>-->
+                <!--<version>${docker.maven.plugin.version}</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>build-image</id>-->
