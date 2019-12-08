@@ -12,6 +12,7 @@
     <modules>
         <module>mall-common</module>
         <module>mall-mbg</module>
+        <module>mall-security</module>
         <module>mall-demo</module>
         <module>mall-admin</module>
         <module>mall-search</module>
@@ -26,7 +27,12 @@
     </parent>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
+        <docker.host>http://192.168.3.101:2375</docker.host>
+        <docker.maven.plugin.version>1.1.0</docker.maven.plugin.version>
         <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
         <pagehelper.version>5.1.8</pagehelper.version>
         <druid.version>1.1.10</druid.version>
@@ -41,6 +47,7 @@
         <logstash-logback.version>4.8</logstash-logback.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
+        <mall-security.version>1.0-SNAPSHOT</mall-security.version>
     </properties>
 
     <dependencies>
@@ -84,6 +91,12 @@
                 <groupId>com.macro.mall</groupId>
                 <artifactId>mall-mbg</artifactId>
                 <version>${mall-mbg.version}</version>
+            </dependency>
+            <!--mall安全模块-->
+            <dependency>
+                <groupId>com.macro.mall</groupId>
+                <artifactId>mall-security</artifactId>
+                <version>${mall-security.version}</version>
             </dependency>
             <!--MyBatis分页插件starter-->
             <dependency>
