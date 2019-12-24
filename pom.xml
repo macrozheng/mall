@@ -8,7 +8,7 @@
     <artifactId>mall</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+    <!--Hutool test-->   
     <modules>
         <module>mall-common</module>
         <module>mall-mbg</module>
