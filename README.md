@@ -169,22 +169,6 @@ mall
 - 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md)；
 - 本项目使用Docker Compose请参考： [mall在Linux环境下的部署（基于Docker Compose）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker_compose.md)。
 
-## 参考资料
-
-- [Spring实战（第4版）](https://book.douban.com/subject/26767354/)
-- [Spring Boot实战](https://book.douban.com/subject/26857423/)
-- [Spring Cloud微服务实战](https://book.douban.com/subject/27025912/)
-- [Spring Cloud与Docker微服务架构实战](https://book.douban.com/subject/27028228/)
-- [Spring Data实战](https://book.douban.com/subject/25975186/)
-- [MyBatis从入门到精通](https://book.douban.com/subject/27074809/)
-- [深入浅出MySQL](https://book.douban.com/subject/25817684/)
-- [循序渐进Linux（第2版）](https://book.douban.com/subject/26758194/)
-- [Elasticsearch 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
-- [Elasticsearch 技术解析与实战](https://book.douban.com/subject/26967826/)
-- [MongoDB实战(第二版)](https://book.douban.com/subject/27061123/)
-- [Kubernetes权威指南](https://book.douban.com/subject/26902153/)
-- [Pro Git](https://git-scm.com/book/zh/v2)
-
 ## 公众号
 
 mall项目全套学习教程连载中，**关注公众号**第一时间获取。
