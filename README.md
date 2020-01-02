@@ -74,6 +74,7 @@ mall
 | Docker               | 应用容器引擎        | https://www.docker.com                               |
 | Druid                | 数据库连接池        | https://github.com/alibaba/druid                     |
 | OSS                  | 对象存储            | https://github.com/aliyun/aliyun-oss-java-sdk        |
+| MinIO                | 对象存储            | https://github.com/minio/minio                       |
 | JWT                  | JWT登录支持         | https://github.com/jwtk/jjwt                         |
 | LogStash             | 日志收集工具        | https://github.com/logstash/logstash-logback-encoder |
 | Lombok               | 简化对象封装工具    | https://github.com/rzwitserloot/lombok               |
