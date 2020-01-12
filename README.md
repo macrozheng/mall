@@ -78,6 +78,7 @@ mall
 | JWT                  | JWT登录支持         | https://github.com/jwtk/jjwt                         |
 | LogStash             | 日志收集工具        | https://github.com/logstash/logstash-logback-encoder |
 | Lombok               | 简化对象封装工具    | https://github.com/rzwitserloot/lombok               |
+| Jenkins              | 自动化部署工具      | https://github.com/jenkinsci/jenkins                 |
 
 #### 前端技术
 
