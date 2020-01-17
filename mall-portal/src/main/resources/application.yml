@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: dev #默认为开发环境
+  dubbo:
+    application:
+      name: dubbo-consumer
+      registry:
+        address: zookeeper://127.0.0.1:2181
 
 mybatis:
   mapper-locations:

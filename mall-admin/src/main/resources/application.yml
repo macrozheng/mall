@@ -5,11 +5,20 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+  dubbo:
+    application:
+      name: dubbo-consumer
+      registry:
+        address: zookeeper://127.0.0.1:2181
 
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
+
+server:
+  port: 8888
+
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
