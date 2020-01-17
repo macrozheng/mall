@@ -4,6 +4,7 @@ import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.UmsAdminLoginParam;
 import com.macro.mall.dto.UmsAdminParam;
+import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsRole;
@@ -63,13 +64,13 @@ public class UmsAdminController {
     }
 
     @ApiOperation(value = "刷新token")
-    @RequestMapping(value = "/token/refresh", method = RequestMethod.GET)
+    @RequestMapping(value = "/refreshToken", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult refreshToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String refreshToken = adminService.refreshToken(token);
         if (refreshToken == null) {
-            return CommonResult.failed();
+            return CommonResult.failed("token已经过期！");
         }
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", refreshToken);
@@ -124,6 +125,24 @@ public class UmsAdminController {
             return CommonResult.success(count);
         }
         return CommonResult.failed();
+    }
+
+    @ApiOperation("修改指定用户密码")
+    @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updatePassword(@RequestBody UpdateAdminPasswordParam updatePasswordParam) {
+        int status = adminService.updatePassword(updatePasswordParam);
+        if (status > 0) {
+            return CommonResult.success(status);
+        } else if (status == -1) {
+            return CommonResult.failed("提交参数不合法");
+        } else if (status == -2) {
+            return CommonResult.failed("找不到该用户");
+        } else if (status == -3) {
+            return CommonResult.failed("旧密码错误");
+        } else {
+            return CommonResult.failed();
+        }
     }
 
     @ApiOperation("删除指定用户信息")
