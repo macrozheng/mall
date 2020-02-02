@@ -178,7 +178,7 @@ mall
 
 mall项目全套学习教程连载中，关注公众号「**macrozheng**」第一时间获取。
 
-加微信群交流，公众号后台回复**加群**即可。
+加微信群交流，公众号后台回复「**加群**」即可。
 
 ![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
 
