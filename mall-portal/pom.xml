@@ -11,13 +11,6 @@
     <name>mall-portal</name>
     <description>mall-portal project for mall</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <skipTests>true</skipTests>
-    </properties>
-
     <parent>
         <groupId>com.macro.mall</groupId>
         <artifactId>mall</artifactId>
@@ -59,7 +52,7 @@
             <!--<plugin>-->
                 <!--<groupId>com.spotify</groupId>-->
                 <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>1.1.0</version>-->
+                <!--<version>${docker.maven.plugin.version}</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>build-image</id>-->
@@ -71,7 +64,7 @@
                 <!--</executions>-->
                 <!--<configuration>-->
                     <!--<imageName>mall/${project.artifactId}:${project.version}</imageName>-->
-                    <!--<dockerHost>http://192.168.3.101:2375</dockerHost>-->
+                    <!--<dockerHost>${docker.host}</dockerHost>-->
                     <!--<baseImage>java:8</baseImage>-->
                     <!--<entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]-->
                     <!--</entryPoint>-->

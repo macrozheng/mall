@@ -177,6 +177,11 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         return token;
     }
 
+    @Override
+    public String refreshToken(String token) {
+        return jwtTokenUtil.refreshHeadToken(token);
+    }
+
     //对输入的验证码进行校验
     private boolean verifyAuthCode(String authCode, String telephone){
         if(StringUtils.isEmpty(authCode)){
