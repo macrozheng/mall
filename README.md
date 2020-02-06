@@ -162,7 +162,7 @@ mall
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译：[前端项目地址](https://github.com/macrozheng/mall-admin-web);
 - `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](http://www.macrozheng.com/#/deploy/mall_deploy_web);
 - ELK日志收集系统的搭建请参考：[SpringBoot应用整合ELK实现日志收集](http://www.macrozheng.com/#/technology/mall_tiny_elk);
-- 使用MinIO存储文件请参考：[前后端分离项目，如何优雅实现文件存储](https://github.com/macrozheng/mall-learning/blob/master/docs/technology/minio_use.md);
+- 使用MinIO存储文件请参考：[前后端分离项目，如何优雅实现文件存储](http://www.macrozheng.com/#/technology/minio_use);
 - 读写分离解决方案请参考：[你还在代码里做读写分离么，试试这个中间件吧](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/gaea.md)。
 
 > Docker环境部署
