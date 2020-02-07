@@ -9,14 +9,7 @@
     <packaging>jar</packaging>
 
     <name>mall-portal</name>
-    <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <skipTests>true</skipTests>
-    </properties>
+    <description>mall-portal project for mall</description>
 
     <parent>
         <groupId>com.macro.mall</groupId>
@@ -28,15 +21,15 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>mall-security</artifactId>
+        </dependency>
+        <!--mongodb依赖配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <!--redis依赖配置-->
         <dependency>
@@ -47,12 +40,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <!--lombok依赖-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -65,7 +52,7 @@
             <!--<plugin>-->
                 <!--<groupId>com.spotify</groupId>-->
                 <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>1.1.0</version>-->
+                <!--<version>${docker.maven.plugin.version}</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>build-image</id>-->
@@ -77,9 +64,10 @@
                 <!--</executions>-->
                 <!--<configuration>-->
                     <!--<imageName>mall/${project.artifactId}:${project.version}</imageName>-->
-                    <!--<dockerHost>http://192.168.3.101:2375</dockerHost>-->
+                    <!--<dockerHost>${docker.host}</dockerHost>-->
                     <!--<baseImage>java:8</baseImage>-->
-                    <!--<entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
+                    <!--<entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]-->
+                    <!--</entryPoint>-->
                     <!--<resources>-->
                         <!--<resource>-->
                             <!--<targetPath>/</targetPath>-->

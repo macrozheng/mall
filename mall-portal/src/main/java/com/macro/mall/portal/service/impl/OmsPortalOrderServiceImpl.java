@@ -221,6 +221,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
         //删除购物车中的下单商品
         deleteCartItemList(cartPromotionItemList, currentMember);
+        //发送延迟消息取消订单
+        sendDelayMessageCancelOrder(order.getId());
         Map<String, Object> result = new HashMap<>();
         result.put("order", order);
         result.put("orderItemList", orderItemList);

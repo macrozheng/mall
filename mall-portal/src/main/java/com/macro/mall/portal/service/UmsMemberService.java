@@ -2,6 +2,7 @@ package com.macro.mall.portal.service;
 
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.UmsMember;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -45,4 +46,20 @@ public interface UmsMemberService {
      * 根据会员id修改会员积分
      */
     void updateIntegration(Long id,Integer integration);
+
+
+    /**
+     * 获取用户信息
+     */
+    UserDetails loadUserByUsername(String username);
+
+    /**
+     * 登录后获取token
+     */
+    String login(String username, String password);
+
+    /**
+     * 刷新token
+     */
+    String refreshToken(String token);
 }

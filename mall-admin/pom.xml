@@ -10,13 +10,6 @@
     <name>mall-admin</name>
     <description>mall-admin project for mall</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <skipTests>true</skipTests>
-    </properties>
-
     <parent>
         <groupId>com.macro.mall</groupId>
         <artifactId>mall</artifactId>
@@ -27,35 +20,22 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>mall-security</artifactId>
         </dependency>
-        <!--JWT(Json Web Token)登录支持-->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
-        </dependency>
-        <!-- 阿里云OSS -->
         <dependency>
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
-            <version>2.5.0</version>
         </dependency>
-        <!--集成logstash-->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>4.8</version>
         </dependency>
-        <!--lombok依赖-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -67,7 +47,7 @@
             <!--<plugin>-->
                 <!--<groupId>com.spotify</groupId>-->
                 <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>1.1.0</version>-->
+                <!--<version>${docker.maven.plugin.version}</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>build-image</id>-->
@@ -79,9 +59,10 @@
                 <!--</executions>-->
                 <!--<configuration>-->
                     <!--<imageName>mall/${project.artifactId}:${project.version}</imageName>-->
-                    <!--<dockerHost>http://192.168.3.101:2375</dockerHost>-->
+                    <!--<dockerHost>${docker.host}</dockerHost>-->
                     <!--<baseImage>java:8</baseImage>-->
-                    <!--<entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
+                    <!--<entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]-->
+                    <!--</entryPoint>-->
                     <!--<resources>-->
                         <!--<resource>-->
                             <!--<targetPath>/</targetPath>-->
