@@ -167,7 +167,7 @@ mall
 
 > Docker环境部署
 
-- 使用虚拟机安装CentOS7.6请参考：[虚拟机安装及使用Linux，看这一篇就够了！](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/linux_install.md);
+- 使用虚拟机安装CentOS7.6请参考：[虚拟机安装及使用Linux，看这一篇就够了！](http://www.macrozheng.com/#/reference/linux_install);
 - Docker环境的安装请参考：[开发者必备Docker命令](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker.md);
 - 本项目Docker镜像构建请参考：[使用Maven插件为SpringBoot应用构建Docker镜像](https://github.com/macrozheng/mall-learning/blob/master/docs/reference/docker_maven.md);
 - 本项目在Docker容器下的部署请参考：[mall在Linux环境下的部署（基于Docker容器）](https://github.com/macrozheng/mall-learning/blob/master/docs/deploy/mall_deploy_docker.md);
