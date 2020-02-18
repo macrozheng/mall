@@ -52,4 +52,23 @@
             pr.type = 1
             AND pr.admin_id = #{adminId}
     </select>
+    <select id="getResourceList" resultType="com.macro.mall.model.UmsResource">
+        SELECT
+            ur.id id,
+            ur.create_time createTime,
+            ur.`name` `name`,
+            ur.url url,
+            ur.description description,
+            ur.category_id categoryId
+        FROM
+            ums_admin_role_relation ar
+        LEFT JOIN ums_role r ON ar.role_id = r.id
+        LEFT JOIN ums_role_resource_relation rrr ON r.id = rrr.role_id
+        LEFT JOIN ums_resource ur ON ur.id = rrr.resource_id
+        WHERE
+            ar.admin_id = #{adminId}
+        AND ur.id IS NOT NULL
+        GROUP BY
+            ur.id
+    </select>
 </mapper>
