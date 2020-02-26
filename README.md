@@ -140,6 +140,8 @@ mall
 | ProcessOn     | 流程图绘制工具      | https://www.processon.com/                      |
 | PicPick       | 图片处理工具        | https://picpick.app/zh/                         |
 | Snipaste      | 屏幕截图工具        | https://www.snipaste.com/                       |
+| Postman       | API接口调试工具      | https://www.postman.com/                        |
+| Typora        | Markdown编辑器      | https://typora.io/                              |
 
 ### 开发环境
 
