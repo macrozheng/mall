@@ -38,7 +38,8 @@ public class UmsMemberController {
                                  @RequestParam String password,
                                  @RequestParam String telephone,
                                  @RequestParam String authCode) {
-        return memberService.register(username, password, telephone, authCode);
+        memberService.register(username, password, telephone, authCode);
+        return CommonResult.success(null,"注册成功");
     }
 
     @ApiOperation("会员登录")
@@ -60,7 +61,8 @@ public class UmsMemberController {
     @RequestMapping(value = "/getAuthCode", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult getAuthCode(@RequestParam String telephone) {
-        return memberService.generateAuthCode(telephone);
+        String authCode = memberService.generateAuthCode(telephone);
+        return CommonResult.success(authCode,"获取验证码成功");
     }
 
     @ApiOperation("修改密码")
@@ -69,7 +71,8 @@ public class UmsMemberController {
     public CommonResult updatePassword(@RequestParam String telephone,
                                  @RequestParam String password,
                                  @RequestParam String authCode) {
-        return memberService.updatePassword(telephone,password,authCode);
+        memberService.updatePassword(telephone,password,authCode);
+        return CommonResult.success(null,"密码修改成功");
     }
 
 
