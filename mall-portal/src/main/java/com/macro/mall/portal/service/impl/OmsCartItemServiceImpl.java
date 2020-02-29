@@ -60,14 +60,8 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
         OmsCartItemExample example = new OmsCartItemExample();
         OmsCartItemExample.Criteria criteria = example.createCriteria().andMemberIdEqualTo(cartItem.getMemberId())
                 .andProductIdEqualTo(cartItem.getProductId()).andDeleteStatusEqualTo(0);
-        if (!StringUtils.isEmpty(cartItem.getSp1())) {
-            criteria.andSp1EqualTo(cartItem.getSp1());
-        }
-        if (!StringUtils.isEmpty(cartItem.getSp2())) {
-            criteria.andSp2EqualTo(cartItem.getSp2());
-        }
-        if (!StringUtils.isEmpty(cartItem.getSp3())) {
-            criteria.andSp3EqualTo(cartItem.getSp3());
+        if (!StringUtils.isEmpty(cartItem.getProductSkuId())) {
+            criteria.andProductSkuIdEqualTo(cartItem.getProductSkuId());
         }
         List<OmsCartItem> cartItemList = cartItemMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(cartItemList)) {
