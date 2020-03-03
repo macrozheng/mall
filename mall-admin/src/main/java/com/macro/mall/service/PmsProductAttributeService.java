@@ -16,7 +16,6 @@ public interface PmsProductAttributeService {
      * 根据分类分页获取商品属性
      * @param cid 分类id
      * @param type 0->属性；2->参数
-     * @return
      */
     List<PmsProductAttribute> getList(Long cid, Integer type, Integer pageSize, Integer pageNum);
 
