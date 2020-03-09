@@ -31,9 +31,6 @@
             ps.id sku_id,
             ps.sku_code sku_code,
             ps.price sku_price,
-            ps.sp1 sku_sp1,
-            ps.sp2 sku_sp2,
-            ps.sp3 sku_sp3,
             ps.stock sku_stock,
             ps.pic sku_pic
         FROM
