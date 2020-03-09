@@ -10,5 +10,8 @@ import java.util.List;
  * Created by macro on 2018/5/23.
  */
 public interface PmsProductAttributeDao {
+    /**
+     * 获取商品分类对应属性列表
+     */
     List<ProductAttrInfo> getProductAttrInfo(@Param("id") Long productCategoryId);
 }
