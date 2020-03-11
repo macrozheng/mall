@@ -8,9 +8,6 @@
     <result column="member_id" jdbcType="BIGINT" property="memberId" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
     <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="sp1" jdbcType="VARCHAR" property="sp1" />
-    <result column="sp2" jdbcType="VARCHAR" property="sp2" />
-    <result column="sp3" jdbcType="VARCHAR" property="sp3" />
     <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="product_sub_title" jdbcType="VARCHAR" property="productSubTitle" />
@@ -83,9 +80,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, product_sku_id, member_id, quantity, price, sp1, sp2, sp3, product_pic, 
-    product_name, product_sub_title, product_sku_code, member_nickname, create_date, 
-    modify_date, delete_status, product_category_id, product_brand, product_sn, product_attr
+    id, product_id, product_sku_id, member_id, quantity, price, product_pic, product_name, 
+    product_sub_title, product_sku_code, member_nickname, create_date, modify_date, delete_status, 
+    product_category_id, product_brand, product_sn, product_attr
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.OmsCartItemExample" resultMap="BaseResultMap">
     select
@@ -122,15 +119,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oms_cart_item (product_id, product_sku_id, member_id, 
-      quantity, price, sp1, 
-      sp2, sp3, product_pic, 
+      quantity, price, product_pic, 
       product_name, product_sub_title, product_sku_code, 
       member_nickname, create_date, modify_date, 
       delete_status, product_category_id, product_brand, 
       product_sn, product_attr)
     values (#{productId,jdbcType=BIGINT}, #{productSkuId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
-      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{sp1,jdbcType=VARCHAR}, 
-      #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, 
+      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{productPic,jdbcType=VARCHAR}, 
       #{productName,jdbcType=VARCHAR}, #{productSubTitle,jdbcType=VARCHAR}, #{productSkuCode,jdbcType=VARCHAR}, 
       #{memberNickname,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{deleteStatus,jdbcType=INTEGER}, #{productCategoryId,jdbcType=BIGINT}, #{productBrand,jdbcType=VARCHAR}, 
@@ -156,15 +151,6 @@
       </if>
       <if test="price != null">
         price,
-      </if>
-      <if test="sp1 != null">
-        sp1,
-      </if>
-      <if test="sp2 != null">
-        sp2,
-      </if>
-      <if test="sp3 != null">
-        sp3,
       </if>
       <if test="productPic != null">
         product_pic,
@@ -218,15 +204,6 @@
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
-      </if>
-      <if test="sp1 != null">
-        #{sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="sp2 != null">
-        #{sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="sp3 != null">
-        #{sp3,jdbcType=VARCHAR},
       </if>
       <if test="productPic != null">
         #{productPic,jdbcType=VARCHAR},
@@ -293,15 +270,6 @@
       <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
       </if>
-      <if test="record.sp1 != null">
-        sp1 = #{record.sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sp2 != null">
-        sp2 = #{record.sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sp3 != null">
-        sp3 = #{record.sp3,jdbcType=VARCHAR},
-      </if>
       <if test="record.productPic != null">
         product_pic = #{record.productPic,jdbcType=VARCHAR},
       </if>
@@ -351,9 +319,6 @@
       member_id = #{record.memberId,jdbcType=BIGINT},
       quantity = #{record.quantity,jdbcType=INTEGER},
       price = #{record.price,jdbcType=DECIMAL},
-      sp1 = #{record.sp1,jdbcType=VARCHAR},
-      sp2 = #{record.sp2,jdbcType=VARCHAR},
-      sp3 = #{record.sp3,jdbcType=VARCHAR},
       product_pic = #{record.productPic,jdbcType=VARCHAR},
       product_name = #{record.productName,jdbcType=VARCHAR},
       product_sub_title = #{record.productSubTitle,jdbcType=VARCHAR},
@@ -387,15 +352,6 @@
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
-      </if>
-      <if test="sp1 != null">
-        sp1 = #{sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="sp2 != null">
-        sp2 = #{sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="sp3 != null">
-        sp3 = #{sp3,jdbcType=VARCHAR},
       </if>
       <if test="productPic != null">
         product_pic = #{productPic,jdbcType=VARCHAR},
@@ -443,9 +399,6 @@
       member_id = #{memberId,jdbcType=BIGINT},
       quantity = #{quantity,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
-      sp1 = #{sp1,jdbcType=VARCHAR},
-      sp2 = #{sp2,jdbcType=VARCHAR},
-      sp3 = #{sp3,jdbcType=VARCHAR},
       product_pic = #{productPic,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
       product_sub_title = #{productSubTitle,jdbcType=VARCHAR},

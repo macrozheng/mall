@@ -35,7 +35,8 @@ public class UmsMemberCouponController {
     @RequestMapping(value = "/add/{couponId}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@PathVariable Long couponId) {
-        return memberCouponService.add(couponId);
+        memberCouponService.add(couponId);
+        return CommonResult.success(null,"领取成功");
     }
 
     @ApiOperation("获取用户优惠券列表")
