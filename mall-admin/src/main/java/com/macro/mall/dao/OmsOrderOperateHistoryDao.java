@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 订单操作记录自定义Dao
+ * 自定义订单操作记录Dao
  * Created by macro on 2018/10/12.
  */
 public interface OmsOrderOperateHistoryDao {
