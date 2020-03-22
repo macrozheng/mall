@@ -8,7 +8,7 @@ import com.macro.mall.model.UmsMemberExample;
 import com.macro.mall.model.UmsMemberLevel;
 import com.macro.mall.model.UmsMemberLevelExample;
 import com.macro.mall.portal.domain.MemberDetails;
-import com.macro.mall.portal.service.RedisService;
+import com.macro.mall.portal.service.UmsMemberCacheService;
 import com.macro.mall.portal.service.UmsMemberService;
 import com.macro.mall.security.util.JwtTokenUtil;
 import org.slf4j.Logger;
@@ -48,19 +48,23 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     @Autowired
     private UmsMemberLevelMapper memberLevelMapper;
     @Autowired
-    private RedisService redisService;
-    @Value("${redis.key.prefix.authCode}")
+    private UmsMemberCacheService memberCacheService;
+    @Value("${redis.key.authCode}")
     private String REDIS_KEY_PREFIX_AUTH_CODE;
-    @Value("${redis.key.expire.authCode}")
+    @Value("${redis.expire.authCode}")
     private Long AUTH_CODE_EXPIRE_SECONDS;
 
     @Override
     public UmsMember getByUsername(String username) {
+        UmsMember member = memberCacheService.getMember(username);
+        if(member!=null) return member;
         UmsMemberExample example = new UmsMemberExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsMember> memberList = memberMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(memberList)) {
-            return memberList.get(0);
+            member = memberList.get(0);
+            memberCacheService.setMember(member);
+            return member;
         }
         return null;
     }
@@ -109,9 +113,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         for(int i=0;i<6;i++){
             sb.append(random.nextInt(10));
         }
-        //验证码绑定手机号并存储到redis
-        redisService.set(REDIS_KEY_PREFIX_AUTH_CODE+telephone,sb.toString());
-        redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE+telephone,AUTH_CODE_EXPIRE_SECONDS);
+        memberCacheService.setAuthCode(telephone,sb.toString());
         return sb.toString();
     }
 
@@ -130,6 +132,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         UmsMember umsMember = memberList.get(0);
         umsMember.setPassword(passwordEncoder.encode(password));
         memberMapper.updateByPrimaryKeySelective(umsMember);
+        memberCacheService.delMember(umsMember.getId());
     }
 
     @Override
@@ -146,6 +149,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         record.setId(id);
         record.setIntegration(integration);
         memberMapper.updateByPrimaryKeySelective(record);
+        memberCacheService.delMember(id);
     }
 
     @Override
@@ -185,7 +189,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         if(StringUtils.isEmpty(authCode)){
             return false;
         }
-        String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
+        String realAuthCode = memberCacheService.getAuthCode(telephone);
         return authCode.equals(realAuthCode);
     }
 
