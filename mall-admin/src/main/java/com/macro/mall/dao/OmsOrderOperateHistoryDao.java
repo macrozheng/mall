@@ -10,5 +10,8 @@ import java.util.List;
  * Created by macro on 2018/10/12.
  */
 public interface OmsOrderOperateHistoryDao {
+    /**
+     * 批量创建
+     */
     int insertList(@Param("list") List<OmsOrderOperateHistory> orderOperateHistoryList);
 }
