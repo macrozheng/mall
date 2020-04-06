@@ -178,16 +178,21 @@ public class EsProductServiceImpl implements EsProductService {
             filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("keywords", keyword),
                     ScoreFunctionBuilders.weightFactorFunction(2)));
             filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("brandId", brandId),
-                    ScoreFunctionBuilders.weightFactorFunction(10)));
+                    ScoreFunctionBuilders.weightFactorFunction(5)));
             filterFunctionBuilders.add(new FunctionScoreQueryBuilder.FilterFunctionBuilder(QueryBuilders.matchQuery("productCategoryId", productCategoryId),
-                    ScoreFunctionBuilders.weightFactorFunction(6)));
+                    ScoreFunctionBuilders.weightFactorFunction(3)));
             FunctionScoreQueryBuilder.FilterFunctionBuilder[] builders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[filterFunctionBuilders.size()];
             filterFunctionBuilders.toArray(builders);
             FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(builders)
                     .scoreMode(FunctionScoreQuery.ScoreMode.SUM)
                     .setMinScore(2);
+            //用于过滤掉相同的商品
+            BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
+            boolQueryBuilder.mustNot(QueryBuilders.termQuery("id",id));
+            //构建查询条件
             NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
             builder.withQuery(functionScoreQueryBuilder);
+            builder.withFilter(boolQueryBuilder);
             builder.withPageable(pageable);
             NativeSearchQuery searchQuery = builder.build();
             LOGGER.info("DSL:{}", searchQuery.getQuery().toString());
@@ -212,12 +217,12 @@ public class EsProductServiceImpl implements EsProductService {
         //聚合搜索商品属性，去除type=1的属性
         AbstractAggregationBuilder aggregationBuilder = AggregationBuilders.nested("allAttrValues","attrValueList")
                 .subAggregation(AggregationBuilders.filter("productAttrs",QueryBuilders.termQuery("attrValueList.type",1))
-                .subAggregation(AggregationBuilders.terms("attrIds")
-                        .field("attrValueList.productAttributeId")
-                        .subAggregation(AggregationBuilders.terms("attrValues")
-                                .field("attrValueList.value"))
-                        .subAggregation(AggregationBuilders.terms("attrNames")
-                                .field("attrValueList.name"))));
+                        .subAggregation(AggregationBuilders.terms("attrIds")
+                                .field("attrValueList.productAttributeId")
+                                .subAggregation(AggregationBuilders.terms("attrValues")
+                                        .field("attrValueList.value"))
+                                .subAggregation(AggregationBuilders.terms("attrNames")
+                                        .field("attrValueList.name"))));
         builder.addAggregation(aggregationBuilder);
         NativeSearchQuery searchQuery = builder.build();
         return elasticsearchTemplate.query(searchQuery, response -> {
