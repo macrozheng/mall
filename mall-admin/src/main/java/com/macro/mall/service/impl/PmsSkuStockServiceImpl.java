@@ -1,9 +1,6 @@
 package com.macro.mall.service.impl;
 
 import com.macro.mall.dao.PmsSkuStockDao;
-import com.macro.mall.mapper.PmsSkuStockMapper;
-import com.macro.mall.model.PmsSkuStock;
-import com.macro.mall.model.PmsSkuStockExample;
 import com.macro.mall.service.PmsSkuStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

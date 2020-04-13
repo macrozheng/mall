@@ -1,7 +1,5 @@
 package com.macro.mall.portal.domain;
 
-import com.macro.mall.model.OmsCartItem;
-
 import java.math.BigDecimal;
 
 /**

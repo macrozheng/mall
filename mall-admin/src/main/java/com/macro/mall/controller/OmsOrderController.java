@@ -3,7 +3,6 @@ package com.macro.mall.controller;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.*;
-import com.macro.mall.model.OmsOrder;
 import com.macro.mall.service.OmsOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

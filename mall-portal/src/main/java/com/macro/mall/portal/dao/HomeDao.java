@@ -1,8 +1,5 @@
 package com.macro.mall.portal.dao;
 
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsBrand;
-import com.macro.mall.model.PmsProduct;
 import com.macro.mall.portal.domain.FlashPromotionProduct;
 import org.apache.ibatis.annotations.Param;
 

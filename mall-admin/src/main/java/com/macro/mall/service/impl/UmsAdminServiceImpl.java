@@ -8,11 +8,6 @@ import com.macro.mall.dao.UmsAdminPermissionRelationDao;
 import com.macro.mall.dao.UmsAdminRoleRelationDao;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
-import com.macro.mall.mapper.UmsAdminLoginLogMapper;
-import com.macro.mall.mapper.UmsAdminMapper;
-import com.macro.mall.mapper.UmsAdminPermissionRelationMapper;
-import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
-import com.macro.mall.model.*;
 import com.macro.mall.security.util.JwtTokenUtil;
 import com.macro.mall.service.UmsAdminService;
 import org.slf4j.Logger;
@@ -99,6 +94,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         //密码需要客户端加密后传递
         try {
             UserDetails userDetails = loadUserByUsername(username);
+            System.out.println(userDetails.getPassword());
             if(!passwordEncoder.matches(password,userDetails.getPassword())){
                 throw new BadCredentialsException("密码不正确");
             }

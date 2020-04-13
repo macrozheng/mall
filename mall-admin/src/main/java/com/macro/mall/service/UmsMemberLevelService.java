@@ -1,7 +1,5 @@
 package com.macro.mall.service;
 
-import com.macro.mall.model.UmsMemberLevel;
-
 import java.util.List;
 
 /**

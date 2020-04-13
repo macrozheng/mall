@@ -1,9 +1,5 @@
 package com.macro.mall.portal.service.impl;
 
-import com.macro.mall.mapper.OmsCartItemMapper;
-import com.macro.mall.model.OmsCartItem;
-import com.macro.mall.model.OmsCartItemExample;
-import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.dao.PortalProductDao;
 import com.macro.mall.portal.domain.CartProduct;
 import com.macro.mall.portal.domain.CartPromotionItem;

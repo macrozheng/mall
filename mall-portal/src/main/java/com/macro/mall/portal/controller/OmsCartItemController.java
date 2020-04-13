@@ -1,7 +1,6 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.CartProduct;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.service.OmsCartItemService;

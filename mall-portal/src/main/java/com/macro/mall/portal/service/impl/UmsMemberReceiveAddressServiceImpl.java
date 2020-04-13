@@ -1,9 +1,5 @@
 package com.macro.mall.portal.service.impl;
 
-import com.macro.mall.mapper.UmsMemberReceiveAddressMapper;
-import com.macro.mall.model.UmsMember;
-import com.macro.mall.model.UmsMemberReceiveAddress;
-import com.macro.mall.model.UmsMemberReceiveAddressExample;
 import com.macro.mall.portal.service.UmsMemberReceiveAddressService;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;

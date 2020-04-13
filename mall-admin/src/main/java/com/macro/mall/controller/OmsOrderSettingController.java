@@ -1,7 +1,6 @@
 package com.macro.mall.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.OmsOrderSetting;
 import com.macro.mall.service.OmsOrderSettingService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

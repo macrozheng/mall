@@ -1,9 +1,6 @@
 package com.macro.mall.demo.config;
 
 import com.macro.mall.demo.bo.AdminUserDetails;
-import com.macro.mall.mapper.UmsAdminMapper;
-import com.macro.mall.model.UmsAdmin;
-import com.macro.mall.model.UmsAdminExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

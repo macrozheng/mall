@@ -1,7 +1,5 @@
 package com.macro.mall.dto;
 
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.SmsFlashPromotionProductRelation;
 import lombok.Getter;
 import lombok.Setter;
 

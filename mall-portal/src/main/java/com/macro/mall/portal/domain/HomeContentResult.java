@@ -1,9 +1,5 @@
 package com.macro.mall.portal.domain;
 
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsBrand;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.SmsHomeAdvertise;
 import lombok.Getter;
 import lombok.Setter;
 

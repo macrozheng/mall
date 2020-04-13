@@ -1,7 +1,6 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.UmsMemberReceiveAddress;
 import com.macro.mall.portal.service.UmsMemberReceiveAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

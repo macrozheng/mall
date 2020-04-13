@@ -1,7 +1,6 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.PmsProductAttributeCategoryItem;
-import com.macro.mall.model.PmsProductAttributeCategory;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.macro.mall.portal.service;
 
-import com.macro.mall.model.UmsMemberReceiveAddress;
-
 import java.util.List;
 
 /**

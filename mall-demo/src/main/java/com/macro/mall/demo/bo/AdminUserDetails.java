@@ -1,6 +1,5 @@
 package com.macro.mall.demo.bo;
 
-import com.macro.mall.model.UmsAdmin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,5 @@
 package com.macro.mall.dto;
 
-import com.macro.mall.model.OmsCompanyAddress;
-import com.macro.mall.model.OmsOrderReturnApply;
 import lombok.Getter;
 import lombok.Setter;
 

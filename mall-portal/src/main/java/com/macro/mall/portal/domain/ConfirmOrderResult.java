@@ -1,8 +1,5 @@
 package com.macro.mall.portal.domain;
 
-import com.macro.mall.model.UmsIntegrationConsumeSetting;
-import com.macro.mall.model.UmsMemberReceiveAddress;
-
 import java.math.BigDecimal;
 import java.util.List;
 

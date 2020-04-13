@@ -1,7 +1,6 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.UmsPermissionNode;
-import com.macro.mall.model.UmsPermission;
 
 import java.util.List;
 

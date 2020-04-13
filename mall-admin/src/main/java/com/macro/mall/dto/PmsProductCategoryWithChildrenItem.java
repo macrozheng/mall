@@ -1,7 +1,5 @@
 package com.macro.mall.dto;
 
-import com.macro.mall.model.PmsProductCategory;
-
 import java.util.List;
 
 /**

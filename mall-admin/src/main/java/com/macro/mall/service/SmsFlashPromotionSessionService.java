@@ -1,7 +1,6 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.SmsFlashPromotionSessionDetail;
-import com.macro.mall.model.SmsFlashPromotionSession;
 
 import java.util.List;
 

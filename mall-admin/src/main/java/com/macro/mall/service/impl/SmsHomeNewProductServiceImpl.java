@@ -1,9 +1,6 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.SmsHomeNewProductMapper;
-import com.macro.mall.model.SmsHomeNewProduct;
-import com.macro.mall.model.SmsHomeNewProductExample;
 import com.macro.mall.service.SmsHomeNewProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

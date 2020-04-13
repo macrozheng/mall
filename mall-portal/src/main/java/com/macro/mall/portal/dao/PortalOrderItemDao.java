@@ -1,6 +1,5 @@
 package com.macro.mall.portal.dao;
 
-import com.macro.mall.model.OmsOrderItem;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

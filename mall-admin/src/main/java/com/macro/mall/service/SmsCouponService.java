@@ -1,7 +1,6 @@
 package com.macro.mall.service;
 
 import com.macro.mall.dto.SmsCouponParam;
-import com.macro.mall.model.SmsCoupon;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

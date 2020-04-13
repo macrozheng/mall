@@ -1,10 +1,5 @@
 package com.macro.mall.portal.domain;
 
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductFullReduction;
-import com.macro.mall.model.PmsProductLadder;
-import com.macro.mall.model.PmsSkuStock;
-
 import java.util.List;
 
 /**

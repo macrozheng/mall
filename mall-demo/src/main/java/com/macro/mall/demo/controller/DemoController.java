@@ -4,7 +4,6 @@ import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.demo.dto.PmsBrandDto;
 import com.macro.mall.demo.service.DemoService;
-import com.macro.mall.model.PmsBrand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;

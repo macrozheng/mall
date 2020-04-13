@@ -1,6 +1,5 @@
 package com.macro.mall.dto;
 
-import com.macro.mall.model.UmsPermission;
 import lombok.Getter;
 import lombok.Setter;
 

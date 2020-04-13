@@ -1,7 +1,5 @@
 package com.macro.mall.service;
 
-import com.macro.mall.model.UmsPermission;
-import com.macro.mall.model.UmsRole;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

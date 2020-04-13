@@ -5,7 +5,6 @@ import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.PmsProductParam;
 import com.macro.mall.dto.PmsProductQueryParam;
 import com.macro.mall.dto.PmsProductResult;
-import com.macro.mall.model.PmsProduct;
 import com.macro.mall.service.PmsProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

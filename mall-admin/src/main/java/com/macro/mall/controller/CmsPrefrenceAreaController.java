@@ -1,7 +1,6 @@
 package com.macro.mall.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.CmsPrefrenceArea;
 import com.macro.mall.service.CmsPrefrenceAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

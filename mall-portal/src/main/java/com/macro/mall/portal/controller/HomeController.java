@@ -1,9 +1,6 @@
 package com.macro.mall.portal.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.service.HomeService;
 import io.swagger.annotations.Api;

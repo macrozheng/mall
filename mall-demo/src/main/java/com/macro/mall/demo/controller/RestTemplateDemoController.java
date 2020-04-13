@@ -1,7 +1,6 @@
 package com.macro.mall.demo.controller;
 
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.PmsBrand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

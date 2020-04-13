@@ -2,7 +2,6 @@ package com.macro.mall.controller;
 
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.UmsPermissionNode;
-import com.macro.mall.model.UmsPermission;
 import com.macro.mall.service.UmsPermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

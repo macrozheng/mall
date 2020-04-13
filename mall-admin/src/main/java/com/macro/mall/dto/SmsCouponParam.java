@@ -1,9 +1,5 @@
 package com.macro.mall.dto;
 
-import com.macro.mall.model.SmsCoupon;
-import com.macro.mall.model.SmsCouponProductCategoryRelation;
-import com.macro.mall.model.SmsCouponProductRelation;
-
 import java.util.List;
 
 /**

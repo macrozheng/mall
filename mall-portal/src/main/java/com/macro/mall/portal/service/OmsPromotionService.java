@@ -1,6 +1,5 @@
 package com.macro.mall.portal.service;
 
-import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.portal.domain.CartPromotionItem;
 
 import java.util.List;
