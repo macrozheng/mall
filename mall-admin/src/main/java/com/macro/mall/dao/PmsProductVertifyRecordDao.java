@@ -10,5 +10,8 @@ import java.util.List;
  * Created by macro on 2018/4/27.
  */
 public interface PmsProductVertifyRecordDao {
+    /**
+     * 批量创建
+     */
     int insertList(@Param("list") List<PmsProductVertifyRecord> list);
 }
