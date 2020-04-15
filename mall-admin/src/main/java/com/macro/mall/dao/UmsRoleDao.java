@@ -11,6 +11,9 @@ import java.util.List;
  * Created by macro on 2020/2/2.
  */
 public interface UmsRoleDao {
+    /**
+     * 根据后台用户ID获取菜单
+     */
     List<UmsMenu> getMenuList(@Param("adminId") Long adminId);
 
     List<UmsMenu> getMenuListByRoleId(@Param("roleId") Long roleId);
