@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 测试controller
+ * 品牌管理示例controller
  */
-@Api(value = "demo", description = "demo详情")
+@Api(tags = "DemoController", description = "品牌管理示例接口")
 @Controller
 public class DemoController {
     @Autowired
