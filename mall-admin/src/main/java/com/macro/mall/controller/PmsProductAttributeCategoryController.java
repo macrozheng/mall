@@ -27,7 +27,7 @@ public class PmsProductAttributeCategoryController {
     @ApiOperation("添加商品属性分类")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestParam String name) {
+    public CommonResult create(@RequestParam("name") String name) {
         int count = productAttributeCategoryService.create(name);
         if (count > 0) {
             return CommonResult.success(count);

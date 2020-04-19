@@ -59,7 +59,7 @@ public class SmsHomeRecommendProductController {
     @ApiOperation("批量修改推荐状态")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
+    public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam("recommendStatus") Integer recommendStatus) {
         int count = recommendProductService.updateRecommendStatus(ids, recommendStatus);
         if (count > 0) {
             return CommonResult.success(count);
