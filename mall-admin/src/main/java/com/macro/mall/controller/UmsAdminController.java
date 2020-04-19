@@ -4,11 +4,13 @@ import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.UmsAdminLoginParam;
 import com.macro.mall.dto.UmsAdminParam;
+import com.macro.mall.dto.UmsAdminSummaryResult;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsRole;
 import com.macro.mall.service.UmsAdminService;
+import com.macro.mall.service.UmsAdminSummaryService;
 import com.macro.mall.service.UmsRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.HashMap;
@@ -40,6 +43,8 @@ public class UmsAdminController {
     private UmsAdminService adminService;
     @Autowired
     private UmsRoleService roleService;
+    @Resource
+    private UmsAdminSummaryService adminSummaryService;
 
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -79,6 +84,13 @@ public class UmsAdminController {
         tokenMap.put("token", refreshToken);
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
+    }
+
+    @ApiOperation(value = "首页数据统计信息")
+    @RequestMapping(value = "/summary", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<UmsAdminSummaryResult> adminSummary() {
+        return CommonResult.success(adminSummaryService.getAdminSummary());
     }
 
     @ApiOperation(value = "获取当前登录用户信息")
