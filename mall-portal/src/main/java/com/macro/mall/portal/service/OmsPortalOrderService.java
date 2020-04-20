@@ -1,9 +1,10 @@
 package com.macro.mall.portal.service;
 
-import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OrderParam;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Map;
 
 /**
  * 前台订单管理Service
@@ -19,19 +20,19 @@ public interface OmsPortalOrderService {
      * 根据提交信息生成订单
      */
     @Transactional
-    CommonResult generateOrder(OrderParam orderParam);
+    Map<String, Object> generateOrder(OrderParam orderParam);
 
     /**
      * 支付成功后的回调
      */
     @Transactional
-    CommonResult paySuccess(Long orderId);
+    Integer paySuccess(Long orderId);
 
     /**
      * 自动取消超时订单
      */
     @Transactional
-    CommonResult cancelTimeOutOrder();
+    Integer cancelTimeOutOrder();
 
     /**
      * 取消单个超时订单

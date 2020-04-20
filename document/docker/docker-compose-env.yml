@@ -51,6 +51,7 @@ services:
       - /mydata/elasticsearch/data:/usr/share/elasticsearch/data #数据文件挂载
     ports:
       - 9200:9200
+      - 9300:9300
   kibana:
     image: kibana:6.4.0
     container_name: kibana
