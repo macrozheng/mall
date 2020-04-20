@@ -10,5 +10,8 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 public interface CmsSubjectProductRelationDao {
+    /**
+     * 批量创建
+     */
     int insertList(@Param("list") List<CmsSubjectProductRelation> subjectProductRelationList);
 }
