@@ -2,6 +2,8 @@ package com.macro.mall.search.service;
 
 import com.macro.mall.search.domain.EsProduct;
 import com.macro.mall.search.domain.EsProductRelatedInfo;
+import com.macro.mall.search.dto.AggProduct;
+import com.macro.mall.search.dto.QueryProduct;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -50,4 +52,24 @@ public interface EsProductService {
      * 获取搜索词相关品牌、分类、属性
      */
     EsProductRelatedInfo searchRelatedInfo(String keyword);
+
+    /**
+     * 商品搜索
+     * @param query
+     * @return
+     */
+    Page<EsProduct> search(QueryProduct query);
+
+    /**
+     * 商品聚合分析（包含数量统计）
+     * @param query
+     * @return
+     */
+    AggProduct aggProduct(QueryProduct query);
+
+    /**
+     * 初始化index
+     * @return
+     */
+    public boolean initIndex();
 }

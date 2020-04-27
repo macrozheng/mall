@@ -4,6 +4,8 @@ import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.search.domain.EsProduct;
 import com.macro.mall.search.domain.EsProductRelatedInfo;
+import com.macro.mall.search.dto.AggProduct;
+import com.macro.mall.search.dto.QueryProduct;
 import com.macro.mall.search.service.EsProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -25,6 +27,13 @@ import java.util.List;
 public class EsProductController {
     @Autowired
     private EsProductService esProductService;
+
+    @ApiOperation(value = "初始化Index")
+    @RequestMapping(value = "/initIndex", method = RequestMethod.POST)
+    public CommonResult<Boolean> initIndex() {
+        Boolean result = esProductService.initIndex();
+        return CommonResult.success(result);
+    }
 
     @ApiOperation(value = "导入所有数据库中商品到ES")
     @RequestMapping(value = "/importAll", method = RequestMethod.POST)
@@ -102,6 +111,20 @@ public class EsProductController {
     @ResponseBody
     public CommonResult<EsProductRelatedInfo> searchRelatedInfo(@RequestParam(required = false) String keyword) {
         EsProductRelatedInfo productRelatedInfo = esProductService.searchRelatedInfo(keyword);
+        return CommonResult.success(productRelatedInfo);
+    }
+
+    @ApiOperation(value = "综合搜索、筛选、排序")
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public CommonResult<CommonPage<EsProduct>> search(@RequestBody QueryProduct query) {
+        Page<EsProduct> pages = esProductService.search(query);
+        return  CommonResult.success(CommonPage.restPage(pages));
+    }
+
+    @ApiOperation(value = "聚合条件查询, 获取搜索的相关品牌、分类及筛选属性 (包含数量)")
+    @RequestMapping(value = "/search/agg", method = RequestMethod.POST)
+    public CommonResult<AggProduct> aggWithCount(@RequestBody QueryProduct query) {
+        AggProduct productRelatedInfo = esProductService.aggProduct(query);
         return CommonResult.success(productRelatedInfo);
     }
 }
