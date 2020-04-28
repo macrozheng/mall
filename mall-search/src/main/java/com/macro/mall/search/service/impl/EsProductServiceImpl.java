@@ -7,6 +7,8 @@ import com.macro.mall.search.dto.AggProduct;
 import com.macro.mall.search.dto.QueryProduct;
 import com.macro.mall.search.repository.EsProductRepository;
 import com.macro.mall.search.service.EsProductService;
+import com.macro.mall.search.util.TreeNode;
+import com.macro.mall.search.util.TreeUtil;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
@@ -39,14 +41,15 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
 
 
 /**
@@ -62,9 +65,16 @@ public class EsProductServiceImpl implements EsProductService {
     private EsProductRepository productRepository;
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @Override
     public int importAll() {
         List<EsProduct> esProductList = productDao.getAllEsProductList(null);
+
+        Map<Long, List<Long>> mProductCategoryIds = loadProductCategoryIds();
+        setProductCategoryIds(esProductList, mProductCategoryIds);
+
         Iterable<EsProduct> esProductIterable = productRepository.saveAll(esProductList);
         Iterator<EsProduct> iterator = esProductIterable.iterator();
         int result = 0;
@@ -73,6 +83,51 @@ public class EsProductServiceImpl implements EsProductService {
             iterator.next();
         }
         return result;
+    }
+
+    private Map<Long, List<Long>> loadProductCategoryIds(){
+        Map<Long, List<Long>> mProductCategoryIds = new HashMap<>();
+        // 从数据库获取分类列表，构造成tree后整理为map备用
+        String sql = "select id, parent_id, name from pms_product_category order by parent_id, id";
+        List<TreeNode> nodeList = jdbcTemplate.query(sql, new RowMapper<TreeNode>() {
+            public TreeNode mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new TreeNode(rs.getString("id"), rs.getString("parent_id"), rs.getString("name"));
+            }
+        });
+        List<TreeNode> treeNodes = TreeUtil.list2tree(nodeList);
+        loadProductCategoryIdsFromTree(mProductCategoryIds, treeNodes);
+        return  mProductCategoryIds;
+    }
+
+    private static void loadProductCategoryIdsFromTree(Map<Long, List<Long>> mProductCategoryIds, List<TreeNode> treeNodes){
+        if(treeNodes==null || treeNodes.isEmpty()){
+            return;
+        }
+        for(TreeNode node: treeNodes){
+            Long id = Long.valueOf(node.getId());
+            Long parentId = Long.valueOf(node.getParentId());
+            List<Long> ids = new ArrayList<Long>();
+            ids.add(id);
+            if(mProductCategoryIds.containsKey(parentId)){
+                ids.addAll(mProductCategoryIds.get(parentId));
+            }
+            mProductCategoryIds.put(id, ids);
+            if(node.getChildren()!=null){
+                loadProductCategoryIdsFromTree(mProductCategoryIds, node.getChildren());
+            }
+        }
+    }
+
+    private void setProductCategoryIds(List<EsProduct> esProductList, Map<Long, List<Long>> mProductCategoryIds){
+        if(mProductCategoryIds==null || mProductCategoryIds.isEmpty() || esProductList==null || esProductList.isEmpty()){
+            return;
+        }
+        for(EsProduct product: esProductList){
+            Long productCategoryId = product.getProductCategoryId();
+            if(productCategoryId!=null && mProductCategoryIds.containsKey(productCategoryId)){
+                product.setProductCategoryIds(mProductCategoryIds.get(productCategoryId));
+            }
+        }
     }
 
     @Override
@@ -370,20 +425,6 @@ public class EsProductServiceImpl implements EsProductService {
     private BoolQueryBuilder addFilters(QueryProduct query) {
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
 
-        List<QueryProduct.ProductAttr> attrGroups = query.getProductAttrs();
-        if (attrGroups != null) {
-            // 多属性过滤查询，如（内存、颜色、屏幕尺寸、版本等等）
-            for (QueryProduct.ProductAttr attrGroup : attrGroups) {
-                BoolQueryBuilder attrBoolQuery = QueryBuilders.boolQuery();
-                // 匹配商品规格参数名
-                attrBoolQuery.filter(QueryBuilders.matchQuery("attrValueList.attrName", attrGroup.getAttrName()));
-                // 匹配商品规格参数值，这里多值匹配用【termsQuery】注意区分【termQuery】
-                attrBoolQuery.filter(QueryBuilders.termsQuery("attrValueList.attrValues", attrGroup.getAttrValues()));
-                // 使用NestedQuery查询（嵌套对象的过滤查询）
-                NestedQueryBuilder nestedQueryBuilder = QueryBuilders.nestedQuery("attrValueList", attrBoolQuery, ScoreMode.None);
-                boolQueryBuilder.filter(nestedQueryBuilder);
-            }
-        }
         if (query.getId() != null) {
             // 商品Id查询
             boolQueryBuilder.filter(QueryBuilders.matchQuery("id", query.getId()).operator(Operator.AND));
@@ -402,13 +443,28 @@ public class EsProductServiceImpl implements EsProductService {
         }
         if (query.getProductCategoryId() != null) {
             // 分类查询
-            boolQueryBuilder.filter(QueryBuilders.matchQuery("productCategoryId", query.getProductCategoryId()).operator(Operator.AND));
+            //boolQueryBuilder.filter(QueryBuilders.matchQuery("productCategoryId", query.getProductCategoryId()).operator(Operator.AND));
+            boolQueryBuilder.filter(QueryBuilders.multiMatchQuery(query.getProductCategoryId(), "productCategoryId", "productCategoryIds").operator(Operator.AND));
         }
         if (!StringUtils.isEmpty(query.getProductCategoryName())) {
             // 分类名称查询
             boolQueryBuilder.filter(QueryBuilders.termsQuery("productCategoryName", query.getProductCategoryName()));
         }
 
+        List<QueryProduct.ProductAttr> attrGroups = query.getProductAttrs();
+        if (attrGroups != null) {
+            // 多属性过滤查询，如（内存、颜色、屏幕尺寸、版本等等）
+            for (QueryProduct.ProductAttr attrGroup : attrGroups) {
+                BoolQueryBuilder attrBoolQuery = QueryBuilders.boolQuery();
+                // 匹配商品规格参数名
+                attrBoolQuery.filter(QueryBuilders.matchQuery("attrValueList.name", attrGroup.getAttrName()));
+                // 匹配商品规格参数值，这里多值匹配用【termsQuery】注意区分【termQuery】
+                attrBoolQuery.filter(QueryBuilders.termsQuery("attrValueList.value", attrGroup.getAttrValues()));
+                // 使用NestedQuery查询（嵌套对象的过滤查询）
+                NestedQueryBuilder nestedQueryBuilder = QueryBuilders.nestedQuery("attrValueList", attrBoolQuery, ScoreMode.None);
+                boolQueryBuilder.filter(nestedQueryBuilder);
+            }
+        }
 
         String keyword = query.getKeyword();
         if(StringUtils.isEmpty(keyword)){

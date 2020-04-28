@@ -24,6 +24,10 @@ public class EsProduct implements Serializable {
     @Field(type = FieldType.Keyword)
     private String brandName;
     private Long productCategoryId;
+    /**
+     * 用于保存多分类以及父分类，支持搜索父分类下所有商品
+     */
+    private List<Long> productCategoryIds;
     @Field(type = FieldType.Keyword)
     private String productCategoryName;
     private String pic;
@@ -81,6 +85,14 @@ public class EsProduct implements Serializable {
 
     public void setProductCategoryId(Long productCategoryId) {
         this.productCategoryId = productCategoryId;
+    }
+
+    public List<Long> getProductCategoryIds() {
+        return productCategoryIds;
+    }
+
+    public void setProductCategoryIds(List<Long> productCategoryIds) {
+        this.productCategoryIds = productCategoryIds;
     }
 
     public String getProductCategoryName() {
