@@ -451,6 +451,17 @@ public class EsProductServiceImpl implements EsProductService {
             boolQueryBuilder.filter(QueryBuilders.termsQuery("productCategoryName", query.getProductCategoryName()));
         }
 
+        // 价格范围
+        if(query.getMinPrice()!=null && query.getMinPrice().doubleValue()>0.1){
+            // 最低价格
+            boolQueryBuilder.filter(QueryBuilders.rangeQuery("price").gte(query.getMinPrice().doubleValue()));
+        }
+        if(query.getMaxPrice()!=null && query.getMaxPrice().doubleValue()>0.1
+                && (query.getMinPrice()==null || query.getMaxPrice().doubleValue()>query.getMinPrice().doubleValue()) ){
+            // 最高价格
+            boolQueryBuilder.filter(QueryBuilders.rangeQuery("price").lte(query.getMaxPrice().doubleValue()));
+        }
+
         List<QueryProduct.ProductAttr> attrGroups = query.getProductAttrs();
         if (attrGroups != null) {
             // 多属性过滤查询，如（内存、颜色、屏幕尺寸、版本等等）
@@ -488,7 +499,6 @@ public class EsProductServiceImpl implements EsProductService {
                     .setMinScore(2);
             boolQueryBuilder.filter(functionScoreQueryBuilder);
         }
-        // TODO price between
         return boolQueryBuilder;
     }
 
