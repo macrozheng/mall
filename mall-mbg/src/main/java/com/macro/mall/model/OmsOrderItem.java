@@ -38,13 +38,6 @@ public class OmsOrderItem implements Serializable {
     @ApiModelProperty(value = "商品分类id")
     private Long productCategoryId;
 
-    @ApiModelProperty(value = "商品的销售属性")
-    private String sp1;
-
-    private String sp2;
-
-    private String sp3;
-
     @ApiModelProperty(value = "商品促销名称")
     private String promotionName;
 
@@ -173,30 +166,6 @@ public class OmsOrderItem implements Serializable {
         this.productCategoryId = productCategoryId;
     }
 
-    public String getSp1() {
-        return sp1;
-    }
-
-    public void setSp1(String sp1) {
-        this.sp1 = sp1;
-    }
-
-    public String getSp2() {
-        return sp2;
-    }
-
-    public void setSp2(String sp2) {
-        this.sp2 = sp2;
-    }
-
-    public String getSp3() {
-        return sp3;
-    }
-
-    public void setSp3(String sp3) {
-        this.sp3 = sp3;
-    }
-
     public String getPromotionName() {
         return promotionName;
     }
@@ -280,9 +249,6 @@ public class OmsOrderItem implements Serializable {
         sb.append(", productSkuId=").append(productSkuId);
         sb.append(", productSkuCode=").append(productSkuCode);
         sb.append(", productCategoryId=").append(productCategoryId);
-        sb.append(", sp1=").append(sp1);
-        sb.append(", sp2=").append(sp2);
-        sb.append(", sp3=").append(sp3);
         sb.append(", promotionName=").append(promotionName);
         sb.append(", promotionAmount=").append(promotionAmount);
         sb.append(", couponAmount=").append(couponAmount);
