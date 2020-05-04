@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 后台用户角色管理自定义Dao
+ * 自定义角色权限关系管理Dao
  * Created by macro on 2018/9/30.
  */
 public interface UmsRolePermissionRelationDao {
