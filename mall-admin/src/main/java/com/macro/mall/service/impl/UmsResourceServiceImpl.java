@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.UmsResourceMapper;
 import com.macro.mall.model.UmsResource;
 import com.macro.mall.model.UmsResourceExample;
+import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,8 @@ import java.util.List;
 public class UmsResourceServiceImpl implements UmsResourceService {
     @Autowired
     private UmsResourceMapper resourceMapper;
+    @Autowired
+    private UmsAdminCacheService adminCacheService;
     @Override
     public int create(UmsResource umsResource) {
         umsResource.setCreateTime(new Date());
@@ -29,7 +32,9 @@ public class UmsResourceServiceImpl implements UmsResourceService {
     @Override
     public int update(Long id, UmsResource umsResource) {
         umsResource.setId(id);
-        return resourceMapper.updateByPrimaryKeySelective(umsResource);
+        int count = resourceMapper.updateByPrimaryKeySelective(umsResource);
+        adminCacheService.delResourceListByResource(id);
+        return count;
     }
 
     @Override
@@ -39,7 +44,9 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 
     @Override
     public int delete(Long id) {
-        return resourceMapper.deleteByPrimaryKey(id);
+        int count = resourceMapper.deleteByPrimaryKey(id);
+        adminCacheService.delResourceListByResource(id);
+        return count;
     }
 
     @Override

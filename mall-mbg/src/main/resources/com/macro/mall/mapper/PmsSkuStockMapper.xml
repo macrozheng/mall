@@ -8,13 +8,11 @@
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="low_stock" jdbcType="INTEGER" property="lowStock" />
-    <result column="sp1" jdbcType="VARCHAR" property="sp1" />
-    <result column="sp2" jdbcType="VARCHAR" property="sp2" />
-    <result column="sp3" jdbcType="VARCHAR" property="sp3" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
     <result column="sale" jdbcType="INTEGER" property="sale" />
     <result column="promotion_price" jdbcType="DECIMAL" property="promotionPrice" />
     <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
+    <result column="sp_data" jdbcType="VARCHAR" property="spData" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, sku_code, price, stock, low_stock, sp1, sp2, sp3, pic, sale, promotion_price, 
-    lock_stock
+    id, product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock, 
+    sp_data
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.PmsSkuStockExample" resultMap="BaseResultMap">
     select
@@ -113,13 +111,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_sku_stock (product_id, sku_code, price, 
-      stock, low_stock, sp1, 
-      sp2, sp3, pic, sale, 
-      promotion_price, lock_stock)
+      stock, low_stock, pic, 
+      sale, promotion_price, lock_stock, 
+      sp_data)
     values (#{productId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{sp1,jdbcType=VARCHAR}, 
-      #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{sale,jdbcType=INTEGER}, 
-      #{promotionPrice,jdbcType=DECIMAL}, #{lockStock,jdbcType=INTEGER})
+      #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, 
+      #{sale,jdbcType=INTEGER}, #{promotionPrice,jdbcType=DECIMAL}, #{lockStock,jdbcType=INTEGER}, 
+      #{spData,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsSkuStock">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -142,15 +140,6 @@
       <if test="lowStock != null">
         low_stock,
       </if>
-      <if test="sp1 != null">
-        sp1,
-      </if>
-      <if test="sp2 != null">
-        sp2,
-      </if>
-      <if test="sp3 != null">
-        sp3,
-      </if>
       <if test="pic != null">
         pic,
       </if>
@@ -162,6 +151,9 @@
       </if>
       <if test="lockStock != null">
         lock_stock,
+      </if>
+      <if test="spData != null">
+        sp_data,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -180,15 +172,6 @@
       <if test="lowStock != null">
         #{lowStock,jdbcType=INTEGER},
       </if>
-      <if test="sp1 != null">
-        #{sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="sp2 != null">
-        #{sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="sp3 != null">
-        #{sp3,jdbcType=VARCHAR},
-      </if>
       <if test="pic != null">
         #{pic,jdbcType=VARCHAR},
       </if>
@@ -200,6 +183,9 @@
       </if>
       <if test="lockStock != null">
         #{lockStock,jdbcType=INTEGER},
+      </if>
+      <if test="spData != null">
+        #{spData,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -230,15 +216,6 @@
       <if test="record.lowStock != null">
         low_stock = #{record.lowStock,jdbcType=INTEGER},
       </if>
-      <if test="record.sp1 != null">
-        sp1 = #{record.sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sp2 != null">
-        sp2 = #{record.sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sp3 != null">
-        sp3 = #{record.sp3,jdbcType=VARCHAR},
-      </if>
       <if test="record.pic != null">
         pic = #{record.pic,jdbcType=VARCHAR},
       </if>
@@ -250,6 +227,9 @@
       </if>
       <if test="record.lockStock != null">
         lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.spData != null">
+        sp_data = #{record.spData,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -264,13 +244,11 @@
       price = #{record.price,jdbcType=DECIMAL},
       stock = #{record.stock,jdbcType=INTEGER},
       low_stock = #{record.lowStock,jdbcType=INTEGER},
-      sp1 = #{record.sp1,jdbcType=VARCHAR},
-      sp2 = #{record.sp2,jdbcType=VARCHAR},
-      sp3 = #{record.sp3,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       sale = #{record.sale,jdbcType=INTEGER},
       promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
-      lock_stock = #{record.lockStock,jdbcType=INTEGER}
+      lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      sp_data = #{record.spData,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -293,15 +271,6 @@
       <if test="lowStock != null">
         low_stock = #{lowStock,jdbcType=INTEGER},
       </if>
-      <if test="sp1 != null">
-        sp1 = #{sp1,jdbcType=VARCHAR},
-      </if>
-      <if test="sp2 != null">
-        sp2 = #{sp2,jdbcType=VARCHAR},
-      </if>
-      <if test="sp3 != null">
-        sp3 = #{sp3,jdbcType=VARCHAR},
-      </if>
       <if test="pic != null">
         pic = #{pic,jdbcType=VARCHAR},
       </if>
@@ -314,6 +283,9 @@
       <if test="lockStock != null">
         lock_stock = #{lockStock,jdbcType=INTEGER},
       </if>
+      <if test="spData != null">
+        sp_data = #{spData,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -324,13 +296,11 @@
       price = #{price,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
       low_stock = #{lowStock,jdbcType=INTEGER},
-      sp1 = #{sp1,jdbcType=VARCHAR},
-      sp2 = #{sp2,jdbcType=VARCHAR},
-      sp3 = #{sp3,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       sale = #{sale,jdbcType=INTEGER},
       promotion_price = #{promotionPrice,jdbcType=DECIMAL},
-      lock_stock = #{lockStock,jdbcType=INTEGER}
+      lock_stock = #{lockStock,jdbcType=INTEGER},
+      sp_data = #{spData,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
