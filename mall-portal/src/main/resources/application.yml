@@ -29,6 +29,8 @@ secure:
       - /actuator/**
       - /sso/**
       - /home/**
+      - /product/**
+      - /brand/**
 
 # 自定义redis key
 redis:
