@@ -49,8 +49,8 @@ public class OmsCartItemController {
     @ApiOperation("获取某个会员的购物车列表,包括促销信息")
     @RequestMapping(value = "/list/promotion", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<CartPromotionItem>> listPromotion() {
-        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId());
+    public CommonResult<List<CartPromotionItem>> listPromotion(@RequestParam(required = false) List<Long> cartIds) {
+        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId(), cartIds);
         return CommonResult.success(cartPromotionItemList);
     }
 
