@@ -35,7 +35,8 @@ public class UmsMemberCouponController {
     @RequestMapping(value = "/add/{couponId}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@PathVariable Long couponId) {
-        return memberCouponService.add(couponId);
+        memberCouponService.add(couponId);
+        return CommonResult.success(null,"领取成功");
     }
 
     @ApiOperation("获取用户优惠券列表")
@@ -54,7 +55,7 @@ public class UmsMemberCouponController {
     @RequestMapping(value = "/list/cart/{type}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<SmsCouponHistoryDetail>> listCart(@PathVariable Integer type) {
-        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId());
+        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId(), null);
         List<SmsCouponHistoryDetail> couponHistoryList = memberCouponService.listCart(cartPromotionItemList, type);
         return CommonResult.success(couponHistoryList);
     }

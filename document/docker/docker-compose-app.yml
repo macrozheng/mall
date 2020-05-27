@@ -6,6 +6,7 @@ services:
     ports:
       - 8080:8080
     external_links:
+      - redis:redis #可以用redis这个域名访问redis服务
       - mysql:db #可以用db这个域名访问mysql服务
   mall-search:
     image: mall/mall-search:1.0-SNAPSHOT

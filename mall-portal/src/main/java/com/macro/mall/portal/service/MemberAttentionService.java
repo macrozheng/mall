@@ -1,6 +1,7 @@
 package com.macro.mall.portal.service;
 
 import com.macro.mall.portal.domain.MemberBrandAttention;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -17,10 +18,10 @@ public interface MemberAttentionService {
     /**
      * 取消关注
      */
-    int delete(Long memberId, Long brandId);
+    int delete(Long brandId);
 
     /**
      * 获取用户关注列表
      */
-    List<MemberBrandAttention> list(Long memberId);
+    Page<MemberBrandAttention> list(Integer pageNum,Integer pageSize);
 }

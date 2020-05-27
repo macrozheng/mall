@@ -88,6 +88,18 @@ public class HomeServiceImpl implements HomeService {
         return subjectMapper.selectByExample(example);
     }
 
+    @Override
+    public List<PmsProduct> hotProductList(Integer pageNum, Integer pageSize) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getHotProductList(offset, pageSize);
+    }
+
+    @Override
+    public List<PmsProduct> newProductList(Integer pageNum, Integer pageSize) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getNewProductList(offset, pageSize);
+    }
+
     private HomeFlashPromotion getHomeFlashPromotion() {
         HomeFlashPromotion homeFlashPromotion = new HomeFlashPromotion();
         //获取当前秒杀活动

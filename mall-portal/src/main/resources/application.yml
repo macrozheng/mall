@@ -10,8 +10,8 @@ mybatis:
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mall-portal-secret #JWT加解密使用的密钥
-  expiration: 604800 #JWT的超期限时间(60*60*24)
-  tokenHead: Bearer  #JWT负载中拿到开头
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer '  #JWT负载中拿到开头
 
 secure:
   ignored:
@@ -29,15 +29,19 @@ secure:
       - /actuator/**
       - /sso/**
       - /home/**
+      - /product/**
+      - /brand/**
 
 # 自定义redis key
 redis:
+  database: mall
   key:
-    prefix:
-      authCode: "portal:authCode:"
-      orderId: "portal:orderId:"
-    expire:
-      authCode: 90 # 验证码超期时间
+    authCode: 'ums:authCode'
+    orderId: 'oms:orderId'
+    member: 'ums:member'
+  expire:
+    authCode: 90 # 验证码超期时间
+    common: 86400 # 24小时
 
 # 消息队列定义
 rabbitmq:
