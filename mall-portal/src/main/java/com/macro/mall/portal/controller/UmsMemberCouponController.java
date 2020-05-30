@@ -55,7 +55,7 @@ public class UmsMemberCouponController {
     @RequestMapping(value = "/list/cart/{type}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<SmsCouponHistoryDetail>> listCart(@PathVariable Integer type) {
-        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId());
+        List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(memberService.getCurrentMember().getId(), null);
         List<SmsCouponHistoryDetail> couponHistoryList = memberCouponService.listCart(cartPromotionItemList, type);
         return CommonResult.success(couponHistoryList);
     }

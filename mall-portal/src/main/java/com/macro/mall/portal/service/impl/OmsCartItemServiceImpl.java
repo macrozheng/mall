@@ -1,5 +1,6 @@
 package com.macro.mall.portal.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.mapper.OmsCartItemMapper;
 import com.macro.mall.model.OmsCartItem;
 import com.macro.mall.model.OmsCartItemExample;
@@ -18,6 +19,7 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 购物车管理Service实现类
@@ -78,8 +80,11 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
     }
 
     @Override
-    public List<CartPromotionItem> listPromotion(Long memberId) {
+    public List<CartPromotionItem> listPromotion(Long memberId, List<Long> cartIds) {
         List<OmsCartItem> cartItemList = list(memberId);
+        if(CollUtil.isNotEmpty(cartIds)){
+            cartItemList = cartItemList.stream().filter(item->cartIds.contains(item.getId())).collect(Collectors.toList());
+        }
         List<CartPromotionItem> cartPromotionItemList = new ArrayList<>();
         if(!CollectionUtils.isEmpty(cartItemList)){
             cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
