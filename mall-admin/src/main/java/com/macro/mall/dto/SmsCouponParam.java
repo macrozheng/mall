@@ -4,6 +4,8 @@ import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.model.SmsCouponProductCategoryRelation;
 import com.macro.mall.model.SmsCouponProductRelation;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -12,24 +14,12 @@ import java.util.List;
  * Created by macro on 2018/8/28.
  */
 public class SmsCouponParam extends SmsCoupon {
+    @Getter
+    @Setter
     @ApiModelProperty("优惠券绑定的商品")
     private List<SmsCouponProductRelation> productRelationList;
+    @Getter
+    @Setter
     @ApiModelProperty("优惠券绑定的商品分类")
     private List<SmsCouponProductCategoryRelation> productCategoryRelationList;
-
-    public List<SmsCouponProductRelation> getProductRelationList() {
-        return productRelationList;
-    }
-
-    public void setProductRelationList(List<SmsCouponProductRelation> productRelationList) {
-        this.productRelationList = productRelationList;
-    }
-
-    public List<SmsCouponProductCategoryRelation> getProductCategoryRelationList() {
-        return productCategoryRelationList;
-    }
-
-    public void setProductCategoryRelationList(List<SmsCouponProductCategoryRelation> productCategoryRelationList) {
-        this.productCategoryRelationList = productCategoryRelationList;
-    }
 }
