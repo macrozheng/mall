@@ -149,7 +149,7 @@ mall
 | ------------- | ------ | ------------------------------------------------------------ |
 | JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
-| Redis         | 3.2    | https://redis.io/download                                    |
+| Redis         | 5.0    | https://redis.io/download                                    |
 | Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
 | MongoDb       | 3.2    | https://www.mongodb.com/download-center                      |
 | RabbitMq      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
