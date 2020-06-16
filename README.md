@@ -151,7 +151,7 @@ mall
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 5.0    | https://redis.io/download                                    |
 | Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
-| MongoDb       | 3.2    | https://www.mongodb.com/download-center                      |
+| MongoDb       | 4.2.5  | https://www.mongodb.com/download-center                      |
 | RabbitMq      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
 | Nginx         | 1.10   | http://nginx.org/en/download.html                            |
 
