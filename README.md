@@ -68,9 +68,9 @@ mall
 | Swagger-UI           | 文档生产工具        | https://github.com/swagger-api/swagger-ui            |
 | Hibernator-Validator | 验证框架            | http://hibernate.org/validator                       |
 | Elasticsearch        | 搜索引擎            | https://github.com/elastic/elasticsearch             |
-| RabbitMq             | 消息队列            | https://www.rabbitmq.com/                            |
+| RabbitMQ             | 消息队列            | https://www.rabbitmq.com/                            |
 | Redis                | 分布式缓存          | https://redis.io/                                    |
-| MongoDb              | NoSql数据库         | https://www.mongodb.com                              |
+| MongoDB              | NoSql数据库         | https://www.mongodb.com                              |
 | Docker               | 应用容器引擎        | https://www.docker.com                               |
 | Druid                | 数据库连接池        | https://github.com/alibaba/druid                     |
 | OSS                  | 对象存储            | https://github.com/aliyun/aliyun-oss-java-sdk        |
@@ -151,8 +151,8 @@ mall
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 5.0    | https://redis.io/download                                    |
 | Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
-| MongoDb       | 4.2.5  | https://www.mongodb.com/download-center                      |
-| RabbitMq      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
+| MongoDB       | 4.2.5  | https://www.mongodb.com/download-center                      |
+| RabbitMQ      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
 | Nginx         | 1.10   | http://nginx.org/en/download.html                            |
 
 ### 搭建步骤
