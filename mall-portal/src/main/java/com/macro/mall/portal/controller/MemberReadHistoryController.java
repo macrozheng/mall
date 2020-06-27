@@ -48,6 +48,14 @@ public class MemberReadHistoryController {
         }
     }
 
+    @ApiOperation("清空除浏览记录")
+    @RequestMapping(value = "/clear", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult clear() {
+        memberReadHistoryService.clear();
+        return CommonResult.success(null);
+    }
+
     @ApiOperation("分页获取用户浏览记录")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
