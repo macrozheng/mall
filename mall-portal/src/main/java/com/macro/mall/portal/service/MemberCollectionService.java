@@ -15,4 +15,8 @@ public interface MemberCollectionService {
     int delete(Long productId);
 
     Page<MemberProductCollection> list(Integer pageNum, Integer pageSize);
+
+    MemberProductCollection detail(Long productId);
+
+    void clear();
 }

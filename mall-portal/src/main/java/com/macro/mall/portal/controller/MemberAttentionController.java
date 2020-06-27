@@ -3,6 +3,7 @@ package com.macro.mall.portal.controller;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.MemberBrandAttention;
+import com.macro.mall.portal.domain.MemberProductCollection;
 import com.macro.mall.portal.service.MemberAttentionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -54,5 +55,21 @@ public class MemberAttentionController {
                                                                @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
         Page<MemberBrandAttention> page = memberAttentionService.list(pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(page));
+    }
+
+    @ApiOperation("显示关注品牌详情")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {
+        MemberBrandAttention memberBrandAttention = memberAttentionService.detail(brandId);
+        return CommonResult.success(memberBrandAttention);
+    }
+
+    @ApiOperation("清空关注列表")
+    @RequestMapping(value = "/clear", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult clear() {
+        memberAttentionService.clear();
+        return CommonResult.success(null);
     }
 }
