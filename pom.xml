@@ -40,7 +40,7 @@
         <swagger2.version>2.7.0</swagger2.version>
         <mybatis-generator.version>1.3.7</mybatis-generator.version>
         <mybatis.version>3.4.6</mybatis.version>
-        <mysql-connector.version>8.0.15</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
         <jjwt.version>0.9.0</jjwt.version>
         <aliyun-oss.version>2.5.0</aliyun-oss.version>
