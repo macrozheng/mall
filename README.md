@@ -31,7 +31,7 @@
 
 项目演示地址： [http://www.macrozheng.com/admin/index.html](http://www.macrozheng.com/admin/index.html)  
 
-![后台管理系统功能演示.gif](/document/resource/mall-admin.gif)
+![后台管理系统功能演示](http://img.macrozheng.com/mall/project/mall_admin_show.png)
 
 #### 前台商城系统
 
@@ -39,7 +39,7 @@
 
 项目演示地址：[http://www.macrozheng.com/app/index.html](http://www.macrozheng.com/app/index.html)
 
-![前台商城系统功能演示.gif](/document/resource/mall-app.gif)
+![前台商城系统功能演示](http://img.macrozheng.com/mall/project/mall_app_show.png)
 
 ### 组织结构
 
@@ -97,11 +97,11 @@ mall
 
 ##### 系统架构图
 
-![系统架构图](document/resource/mall_micro_service_arch.jpg)
+![系统架构图](http://img.macrozheng.com/mall/project/mall_micro_service_arch.jpg)
 
 ##### 业务架构图
 
-![系统架构图](document/resource/mall_business_arch.png)
+![系统架构图](http://img.macrozheng.com/mall/project/mall_business_arch.png)
 
 #### 模块介绍
 
@@ -119,7 +119,7 @@ mall
 
 #### 开发进度
 
-![项目开发进度图](document/resource/mall_dev_flow.png)
+![项目开发进度图](http://img.macrozheng.com/mall/project/mall_dev_flow.png)
 
 ## 环境搭建
 
