@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
- * 会员收藏Service
+ * 会员商品收藏管理Service
  * Created by macro on 2018/8/2.
  */
 public interface MemberCollectionService {
