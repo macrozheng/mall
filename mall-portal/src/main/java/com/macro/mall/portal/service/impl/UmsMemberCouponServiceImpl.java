@@ -1,8 +1,8 @@
 package com.macro.mall.portal.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.common.exception.Asserts;
-import com.macro.mall.mapper.SmsCouponHistoryMapper;
-import com.macro.mall.mapper.SmsCouponMapper;
+import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * 会员优惠券管理Service实现类
@@ -32,6 +33,12 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     private SmsCouponHistoryMapper couponHistoryMapper;
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
+    @Autowired
+    private SmsCouponProductRelationMapper couponProductRelationMapper;
+    @Autowired
+    private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
+    @Autowired
+    private PmsProductMapper productMapper;
     @Override
     public void add(Long couponId) {
         UmsMember currentMember = memberService.getCurrentMember();
@@ -93,7 +100,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     }
 
     @Override
-    public List<SmsCouponHistory> list(Integer useStatus) {
+    public List<SmsCouponHistory> listHistory(Integer useStatus) {
         UmsMember currentMember = memberService.getCurrentMember();
         SmsCouponHistoryExample couponHistoryExample=new SmsCouponHistoryExample();
         SmsCouponHistoryExample.Criteria criteria = couponHistoryExample.createCriteria();
@@ -160,6 +167,48 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         }else{
             return disableList;
         }
+    }
+
+    @Override
+    public List<SmsCoupon> listByProduct(Long productId) {
+        List<Long> allCouponIds = new ArrayList<>();
+        //获取指定商品优惠券
+        SmsCouponProductRelationExample cprExample = new SmsCouponProductRelationExample();
+        cprExample.createCriteria().andProductIdEqualTo(productId);
+        List<SmsCouponProductRelation> cprList = couponProductRelationMapper.selectByExample(cprExample);
+        if(CollUtil.isNotEmpty(cprList)){
+            List<Long> couponIds = cprList.stream().map(SmsCouponProductRelation::getCouponId).collect(Collectors.toList());
+            allCouponIds.addAll(couponIds);
+        }
+        //获取指定分类优惠券
+        PmsProduct product = productMapper.selectByPrimaryKey(productId);
+        SmsCouponProductCategoryRelationExample cpcrExample = new SmsCouponProductCategoryRelationExample();
+        cpcrExample.createCriteria().andProductCategoryIdEqualTo(product.getProductCategoryId());
+        List<SmsCouponProductCategoryRelation> cpcrList = couponProductCategoryRelationMapper.selectByExample(cpcrExample);
+        if(CollUtil.isNotEmpty(cpcrList)){
+            List<Long> couponIds = cpcrList.stream().map(SmsCouponProductCategoryRelation::getCouponId).collect(Collectors.toList());
+            allCouponIds.addAll(couponIds);
+        }
+        if(CollUtil.isEmpty(allCouponIds)){
+            return new ArrayList<>();
+        }
+        //所有优惠券
+        SmsCouponExample couponExample = new SmsCouponExample();
+        couponExample.createCriteria().andEndTimeGreaterThan(new Date())
+                .andStartTimeLessThan(new Date())
+                .andUseTypeEqualTo(0);
+        couponExample.or(couponExample.createCriteria()
+                .andEndTimeGreaterThan(new Date())
+                .andStartTimeLessThan(new Date())
+                .andUseTypeNotEqualTo(0)
+                .andIdIn(allCouponIds));
+        return couponMapper.selectByExample(couponExample);
+    }
+
+    @Override
+    public List<SmsCoupon> list(Integer useStatus) {
+        UmsMember member = memberService.getCurrentMember();
+        return couponHistoryDao.getCouponList(member.getId(),useStatus);
     }
 
     private BigDecimal calcTotalAmount(List<CartPromotionItem> cartItemList) {

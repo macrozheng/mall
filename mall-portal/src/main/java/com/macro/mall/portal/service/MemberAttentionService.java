@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
- * 会员关注Service
+ * 会员品牌关注管理Service
  * Created by macro on 2018/8/2.
  */
 public interface MemberAttentionService {
@@ -23,5 +23,15 @@ public interface MemberAttentionService {
     /**
      * 获取用户关注列表
      */
-    Page<MemberBrandAttention> list(Integer pageNum,Integer pageSize);
+    Page<MemberBrandAttention> list(Integer pageNum, Integer pageSize);
+
+    /**
+     * 获取用户关注详情
+     */
+    MemberBrandAttention detail(Long brandId);
+
+    /**
+     * 清空关注列表
+     */
+    void clear();
 }

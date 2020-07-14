@@ -15,4 +15,5 @@ public interface MemberBrandAttentionRepository extends MongoRepository<MemberBr
     MemberBrandAttention findByMemberIdAndBrandId(Long memberId, Long brandId);
     int deleteByMemberIdAndBrandId(Long memberId,Long brandId);
     Page<MemberBrandAttention> findByMemberId(Long memberId, Pageable pageable);
+    void deleteAllByMemberId(Long memberId);
 }
