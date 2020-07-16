@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Swagger2API文档的配置
+ * Swagger API文档相关配置
  * Created by macro on 2018/4/26.
  */
 @Configuration
@@ -56,9 +56,7 @@ public class Swagger2Config {
     private List<SecurityContext> securityContexts() {
         //设置需要登录认证的路径
         List<SecurityContext> result = new ArrayList<>();
-        result.add(getContextByPath("/brand/.*"));
-        result.add(getContextByPath("/product/.*"));
-        result.add(getContextByPath("/productCategory/.*"));
+        result.add(getContextByPath("/*/.*"));
         return result;
     }
 

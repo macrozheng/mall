@@ -1,17 +1,19 @@
 package com.macro.mall.dto;
 
 import com.macro.mall.validator.FlagValidator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * 品牌传递参数
  * Created by macro on 2018/4/26.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class PmsBrandParam {
     @ApiModelProperty(value = "品牌名称",required = true)
     @NotEmpty(message = "名称不能为空")
@@ -34,68 +36,4 @@ public class PmsBrandParam {
     private String bigPic;
     @ApiModelProperty(value = "品牌故事")
     private String brandStory;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstLetter() {
-        return firstLetter;
-    }
-
-    public void setFirstLetter(String firstLetter) {
-        this.firstLetter = firstLetter;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public Integer getFactoryStatus() {
-        return factoryStatus;
-    }
-
-    public void setFactoryStatus(Integer factoryStatus) {
-        this.factoryStatus = factoryStatus;
-    }
-
-    public Integer getShowStatus() {
-        return showStatus;
-    }
-
-    public void setShowStatus(Integer showStatus) {
-        this.showStatus = showStatus;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public String getBigPic() {
-        return bigPic;
-    }
-
-    public void setBigPic(String bigPic) {
-        this.bigPic = bigPic;
-    }
-
-    public String getBrandStory() {
-        return brandStory;
-    }
-
-    public void setBrandStory(String brandStory) {
-        this.brandStory = brandStory;
-    }
 }

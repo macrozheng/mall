@@ -1,17 +1,37 @@
 package com.macro.mall.portal.service;
 
 import com.macro.mall.portal.domain.MemberProductCollection;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 /**
- * 会员收藏Service
+ * 会员商品收藏管理Service
  * Created by macro on 2018/8/2.
  */
 public interface MemberCollectionService {
-    int addProduct(MemberProductCollection productCollection);
+    /**
+     * 添加收藏
+     */
+    int add(MemberProductCollection productCollection);
 
-    int deleteProduct(Long memberId, Long productId);
+    /**
+     * 删除收藏
+     */
+    int delete(Long productId);
 
-    List<MemberProductCollection> listProduct(Long memberId);
+    /**
+     * 分页查询收藏
+     */
+    Page<MemberProductCollection> list(Integer pageNum, Integer pageSize);
+
+    /**
+     * 查看收藏详情
+     */
+    MemberProductCollection detail(Long productId);
+
+    /**
+     * 清空收藏
+     */
+    void clear();
 }

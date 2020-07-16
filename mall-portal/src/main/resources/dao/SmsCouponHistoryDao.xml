@@ -33,4 +33,21 @@
         WHERE ch.member_id = #{memberId}
         AND ch.use_status = 0
     </select>
+
+    <select id="getCouponList" resultMap="com.macro.mall.mapper.SmsCouponMapper.BaseResultMap">
+        SELECT
+          c.*
+        FROM
+            sms_coupon_history ch
+                LEFT JOIN sms_coupon c ON ch.coupon_id = c.id
+        WHERE ch.member_id = #{memberId}
+        <if test="useStatus!=null and useStatus!=2">
+            AND ch.use_status = #{useStatus}
+            AND NOW() > c.start_time
+            AND c.end_time > NOW()
+        </if>
+        <if test="useStatus!=null and useStatus==2">
+            AND NOW() > c.end_time
+        </if>
+    </select>
 </mapper>
