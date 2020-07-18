@@ -4,6 +4,7 @@ package com.macro.mall.controller;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.OssCallbackResult;
 import com.macro.mall.dto.OssPolicyResult;
+import com.macro.mall.service.OssService;
 import com.macro.mall.service.impl.OssServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/aliyun/oss")
 public class OssController {
     @Autowired
-    private OssServiceImpl ossService;
+    private OssService ossService;
 
     @ApiOperation(value = "oss上传签名生成")
     @RequestMapping(value = "/policy", method = RequestMethod.GET)
