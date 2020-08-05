@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
 
 /**
- * SpringSecurity的配置
+ * SpringSecurity相关配置
  */
 @Configuration
 @EnableWebSecurity
