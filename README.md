@@ -150,7 +150,9 @@ mall
 | JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 5.0    | https://redis.io/download                                    |
-| Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
+| Elasticsearch | 7.6.2  | https://www.elastic.co/downloads/elasticsearch               |
+| Kibana        | 7.6.2  | https://www.elastic.co/cn/downloads/kibana                   |
+| Logstash      | 7.6.2  | https://www.elastic.co/cn/downloads/logstash                 |
 | MongoDB       | 4.2.5  | https://www.mongodb.com/download-center                      |
 | RabbitMQ      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
 | Nginx         | 1.10   | http://nginx.org/en/download.html                            |
