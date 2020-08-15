@@ -1,8 +1,8 @@
 package com.macro.mall.portal.service.impl;
 
-import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.mapper.SmsCouponHistoryMapper;
-import com.macro.mall.mapper.SmsCouponMapper;
+import cn.hutool.core.collection.CollUtil;
+import com.macro.mall.common.exception.Asserts;
+import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
@@ -13,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * 会员优惠券管理Service实现类
@@ -29,27 +33,33 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     private SmsCouponHistoryMapper couponHistoryMapper;
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
+    @Autowired
+    private SmsCouponProductRelationMapper couponProductRelationMapper;
+    @Autowired
+    private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
+    @Autowired
+    private PmsProductMapper productMapper;
     @Override
-    public CommonResult add(Long couponId) {
+    public void add(Long couponId) {
         UmsMember currentMember = memberService.getCurrentMember();
         //获取优惠券信息，判断数量
         SmsCoupon coupon = couponMapper.selectByPrimaryKey(couponId);
         if(coupon==null){
-            return CommonResult.failed("优惠券不存在");
+            Asserts.fail("优惠券不存在");
         }
         if(coupon.getCount()<=0){
-            return CommonResult.failed("优惠券已经领完了");
+            Asserts.fail("优惠券已经领完了");
         }
         Date now = new Date();
         if(now.before(coupon.getEnableTime())){
-            return CommonResult.failed("优惠券还没到领取时间");
+            Asserts.fail("优惠券还没到领取时间");
         }
         //判断用户领取的优惠券数量是否超过限制
         SmsCouponHistoryExample couponHistoryExample = new SmsCouponHistoryExample();
         couponHistoryExample.createCriteria().andCouponIdEqualTo(couponId).andMemberIdEqualTo(currentMember.getId());
         long count = couponHistoryMapper.countByExample(couponHistoryExample);
         if(count>=coupon.getPerLimit()){
-            return CommonResult.failed("您已经领取过该优惠券");
+            Asserts.fail("您已经领取过该优惠券");
         }
         //生成领取优惠券历史
         SmsCouponHistory couponHistory = new SmsCouponHistory();
@@ -67,7 +77,6 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         coupon.setCount(coupon.getCount()-1);
         coupon.setReceiveCount(coupon.getReceiveCount()==null?1:coupon.getReceiveCount()+1);
         couponMapper.updateByPrimaryKey(coupon);
-        return CommonResult.success(null,"领取成功");
     }
 
     /**
@@ -91,7 +100,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     }
 
     @Override
-    public List<SmsCouponHistory> list(Integer useStatus) {
+    public List<SmsCouponHistory> listHistory(Integer useStatus) {
         UmsMember currentMember = memberService.getCurrentMember();
         SmsCouponHistoryExample couponHistoryExample=new SmsCouponHistoryExample();
         SmsCouponHistoryExample.Criteria criteria = couponHistoryExample.createCriteria();
@@ -158,6 +167,48 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         }else{
             return disableList;
         }
+    }
+
+    @Override
+    public List<SmsCoupon> listByProduct(Long productId) {
+        List<Long> allCouponIds = new ArrayList<>();
+        //获取指定商品优惠券
+        SmsCouponProductRelationExample cprExample = new SmsCouponProductRelationExample();
+        cprExample.createCriteria().andProductIdEqualTo(productId);
+        List<SmsCouponProductRelation> cprList = couponProductRelationMapper.selectByExample(cprExample);
+        if(CollUtil.isNotEmpty(cprList)){
+            List<Long> couponIds = cprList.stream().map(SmsCouponProductRelation::getCouponId).collect(Collectors.toList());
+            allCouponIds.addAll(couponIds);
+        }
+        //获取指定分类优惠券
+        PmsProduct product = productMapper.selectByPrimaryKey(productId);
+        SmsCouponProductCategoryRelationExample cpcrExample = new SmsCouponProductCategoryRelationExample();
+        cpcrExample.createCriteria().andProductCategoryIdEqualTo(product.getProductCategoryId());
+        List<SmsCouponProductCategoryRelation> cpcrList = couponProductCategoryRelationMapper.selectByExample(cpcrExample);
+        if(CollUtil.isNotEmpty(cpcrList)){
+            List<Long> couponIds = cpcrList.stream().map(SmsCouponProductCategoryRelation::getCouponId).collect(Collectors.toList());
+            allCouponIds.addAll(couponIds);
+        }
+        if(CollUtil.isEmpty(allCouponIds)){
+            return new ArrayList<>();
+        }
+        //所有优惠券
+        SmsCouponExample couponExample = new SmsCouponExample();
+        couponExample.createCriteria().andEndTimeGreaterThan(new Date())
+                .andStartTimeLessThan(new Date())
+                .andUseTypeEqualTo(0);
+        couponExample.or(couponExample.createCriteria()
+                .andEndTimeGreaterThan(new Date())
+                .andStartTimeLessThan(new Date())
+                .andUseTypeNotEqualTo(0)
+                .andIdIn(allCouponIds));
+        return couponMapper.selectByExample(couponExample);
+    }
+
+    @Override
+    public List<SmsCoupon> list(Integer useStatus) {
+        UmsMember member = memberService.getCurrentMember();
+        return couponHistoryDao.getCouponList(member.getId(),useStatus);
     }
 
     private BigDecimal calcTotalAmount(List<CartPromotionItem> cartItemList) {

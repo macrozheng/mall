@@ -14,6 +14,7 @@ import com.macro.mall.mapper.UmsAdminPermissionRelationMapper;
 import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
 import com.macro.mall.model.*;
 import com.macro.mall.security.util.JwtTokenUtil;
+import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsAdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,14 +62,20 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private UmsAdminPermissionRelationDao adminPermissionRelationDao;
     @Autowired
     private UmsAdminLoginLogMapper loginLogMapper;
+    @Autowired
+    private UmsAdminCacheService adminCacheService;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
+        UmsAdmin admin = adminCacheService.getAdmin(username);
+        if(admin!=null) return  admin;
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
         if (adminList != null && adminList.size() > 0) {
-            return adminList.get(0);
+            admin = adminList.get(0);
+            adminCacheService.setAdmin(admin);
+            return admin;
         }
         return null;
     }
@@ -119,6 +126,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
      */
     private void insertLoginLog(String username) {
         UmsAdmin admin = getAdminByUsername(username);
+        if(admin==null) return;
         UmsAdminLoginLog loginLog = new UmsAdminLoginLog();
         loginLog.setAdminId(admin.getId());
         loginLog.setCreateTime(new Date());
@@ -150,13 +158,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public List<UmsAdmin> list(String name, Integer pageSize, Integer pageNum) {
+    public List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         UmsAdminExample example = new UmsAdminExample();
         UmsAdminExample.Criteria criteria = example.createCriteria();
-        if (!StringUtils.isEmpty(name)) {
-            criteria.andUsernameLike("%" + name + "%");
-            example.or(example.createCriteria().andNickNameLike("%" + name + "%"));
+        if (!StringUtils.isEmpty(keyword)) {
+            criteria.andUsernameLike("%" + keyword + "%");
+            example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
         }
         return adminMapper.selectByExample(example);
     }
@@ -164,14 +172,29 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public int update(Long id, UmsAdmin admin) {
         admin.setId(id);
-        //密码已经加密处理，需要单独修改
-        admin.setPassword(null);
-        return adminMapper.updateByPrimaryKeySelective(admin);
+        UmsAdmin rawAdmin = adminMapper.selectByPrimaryKey(id);
+        if(rawAdmin.getPassword().equals(admin.getPassword())){
+            //与原加密密码相同的不需要修改
+            admin.setPassword(null);
+        }else{
+            //与原加密密码不同的需要加密修改
+            if(StrUtil.isEmpty(admin.getPassword())){
+                admin.setPassword(null);
+            }else{
+                admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+            }
+        }
+        int count = adminMapper.updateByPrimaryKeySelective(admin);
+        adminCacheService.delAdmin(id);
+        return count;
     }
 
     @Override
     public int delete(Long id) {
-        return adminMapper.deleteByPrimaryKey(id);
+        adminCacheService.delAdmin(id);
+        int count = adminMapper.deleteByPrimaryKey(id);
+        adminCacheService.delResourceList(id);
+        return count;
     }
 
     @Override
@@ -192,12 +215,26 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             }
             adminRoleRelationDao.insertList(list);
         }
+        adminCacheService.delResourceList(adminId);
         return count;
     }
 
     @Override
     public List<UmsRole> getRoleList(Long adminId) {
         return adminRoleRelationDao.getRoleList(adminId);
+    }
+
+    @Override
+    public List<UmsResource> getResourceList(Long adminId) {
+        List<UmsResource> resourceList = adminCacheService.getResourceList(adminId);
+        if(CollUtil.isNotEmpty(resourceList)){
+            return  resourceList;
+        }
+        resourceList = adminRoleRelationDao.getResourceList(adminId);
+        if(CollUtil.isNotEmpty(resourceList)){
+            adminCacheService.setResourceList(adminId,resourceList);
+        }
+        return resourceList;
     }
 
     @Override
@@ -261,6 +298,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         }
         umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
         adminMapper.updateByPrimaryKey(umsAdmin);
+        adminCacheService.delAdmin(umsAdmin.getId());
         return 1;
     }
 
@@ -269,8 +307,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         //获取用户信息
         UmsAdmin admin = getAdminByUsername(username);
         if (admin != null) {
-            List<UmsPermission> permissionList = getPermissionList(admin.getId());
-            return new AdminUserDetails(admin,permissionList);
+            List<UmsResource> resourceList = getResourceList(admin.getId());
+            return new AdminUserDetails(admin,resourceList);
         }
         throw new UsernameNotFoundException("用户名或密码错误");
     }
