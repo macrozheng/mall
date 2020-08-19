@@ -1348,7 +1348,7 @@ INSERT INTO `pms_sku_stock` VALUES ('178', '35', '202002250035008', '200.00', '1
 DROP TABLE IF EXISTS `sms_coupon`;
 CREATE TABLE `sms_coupon` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `type` int(1) DEFAULT NULL COMMENT '优惠卷类型；0->全场赠券；1->会员赠券；2->购物赠券；3->注册赠券',
+  `type` int(1) DEFAULT NULL COMMENT '优惠券类型；0->全场赠券；1->会员赠券；2->购物赠券；3->注册赠券',
   `name` varchar(100) DEFAULT NULL,
   `platform` int(1) DEFAULT NULL COMMENT '使用平台：0->全部；1->移动；2->PC',
   `count` int(11) DEFAULT NULL COMMENT '数量',
@@ -1366,7 +1366,7 @@ CREATE TABLE `sms_coupon` (
   `code` varchar(64) DEFAULT NULL COMMENT '优惠码',
   `member_level` int(1) DEFAULT NULL COMMENT '可领取的会员类型：0->无限时',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='优惠卷表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='优惠券表';
 
 -- ----------------------------
 -- Records of sms_coupon

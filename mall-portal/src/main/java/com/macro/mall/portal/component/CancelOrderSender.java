@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 取消订单消息的发出者
+ * 取消订单消息的生产者
  * Created by macro on 2018/9/14.
  */
 @Component

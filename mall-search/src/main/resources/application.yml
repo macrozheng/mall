@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: mall-search
   profiles:
     active: dev #默认为开发环境
 
@@ -9,11 +11,6 @@ mybatis:
   mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
-
-logging:
-  level:
-    root: info
-    com.macro.mall: debug
 
 
 
