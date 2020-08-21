@@ -44,4 +44,10 @@ public interface HomeService {
      * 分页获取新品推荐商品
      */
     List<PmsProduct> newProductList(Integer pageNum, Integer pageSize);
+
+    /**
+     * 获得商品总数
+     */
+    int count();
 }
+

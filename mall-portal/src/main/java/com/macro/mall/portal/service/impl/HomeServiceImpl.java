@@ -100,6 +100,11 @@ public class HomeServiceImpl implements HomeService {
         return homeDao.getNewProductList(offset, pageSize);
     }
 
+    @Override
+    public int count() {
+        return productMapper.getGoodsCount();
+    }
+
     private HomeFlashPromotion getHomeFlashPromotion() {
         HomeFlashPromotion homeFlashPromotion = new HomeFlashPromotion();
         //获取当前秒杀活动

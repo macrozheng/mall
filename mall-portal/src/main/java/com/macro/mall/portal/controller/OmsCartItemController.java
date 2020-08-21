@@ -6,12 +6,14 @@ import com.macro.mall.portal.domain.CartProduct;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.service.OmsCartItemService;
 import com.macro.mall.portal.service.UmsMemberService;
+import io.jsonwebtoken.lang.Strings;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,7 +90,12 @@ public class OmsCartItemController {
     @ApiOperation("删除购物车中的某个商品")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
+    public CommonResult delete(@RequestParam("ids") String idStr) {
+        String[] idArr = idStr.split(",");
+        List<Long> ids = new ArrayList<>();
+        for (String s: idArr){
+            ids.add(Long.valueOf(s));
+        }
         int count = cartItemService.delete(memberService.getCurrentMember().getId(), ids);
         if (count > 0) {
             return CommonResult.success(count);
@@ -106,4 +113,5 @@ public class OmsCartItemController {
         }
         return CommonResult.failed();
     }
+
 }

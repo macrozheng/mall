@@ -77,4 +77,11 @@ public class HomeController {
         List<PmsProduct> productList = homeService.newProductList(pageNum,pageSize);
         return CommonResult.success(productList);
     }
+    @ApiOperation("获得商品总数")
+    @RequestMapping(value = "/goodsCount", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult goodsCount() {
+        int goodsCount = homeService.count();
+        return CommonResult.success(goodsCount);
+    }
 }

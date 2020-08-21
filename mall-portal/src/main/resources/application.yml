@@ -30,6 +30,7 @@ secure:
       - /druid/**
       - /actuator/**
       - /sso/**
+      - /wx/**
       - /home/**
       - /product/**
       - /brand/**
