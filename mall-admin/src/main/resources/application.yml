@@ -1,6 +1,12 @@
 spring:
+  application:
+    name: mall-admin
   profiles:
     active: dev #默认为开发环境
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 10MB #限制文件上传大小为10M
 
 mybatis:
   mapper-locations:
@@ -10,8 +16,16 @@ mybatis:
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mall-admin-secret #JWT加解密使用的密钥
-  expiration: 604800 #JWT的超期限时间(60*60*24)
-  tokenHead: Bearer  #JWT负载中拿到开头
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer '  #JWT负载中拿到开头
+
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList'
+  expire:
+    common: 86400 # 24小时
 
 secure:
   ignored:
@@ -29,6 +43,9 @@ secure:
       - /druid/**
       - /admin/login
       - /admin/register
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
 
 aliyun:
   oss:
@@ -43,9 +60,8 @@ aliyun:
     dir:
       prefix: mall/images/ # 上传文件夹路径前缀
 
-logging:
-  level:
-    root: info #日志配置DEBUG,INFO,WARN,ERROR
-    com.macro.mall: debug
-#  file: demo_log.log #配置日志生成路径
-#  path: /var/logs #配置日志文件名称
+minio:
+  endpoint: http://192.168.3.101:9090 #MinIO服务所在地址
+  bucketName: mall #存储桶名称
+  accessKey: minioadmin #访问的key
+  secretKey: minioadmin #访问的秘钥

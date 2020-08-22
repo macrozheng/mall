@@ -1,11 +1,12 @@
 package com.macro.mall.portal.service;
 
 import com.macro.mall.portal.domain.MemberBrandAttention;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 /**
- * 会员关注Service
+ * 会员品牌关注管理Service
  * Created by macro on 2018/8/2.
  */
 public interface MemberAttentionService {
@@ -17,10 +18,20 @@ public interface MemberAttentionService {
     /**
      * 取消关注
      */
-    int delete(Long memberId, Long brandId);
+    int delete(Long brandId);
 
     /**
      * 获取用户关注列表
      */
-    List<MemberBrandAttention> list(Long memberId);
+    Page<MemberBrandAttention> list(Integer pageNum, Integer pageSize);
+
+    /**
+     * 获取用户关注详情
+     */
+    MemberBrandAttention detail(Long brandId);
+
+    /**
+     * 清空关注列表
+     */
+    void clear();
 }

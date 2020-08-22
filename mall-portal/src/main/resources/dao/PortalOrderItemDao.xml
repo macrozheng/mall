@@ -5,20 +5,18 @@
         insert into oms_order_item (order_id, order_sn, product_id,
         product_pic, product_name, product_brand,
         product_sn, product_price, product_quantity,
-        product_sku_id, product_category_id, product_sku_code,
-        sp1, sp2, sp3, promotion_name,
+        product_sku_id, product_category_id, product_sku_code,promotion_name,
         promotion_amount, coupon_amount, integration_amount,
-        real_amount) values
+        real_amount,product_attr) values
         <foreach collection="list" item="item" separator="," index="index">
             (#{item.orderId,jdbcType=BIGINT}, #{item.orderSn,jdbcType=VARCHAR}, #{item.productId,jdbcType=BIGINT},
             #{item.productPic,jdbcType=VARCHAR}, #{item.productName,jdbcType=VARCHAR}, #{item.productBrand,jdbcType=VARCHAR},
             #{item.productSn,jdbcType=VARCHAR}, #{item.productPrice,jdbcType=DECIMAL}, #{item.productQuantity,jdbcType=INTEGER},
             #{item.productSkuId,jdbcType=BIGINT}, #{item.productCategoryId,jdbcType=BIGINT}, #{item.productSkuCode,jdbcType=VARCHAR},
-            #{item.sp1,jdbcType=VARCHAR}, #{item.sp2,jdbcType=VARCHAR}, #{item.sp3,jdbcType=VARCHAR},
             #{item.promotionName,jdbcType=VARCHAR},
             #{item.promotionAmount,jdbcType=DECIMAL}, #{item.couponAmount,jdbcType=DECIMAL},
             #{item.integrationAmount,jdbcType=DECIMAL},
-            #{item.realAmount,jdbcType=DECIMAL})
+            #{item.realAmount,jdbcType=DECIMAL},#{item.productAttr,jdbcType=VARCHAR})
         </foreach>
     </insert>
 </mapper>

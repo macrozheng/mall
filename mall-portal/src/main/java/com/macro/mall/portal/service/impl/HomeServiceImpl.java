@@ -43,7 +43,7 @@ public class HomeServiceImpl implements HomeService {
         //获取首页广告
         result.setAdvertiseList(getHomeAdvertiseList());
         //获取推荐品牌
-        result.setBrandList(homeDao.getRecommendBrandList(0,4));
+        result.setBrandList(homeDao.getRecommendBrandList(0,6));
         //获取秒杀信息
         result.setHomeFlashPromotion(getHomeFlashPromotion());
         //获取新品推荐
@@ -86,6 +86,18 @@ public class HomeServiceImpl implements HomeService {
             criteria.andCategoryIdEqualTo(cateId);
         }
         return subjectMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<PmsProduct> hotProductList(Integer pageNum, Integer pageSize) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getHotProductList(offset, pageSize);
+    }
+
+    @Override
+    public List<PmsProduct> newProductList(Integer pageNum, Integer pageSize) {
+        int offset = pageSize * (pageNum - 1);
+        return homeDao.getNewProductList(offset, pageSize);
     }
 
     private HomeFlashPromotion getHomeFlashPromotion() {
