@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,10 +37,7 @@ public class DemoController {
     @ApiOperation(value = "添加品牌")
     @RequestMapping(value = "/brand/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult createBrand(@Validated @RequestBody PmsBrandDto pmsBrand, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
+    public CommonResult createBrand(@Validated @RequestBody PmsBrandDto pmsBrand) {
         CommonResult commonResult;
         int count = demoService.createBrand(pmsBrand);
         if (count == 1) {
@@ -57,10 +53,7 @@ public class DemoController {
     @ApiOperation(value = "更新品牌")
     @RequestMapping(value = "/brand/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updateBrand(@PathVariable("id") Long id, @Validated @RequestBody PmsBrandDto pmsBrandDto,BindingResult result) {
-        if(result.hasErrors()){
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
+    public CommonResult updateBrand(@PathVariable("id") Long id, @Validated @RequestBody PmsBrandDto pmsBrandDto) {
         CommonResult commonResult;
         int count = demoService.updateBrand(id, pmsBrandDto);
         if (count == 1) {

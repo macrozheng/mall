@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +46,7 @@ public class UmsAdminController {
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<UmsAdmin> register(@RequestBody UmsAdminParam umsAdminParam, BindingResult result) {
+    public CommonResult<UmsAdmin> register(@Validated @RequestBody UmsAdminParam umsAdminParam) {
         UmsAdmin umsAdmin = adminService.register(umsAdminParam);
         if (umsAdmin == null) {
             return CommonResult.failed();
@@ -57,7 +57,7 @@ public class UmsAdminController {
     @ApiOperation(value = "登录以后返回token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
+    public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");
@@ -143,7 +143,7 @@ public class UmsAdminController {
     @ApiOperation("修改指定用户密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updatePassword(@RequestBody UpdateAdminPasswordParam updatePasswordParam) {
+    public CommonResult updatePassword(@Validated @RequestBody UpdateAdminPasswordParam updatePasswordParam) {
         int status = adminService.updatePassword(updatePasswordParam);
         if (status > 0) {
             return CommonResult.success(status);
