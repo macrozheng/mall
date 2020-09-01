@@ -1,13 +1,13 @@
 package com.macro.mall.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import com.macro.mall.common.service.RedisService;
 import com.macro.mall.dao.UmsAdminRoleRelationDao;
 import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
 import com.macro.mall.model.UmsAdmin;
 import com.macro.mall.model.UmsAdminRoleRelation;
 import com.macro.mall.model.UmsAdminRoleRelationExample;
 import com.macro.mall.model.UmsResource;
-import com.macro.mall.security.service.RedisService;
 import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;

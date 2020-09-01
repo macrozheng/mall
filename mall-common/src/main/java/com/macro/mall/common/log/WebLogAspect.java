@@ -1,10 +1,9 @@
-package com.macro.mall.component;
+package com.macro.mall.common.log;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
-import com.macro.mall.bo.WebLog;
+import com.macro.mall.common.domain.WebLog;
 import io.swagger.annotations.ApiOperation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
@@ -40,7 +39,7 @@ import java.util.Map;
 public class WebLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
 
-    @Pointcut("execution(public * com.macro.mall.controller.*.*(..))")
+    @Pointcut("execution(public * com.macro.mall.controller.*.*(..))||execution(public * com.macro.mall.*.controller.*.*(..))")
     public void webLog() {
     }
 

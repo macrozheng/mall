@@ -12,12 +12,20 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
-
   data:
     elasticsearch:
       repositories:
         enabled: true
-      cluster-nodes: es:9300
+  elasticsearch:
+    rest:
+      uris: es:9200
 
 logging:
-  path: /var/logs #配置日志生成路径
+  file:
+    path: /var/logs
+  level:
+    root: info
+    com.macro.mall: info
+
+logstash:
+  host: logstash

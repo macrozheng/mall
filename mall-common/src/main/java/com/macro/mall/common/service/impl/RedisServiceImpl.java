@@ -1,9 +1,8 @@
-package com.macro.mall.security.service.impl;
+package com.macro.mall.common.service.impl;
 
-import com.macro.mall.security.service.RedisService;
+import com.macro.mall.common.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * redis操作实现类
  * Created by macro on 2020/3/3.
  */
-@Service
 public class RedisServiceImpl implements RedisService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -97,7 +95,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public void hSetAll(String key, Map<String, Object> map) {
+    public void hSetAll(String key, Map<String, ?> map) {
         redisTemplate.opsForHash().putAll(key, map);
     }
 

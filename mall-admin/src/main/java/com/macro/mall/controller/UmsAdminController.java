@@ -1,5 +1,6 @@
 package com.macro.mall.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.UmsAdminLoginParam;
@@ -15,7 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 后台用户管理
@@ -44,10 +46,10 @@ public class UmsAdminController {
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<UmsAdmin> register(@RequestBody UmsAdminParam umsAdminParam, BindingResult result) {
+    public CommonResult<UmsAdmin> register(@Validated @RequestBody UmsAdminParam umsAdminParam) {
         UmsAdmin umsAdmin = adminService.register(umsAdminParam);
         if (umsAdmin == null) {
-            CommonResult.failed();
+            return CommonResult.failed();
         }
         return CommonResult.success(umsAdmin);
     }
@@ -55,7 +57,7 @@ public class UmsAdminController {
     @ApiOperation(value = "登录以后返回token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
+    public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");
@@ -92,9 +94,13 @@ public class UmsAdminController {
         UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
         Map<String, Object> data = new HashMap<>();
         data.put("username", umsAdmin.getUsername());
-        data.put("roles", new String[]{"TEST"});
         data.put("menus", roleService.getMenuList(umsAdmin.getId()));
         data.put("icon", umsAdmin.getIcon());
+        List<UmsRole> roleList = adminService.getRoleList(umsAdmin.getId());
+        if(CollUtil.isNotEmpty(roleList)){
+            List<String> roles = roleList.stream().map(UmsRole::getName).collect(Collectors.toList());
+            data.put("roles",roles);
+        }
         return CommonResult.success(data);
     }
 
@@ -137,7 +143,7 @@ public class UmsAdminController {
     @ApiOperation("修改指定用户密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updatePassword(@RequestBody UpdateAdminPasswordParam updatePasswordParam) {
+    public CommonResult updatePassword(@Validated @RequestBody UpdateAdminPasswordParam updatePasswordParam) {
         int status = adminService.updatePassword(updatePasswordParam);
         if (status > 0) {
             return CommonResult.success(status);

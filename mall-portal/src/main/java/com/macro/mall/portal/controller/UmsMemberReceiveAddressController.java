@@ -63,7 +63,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.success(addressList);
     }
 
-    @ApiOperation("显示所有收货地址")
+    @ApiOperation("获取收货地址详情")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<UmsMemberReceiveAddress> getItem(@PathVariable Long id) {
