@@ -15,32 +15,29 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
-
   data:
     mongodb:
       host: localhost
       port: 27017
       database: mall-port
-
   redis:
     host: localhost # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password: # Redis服务器连接密码（默认为空）
     timeout: 300ms # 连接超时时间（毫秒）
-
   rabbitmq:
     host: localhost
     port: 5672
     virtual-host: /mall
     username: mall
     password: mall
-    publisher-confirms: true #如果对异步消息需要回调必须设置为true
 
-# 日志配置
 logging:
   level:
-    org.springframework.data.mongodb.core: debug
-    com.macro.mall.mapper: debug
-    com.macro.mall.portal.dao: debug
+    root: info
+    com.macro.mall: debug
+
+logstash:
+  host: localhost
 
