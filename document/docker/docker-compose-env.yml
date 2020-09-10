@@ -14,7 +14,7 @@ services:
       - /mydata/mysql/data/conf:/etc/mysql/conf.d #配置文件挂载
       - /mydata/mysql/log:/var/log/mysql #日志文件挂载
   redis:
-    image: redis:3.2
+    image: redis:5
     container_name: redis
     command: redis-server --appendonly yes
     volumes:
@@ -40,7 +40,7 @@ services:
       - 5672:5672
       - 15672:15672
   elasticsearch:
-    image: elasticsearch:6.4.0
+    image: elasticsearch:7.6.2
     container_name: elasticsearch
     environment:
       - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
@@ -52,8 +52,24 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+  logstash:
+    image: logstash:7.6.2
+    container_name: logstash
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /mydata/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf #挂载logstash的配置文件
+    depends_on:
+      - elasticsearch #kibana在elasticsearch启动之后再启动
+    links:
+      - elasticsearch:es #可以用es这个域名访问elasticsearch服务
+    ports:
+      - 4560:4560
+      - 4561:4561
+      - 4562:4562
+      - 4563:4563
   kibana:
-    image: kibana:6.4.0
+    image: kibana:7.6.2
     container_name: kibana
     links:
       - elasticsearch:es #可以用es这个域名访问elasticsearch服务
@@ -64,7 +80,7 @@ services:
     ports:
       - 5601:5601
   mongo:
-    image: mongo:3.2
+    image: mongo:4.2.5
     container_name: mongo
     volumes:
       - /mydata/mongo/db:/data/db #数据文件挂载

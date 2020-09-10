@@ -20,4 +20,11 @@ spring:
     timeout: 300ms # 连接超时时间（毫秒）
 
 logging:
-  path: /var/logs #配置日志生成路径
+  file:
+    path: /var/logs
+  level:
+    root: info
+    com.macro.mall: info
+
+logstash:
+  host: logstash

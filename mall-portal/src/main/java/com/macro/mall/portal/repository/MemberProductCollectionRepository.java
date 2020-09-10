@@ -1,6 +1,8 @@
 package com.macro.mall.portal.repository;
 
 import com.macro.mall.portal.domain.MemberProductCollection;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -12,5 +14,6 @@ import java.util.List;
 public interface MemberProductCollectionRepository extends MongoRepository<MemberProductCollection,String> {
     MemberProductCollection findByMemberIdAndProductId(Long memberId, Long productId);
     int deleteByMemberIdAndProductId(Long memberId,Long productId);
-    List<MemberProductCollection> findByMemberId(Long memberId);
+    Page<MemberProductCollection> findByMemberId(Long memberId, Pageable pageable);
+    void deleteAllByMemberId(Long memberId);
 }

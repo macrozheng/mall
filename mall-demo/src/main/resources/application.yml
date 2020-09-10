@@ -2,6 +2,8 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: mall-demo
   datasource:
     url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
@@ -12,7 +14,6 @@ spring:
     servlet:
       content-type: text/html
     cache: false #开发时关闭缓存,不然没法看到实时页面
-
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
@@ -20,10 +21,8 @@ mybatis:
 
 logging:
   level:
-    root: info #日志配置DEBUG,INFO,WARN,ERROR
+    root: info
     com.macro.mall: debug
-#  file: demo_log.log #配置日志生成路径
-#  path: /var/logs #配置日志文件名称
 
 host:
   mall:
