@@ -13,7 +13,7 @@
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
-
+[码云地址](https://gitee.com/tPrograming/mall): https://gitee.com/tPrograming/mall
 ## 项目文档
 
 - 文档地址：[http://www.macrozheng.com](http://www.macrozheng.com)
