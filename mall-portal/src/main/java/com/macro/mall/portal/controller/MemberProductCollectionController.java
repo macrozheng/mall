@@ -48,12 +48,28 @@ public class MemberProductCollectionController {
         }
     }
 
-    @ApiOperation("显示关注列表")
+    @ApiOperation("显示收藏列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberProductCollection>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
         Page<MemberProductCollection> page = memberCollectionService.list(pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(page));
+    }
+
+    @ApiOperation("显示收藏商品详情")
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<MemberProductCollection> detail(@RequestParam Long productId) {
+        MemberProductCollection memberProductCollection = memberCollectionService.detail(productId);
+        return CommonResult.success(memberProductCollection);
+    }
+
+    @ApiOperation("清空收藏列表")
+    @RequestMapping(value = "/clear", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult clear() {
+        memberCollectionService.clear();
+        return CommonResult.success(null);
     }
 }

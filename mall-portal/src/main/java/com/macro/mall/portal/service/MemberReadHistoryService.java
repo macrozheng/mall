@@ -24,4 +24,9 @@ public interface MemberReadHistoryService {
      * 分页获取用户浏览历史记录
      */
     Page<MemberReadHistory> list(Integer pageNum, Integer pageSize);
+
+    /**
+     * 清空浏览记录
+     */
+    void clear();
 }

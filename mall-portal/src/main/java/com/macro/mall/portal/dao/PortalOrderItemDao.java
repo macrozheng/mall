@@ -10,5 +10,8 @@ import java.util.List;
  * Created by macro on 2018/9/3.
  */
 public interface PortalOrderItemDao {
+    /**
+     * 批量插入
+     */
     int insertList(@Param("list") List<OmsOrderItem> list);
 }

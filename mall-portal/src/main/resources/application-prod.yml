@@ -35,8 +35,14 @@ spring:
     virtual-host: /mall
     username: mall
     password: mall
-    publisher-confirms: true #如果对异步消息需要回调必须设置为true
-# 日志配置
+
 logging:
-  path: /var/logs
+  file:
+    path: /var/logs
+  level:
+    root: info
+    com.macro.mall: info
+
+logstash:
+  host: logstash
 

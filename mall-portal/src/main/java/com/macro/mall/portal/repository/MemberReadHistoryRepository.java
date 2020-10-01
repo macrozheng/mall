@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface MemberReadHistoryRepository extends MongoRepository<MemberReadHistory,String> {
     Page<MemberReadHistory> findByMemberIdOrderByCreateTimeDesc(Long memberId, Pageable pageable);
+    void deleteAllByMemberId(Long memberId);
 }

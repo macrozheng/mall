@@ -11,7 +11,7 @@ public class SmsCouponProductRelationExample {
     protected List<Criteria> oredCriteria;
 
     public SmsCouponProductRelationExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -68,7 +68,7 @@ public class SmsCouponProductRelationExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -426,7 +426,6 @@ public class SmsCouponProductRelationExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }
