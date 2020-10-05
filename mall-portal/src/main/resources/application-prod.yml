@@ -41,7 +41,7 @@ logging:
     path: /var/logs
   level:
     root: info
-    com.macro.mall: info
+    com.macro.mall: infoOssConfig
 
 logstash:
   host: logstash

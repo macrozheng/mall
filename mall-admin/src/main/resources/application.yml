@@ -7,6 +7,8 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+server:
+  port: 8080
 
 mybatis:
   mapper-locations:
@@ -50,9 +52,9 @@ secure:
 aliyun:
   oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
-    accessKeyId: test # 访问身份验证中用到用户标识
-    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
-    bucketName: macro-oss # oss的存储空间
+    accessKeyId: 骑士的牧歌 # 访问身份验证中用到用户标识
+    accessKeySecret: liuxi12345.. # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: liuxi-mall # oss的存储空间
     policy:
       expire: 300 # 签名有效期(S)
     maxSize: 10 # 上传文件大小(M)
