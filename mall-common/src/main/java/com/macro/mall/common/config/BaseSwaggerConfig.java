@@ -1,47 +1,45 @@
-package com.macro.mall.portal.config;
+package com.macro.mall.common.config;
 
+import com.macro.mall.common.domain.SwaggerProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Swagger2API文档的配置
- * Created by macro on 2018/4/26.
+ * Swagger基础配置
+ * Created by macro on 2020/7/16.
  */
-@Configuration
-@EnableSwagger2
-public class Swagger2Config {
+public abstract class BaseSwaggerConfig {
+
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+        SwaggerProperties swaggerProperties = swaggerProperties();
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo(swaggerProperties))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.macro.mall.portal.controller"))
+                .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getApiBasePackage()))
                 .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(securitySchemes())
-                .securityContexts(securityContexts());
+                .build();
+        if (swaggerProperties.isEnableSecurity()) {
+            docket.securitySchemes(securitySchemes()).securityContexts(securityContexts());
+        }
+        return docket;
     }
 
-    private ApiInfo apiInfo() {
+    private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
-                .title("mall前台系统")
-                .description("mall前台模块")
-                .contact("macro")
-                .version("1.0")
+                .title(swaggerProperties.getTitle())
+                .description(swaggerProperties.getDescription())
+                .contact(new Contact(swaggerProperties.getContactName(), swaggerProperties.getContactUrl(), swaggerProperties.getContactEmail()))
+                .version(swaggerProperties.getVersion())
                 .build();
     }
 
@@ -56,10 +54,7 @@ public class Swagger2Config {
     private List<SecurityContext> securityContexts() {
         //设置需要登录认证的路径
         List<SecurityContext> result = new ArrayList<>();
-        result.add(getContextByPath("/member/.*"));
-        result.add(getContextByPath("/cart/.*"));
-        result.add(getContextByPath("/order/.*"));
-        result.add(getContextByPath("/returnApply/.*"));
+        result.add(getContextByPath("/*/.*"));
         return result;
     }
 
@@ -78,4 +73,9 @@ public class Swagger2Config {
         result.add(new SecurityReference("Authorization", authorizationScopes));
         return result;
     }
+
+    /**
+     * 自定义Swagger配置
+     */
+    public abstract SwaggerProperties swaggerProperties();
 }
