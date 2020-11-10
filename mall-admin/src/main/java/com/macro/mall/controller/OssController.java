@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Oss相关操作接口
+ * Oss对象存储管理Controller
  * Created by macro on 2018/4/26.
  */
 @Controller
