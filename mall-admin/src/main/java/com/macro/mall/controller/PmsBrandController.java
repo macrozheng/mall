@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 品牌功能Controller
+ * 商品品牌管理Controller
  * Created by macro on 2018/4/26.
  */
 @Controller
