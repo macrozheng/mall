@@ -12,7 +12,7 @@ public class UmsAdminLoginLogExample {
     protected List<Criteria> oredCriteria;
 
     public UmsAdminLoginLogExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -69,7 +69,7 @@ public class UmsAdminLoginLogExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -497,7 +497,6 @@ public class UmsAdminLoginLogExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

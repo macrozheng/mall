@@ -9,14 +9,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * 品牌功能Controller
+ * 商品品牌管理Controller
  * Created by macro on 2018/4/26.
  */
 @Controller
@@ -36,7 +35,7 @@ public class PmsBrandController {
     @ApiOperation(value = "添加品牌")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@Validated @RequestBody PmsBrandParam pmsBrand, BindingResult result) {
+    public CommonResult create(@Validated @RequestBody PmsBrandParam pmsBrand) {
         CommonResult commonResult;
         int count = brandService.createBrand(pmsBrand);
         if (count == 1) {
@@ -51,8 +50,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable("id") Long id,
-                               @Validated @RequestBody PmsBrandParam pmsBrandParam,
-                               BindingResult result) {
+                               @Validated @RequestBody PmsBrandParam pmsBrandParam) {
         CommonResult commonResult;
         int count = brandService.updateBrand(id, pmsBrandParam);
         if (count == 1) {

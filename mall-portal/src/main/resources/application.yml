@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: mall-portal
   profiles:
     active: dev #默认为开发环境
 
@@ -11,7 +13,7 @@ jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mall-portal-secret #JWT加解密使用的密钥
   expiration: 604800 #JWT的超期限时间(60*60*24*7)
-  tokenHead: Bearer  #JWT负载中拿到开头
+  tokenHead: 'Bearer '  #JWT负载中拿到开头
 
 secure:
   ignored:
@@ -29,6 +31,8 @@ secure:
       - /actuator/**
       - /sso/**
       - /home/**
+      - /product/**
+      - /brand/**
 
 # 自定义redis key
 redis:
