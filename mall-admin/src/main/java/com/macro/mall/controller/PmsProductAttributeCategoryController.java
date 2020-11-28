@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 商品属性分类Controller
+ * 商品属性分类管理Controller
  * Created by macro on 2018/4/26.
  */
 @Controller

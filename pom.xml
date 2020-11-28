@@ -33,16 +33,16 @@
         <skipTests>true</skipTests>
         <docker.host>http://192.168.3.101:2375</docker.host>
         <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
-        <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
-        <pagehelper.version>5.1.8</pagehelper.version>
-        <druid.version>1.1.10</druid.version>
-        <hutool.version>4.5.7</hutool.version>
+        <pagehelper-starter.version>1.3.0</pagehelper-starter.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
+        <druid.version>1.1.23</druid.version>
+        <hutool.version>5.4.0</hutool.version>
         <swagger2.version>2.9.2</swagger2.version>
         <swagger-models.version>1.6.0</swagger-models.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
-        <mybatis-generator.version>1.3.7</mybatis-generator.version>
-        <mybatis.version>3.4.6</mybatis.version>
-        <mysql-connector.version>8.0.16</mysql-connector.version>
+        <mybatis-generator.version>1.4.0</mybatis-generator.version>
+        <mybatis.version>3.5.5</mybatis.version>
+        <mysql-connector.version>8.0.20</mysql-connector.version>
         <spring-data-commons.version>2.3.0.RELEASE</spring-data-commons.version>
         <jjwt.version>0.9.0</jjwt.version>
         <aliyun-oss.version>2.5.0</aliyun-oss.version>

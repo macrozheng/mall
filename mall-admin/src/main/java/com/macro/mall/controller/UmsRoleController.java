@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 后台用户角色管理
+ * 后台用户角色管理Controller
  * Created by macro on 2018/9/30.
  */
 @Controller
@@ -50,26 +50,6 @@ public class UmsRoleController {
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
         int count = roleService.delete(ids);
-        if (count > 0) {
-            return CommonResult.success(count);
-        }
-        return CommonResult.failed();
-    }
-
-    @ApiOperation("获取相应角色权限")
-    @RequestMapping(value = "/permission/{roleId}", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<List<UmsPermission>> getPermissionList(@PathVariable Long roleId) {
-        List<UmsPermission> permissionList = roleService.getPermissionList(roleId);
-        return CommonResult.success(permissionList);
-    }
-
-    @ApiOperation("修改角色权限")
-    @RequestMapping(value = "/permission/update", method = RequestMethod.POST)
-    @ResponseBody
-    public CommonResult updatePermission(@RequestParam Long roleId,
-                                         @RequestParam("permissionIds") List<Long> permissionIds) {
-        int count = roleService.updatePermission(roleId, permissionIds);
         if (count > 0) {
             return CommonResult.success(count);
         }
