@@ -37,6 +37,7 @@ public class OssController {
     @ResponseBody
     public CommonResult<OssCallbackResult> callback(HttpServletRequest request) {
         OssCallbackResult ossCallbackResult = ossService.callback(request);
+        //--ck 测试git
         return CommonResult.success(ossCallbackResult);
     }
 
