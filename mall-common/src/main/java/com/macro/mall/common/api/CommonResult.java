@@ -5,8 +5,17 @@ package com.macro.mall.common.api;
  * Created by macro on 2019/4/19.
  */
 public class CommonResult<T> {
+    /**
+     * 状态码
+     */
     private long code;
+    /**
+     * 提示信息
+     */
     private String message;
+    /**
+     * 数据封装
+     */
     private T data;
 
     protected CommonResult() {
