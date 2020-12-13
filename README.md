@@ -37,7 +37,7 @@
 
 前端项目`mall-app-web`地址：敬请期待......
 
-项目演示地址：[http://www.macrozheng.com/app/index.html](http://www.macrozheng.com/app/index.html)
+项目演示地址：[http://www.macrozheng.com/app/mainpage.html](http://www.macrozheng.com/app/mainpage.html)
 
 ![前台商城系统功能演示](http://img.macrozheng.com/mall/project/mall_app_show.png)
 
