@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 商品品牌Service
+ * 商品品牌管理Service
  * Created by macro on 2018/4/26.
  */
 public interface PmsBrandService {
