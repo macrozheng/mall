@@ -2578,3 +2578,18 @@ INSERT INTO `ums_role_resource_relation` VALUES ('174', '1', '5');
 INSERT INTO `ums_role_resource_relation` VALUES ('175', '1', '6');
 INSERT INTO `ums_role_resource_relation` VALUES ('176', '1', '23');
 INSERT INTO `ums_role_resource_relation` VALUES ('177', '1', '24');
+
+-- ----------------------------
+-- Table structure for ums_feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `ums_feedback`;
+CREATE TABLE `ums_feedback` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) NOT NULL DEFAULT '' COMMENT '',
+  `typeString` varchar(100) NOT NULL DEFAULT '' COMMENT '',
+  `desc` varchar(512) NOT NULL DEFAULT '' COMMENT '',
+  `tel` varchar(11) NOT NULL DEFAULT '' COMMENT '',
+  `uID` bigint(20) NOT NULL DEFAULT 0 COMMENT '',
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='用户反馈表';
