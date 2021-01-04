@@ -6,7 +6,7 @@ import com.macro.mall.model.UmsResource;
 import java.util.List;
 
 /**
- * 后台用户缓存操作类
+ * 后台用户缓存操作Service
  * Created by macro on 2020/3/13.
  */
 public interface UmsAdminCacheService {
