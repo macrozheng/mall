@@ -38,7 +38,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * UmsAdminService实现类
+ * 后台用户管理Service实现类
  * Created by macro on 2018/4/26.
  */
 @Service
