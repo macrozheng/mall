@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface OmsOrderReturnReasonService {
     /**
-     * 添加订单原因
+     * 添加退货原因
      */
     int create(OmsOrderReturnReason returnReason);
 
