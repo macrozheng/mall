@@ -43,7 +43,7 @@ public interface PmsBrandService {
     List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize);
 
     /**
-     * 获取品牌
+     * 获取品牌详情
      */
     PmsBrand getBrand(Long id);
 
