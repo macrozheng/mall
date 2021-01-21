@@ -35,6 +35,9 @@ public interface PmsProductAttributeService {
      */
     PmsProductAttribute getItem(Long id);
 
+    /**
+     * 批量删除商品属性
+     */
     @Transactional
     int delete(List<Long> ids);
 
