@@ -41,5 +41,8 @@ public interface PmsProductAttributeService {
     @Transactional
     int delete(List<Long> ids);
 
+    /**
+     * 获取商品分类对应属性列表
+     */
     List<ProductAttrInfo> getProductAttrInfo(Long productCategoryId);
 }
