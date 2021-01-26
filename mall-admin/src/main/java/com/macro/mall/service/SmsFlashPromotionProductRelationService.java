@@ -18,7 +18,7 @@ public interface SmsFlashPromotionProductRelationService {
     int create(List<SmsFlashPromotionProductRelation> relationList);
 
     /**
-     * 修改关联相关信息
+     * 修改关联信息
      */
     int update(Long id, SmsFlashPromotionProductRelation relation);
 
