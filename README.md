@@ -5,8 +5,8 @@
   <a href="https://github.com/macrozheng/mall-learning"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B-mall--learning-green.svg" alt="学习教程"></a>
   <a href="https://github.com/macrozheng/mall-swarm"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/Cloud%E7%89%88%E6%9C%AC-mall--swarm-brightgreen.svg" alt="SpringCloud版本"></a>
   <a href="https://github.com/macrozheng/mall-admin-web"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-mall--admin--web-green.svg" alt="前端项目"></a>
-  <a href="http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/QQ%E7%BE%A4-959351312-red.svg" alt="QQ群"></a>
   <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E4%BA%A4%E6%B5%81-%E5%BE%AE%E4%BF%A1%E7%BE%A4-2BA245.svg" alt="交流"></a>
+  <a href="http://qm.qq.com/cgi-bin/qm/qr?k=V6xu5c12j9qhnMUNdDRzakNxRKzOxibQ"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/QQ%E7%BE%A4-959351312-red.svg" alt="QQ群"></a>
   <a href="https://gitee.com/macrozheng/mall"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg" alt="码云"></a>
 </p>
 
@@ -37,7 +37,7 @@
 
 前端项目`mall-app-web`地址：敬请期待......
 
-项目演示地址：[http://www.macrozheng.com/app/index.html](http://www.macrozheng.com/app/index.html)
+项目演示地址：[http://www.macrozheng.com/app/mainpage.html](http://www.macrozheng.com/app/mainpage.html)
 
 ![前台商城系统功能演示](http://img.macrozheng.com/mall/project/mall_app_show.png)
 
@@ -58,27 +58,30 @@ mall
 
 #### 后端技术
 
-| 技术                 | 说明                | 官网                                                 |
-| -------------------- | ------------------- | ---------------------------------------------------- |
-| SpringBoot           | 容器+MVC框架        | https://spring.io/projects/spring-boot               |
-| SpringSecurity       | 认证和授权框架      | https://spring.io/projects/spring-security           |
-| MyBatis              | ORM框架             | http://www.mybatis.org/mybatis-3/zh/index.html       |
-| MyBatisGenerator     | 数据层代码生成      | http://www.mybatis.org/generator/index.html          |
-| PageHelper           | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper       |
-| Swagger-UI           | 文档生产工具        | https://github.com/swagger-api/swagger-ui            |
-| Hibernator-Validator | 验证框架            | http://hibernate.org/validator                       |
-| Elasticsearch        | 搜索引擎            | https://github.com/elastic/elasticsearch             |
-| RabbitMQ             | 消息队列            | https://www.rabbitmq.com/                            |
-| Redis                | 分布式缓存          | https://redis.io/                                    |
-| MongoDB              | NoSql数据库         | https://www.mongodb.com                              |
-| Docker               | 应用容器引擎        | https://www.docker.com                               |
-| Druid                | 数据库连接池        | https://github.com/alibaba/druid                     |
-| OSS                  | 对象存储            | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| MinIO                | 对象存储            | https://github.com/minio/minio                       |
-| JWT                  | JWT登录支持         | https://github.com/jwtk/jjwt                         |
-| LogStash             | 日志收集工具        | https://github.com/logstash/logstash-logback-encoder |
-| Lombok               | 简化对象封装工具    | https://github.com/rzwitserloot/lombok               |
-| Jenkins              | 自动化部署工具      | https://github.com/jenkinsci/jenkins                 |
+| 技术                 | 说明                | 官网                                           |
+| -------------------- | ------------------- | ---------------------------------------------- |
+| SpringBoot           | 容器+MVC框架        | https://spring.io/projects/spring-boot         |
+| SpringSecurity       | 认证和授权框架      | https://spring.io/projects/spring-security     |
+| MyBatis              | ORM框架             | http://www.mybatis.org/mybatis-3/zh/index.html |
+| MyBatisGenerator     | 数据层代码生成      | http://www.mybatis.org/generator/index.html    |
+| Elasticsearch        | 搜索引擎            | https://github.com/elastic/elasticsearch       |
+| RabbitMQ             | 消息队列            | https://www.rabbitmq.com/                      |
+| Redis                | 分布式缓存          | https://redis.io/                              |
+| MongoDB              | NoSql数据库         | https://www.mongodb.com                        |
+| LogStash             | 日志收集工具        | https://github.com/elastic/logstash            |
+| Kibina               | 日志可视化查看工具  | https://github.com/elastic/kibana              |
+| Nginx                | 静态资源服务器      | https://www.nginx.com/                         |
+| Docker               | 应用容器引擎        | https://www.docker.com                         |
+| Jenkins              | 自动化部署工具      | https://github.com/jenkinsci/jenkins           |
+| Druid                | 数据库连接池        | https://github.com/alibaba/druid               |
+| OSS                  | 对象存储            | https://github.com/aliyun/aliyun-oss-java-sdk  |
+| MinIO                | 对象存储            | https://github.com/minio/minio                 |
+| JWT                  | JWT登录支持         | https://github.com/jwtk/jjwt                   |
+| Lombok               | 简化对象封装工具    | https://github.com/rzwitserloot/lombok         |
+| Hutool               | Java工具类库        | https://github.com/looly/hutool                |
+| PageHelper           | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper |
+| Swagger-UI           | 文档生成工具        | https://github.com/swagger-api/swagger-ui      |
+| Hibernator-Validator | 验证框架            | http://hibernate.org/validator                 |
 
 #### 前端技术
 
@@ -128,7 +131,7 @@ mall
 | 工具          | 说明                | 官网                                            |
 | ------------- | ------------------- | ----------------------------------------------- |
 | IDEA          | 开发IDE             | https://www.jetbrains.com/idea/download         |
-| RedisDesktop  | redis客户端连接工具 | https://redisdesktop.com/download               |
+| RedisDesktop  | redis客户端连接工具 | https://github.com/qishibo/AnotherRedisDesktopManager  |
 | Robomongo     | mongo客户端连接工具 | https://robomongo.org/download                  |
 | SwitchHosts   | 本地host管理        | https://oldj.github.io/SwitchHosts/             |
 | X-shell       | Linux远程连接工具   | http://www.netsarang.com/download/software.html |
@@ -150,10 +153,12 @@ mall
 | JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 5.0    | https://redis.io/download                                    |
-| Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
 | MongoDB       | 4.2.5  | https://www.mongodb.com/download-center                      |
 | RabbitMQ      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
 | Nginx         | 1.10   | http://nginx.org/en/download.html                            |
+| Elasticsearch | 7.6.2  | https://www.elastic.co/downloads/elasticsearch               |
+| Logstash      | 7.6.2  | https://www.elastic.co/cn/downloads/logstash                 |
+| Kibana        | 7.6.2  | https://www.elastic.co/cn/downloads/kibana                   |
 
 ### 搭建步骤
 

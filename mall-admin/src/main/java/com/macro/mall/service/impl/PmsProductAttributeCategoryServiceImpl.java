@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * PmsProductAttributeCategoryService实现类
+ * 商品属性分类管理Service实现类
  * Created by macro on 2018/4/26.
  */
 @Service

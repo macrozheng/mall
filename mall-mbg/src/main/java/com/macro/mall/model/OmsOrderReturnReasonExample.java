@@ -12,7 +12,7 @@ public class OmsOrderReturnReasonExample {
     protected List<Criteria> oredCriteria;
 
     public OmsOrderReturnReasonExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -69,7 +69,7 @@ public class OmsOrderReturnReasonExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -417,7 +417,6 @@ public class OmsOrderReturnReasonExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

@@ -13,7 +13,7 @@ public class SmsFlashPromotionSessionExample {
     protected List<Criteria> oredCriteria;
 
     public SmsFlashPromotionSessionExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -70,7 +70,7 @@ public class SmsFlashPromotionSessionExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -117,7 +117,7 @@ public class SmsFlashPromotionSessionExample {
             if (values == null || values.size() == 0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
+            List<java.sql.Time> timeList = new ArrayList<>();
             Iterator<Date> iter = values.iterator();
             while (iter.hasNext()) {
                 timeList.add(new java.sql.Time(iter.next().getTime()));
@@ -504,7 +504,6 @@ public class SmsFlashPromotionSessionExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

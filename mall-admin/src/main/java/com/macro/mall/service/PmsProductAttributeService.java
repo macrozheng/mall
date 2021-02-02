@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 商品属性Service
+ * 商品属性管理Service
  * Created by macro on 2018/4/26.
  */
 public interface PmsProductAttributeService {
@@ -35,8 +35,14 @@ public interface PmsProductAttributeService {
      */
     PmsProductAttribute getItem(Long id);
 
+    /**
+     * 批量删除商品属性
+     */
     @Transactional
     int delete(List<Long> ids);
 
+    /**
+     * 获取商品分类对应属性列表
+     */
     List<ProductAttrInfo> getProductAttrInfo(Long productCategoryId);
 }

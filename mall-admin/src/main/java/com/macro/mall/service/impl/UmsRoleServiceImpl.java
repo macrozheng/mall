@@ -2,10 +2,8 @@ package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.UmsRoleDao;
-import com.macro.mall.dao.UmsRolePermissionRelationDao;
 import com.macro.mall.mapper.UmsRoleMapper;
 import com.macro.mall.mapper.UmsRoleMenuRelationMapper;
-import com.macro.mall.mapper.UmsRolePermissionRelationMapper;
 import com.macro.mall.mapper.UmsRoleResourceRelationMapper;
 import com.macro.mall.model.*;
 import com.macro.mall.service.UmsAdminCacheService;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,13 +24,9 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     @Autowired
     private UmsRoleMapper roleMapper;
     @Autowired
-    private UmsRolePermissionRelationMapper rolePermissionRelationMapper;
-    @Autowired
     private UmsRoleMenuRelationMapper roleMenuRelationMapper;
     @Autowired
     private UmsRoleResourceRelationMapper roleResourceRelationMapper;
-    @Autowired
-    private UmsRolePermissionRelationDao rolePermissionRelationDao;
     @Autowired
     private UmsRoleDao roleDao;
     @Autowired
@@ -59,28 +52,6 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         int count = roleMapper.deleteByExample(example);
         adminCacheService.delResourceListByRoleIds(ids);
         return count;
-    }
-
-    @Override
-    public List<UmsPermission> getPermissionList(Long roleId) {
-        return rolePermissionRelationDao.getPermissionList(roleId);
-    }
-
-    @Override
-    public int updatePermission(Long roleId, List<Long> permissionIds) {
-        //先删除原有关系
-        UmsRolePermissionRelationExample example=new UmsRolePermissionRelationExample();
-        example.createCriteria().andRoleIdEqualTo(roleId);
-        rolePermissionRelationMapper.deleteByExample(example);
-        //批量插入新关系
-        List<UmsRolePermissionRelation> relationList = new ArrayList<>();
-        for (Long permissionId : permissionIds) {
-            UmsRolePermissionRelation relation = new UmsRolePermissionRelation();
-            relation.setRoleId(roleId);
-            relation.setPermissionId(permissionId);
-            relationList.add(relation);
-        }
-        return rolePermissionRelationDao.insertList(relationList);
     }
 
     @Override

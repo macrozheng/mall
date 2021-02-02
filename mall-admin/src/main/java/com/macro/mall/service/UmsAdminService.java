@@ -3,7 +3,6 @@ package com.macro.mall.service;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
 import com.macro.mall.model.UmsAdmin;
-import com.macro.mall.model.UmsPermission;
 import com.macro.mall.model.UmsResource;
 import com.macro.mall.model.UmsRole;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 后台管理员Service
+ * 后台用户管理Service
  * Created by macro on 2018/4/26.
  */
 public interface UmsAdminService {
@@ -75,17 +74,6 @@ public interface UmsAdminService {
      * 获取指定用户的可访问资源
      */
     List<UmsResource> getResourceList(Long adminId);
-
-    /**
-     * 修改用户的+-权限
-     */
-    @Transactional
-    int updatePermission(Long adminId, List<Long> permissionIds);
-
-    /**
-     * 获取用户所有权限（包括角色权限和+-权限）
-     */
-    List<UmsPermission> getPermissionList(Long adminId);
 
     /**
      * 修改密码
