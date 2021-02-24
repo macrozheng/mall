@@ -196,4 +196,4 @@ mall
 
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
-Copyright (c) 2018-2020 macrozheng
+Copyright (c) 2018-2021 macrozheng
