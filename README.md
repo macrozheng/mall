@@ -9,6 +9,14 @@
   <a href="https://gitee.com/macrozheng/mall"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg" alt="码云"></a>
 </p>
 
+## 友情提示
+
+> 1. **快速体验项目**：[在线访问地址](http://www.macrozheng.com/admin/index.html)。
+> 2. **全套学习教程**：[《mall学习教程》](http://www.macrozheng.com/#/README)。
+> 3. **微服务版本**：基于Spring Cloud Hoxton & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm)。
+> 4. **专属学习路线**：学习不走弯路，整理了套非常不错的[《mall专属学习路线》](#公众号)。
+> 5. **项目交流**：想要加群交流项目的朋友，可以加入[mall项目交流群](#公众号)。
+
 ## 前言
 
 `mall`项目致力于打造一个完整的电商系统，采用现阶段流行技术实现。
