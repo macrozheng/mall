@@ -67,7 +67,7 @@ public class OmsOrderController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("获取订单详情:订单信息、商品信息、操作记录")
+    @ApiOperation("获取订单详情：订单信息、商品信息、操作记录")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<OmsOrderDetail> detail(@PathVariable Long id) {
