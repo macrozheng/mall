@@ -29,7 +29,7 @@ public class PmsSkuStockController {
         List<PmsSkuStock> skuStockList = skuStockService.getList(pid, keyword);
         return CommonResult.success(skuStockList);
     }
-    @ApiOperation("批量更新库存信息")
+    @ApiOperation("批量更新sku库存信息")
     @RequestMapping(value ="/update/{pid}",method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long pid,@RequestBody List<PmsSkuStock> skuStockList){
