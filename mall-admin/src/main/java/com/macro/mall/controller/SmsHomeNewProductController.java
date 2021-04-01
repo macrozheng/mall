@@ -26,8 +26,8 @@ public class SmsHomeNewProductController {
     @ApiOperation("添加首页推荐品牌")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody List<SmsHomeNewProduct> homeBrandList) {
-        int count = homeNewProductService.create(homeBrandList);
+    public CommonResult create(@RequestBody List<SmsHomeNewProduct> homeNewProductList) {
+        int count = homeNewProductService.create(homeNewProductList);
         if (count > 0) {
             return CommonResult.success(count);
         }
@@ -74,7 +74,7 @@ public class SmsHomeNewProductController {
                                                             @RequestParam(value = "recommendStatus", required = false) Integer recommendStatus,
                                                             @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<SmsHomeNewProduct> homeBrandList = homeNewProductService.list(productName, recommendStatus, pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(homeBrandList));
+        List<SmsHomeNewProduct> homeNewProductList = homeNewProductService.list(productName, recommendStatus, pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(homeNewProductList));
     }
 }
