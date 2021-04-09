@@ -26,8 +26,8 @@ public class SmsHomeRecommendSubjectController {
     @ApiOperation("添加首页推荐专题")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody List<SmsHomeRecommendSubject> homeBrandList) {
-        int count = recommendSubjectService.create(homeBrandList);
+    public CommonResult create(@RequestBody List<SmsHomeRecommendSubject> homeRecommendSubjectList) {
+        int count = recommendSubjectService.create(homeRecommendSubjectList);
         if (count > 0) {
             return CommonResult.success(count);
         }
@@ -74,7 +74,7 @@ public class SmsHomeRecommendSubjectController {
                                                                   @RequestParam(value = "recommendStatus", required = false) Integer recommendStatus,
                                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<SmsHomeRecommendSubject> homeBrandList = recommendSubjectService.list(subjectName, recommendStatus, pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(homeBrandList));
+        List<SmsHomeRecommendSubject> homeRecommendSubjectList = recommendSubjectService.list(subjectName, recommendStatus, pageSize, pageNum);
+        return CommonResult.success(CommonPage.restPage(homeRecommendSubjectList));
     }
 }
