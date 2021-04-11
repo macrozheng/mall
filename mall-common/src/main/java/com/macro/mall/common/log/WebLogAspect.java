@@ -70,7 +70,8 @@ public class WebLogAspect {
         long endTime = System.currentTimeMillis();
         String urlStr = request.getRequestURL().toString();
         webLog.setBasePath(StrUtil.removeSuffix(urlStr, URLUtil.url(urlStr).getPath()));
-        webLog.setIp(request.getRemoteUser());
+        webLog.setUsername(request.getRemoteUser());
+        webLog.setIp(request.getRemoteAddr());
         webLog.setMethod(request.getMethod());
         webLog.setParameter(getParameter(method, joinPoint.getArgs()));
         webLog.setResult(result);
