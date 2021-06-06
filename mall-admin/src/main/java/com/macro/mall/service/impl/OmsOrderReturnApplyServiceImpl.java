@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 订单退货管理Service
+ * 订单退货管理Service实现类
  * Created by macro on 2018/10/18.
  */
 @Service
