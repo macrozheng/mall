@@ -5,7 +5,7 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * 用户验证状态是否在指定范围内的注解
+ * 用于验证状态是否在指定范围内的注解
  * Created by macro on 2018/4/26.
  */
 @Documented
