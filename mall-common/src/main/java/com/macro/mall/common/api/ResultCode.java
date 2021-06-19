@@ -1,7 +1,7 @@
 package com.macro.mall.common.api;
 
 /**
- * 常用API返回对象枚举类
+ * 常用API返回对象
  * Created by macro on 2019/4/19.
  */
 public enum ResultCode implements IErrorCode {
