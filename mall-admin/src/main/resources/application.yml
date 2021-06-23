@@ -1,3 +1,10 @@
+server:
+  port: 8443
+  ssl:
+    key-store: keystore.p12
+    key-store-password: qwer1234
+    keyStoreType: PKCS12
+    keyAlias: mall
 spring:
   application:
     name: mall-admin
