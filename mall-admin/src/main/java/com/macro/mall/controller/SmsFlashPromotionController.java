@@ -34,7 +34,7 @@ public class SmsFlashPromotionController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("编辑活动信息")
+    @ApiOperation("编辑活动")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object update(@PathVariable Long id, @RequestBody SmsFlashPromotion flashPromotion) {
@@ -45,7 +45,7 @@ public class SmsFlashPromotionController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("删除活动信息")
+    @ApiOperation("删除活动")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public Object delete(@PathVariable Long id) {

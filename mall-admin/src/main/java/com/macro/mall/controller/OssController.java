@@ -26,7 +26,7 @@ public class OssController {
     @Autowired
     private OssService ossService;
 
-    @ApiOperation(value = "oss上传签名生成")
+    @ApiOperation(value = "Oss上传签名生成")
     @RequestMapping(value = "/policy", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<OssPolicyResult> policy() {
@@ -34,7 +34,7 @@ public class OssController {
         return CommonResult.success(result);
     }
 
-    @ApiOperation(value = "oss上传成功回调")
+    @ApiOperation(value = "Oss上传成功回调")
     @RequestMapping(value = "callback", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<OssCallbackResult> callback(HttpServletRequest request) {

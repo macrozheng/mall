@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 后台管理员Service
+ * 后台用户管理Service
  * Created by macro on 2018/4/26.
  */
 public interface UmsAdminService {
@@ -66,7 +66,7 @@ public interface UmsAdminService {
     int updateRole(Long adminId, List<Long> roleIds);
 
     /**
-     * 获取用户对于角色
+     * 获取用户对应角色
      */
     List<UmsRole> getRoleList(Long adminId);
 

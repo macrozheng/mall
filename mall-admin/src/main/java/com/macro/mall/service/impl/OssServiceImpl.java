@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * oss上传管理Service实现类
+ * Oss对象存储管理Service实现类
  * Created by macro on 2018/5/17.
  */
 @Service

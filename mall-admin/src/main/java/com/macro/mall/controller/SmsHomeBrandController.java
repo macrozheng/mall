@@ -34,7 +34,7 @@ public class SmsHomeBrandController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改品牌排序")
+    @ApiOperation("修改推荐品牌排序")
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateSort(@PathVariable Long id, Integer sort) {
@@ -56,7 +56,7 @@ public class SmsHomeBrandController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("批量修改推荐状态")
+    @ApiOperation("批量修改推荐品牌状态")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
