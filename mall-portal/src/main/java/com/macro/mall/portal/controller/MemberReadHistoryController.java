@@ -48,7 +48,7 @@ public class MemberReadHistoryController {
         }
     }
 
-    @ApiOperation("清空除浏览记录")
+    @ApiOperation("清空浏览记录")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {
@@ -56,7 +56,7 @@ public class MemberReadHistoryController {
         return CommonResult.success(null);
     }
 
-    @ApiOperation("分页获取用户浏览记录")
+    @ApiOperation("分页获取浏览记录")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberReadHistory>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
