@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 首页当前秒杀场次信息
+ * 首页秒杀场次信息封装
  * Created by macro on 2019/1/28.
  */
 @Getter
