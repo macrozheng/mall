@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 /**
- * 会员关注的品牌
+ * 会员品牌关注
  * Created by macro on 2018/8/2.
  */
 @Document
