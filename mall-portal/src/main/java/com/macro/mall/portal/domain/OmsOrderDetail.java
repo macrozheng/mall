@@ -10,6 +10,7 @@ import java.util.List;
  * Created by macro on 2018/9/4.
  */
 public class OmsOrderDetail extends OmsOrder {
+    //订单商品列表
     private List<OmsOrderItem> orderItemList;
 
     public List<OmsOrderItem> getOrderItemList() {
