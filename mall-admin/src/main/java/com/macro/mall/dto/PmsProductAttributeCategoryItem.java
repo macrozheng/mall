@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * 包含有分类下属性的dto
+ * 带有属性的商品属性分类
  * Created by macro on 2018/5/24.
  */
 public class PmsProductAttributeCategoryItem extends PmsProductAttributeCategory {
