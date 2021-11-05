@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * RestTemplate相关配置
- * Created by macro on 2018/9/18.
+ * Created by macro on 2018/4/26.
  */
 @Configuration
 public class RestTemplateConfig {
