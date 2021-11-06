@@ -25,7 +25,7 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @ApiOperation("首页内容页信息展示")
+    @ApiOperation("首页内容信息展示")
     @RequestMapping(value = "/content", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<HomeContentResult> content() {

@@ -36,7 +36,7 @@ public class MemberAttentionController {
         }
     }
 
-    @ApiOperation("取消关注")
+    @ApiOperation("取消品牌关注")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(Long brandId) {
@@ -48,7 +48,7 @@ public class MemberAttentionController {
         }
     }
 
-    @ApiOperation("显示关注列表")
+    @ApiOperation("显示品牌关注列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -57,7 +57,7 @@ public class MemberAttentionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @ApiOperation("显示关注品牌详情")
+    @ApiOperation("显示品牌关注详情")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {
@@ -65,7 +65,7 @@ public class MemberAttentionController {
         return CommonResult.success(memberBrandAttention);
     }
 
-    @ApiOperation("清空关注列表")
+    @ApiOperation("清空品牌关注列表")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {

@@ -13,7 +13,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class FlashPromotionProduct extends PmsProduct{
+    //秒杀价格
     private BigDecimal flashPromotionPrice;
+    //用于秒杀到数量
     private Integer flashPromotionCount;
+    //秒杀限购数量
     private Integer flashPromotionLimit;
 }

@@ -7,11 +7,13 @@ import com.macro.mall.model.PmsSkuStock;
 import java.util.List;
 
 /**
- * 购物车中选择规格的商品信息
+ * 购物车中带规格和SKU的商品信息
  * Created by macro on 2018/8/2.
  */
 public class CartProduct extends PmsProduct {
+    //商品属性列表
     private List<PmsProductAttribute> productAttributeList;
+    //商品SKU库存列表
     private List<PmsSkuStock> skuStockList;
 
     public List<PmsProductAttribute> getProductAttributeList() {

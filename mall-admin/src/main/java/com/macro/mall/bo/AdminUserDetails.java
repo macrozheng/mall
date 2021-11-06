@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
  * Created by macro on 2018/4/26.
  */
 public class AdminUserDetails implements UserDetails {
+    //后台用户
     private UmsAdmin umsAdmin;
+    //拥有资源列表
     private List<UmsResource> resourceList;
     public AdminUserDetails(UmsAdmin umsAdmin,List<UmsResource> resourceList) {
         this.umsAdmin = umsAdmin;
