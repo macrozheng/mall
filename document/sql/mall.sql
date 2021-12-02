@@ -76,7 +76,7 @@ CREATE TABLE `cms_member_report` (
 -- Table structure for cms_prefrence_area
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_prefrence_area`;
-CREATE TABLE `cms_prefrence_area` (
+CREATE TABLE `cms_prefrence_area` ( ///
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `sub_title` varchar(255) DEFAULT NULL,
