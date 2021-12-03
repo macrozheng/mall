@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>mall-security</name>
-    <description>mall-security project for mall</description>
+    <description>mall-security project for mall1</description>
 
     <parent>
         <groupId>com.macro.mall</groupId>
