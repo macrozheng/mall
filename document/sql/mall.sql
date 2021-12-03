@@ -76,7 +76,7 @@ CREATE TABLE `cms_member_report` (
 -- Table structure for cms_prefrence_area
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_prefrence_area`;
-CREATE TABLE `cms_prefrence_area` ( ///
+CREATE TABLE `cms_prefrence_area` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `sub_title` varchar(255) DEFAULT NULL,
@@ -917,7 +917,7 @@ INSERT INTO `pms_product` VALUES ('36', '58', '29', '0', '11', '耐克NIKE 男�
 -- Table structure for pms_product_attribute
 -- ----------------------------
 DROP TABLE IF EXISTS `pms_product_attribute`;
-CREATE TABLE `pms_product_attribute` (
+CREATE TABLE `pms_product_attribute` ( ///
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_attribute_category_id` bigint(20) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
@@ -1951,7 +1951,7 @@ INSERT INTO `ums_admin_login_log` VALUES ('195', '3', '2020-02-25 16:46:29', '0:
 -- Table structure for ums_admin_permission_relation
 -- ----------------------------
 DROP TABLE IF EXISTS `ums_admin_permission_relation`;
-CREATE TABLE `ums_admin_permission_relation` (
+CREATE TABLE `ums_admin_permission_relation` ( ///
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `admin_id` bigint(20) DEFAULT NULL,
   `permission_id` bigint(20) DEFAULT NULL,
