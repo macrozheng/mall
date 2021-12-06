@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface PmsSkuStockService {
     /**
-     * 根据产品id和skuCode模糊搜索
+     * 根据产品id和skuCode关键字模糊搜索
      */
     List<PmsSkuStock> getList(Long pid, String keyword);
 

@@ -56,7 +56,7 @@ public class OmsOrderReturnReasonController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("分页查询全部退货原因")
+    @ApiOperation("分页查询退货原因")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<OmsOrderReturnReason>> list(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,

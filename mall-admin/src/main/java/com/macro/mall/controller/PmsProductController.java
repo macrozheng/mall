@@ -90,7 +90,7 @@ public class PmsProductController {
         }
     }
 
-    @ApiOperation("批量上下架")
+    @ApiOperation("批量上下架商品")
     @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updatePublishStatus(@RequestParam("ids") List<Long> ids,
