@@ -12,6 +12,11 @@ public class DateUtil {
     /**
      * 从Date类型的时间中提取日期部分
      */
+    public static void main(String[] args) {
+        Date date = new Date();
+
+        System.out.println(getDate(date));
+    }
     public static Date getDate(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);

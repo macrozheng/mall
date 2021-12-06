@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public interface UmsMemberService {
     /**
-     * 根据用户名获取会员
+     * 根据用户名获取会员1
      */
     UmsMember getByUsername(String username);
 
     /**
-     * 根据会员编号获取会员
+     * 根据会员编号获取会员1
      */
     UmsMember getById(Long id);
 

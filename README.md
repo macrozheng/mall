@@ -7,6 +7,7 @@
 - ums：客户模块
 
 
+- 用户支付对接到支付宝、微信，没有设置用户钱包模块
 
 # mall-portal
 
@@ -26,6 +27,7 @@
 
     
 
+# others
 
 
 # mall-admin

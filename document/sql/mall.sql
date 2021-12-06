@@ -917,7 +917,7 @@ INSERT INTO `pms_product` VALUES ('36', '58', '29', '0', '11', '耐克NIKE 男�
 -- Table structure for pms_product_attribute
 -- ----------------------------
 DROP TABLE IF EXISTS `pms_product_attribute`;
-CREATE TABLE `pms_product_attribute` ( ///
+CREATE TABLE `pms_product_attribute` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_attribute_category_id` bigint(20) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
@@ -2315,7 +2315,7 @@ INSERT INTO `ums_menu` VALUES ('25', '21', '2020-02-07 16:31:13', '资源列表'
 -- Table structure for ums_permission
 -- ----------------------------
 DROP TABLE IF EXISTS `ums_permission`;
-CREATE TABLE `ums_permission` (
+CREATE TABLE `ums_permission` ( ///
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `pid` bigint(20) DEFAULT NULL COMMENT '父级权限id',
   `name` varchar(100) DEFAULT NULL COMMENT '名称',
@@ -2495,7 +2495,7 @@ INSERT INTO `ums_role_menu_relation` VALUES ('95', '5', '25');
 -- Table structure for ums_role_permission_relation
 -- ----------------------------
 DROP TABLE IF EXISTS `ums_role_permission_relation`;
-CREATE TABLE `ums_role_permission_relation` (
+CREATE TABLE `ums_role_permission_relation` ( ///
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) DEFAULT NULL,
   `permission_id` bigint(20) DEFAULT NULL,
