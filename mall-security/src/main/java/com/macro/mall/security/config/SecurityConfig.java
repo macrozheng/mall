@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 /**
- * 对SpringSecurity的配置的扩展，支持自定义白名单资源路径和查询用户逻辑
+ * 对SpringSecurity配置类的扩展，支持自定义白名单资源路径和查询用户逻辑
  * Created by macro on 2019/11/5.
  */
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,14 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = httpSecurity
                 .authorizeRequests();
-        //不需要保护的资源路径允许访问
+        // 不需要保护的资源路径允许访问
         for (String url : ignoreUrlsConfig().getUrls()) {
             registry.antMatchers(url).permitAll();
         }
-        //允许跨域请求的OPTIONS请求
+        // 允许跨域的OPTIONS请求
         registry.antMatchers(HttpMethod.OPTIONS)
                 .permitAll();
-        // 任何请求需要身份认证
+        // 其他任何请求都需要身份认证
         registry.and()
                 .authorizeRequests()
                 .anyRequest()
