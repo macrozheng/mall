@@ -48,7 +48,7 @@ public class MemberProductCollectionController {
         }
     }
 
-    @ApiOperation("显示商品收藏列表")
+    @ApiOperation("显示当前用户商品收藏列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberProductCollection>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -65,7 +65,7 @@ public class MemberProductCollectionController {
         return CommonResult.success(memberProductCollection);
     }
 
-    @ApiOperation("清空商品收藏列表")
+    @ApiOperation("清空当前用户商品收藏列表")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {
