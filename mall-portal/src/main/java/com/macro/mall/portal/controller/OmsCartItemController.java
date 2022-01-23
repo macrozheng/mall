@@ -96,7 +96,7 @@ public class OmsCartItemController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("清空当前用户的购物车")
+    @ApiOperation("清空当前会员的购物车")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {
