@@ -78,7 +78,7 @@ public class UmsMemberController {
         return CommonResult.success(authCode,"获取验证码成功");
     }
 
-    @ApiOperation("修改密码")
+    @ApiOperation("会员修改密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updatePassword(@RequestParam String telephone,
