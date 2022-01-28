@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 用户优惠券管理Controller
+ * 会员优惠券管理Controller
  * Created by macro on 2018/8/29.
  */
 @Controller
@@ -40,7 +40,7 @@ public class UmsMemberCouponController {
         return CommonResult.success(null,"领取成功");
     }
 
-    @ApiOperation("获取用户优惠券历史列表")
+    @ApiOperation("获取会员优惠券历史列表")
     @ApiImplicitParam(name = "useStatus", value = "优惠券筛选类型:0->未使用；1->已使用；2->已过期",
             allowableValues = "0,1,2", paramType = "query", dataType = "integer")
     @RequestMapping(value = "/listHistory", method = RequestMethod.GET)
@@ -50,7 +50,7 @@ public class UmsMemberCouponController {
         return CommonResult.success(couponHistoryList);
     }
 
-    @ApiOperation("获取用户优惠券列表")
+    @ApiOperation("获取会员优惠券列表")
     @ApiImplicitParam(name = "useStatus", value = "优惠券筛选类型:0->未使用；1->已使用；2->已过期",
             allowableValues = "0,1,2", paramType = "query", dataType = "integer")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
