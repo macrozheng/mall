@@ -62,7 +62,7 @@ public class UmsMemberCouponController {
 
     @ApiOperation("获取登录会员购物车的相关优惠券")
     @ApiImplicitParam(name = "type", value = "使用可用:0->不可用；1->可用",
-            defaultValue = "1", allowableValues = "0,1", paramType = "query", dataType = "integer")
+            defaultValue = "1", allowableValues = "0,1", paramType = "path", dataType = "integer")
     @RequestMapping(value = "/list/cart/{type}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<SmsCouponHistoryDetail>> listCart(@PathVariable Integer type) {
