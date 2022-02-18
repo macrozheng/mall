@@ -12,7 +12,7 @@ public class OmsOrderOperateHistoryExample {
     protected List<Criteria> oredCriteria;
 
     public OmsOrderOperateHistoryExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -69,7 +69,7 @@ public class OmsOrderOperateHistoryExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -487,7 +487,6 @@ public class OmsOrderOperateHistoryExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

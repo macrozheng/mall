@@ -23,7 +23,7 @@ public interface OmsOrderReturnApplyService {
     int delete(List<Long> ids);
 
     /**
-     * 修改申请状态
+     * 修改指定申请状态
      */
     int updateStatus(Long id, OmsUpdateStatusParam statusParam);
 

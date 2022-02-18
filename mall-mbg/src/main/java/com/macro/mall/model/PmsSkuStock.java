@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -8,67 +9,31 @@ public class PmsSkuStock implements Serializable {
 
     private Long productId;
 
-    /**
-     * sku编码
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "sku编码")
     private String skuCode;
 
     private BigDecimal price;
 
-    /**
-     * 库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "库存")
     private Integer stock;
 
-    /**
-     * 预警库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "预警库存")
     private Integer lowStock;
 
-    /**
-     * 销售属性1
-     *
-     * @mbggenerated
-     */
-    private String sp1;
-
-    private String sp2;
-
-    private String sp3;
-
-    /**
-     * 展示图片
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "展示图片")
     private String pic;
 
-    /**
-     * 销量
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "销量")
     private Integer sale;
 
-    /**
-     * 单品促销价格
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "单品促销价格")
     private BigDecimal promotionPrice;
 
-    /**
-     * 锁定库存
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "锁定库存")
     private Integer lockStock;
+
+    @ApiModelProperty(value = "商品销售属性，json格式")
+    private String spData;
 
     private static final long serialVersionUID = 1L;
 
@@ -120,30 +85,6 @@ public class PmsSkuStock implements Serializable {
         this.lowStock = lowStock;
     }
 
-    public String getSp1() {
-        return sp1;
-    }
-
-    public void setSp1(String sp1) {
-        this.sp1 = sp1;
-    }
-
-    public String getSp2() {
-        return sp2;
-    }
-
-    public void setSp2(String sp2) {
-        this.sp2 = sp2;
-    }
-
-    public String getSp3() {
-        return sp3;
-    }
-
-    public void setSp3(String sp3) {
-        this.sp3 = sp3;
-    }
-
     public String getPic() {
         return pic;
     }
@@ -176,6 +117,14 @@ public class PmsSkuStock implements Serializable {
         this.lockStock = lockStock;
     }
 
+    public String getSpData() {
+        return spData;
+    }
+
+    public void setSpData(String spData) {
+        this.spData = spData;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -188,13 +137,11 @@ public class PmsSkuStock implements Serializable {
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
         sb.append(", lowStock=").append(lowStock);
-        sb.append(", sp1=").append(sp1);
-        sb.append(", sp2=").append(sp2);
-        sb.append(", sp3=").append(sp3);
         sb.append(", pic=").append(pic);
         sb.append(", sale=").append(sale);
         sb.append(", promotionPrice=").append(promotionPrice);
         sb.append(", lockStock=").append(lockStock);
+        sb.append(", spData=").append(spData);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -30,7 +30,7 @@ public interface SmsFlashPromotionService {
     int updateStatus(Long id, Integer status);
 
     /**
-     * 获取详细信息
+     * 获取活动详情
      */
     SmsFlashPromotion getItem(Long id);
 

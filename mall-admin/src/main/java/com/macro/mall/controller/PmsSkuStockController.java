@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.PmsSkuStock;
 import com.macro.mall.service.PmsSkuStockService;
 import io.swagger.annotations.Api;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * sku库存Controller
+ * 商品SKU库存管理Controller
  * Created by macro on 2018/4/27.
  */
 @Controller
@@ -22,22 +22,22 @@ public class PmsSkuStockController {
     @Autowired
     private PmsSkuStockService skuStockService;
 
-    @ApiOperation("根据商品编号及编号模糊搜索sku库存")
+    @ApiOperation("根据商品ID及sku编码模糊搜索sku库存")
     @RequestMapping(value = "/{pid}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getList(@PathVariable Long pid, @RequestParam(value = "keyword",required = false) String keyword) {
+    public CommonResult<List<PmsSkuStock>> getList(@PathVariable Long pid, @RequestParam(value = "keyword",required = false) String keyword) {
         List<PmsSkuStock> skuStockList = skuStockService.getList(pid, keyword);
-        return new CommonResult().success(skuStockList);
+        return CommonResult.success(skuStockList);
     }
-    @ApiOperation("批量更新库存信息")
+    @ApiOperation("批量更新sku库存信息")
     @RequestMapping(value ="/update/{pid}",method = RequestMethod.POST)
     @ResponseBody
-    public Object update(@PathVariable Long pid,@RequestBody List<PmsSkuStock> skuStockList){
+    public CommonResult update(@PathVariable Long pid,@RequestBody List<PmsSkuStock> skuStockList){
         int count = skuStockService.update(pid,skuStockList);
         if(count>0){
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }else{
-            return new CommonResult().failed();
+            return CommonResult.failed();
         }
     }
 }

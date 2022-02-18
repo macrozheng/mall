@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 首页新品管理Service
+ * 首页新品推荐管理Service
  * Created by macro on 2018/11/6.
  */
 public interface SmsHomeNewProductService {
@@ -27,7 +27,7 @@ public interface SmsHomeNewProductService {
     int delete(List<Long> ids);
 
     /**
-     * 更新推荐状态
+     * 批量更新推荐状态
      */
     int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 

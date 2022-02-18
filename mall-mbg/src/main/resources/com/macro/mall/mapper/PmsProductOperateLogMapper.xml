@@ -196,7 +196,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.macro.mall.model.PmsProductOperateLogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.macro.mall.model.PmsProductOperateLogExample" resultType="java.lang.Long">
     select count(*) from pms_product_operate_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

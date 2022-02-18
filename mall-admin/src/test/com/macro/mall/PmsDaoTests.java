@@ -1,11 +1,11 @@
 package com.macro.mall;
 
 
+import cn.hutool.json.JSONUtil;
 import com.macro.mall.dao.PmsMemberPriceDao;
 import com.macro.mall.dao.PmsProductDao;
 import com.macro.mall.dto.PmsProductResult;
 import com.macro.mall.model.PmsMemberPrice;
-import com.macro.mall.util.JsonUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +48,7 @@ public class PmsDaoTests {
     @Test
     public void  testGetProductUpdateInfo(){
         PmsProductResult productResult = productDao.getUpdateInfo(7L);
-        String json = JsonUtil.objectToJson(productResult);
+        String json = JSONUtil.parse(productResult).toString();
         LOGGER.info(json);
     }
 }

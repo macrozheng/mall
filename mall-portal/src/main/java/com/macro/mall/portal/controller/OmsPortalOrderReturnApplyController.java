@@ -1,6 +1,6 @@
 package com.macro.mall.portal.controller;
 
-import com.macro.mall.portal.domain.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.OmsOrderReturnApplyParam;
 import com.macro.mall.portal.service.OmsPortalOrderReturnApplyService;
 import io.swagger.annotations.Api;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 申请退货管理Controller
+ * 退货申请管理Controller
  * Created by macro on 2018/10/17.
  */
 @Controller
-@Api(tags = "OmsPortalOrderReturnApplyController", description = "申请退货管理")
+@Api(tags = "OmsPortalOrderReturnApplyController", description = "退货申请管理")
 @RequestMapping("/returnApply")
 public class OmsPortalOrderReturnApplyController {
     @Autowired
@@ -26,11 +26,11 @@ public class OmsPortalOrderReturnApplyController {
     @ApiOperation("申请退货")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Object create(@RequestBody OmsOrderReturnApplyParam returnApply) {
+    public CommonResult create(@RequestBody OmsOrderReturnApplyParam returnApply) {
         int count = returnApplyService.create(returnApply);
         if (count > 0) {
-            return new CommonResult().success(count);
+            return CommonResult.success(count);
         }
-        return new CommonResult().failed();
+        return CommonResult.failed();
     }
 }

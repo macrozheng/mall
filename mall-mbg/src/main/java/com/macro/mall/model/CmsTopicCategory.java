@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class CmsTopicCategory implements Serializable {
@@ -7,18 +8,10 @@ public class CmsTopicCategory implements Serializable {
 
     private String name;
 
-    /**
-     * 分类图标
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "分类图标")
     private String icon;
 
-    /**
-     * 专题数量
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "专题数量")
     private Integer subjectCount;
 
     private Integer showStatus;

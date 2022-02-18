@@ -1,32 +1,21 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
 public class OmsOrderReturnReason implements Serializable {
     private Long id;
 
-    /**
-     * 退货类型
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "退货类型")
     private String name;
 
     private Integer sort;
 
-    /**
-     * 状态：0->不启用；1->启用
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "状态：0->不启用；1->启用")
     private Integer status;
 
-    /**
-     * 添加时间
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "添加时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

@@ -1,5 +1,6 @@
 package com.macro.mall.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,113 +14,44 @@ public class OmsCartItem implements Serializable {
 
     private Long memberId;
 
-    /**
-     * 购买数量
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "购买数量")
     private Integer quantity;
 
-    /**
-     * 添加到购物车的价格
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "添加到购物车的价格")
     private BigDecimal price;
 
-    /**
-     * 销售属性1
-     *
-     * @mbggenerated
-     */
-    private String sp1;
-
-    /**
-     * 销售属性2
-     *
-     * @mbggenerated
-     */
-    private String sp2;
-
-    /**
-     * 销售属性3
-     *
-     * @mbggenerated
-     */
-    private String sp3;
-
-    /**
-     * 商品主图
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品主图")
     private String productPic;
 
-    /**
-     * 商品名称
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品名称")
     private String productName;
 
-    /**
-     * 商品副标题（卖点）
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品副标题（卖点）")
     private String productSubTitle;
 
-    /**
-     * 商品sku条码
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品sku条码")
     private String productSkuCode;
 
-    /**
-     * 会员昵称
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "会员昵称")
     private String memberNickname;
 
-    /**
-     * 创建时间
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createDate;
 
-    /**
-     * 修改时间
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "修改时间")
     private Date modifyDate;
 
-    /**
-     * 是否删除
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "是否删除")
     private Integer deleteStatus;
 
-    /**
-     * 商品分类
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品分类")
     private Long productCategoryId;
 
     private String productBrand;
 
     private String productSn;
 
-    /**
-     * 商品销售属性:[{"key":"颜色","value":"颜色"},{"key":"容量","value":"4G"}]
-     *
-     * @mbggenerated
-     */
+    @ApiModelProperty(value = "商品销售属性:[{'key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
     private String productAttr;
 
     private static final long serialVersionUID = 1L;
@@ -170,30 +102,6 @@ public class OmsCartItem implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public String getSp1() {
-        return sp1;
-    }
-
-    public void setSp1(String sp1) {
-        this.sp1 = sp1;
-    }
-
-    public String getSp2() {
-        return sp2;
-    }
-
-    public void setSp2(String sp2) {
-        this.sp2 = sp2;
-    }
-
-    public String getSp3() {
-        return sp3;
-    }
-
-    public void setSp3(String sp3) {
-        this.sp3 = sp3;
     }
 
     public String getProductPic() {
@@ -304,9 +212,6 @@ public class OmsCartItem implements Serializable {
         sb.append(", memberId=").append(memberId);
         sb.append(", quantity=").append(quantity);
         sb.append(", price=").append(price);
-        sb.append(", sp1=").append(sp1);
-        sb.append(", sp2=").append(sp2);
-        sb.append(", sp3=").append(sp3);
         sb.append(", productPic=").append(productPic);
         sb.append(", productName=").append(productName);
         sb.append(", productSubTitle=").append(productSubTitle);

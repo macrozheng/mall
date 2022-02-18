@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * DemoService接口
+ * Created by macro on 2019/4/8.
  */
 public interface DemoService {
     List<PmsBrand> listAllBrand();

@@ -1,6 +1,6 @@
 package com.macro.mall.demo.controller;
 
-import com.macro.mall.demo.dto.CommonResult;
+import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.PmsBrand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +25,7 @@ import java.util.Map;
  * RestTemplate示例Controller
  * Created by macro on 2018/9/17.
  */
-@Api(value = "RestTemplateDemoController", description = "RestTemplate示例")
+@Api(tags = "RestTemplateDemoController", description = "RestTemplate示例")
 @Controller
 @RequestMapping("/template")
 public class RestTemplateDemoController {

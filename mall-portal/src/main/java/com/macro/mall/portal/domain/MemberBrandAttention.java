@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 /**
- * 会员关注的品牌
+ * 会员品牌关注
  * Created by macro on 2018/8/2.
  */
 @Document
@@ -23,7 +23,6 @@ public class MemberBrandAttention {
     private String brandName;
     private String brandLogo;
     private String brandCity;
-    private Integer brandAttentionCount;
     private Date createTime;
 
     public String getId() {
@@ -88,14 +87,6 @@ public class MemberBrandAttention {
 
     public void setBrandCity(String brandCity) {
         this.brandCity = brandCity;
-    }
-
-    public Integer getBrandAttentionCount() {
-        return brandAttentionCount;
-    }
-
-    public void setBrandAttentionCount(Integer brandAttentionCount) {
-        this.brandAttentionCount = brandAttentionCount;
     }
 
     public Date getCreateTime() {

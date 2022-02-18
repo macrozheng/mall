@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsCommentReplayMapper {
-    int countByExample(PmsCommentReplayExample example);
+    long countByExample(PmsCommentReplayExample example);
 
     int deleteByExample(PmsCommentReplayExample example);
 

@@ -11,7 +11,7 @@ public class SmsHomeRecommendProductExample {
     protected List<Criteria> oredCriteria;
 
     public SmsHomeRecommendProductExample() {
-        oredCriteria = new ArrayList<Criteria>();
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -68,7 +68,7 @@ public class SmsHomeRecommendProductExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -416,7 +416,6 @@ public class SmsHomeRecommendProductExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

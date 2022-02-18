@@ -1,0 +1,188 @@
+{
+	"variables": [],
+	"info": {
+		"name": "mall-admin",
+		"_postman_id": "f4a4382c-ee6c-975f-99ac-7645532458ba",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "添加优惠券",
+			"request": {
+				"url": "{{admin.mall}}/coupon/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 50,\r\n  \"count\": 100,\r\n  \"enableTime\": \"2018-08-27T08:40:46.973Z\",\r\n  \"endTime\": \"2018-08-31T08:40:46.973Z\",\r\n  \"minPoint\": 500,\r\n  \"name\": \"T恤分类专用优惠券\",\r\n  \"note\": \"满500减50\",\r\n  \"perLimit\": 1,\r\n  \"platform\": 0,\r\n  \"publishCount\": 100,\r\n  \"receiveCount\": 0,\r\n  \"startTime\": \"2018-08-27T08:40:46.973Z\",\r\n  \"type\": 0,\r\n  \"useCount\": 0,\r\n  \"useType\": 1,\r\n  \"productCategoryRelationList\": [\r\n    {\r\n      \"productCategoryId\": 8\r\n    }\r\n  ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "删除指定优惠券",
+			"request": {
+				"url": "{{admin.mall}}/coupon/delete/6",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "修改指定优惠券",
+			"request": {
+				"url": "{{admin.mall}}/coupon/update/6",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 300,\r\n  \"count\": 100,\r\n  \"enableTime\": \"2018-08-27T08:40:46.973Z\",\r\n  \"endTime\": \"2018-08-31T08:40:46.973Z\",\r\n  \"minPoint\": 2000,\r\n  \"name\": \"满2000减200\",\r\n  \"note\": \"手机分类专用优惠券\",\r\n  \"perLimit\": 1,\r\n  \"platform\": 0,\r\n  \"publishCount\": 100,\r\n  \"receiveCount\": 0,\r\n  \"startTime\": \"2018-08-27T08:40:46.973Z\",\r\n  \"type\": 0,\r\n  \"useCount\": 0,\r\n  \"useType\": 1,\r\n  \"productCategoryRelationList\": [\r\n    {\r\n      \"productCategoryId\": 18\r\n    }\r\n  ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "登录",
+			"request": {
+				"url": "{{admin.mall}}/admin/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"123456\",\r\n  \"username\": \"admin\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查看商品列表",
+			"request": {
+				"url": "{{admin.mall}}/product/list",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1Mzg5OTExNzkwODAsImV4cCI6MTUzOTU5NTk3OX0.u_fUHf09ONw6CCQW0ERufOgfuGUY1g7hu-o9thMl6wsFlBlkn1QmOZJwlU1ejsc65-N3p3k1pb11vTeqrVnYIw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "批量修改商品的删除状态",
+			"request": {
+				"url": "{{admin.mall}}/product/update/deleteStatus",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1Mzg5OTExNzkwODAsImV4cCI6MTUzOTU5NTk3OX0.u_fUHf09ONw6CCQW0ERufOgfuGUY1g7hu-o9thMl6wsFlBlkn1QmOZJwlU1ejsc65-N3p3k1pb11vTeqrVnYIw",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ids",
+							"value": "1,2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "deleteStatus",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查询所有一级分类及子分类",
+			"request": {
+				"url": "{{admin.mall}}/productCategory/list/withChildren",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1Mzg5OTExNzkwODAsImV4cCI6MTUzOTU5NTk3OX0.u_fUHf09ONw6CCQW0ERufOgfuGUY1g7hu-o9thMl6wsFlBlkn1QmOZJwlU1ejsc65-N3p3k1pb11vTeqrVnYIw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取全部品牌列表",
+			"request": {
+				"url": "{{admin.mall}}/brand/listAll",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1Mzg5OTExNzkwODAsImV4cCI6MTUzOTU5NTk3OX0.u_fUHf09ONw6CCQW0ERufOgfuGUY1g7hu-o9thMl6wsFlBlkn1QmOZJwlU1ejsc65-N3p3k1pb11vTeqrVnYIw",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "刷新token",
+			"request": {
+				"url": "{{admin.mall}}/admin/token/refresh",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1NTIzNTYzNzg0NjUsImV4cCI6MTU1Mjk2MTE3OH0.cxT6ULWfA17_QOh5nAcdU8FVldrSxLC2yi3y4fiHetCCrNzBBF9k6iRN-gfFmYa1_Ptav4WjgUAspZDBQa7SsA",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

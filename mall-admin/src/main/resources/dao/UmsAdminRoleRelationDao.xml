@@ -14,42 +14,31 @@
         from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
         where ar.admin_id = #{adminId}
     </select>
-    <select id="getRolePermissionList" resultMap="com.macro.mall.mapper.UmsPermissionMapper.BaseResultMap">
-        select p.*
-        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
-            left join ums_role_permission_relation rp on r.id = rp.role_id
-            left join ums_permission p on rp.permission_id=p.id
-            where ar.admin_id = #{adminId} and p.id is not null
-    </select>
-    <select id="getPermissionList" resultMap="com.macro.mall.mapper.UmsPermissionMapper.BaseResultMap">
+    <select id="getResourceList" resultType="com.macro.mall.model.UmsResource">
         SELECT
-            p.*
+            ur.id id,
+            ur.create_time createTime,
+            ur.`name` `name`,
+            ur.url url,
+            ur.description description,
+            ur.category_id categoryId
         FROM
             ums_admin_role_relation ar
-            LEFT JOIN ums_role r ON ar.role_id = r.id
-            LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
-            LEFT JOIN ums_permission p ON rp.permission_id = p.id
+        LEFT JOIN ums_role r ON ar.role_id = r.id
+        LEFT JOIN ums_role_resource_relation rrr ON r.id = rrr.role_id
+        LEFT JOIN ums_resource ur ON ur.id = rrr.resource_id
         WHERE
             ar.admin_id = #{adminId}
-            AND p.id IS NOT NULL
-            AND p.id NOT IN (
-                SELECT
-                    p.id
-                FROM
-                    ums_admin_permission_relation pr
-                    LEFT JOIN ums_permission p ON pr.permission_id = p.id
-                WHERE
-                    pr.type = - 1
-                    AND pr.admin_id = #{adminId}
-            )
-        UNION
+        AND ur.id IS NOT NULL
+        GROUP BY
+            ur.id
+    </select>
+    <select id="getAdminIdList" resultType="java.lang.Long">
         SELECT
-            p.*
+            DISTINCT ar.admin_id
         FROM
-            ums_admin_permission_relation pr
-            LEFT JOIN ums_permission p ON pr.permission_id = p.id
-        WHERE
-            pr.type = 1
-            AND pr.admin_id = #{adminId}
+            ums_role_resource_relation rr
+                LEFT JOIN ums_admin_role_relation ar ON rr.role_id = ar.role_id
+        WHERE rr.resource_id=#{resourceId}
     </select>
 </mapper>

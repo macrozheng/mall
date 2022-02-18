@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 品牌传递参数
+ * Created by macro on 2019/4/8.
  */
 @ApiModel(value = "PmsBrandDto")
 public class PmsBrandDto {

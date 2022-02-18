@@ -3,7 +3,7 @@ package com.macro.mall.service;
 import com.macro.mall.model.OmsOrderSetting;
 
 /**
- * 订单设置Service
+ * 订单设置管理Service
  * Created by macro on 2018/10/16.
  */
 public interface OmsOrderSettingService {
