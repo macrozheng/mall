@@ -40,7 +40,7 @@ public class EsProduct implements Serializable {
     private BigDecimal price;
     private Integer sale;
     private Integer newStatus;
-    private Integer recommandStatus;
+    private Integer recommendStatus;
     private Integer stock;
     private Integer promotionType;
     private Integer sort;

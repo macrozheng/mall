@@ -796,63 +796,63 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusIsNull() {
-            addCriterion("recommand_status is null");
+        public Criteria andRecommendStatusIsNull() {
+            addCriterion("recommend_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusIsNotNull() {
-            addCriterion("recommand_status is not null");
+        public Criteria andRecommendStatusIsNotNull() {
+            addCriterion("recommend_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusEqualTo(Integer value) {
-            addCriterion("recommand_status =", value, "recommandStatus");
+        public Criteria andRecommendStatusEqualTo(Integer value) {
+            addCriterion("recommend_status =", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusNotEqualTo(Integer value) {
-            addCriterion("recommand_status <>", value, "recommandStatus");
+        public Criteria andRecommendStatusNotEqualTo(Integer value) {
+            addCriterion("recommend_status <>", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusGreaterThan(Integer value) {
-            addCriterion("recommand_status >", value, "recommandStatus");
+        public Criteria andRecommendStatusGreaterThan(Integer value) {
+            addCriterion("recommend_status >", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("recommand_status >=", value, "recommandStatus");
+        public Criteria andRecommendStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("recommend_status >=", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusLessThan(Integer value) {
-            addCriterion("recommand_status <", value, "recommandStatus");
+        public Criteria andRecommendStatusLessThan(Integer value) {
+            addCriterion("recommend_status <", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("recommand_status <=", value, "recommandStatus");
+        public Criteria andRecommendStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("recommend_status <=", value, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusIn(List<Integer> values) {
-            addCriterion("recommand_status in", values, "recommandStatus");
+        public Criteria andRecommendStatusIn(List<Integer> values) {
+            addCriterion("recommend_status in", values, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusNotIn(List<Integer> values) {
-            addCriterion("recommand_status not in", values, "recommandStatus");
+        public Criteria andRecommendStatusNotIn(List<Integer> values) {
+            addCriterion("recommend_status not in", values, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusBetween(Integer value1, Integer value2) {
-            addCriterion("recommand_status between", value1, value2, "recommandStatus");
+        public Criteria andRecommendStatusBetween(Integer value1, Integer value2) {
+            addCriterion("recommend_status between", value1, value2, "recommendStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRecommandStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("recommand_status not between", value1, value2, "recommandStatus");
+        public Criteria andRecommendStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("recommend_status not between", value1, value2, "recommendStatus");
             return (Criteria) this;
         }
 

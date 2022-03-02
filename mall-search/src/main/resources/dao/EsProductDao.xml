@@ -25,7 +25,7 @@
             p.price price,
             p.sale sale,
             p.new_status newStatus,
-            p.recommand_status recommandStatus,
+            p.recommend_status recommendStatus,
             p.stock stock,
             p.promotion_type promotionType,
             p.keywords keywords,

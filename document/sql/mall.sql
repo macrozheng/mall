@@ -846,7 +846,7 @@ CREATE TABLE `pms_product` (
   `delete_status` int(1) DEFAULT NULL COMMENT '删除状态：0->未删除；1->已删除',
   `publish_status` int(1) DEFAULT NULL COMMENT '上架状态：0->下架；1->上架',
   `new_status` int(1) DEFAULT NULL COMMENT '新品状态:0->不是新品；1->新品',
-  `recommand_status` int(1) DEFAULT NULL COMMENT '推荐状态；0->不推荐；1->推荐',
+  `recommend_status` int(1) DEFAULT NULL COMMENT '推荐状态；0->不推荐；1->推荐',
   `verify_status` int(1) DEFAULT NULL COMMENT '审核状态：0->未审核；1->审核通过',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `sale` int(11) DEFAULT NULL COMMENT '销量',

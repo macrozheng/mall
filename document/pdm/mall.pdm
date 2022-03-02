@@ -7987,8 +7987,8 @@ LABL 0 新宋体,8,N</a:FontList>
 </o:Column>
 <o:Column Id="o328">
 <a:ObjectID>C32DF9EC-A332-4DB2-A56B-74E0F6168FF1</a:ObjectID>
-<a:Name>recommand_status</a:Name>
-<a:Code>recommand_status</a:Code>
+<a:Name>recommend_status</a:Name>
+<a:Code>recommend_status</a:Code>
 <a:CreationDate>1521708193</a:CreationDate>
 <a:Creator>zhenghong</a:Creator>
 <a:ModificationDate>1521708410</a:ModificationDate>
