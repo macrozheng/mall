@@ -4,8 +4,6 @@ import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductAttribute;
 import com.macro.mall.model.PmsSkuStock;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
