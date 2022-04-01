@@ -3,8 +3,6 @@ package com.macro.mall.portal.service;
 import com.macro.mall.portal.domain.MemberBrandAttention;
 import org.springframework.data.domain.Page;
 
-import java.util.List;
-
 /**
  * 会员品牌关注管理Service
  * Created by macro on 2018/8/2.
