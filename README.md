@@ -36,7 +36,7 @@
 
 前端项目`mall-admin-web`地址：https://github.com/macrozheng/mall-admin-web
 
-项目演示地址： [http://www.macrozheng.com/admin/index.html](https://www.macrozheng.com/admin/index.html)  
+项目演示地址： [https://www.macrozheng.com/admin/index.html](https://www.macrozheng.com/admin/index.html)  
 
 ![后台管理系统功能演示](http://img.macrozheng.com/mall/project/mall_admin_show.png)
 
