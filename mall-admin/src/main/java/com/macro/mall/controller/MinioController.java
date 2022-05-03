@@ -1,7 +1,6 @@
 package com.macro.mall.controller;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.json.JSONUtil;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.BucketPolicyConfigDto;
