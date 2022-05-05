@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CancelOrderSender {
-    private static Logger LOGGER =LoggerFactory.getLogger(CancelOrderSender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CancelOrderSender.class);
     @Autowired
     private AmqpTemplate amqpTemplate;
 
