@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OrderTimeOutCancelTask {
-    private Logger LOGGER =LoggerFactory.getLogger(OrderTimeOutCancelTask.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(OrderTimeOutCancelTask.class);
     @Autowired
     private OmsPortalOrderService portalOrderService;
 
