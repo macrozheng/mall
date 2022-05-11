@@ -13,7 +13,7 @@ import java.util.Collection;
  * Created by macro on 2018/8/3.
  */
 public class MemberDetails implements UserDetails {
-    private UmsMember umsMember;
+    private final UmsMember umsMember;
 
     public MemberDetails(UmsMember umsMember) {
         this.umsMember = umsMember;
