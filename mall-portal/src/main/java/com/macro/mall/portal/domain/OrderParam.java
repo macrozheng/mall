@@ -11,7 +11,7 @@ import java.util.List;
  * Created by macro on 2018/8/30.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class OrderParam {
     @ApiModelProperty("收货地址ID")
     private Long memberReceiveAddressId;
