@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Created by macro on 2018/6/27.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class EsProductAttributeValue implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
