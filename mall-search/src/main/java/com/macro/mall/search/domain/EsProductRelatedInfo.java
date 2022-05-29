@@ -10,7 +10,7 @@ import java.util.List;
  * Created by macro on 2018/6/27.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class EsProductRelatedInfo {
     private List<String> brandNames;
     private List<String> productCategoryNames;
