@@ -17,7 +17,7 @@ public class EsProductRelatedInfo {
     private List<ProductAttr> productAttrs;
 
     @Data
-    @EqualsAndHashCode(callSuper = false)
+    @EqualsAndHashCode
     public static class ProductAttr {
         private Long attrId;
         private String attrName;
