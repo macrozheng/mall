@@ -200,6 +200,11 @@ mall
 
 ![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=macrozheng/mall&type=Date)](https://star-history.com/#macrozheng/mall&Date)
+
+
 ## 许可证
 
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
