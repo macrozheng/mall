@@ -22,9 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by macro on 2019/11/9.
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MallSecurityConfig extends SecurityConfig {
+public class MallSecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;

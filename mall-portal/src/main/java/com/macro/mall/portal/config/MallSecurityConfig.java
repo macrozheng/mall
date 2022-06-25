@@ -14,9 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * Created by macro on 2019/11/5.
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MallSecurityConfig extends SecurityConfig {
+public class MallSecurityConfig {
 
     @Autowired
     private UmsMemberService memberService;
