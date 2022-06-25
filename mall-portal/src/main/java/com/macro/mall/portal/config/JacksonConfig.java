@@ -22,11 +22,11 @@ public class JacksonConfig {
     public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
         ObjectMapper objectMapper = builder.createXmlMapper(false).build();
 
-        // 通过该方法对mapper对象进行设置，所有序列化的对象都将按改规则进行系列化
+        // 通过该方法对mapper对象进行设置，所有序列化的对象都将按该规则进行系列化
         // Include.Include.ALWAYS 默认
         // Include.NON_DEFAULT 属性为默认值不序列化
-        // Include.NON_EMPTY 属性为 空（""） 或者为 NULL 都不序列化，则返回的json是没有这个字段的。这样对移动端会更省流量
-        // Include.NON_NULL 属性为NULL 不序列化,就是为null的字段不参加序列化
+        // Include.NON_EMPTY 属性为空（""）或者为NULL都不序列化，返回的json是没有这个字段的。
+        // Include.NON_NULL 属性为NULL的字段不序列化
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         // 字段保留，将null值转为""
