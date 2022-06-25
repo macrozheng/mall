@@ -5,7 +5,7 @@ spring:
   application:
     name: mall-demo
   datasource:
-    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
   thymeleaf:
@@ -14,6 +14,10 @@ spring:
     servlet:
       content-type: text/html
     cache: false #开发时关闭缓存,不然没法看到实时页面
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml

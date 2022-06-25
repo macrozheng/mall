@@ -3,6 +3,9 @@ spring:
     name: mall-portal
   profiles:
     active: dev #默认为开发环境
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 mybatis:
   mapper-locations:
@@ -18,15 +21,15 @@ jwt:
 secure:
   ignored:
     urls: #安全路径白名单
-      - /swagger-ui.html
+      - /swagger-ui/
       - /swagger-resources/**
-      - /swagger/**
       - /**/v2/api-docs
+      - /**/*.html
       - /**/*.js
       - /**/*.css
       - /**/*.png
-      - /**/*.ico
-      - /webjars/springfox-swagger-ui/**
+      - /**/*.map
+      - /favicon.ico
       - /druid/**
       - /actuator/**
       - /sso/**

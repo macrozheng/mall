@@ -7,6 +7,9 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 mybatis:
   mapper-locations:
@@ -30,15 +33,15 @@ redis:
 secure:
   ignored:
     urls: #安全路径白名单
-      - /swagger-ui.html
+      - /swagger-ui/
       - /swagger-resources/**
-      - /swagger/**
       - /**/v2/api-docs
+      - /**/*.html
       - /**/*.js
       - /**/*.css
       - /**/*.png
-      - /**/*.ico
-      - /webjars/springfox-swagger-ui/**
+      - /**/*.map
+      - /favicon.ico
       - /actuator/**
       - /druid/**
       - /admin/login
@@ -59,9 +62,3 @@ aliyun:
     callback: http://39.98.190.128:8080/aliyun/oss/callback # 文件上传成功后的回调地址
     dir:
       prefix: mall/images/ # 上传文件夹路径前缀
-
-minio:
-  endpoint: http://192.168.3.101:9090 #MinIO服务所在地址
-  bucketName: mall #存储桶名称
-  accessKey: minioadmin #访问的key
-  secretKey: minioadmin #访问的秘钥
