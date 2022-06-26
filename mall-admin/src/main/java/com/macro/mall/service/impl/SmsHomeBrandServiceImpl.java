@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsHomeBrandMapper;
 import com.macro.mall.model.SmsHomeBrand;
@@ -58,7 +59,7 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
         PageHelper.startPage(pageNum,pageSize);
         SmsHomeBrandExample example = new SmsHomeBrandExample();
         SmsHomeBrandExample.Criteria criteria = example.createCriteria();
-        if(!StringUtils.isEmpty(brandName)){
+        if(!StrUtil.isEmpty(brandName)){
             criteria.andBrandNameLike("%"+brandName+"%");
         }
         if(recommendStatus!=null){

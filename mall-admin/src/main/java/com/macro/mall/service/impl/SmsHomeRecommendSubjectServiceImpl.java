@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsHomeRecommendSubjectMapper;
 import com.macro.mall.model.SmsHomeRecommendSubject;
@@ -58,7 +59,7 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
         PageHelper.startPage(pageNum,pageSize);
         SmsHomeRecommendSubjectExample example = new SmsHomeRecommendSubjectExample();
         SmsHomeRecommendSubjectExample.Criteria criteria = example.createCriteria();
-        if(!StringUtils.isEmpty(subjectName)){
+        if(!StrUtil.isEmpty(subjectName)){
             criteria.andSubjectNameLike("%"+subjectName+"%");
         }
         if(recommendStatus!=null){

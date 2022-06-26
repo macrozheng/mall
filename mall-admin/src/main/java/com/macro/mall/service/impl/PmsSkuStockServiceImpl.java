@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.macro.mall.dao.PmsSkuStockDao;
 import com.macro.mall.mapper.PmsSkuStockMapper;
 import com.macro.mall.model.PmsSkuStock;
@@ -26,7 +27,7 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
     public List<PmsSkuStock> getList(Long pid, String keyword) {
         PmsSkuStockExample example = new PmsSkuStockExample();
         PmsSkuStockExample.Criteria criteria = example.createCriteria().andProductIdEqualTo(pid);
-        if (!StringUtils.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
             criteria.andSkuCodeLike("%" + keyword + "%");
         }
         return skuStockMapper.selectByExample(example);

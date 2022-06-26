@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.SmsCouponDao;
 import com.macro.mall.dao.SmsCouponProductCategoryRelationDao;
@@ -108,7 +109,7 @@ public class SmsCouponServiceImpl implements SmsCouponService {
     public List<SmsCoupon> list(String name, Integer type, Integer pageSize, Integer pageNum) {
         SmsCouponExample example = new SmsCouponExample();
         SmsCouponExample.Criteria criteria = example.createCriteria();
-        if(!StringUtils.isEmpty(name)){
+        if(!StrUtil.isEmpty(name)){
             criteria.andNameLike("%"+name+"%");
         }
         if(type!=null){

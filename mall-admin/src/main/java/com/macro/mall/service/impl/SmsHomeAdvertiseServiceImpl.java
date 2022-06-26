@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsHomeAdvertiseMapper;
 import com.macro.mall.model.SmsHomeAdvertise;
@@ -61,13 +62,13 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
         PageHelper.startPage(pageNum, pageSize);
         SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
         SmsHomeAdvertiseExample.Criteria criteria = example.createCriteria();
-        if (!StringUtils.isEmpty(name)) {
+        if (!StrUtil.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");
         }
         if (type != null) {
             criteria.andTypeEqualTo(type);
         }
-        if (!StringUtils.isEmpty(endTime)) {
+        if (!StrUtil.isEmpty(endTime)) {
             String startStr = endTime + " 00:00:00";
             String endStr = endTime + " 23:59:59";
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
