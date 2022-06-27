@@ -159,13 +159,13 @@ mall
 | ------------- | ------ | ------------------------------------------------------------ |
 | JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
 | Mysql         | 5.7    | https://www.mysql.com/                                       |
-| Redis         | 5.0    | https://redis.io/download                                    |
-| MongoDB       | 4.2.5  | https://www.mongodb.com/download-center                      |
-| RabbitMQ      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
-| Nginx         | 1.10   | http://nginx.org/en/download.html                            |
-| Elasticsearch | 7.6.2  | https://www.elastic.co/downloads/elasticsearch               |
-| Logstash      | 7.6.2  | https://www.elastic.co/cn/downloads/logstash                 |
-| Kibana        | 7.6.2  | https://www.elastic.co/cn/downloads/kibana                   |
+| Redis         | 7.0    | https://redis.io/download                                    |
+| MongoDB       | 5.0    | https://www.mongodb.com/download-center                      |
+| RabbitMQ      | 3.10.5 | http://www.rabbitmq.com/download.html                        |
+| Nginx         | 1.22   | http://nginx.org/en/download.html                            |
+| Elasticsearch | 7.17.3 | https://www.elastic.co/downloads/elasticsearch               |
+| Logstash      | 7.17.3 | https://www.elastic.co/cn/downloads/logstash                 |
+| Kibana        | 7.17.3 | https://www.elastic.co/cn/downloads/kibana                   |
 
 ### 搭建步骤
 
