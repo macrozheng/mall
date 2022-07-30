@@ -13,7 +13,7 @@
 
 > 1. **快速体验项目**：[在线访问地址](https://www.macrozheng.com/admin/index.html) 。
 > 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
-> 3. **微服务版本**：基于Spring Cloud Hoxton & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
+> 3. **微服务版本**：基于Spring Cloud 2021 & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
 > 4. **专属学习路线**：学习不走弯路，整理了套非常不错的[《mall专属学习路线》](#公众号) 。
 > 5. **项目交流**：想要加群交流项目的朋友，可以加入[mall项目交流群](#公众号) 。
 
