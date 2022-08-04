@@ -26,11 +26,13 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public void set(String key, Object value) {
         redisTemplate.opsForValue().set(key, value);
+
     }
 
     @Override
     public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
+
     }
 
     @Override
