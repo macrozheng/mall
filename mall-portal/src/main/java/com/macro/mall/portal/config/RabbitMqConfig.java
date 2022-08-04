@@ -21,6 +21,7 @@ public class RabbitMqConfig {
                 .directExchange(QueueEnum.QUEUE_ORDER_CANCEL.getExchange())
                 .durable(true)
                 .build();
+
     }
 
     /**
@@ -32,6 +33,7 @@ public class RabbitMqConfig {
                 .directExchange(QueueEnum.QUEUE_TTL_ORDER_CANCEL.getExchange())
                 .durable(true)
                 .build();
+
     }
 
     /**
