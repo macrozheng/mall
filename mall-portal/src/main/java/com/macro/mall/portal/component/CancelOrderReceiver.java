@@ -22,5 +22,7 @@ public class CancelOrderReceiver {
     public void handle(Long orderId){
         portalOrderService.cancelOrder(orderId);
         LOGGER.info("process orderId:{}",orderId);
+
+
     }
 }
