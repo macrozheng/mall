@@ -7,6 +7,7 @@ import com.macro.mall.model.PmsProduct;
 import com.macro.mall.portal.service.PortalBrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,8 @@ import java.util.List;
  * Created by macro on 2020/5/15.
  */
 @Controller
-@Api(tags = "PortalBrandController", description = "前台品牌管理")
+@Api(tags = "PortalBrandController")
+@Tag(name = "PortalBrandController", description = "前台品牌管理")
 @RequestMapping("/brand")
 public class PortalBrandController {
 
