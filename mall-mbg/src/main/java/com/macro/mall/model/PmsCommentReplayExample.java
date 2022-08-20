@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//商品评论修改对象
 public class PmsCommentReplayExample {
     protected String orderByClause;
 

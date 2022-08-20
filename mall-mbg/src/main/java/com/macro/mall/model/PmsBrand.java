@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//商品品牌对象
 public class PmsBrand implements Serializable {
     private Long id;
 

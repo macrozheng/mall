@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//便于编写实现类
 public class OmsCartItemExample {
     protected String orderByClause;
 

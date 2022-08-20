@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//订单退货例子
 public class OmsOrderReturnApplyExample {
     protected String orderByClause;
 

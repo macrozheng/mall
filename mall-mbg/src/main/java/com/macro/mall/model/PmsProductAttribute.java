@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//商品属性对象
 public class PmsProductAttribute implements Serializable {
     private Long id;
 

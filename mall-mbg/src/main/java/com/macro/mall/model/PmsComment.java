@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
-
+//商品评论对象
 public class PmsComment implements Serializable {
     private Long id;
 

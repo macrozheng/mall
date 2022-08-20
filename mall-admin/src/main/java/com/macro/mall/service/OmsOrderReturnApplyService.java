@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 退货申请管理Service
  * Created by macro on 2018/10/18.
- */
+ */ //实现在impl包
 public interface OmsOrderReturnApplyService {
     /**
      * 分页查询申请

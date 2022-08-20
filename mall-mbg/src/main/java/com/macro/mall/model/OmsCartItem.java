@@ -12,7 +12,7 @@ public class OmsCartItem implements Serializable {
 
     private Long productSkuId;
 
-    private Long memberId;
+    private Long memberId;//会员ID
 
     @ApiModelProperty(value = "购买数量")
     private Integer quantity;

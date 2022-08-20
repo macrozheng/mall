@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
-
+//订单操作历史对象
 public class OmsOrderOperateHistory implements Serializable {
     private Long id;
 

@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//公司地址对象
 public class OmsCompanyAddress implements Serializable {
     private Long id;
 

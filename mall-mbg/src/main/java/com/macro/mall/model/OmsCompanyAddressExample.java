@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//公司地址例子
 public class OmsCompanyAddressExample {
     protected String orderByClause;
 

@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//退货原因例子
 public class OmsOrderReturnReasonExample {
     protected String orderByClause;
 

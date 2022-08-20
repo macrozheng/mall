@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+//运费单拍对象
 public class PmsFeightTemplate implements Serializable {
     private Long id;
 

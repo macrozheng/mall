@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//订单设置对象
 public class OmsOrderSetting implements Serializable {
     private Long id;
 

@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+//运费单拍例子
 public class PmsFeightTemplateExample {
     protected String orderByClause;
 

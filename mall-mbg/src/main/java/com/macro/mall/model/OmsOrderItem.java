@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+//订单条目对象
 public class OmsOrderItem implements Serializable {
     private Long id;
 

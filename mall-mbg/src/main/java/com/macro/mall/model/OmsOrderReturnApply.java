@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+//退货对象
 public class OmsOrderReturnApply implements Serializable {
     private Long id;
 

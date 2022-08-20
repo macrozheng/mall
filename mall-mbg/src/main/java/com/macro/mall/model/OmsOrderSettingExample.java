@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//订单设置例子
 public class OmsOrderSettingExample {
     protected String orderByClause;
 

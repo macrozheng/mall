@@ -25,11 +25,17 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
     private OmsOrderReturnApplyDao returnApplyDao;
     @Autowired
     private OmsOrderReturnApplyMapper returnApplyMapper;
-    @Override
+    /**
+     * 分页查询申请
+     */
+    @Override 
     public List<OmsOrderReturnApply> list(OmsReturnApplyQueryParam queryParam, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum,pageSize);
         return returnApplyDao.getList(queryParam);
     }
+    /**
+     * 批量删除申请
+     */
 
     @Override
     public int delete(List<Long> ids) {
@@ -38,6 +44,9 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
         return returnApplyMapper.deleteByExample(example);
     }
 
+    /**
+     * 修改指定申请状态
+     */
     @Override
     public int updateStatus(Long id, OmsUpdateStatusParam statusParam) {
         Integer status = statusParam.getStatus();
@@ -71,6 +80,9 @@ public class OmsOrderReturnApplyServiceImpl implements OmsOrderReturnApplyServic
         return returnApplyMapper.updateByPrimaryKeySelective(returnApply);
     }
 
+    /**
+     * 获取指定申请详情
+     */
     @Override
     public OmsOrderReturnApplyResult getItem(Long id) {
         return returnApplyDao.getDetail(id);

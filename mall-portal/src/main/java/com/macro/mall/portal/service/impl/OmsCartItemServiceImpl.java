@@ -57,7 +57,7 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
 
     /**
      * 根据会员id,商品id和规格获取购物车中商品
-     */
+     */ //使用example中的对象创建函数
     private OmsCartItem getCartItem(OmsCartItem cartItem) {
         OmsCartItemExample example = new OmsCartItemExample();
         OmsCartItemExample.Criteria criteria = example.createCriteria().andMemberIdEqualTo(cartItem.getMemberId())

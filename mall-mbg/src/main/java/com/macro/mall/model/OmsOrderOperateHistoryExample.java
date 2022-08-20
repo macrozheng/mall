@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//订单操作历史例子
 public class OmsOrderOperateHistoryExample {
     protected String orderByClause;
 
