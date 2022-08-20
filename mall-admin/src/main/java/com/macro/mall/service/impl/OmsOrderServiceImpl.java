@@ -115,14 +115,14 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         return count;
     }
 
-    @Override
+    @Override//修改订单费用信息，重新建立一个操作order，然后通过订单id这个主键更新数据库中的该行数据，并插入新的操作管理员等信息
     public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
         OmsOrder order = new OmsOrder();
         order.setId(moneyInfoParam.getOrderId());
         order.setFreightAmount(moneyInfoParam.getFreightAmount());
         order.setDiscountAmount(moneyInfoParam.getDiscountAmount());
         order.setModifyTime(new Date());
-        int count = orderMapper.updateByPrimaryKeySelective(order);
+        int count = orderMapper.updateByPrimaryKeySelective(order);//count不为0则更新成功
         //插入操作记录
         OmsOrderOperateHistory history = new OmsOrderOperateHistory();
         history.setOrderId(moneyInfoParam.getOrderId());

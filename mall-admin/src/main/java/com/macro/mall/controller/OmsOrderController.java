@@ -49,7 +49,7 @@ public class OmsOrderController {
     @RequestMapping(value = "/update/close", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult close(@RequestParam("ids") List<Long> ids, @RequestParam String note) {
-        int count = orderService.close(ids, note);
+        int count = orderService.close(ids, note);//传入ids关闭订单
         if (count > 0) {
             return CommonResult.success(count);
         }

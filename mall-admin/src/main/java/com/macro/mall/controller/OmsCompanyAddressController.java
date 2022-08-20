@@ -24,7 +24,7 @@ public class OmsCompanyAddressController {
     @Autowired
     private OmsCompanyAddressService companyAddressService;
 
-    @ApiOperation("获取所有收货地址")
+    @ApiOperation("获取所有收货地址")//用于解释的注解
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<OmsCompanyAddress>> list() {
