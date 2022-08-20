@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+//商品梯度价格，满足商品数量要求有折扣
 public class PmsProductLadder implements Serializable {
     private Long id;
 

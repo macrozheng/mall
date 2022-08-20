@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+//商品库存对象
 public class PmsSkuStock implements Serializable {
     private Long id;
 

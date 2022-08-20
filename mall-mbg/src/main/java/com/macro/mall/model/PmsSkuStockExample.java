@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+//商品库存对象例子
 public class PmsSkuStockExample {
     protected String orderByClause;
 

@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//商品分类
 public class PmsProductCategory implements Serializable {
     private Long id;
 

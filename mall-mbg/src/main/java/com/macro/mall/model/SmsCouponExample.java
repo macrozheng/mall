@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//优惠券对象例子
 public class SmsCouponExample {
     protected String orderByClause;
 

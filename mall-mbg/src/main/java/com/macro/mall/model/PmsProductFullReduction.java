@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+//商品满减对象
 public class PmsProductFullReduction implements Serializable {
     private Long id;
 

@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//商品分类、属性
 public class PmsProductCategoryAttributeRelationExample {
     protected String orderByClause;
 

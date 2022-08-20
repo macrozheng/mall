@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//商品例子对象
 public class PmsProductExample {
     protected String orderByClause;
 

@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//属性值例子
 public class PmsProductAttributeValueExample {
     protected String orderByClause;
 

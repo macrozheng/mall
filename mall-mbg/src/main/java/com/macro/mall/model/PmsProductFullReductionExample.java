@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+//商品满减例子
 public class PmsProductFullReductionExample {
     protected String orderByClause;
 

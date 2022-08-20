@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+//商品操作日志对象
 public class PmsProductOperateLog implements Serializable {
     private Long id;
 

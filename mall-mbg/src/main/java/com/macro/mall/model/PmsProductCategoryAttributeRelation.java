@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-
+//商品类型属性关系，包含商品类型，商品属性
 public class PmsProductCategoryAttributeRelation implements Serializable {
     private Long id;
 

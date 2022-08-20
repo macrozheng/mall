@@ -2,7 +2,7 @@ package com.macro.mall.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//商品类型例子
 public class PmsProductCategoryExample {
     protected String orderByClause;
 

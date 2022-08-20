@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+//商品梯度价格例子
 public class PmsProductLadderExample {
     protected String orderByClause;
 

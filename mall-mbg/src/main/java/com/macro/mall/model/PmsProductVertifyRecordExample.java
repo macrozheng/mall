@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//商品审核记录对象例子
 public class PmsProductVertifyRecordExample {
     protected String orderByClause;
 

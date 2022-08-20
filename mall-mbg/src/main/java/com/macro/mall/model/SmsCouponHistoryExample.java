@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+//优惠券历史记录例子
 public class SmsCouponHistoryExample {
     protected String orderByClause;
 

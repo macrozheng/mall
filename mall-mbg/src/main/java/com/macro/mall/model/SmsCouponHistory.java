@@ -3,7 +3,7 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
-
+//优惠券历史记录，包含使用优惠券的订单
 public class SmsCouponHistory implements Serializable {
     private Long id;
 

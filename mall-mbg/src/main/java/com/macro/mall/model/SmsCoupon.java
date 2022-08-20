@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+//优惠券对象
 public class SmsCoupon implements Serializable {
     private Long id;
 
