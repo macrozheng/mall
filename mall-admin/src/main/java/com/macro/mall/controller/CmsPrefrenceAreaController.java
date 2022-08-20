@@ -32,3 +32,12 @@ public class CmsPrefrenceAreaController {
         return CommonResult.success(prefrenceAreaList);
     }
 }
+
+//数据库表前缀说明
+// cms_*：内容管理模块相关表
+// oms_*：订单管理模块相关表
+// pms_*：商品模块相关表
+// sms_*：营销模块相关表
+// ums_*：会员模块相关表
+
+// cms可以不看

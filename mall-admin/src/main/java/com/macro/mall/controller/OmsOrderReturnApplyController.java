@@ -28,7 +28,7 @@ public class OmsOrderReturnApplyController {
 
     @ApiOperation("分页查询退货申请")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    @ResponseBody
+    @ResponseBody//用RequestParam注解设置默认查询参数
     public CommonResult<CommonPage<OmsOrderReturnApply>> list(OmsReturnApplyQueryParam queryParam,
                                                               @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                               @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {

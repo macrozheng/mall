@@ -115,7 +115,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         return count;
     }
 
-    @Override//修改订单费用信息，重新建立一个操作order，然后通过订单id这个主键更新数据库中的该行数据，并插入新的操作管理员等信息
+    @Override//修改订单费用信息，重新建立一个操作order，设置运费，折扣等信息，然后通过订单id这个主键更新数据库中的该行数据，并插入新的操作管理员等信息
     public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
         OmsOrder order = new OmsOrder();
         order.setId(moneyInfoParam.getOrderId());
