@@ -7,7 +7,7 @@ import lombok.Setter;
 /**
  * 订单修改收货人信息参数
  * Created by macro on 2018/10/29.
- */
+ */ //收货人信息对象
 @Getter
 @Setter
 public class OmsReceiverInfoParam {

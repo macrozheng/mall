@@ -9,7 +9,7 @@ import lombok.Setter;
  * Created by macro on 2018/10/11.
  */
 @Getter
-@Setter
+@Setter //订单查询参数
 public class OmsOrderQueryParam {
     @ApiModelProperty(value = "订单编号")
     private String orderSn;

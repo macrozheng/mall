@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 订单详情信息
  * Created by macro on 2018/10/11.
- */
+ */ //订单信息对象
 public class OmsOrderDetail extends OmsOrder {
     @Getter
     @Setter

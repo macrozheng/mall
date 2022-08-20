@@ -7,7 +7,7 @@ import lombok.Setter;
 /**
  * 订单退货申请查询参数
  * Created by macro on 2018/10/18.
- */
+ */ //退货订单信息对象
 @Getter
 @Setter
 public class OmsReturnApplyQueryParam {

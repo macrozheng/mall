@@ -9,7 +9,7 @@ import lombok.Setter;
 /**
  * 申请信息封装
  * Created by macro on 2018/10/18.
- */
+ */ //公司地址
 public class OmsOrderReturnApplyResult extends OmsOrderReturnApply {
     @Getter
     @Setter
