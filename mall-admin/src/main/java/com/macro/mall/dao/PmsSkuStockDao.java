@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 商品SKU管理自定义Dao
  * Created by macro on 2018/4/26.
- */
+ */ //创建商品库存对象
 public interface PmsSkuStockDao {
     /**
      * 批量插入操作

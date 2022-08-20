@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 后台用户与角色关系管理自定义Dao
  * Created by macro on 2018/10/8.
- */
+ */ //创建用户角色对象
 public interface UmsAdminRoleRelationDao {
     /**
      * 批量插入用户角色关系

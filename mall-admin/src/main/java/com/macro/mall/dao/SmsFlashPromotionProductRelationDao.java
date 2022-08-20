@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 限时购商品关系管理自定义Dao
  * Created by macro on 2018/11/16.
- */
+ */ //创建限时购商品对象
 public interface SmsFlashPromotionProductRelationDao {
     /**
      * 获取限时购及相关商品信息

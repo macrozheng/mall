@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 订单退货申请自定义Dao
  * Created by macro on 2018/10/18.
- */
+ */ //创建订单退货申请对象
 public interface OmsOrderReturnApplyDao {
     /**
      * 查询申请列表

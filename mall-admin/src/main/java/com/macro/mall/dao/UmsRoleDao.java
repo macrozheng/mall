@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 后台角色管理自定义Dao
  * Created by macro on 2020/2/2.
- */
+ */ //创建用户管理对象
 public interface UmsRoleDao {
     /**
      * 根据后台用户ID获取菜单

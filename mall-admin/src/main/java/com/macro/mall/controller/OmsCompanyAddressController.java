@@ -18,7 +18,7 @@ import java.util.List;
  * Created by macro on 2018/10/18.
  */
 @Controller
-@Api(tags = "OmsCompanyAddressController", description = "收货地址管理")
+@Api(tags = "OmsCompanyAddressController", description = "收货地址管理")//swagger注解，修饰整个类，描述Controller的作用，tags作为url的路径值
 @RequestMapping("/companyAddress")
 public class OmsCompanyAddressController {
     @Autowired

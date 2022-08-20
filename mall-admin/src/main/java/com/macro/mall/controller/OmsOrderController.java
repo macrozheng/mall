@@ -1,6 +1,6 @@
 package com.macro.mall.controller;
 
-import com.macro.mall.common.api.CommonPage;
+import com.macro.mall.common.api.CommonPage;//在mall-common包
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.*;
 import com.macro.mall.model.OmsOrder;
@@ -24,7 +24,7 @@ public class OmsOrderController {
     @Autowired
     private OmsOrderService orderService;
 
-    @ApiOperation("查询订单")
+    @ApiOperation("查询订单")// 用在方法上，说明方法的作用，每一个url资源的定义,使用方式
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<OmsOrder>> list(OmsOrderQueryParam queryParam,

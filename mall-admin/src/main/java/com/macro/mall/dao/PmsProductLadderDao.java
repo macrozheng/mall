@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 会员阶梯价格自定义Dao
  * Created by macro on 2018/4/26.
- */
+ */ //创建商品阶梯价格对象
 public interface PmsProductLadderDao {
     /**
      * 批量创建

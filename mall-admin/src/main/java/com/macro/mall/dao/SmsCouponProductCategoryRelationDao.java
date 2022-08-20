@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 优惠券和商品分类关系管理自定义Dao
  * Created by macro on 2018/8/28.
- */
+ */ //创建商品优惠券和商品分类关系的对象
 public interface SmsCouponProductCategoryRelationDao {
     /**
      * 批量创建

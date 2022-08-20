@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 商品参数/规格属性自定义Dao
  * Created by macro on 2018/4/26.
- */
+ */ //创建商品参数对象
 public interface PmsProductAttributeValueDao {
     /**
      * 批量创建
