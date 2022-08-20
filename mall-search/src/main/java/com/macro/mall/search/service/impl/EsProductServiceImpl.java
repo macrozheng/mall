@@ -56,6 +56,9 @@ public class EsProductServiceImpl implements EsProductService {
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
     @Override
+    /**
+     * 从数据库中导入所有商品到ES
+     */
     public int importAll() {
         List<EsProduct> esProductList = productDao.getAllEsProductList(null);
         Iterable<EsProduct> esProductIterable = productRepository.saveAll(esProductList);
@@ -96,13 +99,17 @@ public class EsProductServiceImpl implements EsProductService {
             productRepository.deleteAll(esProductList);
         }
     }
-
+    /**
+     * 根据关键字搜索名称或者副标题
+     */
     @Override
     public Page<EsProduct> search(String keyword, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         return productRepository.findByNameOrSubTitleOrKeywords(keyword, keyword, keyword, pageable);
     }
-
+    /**
+     * 根据关键字搜索名称或者副标题复合查询
+     */
     @Override
     public Page<EsProduct> search(String keyword, Long brandId, Long productCategoryId, Integer pageNum, Integer pageSize,Integer sort) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);

@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-
+//用于搜索商品的类EsProduct
 /**
  * 搜索商品的信息
  * Created by macro on 2018/6/19.
@@ -33,7 +33,7 @@ public class EsProduct implements Serializable {
     @Field(type = FieldType.Keyword)
     private String productCategoryName;
     private String pic;
-    @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Field(analyzer = "ik_max_word",type = FieldType.Text)//指定分词器
     private String name;
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String subTitle;

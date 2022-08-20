@@ -29,6 +29,10 @@ public class EsProductController {
     @ApiOperation(value = "导入所有数据库中商品到ES")
     @RequestMapping(value = "/importAll", method = RequestMethod.POST)
     @ResponseBody
+    //@responsebody这个注解表示你的返回值将存在responsebody中返回到前端，
+    //也就是将return返回值作为请求返回值，return的数据不会解析成返回跳转路径，
+    //将java对象转为json格式的数据，前端接收后会显示将数据到页面，如果不加的话，
+    //返回值将会作为url的一部分，页面会跳转到这个url，也就是跳转到你返回的这个路径。
     public CommonResult<Integer> importAllList() {
         int count = esProductService.importAll();
         return CommonResult.success(count);
