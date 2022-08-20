@@ -31,13 +31,17 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private OmsOrderOperateHistoryDao orderOperateHistoryDao;
     @Autowired
     private OmsOrderOperateHistoryMapper orderOperateHistoryMapper;
-
+    /**
+     * 订单查询
+     */
     @Override
     public List<OmsOrder> list(OmsOrderQueryParam queryParam, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         return orderDao.getList(queryParam);
     }
-
+    /**
+     * 批量发货
+     */
     @Override
     public int delivery(List<OmsOrderDeliveryParam> deliveryParamList) {
         //批量发货
@@ -56,7 +60,9 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         orderOperateHistoryDao.insertList(operateHistoryList);
         return count;
     }
-
+    /**
+     * 批量关闭订单
+     */
     @Override
     public int close(List<Long> ids, String note) {
         OmsOrder record = new OmsOrder();
@@ -76,7 +82,9 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         orderOperateHistoryDao.insertList(historyList);
         return count;
     }
-
+    /**
+     * 批量删除订单
+     */
     @Override
     public int delete(List<Long> ids) {
         OmsOrder record = new OmsOrder();
@@ -85,12 +93,16 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         example.createCriteria().andDeleteStatusEqualTo(0).andIdIn(ids);
         return orderMapper.updateByExampleSelective(record, example);
     }
-
+    /**
+     * 获取指定订单详情
+     */
     @Override
     public OmsOrderDetail detail(Long id) {
         return orderDao.getDetail(id);
     }
-
+    /**
+     * 修改订单收货人信息
+     */
     @Override
     public int updateReceiverInfo(OmsReceiverInfoParam receiverInfoParam) {
         OmsOrder order = new OmsOrder();
@@ -114,7 +126,9 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         orderOperateHistoryMapper.insert(history);
         return count;
     }
-
+    /**
+     * 修改订单费用信息
+     */
     @Override//修改订单费用信息，重新建立一个操作order，设置运费，折扣等信息，然后通过订单id这个主键更新数据库中的该行数据，并插入新的操作管理员等信息
     public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
         OmsOrder order = new OmsOrder();
@@ -133,7 +147,9 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         orderOperateHistoryMapper.insert(history);
         return count;
     }
-
+    /**
+     * 修改订单备注
+     */
     @Override
     public int updateNote(Long id, String note, Integer status) {
         OmsOrder order = new OmsOrder();

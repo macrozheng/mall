@@ -73,7 +73,9 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         pmsBrandExample.createCriteria().andIdIn(ids);
         return brandMapper.deleteByExample(pmsBrandExample);
     }
-
+    /**
+     * 分页查询品牌
+     */
     @Override
     public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -85,12 +87,16 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         }
         return brandMapper.selectByExample(pmsBrandExample);
     }
-
+    /**
+     * 获取品牌详情
+     */
     @Override
     public PmsBrand getBrand(Long id) {
         return brandMapper.selectByPrimaryKey(id);
     }
-
+    /**
+     * 修改显示状态
+     */
     @Override
     public int updateShowStatus(List<Long> ids, Integer showStatus) {
         PmsBrand pmsBrand = new PmsBrand();
@@ -99,7 +105,9 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         pmsBrandExample.createCriteria().andIdIn(ids);
         return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
     }
-
+    /**
+     * 修改厂家制造商状态
+     */
     @Override
     public int updateFactoryStatus(List<Long> ids, Integer factoryStatus) {
         PmsBrand pmsBrand = new PmsBrand();

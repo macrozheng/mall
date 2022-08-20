@@ -5,7 +5,7 @@ import com.macro.mall.model.PmsBrand;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+//商品品牌管理接口
 /**
  * 商品品牌管理Service
  * Created by macro on 2018/4/26.

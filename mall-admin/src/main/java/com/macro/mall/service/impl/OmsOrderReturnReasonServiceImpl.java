@@ -35,14 +35,18 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
         returnReason.setId(id);
         return returnReasonMapper.updateByPrimaryKey(returnReason);
     }
-
+    /**
+     * 批量删除退货原因
+     */
     @Override
     public int delete(List<Long> ids) {
         OmsOrderReturnReasonExample example = new OmsOrderReturnReasonExample();
         example.createCriteria().andIdIn(ids);
         return returnReasonMapper.deleteByExample(example);
     }
-
+    /**
+     * 分页获取退货原因
+     */
     @Override
     public List<OmsOrderReturnReason> list(Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum,pageSize);
@@ -50,7 +54,9 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
         example.setOrderByClause("sort desc");
         return returnReasonMapper.selectByExample(example);
     }
-
+    /**
+     * 批量修改退货原因状态
+     */
     @Override
     public int updateStatus(List<Long> ids, Integer status) {
         if(!status.equals(0)&&!status.equals(1)){
@@ -62,7 +68,9 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
         example.createCriteria().andIdIn(ids);
         return returnReasonMapper.updateByExampleSelective(record,example);
     }
-
+    /**
+     * 获取单个退货原因详情信息
+     */
     @Override
     public OmsOrderReturnReason getItem(Long id) {
         return returnReasonMapper.selectByPrimaryKey(id);
