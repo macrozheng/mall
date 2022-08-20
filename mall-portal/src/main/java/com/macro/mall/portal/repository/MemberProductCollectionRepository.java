@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * 会员商品收藏Repository
  * Created by macro on 2018/8/2.
- */
+ */ //将会员ID及其收藏的商品ID存储到数据库中
 public interface MemberProductCollectionRepository extends MongoRepository<MemberProductCollection, String> {
     /**
      * 根据会员ID和商品ID查找记录

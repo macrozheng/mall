@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 /**
  * 会员品牌关注管理Service
  * Created by macro on 2018/8/2.
- */
+ */ //对会员关注数据库的操作
 public interface MemberAttentionService {
     /**
      * 添加关注

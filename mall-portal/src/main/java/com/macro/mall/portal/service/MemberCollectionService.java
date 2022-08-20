@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 /**
  * 会员商品收藏管理Service
  * Created by macro on 2018/8/2.
- */
+ */ //对会员收藏数据库的操作
 public interface MemberCollectionService {
     /**
      * 添加收藏

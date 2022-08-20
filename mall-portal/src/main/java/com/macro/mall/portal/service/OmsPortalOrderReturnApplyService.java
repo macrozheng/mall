@@ -5,7 +5,7 @@ import com.macro.mall.portal.domain.OmsOrderReturnApplyParam;
 /**
  * 前台订单退货管理Service
  * Created by macro on 2018/10/17.
- */
+ */ //portal 前台
 public interface OmsPortalOrderReturnApplyService {
     /**
      * 提交申请
