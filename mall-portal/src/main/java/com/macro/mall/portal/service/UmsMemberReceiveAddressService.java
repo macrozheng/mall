@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 用户地址管理Service
  * Created by macro on 2018/8/28.
- */
+ */ //与用户ID有关的地址管理，用ums
 public interface UmsMemberReceiveAddressService {
     /**
      * 添加收货地址
