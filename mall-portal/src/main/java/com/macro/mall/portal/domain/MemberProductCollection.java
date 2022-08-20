@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * 会员商品收藏
  * Created by macro on 2018/8/2.
- */
+ */ //便于推荐
 @Getter
 @Setter
 @Document

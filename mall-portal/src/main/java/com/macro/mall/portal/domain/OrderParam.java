@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 生成订单时传入的参数
  * Created by macro on 2018/8/30.
- */
+ */ //订单对象构造所需参数
 @Data
 @EqualsAndHashCode
 public class OrderParam {

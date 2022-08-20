@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 前台商品详情
  * Created by macro on 2020/4/6.
- */
+ */ //商品模块，单个商品的信息
 @Getter
 @Setter
 public class PmsPortalProductDetail{
