@@ -20,7 +20,9 @@ public interface PortalOrderDao {
      * 修改 pms_sku_stock表的锁定库存及真实库存
      */
     int updateSkuStock(@Param("itemList") List<OmsOrderItem> orderItemList);
-
+    // SKU(Stock Keeping Unit)是商品库存进出计量的基本单元，可以是以件，盒，托盘等为单位，
+    //由数字或字母组成，也可以是两者混合搭配组成。 SKU是指一款商品，每款都有出现一个SKU，
+    //便于电商品牌识别商品。 当一个产品有不同的颜色、尺寸等多个属性，就有多个SKU。
     /**
      * 获取超时订单
      * @param minute 超时时间（分）

@@ -8,11 +8,11 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * 秒杀信息和商品对象封装
+ * 秒杀信息和商品对象封装 flash promotion
  * Created by macro on 2019/1/28.
  */
 @Getter
-@Setter
+@Setter//秒杀商品对象
 public class FlashPromotionProduct extends PmsProduct{
     @ApiModelProperty("秒杀价格")
     private BigDecimal flashPromotionPrice;

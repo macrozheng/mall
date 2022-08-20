@@ -18,9 +18,9 @@ import java.util.List;
 @Setter
 public class HomeContentResult {
     @ApiModelProperty("轮播广告")
-    private List<SmsHomeAdvertise> advertiseList;
+    private List<SmsHomeAdvertise> advertiseList;//广告列表
     @ApiModelProperty("推荐品牌")
-    private List<PmsBrand> brandList;
+    private List<PmsBrand> brandList;//品牌列表
     @ApiModelProperty("当前秒杀场次")
     private HomeFlashPromotion homeFlashPromotion;
     @ApiModelProperty("新品推荐")

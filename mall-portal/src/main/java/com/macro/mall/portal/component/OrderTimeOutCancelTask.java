@@ -24,6 +24,6 @@ public class OrderTimeOutCancelTask {
     @Scheduled(cron = "0 0/10 * ? * ?")
     private void cancelTimeOutOrder(){
         Integer count = portalOrderService.cancelTimeOutOrder();
-        LOGGER.info("取消订单，并根据sku编号释放锁定库存，取消订单数量：{}",count);
+        LOGGER.info("取消订单，并根据sku编号释放锁定库存，取消订单数量：{}",count);//记录取消数量
     }
 }

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class CancelOrderReceiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(CancelOrderReceiver.class);
     @Autowired
-    private OmsPortalOrderService portalOrderService;
+    private OmsPortalOrderService portalOrderService;//订单管理
     @RabbitHandler
     public void handle(Long orderId){
         portalOrderService.cancelOrder(orderId);

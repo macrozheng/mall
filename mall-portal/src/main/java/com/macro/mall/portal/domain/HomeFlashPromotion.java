@@ -12,7 +12,7 @@ import java.util.List;
  * Created by macro on 2019/1/28.
  */
 @Getter
-@Setter
+@Setter//秒杀场次信息
 public class HomeFlashPromotion {
     @ApiModelProperty("本场开始时间")
     private Date startTime;
