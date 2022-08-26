@@ -8,6 +8,7 @@ import com.macro.mall.dto.MinioUploadDto;
 import io.minio.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +23,9 @@ import java.util.Date;
  * MinIO对象存储管理Controller
  * Created by macro on 2019/12/25.
  */
-@Api(tags = "MinioController", description = "MinIO对象存储管理")
 @Controller
+@Api(tags = "MinioController")
+@Tag(name = "MinioController", description = "MinIO对象存储管理")
 @RequestMapping("/minio")
 public class MinioController {
 
