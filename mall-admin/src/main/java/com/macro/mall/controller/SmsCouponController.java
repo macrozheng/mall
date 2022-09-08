@@ -7,6 +7,7 @@ import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.service.SmsCouponService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,8 @@ import java.util.List;
  * Created by macro on 2018/8/28.
  */
 @Controller
-@Api(tags = "SmsCouponController", description = "优惠券管理")
+@Api(tags = "SmsCouponController")
+@Tag(name = "SmsCouponController", description = "优惠券管理")
 @RequestMapping("/coupon")
 public class SmsCouponController {
     @Autowired
