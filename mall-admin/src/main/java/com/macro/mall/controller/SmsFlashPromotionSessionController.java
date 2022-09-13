@@ -6,6 +6,7 @@ import com.macro.mall.model.SmsFlashPromotionSession;
 import com.macro.mall.service.SmsFlashPromotionSessionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ import java.util.List;
  * Created by macro on 2018/11/16.
  */
 @Controller
-@Api(tags = "SmsFlashPromotionSessionController", description = "限时购场次管理")
+@Api(tags = "SmsFlashPromotionSessionController")
+@Tag(name = "SmsFlashPromotionSessionController", description = "限时购场次管理")
 @RequestMapping("/flashSession")
 public class SmsFlashPromotionSessionController {
     @Autowired
