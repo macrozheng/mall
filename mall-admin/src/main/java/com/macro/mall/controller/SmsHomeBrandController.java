@@ -6,6 +6,7 @@ import com.macro.mall.model.SmsHomeBrand;
 import com.macro.mall.service.SmsHomeBrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ import java.util.List;
  * Created by macro on 2018/11/6.
  */
 @Controller
-@Api(tags = "SmsHomeBrandController", description = "首页品牌管理")
+@Api(tags = "SmsHomeBrandController")
+@Tag(name = "SmsHomeBrandController", description = "首页品牌管理")
 @RequestMapping("/home/brand")
 public class SmsHomeBrandController {
     @Autowired
