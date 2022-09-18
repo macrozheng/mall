@@ -22,8 +22,8 @@ jwt:
 redis:
   database: mall
   key:
-    admin: 'ums:admin'
-    resourceList: 'ums:resourceList'
+    admin: 'ums:admin:mall'
+    resourceList: 'ums:resourceList:mall'
   expire:
     common: 86400 # 24小时
 
