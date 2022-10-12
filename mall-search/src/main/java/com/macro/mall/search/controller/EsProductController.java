@@ -18,7 +18,8 @@ import java.util.List;
 
 /**
  * 搜索商品管理Controller
- * Created by macro on 2018/6/19.
+ * Created by macro on 2018/6/20.
+ * first time learn
  */
 @Controller
 @Api(tags = "EsProductController")
