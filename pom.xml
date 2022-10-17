@@ -48,6 +48,7 @@
         <aliyun-oss.version>2.5.0</aliyun-oss.version>
         <logstash-logback.version>7.2</logstash-logback.version>
         <minio.version>8.4.1</minio.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
@@ -79,6 +80,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <!--解决JDK 11 兼容性问题-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
         </dependency>
     </dependencies>
 
