@@ -13,10 +13,10 @@ spring:
         login-username: druid
         login-password: druid
   redis:
-    host: localhost # Redis服务器地址
+    host: 39.108.131.128 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
+    password: 123456 # Redis服务器连接密码（默认为空）
     timeout: 300ms # 连接超时时间（毫秒）
 
 minio:

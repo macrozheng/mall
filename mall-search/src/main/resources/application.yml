@@ -8,7 +8,7 @@ spring:
       matching-strategy: ant_path_matcher
 
 server:
-  port: 8081
+  port: 8084
 
 mybatis:
   mapper-locations:

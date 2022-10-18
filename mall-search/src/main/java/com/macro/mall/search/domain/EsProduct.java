@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode
-@Document(indexName = "pms")
+//@Document(indexName = "pms") todo 暂时不知道什么原因
 @Setting(shards = 1,replicas = 0)
 public class EsProduct implements Serializable {
     private static final long serialVersionUID = -1L;
