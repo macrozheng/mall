@@ -11,7 +11,7 @@ import java.util.List;
  * Created by macro on 2020/8/11.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @Builder
 public class BucketPolicyConfigDto {
 
