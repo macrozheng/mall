@@ -43,6 +43,7 @@ public class PortalBrandServiceImpl implements PortalBrandService {
         PageHelper.startPage(pageNum,pageSize);
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andDeleteStatusEqualTo(0)
+                .andPublishStatusEqualTo(1)
                 .andBrandIdEqualTo(brandId);
         List<PmsProduct> productList = productMapper.selectByExample(example);
         return CommonPage.restPage(productList);
