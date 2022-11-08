@@ -19,7 +19,7 @@ public class BucketPolicyConfigDto {
     private List<Statement> Statement;
 
     @Data
-    @EqualsAndHashCode(callSuper = false)
+    @EqualsAndHashCode
     @Builder
     public static class Statement {
         private String Effect;
