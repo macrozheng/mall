@@ -13,7 +13,6 @@ import com.macro.mall.service.PmsBrandService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -75,13 +74,16 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
+    public List<PmsBrand> listBrand(String keyword, Integer showStatus, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
         pmsBrandExample.setOrderByClause("sort desc");
         PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
         if (!StrUtil.isEmpty(keyword)) {
             criteria.andNameLike("%" + keyword + "%");
+        }
+        if(showStatus!=null){
+            criteria.andShowStatusEqualTo(showStatus);
         }
         return brandMapper.selectByExample(pmsBrandExample);
     }
