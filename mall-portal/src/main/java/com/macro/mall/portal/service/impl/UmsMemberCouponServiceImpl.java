@@ -189,19 +189,18 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
             List<Long> couponIds = cpcrList.stream().map(SmsCouponProductCategoryRelation::getCouponId).collect(Collectors.toList());
             allCouponIds.addAll(couponIds);
         }
-        if(CollUtil.isEmpty(allCouponIds)){
-            return new ArrayList<>();
-        }
         //所有优惠券
         SmsCouponExample couponExample = new SmsCouponExample();
         couponExample.createCriteria().andEndTimeGreaterThan(new Date())
                 .andStartTimeLessThan(new Date())
                 .andUseTypeEqualTo(0);
-        couponExample.or(couponExample.createCriteria()
-                .andEndTimeGreaterThan(new Date())
-                .andStartTimeLessThan(new Date())
-                .andUseTypeNotEqualTo(0)
-                .andIdIn(allCouponIds));
+        if(CollUtil.isNotEmpty(allCouponIds)){
+            couponExample.or(couponExample.createCriteria()
+                    .andEndTimeGreaterThan(new Date())
+                    .andStartTimeLessThan(new Date())
+                    .andUseTypeNotEqualTo(0)
+                    .andIdIn(allCouponIds));
+        }
         return couponMapper.selectByExample(couponExample);
     }
 
