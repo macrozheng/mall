@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2018/5/17.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class OssCallbackParam {
     @ApiModelProperty("请求的回调地址")
     private String callbackUrl;
