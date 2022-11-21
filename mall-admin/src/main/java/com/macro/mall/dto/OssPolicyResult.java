@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2018/5/17.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class OssPolicyResult {
     @ApiModelProperty("访问身份验证中用到用户标识")
     private String accessKeyId;
