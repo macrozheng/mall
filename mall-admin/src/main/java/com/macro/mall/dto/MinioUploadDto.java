@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2019/12/25.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class MinioUploadDto {
     @ApiModelProperty("文件访问URL")
     private String url;
