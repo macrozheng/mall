@@ -85,6 +85,9 @@ public class MinioController {
         return CommonResult.failed();
     }
 
+    /**
+     * 创建存储桶的访问策略，设置为只读权限
+     */
     private BucketPolicyConfigDto createBucketPolicyConfigDto(String bucketName) {
         BucketPolicyConfigDto.Statement statement = BucketPolicyConfigDto.Statement.builder()
                 .Effect("Allow")
