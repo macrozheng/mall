@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.json.JSONUtil;
 import com.macro.mall.common.domain.WebLog;
+import com.macro.mall.common.util.RequestUtil;
 import io.swagger.annotations.ApiOperation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
@@ -70,7 +71,7 @@ public class WebLogAspect {
         String urlStr = request.getRequestURL().toString();
         webLog.setBasePath(StrUtil.removeSuffix(urlStr, URLUtil.url(urlStr).getPath()));
         webLog.setUsername(request.getRemoteUser());
-        webLog.setIp(request.getRemoteAddr());
+        webLog.setIp(RequestUtil.getRequestIp(request));
         webLog.setMethod(request.getMethod());
         webLog.setParameter(getParameter(method, joinPoint.getArgs()));
         webLog.setResult(result);
@@ -109,8 +110,10 @@ public class WebLogAspect {
                 if (!StrUtil.isEmpty(requestParam.value())) {
                     key = requestParam.value();
                 }
-                map.put(key, args[i]);
-                argList.add(map);
+                if(args[i]!=null){
+                    map.put(key, args[i]);
+                    argList.add(map);
+                }
             }
         }
         if (argList.size() == 0) {
