@@ -45,7 +45,7 @@ services:
     environment:
       - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
       - "discovery.type=single-node" #以单一节点模式启动
-      - "ES_JAVA_OPTS=-Xms512m -Xmx1024m" #设置使用jvm内存大小
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m" #设置使用jvm内存大小
     volumes:
       - /Users/zhuqianchao/Documents/dev/docker-mysql/elasticsearch/plugins:/usr/share/elasticsearch/plugins #插件文件挂载
       - /Users/zhuqianchao/Documents/dev/docker-mysql/elasticsearch/data:/usr/share/elasticsearch/data #数据文件挂载
