@@ -1,5 +1,5 @@
 # 该镜像需要依赖的基础镜像
-FROM java:8
+FROM openjdk:8
 # 将当前目录下的jar包复制到docker容器的/目录下
 ADD mall-admin-1.0-SNAPSHOT.jar /mall-admin-1.0-SNAPSHOT.jar
 # 声明服务运行在8088端口
