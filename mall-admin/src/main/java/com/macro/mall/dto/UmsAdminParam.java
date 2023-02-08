@@ -29,7 +29,6 @@ public class UmsAdminParam {
     private String nickName;
     @ApiModelProperty(value = "备注")
     private String note;
-    @NotEmpty
     @ApiModelProperty(value = "用户帐号启用状态：0->禁用；1->启用")
     private Integer status;
 }
