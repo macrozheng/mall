@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2018/5/23.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class ProductAttrInfo {
     @ApiModelProperty("商品属性ID")
     private Long attributeId;
