@@ -78,7 +78,8 @@ public class UmsMenuServiceImpl implements UmsMenuService {
         List<UmsMenu> menuList = menuMapper.selectByExample(new UmsMenuExample());
         List<UmsMenuNode> result = menuList.stream()
                 .filter(menu -> menu.getParentId().equals(0L))
-                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
+                .map(menu -> covertMenuNode(menu, menuList))
+                .collect(Collectors.toList());
         return result;
     }
 
