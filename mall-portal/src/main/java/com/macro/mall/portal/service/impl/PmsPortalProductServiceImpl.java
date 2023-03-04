@@ -76,7 +76,8 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
         List<PmsProductCategory> allList = productCategoryMapper.selectByExample(example);
         List<PmsProductCategoryNode> result = allList.stream()
                 .filter(item -> item.getParentId().equals(0L))
-                .map(item -> covert(item, allList)).collect(Collectors.toList());
+                .map(item -> covert(item, allList))
+                .collect(Collectors.toList());
         return result;
     }
 
