@@ -14,7 +14,7 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class PmsProductCategoryParam {
     @ApiModelProperty("父分类的编号")
     private Long parentId;
