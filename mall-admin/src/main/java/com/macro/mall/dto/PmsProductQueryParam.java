@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2018/4/27.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class PmsProductQueryParam {
     @ApiModelProperty("上架状态")
     private Integer publishStatus;
