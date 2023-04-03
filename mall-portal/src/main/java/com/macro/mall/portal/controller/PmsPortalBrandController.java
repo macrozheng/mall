@@ -19,8 +19,8 @@ import java.util.List;
  * Created by macro on 2020/5/15.
  */
 @Controller
-@Api(tags = "PmsPortalBrandService")
-@Tag(name = "PmsPortalBrandService", description = "前台品牌管理")
+@Api(tags = "PmsPortalBrandController")
+@Tag(name = "PmsPortalBrandController", description = "前台品牌管理")
 @RequestMapping("/brand")
 public class PmsPortalBrandController {
 
