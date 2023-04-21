@@ -31,7 +31,7 @@ services:
     ports:
       - 80:80
   rabbitmq:
-    image: rabbitmq:3.9-management
+    image: rabbitmq:3.9.11-management
     container_name: rabbitmq
     volumes:
       - /mydata/rabbitmq/data:/var/lib/rabbitmq #数据文件挂载
