@@ -225,12 +225,15 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsResource> getResourceList(Long adminId) {
+        //先从缓存中获取数据
         List<UmsResource> resourceList = getCacheService().getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             return  resourceList;
         }
+        //缓存中没有从数据库中获取
         resourceList = adminRoleRelationDao.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
+            //将数据库中的数据存入缓存中
             getCacheService().setResourceList(adminId,resourceList);
         }
         return resourceList;
