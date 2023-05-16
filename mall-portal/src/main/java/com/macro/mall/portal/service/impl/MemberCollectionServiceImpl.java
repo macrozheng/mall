@@ -1,11 +1,14 @@
 package com.macro.mall.portal.service.impl;
 
+import com.macro.mall.mapper.PmsProductMapper;
+import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.domain.MemberProductCollection;
 import com.macro.mall.portal.repository.MemberProductCollectionRepository;
 import com.macro.mall.portal.service.MemberCollectionService;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +20,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MemberCollectionServiceImpl implements MemberCollectionService {
+    @Value("${mongo.insert.sqlEnable}")
+    private Boolean sqlEnable;
+    @Autowired
+    private PmsProductMapper productMapper;
     @Autowired
     private MemberProductCollectionRepository productCollectionRepository;
     @Autowired
@@ -25,12 +32,25 @@ public class MemberCollectionServiceImpl implements MemberCollectionService {
     @Override
     public int add(MemberProductCollection productCollection) {
         int count = 0;
+        if (productCollection.getProductId() == null) {
+            return 0;
+        }
         UmsMember member = memberService.getCurrentMember();
         productCollection.setMemberId(member.getId());
         productCollection.setMemberNickname(member.getNickname());
         productCollection.setMemberIcon(member.getIcon());
         MemberProductCollection findCollection = productCollectionRepository.findByMemberIdAndProductId(productCollection.getMemberId(), productCollection.getProductId());
         if (findCollection == null) {
+            if (sqlEnable) {
+                PmsProduct product = productMapper.selectByPrimaryKey(productCollection.getProductId());
+                if (product == null || product.getDeleteStatus() == 1) {
+                    return 0;
+                }
+                productCollection.setProductName(product.getName());
+                productCollection.setProductSubTitle(product.getSubTitle());
+                productCollection.setProductPrice(product.getPrice() + "");
+                productCollection.setProductPic(product.getPic());
+            }
             productCollectionRepository.save(productCollection);
             count = 1;
         }

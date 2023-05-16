@@ -1,11 +1,15 @@
 package com.macro.mall.portal.service.impl;
 
+import com.macro.mall.mapper.PmsBrandMapper;
+import com.macro.mall.mapper.PmsProductMapper;
+import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.domain.MemberBrandAttention;
 import com.macro.mall.portal.repository.MemberBrandAttentionRepository;
 import com.macro.mall.portal.service.MemberAttentionService;
 import com.macro.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +23,10 @@ import java.util.Date;
  */
 @Service
 public class MemberAttentionServiceImpl implements MemberAttentionService {
+    @Value("${mongo.insert.sqlEnable}")
+    private Boolean sqlEnable;
+    @Autowired
+    private PmsBrandMapper brandMapper;
     @Autowired
     private MemberBrandAttentionRepository memberBrandAttentionRepository;
     @Autowired
@@ -27,6 +35,9 @@ public class MemberAttentionServiceImpl implements MemberAttentionService {
     @Override
     public int add(MemberBrandAttention memberBrandAttention) {
         int count = 0;
+        if(memberBrandAttention.getBrandId()==null){
+            return 0;
+        }
         UmsMember member = memberService.getCurrentMember();
         memberBrandAttention.setMemberId(member.getId());
         memberBrandAttention.setMemberNickname(member.getNickname());
@@ -34,6 +45,16 @@ public class MemberAttentionServiceImpl implements MemberAttentionService {
         memberBrandAttention.setCreateTime(new Date());
         MemberBrandAttention findAttention = memberBrandAttentionRepository.findByMemberIdAndBrandId(memberBrandAttention.getMemberId(), memberBrandAttention.getBrandId());
         if (findAttention == null) {
+            if(sqlEnable){
+                PmsBrand brand = brandMapper.selectByPrimaryKey(memberBrandAttention.getBrandId());
+                if(brand==null){
+                    return 0;
+                }else{
+                    memberBrandAttention.setBrandCity(null);
+                    memberBrandAttention.setBrandName(brand.getName());
+                    memberBrandAttention.setBrandLogo(brand.getLogo());
+                }
+            }
             memberBrandAttentionRepository.save(memberBrandAttention);
             count = 1;
         }

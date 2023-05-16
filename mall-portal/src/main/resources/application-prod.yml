@@ -36,6 +36,10 @@ spring:
     username: mall
     password: mall
 
+mongo:
+  insert:
+    sqlEnable: true # 用于控制是否通过数据库数据来插入mongo
+
 logging:
   file:
     path: /var/logs
