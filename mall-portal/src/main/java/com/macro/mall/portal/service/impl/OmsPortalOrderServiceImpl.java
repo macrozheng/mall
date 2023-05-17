@@ -389,7 +389,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     public OmsOrderDetail detail(Long orderId) {
         UmsMember member = memberService.getCurrentMember();
         OmsOrder omsOrder = orderMapper.selectByPrimaryKey(orderId);
-        if(!member.getId().equals(order.getMemberId())){
+        if(!member.getId().equals(omsOrder.getMemberId())){
             Asserts.fail("不能确认他人订单！");
         }
         OmsOrderItemExample example = new OmsOrderItemExample();
