@@ -48,6 +48,10 @@ redis:
     authCode: 90 # 验证码超期时间
     common: 86400 # 24小时
 
+mongo:
+  insert:
+    sqlEnable: true # 用于控制是否通过数据库数据来插入mongo
+
 # 消息队列定义
 rabbitmq:
   queue:

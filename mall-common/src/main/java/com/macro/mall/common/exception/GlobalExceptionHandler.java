@@ -1,5 +1,6 @@
 package com.macro.mall.common.exception;
 
+import cn.hutool.core.util.StrUtil;
 import com.macro.mall.common.api.CommonResult;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.sql.SQLSyntaxErrorException;
 
 /**
  * 全局异常处理类
@@ -51,5 +54,15 @@ public class GlobalExceptionHandler {
             }
         }
         return CommonResult.validateFailed(message);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = SQLSyntaxErrorException.class)
+    public CommonResult handleSQLSyntaxErrorException(SQLSyntaxErrorException e) {
+        String message = e.getMessage();
+        if (StrUtil.isNotEmpty(message) && message.contains("denied")) {
+            message = "演示环境暂无修改权限，如需修改数据可本地搭建后台服务！";
+        }
+        return CommonResult.failed(message);
     }
 }

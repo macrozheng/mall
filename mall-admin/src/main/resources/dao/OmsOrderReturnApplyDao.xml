@@ -24,9 +24,6 @@
         <if test="queryParam.status!=null">
             AND status = #{queryParam.status}
         </if>
-        <if test="queryParam.status!=null">
-            AND status = #{queryParam.status}
-        </if>
         <if test="queryParam.handleMan!=null and queryParam.handleMan!=''">
             AND handle_man = #{queryParam.handleMan}
         </if>
