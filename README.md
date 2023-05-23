@@ -13,9 +13,9 @@
 
 > 1. **快速体验项目**：[在线访问地址](https://www.macrozheng.com/admin/index.html) 。
 > 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
-> 3. **微服务版本**：基于Spring Cloud 2021 & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
-> 4. **专属学习路线**：学习不走弯路，整理了套非常不错的[《mall专属学习路线》](#公众号) 。
-> 5. **项目交流**：想要加群交流项目的朋友，可以加入[mall项目交流群](#公众号) 。
+> 3. **视频教程（2023最新版）**：[《mall视频教程》](https://www.macrozheng.com/mall/catalog/mall_video_intro.html) 。
+> 4. **微服务版本**：基于Spring Cloud 2021 & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
+> 5. **专属学习路线**：学习不走弯路，整理了套非常不错的[《mall专属学习路线》](#公众号) 。
 
 ## 前言
 
@@ -23,8 +23,7 @@
 
 ## 项目文档
 
-- 文档地址：[https://www.macrozheng.com](https://www.macrozheng.com)
-- 备用地址：[https://macrozheng.github.io/mall-learning](https://macrozheng.github.io/mall-learning)
+文档地址：[https://www.macrozheng.com](https://www.macrozheng.com)
 
 ## 项目介绍
 
@@ -42,11 +41,11 @@
 
 #### 前台商城系统
 
-前端项目`mall-app-web`地址：敬请期待......
+前端项目`mall-app-web`地址：https://github.com/macrozheng/mall-app-web
 
-项目演示地址：[https://www.macrozheng.com/app/mainpage.html](https://www.macrozheng.com/app/mainpage.html)
+项目演示地址（将浏览器切换为手机模式效果更佳）：[https://www.macrozheng.com/app/](https://www.macrozheng.com/app/)
 
-![前台商城系统功能演示](http://img.macrozheng.com/mall/project/mall_app_show.png)
+![前台商城系统功能演示](http://img.macrozheng.com/mall/project/re_mall_app_show.jpg)
 
 ### 组织结构
 
@@ -107,7 +106,7 @@ mall
 
 ##### 系统架构图
 
-![系统架构图](http://img.macrozheng.com/mall/project/mall_micro_service_arch.jpg)
+![系统架构图](http://img.macrozheng.com/mall/project/re_mall_system_arch.jpg)
 
 ##### 业务架构图
 
@@ -129,7 +128,7 @@ mall
 
 #### 开发进度
 
-![项目开发进度图](http://img.macrozheng.com/mall/project/mall_dev_flow.png)
+![项目开发进度图](http://img.macrozheng.com/mall/project/re_mall_dev_flow.jpg)
 
 ## 环境搭建
 
@@ -204,4 +203,4 @@ mall
 
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
-Copyright (c) 2018-2022 macrozheng
+Copyright (c) 2018-2023 macrozheng
