@@ -15,7 +15,7 @@
 > 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
 > 3. **视频教程（2023最新版）**：[《mall视频教程》](https://www.macrozheng.com/mall/catalog/mall_video_intro.html) 。
 > 4. **微服务版本**：基于Spring Cloud 2021 & Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
-> 5. **专属学习路线**：学习不走弯路，整理了套非常不错的[《mall专属学习路线》](#公众号) 。
+> 5. **项目交流**：想要加群交流项目的朋友，可以加入[mall项目交流群](#公众号)。
 
 ## 前言
 
