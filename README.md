@@ -103,6 +103,16 @@ mall
 | Js-cookie  | cookie管理工具        | https://github.com/js-cookie/js-cookie |
 | nprogress  | 进度条控件            | https://github.com/rstacruz/nprogress  |
 
+#### 移动端技术
+
+| 技术         | 说明             | 官网                                    |
+| ------------ | ---------------- | --------------------------------------- |
+| Vue          | 核心前端框架     | https://vuejs.org                       |
+| Vuex         | 全局状态管理框架 | https://vuex.vuejs.org                  |
+| uni-app      | 移动端前端框架   | https://uniapp.dcloud.io                |
+| mix-mall     | 电商项目模板     | https://ext.dcloud.net.cn/plugin?id=200 |
+| luch-request | HTTP请求框架     | https://github.com/lei-mu/luch-request  |
+
 #### 架构图
 
 ##### 系统架构图
