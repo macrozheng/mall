@@ -10,9 +10,9 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /mydata/mysql/data:/var/lib/mysql #数据文件挂载
-      - /mydata/mysql/conf:/etc/mysql #配置文件挂载
-      - /mydata/mysql/log:/var/log/mysql #日志文件挂载
+      - /mydata/mysql/data:/var/lib/mysql #数据文件目录挂载
+      - /mydata/mysql/conf:/etc/mysql #配置文件目录挂载
+      - /mydata/mysql/log:/var/log/mysql #日志文件目录挂载
   redis:
     image: redis:7
     container_name: redis
