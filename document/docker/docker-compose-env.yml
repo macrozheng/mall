@@ -18,7 +18,7 @@ services:
     container_name: redis
     command: redis-server --appendonly yes
     volumes:
-      - /mydata/redis/data:/data #数据文件挂载
+      - /mydata/redis/data:/data #数据文件目录挂载
     ports:
       - 6379:6379
   nginx:
