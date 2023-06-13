@@ -27,14 +27,14 @@ services:
     volumes:
       - /mydata/nginx/conf:/etc/nginx #配置文件目录挂载
       - /mydata/nginx/html:/usr/share/nginx/html #静态资源根目录挂载
-      - /mydata/nginx/logs:/var/log/nginx #日志文件挂载
+      - /mydata/nginx/logs:/var/log/nginx #日志文件目录挂载
     ports:
       - 80:80
   rabbitmq:
     image: rabbitmq:3.9.11-management
     container_name: rabbitmq
     volumes:
-      - /mydata/rabbitmq/data:/var/lib/rabbitmq #数据文件挂载
+      - /mydata/rabbitmq/data:/var/lib/rabbitmq #数据文件目录挂载
     ports:
       - 5672:5672
       - 15672:15672
