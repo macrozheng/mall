@@ -23,7 +23,7 @@ public class OmsOrderSettingController {
     private OmsOrderSettingService orderSettingService;
 
     @ApiOperation("获取指定订单设置")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseBody
     public CommonResult<OmsOrderSetting> getItem(@PathVariable Long id) {
         OmsOrderSetting orderSetting = orderSettingService.getItem(id);
@@ -31,7 +31,7 @@ public class OmsOrderSettingController {
     }
 
     @ApiOperation("修改指定订单设置")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/{id}")
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody OmsOrderSetting orderSetting) {
         int count = orderSettingService.update(id,orderSetting);

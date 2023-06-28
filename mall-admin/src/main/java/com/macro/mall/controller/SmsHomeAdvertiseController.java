@@ -26,7 +26,7 @@ public class SmsHomeAdvertiseController {
     private SmsHomeAdvertiseService advertiseService;
 
     @ApiOperation("添加广告")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping("/create")
     @ResponseBody
     public CommonResult create(@RequestBody SmsHomeAdvertise advertise) {
         int count = advertiseService.create(advertise);
@@ -36,7 +36,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("删除广告")
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @PostMapping("/delete")
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
         int count = advertiseService.delete(ids);
@@ -46,7 +46,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("修改上下线状态")
-    @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/status/{id}")
     @ResponseBody
     public CommonResult updateStatus(@PathVariable Long id, Integer status) {
         int count = advertiseService.updateStatus(id, status);
@@ -56,7 +56,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("获取广告详情")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseBody
     public CommonResult<SmsHomeAdvertise> getItem(@PathVariable Long id) {
         SmsHomeAdvertise advertise = advertiseService.getItem(id);
@@ -64,7 +64,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("修改广告")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/{id}")
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsHomeAdvertise advertise) {
         int count = advertiseService.update(id, advertise);
@@ -74,7 +74,7 @@ public class SmsHomeAdvertiseController {
     }
 
     @ApiOperation("分页查询广告")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<CommonPage<SmsHomeAdvertise>> list(@RequestParam(value = "name", required = false) String name,
                                                            @RequestParam(value = "type", required = false) Integer type,

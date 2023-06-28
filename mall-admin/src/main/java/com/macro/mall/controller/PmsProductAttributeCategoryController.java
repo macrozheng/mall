@@ -39,7 +39,7 @@ public class PmsProductAttributeCategoryController {
     }
 
     @ApiOperation("修改商品属性分类")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/{id}")
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestParam String name) {
         int count = productAttributeCategoryService.update(id, name);
@@ -51,7 +51,7 @@ public class PmsProductAttributeCategoryController {
     }
 
     @ApiOperation("删除单个商品属性分类")
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @GetMapping("/delete/{id}")
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
         int count = productAttributeCategoryService.delete(id);
@@ -63,7 +63,7 @@ public class PmsProductAttributeCategoryController {
     }
 
     @ApiOperation("获取单个商品属性分类信息")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseBody
     public CommonResult<PmsProductAttributeCategory> getItem(@PathVariable Long id) {
         PmsProductAttributeCategory productAttributeCategory = productAttributeCategoryService.getItem(id);
@@ -71,7 +71,7 @@ public class PmsProductAttributeCategoryController {
     }
 
     @ApiOperation("分页获取所有商品属性分类")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<CommonPage<PmsProductAttributeCategory>> getList(@RequestParam(defaultValue = "5") Integer pageSize, @RequestParam(defaultValue = "1") Integer pageNum) {
         List<PmsProductAttributeCategory> productAttributeCategoryList = productAttributeCategoryService.getList(pageSize, pageNum);
@@ -79,7 +79,7 @@ public class PmsProductAttributeCategoryController {
     }
 
     @ApiOperation("获取所有商品属性分类及其下属性")
-    @RequestMapping(value = "/list/withAttr", method = RequestMethod.GET)
+    @GetMapping("/list/withAttr")
     @ResponseBody
     public CommonResult<List<PmsProductAttributeCategoryItem>> getListWithAttr() {
         List<PmsProductAttributeCategoryItem> productAttributeCategoryResultList = productAttributeCategoryService.getListWithAttr();
