@@ -82,7 +82,7 @@ services:
     image: mongo:4
     container_name: mongo
     volumes:
-      - /mydata/mongo/db:/data/db #数据文件挂载
+      - /mydata/mongo/db:/data/db #数据文件目录挂载
     ports:
       - 27017:27017
   minio:
