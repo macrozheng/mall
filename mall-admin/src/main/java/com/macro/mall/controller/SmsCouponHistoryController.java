@@ -29,7 +29,7 @@ public class SmsCouponHistoryController {
     private SmsCouponHistoryService historyService;
 
     @ApiOperation("根据优惠券id，使用状态，订单编号分页获取领取记录")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<CommonPage<SmsCouponHistory>> list(@RequestParam(value = "couponId", required = false) Long couponId,
                                                            @RequestParam(value = "useStatus", required = false) Integer useStatus,

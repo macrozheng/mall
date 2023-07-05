@@ -29,7 +29,7 @@ public class CmsSubjectController {
     private CmsSubjectService subjectService;
 
     @ApiOperation("获取全部商品专题")
-    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    @GetMapping("/listAll")
     @ResponseBody
     public CommonResult<List<CmsSubject>> listAll() {
         List<CmsSubject> subjectList = subjectService.listAll();
@@ -37,7 +37,7 @@ public class CmsSubjectController {
     }
 
     @ApiOperation(value = "根据专题名称分页获取商品专题")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<CommonPage<CmsSubject>> getList(@RequestParam(value = "keyword", required = false) String keyword,
                                                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,

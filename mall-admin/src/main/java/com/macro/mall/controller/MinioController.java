@@ -101,7 +101,7 @@ public class MinioController {
     }
 
     @ApiOperation("文件删除")
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @PostMapping("/delete")
     @ResponseBody
     public CommonResult delete(@RequestParam("objectName") String objectName) {
         try {

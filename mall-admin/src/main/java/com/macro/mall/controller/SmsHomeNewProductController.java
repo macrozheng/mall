@@ -26,7 +26,7 @@ public class SmsHomeNewProductController {
     private SmsHomeNewProductService homeNewProductService;
 
     @ApiOperation("添加首页新品")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping("/create")
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsHomeNewProduct> homeNewProductList) {
         int count = homeNewProductService.create(homeNewProductList);
@@ -37,7 +37,7 @@ public class SmsHomeNewProductController {
     }
 
     @ApiOperation("修改首页新品排序")
-    @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/sort/{id}")
     @ResponseBody
     public CommonResult updateSort(@PathVariable Long id, Integer sort) {
         int count = homeNewProductService.updateSort(id, sort);
@@ -48,7 +48,7 @@ public class SmsHomeNewProductController {
     }
 
     @ApiOperation("批量删除首页新品")
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @PostMapping("/delete")
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
         int count = homeNewProductService.delete(ids);
@@ -59,7 +59,7 @@ public class SmsHomeNewProductController {
     }
 
     @ApiOperation("批量修改首页新品状态")
-    @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
+    @PostMapping("/update/recommendStatus")
     @ResponseBody
     public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
         int count = homeNewProductService.updateRecommendStatus(ids, recommendStatus);
@@ -70,7 +70,7 @@ public class SmsHomeNewProductController {
     }
 
     @ApiOperation("分页查询首页新品")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<CommonPage<SmsHomeNewProduct>> list(@RequestParam(value = "productName", required = false) String productName,
                                                             @RequestParam(value = "recommendStatus", required = false) Integer recommendStatus,

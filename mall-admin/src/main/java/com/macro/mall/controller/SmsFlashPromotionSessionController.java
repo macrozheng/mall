@@ -26,7 +26,7 @@ public class SmsFlashPromotionSessionController {
     private SmsFlashPromotionSessionService flashPromotionSessionService;
 
     @ApiOperation("添加场次")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping("/create")
     @ResponseBody
     public CommonResult create(@RequestBody SmsFlashPromotionSession promotionSession) {
         int count = flashPromotionSessionService.create(promotionSession);
@@ -37,7 +37,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("修改场次")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/{id}")
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsFlashPromotionSession promotionSession) {
         int count = flashPromotionSessionService.update(id, promotionSession);
@@ -48,7 +48,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("修改启用状态")
-    @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
+    @PostMapping("/update/status/{id}")
     @ResponseBody
     public CommonResult updateStatus(@PathVariable Long id, Integer status) {
         int count = flashPromotionSessionService.updateStatus(id, status);
@@ -59,7 +59,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("删除场次")
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @PostMapping("/delete/{id}")
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
         int count = flashPromotionSessionService.delete(id);
@@ -70,7 +70,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("获取场次详情")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     @ResponseBody
     public CommonResult<SmsFlashPromotionSession> getItem(@PathVariable Long id) {
         SmsFlashPromotionSession promotionSession = flashPromotionSessionService.getItem(id);
@@ -78,7 +78,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("获取全部场次")
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<List<SmsFlashPromotionSession>> list() {
         List<SmsFlashPromotionSession> promotionSessionList = flashPromotionSessionService.list();
@@ -86,7 +86,7 @@ public class SmsFlashPromotionSessionController {
     }
 
     @ApiOperation("获取全部可选场次及其数量")
-    @RequestMapping(value = "/selectList", method = RequestMethod.GET)
+    @GetMapping("/selectList")
     @ResponseBody
     public CommonResult<List<SmsFlashPromotionSessionDetail>> selectList(Long flashPromotionId) {
         List<SmsFlashPromotionSessionDetail> promotionSessionList = flashPromotionSessionService.selectList(flashPromotionId);
