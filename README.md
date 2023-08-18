@@ -168,7 +168,7 @@ mall
 | 工具          | 版本号 | 下载                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
 | JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
-| Mysql         | 5.7    | https://www.mysql.com/                                       |
+| MySQL         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 7.0    | https://redis.io/download                                    |
 | MongoDB       | 5.0    | https://www.mongodb.com/download-center                      |
 | RabbitMQ      | 3.10.5 | http://www.rabbitmq.com/download.html                        |
@@ -182,7 +182,7 @@ mall
 > Windows环境部署
 
 - Windows环境搭建请参考：[mall在Windows环境下的部署](https://www.macrozheng.com/mall/deploy/mall_deploy_windows.html);
-- 注意：只启动mall-admin,仅需安装Mysql、Redis即可;
+- 注意：只启动mall-admin,仅需安装MySQL、Redis即可;
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译：[前端项目地址](https://github.com/macrozheng/mall-admin-web);
 - `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://www.macrozheng.com/mall/deploy/mall_deploy_web.html) 。
 
