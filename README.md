@@ -121,7 +121,7 @@ mall
 
 ##### 业务架构图
 
-![业务架构图](document/resource/re_mall_business_arch.jpg)
+![业务架构图](http://img.macrozheng.com/mall/project/re_mall_business_arch.jpg)
 
 #### 模块介绍
 
