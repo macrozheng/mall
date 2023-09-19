@@ -50,3 +50,11 @@ logging:
 logstash:
   host: logstash
 
+alipay:
+  gatewayUrl: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  appId: your appId
+  alipayPublicKey: your alipayPublicKey
+  appPrivateKey: your appPrivateKey
+  returnUrl: http://192.168.3.101:8060/#/pages/money/paySuccess
+  notifyUrl:
+

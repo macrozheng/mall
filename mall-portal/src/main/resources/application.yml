@@ -36,6 +36,7 @@ secure:
       - /home/**
       - /product/**
       - /brand/**
+      - /alipay/**
 
 # 自定义redis key
 redis:
