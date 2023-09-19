@@ -119,7 +119,9 @@ public class AlipayServiceImpl implements AlipayService {
         }
         if(response.isSuccess()){
             log.info("查询支付宝账单成功！");
-            portalOrderService.paySuccessByOrderSn(outTradeNo,1);
+            if("TRADE_SUCCESS".equals(response.getTradeStatus())){
+                portalOrderService.paySuccessByOrderSn(outTradeNo,1);
+            }
         } else {
             log.error("查询支付宝账单失败！");
         }

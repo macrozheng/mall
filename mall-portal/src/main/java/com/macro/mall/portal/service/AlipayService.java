@@ -23,6 +23,7 @@ public interface AlipayService {
     String notify(Map<String, String> params);
 
     /**
+     * 查询支付宝交易状态
      * @param outTradeNo 商户订单编号
      * @param tradeNo 支付宝交易编号
      * @return 支付宝交易状态
