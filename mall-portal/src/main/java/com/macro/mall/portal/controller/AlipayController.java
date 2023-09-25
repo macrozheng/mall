@@ -65,7 +65,7 @@ public class AlipayController {
         return alipayService.notify(params);
     }
 
-    @ApiOperation(value = "支付宝统一收单线下交易查询",notes = "订单支付成功返回：TRADE_SUCCESS")
+    @ApiOperation(value = "支付宝统一收单线下交易查询",notes = "订单支付成功返回交易状态：TRADE_SUCCESS")
     @RequestMapping(value = "/query", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<String> query(String outTradeNo, String tradeNo){
