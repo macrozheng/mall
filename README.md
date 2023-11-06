@@ -38,7 +38,7 @@
 
 项目演示地址： [https://www.macrozheng.com/admin/index.html](https://www.macrozheng.com/admin/index.html)  
 
-![后台管理系统功能演示](http://img.macrozheng.com/mall/project/mall_admin_show.png)
+![后台管理系统功能演示](./document/resource/mall_admin_show.png)
 
 #### 前台商城系统
 
@@ -46,7 +46,7 @@
 
 项目演示地址（将浏览器切换为手机模式效果更佳）：[https://www.macrozheng.com/app/](https://www.macrozheng.com/app/)
 
-![前台商城系统功能演示](http://img.macrozheng.com/mall/project/re_mall_app_show.jpg)
+![前台商城系统功能演示](./document/resource/re_mall_app_show.jpg)
 
 ### 组织结构
 
@@ -117,11 +117,11 @@ mall
 
 ##### 系统架构图
 
-![系统架构图](http://img.macrozheng.com/mall/project/re_mall_system_arch.jpg)
+![系统架构图](./document/resource/re_mall_system_arch.jpg)
 
 ##### 业务架构图
 
-![业务架构图](http://img.macrozheng.com/mall/project/re_mall_business_arch.jpg)
+![业务架构图](./document/resource/re_mall_business_arch.jpg)
 
 #### 模块介绍
 
@@ -139,7 +139,7 @@ mall
 
 #### 开发进度
 
-![项目开发进度图](http://img.macrozheng.com/mall/project/re_mall_dev_flow.jpg)
+![项目开发进度图](./document/resource/re_mall_dev_flow.jpg)
 
 ## 环境搭建
 
@@ -205,7 +205,7 @@ mall
 
 加微信群交流，关注公众号「**macrozheng**」，回复「**加群**」即可。
 
-![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
+![公众号图片](./document/resource/qrcode_for_macrozheng_258.jpg)
 
 ## 许可证
 
