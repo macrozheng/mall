@@ -1,7 +1,6 @@
 package com.macro.mall.portal.service.impl;
 
 import com.macro.mall.mapper.PmsBrandMapper;
-import com.macro.mall.mapper.PmsProductMapper;
 import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.domain.MemberBrandAttention;
