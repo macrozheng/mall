@@ -69,7 +69,7 @@ public abstract class BaseSwaggerConfig {
     private SecurityContext getContextByPath(String pathRegex) {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.regex(pathRegex))
+                .operationSelector(oc -> oc.requestMappingPattern().matches(pathRegex))
                 .build();
     }
 
