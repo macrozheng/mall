@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsHomeRecommendSubjectMapper;
 import com.macro.mall.model.SmsHomeRecommendSubject;
@@ -7,7 +8,6 @@ import com.macro.mall.model.SmsHomeRecommendSubjectExample;
 import com.macro.mall.service.SmsHomeRecommendSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -18,30 +18,30 @@ import java.util.List;
 @Service
 public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubjectService {
     @Autowired
-    private SmsHomeRecommendSubjectMapper recommendProductMapper;
+    private SmsHomeRecommendSubjectMapper smsHomeRecommendSubjectMapper;
     @Override
     public int create(List<SmsHomeRecommendSubject> recommendSubjectList) {
-        for (SmsHomeRecommendSubject recommendProduct : recommendSubjectList) {
-            recommendProduct.setRecommendStatus(1);
-            recommendProduct.setSort(0);
-            recommendProductMapper.insert(recommendProduct);
+        for (SmsHomeRecommendSubject recommendSubject : recommendSubjectList) {
+            recommendSubject.setRecommendStatus(1);
+            recommendSubject.setSort(0);
+            smsHomeRecommendSubjectMapper.insert(recommendSubject);
         }
         return recommendSubjectList.size();
     }
 
     @Override
     public int updateSort(Long id, Integer sort) {
-        SmsHomeRecommendSubject recommendProduct = new SmsHomeRecommendSubject();
-        recommendProduct.setId(id);
-        recommendProduct.setSort(sort);
-        return recommendProductMapper.updateByPrimaryKeySelective(recommendProduct);
+        SmsHomeRecommendSubject recommendSubject = new SmsHomeRecommendSubject();
+        recommendSubject.setId(id);
+        recommendSubject.setSort(sort);
+        return smsHomeRecommendSubjectMapper.updateByPrimaryKeySelective(recommendSubject);
     }
 
     @Override
     public int delete(List<Long> ids) {
         SmsHomeRecommendSubjectExample example = new SmsHomeRecommendSubjectExample();
         example.createCriteria().andIdIn(ids);
-        return recommendProductMapper.deleteByExample(example);
+        return smsHomeRecommendSubjectMapper.deleteByExample(example);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
         example.createCriteria().andIdIn(ids);
         SmsHomeRecommendSubject record = new SmsHomeRecommendSubject();
         record.setRecommendStatus(recommendStatus);
-        return recommendProductMapper.updateByExampleSelective(record,example);
+        return smsHomeRecommendSubjectMapper.updateByExampleSelective(record,example);
     }
 
     @Override
@@ -58,13 +58,13 @@ public class SmsHomeRecommendSubjectServiceImpl implements SmsHomeRecommendSubje
         PageHelper.startPage(pageNum,pageSize);
         SmsHomeRecommendSubjectExample example = new SmsHomeRecommendSubjectExample();
         SmsHomeRecommendSubjectExample.Criteria criteria = example.createCriteria();
-        if(!StringUtils.isEmpty(subjectName)){
+        if(!StrUtil.isEmpty(subjectName)){
             criteria.andSubjectNameLike("%"+subjectName+"%");
         }
         if(recommendStatus!=null){
             criteria.andRecommendStatusEqualTo(recommendStatus);
         }
         example.setOrderByClause("sort desc");
-        return recommendProductMapper.selectByExample(example);
+        return smsHomeRecommendSubjectMapper.selectByExample(example);
     }
 }

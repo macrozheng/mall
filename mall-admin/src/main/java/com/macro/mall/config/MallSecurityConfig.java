@@ -2,15 +2,12 @@ package com.macro.mall.config;
 
 import com.macro.mall.model.UmsResource;
 import com.macro.mall.security.component.DynamicSecurityService;
-import com.macro.mall.security.config.SecurityConfig;
 import com.macro.mall.service.UmsAdminService;
 import com.macro.mall.service.UmsResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -22,9 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by macro on 2019/11/9.
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MallSecurityConfig extends SecurityConfig {
+public class MallSecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  * Created by macro on 2020/7/16.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @Builder
 public class SwaggerProperties {
     /**

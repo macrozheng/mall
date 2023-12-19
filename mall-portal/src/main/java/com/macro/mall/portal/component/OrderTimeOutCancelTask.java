@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 取消超时订单并解锁库存的定时器
  * Created by macro on 2018/8/24.
  */
-@Component
+//@Component
 public class OrderTimeOutCancelTask {
     private final Logger LOGGER = LoggerFactory.getLogger(OrderTimeOutCancelTask.class);
     @Autowired

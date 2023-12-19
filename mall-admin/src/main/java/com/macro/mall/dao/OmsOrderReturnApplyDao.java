@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 订单退货申请自定义Dao
+ * 订单退货申请管理自定义Dao
  * Created by macro on 2018/10/18.
  */
 public interface OmsOrderReturnApplyDao {

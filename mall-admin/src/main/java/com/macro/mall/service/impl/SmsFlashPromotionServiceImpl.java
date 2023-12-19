@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsFlashPromotionMapper;
 import com.macro.mall.model.SmsFlashPromotion;
@@ -7,7 +8,6 @@ import com.macro.mall.model.SmsFlashPromotionExample;
 import com.macro.mall.service.SmsFlashPromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -55,7 +55,7 @@ public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {
     public List<SmsFlashPromotion> list(String keyword, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         SmsFlashPromotionExample example = new SmsFlashPromotionExample();
-        if (!StringUtils.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
             example.createCriteria().andTitleLike("%" + keyword + "%");
         }
         return flashPromotionMapper.selectByExample(example);

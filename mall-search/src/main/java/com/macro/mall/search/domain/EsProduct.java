@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Setting;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,7 +18,8 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode
-@Document(indexName = "pms", type = "product",shards = 1,replicas = 0)
+@Document(indexName = "pms")
+@Setting(shards = 1,replicas = 0)
 public class EsProduct implements Serializable {
     private static final long serialVersionUID = -1L;
     @Id
@@ -44,6 +46,6 @@ public class EsProduct implements Serializable {
     private Integer stock;
     private Integer promotionType;
     private Integer sort;
-    @Field(type =FieldType.Nested)
+    @Field(type = FieldType.Nested, fielddata = true)
     private List<EsProductAttributeValue> attrValueList;
 }

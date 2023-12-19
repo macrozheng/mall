@@ -15,6 +15,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
+<<<<<<< HEAD
   <dependencies>
     <dependency>
       <groupId>com.macro.mall</groupId>
@@ -45,4 +46,45 @@
       </plugin>
     </plugins>
   </build>
+=======
+    <name>mall-admin</name>
+    <description>mall-admin project for mall</description>
+
+    <parent>
+        <groupId>com.macro.mall</groupId>
+        <artifactId>mall</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>mall-mbg</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.macro.mall</groupId>
+            <artifactId>mall-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+>>>>>>> upstream/master
 </project>

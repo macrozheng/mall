@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.json.JSONUtil;
 import com.macro.mall.common.domain.WebLog;
+import com.macro.mall.common.util.RequestUtil;
 import io.swagger.annotations.ApiOperation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
@@ -15,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -71,7 +71,7 @@ public class WebLogAspect {
         String urlStr = request.getRequestURL().toString();
         webLog.setBasePath(StrUtil.removeSuffix(urlStr, URLUtil.url(urlStr).getPath()));
         webLog.setUsername(request.getRemoteUser());
-        webLog.setIp(request.getRemoteAddr());
+        webLog.setIp(RequestUtil.getRequestIp(request));
         webLog.setMethod(request.getMethod());
         webLog.setParameter(getParameter(method, joinPoint.getArgs()));
         webLog.setResult(result);
@@ -107,11 +107,13 @@ public class WebLogAspect {
             if (requestParam != null) {
                 Map<String, Object> map = new HashMap<>();
                 String key = parameters[i].getName();
-                if (!StringUtils.isEmpty(requestParam.value())) {
+                if (!StrUtil.isEmpty(requestParam.value())) {
                     key = requestParam.value();
                 }
-                map.put(key, args[i]);
-                argList.add(map);
+                if(args[i]!=null){
+                    map.put(key, args[i]);
+                    argList.add(map);
+                }
             }
         }
         if (argList.size() == 0) {

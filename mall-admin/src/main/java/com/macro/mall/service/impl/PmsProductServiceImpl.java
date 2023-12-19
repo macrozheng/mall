@@ -1,6 +1,7 @@
 package com.macro.mall.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.*;
 import com.macro.mall.dto.PmsProductParam;
@@ -14,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -98,7 +98,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         if(CollectionUtils.isEmpty(skuStockList))return;
         for(int i=0;i<skuStockList.size();i++){
             PmsSkuStock skuStock = skuStockList.get(i);
-            if(StringUtils.isEmpty(skuStock.getSkuCode())){
+            if(StrUtil.isEmpty(skuStock.getSkuCode())){
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                 StringBuilder sb = new StringBuilder();
                 //日期
@@ -215,10 +215,10 @@ public class PmsProductServiceImpl implements PmsProductService {
         if (productQueryParam.getVerifyStatus() != null) {
             criteria.andVerifyStatusEqualTo(productQueryParam.getVerifyStatus());
         }
-        if (!StringUtils.isEmpty(productQueryParam.getKeyword())) {
+        if (!StrUtil.isEmpty(productQueryParam.getKeyword())) {
             criteria.andNameLike("%" + productQueryParam.getKeyword() + "%");
         }
-        if (!StringUtils.isEmpty(productQueryParam.getProductSn())) {
+        if (!StrUtil.isEmpty(productQueryParam.getProductSn())) {
             criteria.andProductSnEqualTo(productQueryParam.getProductSn());
         }
         if (productQueryParam.getBrandId() != null) {
@@ -293,7 +293,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         PmsProductExample productExample = new PmsProductExample();
         PmsProductExample.Criteria criteria = productExample.createCriteria();
         criteria.andDeleteStatusEqualTo(0);
-        if(!StringUtils.isEmpty(keyword)){
+        if(!StrUtil.isEmpty(keyword)){
             criteria.andNameLike("%" + keyword + "%");
             productExample.or().andDeleteStatusEqualTo(0).andProductSnLike("%" + keyword + "%");
         }

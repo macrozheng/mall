@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsCouponHistoryMapper;
 import com.macro.mall.model.SmsCouponHistory;
@@ -7,7 +8,6 @@ import com.macro.mall.model.SmsCouponHistoryExample;
 import com.macro.mall.service.SmsCouponHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {
         if(useStatus!=null){
             criteria.andUseStatusEqualTo(useStatus);
         }
-        if(!StringUtils.isEmpty(orderSn)){
+        if(!StrUtil.isEmpty(orderSn)){
             criteria.andOrderSnEqualTo(orderSn);
         }
         return historyMapper.selectByExample(example);

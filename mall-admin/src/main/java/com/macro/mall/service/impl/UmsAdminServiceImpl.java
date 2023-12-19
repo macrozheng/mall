@@ -14,6 +14,7 @@ import com.macro.mall.mapper.UmsAdminMapper;
 import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
 import com.macro.mall.model.*;
 import com.macro.mall.security.util.JwtTokenUtil;
+import com.macro.mall.security.util.SpringUtil;
 import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsAdminService;
 import org.slf4j.Logger;
@@ -28,7 +29,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -56,19 +56,20 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private UmsAdminRoleRelationDao adminRoleRelationDao;
     @Autowired
     private UmsAdminLoginLogMapper loginLogMapper;
-    @Autowired
-    private UmsAdminCacheService adminCacheService;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
-        UmsAdmin admin = adminCacheService.getAdmin(username);
-        if(admin!=null) return  admin;
+        //先从缓存中获取数据
+        UmsAdmin admin = getCacheService().getAdmin(username);
+        if (admin != null) return admin;
+        //缓存中没有从数据库中获取
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
         if (adminList != null && adminList.size() > 0) {
             admin = adminList.get(0);
-            adminCacheService.setAdmin(admin);
+            //将数据库中的数据存入缓存中
+            getCacheService().setAdmin(admin);
             return admin;
         }
         return null;
@@ -159,7 +160,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         PageHelper.startPage(pageNum, pageSize);
         UmsAdminExample example = new UmsAdminExample();
         UmsAdminExample.Criteria criteria = example.createCriteria();
-        if (!StringUtils.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
             criteria.andUsernameLike("%" + keyword + "%");
             example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
         }
@@ -182,15 +183,15 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             }
         }
         int count = adminMapper.updateByPrimaryKeySelective(admin);
-        adminCacheService.delAdmin(id);
+        getCacheService().delAdmin(id);
         return count;
     }
 
     @Override
     public int delete(Long id) {
-        adminCacheService.delAdmin(id);
         int count = adminMapper.deleteByPrimaryKey(id);
-        adminCacheService.delResourceList(id);
+        getCacheService().delAdmin(id);
+        getCacheService().delResourceList(id);
         return count;
     }
 
@@ -212,7 +213,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             }
             adminRoleRelationDao.insertList(list);
         }
-        adminCacheService.delResourceList(adminId);
+        getCacheService().delResourceList(adminId);
         return count;
     }
 
@@ -223,13 +224,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsResource> getResourceList(Long adminId) {
-        List<UmsResource> resourceList = adminCacheService.getResourceList(adminId);
+        //先从缓存中获取数据
+        List<UmsResource> resourceList = getCacheService().getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             return  resourceList;
         }
+        //缓存中没有从数据库中获取
         resourceList = adminRoleRelationDao.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
-            adminCacheService.setResourceList(adminId,resourceList);
+            //将数据库中的数据存入缓存中
+            getCacheService().setResourceList(adminId,resourceList);
         }
         return resourceList;
     }
@@ -253,7 +257,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         }
         umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
         adminMapper.updateByPrimaryKey(umsAdmin);
-        adminCacheService.delAdmin(umsAdmin.getId());
+        getCacheService().delAdmin(umsAdmin.getId());
         return 1;
     }
 
@@ -266,5 +270,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             return new AdminUserDetails(admin,resourceList);
         }
         throw new UsernameNotFoundException("用户名或密码错误");
+    }
+
+    @Override
+    public UmsAdminCacheService getCacheService() {
+        return SpringUtil.getBean(UmsAdminCacheService.class);
     }
 }

@@ -93,6 +93,10 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Override
     public Map<String, Object> generateOrder(OrderParam orderParam) {
         List<OmsOrderItem> orderItemList = new ArrayList<>();
+        //校验收货地址
+        if(orderParam.getMemberReceiveAddressId()==null){
+            Asserts.fail("请选择收货地址！");
+        }
         //获取购物车及优惠信息
         UmsMember currentMember = memberService.getCurrentMember();
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId(), orderParam.getCartIds());
@@ -230,6 +234,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
             order.setUseIntegration(orderParam.getUseIntegration());
+            if(currentMember.getIntegration()==null){
+                currentMember.setIntegration(0);
+            }
             memberService.updateIntegration(currentMember.getId(), currentMember.getIntegration() - orderParam.getUseIntegration());
         }
         //删除购物车中的下单商品
@@ -409,6 +416,20 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderMapper.updateByPrimaryKey(order);
         }else{
             Asserts.fail("只能删除已完成或已关闭的订单！");
+        }
+    }
+
+    @Override
+    public void paySuccessByOrderSn(String orderSn, Integer payType) {
+        OmsOrderExample example =  new OmsOrderExample();
+        example.createCriteria()
+                .andOrderSnEqualTo(orderSn)
+                .andStatusEqualTo(0)
+                .andDeleteStatusEqualTo(0);
+        List<OmsOrder> orderList = orderMapper.selectByExample(example);
+        if(CollUtil.isNotEmpty(orderList)){
+            OmsOrder order = orderList.get(0);
+            paySuccess(order.getId(),payType);
         }
     }
 
@@ -716,7 +737,10 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      */
     private boolean hasStock(List<CartPromotionItem> cartPromotionItemList) {
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
-            if (cartPromotionItem.getRealStock()==null||cartPromotionItem.getRealStock() <= 0) {
+            if (cartPromotionItem.getRealStock()==null //判断真实库存是否为空
+                    ||cartPromotionItem.getRealStock() <= 0 //判断真实库存是否小于0
+                    || cartPromotionItem.getRealStock() < cartPromotionItem.getQuantity()) //判断真实库存是否小于下单的数量
+            {
                 return false;
             }
         }

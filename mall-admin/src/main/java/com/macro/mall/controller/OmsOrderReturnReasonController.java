@@ -6,6 +6,7 @@ import com.macro.mall.model.OmsOrderReturnReason;
 import com.macro.mall.service.OmsOrderReturnReasonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ import java.util.List;
  * Created by macro on 2018/10/17.
  */
 @Controller
-@Api(tags = "OmsOrderReturnReasonController", description = "退货原因管理")
+@Api(tags = "OmsOrderReturnReasonController")
+@Tag(name = "OmsOrderReturnReasonController", description = "退货原因管理")
 @RequestMapping("/returnReason")
 public class OmsOrderReturnReasonController {
     @Autowired

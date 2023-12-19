@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dto.PmsBrandParam;
 import com.macro.mall.mapper.PmsBrandMapper;
@@ -12,7 +13,6 @@ import com.macro.mall.service.PmsBrandService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         //如果创建时首字母为空，取名称的第一个为首字母
-        if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
+        if (StrUtil.isEmpty(pmsBrand.getFirstLetter())) {
             pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
         return brandMapper.insertSelective(pmsBrand);
@@ -49,7 +49,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         pmsBrand.setId(id);
         //如果创建时首字母为空，取名称的第一个为首字母
-        if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
+        if (StrUtil.isEmpty(pmsBrand.getFirstLetter())) {
             pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
         //更新品牌时要更新商品中的品牌名称
@@ -74,13 +74,16 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
+    public List<PmsBrand> listBrand(String keyword, Integer showStatus, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
         pmsBrandExample.setOrderByClause("sort desc");
         PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
-        if (!StringUtils.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
             criteria.andNameLike("%" + keyword + "%");
+        }
+        if(showStatus!=null){
+            criteria.andShowStatusEqualTo(showStatus);
         }
         return brandMapper.selectByExample(pmsBrandExample);
     }

@@ -1,5 +1,6 @@
 package com.macro.mall.portal.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.UmsMemberLevelMapper;
 import com.macro.mall.mapper.UmsMemberMapper;
@@ -26,7 +27,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -186,7 +186,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     //对输入的验证码进行校验
     private boolean verifyAuthCode(String authCode, String telephone){
-        if(StringUtils.isEmpty(authCode)){
+        if(StrUtil.isEmpty(authCode)){
             return false;
         }
         String realAuthCode = memberCacheService.getAuthCode(telephone);

@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.dao.UmsRoleDao;
 import com.macro.mall.mapper.UmsRoleMapper;
@@ -10,7 +11,6 @@ import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -63,7 +63,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     public List<UmsRole> list(String keyword, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         UmsRoleExample example = new UmsRoleExample();
-        if (!StringUtils.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
             example.createCriteria().andNameLike("%" + keyword + "%");
         }
         return roleMapper.selectByExample(example);

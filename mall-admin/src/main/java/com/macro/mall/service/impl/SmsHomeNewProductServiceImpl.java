@@ -1,5 +1,6 @@
 package com.macro.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.macro.mall.mapper.SmsHomeNewProductMapper;
 import com.macro.mall.model.SmsHomeNewProduct;
@@ -7,7 +8,6 @@ import com.macro.mall.model.SmsHomeNewProductExample;
 import com.macro.mall.service.SmsHomeNewProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class SmsHomeNewProductServiceImpl implements SmsHomeNewProductService {
         PageHelper.startPage(pageNum,pageSize);
         SmsHomeNewProductExample example = new SmsHomeNewProductExample();
         SmsHomeNewProductExample.Criteria criteria = example.createCriteria();
-        if(!StringUtils.isEmpty(productName)){
+        if(!StrUtil.isEmpty(productName)){
             criteria.andProductNameLike("%"+productName+"%");
         }
         if(recommendStatus!=null){

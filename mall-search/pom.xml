@@ -21,6 +21,12 @@
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-data-redis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,7 +41,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>com.spotify</groupId>
+                <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
             </plugin>
         </plugins>

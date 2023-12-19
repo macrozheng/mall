@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://db:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://db:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: reader
     password: 123456
     druid:
@@ -36,6 +36,10 @@ spring:
     username: mall
     password: mall
 
+mongo:
+  insert:
+    sqlEnable: true # 用于控制是否通过数据库数据来插入mongo
+
 logging:
   file:
     path: /var/logs
@@ -45,4 +49,12 @@ logging:
 
 logstash:
   host: logstash
+
+alipay:
+  gatewayUrl: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  appId: your appId
+  alipayPublicKey: your alipayPublicKey
+  appPrivateKey: your appPrivateKey
+  returnUrl: http://192.168.3.101:8060/#/pages/money/paySuccess
+  notifyUrl:
 
