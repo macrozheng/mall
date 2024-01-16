@@ -204,57 +204,57 @@
 
     <build>
         <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>io.fabric8</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>${docker.maven.plugin.version}</version>
-                        <executions>
-                            <!--如果想在项目打包时构建镜像添加-->
-                            <execution>
-                                <id>build-image</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    <configuration>
-                        <!-- Docker 远程管理地址-->
-                        <dockerHost>${docker.host}</dockerHost>
-                        <images>
-                            <image>
-                                <!--定义镜像名称-->
-                                <name>mall/${project.name}:${project.version}</name>
-                                <!--定义镜像构建行为-->
-                                <build>
-                                    <!--定义基础镜像-->
-                                    <from>openjdk:8</from>
-                                    <args>
-                                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                                    </args>
-                                    <!--定义哪些文件拷贝到容器中-->
-                                    <assembly>
-                                        <!--定义拷贝到容器的目录-->
-                                        <targetDir>/</targetDir>
-                                        <!--只拷贝生成的jar包-->
-                                        <descriptorRef>artifact</descriptorRef>
-                                    </assembly>
-                                    <!--定义容器启动命令-->
-                                    <entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>
-                                    <!--定义维护者-->
-                                    <maintainer>macrozheng</maintainer>
-                                </build>
-                            </image>
-                        </images>
-                    </configuration>
-                </plugin>
+<!--            <plugins>-->
+<!--                <plugin>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                </plugin>-->
+<!--                <plugin>-->
+<!--                    <groupId>io.fabric8</groupId>-->
+<!--                    <artifactId>docker-maven-plugin</artifactId>-->
+<!--                    <version>${docker.maven.plugin.version}</version>-->
+<!--                        <executions>-->
+<!--                            &lt;!&ndash;如果想在项目打包时构建镜像添加&ndash;&gt;-->
+<!--                            <execution>-->
+<!--                                <id>build-image</id>-->
+<!--                                <phase>package</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>build</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    <configuration>-->
+<!--                        &lt;!&ndash; Docker 远程管理地址&ndash;&gt;-->
+<!--                        <dockerHost>${docker.host}</dockerHost>-->
+<!--                        <images>-->
+<!--                            <image>-->
+<!--                                &lt;!&ndash;定义镜像名称&ndash;&gt;-->
+<!--                                <name>mall/${project.name}:${project.version}</name>-->
+<!--                                &lt;!&ndash;定义镜像构建行为&ndash;&gt;-->
+<!--                                <build>-->
+<!--                                    &lt;!&ndash;定义基础镜像&ndash;&gt;-->
+<!--                                    <from>openjdk:8</from>-->
+<!--                                    <args>-->
+<!--                                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>-->
+<!--                                    </args>-->
+<!--                                    &lt;!&ndash;定义哪些文件拷贝到容器中&ndash;&gt;-->
+<!--                                    <assembly>-->
+<!--                                        &lt;!&ndash;定义拷贝到容器的目录&ndash;&gt;-->
+<!--                                        <targetDir>/</targetDir>-->
+<!--                                        &lt;!&ndash;只拷贝生成的jar包&ndash;&gt;-->
+<!--                                        <descriptorRef>artifact</descriptorRef>-->
+<!--                                    </assembly>-->
+<!--                                    &lt;!&ndash;定义容器启动命令&ndash;&gt;-->
+<!--                                    <entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
+<!--                                    &lt;!&ndash;定义维护者&ndash;&gt;-->
+<!--                                    <maintainer>macrozheng</maintainer>-->
+<!--                                </build>-->
+<!--                            </image>-->
+<!--                        </images>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
 
-            </plugins>
+<!--            </plugins>-->
         </pluginManagement>
     </build>
 
