@@ -2,7 +2,7 @@ spring:
   application:
     name: mall-portal
   profiles:
-    active: dev #默认为开发环境
+    active: prod #默认为开发环境
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
