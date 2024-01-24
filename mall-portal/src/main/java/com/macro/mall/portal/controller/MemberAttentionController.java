@@ -47,7 +47,7 @@ public class MemberAttentionController {
         }
     }
 
-    @ApiOperation("显示当前用户品牌关注列表")
+    @ApiOperation("分页查询当前用户品牌关注列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
