@@ -5,11 +5,11 @@ package com.macro.mall.common.api;
  * Created by macro on 2019/4/19.
  */
 public enum ResultCode implements IErrorCode {
-    SUCCESS(200, "操作成功"),
-    FAILED(500, "操作失败"),
-    VALIDATE_FAILED(404, "参数检验失败"),
-    UNAUTHORIZED(401, "暂未登录或token已经过期"),
-    FORBIDDEN(403, "没有相关权限");
+    SUCCESS(200, "Success"),
+    FAILED(500, "Failed"),
+    VALIDATE_FAILED(404, "Validation failed"),
+    UNAUTHORIZED(401, "Unauthorized"),
+    FORBIDDEN(403, "Forbidden");
     private long code;
     private String message;
 
