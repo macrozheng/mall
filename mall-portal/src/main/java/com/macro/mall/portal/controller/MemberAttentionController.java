@@ -56,7 +56,7 @@ public class MemberAttentionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @ApiOperation("显示品牌关注详情")
+    @ApiOperation("根据品牌ID获取品牌关注详情")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {
