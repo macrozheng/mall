@@ -1,7 +1,6 @@
 package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -36,7 +35,6 @@ public class PmsBrand implements Serializable {
     private String brandStory;
 
     @ApiModelProperty(value = "今日销量")
-    @Setter
     private Long todaySales;
 
     private static final long serialVersionUID = 1L;
@@ -129,6 +127,14 @@ public class PmsBrand implements Serializable {
         this.brandStory = brandStory;
     }
 
+    public Long getTodaySales() {
+        return todaySales;
+    }
+
+    public void setTodaySales(Long todaySales) {
+        this.todaySales = todaySales;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -146,6 +152,7 @@ public class PmsBrand implements Serializable {
         sb.append(", logo=").append(logo);
         sb.append(", bigPic=").append(bigPic);
         sb.append(", brandStory=").append(brandStory);
+        sb.append(", todaySales=").append(todaySales);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
