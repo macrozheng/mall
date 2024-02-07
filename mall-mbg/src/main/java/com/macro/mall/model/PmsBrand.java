@@ -127,13 +127,13 @@ public class PmsBrand implements Serializable {
         this.brandStory = brandStory;
     }
 
-    public Long getTodaySales() {
-        return todaySales;
-    }
-
-    public void setTodaySales(Long todaySales) {
-        this.todaySales = todaySales;
-    }
+//    public Long getTodaySales() {
+//        return todaySales;
+//    }
+//
+//    public void setTodaySales(Long todaySales) {
+//        this.todaySales = todaySales;
+//    }
 
     @Override
     public String toString() {
