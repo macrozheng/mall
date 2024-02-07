@@ -41,7 +41,7 @@ public class PmsPortalBrandController {
     @ResponseBody
     public CommonResult<PmsBrand> detail(@PathVariable Long brandId) {
         PmsBrand brand = portalBrandService.detail(brandId);
-        //brand.setTodaySales(1092L);
+        brand.setTodaySales(1092L);
         return CommonResult.success(brand);
     }
 

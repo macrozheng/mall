@@ -265,12 +265,12 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         OmsOrderDetail orderDetail = portalOrderDao.getDetail(orderId);
         int count = portalOrderDao.updateSkuStock(orderDetail.getOrderItemList());
         // 今日日期
-//        String today = DateUtil.format(new Date(), "yyyy-MM-dd");
-//
-//        orderDetail.getOrderItemList().forEach(omsOrderItem -> {
-//          String key = String.format(RedisConstant.BRAND_SALES_KEY, today, omsOrderItem.getProductBrand());
-//            redisService.incr(key, omsOrderItem.getProductQuantity().longValue());
-//        });
+        String today = DateUtil.format(new Date(), "yyyy-MM-dd");
+
+        orderDetail.getOrderItemList().forEach(omsOrderItem -> {
+          String key = String.format(RedisConstant.BRAND_SALES_KEY, today, omsOrderItem.getProductBrand());
+            redisService.incr(key, omsOrderItem.getProductQuantity().longValue());
+        });
         return count;
     }
 

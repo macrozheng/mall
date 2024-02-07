@@ -42,9 +42,9 @@ public class PmsPortalBrandServiceImpl implements PmsPortalBrandService {
     @Override
     public PmsBrand detail(Long brandId) {
       PmsBrand brand = brandMapper.selectByPrimaryKey(brandId);
-//      String today = DateUtil.format(new Date(), "yyyy-MM-dd");
-//      brand.setTodaySales((Long) redisService.get(String.format(RedisConstant.BRAND_SALES_KEY, today,
-//        brand.getName())));
+      String today = DateUtil.format(new Date(), "yyyy-MM-dd");
+      brand.setTodaySales((Long) redisService.get(String.format(RedisConstant.BRAND_SALES_KEY, today,
+        brand.getName())));
       return  brand;
     }
 
