@@ -22,7 +22,7 @@ public interface PmsProductService {
     int create(PmsProductParam productParam);
 
     /**
-     * 根据商品编号获取更新信息
+     * 根据商品ID获取商品信息（用于更新商品）
      */
     PmsProductResult getUpdateInfo(Long id);
 
