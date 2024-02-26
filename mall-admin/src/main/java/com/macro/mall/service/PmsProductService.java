@@ -39,7 +39,7 @@ public interface PmsProductService {
 
     /**
      * 批量修改审核状态
-     * @param ids 产品id
+     * @param ids 商品ID列表
      * @param verifyStatus 审核状态
      * @param detail 审核详情
      */
