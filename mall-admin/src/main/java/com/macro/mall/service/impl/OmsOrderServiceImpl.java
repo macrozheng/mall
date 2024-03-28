@@ -10,6 +10,7 @@ import com.macro.mall.model.OmsOrder;
 import com.macro.mall.model.OmsOrderExample;
 import com.macro.mall.model.OmsOrderOperateHistory;
 import com.macro.mall.service.OmsOrderService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,15 +45,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         int count = orderDao.delivery(deliveryParamList);
         //添加操作记录
         List<OmsOrderOperateHistory> operateHistoryList = deliveryParamList.stream()
-                .map(omsOrderDeliveryParam -> {
-                    OmsOrderOperateHistory history = new OmsOrderOperateHistory();
-                    history.setOrderId(omsOrderDeliveryParam.getOrderId());
-                    history.setCreateTime(new Date());
-                    history.setOperateMan("后台管理员");
-                    history.setOrderStatus(2);
-                    history.setNote("完成发货");
-                    return history;
-                }).collect(Collectors.toList());
+                .map(omsOrderDeliveryParam -> getOmsOrderOperateHistory(omsOrderDeliveryParam.getOrderId(), 2, "完成发货")).collect(Collectors.toList());
         orderOperateHistoryDao.insertList(operateHistoryList);
         return count;
     }
@@ -64,15 +57,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         OmsOrderExample example = new OmsOrderExample();
         example.createCriteria().andDeleteStatusEqualTo(0).andIdIn(ids);
         int count = orderMapper.updateByExampleSelective(record, example);
-        List<OmsOrderOperateHistory> historyList = ids.stream().map(orderId -> {
-            OmsOrderOperateHistory history = new OmsOrderOperateHistory();
-            history.setOrderId(orderId);
-            history.setCreateTime(new Date());
-            history.setOperateMan("后台管理员");
-            history.setOrderStatus(4);
-            history.setNote("订单关闭:"+note);
-            return history;
-        }).collect(Collectors.toList());
+        List<OmsOrderOperateHistory> historyList = ids.stream().map(orderId -> getOmsOrderOperateHistory(orderId, 4, "订单关闭:" + note)).collect(Collectors.toList());
         orderOperateHistoryDao.insertList(historyList);
         return count;
     }
@@ -105,12 +90,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         order.setModifyTime(new Date());
         int count = orderMapper.updateByPrimaryKeySelective(order);
         //插入操作记录
-        OmsOrderOperateHistory history = new OmsOrderOperateHistory();
-        history.setOrderId(receiverInfoParam.getOrderId());
-        history.setCreateTime(new Date());
-        history.setOperateMan("后台管理员");
-        history.setOrderStatus(receiverInfoParam.getStatus());
-        history.setNote("修改收货人信息");
+        OmsOrderOperateHistory history = getOmsOrderOperateHistory(receiverInfoParam.getOrderId(), receiverInfoParam.getStatus(), "修改收货人信息");
         orderOperateHistoryMapper.insert(history);
         return count;
     }
@@ -124,12 +104,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         order.setModifyTime(new Date());
         int count = orderMapper.updateByPrimaryKeySelective(order);
         //插入操作记录
-        OmsOrderOperateHistory history = new OmsOrderOperateHistory();
-        history.setOrderId(moneyInfoParam.getOrderId());
-        history.setCreateTime(new Date());
-        history.setOperateMan("后台管理员");
-        history.setOrderStatus(moneyInfoParam.getStatus());
-        history.setNote("修改费用信息");
+        OmsOrderOperateHistory history = getOmsOrderOperateHistory(moneyInfoParam.getOrderId(), moneyInfoParam.getStatus(), "修改费用信息");
         orderOperateHistoryMapper.insert(history);
         return count;
     }
@@ -141,13 +116,19 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         order.setNote(note);
         order.setModifyTime(new Date());
         int count = orderMapper.updateByPrimaryKeySelective(order);
+        OmsOrderOperateHistory history = getOmsOrderOperateHistory(id, status, "修改备注信息：" + note);
+        orderOperateHistoryMapper.insert(history);
+        return count;
+    }
+
+    @NotNull
+    private static OmsOrderOperateHistory getOmsOrderOperateHistory(Long id, Integer status, String note) {
         OmsOrderOperateHistory history = new OmsOrderOperateHistory();
         history.setOrderId(id);
         history.setCreateTime(new Date());
         history.setOperateMan("后台管理员");
         history.setOrderStatus(status);
-        history.setNote("修改备注信息："+note);
-        orderOperateHistoryMapper.insert(history);
-        return count;
+        history.setNote(note);
+        return history;
     }
 }
