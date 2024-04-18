@@ -276,4 +276,12 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public UmsAdminCacheService getCacheService() {
         return SpringUtil.getBean(UmsAdminCacheService.class);
     }
+
+    @Override
+    public void logout(String username) {
+        //清空缓存中的用户相关数据
+        UmsAdmin admin = getCacheService().getAdmin(username);
+        getCacheService().delAdmin(admin.getId());
+        getCacheService().delResourceList(admin.getId());
+    }
 }
