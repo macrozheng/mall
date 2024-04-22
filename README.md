@@ -16,7 +16,7 @@
 > 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
 > 3. **视频教程（2023最新版）**：[《mall视频教程》](https://www.macrozheng.com/mall/catalog/mall_video.html) 。
 > 4. **微服务版本**：基于Spring Cloud Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
-> 5. **项目交流**：想要加群交流项目的朋友，可以加入[mall项目交流群](#公众号) 。
+> 5. **分支说明**：`master`分支基于Spring Boot 2.7+JDK 8，`dev-v3`分支基于Spring Boot 3.2+JDK 17。
 
 ## 前言
 
