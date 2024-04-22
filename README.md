@@ -50,7 +50,7 @@
 
 ### 组织结构
 
-``` lua
+```
 mall
 ├── mall-common -- 工具类及通用代码
 ├── mall-mbg -- MyBatisGenerator生成的数据库操作代码
@@ -87,7 +87,7 @@ mall
 | Lombok               | Java语言增强库      | https://github.com/rzwitserloot/lombok         |
 | Hutool               | Java工具类库        | https://github.com/looly/hutool                |
 | PageHelper           | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper |
-| Swagger-UI           | API文档生成工具      | https://github.com/swagger-api/swagger-ui      |
+| SpringDoc            | API文档生成工具      | https://github.com/springdoc/springdoc-openapi |
 | Hibernator-Validator | 验证框架            | http://hibernate.org/validator                 |
 
 #### 前端技术
@@ -167,7 +167,7 @@ mall
 
 | 工具          | 版本号 | 下载                                                         |
 | ------------- | ------ | ------------------------------------------------------------ |
-| JDK           | 1.8    | https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html |
+| JDK           | 17     | https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html |
 | MySQL         | 5.7    | https://www.mysql.com/                                       |
 | Redis         | 7.0    | https://redis.io/download                                    |
 | MongoDB       | 5.0    | https://www.mongodb.com/download-center                      |

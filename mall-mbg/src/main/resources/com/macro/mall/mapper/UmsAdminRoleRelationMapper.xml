@@ -135,26 +135,26 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_admin_role_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.adminId != null">
-        admin_id = #{record.adminId,jdbcType=BIGINT},
+      <if test="row.adminId != null">
+        admin_id = #{row.adminId,jdbcType=BIGINT},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+      <if test="row.roleId != null">
+        role_id = #{row.roleId,jdbcType=BIGINT},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_admin_role_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      admin_id = #{record.adminId,jdbcType=BIGINT},
-      role_id = #{record.roleId,jdbcType=BIGINT}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      admin_id = #{row.adminId,jdbcType=BIGINT},
+      role_id = #{row.roleId,jdbcType=BIGINT}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

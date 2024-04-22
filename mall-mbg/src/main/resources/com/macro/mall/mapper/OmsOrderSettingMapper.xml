@@ -161,38 +161,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_order_setting
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.flashOrderOvertime != null">
-        flash_order_overtime = #{record.flashOrderOvertime,jdbcType=INTEGER},
+      <if test="row.flashOrderOvertime != null">
+        flash_order_overtime = #{row.flashOrderOvertime,jdbcType=INTEGER},
       </if>
-      <if test="record.normalOrderOvertime != null">
-        normal_order_overtime = #{record.normalOrderOvertime,jdbcType=INTEGER},
+      <if test="row.normalOrderOvertime != null">
+        normal_order_overtime = #{row.normalOrderOvertime,jdbcType=INTEGER},
       </if>
-      <if test="record.confirmOvertime != null">
-        confirm_overtime = #{record.confirmOvertime,jdbcType=INTEGER},
+      <if test="row.confirmOvertime != null">
+        confirm_overtime = #{row.confirmOvertime,jdbcType=INTEGER},
       </if>
-      <if test="record.finishOvertime != null">
-        finish_overtime = #{record.finishOvertime,jdbcType=INTEGER},
+      <if test="row.finishOvertime != null">
+        finish_overtime = #{row.finishOvertime,jdbcType=INTEGER},
       </if>
-      <if test="record.commentOvertime != null">
-        comment_overtime = #{record.commentOvertime,jdbcType=INTEGER},
+      <if test="row.commentOvertime != null">
+        comment_overtime = #{row.commentOvertime,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_order_setting
-    set id = #{record.id,jdbcType=BIGINT},
-      flash_order_overtime = #{record.flashOrderOvertime,jdbcType=INTEGER},
-      normal_order_overtime = #{record.normalOrderOvertime,jdbcType=INTEGER},
-      confirm_overtime = #{record.confirmOvertime,jdbcType=INTEGER},
-      finish_overtime = #{record.finishOvertime,jdbcType=INTEGER},
-      comment_overtime = #{record.commentOvertime,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      flash_order_overtime = #{row.flashOrderOvertime,jdbcType=INTEGER},
+      normal_order_overtime = #{row.normalOrderOvertime,jdbcType=INTEGER},
+      confirm_overtime = #{row.confirmOvertime,jdbcType=INTEGER},
+      finish_overtime = #{row.finishOvertime,jdbcType=INTEGER},
+      comment_overtime = #{row.commentOvertime,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

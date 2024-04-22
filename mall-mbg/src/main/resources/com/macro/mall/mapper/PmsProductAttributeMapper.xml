@@ -207,62 +207,62 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_attribute
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productAttributeCategoryId != null">
-        product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+      <if test="row.productAttributeCategoryId != null">
+        product_attribute_category_id = #{row.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.selectType != null">
-        select_type = #{record.selectType,jdbcType=INTEGER},
+      <if test="row.selectType != null">
+        select_type = #{row.selectType,jdbcType=INTEGER},
       </if>
-      <if test="record.inputType != null">
-        input_type = #{record.inputType,jdbcType=INTEGER},
+      <if test="row.inputType != null">
+        input_type = #{row.inputType,jdbcType=INTEGER},
       </if>
-      <if test="record.inputList != null">
-        input_list = #{record.inputList,jdbcType=VARCHAR},
+      <if test="row.inputList != null">
+        input_list = #{row.inputList,jdbcType=VARCHAR},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
-      <if test="record.filterType != null">
-        filter_type = #{record.filterType,jdbcType=INTEGER},
+      <if test="row.filterType != null">
+        filter_type = #{row.filterType,jdbcType=INTEGER},
       </if>
-      <if test="record.searchType != null">
-        search_type = #{record.searchType,jdbcType=INTEGER},
+      <if test="row.searchType != null">
+        search_type = #{row.searchType,jdbcType=INTEGER},
       </if>
-      <if test="record.relatedStatus != null">
-        related_status = #{record.relatedStatus,jdbcType=INTEGER},
+      <if test="row.relatedStatus != null">
+        related_status = #{row.relatedStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.handAddStatus != null">
-        hand_add_status = #{record.handAddStatus,jdbcType=INTEGER},
+      <if test="row.handAddStatus != null">
+        hand_add_status = #{row.handAddStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_attribute
-    set id = #{record.id,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      select_type = #{record.selectType,jdbcType=INTEGER},
-      input_type = #{record.inputType,jdbcType=INTEGER},
-      input_list = #{record.inputList,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER},
-      filter_type = #{record.filterType,jdbcType=INTEGER},
-      search_type = #{record.searchType,jdbcType=INTEGER},
-      related_status = #{record.relatedStatus,jdbcType=INTEGER},
-      hand_add_status = #{record.handAddStatus,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_attribute_category_id = #{row.productAttributeCategoryId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      select_type = #{row.selectType,jdbcType=INTEGER},
+      input_type = #{row.inputType,jdbcType=INTEGER},
+      input_list = #{row.inputList,jdbcType=VARCHAR},
+      sort = #{row.sort,jdbcType=INTEGER},
+      filter_type = #{row.filterType,jdbcType=INTEGER},
+      search_type = #{row.searchType,jdbcType=INTEGER},
+      related_status = #{row.relatedStatus,jdbcType=INTEGER},
+      hand_add_status = #{row.handAddStatus,jdbcType=INTEGER},
+      type = #{row.type,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

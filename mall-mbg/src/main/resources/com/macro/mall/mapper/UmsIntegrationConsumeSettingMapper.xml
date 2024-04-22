@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_integration_consume_setting
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.deductionPerAmount != null">
-        deduction_per_amount = #{record.deductionPerAmount,jdbcType=INTEGER},
+      <if test="row.deductionPerAmount != null">
+        deduction_per_amount = #{row.deductionPerAmount,jdbcType=INTEGER},
       </if>
-      <if test="record.maxPercentPerOrder != null">
-        max_percent_per_order = #{record.maxPercentPerOrder,jdbcType=INTEGER},
+      <if test="row.maxPercentPerOrder != null">
+        max_percent_per_order = #{row.maxPercentPerOrder,jdbcType=INTEGER},
       </if>
-      <if test="record.useUnit != null">
-        use_unit = #{record.useUnit,jdbcType=INTEGER},
+      <if test="row.useUnit != null">
+        use_unit = #{row.useUnit,jdbcType=INTEGER},
       </if>
-      <if test="record.couponStatus != null">
-        coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      <if test="row.couponStatus != null">
+        coupon_status = #{row.couponStatus,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_integration_consume_setting
-    set id = #{record.id,jdbcType=BIGINT},
-      deduction_per_amount = #{record.deductionPerAmount,jdbcType=INTEGER},
-      max_percent_per_order = #{record.maxPercentPerOrder,jdbcType=INTEGER},
-      use_unit = #{record.useUnit,jdbcType=INTEGER},
-      coupon_status = #{record.couponStatus,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      deduction_per_amount = #{row.deductionPerAmount,jdbcType=INTEGER},
+      max_percent_per_order = #{row.maxPercentPerOrder,jdbcType=INTEGER},
+      use_unit = #{row.useUnit,jdbcType=INTEGER},
+      coupon_status = #{row.couponStatus,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

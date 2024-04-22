@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_home_recommend_subject
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.subjectId != null">
-        subject_id = #{record.subjectId,jdbcType=BIGINT},
+      <if test="row.subjectId != null">
+        subject_id = #{row.subjectId,jdbcType=BIGINT},
       </if>
-      <if test="record.subjectName != null">
-        subject_name = #{record.subjectName,jdbcType=VARCHAR},
+      <if test="row.subjectName != null">
+        subject_name = #{row.subjectName,jdbcType=VARCHAR},
       </if>
-      <if test="record.recommendStatus != null">
-        recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
+      <if test="row.recommendStatus != null">
+        recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_home_recommend_subject
-    set id = #{record.id,jdbcType=BIGINT},
-      subject_id = #{record.subjectId,jdbcType=BIGINT},
-      subject_name = #{record.subjectName,jdbcType=VARCHAR},
-      recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      subject_id = #{row.subjectId,jdbcType=BIGINT},
+      subject_name = #{row.subjectName,jdbcType=VARCHAR},
+      recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

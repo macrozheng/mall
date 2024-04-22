@@ -165,46 +165,46 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_member_report
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.reportType != null">
-        report_type = #{record.reportType,jdbcType=INTEGER},
+      <if test="row.reportType != null">
+        report_type = #{row.reportType,jdbcType=INTEGER},
       </if>
-      <if test="record.reportMemberName != null">
-        report_member_name = #{record.reportMemberName,jdbcType=VARCHAR},
+      <if test="row.reportMemberName != null">
+        report_member_name = #{row.reportMemberName,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.reportObject != null">
-        report_object = #{record.reportObject,jdbcType=VARCHAR},
+      <if test="row.reportObject != null">
+        report_object = #{row.reportObject,jdbcType=VARCHAR},
       </if>
-      <if test="record.reportStatus != null">
-        report_status = #{record.reportStatus,jdbcType=INTEGER},
+      <if test="row.reportStatus != null">
+        report_status = #{row.reportStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.handleStatus != null">
-        handle_status = #{record.handleStatus,jdbcType=INTEGER},
+      <if test="row.handleStatus != null">
+        handle_status = #{row.handleStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_member_report
-    set id = #{record.id,jdbcType=BIGINT},
-      report_type = #{record.reportType,jdbcType=INTEGER},
-      report_member_name = #{record.reportMemberName,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      report_object = #{record.reportObject,jdbcType=VARCHAR},
-      report_status = #{record.reportStatus,jdbcType=INTEGER},
-      handle_status = #{record.handleStatus,jdbcType=INTEGER},
-      note = #{record.note,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      report_type = #{row.reportType,jdbcType=INTEGER},
+      report_member_name = #{row.reportMemberName,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      report_object = #{row.reportObject,jdbcType=VARCHAR},
+      report_status = #{row.reportStatus,jdbcType=INTEGER},
+      handle_status = #{row.handleStatus,jdbcType=INTEGER},
+      note = #{row.note,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

@@ -456,190 +456,190 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_order
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.couponId != null">
-        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      <if test="row.couponId != null">
+        coupon_id = #{row.couponId,jdbcType=BIGINT},
       </if>
-      <if test="record.orderSn != null">
-        order_sn = #{record.orderSn,jdbcType=VARCHAR},
+      <if test="row.orderSn != null">
+        order_sn = #{row.orderSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.memberUsername != null">
-        member_username = #{record.memberUsername,jdbcType=VARCHAR},
+      <if test="row.memberUsername != null">
+        member_username = #{row.memberUsername,jdbcType=VARCHAR},
       </if>
-      <if test="record.totalAmount != null">
-        total_amount = #{record.totalAmount,jdbcType=DECIMAL},
+      <if test="row.totalAmount != null">
+        total_amount = #{row.totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.payAmount != null">
-        pay_amount = #{record.payAmount,jdbcType=DECIMAL},
+      <if test="row.payAmount != null">
+        pay_amount = #{row.payAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.freightAmount != null">
-        freight_amount = #{record.freightAmount,jdbcType=DECIMAL},
+      <if test="row.freightAmount != null">
+        freight_amount = #{row.freightAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.promotionAmount != null">
-        promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
+      <if test="row.promotionAmount != null">
+        promotion_amount = #{row.promotionAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.integrationAmount != null">
-        integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
+      <if test="row.integrationAmount != null">
+        integration_amount = #{row.integrationAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.couponAmount != null">
-        coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      <if test="row.couponAmount != null">
+        coupon_amount = #{row.couponAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.discountAmount != null">
-        discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
+      <if test="row.discountAmount != null">
+        discount_amount = #{row.discountAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.payType != null">
-        pay_type = #{record.payType,jdbcType=INTEGER},
+      <if test="row.payType != null">
+        pay_type = #{row.payType,jdbcType=INTEGER},
       </if>
-      <if test="record.sourceType != null">
-        source_type = #{record.sourceType,jdbcType=INTEGER},
+      <if test="row.sourceType != null">
+        source_type = #{row.sourceType,jdbcType=INTEGER},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=INTEGER},
       </if>
-      <if test="record.orderType != null">
-        order_type = #{record.orderType,jdbcType=INTEGER},
+      <if test="row.orderType != null">
+        order_type = #{row.orderType,jdbcType=INTEGER},
       </if>
-      <if test="record.deliveryCompany != null">
-        delivery_company = #{record.deliveryCompany,jdbcType=VARCHAR},
+      <if test="row.deliveryCompany != null">
+        delivery_company = #{row.deliveryCompany,jdbcType=VARCHAR},
       </if>
-      <if test="record.deliverySn != null">
-        delivery_sn = #{record.deliverySn,jdbcType=VARCHAR},
+      <if test="row.deliverySn != null">
+        delivery_sn = #{row.deliverySn,jdbcType=VARCHAR},
       </if>
-      <if test="record.autoConfirmDay != null">
-        auto_confirm_day = #{record.autoConfirmDay,jdbcType=INTEGER},
+      <if test="row.autoConfirmDay != null">
+        auto_confirm_day = #{row.autoConfirmDay,jdbcType=INTEGER},
       </if>
-      <if test="record.integration != null">
-        integration = #{record.integration,jdbcType=INTEGER},
+      <if test="row.integration != null">
+        integration = #{row.integration,jdbcType=INTEGER},
       </if>
-      <if test="record.growth != null">
-        growth = #{record.growth,jdbcType=INTEGER},
+      <if test="row.growth != null">
+        growth = #{row.growth,jdbcType=INTEGER},
       </if>
-      <if test="record.promotionInfo != null">
-        promotion_info = #{record.promotionInfo,jdbcType=VARCHAR},
+      <if test="row.promotionInfo != null">
+        promotion_info = #{row.promotionInfo,jdbcType=VARCHAR},
       </if>
-      <if test="record.billType != null">
-        bill_type = #{record.billType,jdbcType=INTEGER},
+      <if test="row.billType != null">
+        bill_type = #{row.billType,jdbcType=INTEGER},
       </if>
-      <if test="record.billHeader != null">
-        bill_header = #{record.billHeader,jdbcType=VARCHAR},
+      <if test="row.billHeader != null">
+        bill_header = #{row.billHeader,jdbcType=VARCHAR},
       </if>
-      <if test="record.billContent != null">
-        bill_content = #{record.billContent,jdbcType=VARCHAR},
+      <if test="row.billContent != null">
+        bill_content = #{row.billContent,jdbcType=VARCHAR},
       </if>
-      <if test="record.billReceiverPhone != null">
-        bill_receiver_phone = #{record.billReceiverPhone,jdbcType=VARCHAR},
+      <if test="row.billReceiverPhone != null">
+        bill_receiver_phone = #{row.billReceiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.billReceiverEmail != null">
-        bill_receiver_email = #{record.billReceiverEmail,jdbcType=VARCHAR},
+      <if test="row.billReceiverEmail != null">
+        bill_receiver_email = #{row.billReceiverEmail,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverName != null">
-        receiver_name = #{record.receiverName,jdbcType=VARCHAR},
+      <if test="row.receiverName != null">
+        receiver_name = #{row.receiverName,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverPhone != null">
-        receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
+      <if test="row.receiverPhone != null">
+        receiver_phone = #{row.receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverPostCode != null">
-        receiver_post_code = #{record.receiverPostCode,jdbcType=VARCHAR},
+      <if test="row.receiverPostCode != null">
+        receiver_post_code = #{row.receiverPostCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverProvince != null">
-        receiver_province = #{record.receiverProvince,jdbcType=VARCHAR},
+      <if test="row.receiverProvince != null">
+        receiver_province = #{row.receiverProvince,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverCity != null">
-        receiver_city = #{record.receiverCity,jdbcType=VARCHAR},
+      <if test="row.receiverCity != null">
+        receiver_city = #{row.receiverCity,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverRegion != null">
-        receiver_region = #{record.receiverRegion,jdbcType=VARCHAR},
+      <if test="row.receiverRegion != null">
+        receiver_region = #{row.receiverRegion,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiverDetailAddress != null">
-        receiver_detail_address = #{record.receiverDetailAddress,jdbcType=VARCHAR},
+      <if test="row.receiverDetailAddress != null">
+        receiver_detail_address = #{row.receiverDetailAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.confirmStatus != null">
-        confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
+      <if test="row.confirmStatus != null">
+        confirm_status = #{row.confirmStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      <if test="row.deleteStatus != null">
+        delete_status = #{row.deleteStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.useIntegration != null">
-        use_integration = #{record.useIntegration,jdbcType=INTEGER},
+      <if test="row.useIntegration != null">
+        use_integration = #{row.useIntegration,jdbcType=INTEGER},
       </if>
-      <if test="record.paymentTime != null">
-        payment_time = #{record.paymentTime,jdbcType=TIMESTAMP},
+      <if test="row.paymentTime != null">
+        payment_time = #{row.paymentTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.deliveryTime != null">
-        delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      <if test="row.deliveryTime != null">
+        delivery_time = #{row.deliveryTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.receiveTime != null">
-        receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      <if test="row.receiveTime != null">
+        receive_time = #{row.receiveTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.commentTime != null">
-        comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      <if test="row.commentTime != null">
+        comment_time = #{row.commentTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifyTime != null">
-        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      <if test="row.modifyTime != null">
+        modify_time = #{row.modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_order
-    set id = #{record.id,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      coupon_id = #{record.couponId,jdbcType=BIGINT},
-      order_sn = #{record.orderSn,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      member_username = #{record.memberUsername,jdbcType=VARCHAR},
-      total_amount = #{record.totalAmount,jdbcType=DECIMAL},
-      pay_amount = #{record.payAmount,jdbcType=DECIMAL},
-      freight_amount = #{record.freightAmount,jdbcType=DECIMAL},
-      promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
-      integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
-      coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
-      discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
-      pay_type = #{record.payType,jdbcType=INTEGER},
-      source_type = #{record.sourceType,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER},
-      order_type = #{record.orderType,jdbcType=INTEGER},
-      delivery_company = #{record.deliveryCompany,jdbcType=VARCHAR},
-      delivery_sn = #{record.deliverySn,jdbcType=VARCHAR},
-      auto_confirm_day = #{record.autoConfirmDay,jdbcType=INTEGER},
-      integration = #{record.integration,jdbcType=INTEGER},
-      growth = #{record.growth,jdbcType=INTEGER},
-      promotion_info = #{record.promotionInfo,jdbcType=VARCHAR},
-      bill_type = #{record.billType,jdbcType=INTEGER},
-      bill_header = #{record.billHeader,jdbcType=VARCHAR},
-      bill_content = #{record.billContent,jdbcType=VARCHAR},
-      bill_receiver_phone = #{record.billReceiverPhone,jdbcType=VARCHAR},
-      bill_receiver_email = #{record.billReceiverEmail,jdbcType=VARCHAR},
-      receiver_name = #{record.receiverName,jdbcType=VARCHAR},
-      receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
-      receiver_post_code = #{record.receiverPostCode,jdbcType=VARCHAR},
-      receiver_province = #{record.receiverProvince,jdbcType=VARCHAR},
-      receiver_city = #{record.receiverCity,jdbcType=VARCHAR},
-      receiver_region = #{record.receiverRegion,jdbcType=VARCHAR},
-      receiver_detail_address = #{record.receiverDetailAddress,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      use_integration = #{record.useIntegration,jdbcType=INTEGER},
-      payment_time = #{record.paymentTime,jdbcType=TIMESTAMP},
-      delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
-      receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
-      comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
-      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      coupon_id = #{row.couponId,jdbcType=BIGINT},
+      order_sn = #{row.orderSn,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      member_username = #{row.memberUsername,jdbcType=VARCHAR},
+      total_amount = #{row.totalAmount,jdbcType=DECIMAL},
+      pay_amount = #{row.payAmount,jdbcType=DECIMAL},
+      freight_amount = #{row.freightAmount,jdbcType=DECIMAL},
+      promotion_amount = #{row.promotionAmount,jdbcType=DECIMAL},
+      integration_amount = #{row.integrationAmount,jdbcType=DECIMAL},
+      coupon_amount = #{row.couponAmount,jdbcType=DECIMAL},
+      discount_amount = #{row.discountAmount,jdbcType=DECIMAL},
+      pay_type = #{row.payType,jdbcType=INTEGER},
+      source_type = #{row.sourceType,jdbcType=INTEGER},
+      status = #{row.status,jdbcType=INTEGER},
+      order_type = #{row.orderType,jdbcType=INTEGER},
+      delivery_company = #{row.deliveryCompany,jdbcType=VARCHAR},
+      delivery_sn = #{row.deliverySn,jdbcType=VARCHAR},
+      auto_confirm_day = #{row.autoConfirmDay,jdbcType=INTEGER},
+      integration = #{row.integration,jdbcType=INTEGER},
+      growth = #{row.growth,jdbcType=INTEGER},
+      promotion_info = #{row.promotionInfo,jdbcType=VARCHAR},
+      bill_type = #{row.billType,jdbcType=INTEGER},
+      bill_header = #{row.billHeader,jdbcType=VARCHAR},
+      bill_content = #{row.billContent,jdbcType=VARCHAR},
+      bill_receiver_phone = #{row.billReceiverPhone,jdbcType=VARCHAR},
+      bill_receiver_email = #{row.billReceiverEmail,jdbcType=VARCHAR},
+      receiver_name = #{row.receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{row.receiverPhone,jdbcType=VARCHAR},
+      receiver_post_code = #{row.receiverPostCode,jdbcType=VARCHAR},
+      receiver_province = #{row.receiverProvince,jdbcType=VARCHAR},
+      receiver_city = #{row.receiverCity,jdbcType=VARCHAR},
+      receiver_region = #{row.receiverRegion,jdbcType=VARCHAR},
+      receiver_detail_address = #{row.receiverDetailAddress,jdbcType=VARCHAR},
+      note = #{row.note,jdbcType=VARCHAR},
+      confirm_status = #{row.confirmStatus,jdbcType=INTEGER},
+      delete_status = #{row.deleteStatus,jdbcType=INTEGER},
+      use_integration = #{row.useIntegration,jdbcType=INTEGER},
+      payment_time = #{row.paymentTime,jdbcType=TIMESTAMP},
+      delivery_time = #{row.deliveryTime,jdbcType=TIMESTAMP},
+      receive_time = #{row.receiveTime,jdbcType=TIMESTAMP},
+      comment_time = #{row.commentTime,jdbcType=TIMESTAMP},
+      modify_time = #{row.modifyTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

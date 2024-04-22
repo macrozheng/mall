@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_task
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.growth != null">
-        growth = #{record.growth,jdbcType=INTEGER},
+      <if test="row.growth != null">
+        growth = #{row.growth,jdbcType=INTEGER},
       </if>
-      <if test="record.intergration != null">
-        intergration = #{record.intergration,jdbcType=INTEGER},
+      <if test="row.intergration != null">
+        intergration = #{row.intergration,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_task
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      growth = #{record.growth,jdbcType=INTEGER},
-      intergration = #{record.intergration,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      growth = #{row.growth,jdbcType=INTEGER},
+      intergration = #{row.intergration,jdbcType=INTEGER},
+      type = #{row.type,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

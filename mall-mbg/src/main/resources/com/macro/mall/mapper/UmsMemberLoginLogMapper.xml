@@ -167,42 +167,42 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_login_log
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
+      <if test="row.ip != null">
+        ip = #{row.ip,jdbcType=VARCHAR},
       </if>
-      <if test="record.city != null">
-        city = #{record.city,jdbcType=VARCHAR},
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginType != null">
-        login_type = #{record.loginType,jdbcType=INTEGER},
+      <if test="row.loginType != null">
+        login_type = #{row.loginType,jdbcType=INTEGER},
       </if>
-      <if test="record.province != null">
-        province = #{record.province,jdbcType=VARCHAR},
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_login_log
-    set id = #{record.id,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      city = #{record.city,jdbcType=VARCHAR},
-      login_type = #{record.loginType,jdbcType=INTEGER},
-      province = #{record.province,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      ip = #{row.ip,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      login_type = #{row.loginType,jdbcType=INTEGER},
+      province = #{row.province,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

@@ -1,6 +1,6 @@
 package com.macro.mall.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,10 +11,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode
 public class OssCallbackParam {
-    @ApiModelProperty("请求的回调地址")
+    @Schema(title = "请求的回调地址")
     private String callbackUrl;
-    @ApiModelProperty("回调是传入request中的参数")
+    @Schema(title = "回调是传入request中的参数")
     private String callbackBody;
-    @ApiModelProperty("回调时传入参数的格式，比如表单提交形式")
+    @Schema(title = "回调时传入参数的格式，比如表单提交形式")
     private String callbackBodyType;
 }

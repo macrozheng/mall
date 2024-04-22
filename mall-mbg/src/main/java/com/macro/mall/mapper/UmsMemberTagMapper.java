@@ -12,19 +12,19 @@ public interface UmsMemberTagMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(UmsMemberTag record);
+    int insert(UmsMemberTag row);
 
-    int insertSelective(UmsMemberTag record);
+    int insertSelective(UmsMemberTag row);
 
     List<UmsMemberTag> selectByExample(UmsMemberTagExample example);
 
     UmsMemberTag selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") UmsMemberTag record, @Param("example") UmsMemberTagExample example);
+    int updateByExampleSelective(@Param("row") UmsMemberTag row, @Param("example") UmsMemberTagExample example);
 
-    int updateByExample(@Param("record") UmsMemberTag record, @Param("example") UmsMemberTagExample example);
+    int updateByExample(@Param("row") UmsMemberTag row, @Param("example") UmsMemberTagExample example);
 
-    int updateByPrimaryKeySelective(UmsMemberTag record);
+    int updateByPrimaryKeySelective(UmsMemberTag row);
 
-    int updateByPrimaryKey(UmsMemberTag record);
+    int updateByPrimaryKey(UmsMemberTag row);
 }

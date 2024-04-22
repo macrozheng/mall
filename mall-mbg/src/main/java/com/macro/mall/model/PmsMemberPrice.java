@@ -1,6 +1,6 @@
 package com.macro.mall.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -11,7 +11,7 @@ public class PmsMemberPrice implements Serializable {
 
     private Long memberLevelId;
 
-    @ApiModelProperty(value = "会员价格")
+    @Schema(title = "会员价格")
     private BigDecimal memberPrice;
 
     private String memberLevelName;

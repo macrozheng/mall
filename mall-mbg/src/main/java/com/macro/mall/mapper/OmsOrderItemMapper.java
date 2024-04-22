@@ -12,19 +12,19 @@ public interface OmsOrderItemMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(OmsOrderItem record);
+    int insert(OmsOrderItem row);
 
-    int insertSelective(OmsOrderItem record);
+    int insertSelective(OmsOrderItem row);
 
     List<OmsOrderItem> selectByExample(OmsOrderItemExample example);
 
     OmsOrderItem selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") OmsOrderItem record, @Param("example") OmsOrderItemExample example);
+    int updateByExampleSelective(@Param("row") OmsOrderItem row, @Param("example") OmsOrderItemExample example);
 
-    int updateByExample(@Param("record") OmsOrderItem record, @Param("example") OmsOrderItemExample example);
+    int updateByExample(@Param("row") OmsOrderItem row, @Param("example") OmsOrderItemExample example);
 
-    int updateByPrimaryKeySelective(OmsOrderItem record);
+    int updateByPrimaryKeySelective(OmsOrderItem row);
 
-    int updateByPrimaryKey(OmsOrderItem record);
+    int updateByPrimaryKey(OmsOrderItem row);
 }

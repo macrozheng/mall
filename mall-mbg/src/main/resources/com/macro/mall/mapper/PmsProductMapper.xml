@@ -462,226 +462,226 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=BIGINT},
+      <if test="row.brandId != null">
+        brand_id = #{row.brandId,jdbcType=BIGINT},
       </if>
-      <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      <if test="row.productCategoryId != null">
+        product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.feightTemplateId != null">
-        feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
+      <if test="row.feightTemplateId != null">
+        feight_template_id = #{row.feightTemplateId,jdbcType=BIGINT},
       </if>
-      <if test="record.productAttributeCategoryId != null">
-        product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+      <if test="row.productAttributeCategoryId != null">
+        product_attribute_category_id = #{row.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.pic != null">
-        pic = #{record.pic,jdbcType=VARCHAR},
+      <if test="row.pic != null">
+        pic = #{row.pic,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSn != null">
-        product_sn = #{record.productSn,jdbcType=VARCHAR},
+      <if test="row.productSn != null">
+        product_sn = #{row.productSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      <if test="row.deleteStatus != null">
+        delete_status = #{row.deleteStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.publishStatus != null">
-        publish_status = #{record.publishStatus,jdbcType=INTEGER},
+      <if test="row.publishStatus != null">
+        publish_status = #{row.publishStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.newStatus != null">
-        new_status = #{record.newStatus,jdbcType=INTEGER},
+      <if test="row.newStatus != null">
+        new_status = #{row.newStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.recommandStatus != null">
-        recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
+      <if test="row.recommandStatus != null">
+        recommand_status = #{row.recommandStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.verifyStatus != null">
-        verify_status = #{record.verifyStatus,jdbcType=INTEGER},
+      <if test="row.verifyStatus != null">
+        verify_status = #{row.verifyStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
-      <if test="record.sale != null">
-        sale = #{record.sale,jdbcType=INTEGER},
+      <if test="row.sale != null">
+        sale = #{row.sale,jdbcType=INTEGER},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=DECIMAL},
+      <if test="row.price != null">
+        price = #{row.price,jdbcType=DECIMAL},
       </if>
-      <if test="record.promotionPrice != null">
-        promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
+      <if test="row.promotionPrice != null">
+        promotion_price = #{row.promotionPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.giftGrowth != null">
-        gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
+      <if test="row.giftGrowth != null">
+        gift_growth = #{row.giftGrowth,jdbcType=INTEGER},
       </if>
-      <if test="record.giftPoint != null">
-        gift_point = #{record.giftPoint,jdbcType=INTEGER},
+      <if test="row.giftPoint != null">
+        gift_point = #{row.giftPoint,jdbcType=INTEGER},
       </if>
-      <if test="record.usePointLimit != null">
-        use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
+      <if test="row.usePointLimit != null">
+        use_point_limit = #{row.usePointLimit,jdbcType=INTEGER},
       </if>
-      <if test="record.subTitle != null">
-        sub_title = #{record.subTitle,jdbcType=VARCHAR},
+      <if test="row.subTitle != null">
+        sub_title = #{row.subTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.originalPrice != null">
-        original_price = #{record.originalPrice,jdbcType=DECIMAL},
+      <if test="row.originalPrice != null">
+        original_price = #{row.originalPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.stock != null">
-        stock = #{record.stock,jdbcType=INTEGER},
+      <if test="row.stock != null">
+        stock = #{row.stock,jdbcType=INTEGER},
       </if>
-      <if test="record.lowStock != null">
-        low_stock = #{record.lowStock,jdbcType=INTEGER},
+      <if test="row.lowStock != null">
+        low_stock = #{row.lowStock,jdbcType=INTEGER},
       </if>
-      <if test="record.unit != null">
-        unit = #{record.unit,jdbcType=VARCHAR},
+      <if test="row.unit != null">
+        unit = #{row.unit,jdbcType=VARCHAR},
       </if>
-      <if test="record.weight != null">
-        weight = #{record.weight,jdbcType=DECIMAL},
+      <if test="row.weight != null">
+        weight = #{row.weight,jdbcType=DECIMAL},
       </if>
-      <if test="record.previewStatus != null">
-        preview_status = #{record.previewStatus,jdbcType=INTEGER},
+      <if test="row.previewStatus != null">
+        preview_status = #{row.previewStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.serviceIds != null">
-        service_ids = #{record.serviceIds,jdbcType=VARCHAR},
+      <if test="row.serviceIds != null">
+        service_ids = #{row.serviceIds,jdbcType=VARCHAR},
       </if>
-      <if test="record.keywords != null">
-        keywords = #{record.keywords,jdbcType=VARCHAR},
+      <if test="row.keywords != null">
+        keywords = #{row.keywords,jdbcType=VARCHAR},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.albumPics != null">
-        album_pics = #{record.albumPics,jdbcType=VARCHAR},
+      <if test="row.albumPics != null">
+        album_pics = #{row.albumPics,jdbcType=VARCHAR},
       </if>
-      <if test="record.detailTitle != null">
-        detail_title = #{record.detailTitle,jdbcType=VARCHAR},
+      <if test="row.detailTitle != null">
+        detail_title = #{row.detailTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.promotionStartTime != null">
-        promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
+      <if test="row.promotionStartTime != null">
+        promotion_start_time = #{row.promotionStartTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.promotionEndTime != null">
-        promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
+      <if test="row.promotionEndTime != null">
+        promotion_end_time = #{row.promotionEndTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.promotionPerLimit != null">
-        promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
+      <if test="row.promotionPerLimit != null">
+        promotion_per_limit = #{row.promotionPerLimit,jdbcType=INTEGER},
       </if>
-      <if test="record.promotionType != null">
-        promotion_type = #{record.promotionType,jdbcType=INTEGER},
+      <if test="row.promotionType != null">
+        promotion_type = #{row.promotionType,jdbcType=INTEGER},
       </if>
-      <if test="record.brandName != null">
-        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      <if test="row.brandName != null">
+        brand_name = #{row.brandName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productCategoryName != null">
-        product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+      <if test="row.productCategoryName != null">
+        product_category_name = #{row.productCategoryName,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=LONGVARCHAR},
       </if>
-      <if test="record.detailDesc != null">
-        detail_desc = #{record.detailDesc,jdbcType=LONGVARCHAR},
+      <if test="row.detailDesc != null">
+        detail_desc = #{row.detailDesc,jdbcType=LONGVARCHAR},
       </if>
-      <if test="record.detailHtml != null">
-        detail_html = #{record.detailHtml,jdbcType=LONGVARCHAR},
+      <if test="row.detailHtml != null">
+        detail_html = #{row.detailHtml,jdbcType=LONGVARCHAR},
       </if>
-      <if test="record.detailMobileHtml != null">
-        detail_mobile_html = #{record.detailMobileHtml,jdbcType=LONGVARCHAR},
+      <if test="row.detailMobileHtml != null">
+        detail_mobile_html = #{row.detailMobileHtml,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_product
-    set id = #{record.id,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      pic = #{record.pic,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      publish_status = #{record.publishStatus,jdbcType=INTEGER},
-      new_status = #{record.newStatus,jdbcType=INTEGER},
-      recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
-      verify_status = #{record.verifyStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      sale = #{record.sale,jdbcType=INTEGER},
-      price = #{record.price,jdbcType=DECIMAL},
-      promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
-      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
-      gift_point = #{record.giftPoint,jdbcType=INTEGER},
-      use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
-      sub_title = #{record.subTitle,jdbcType=VARCHAR},
-      original_price = #{record.originalPrice,jdbcType=DECIMAL},
-      stock = #{record.stock,jdbcType=INTEGER},
-      low_stock = #{record.lowStock,jdbcType=INTEGER},
-      unit = #{record.unit,jdbcType=VARCHAR},
-      weight = #{record.weight,jdbcType=DECIMAL},
-      preview_status = #{record.previewStatus,jdbcType=INTEGER},
-      service_ids = #{record.serviceIds,jdbcType=VARCHAR},
-      keywords = #{record.keywords,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
-      detail_title = #{record.detailTitle,jdbcType=VARCHAR},
-      promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
-      promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
-      promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{record.promotionType,jdbcType=INTEGER},
-      brand_name = #{record.brandName,jdbcType=VARCHAR},
-      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=LONGVARCHAR},
-      detail_desc = #{record.detailDesc,jdbcType=LONGVARCHAR},
-      detail_html = #{record.detailHtml,jdbcType=LONGVARCHAR},
-      detail_mobile_html = #{record.detailMobileHtml,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      brand_id = #{row.brandId,jdbcType=BIGINT},
+      product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
+      feight_template_id = #{row.feightTemplateId,jdbcType=BIGINT},
+      product_attribute_category_id = #{row.productAttributeCategoryId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      pic = #{row.pic,jdbcType=VARCHAR},
+      product_sn = #{row.productSn,jdbcType=VARCHAR},
+      delete_status = #{row.deleteStatus,jdbcType=INTEGER},
+      publish_status = #{row.publishStatus,jdbcType=INTEGER},
+      new_status = #{row.newStatus,jdbcType=INTEGER},
+      recommand_status = #{row.recommandStatus,jdbcType=INTEGER},
+      verify_status = #{row.verifyStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER},
+      sale = #{row.sale,jdbcType=INTEGER},
+      price = #{row.price,jdbcType=DECIMAL},
+      promotion_price = #{row.promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{row.giftGrowth,jdbcType=INTEGER},
+      gift_point = #{row.giftPoint,jdbcType=INTEGER},
+      use_point_limit = #{row.usePointLimit,jdbcType=INTEGER},
+      sub_title = #{row.subTitle,jdbcType=VARCHAR},
+      original_price = #{row.originalPrice,jdbcType=DECIMAL},
+      stock = #{row.stock,jdbcType=INTEGER},
+      low_stock = #{row.lowStock,jdbcType=INTEGER},
+      unit = #{row.unit,jdbcType=VARCHAR},
+      weight = #{row.weight,jdbcType=DECIMAL},
+      preview_status = #{row.previewStatus,jdbcType=INTEGER},
+      service_ids = #{row.serviceIds,jdbcType=VARCHAR},
+      keywords = #{row.keywords,jdbcType=VARCHAR},
+      note = #{row.note,jdbcType=VARCHAR},
+      album_pics = #{row.albumPics,jdbcType=VARCHAR},
+      detail_title = #{row.detailTitle,jdbcType=VARCHAR},
+      promotion_start_time = #{row.promotionStartTime,jdbcType=TIMESTAMP},
+      promotion_end_time = #{row.promotionEndTime,jdbcType=TIMESTAMP},
+      promotion_per_limit = #{row.promotionPerLimit,jdbcType=INTEGER},
+      promotion_type = #{row.promotionType,jdbcType=INTEGER},
+      brand_name = #{row.brandName,jdbcType=VARCHAR},
+      product_category_name = #{row.productCategoryName,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=LONGVARCHAR},
+      detail_desc = #{row.detailDesc,jdbcType=LONGVARCHAR},
+      detail_html = #{row.detailHtml,jdbcType=LONGVARCHAR},
+      detail_mobile_html = #{row.detailMobileHtml,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product
-    set id = #{record.id,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      pic = #{record.pic,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      publish_status = #{record.publishStatus,jdbcType=INTEGER},
-      new_status = #{record.newStatus,jdbcType=INTEGER},
-      recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
-      verify_status = #{record.verifyStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      sale = #{record.sale,jdbcType=INTEGER},
-      price = #{record.price,jdbcType=DECIMAL},
-      promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
-      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
-      gift_point = #{record.giftPoint,jdbcType=INTEGER},
-      use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
-      sub_title = #{record.subTitle,jdbcType=VARCHAR},
-      original_price = #{record.originalPrice,jdbcType=DECIMAL},
-      stock = #{record.stock,jdbcType=INTEGER},
-      low_stock = #{record.lowStock,jdbcType=INTEGER},
-      unit = #{record.unit,jdbcType=VARCHAR},
-      weight = #{record.weight,jdbcType=DECIMAL},
-      preview_status = #{record.previewStatus,jdbcType=INTEGER},
-      service_ids = #{record.serviceIds,jdbcType=VARCHAR},
-      keywords = #{record.keywords,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
-      detail_title = #{record.detailTitle,jdbcType=VARCHAR},
-      promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
-      promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
-      promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{record.promotionType,jdbcType=INTEGER},
-      brand_name = #{record.brandName,jdbcType=VARCHAR},
-      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      brand_id = #{row.brandId,jdbcType=BIGINT},
+      product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
+      feight_template_id = #{row.feightTemplateId,jdbcType=BIGINT},
+      product_attribute_category_id = #{row.productAttributeCategoryId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      pic = #{row.pic,jdbcType=VARCHAR},
+      product_sn = #{row.productSn,jdbcType=VARCHAR},
+      delete_status = #{row.deleteStatus,jdbcType=INTEGER},
+      publish_status = #{row.publishStatus,jdbcType=INTEGER},
+      new_status = #{row.newStatus,jdbcType=INTEGER},
+      recommand_status = #{row.recommandStatus,jdbcType=INTEGER},
+      verify_status = #{row.verifyStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER},
+      sale = #{row.sale,jdbcType=INTEGER},
+      price = #{row.price,jdbcType=DECIMAL},
+      promotion_price = #{row.promotionPrice,jdbcType=DECIMAL},
+      gift_growth = #{row.giftGrowth,jdbcType=INTEGER},
+      gift_point = #{row.giftPoint,jdbcType=INTEGER},
+      use_point_limit = #{row.usePointLimit,jdbcType=INTEGER},
+      sub_title = #{row.subTitle,jdbcType=VARCHAR},
+      original_price = #{row.originalPrice,jdbcType=DECIMAL},
+      stock = #{row.stock,jdbcType=INTEGER},
+      low_stock = #{row.lowStock,jdbcType=INTEGER},
+      unit = #{row.unit,jdbcType=VARCHAR},
+      weight = #{row.weight,jdbcType=DECIMAL},
+      preview_status = #{row.previewStatus,jdbcType=INTEGER},
+      service_ids = #{row.serviceIds,jdbcType=VARCHAR},
+      keywords = #{row.keywords,jdbcType=VARCHAR},
+      note = #{row.note,jdbcType=VARCHAR},
+      album_pics = #{row.albumPics,jdbcType=VARCHAR},
+      detail_title = #{row.detailTitle,jdbcType=VARCHAR},
+      promotion_start_time = #{row.promotionStartTime,jdbcType=TIMESTAMP},
+      promotion_end_time = #{row.promotionEndTime,jdbcType=TIMESTAMP},
+      promotion_per_limit = #{row.promotionPerLimit,jdbcType=INTEGER},
+      promotion_type = #{row.promotionType,jdbcType=INTEGER},
+      brand_name = #{row.brandName,jdbcType=VARCHAR},
+      product_category_name = #{row.productCategoryName,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

@@ -144,30 +144,30 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_attribute_value
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.productAttributeId != null">
-        product_attribute_id = #{record.productAttributeId,jdbcType=BIGINT},
+      <if test="row.productAttributeId != null">
+        product_attribute_id = #{row.productAttributeId,jdbcType=BIGINT},
       </if>
-      <if test="record.value != null">
-        value = #{record.value,jdbcType=VARCHAR},
+      <if test="row.value != null">
+        value = #{row.value,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_attribute_value
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      product_attribute_id = #{record.productAttributeId,jdbcType=BIGINT},
-      value = #{record.value,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      product_attribute_id = #{row.productAttributeId,jdbcType=BIGINT},
+      value = #{row.value,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

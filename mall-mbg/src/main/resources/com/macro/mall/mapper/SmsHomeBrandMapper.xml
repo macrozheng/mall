@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_home_brand
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=BIGINT},
+      <if test="row.brandId != null">
+        brand_id = #{row.brandId,jdbcType=BIGINT},
       </if>
-      <if test="record.brandName != null">
-        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      <if test="row.brandName != null">
+        brand_name = #{row.brandName,jdbcType=VARCHAR},
       </if>
-      <if test="record.recommendStatus != null">
-        recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
+      <if test="row.recommendStatus != null">
+        recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_home_brand
-    set id = #{record.id,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      brand_name = #{record.brandName,jdbcType=VARCHAR},
-      recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      brand_id = #{row.brandId,jdbcType=BIGINT},
+      brand_name = #{row.brandName,jdbcType=VARCHAR},
+      recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

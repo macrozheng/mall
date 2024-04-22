@@ -322,122 +322,122 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_order_return_apply
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
+      <if test="row.orderId != null">
+        order_id = #{row.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.companyAddressId != null">
-        company_address_id = #{record.companyAddressId,jdbcType=BIGINT},
+      <if test="row.companyAddressId != null">
+        company_address_id = #{row.companyAddressId,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.orderSn != null">
-        order_sn = #{record.orderSn,jdbcType=VARCHAR},
+      <if test="row.orderSn != null">
+        order_sn = #{row.orderSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.memberUsername != null">
-        member_username = #{record.memberUsername,jdbcType=VARCHAR},
+      <if test="row.memberUsername != null">
+        member_username = #{row.memberUsername,jdbcType=VARCHAR},
       </if>
-      <if test="record.returnAmount != null">
-        return_amount = #{record.returnAmount,jdbcType=DECIMAL},
+      <if test="row.returnAmount != null">
+        return_amount = #{row.returnAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.returnName != null">
-        return_name = #{record.returnName,jdbcType=VARCHAR},
+      <if test="row.returnName != null">
+        return_name = #{row.returnName,jdbcType=VARCHAR},
       </if>
-      <if test="record.returnPhone != null">
-        return_phone = #{record.returnPhone,jdbcType=VARCHAR},
+      <if test="row.returnPhone != null">
+        return_phone = #{row.returnPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=INTEGER},
       </if>
-      <if test="record.handleTime != null">
-        handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
+      <if test="row.handleTime != null">
+        handle_time = #{row.handleTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.productPic != null">
-        product_pic = #{record.productPic,jdbcType=VARCHAR},
+      <if test="row.productPic != null">
+        product_pic = #{row.productPic,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productBrand != null">
-        product_brand = #{record.productBrand,jdbcType=VARCHAR},
+      <if test="row.productBrand != null">
+        product_brand = #{row.productBrand,jdbcType=VARCHAR},
       </if>
-      <if test="record.productAttr != null">
-        product_attr = #{record.productAttr,jdbcType=VARCHAR},
+      <if test="row.productAttr != null">
+        product_attr = #{row.productAttr,jdbcType=VARCHAR},
       </if>
-      <if test="record.productCount != null">
-        product_count = #{record.productCount,jdbcType=INTEGER},
+      <if test="row.productCount != null">
+        product_count = #{row.productCount,jdbcType=INTEGER},
       </if>
-      <if test="record.productPrice != null">
-        product_price = #{record.productPrice,jdbcType=DECIMAL},
+      <if test="row.productPrice != null">
+        product_price = #{row.productPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.productRealPrice != null">
-        product_real_price = #{record.productRealPrice,jdbcType=DECIMAL},
+      <if test="row.productRealPrice != null">
+        product_real_price = #{row.productRealPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.reason != null">
-        reason = #{record.reason,jdbcType=VARCHAR},
+      <if test="row.reason != null">
+        reason = #{row.reason,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.proofPics != null">
-        proof_pics = #{record.proofPics,jdbcType=VARCHAR},
+      <if test="row.proofPics != null">
+        proof_pics = #{row.proofPics,jdbcType=VARCHAR},
       </if>
-      <if test="record.handleNote != null">
-        handle_note = #{record.handleNote,jdbcType=VARCHAR},
+      <if test="row.handleNote != null">
+        handle_note = #{row.handleNote,jdbcType=VARCHAR},
       </if>
-      <if test="record.handleMan != null">
-        handle_man = #{record.handleMan,jdbcType=VARCHAR},
+      <if test="row.handleMan != null">
+        handle_man = #{row.handleMan,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiveMan != null">
-        receive_man = #{record.receiveMan,jdbcType=VARCHAR},
+      <if test="row.receiveMan != null">
+        receive_man = #{row.receiveMan,jdbcType=VARCHAR},
       </if>
-      <if test="record.receiveTime != null">
-        receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      <if test="row.receiveTime != null">
+        receive_time = #{row.receiveTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.receiveNote != null">
-        receive_note = #{record.receiveNote,jdbcType=VARCHAR},
+      <if test="row.receiveNote != null">
+        receive_note = #{row.receiveNote,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_order_return_apply
-    set id = #{record.id,jdbcType=BIGINT},
-      order_id = #{record.orderId,jdbcType=BIGINT},
-      company_address_id = #{record.companyAddressId,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      order_sn = #{record.orderSn,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      member_username = #{record.memberUsername,jdbcType=VARCHAR},
-      return_amount = #{record.returnAmount,jdbcType=DECIMAL},
-      return_name = #{record.returnName,jdbcType=VARCHAR},
-      return_phone = #{record.returnPhone,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      handle_time = #{record.handleTime,jdbcType=TIMESTAMP},
-      product_pic = #{record.productPic,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_brand = #{record.productBrand,jdbcType=VARCHAR},
-      product_attr = #{record.productAttr,jdbcType=VARCHAR},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      product_price = #{record.productPrice,jdbcType=DECIMAL},
-      product_real_price = #{record.productRealPrice,jdbcType=DECIMAL},
-      reason = #{record.reason,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
-      proof_pics = #{record.proofPics,jdbcType=VARCHAR},
-      handle_note = #{record.handleNote,jdbcType=VARCHAR},
-      handle_man = #{record.handleMan,jdbcType=VARCHAR},
-      receive_man = #{record.receiveMan,jdbcType=VARCHAR},
-      receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
-      receive_note = #{record.receiveNote,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      order_id = #{row.orderId,jdbcType=BIGINT},
+      company_address_id = #{row.companyAddressId,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      order_sn = #{row.orderSn,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      member_username = #{row.memberUsername,jdbcType=VARCHAR},
+      return_amount = #{row.returnAmount,jdbcType=DECIMAL},
+      return_name = #{row.returnName,jdbcType=VARCHAR},
+      return_phone = #{row.returnPhone,jdbcType=VARCHAR},
+      status = #{row.status,jdbcType=INTEGER},
+      handle_time = #{row.handleTime,jdbcType=TIMESTAMP},
+      product_pic = #{row.productPic,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      product_brand = #{row.productBrand,jdbcType=VARCHAR},
+      product_attr = #{row.productAttr,jdbcType=VARCHAR},
+      product_count = #{row.productCount,jdbcType=INTEGER},
+      product_price = #{row.productPrice,jdbcType=DECIMAL},
+      product_real_price = #{row.productRealPrice,jdbcType=DECIMAL},
+      reason = #{row.reason,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=VARCHAR},
+      proof_pics = #{row.proofPics,jdbcType=VARCHAR},
+      handle_note = #{row.handleNote,jdbcType=VARCHAR},
+      handle_man = #{row.handleMan,jdbcType=VARCHAR},
+      receive_man = #{row.receiveMan,jdbcType=VARCHAR},
+      receive_time = #{row.receiveTime,jdbcType=TIMESTAMP},
+      receive_note = #{row.receiveNote,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

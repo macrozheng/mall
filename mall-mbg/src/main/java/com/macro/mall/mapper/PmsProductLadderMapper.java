@@ -12,19 +12,19 @@ public interface PmsProductLadderMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProductLadder record);
+    int insert(PmsProductLadder row);
 
-    int insertSelective(PmsProductLadder record);
+    int insertSelective(PmsProductLadder row);
 
     List<PmsProductLadder> selectByExample(PmsProductLadderExample example);
 
     PmsProductLadder selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProductLadder record, @Param("example") PmsProductLadderExample example);
+    int updateByExampleSelective(@Param("row") PmsProductLadder row, @Param("example") PmsProductLadderExample example);
 
-    int updateByExample(@Param("record") PmsProductLadder record, @Param("example") PmsProductLadderExample example);
+    int updateByExample(@Param("row") PmsProductLadder row, @Param("example") PmsProductLadderExample example);
 
-    int updateByPrimaryKeySelective(PmsProductLadder record);
+    int updateByPrimaryKeySelective(PmsProductLadder row);
 
-    int updateByPrimaryKey(PmsProductLadder record);
+    int updateByPrimaryKey(PmsProductLadder row);
 }

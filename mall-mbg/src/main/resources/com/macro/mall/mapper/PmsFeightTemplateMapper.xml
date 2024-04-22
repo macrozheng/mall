@@ -174,46 +174,46 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_feight_template
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.chargeType != null">
-        charge_type = #{record.chargeType,jdbcType=INTEGER},
+      <if test="row.chargeType != null">
+        charge_type = #{row.chargeType,jdbcType=INTEGER},
       </if>
-      <if test="record.firstWeight != null">
-        first_weight = #{record.firstWeight,jdbcType=DECIMAL},
+      <if test="row.firstWeight != null">
+        first_weight = #{row.firstWeight,jdbcType=DECIMAL},
       </if>
-      <if test="record.firstFee != null">
-        first_fee = #{record.firstFee,jdbcType=DECIMAL},
+      <if test="row.firstFee != null">
+        first_fee = #{row.firstFee,jdbcType=DECIMAL},
       </if>
-      <if test="record.continueWeight != null">
-        continue_weight = #{record.continueWeight,jdbcType=DECIMAL},
+      <if test="row.continueWeight != null">
+        continue_weight = #{row.continueWeight,jdbcType=DECIMAL},
       </if>
-      <if test="record.continmeFee != null">
-        continme_fee = #{record.continmeFee,jdbcType=DECIMAL},
+      <if test="row.continmeFee != null">
+        continme_fee = #{row.continmeFee,jdbcType=DECIMAL},
       </if>
-      <if test="record.dest != null">
-        dest = #{record.dest,jdbcType=VARCHAR},
+      <if test="row.dest != null">
+        dest = #{row.dest,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_feight_template
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      charge_type = #{record.chargeType,jdbcType=INTEGER},
-      first_weight = #{record.firstWeight,jdbcType=DECIMAL},
-      first_fee = #{record.firstFee,jdbcType=DECIMAL},
-      continue_weight = #{record.continueWeight,jdbcType=DECIMAL},
-      continme_fee = #{record.continmeFee,jdbcType=DECIMAL},
-      dest = #{record.dest,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      charge_type = #{row.chargeType,jdbcType=INTEGER},
+      first_weight = #{row.firstWeight,jdbcType=DECIMAL},
+      first_fee = #{row.firstFee,jdbcType=DECIMAL},
+      continue_weight = #{row.continueWeight,jdbcType=DECIMAL},
+      continme_fee = #{row.continmeFee,jdbcType=DECIMAL},
+      dest = #{row.dest,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

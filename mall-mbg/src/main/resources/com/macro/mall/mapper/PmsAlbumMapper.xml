@@ -158,38 +158,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_album
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.coverPic != null">
-        cover_pic = #{record.coverPic,jdbcType=VARCHAR},
+      <if test="row.coverPic != null">
+        cover_pic = #{row.coverPic,jdbcType=VARCHAR},
       </if>
-      <if test="record.picCount != null">
-        pic_count = #{record.picCount,jdbcType=INTEGER},
+      <if test="row.picCount != null">
+        pic_count = #{row.picCount,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_album
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      cover_pic = #{record.coverPic,jdbcType=VARCHAR},
-      pic_count = #{record.picCount,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      description = #{record.description,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      cover_pic = #{row.coverPic,jdbcType=VARCHAR},
+      pic_count = #{row.picCount,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER},
+      description = #{row.description,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

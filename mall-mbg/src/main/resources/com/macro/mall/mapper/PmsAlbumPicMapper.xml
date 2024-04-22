@@ -135,26 +135,26 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_album_pic
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.albumId != null">
-        album_id = #{record.albumId,jdbcType=BIGINT},
+      <if test="row.albumId != null">
+        album_id = #{row.albumId,jdbcType=BIGINT},
       </if>
-      <if test="record.pic != null">
-        pic = #{record.pic,jdbcType=VARCHAR},
+      <if test="row.pic != null">
+        pic = #{row.pic,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_album_pic
-    set id = #{record.id,jdbcType=BIGINT},
-      album_id = #{record.albumId,jdbcType=BIGINT},
-      pic = #{record.pic,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      album_id = #{row.albumId,jdbcType=BIGINT},
+      pic = #{row.pic,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

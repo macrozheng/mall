@@ -12,9 +12,9 @@ public interface CmsTopicMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsTopic record);
+    int insert(CmsTopic row);
 
-    int insertSelective(CmsTopic record);
+    int insertSelective(CmsTopic row);
 
     List<CmsTopic> selectByExampleWithBLOBs(CmsTopicExample example);
 
@@ -22,15 +22,15 @@ public interface CmsTopicMapper {
 
     CmsTopic selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsTopic record, @Param("example") CmsTopicExample example);
+    int updateByExampleSelective(@Param("row") CmsTopic row, @Param("example") CmsTopicExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") CmsTopic record, @Param("example") CmsTopicExample example);
+    int updateByExampleWithBLOBs(@Param("row") CmsTopic row, @Param("example") CmsTopicExample example);
 
-    int updateByExample(@Param("record") CmsTopic record, @Param("example") CmsTopicExample example);
+    int updateByExample(@Param("row") CmsTopic row, @Param("example") CmsTopicExample example);
 
-    int updateByPrimaryKeySelective(CmsTopic record);
+    int updateByPrimaryKeySelective(CmsTopic row);
 
-    int updateByPrimaryKeyWithBLOBs(CmsTopic record);
+    int updateByPrimaryKeyWithBLOBs(CmsTopic row);
 
-    int updateByPrimaryKey(CmsTopic record);
+    int updateByPrimaryKey(CmsTopic row);
 }

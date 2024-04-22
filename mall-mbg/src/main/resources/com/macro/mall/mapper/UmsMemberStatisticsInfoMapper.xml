@@ -238,78 +238,78 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_statistics_info
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.consumeAmount != null">
-        consume_amount = #{record.consumeAmount,jdbcType=DECIMAL},
+      <if test="row.consumeAmount != null">
+        consume_amount = #{row.consumeAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.orderCount != null">
-        order_count = #{record.orderCount,jdbcType=INTEGER},
+      <if test="row.orderCount != null">
+        order_count = #{row.orderCount,jdbcType=INTEGER},
       </if>
-      <if test="record.couponCount != null">
-        coupon_count = #{record.couponCount,jdbcType=INTEGER},
+      <if test="row.couponCount != null">
+        coupon_count = #{row.couponCount,jdbcType=INTEGER},
       </if>
-      <if test="record.commentCount != null">
-        comment_count = #{record.commentCount,jdbcType=INTEGER},
+      <if test="row.commentCount != null">
+        comment_count = #{row.commentCount,jdbcType=INTEGER},
       </if>
-      <if test="record.returnOrderCount != null">
-        return_order_count = #{record.returnOrderCount,jdbcType=INTEGER},
+      <if test="row.returnOrderCount != null">
+        return_order_count = #{row.returnOrderCount,jdbcType=INTEGER},
       </if>
-      <if test="record.loginCount != null">
-        login_count = #{record.loginCount,jdbcType=INTEGER},
+      <if test="row.loginCount != null">
+        login_count = #{row.loginCount,jdbcType=INTEGER},
       </if>
-      <if test="record.attendCount != null">
-        attend_count = #{record.attendCount,jdbcType=INTEGER},
+      <if test="row.attendCount != null">
+        attend_count = #{row.attendCount,jdbcType=INTEGER},
       </if>
-      <if test="record.fansCount != null">
-        fans_count = #{record.fansCount,jdbcType=INTEGER},
+      <if test="row.fansCount != null">
+        fans_count = #{row.fansCount,jdbcType=INTEGER},
       </if>
-      <if test="record.collectProductCount != null">
-        collect_product_count = #{record.collectProductCount,jdbcType=INTEGER},
+      <if test="row.collectProductCount != null">
+        collect_product_count = #{row.collectProductCount,jdbcType=INTEGER},
       </if>
-      <if test="record.collectSubjectCount != null">
-        collect_subject_count = #{record.collectSubjectCount,jdbcType=INTEGER},
+      <if test="row.collectSubjectCount != null">
+        collect_subject_count = #{row.collectSubjectCount,jdbcType=INTEGER},
       </if>
-      <if test="record.collectTopicCount != null">
-        collect_topic_count = #{record.collectTopicCount,jdbcType=INTEGER},
+      <if test="row.collectTopicCount != null">
+        collect_topic_count = #{row.collectTopicCount,jdbcType=INTEGER},
       </if>
-      <if test="record.collectCommentCount != null">
-        collect_comment_count = #{record.collectCommentCount,jdbcType=INTEGER},
+      <if test="row.collectCommentCount != null">
+        collect_comment_count = #{row.collectCommentCount,jdbcType=INTEGER},
       </if>
-      <if test="record.inviteFriendCount != null">
-        invite_friend_count = #{record.inviteFriendCount,jdbcType=INTEGER},
+      <if test="row.inviteFriendCount != null">
+        invite_friend_count = #{row.inviteFriendCount,jdbcType=INTEGER},
       </if>
-      <if test="record.recentOrderTime != null">
-        recent_order_time = #{record.recentOrderTime,jdbcType=TIMESTAMP},
+      <if test="row.recentOrderTime != null">
+        recent_order_time = #{row.recentOrderTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_statistics_info
-    set id = #{record.id,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      consume_amount = #{record.consumeAmount,jdbcType=DECIMAL},
-      order_count = #{record.orderCount,jdbcType=INTEGER},
-      coupon_count = #{record.couponCount,jdbcType=INTEGER},
-      comment_count = #{record.commentCount,jdbcType=INTEGER},
-      return_order_count = #{record.returnOrderCount,jdbcType=INTEGER},
-      login_count = #{record.loginCount,jdbcType=INTEGER},
-      attend_count = #{record.attendCount,jdbcType=INTEGER},
-      fans_count = #{record.fansCount,jdbcType=INTEGER},
-      collect_product_count = #{record.collectProductCount,jdbcType=INTEGER},
-      collect_subject_count = #{record.collectSubjectCount,jdbcType=INTEGER},
-      collect_topic_count = #{record.collectTopicCount,jdbcType=INTEGER},
-      collect_comment_count = #{record.collectCommentCount,jdbcType=INTEGER},
-      invite_friend_count = #{record.inviteFriendCount,jdbcType=INTEGER},
-      recent_order_time = #{record.recentOrderTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      consume_amount = #{row.consumeAmount,jdbcType=DECIMAL},
+      order_count = #{row.orderCount,jdbcType=INTEGER},
+      coupon_count = #{row.couponCount,jdbcType=INTEGER},
+      comment_count = #{row.commentCount,jdbcType=INTEGER},
+      return_order_count = #{row.returnOrderCount,jdbcType=INTEGER},
+      login_count = #{row.loginCount,jdbcType=INTEGER},
+      attend_count = #{row.attendCount,jdbcType=INTEGER},
+      fans_count = #{row.fansCount,jdbcType=INTEGER},
+      collect_product_count = #{row.collectProductCount,jdbcType=INTEGER},
+      collect_subject_count = #{row.collectSubjectCount,jdbcType=INTEGER},
+      collect_topic_count = #{row.collectTopicCount,jdbcType=INTEGER},
+      collect_comment_count = #{row.collectCommentCount,jdbcType=INTEGER},
+      invite_friend_count = #{row.inviteFriendCount,jdbcType=INTEGER},
+      recent_order_time = #{row.recentOrderTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

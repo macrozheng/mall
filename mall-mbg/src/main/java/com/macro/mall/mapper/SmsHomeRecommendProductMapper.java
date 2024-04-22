@@ -12,19 +12,19 @@ public interface SmsHomeRecommendProductMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(SmsHomeRecommendProduct record);
+    int insert(SmsHomeRecommendProduct row);
 
-    int insertSelective(SmsHomeRecommendProduct record);
+    int insertSelective(SmsHomeRecommendProduct row);
 
     List<SmsHomeRecommendProduct> selectByExample(SmsHomeRecommendProductExample example);
 
     SmsHomeRecommendProduct selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") SmsHomeRecommendProduct record, @Param("example") SmsHomeRecommendProductExample example);
+    int updateByExampleSelective(@Param("row") SmsHomeRecommendProduct row, @Param("example") SmsHomeRecommendProductExample example);
 
-    int updateByExample(@Param("record") SmsHomeRecommendProduct record, @Param("example") SmsHomeRecommendProductExample example);
+    int updateByExample(@Param("row") SmsHomeRecommendProduct row, @Param("example") SmsHomeRecommendProductExample example);
 
-    int updateByPrimaryKeySelective(SmsHomeRecommendProduct record);
+    int updateByPrimaryKeySelective(SmsHomeRecommendProduct row);
 
-    int updateByPrimaryKey(SmsHomeRecommendProduct record);
+    int updateByPrimaryKey(SmsHomeRecommendProduct row);
 }

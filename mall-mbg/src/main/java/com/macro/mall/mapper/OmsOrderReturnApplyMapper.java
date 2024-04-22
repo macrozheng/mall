@@ -12,19 +12,19 @@ public interface OmsOrderReturnApplyMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(OmsOrderReturnApply record);
+    int insert(OmsOrderReturnApply row);
 
-    int insertSelective(OmsOrderReturnApply record);
+    int insertSelective(OmsOrderReturnApply row);
 
     List<OmsOrderReturnApply> selectByExample(OmsOrderReturnApplyExample example);
 
     OmsOrderReturnApply selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") OmsOrderReturnApply record, @Param("example") OmsOrderReturnApplyExample example);
+    int updateByExampleSelective(@Param("row") OmsOrderReturnApply row, @Param("example") OmsOrderReturnApplyExample example);
 
-    int updateByExample(@Param("record") OmsOrderReturnApply record, @Param("example") OmsOrderReturnApplyExample example);
+    int updateByExample(@Param("row") OmsOrderReturnApply row, @Param("example") OmsOrderReturnApplyExample example);
 
-    int updateByPrimaryKeySelective(OmsOrderReturnApply record);
+    int updateByPrimaryKeySelective(OmsOrderReturnApply row);
 
-    int updateByPrimaryKey(OmsOrderReturnApply record);
+    int updateByPrimaryKey(OmsOrderReturnApply row);
 }

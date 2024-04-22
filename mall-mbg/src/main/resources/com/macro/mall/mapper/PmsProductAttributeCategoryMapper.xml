@@ -144,30 +144,30 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_attribute_category
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.attributeCount != null">
-        attribute_count = #{record.attributeCount,jdbcType=INTEGER},
+      <if test="row.attributeCount != null">
+        attribute_count = #{row.attributeCount,jdbcType=INTEGER},
       </if>
-      <if test="record.paramCount != null">
-        param_count = #{record.paramCount,jdbcType=INTEGER},
+      <if test="row.paramCount != null">
+        param_count = #{row.paramCount,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_attribute_category
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      attribute_count = #{record.attributeCount,jdbcType=INTEGER},
-      param_count = #{record.paramCount,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      attribute_count = #{row.attributeCount,jdbcType=INTEGER},
+      param_count = #{row.paramCount,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

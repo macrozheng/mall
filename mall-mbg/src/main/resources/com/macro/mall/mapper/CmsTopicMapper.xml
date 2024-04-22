@@ -228,79 +228,79 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_topic
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
+      <if test="row.categoryId != null">
+        category_id = #{row.categoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.startTime != null">
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      <if test="row.startTime != null">
+        start_time = #{row.startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      <if test="row.endTime != null">
+        end_time = #{row.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.attendCount != null">
-        attend_count = #{record.attendCount,jdbcType=INTEGER},
+      <if test="row.attendCount != null">
+        attend_count = #{row.attendCount,jdbcType=INTEGER},
       </if>
-      <if test="record.attentionCount != null">
-        attention_count = #{record.attentionCount,jdbcType=INTEGER},
+      <if test="row.attentionCount != null">
+        attention_count = #{row.attentionCount,jdbcType=INTEGER},
       </if>
-      <if test="record.readCount != null">
-        read_count = #{record.readCount,jdbcType=INTEGER},
+      <if test="row.readCount != null">
+        read_count = #{row.readCount,jdbcType=INTEGER},
       </if>
-      <if test="record.awardName != null">
-        award_name = #{record.awardName,jdbcType=VARCHAR},
+      <if test="row.awardName != null">
+        award_name = #{row.awardName,jdbcType=VARCHAR},
       </if>
-      <if test="record.attendType != null">
-        attend_type = #{record.attendType,jdbcType=VARCHAR},
+      <if test="row.attendType != null">
+        attend_type = #{row.attendType,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=LONGVARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update cms_topic
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      attend_count = #{record.attendCount,jdbcType=INTEGER},
-      attention_count = #{record.attentionCount,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      award_name = #{record.awardName,jdbcType=VARCHAR},
-      attend_type = #{record.attendType,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      start_time = #{row.startTime,jdbcType=TIMESTAMP},
+      end_time = #{row.endTime,jdbcType=TIMESTAMP},
+      attend_count = #{row.attendCount,jdbcType=INTEGER},
+      attention_count = #{row.attentionCount,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      award_name = #{row.awardName,jdbcType=VARCHAR},
+      attend_type = #{row.attendType,jdbcType=VARCHAR},
+      content = #{row.content,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_topic
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      attend_count = #{record.attendCount,jdbcType=INTEGER},
-      attention_count = #{record.attentionCount,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      award_name = #{record.awardName,jdbcType=VARCHAR},
-      attend_type = #{record.attendType,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      start_time = #{row.startTime,jdbcType=TIMESTAMP},
+      end_time = #{row.endTime,jdbcType=TIMESTAMP},
+      attend_count = #{row.attendCount,jdbcType=INTEGER},
+      attention_count = #{row.attentionCount,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      award_name = #{row.awardName,jdbcType=VARCHAR},
+      attend_type = #{row.attendType,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

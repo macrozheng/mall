@@ -3,8 +3,7 @@ package com.macro.mall.controller;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.CmsPrefrenceArea;
 import com.macro.mall.service.CmsPrefrenceAreaService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,13 @@ import java.util.List;
  * Created by macro on 2018/6/1.
  */
 @Controller
-@Api(tags = "CmsPrefrenceAreaController")
 @Tag(name = "CmsPrefrenceAreaController", description = "商品优选管理")
 @RequestMapping("/prefrenceArea")
 public class CmsPrefrenceAreaController {
     @Autowired
     private CmsPrefrenceAreaService prefrenceAreaService;
 
-    @ApiOperation("获取所有商品优选")
+    @Operation(summary = "获取所有商品优选")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsPrefrenceArea>> listAll() {

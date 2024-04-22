@@ -12,9 +12,9 @@ public interface CmsSubjectMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsSubject record);
+    int insert(CmsSubject row);
 
-    int insertSelective(CmsSubject record);
+    int insertSelective(CmsSubject row);
 
     List<CmsSubject> selectByExampleWithBLOBs(CmsSubjectExample example);
 
@@ -22,15 +22,15 @@ public interface CmsSubjectMapper {
 
     CmsSubject selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsSubject record, @Param("example") CmsSubjectExample example);
+    int updateByExampleSelective(@Param("row") CmsSubject row, @Param("example") CmsSubjectExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") CmsSubject record, @Param("example") CmsSubjectExample example);
+    int updateByExampleWithBLOBs(@Param("row") CmsSubject row, @Param("example") CmsSubjectExample example);
 
-    int updateByExample(@Param("record") CmsSubject record, @Param("example") CmsSubjectExample example);
+    int updateByExample(@Param("row") CmsSubject row, @Param("example") CmsSubjectExample example);
 
-    int updateByPrimaryKeySelective(CmsSubject record);
+    int updateByPrimaryKeySelective(CmsSubject row);
 
-    int updateByPrimaryKeyWithBLOBs(CmsSubject record);
+    int updateByPrimaryKeyWithBLOBs(CmsSubject row);
 
-    int updateByPrimaryKey(CmsSubject record);
+    int updateByPrimaryKey(CmsSubject row);
 }

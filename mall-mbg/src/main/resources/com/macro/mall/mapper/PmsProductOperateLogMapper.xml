@@ -205,62 +205,62 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_operate_log
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.priceOld != null">
-        price_old = #{record.priceOld,jdbcType=DECIMAL},
+      <if test="row.priceOld != null">
+        price_old = #{row.priceOld,jdbcType=DECIMAL},
       </if>
-      <if test="record.priceNew != null">
-        price_new = #{record.priceNew,jdbcType=DECIMAL},
+      <if test="row.priceNew != null">
+        price_new = #{row.priceNew,jdbcType=DECIMAL},
       </if>
-      <if test="record.salePriceOld != null">
-        sale_price_old = #{record.salePriceOld,jdbcType=DECIMAL},
+      <if test="row.salePriceOld != null">
+        sale_price_old = #{row.salePriceOld,jdbcType=DECIMAL},
       </if>
-      <if test="record.salePriceNew != null">
-        sale_price_new = #{record.salePriceNew,jdbcType=DECIMAL},
+      <if test="row.salePriceNew != null">
+        sale_price_new = #{row.salePriceNew,jdbcType=DECIMAL},
       </if>
-      <if test="record.giftPointOld != null">
-        gift_point_old = #{record.giftPointOld,jdbcType=INTEGER},
+      <if test="row.giftPointOld != null">
+        gift_point_old = #{row.giftPointOld,jdbcType=INTEGER},
       </if>
-      <if test="record.giftPointNew != null">
-        gift_point_new = #{record.giftPointNew,jdbcType=INTEGER},
+      <if test="row.giftPointNew != null">
+        gift_point_new = #{row.giftPointNew,jdbcType=INTEGER},
       </if>
-      <if test="record.usePointLimitOld != null">
-        use_point_limit_old = #{record.usePointLimitOld,jdbcType=INTEGER},
+      <if test="row.usePointLimitOld != null">
+        use_point_limit_old = #{row.usePointLimitOld,jdbcType=INTEGER},
       </if>
-      <if test="record.usePointLimitNew != null">
-        use_point_limit_new = #{record.usePointLimitNew,jdbcType=INTEGER},
+      <if test="row.usePointLimitNew != null">
+        use_point_limit_new = #{row.usePointLimitNew,jdbcType=INTEGER},
       </if>
-      <if test="record.operateMan != null">
-        operate_man = #{record.operateMan,jdbcType=VARCHAR},
+      <if test="row.operateMan != null">
+        operate_man = #{row.operateMan,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_operate_log
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      price_old = #{record.priceOld,jdbcType=DECIMAL},
-      price_new = #{record.priceNew,jdbcType=DECIMAL},
-      sale_price_old = #{record.salePriceOld,jdbcType=DECIMAL},
-      sale_price_new = #{record.salePriceNew,jdbcType=DECIMAL},
-      gift_point_old = #{record.giftPointOld,jdbcType=INTEGER},
-      gift_point_new = #{record.giftPointNew,jdbcType=INTEGER},
-      use_point_limit_old = #{record.usePointLimitOld,jdbcType=INTEGER},
-      use_point_limit_new = #{record.usePointLimitNew,jdbcType=INTEGER},
-      operate_man = #{record.operateMan,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      price_old = #{row.priceOld,jdbcType=DECIMAL},
+      price_new = #{row.priceNew,jdbcType=DECIMAL},
+      sale_price_old = #{row.salePriceOld,jdbcType=DECIMAL},
+      sale_price_new = #{row.salePriceNew,jdbcType=DECIMAL},
+      gift_point_old = #{row.giftPointOld,jdbcType=INTEGER},
+      gift_point_new = #{row.giftPointNew,jdbcType=INTEGER},
+      use_point_limit_old = #{row.usePointLimitOld,jdbcType=INTEGER},
+      use_point_limit_new = #{row.usePointLimitNew,jdbcType=INTEGER},
+      operate_man = #{row.operateMan,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

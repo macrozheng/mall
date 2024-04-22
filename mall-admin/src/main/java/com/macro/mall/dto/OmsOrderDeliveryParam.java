@@ -1,6 +1,6 @@
 package com.macro.mall.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,10 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OmsOrderDeliveryParam {
-    @ApiModelProperty("订单id")
+    @Schema(title = "订单id")
     private Long orderId;
-    @ApiModelProperty("物流公司")
+    @Schema(title = "物流公司")
     private String deliveryCompany;
-    @ApiModelProperty("物流单号")
+    @Schema(title = "物流单号")
     private String deliverySn;
 }

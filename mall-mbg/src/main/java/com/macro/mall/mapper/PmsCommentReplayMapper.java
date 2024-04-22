@@ -12,19 +12,19 @@ public interface PmsCommentReplayMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsCommentReplay record);
+    int insert(PmsCommentReplay row);
 
-    int insertSelective(PmsCommentReplay record);
+    int insertSelective(PmsCommentReplay row);
 
     List<PmsCommentReplay> selectByExample(PmsCommentReplayExample example);
 
     PmsCommentReplay selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsCommentReplay record, @Param("example") PmsCommentReplayExample example);
+    int updateByExampleSelective(@Param("row") PmsCommentReplay row, @Param("example") PmsCommentReplayExample example);
 
-    int updateByExample(@Param("record") PmsCommentReplay record, @Param("example") PmsCommentReplayExample example);
+    int updateByExample(@Param("row") PmsCommentReplay row, @Param("example") PmsCommentReplayExample example);
 
-    int updateByPrimaryKeySelective(PmsCommentReplay record);
+    int updateByPrimaryKeySelective(PmsCommentReplay row);
 
-    int updateByPrimaryKey(PmsCommentReplay record);
+    int updateByPrimaryKey(PmsCommentReplay row);
 }

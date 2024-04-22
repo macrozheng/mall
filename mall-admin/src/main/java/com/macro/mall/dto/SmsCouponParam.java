@@ -3,7 +3,7 @@ package com.macro.mall.dto;
 import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.model.SmsCouponProductCategoryRelation;
 import com.macro.mall.model.SmsCouponProductRelation;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +16,10 @@ import java.util.List;
 public class SmsCouponParam extends SmsCoupon {
     @Getter
     @Setter
-    @ApiModelProperty("优惠券绑定的商品")
+    @Schema(title = "优惠券绑定的商品")
     private List<SmsCouponProductRelation> productRelationList;
     @Getter
     @Setter
-    @ApiModelProperty("优惠券绑定的商品分类")
+    @Schema(title = "优惠券绑定的商品分类")
     private List<SmsCouponProductCategoryRelation> productCategoryRelationList;
 }

@@ -12,9 +12,9 @@ public interface CmsHelpMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsHelp record);
+    int insert(CmsHelp row);
 
-    int insertSelective(CmsHelp record);
+    int insertSelective(CmsHelp row);
 
     List<CmsHelp> selectByExampleWithBLOBs(CmsHelpExample example);
 
@@ -22,15 +22,15 @@ public interface CmsHelpMapper {
 
     CmsHelp selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsHelp record, @Param("example") CmsHelpExample example);
+    int updateByExampleSelective(@Param("row") CmsHelp row, @Param("example") CmsHelpExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") CmsHelp record, @Param("example") CmsHelpExample example);
+    int updateByExampleWithBLOBs(@Param("row") CmsHelp row, @Param("example") CmsHelpExample example);
 
-    int updateByExample(@Param("record") CmsHelp record, @Param("example") CmsHelpExample example);
+    int updateByExample(@Param("row") CmsHelp row, @Param("example") CmsHelpExample example);
 
-    int updateByPrimaryKeySelective(CmsHelp record);
+    int updateByPrimaryKeySelective(CmsHelp row);
 
-    int updateByPrimaryKeyWithBLOBs(CmsHelp record);
+    int updateByPrimaryKeyWithBLOBs(CmsHelp row);
 
-    int updateByPrimaryKey(CmsHelp record);
+    int updateByPrimaryKey(CmsHelp row);
 }

@@ -12,19 +12,19 @@ public interface SmsHomeBrandMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(SmsHomeBrand record);
+    int insert(SmsHomeBrand row);
 
-    int insertSelective(SmsHomeBrand record);
+    int insertSelective(SmsHomeBrand row);
 
     List<SmsHomeBrand> selectByExample(SmsHomeBrandExample example);
 
     SmsHomeBrand selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") SmsHomeBrand record, @Param("example") SmsHomeBrandExample example);
+    int updateByExampleSelective(@Param("row") SmsHomeBrand row, @Param("example") SmsHomeBrandExample example);
 
-    int updateByExample(@Param("record") SmsHomeBrand record, @Param("example") SmsHomeBrandExample example);
+    int updateByExample(@Param("row") SmsHomeBrand row, @Param("example") SmsHomeBrandExample example);
 
-    int updateByPrimaryKeySelective(SmsHomeBrand record);
+    int updateByPrimaryKeySelective(SmsHomeBrand row);
 
-    int updateByPrimaryKey(SmsHomeBrand record);
+    int updateByPrimaryKey(SmsHomeBrand row);
 }

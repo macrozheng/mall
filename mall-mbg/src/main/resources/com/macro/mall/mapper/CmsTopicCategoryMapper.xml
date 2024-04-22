@@ -158,38 +158,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_topic_category
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
+      <if test="row.icon != null">
+        icon = #{row.icon,jdbcType=VARCHAR},
       </if>
-      <if test="record.subjectCount != null">
-        subject_count = #{record.subjectCount,jdbcType=INTEGER},
+      <if test="row.subjectCount != null">
+        subject_count = #{row.subjectCount,jdbcType=INTEGER},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_topic_category
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      subject_count = #{record.subjectCount,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      subject_count = #{row.subjectCount,jdbcType=INTEGER},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

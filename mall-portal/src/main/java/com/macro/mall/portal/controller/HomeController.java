@@ -6,8 +6,7 @@ import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductCategory;
 import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.service.HomeService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +19,13 @@ import java.util.List;
  * Created by macro on 2019/1/28.
  */
 @Controller
-@Api(tags = "HomeController")
 @Tag(name = "HomeController", description = "首页内容管理")
 @RequestMapping("/home")
 public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @ApiOperation("首页内容信息展示")
+    @Operation(summary = "首页内容信息展示")
     @RequestMapping(value = "/content", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<HomeContentResult> content() {
@@ -35,7 +33,7 @@ public class HomeController {
         return CommonResult.success(contentResult);
     }
 
-    @ApiOperation("分页获取推荐商品")
+    @Operation(summary = "分页获取推荐商品")
     @RequestMapping(value = "/recommendProductList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsProduct>> recommendProductList(@RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
@@ -44,7 +42,7 @@ public class HomeController {
         return CommonResult.success(productList);
     }
 
-    @ApiOperation("获取首页商品分类")
+    @Operation(summary = "获取首页商品分类")
     @RequestMapping(value = "/productCateList/{parentId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsProductCategory>> getProductCateList(@PathVariable Long parentId) {
@@ -52,7 +50,7 @@ public class HomeController {
         return CommonResult.success(productCategoryList);
     }
 
-    @ApiOperation("根据分类获取专题")
+    @Operation(summary = "根据分类获取专题")
     @RequestMapping(value = "/subjectList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsSubject>> getSubjectList(@RequestParam(required = false) Long cateId,
@@ -62,7 +60,7 @@ public class HomeController {
         return CommonResult.success(subjectList);
     }
 
-    @ApiOperation("分页获取人气推荐商品")
+    @Operation(summary = "分页获取人气推荐商品")
     @RequestMapping(value = "/hotProductList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsProduct>> hotProductList(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -71,7 +69,7 @@ public class HomeController {
         return CommonResult.success(productList);
     }
 
-    @ApiOperation("分页获取新品推荐商品")
+    @Operation(summary = "分页获取新品推荐商品")
     @RequestMapping(value = "/newProductList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsProduct>> newProductList(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,

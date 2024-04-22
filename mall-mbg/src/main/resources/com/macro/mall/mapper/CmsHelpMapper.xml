@@ -197,59 +197,59 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_help
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
+      <if test="row.categoryId != null">
+        category_id = #{row.categoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
+      <if test="row.icon != null">
+        icon = #{row.icon,jdbcType=VARCHAR},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+      <if test="row.title != null">
+        title = #{row.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.readCount != null">
-        read_count = #{record.readCount,jdbcType=INTEGER},
+      <if test="row.readCount != null">
+        read_count = #{row.readCount,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=LONGVARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update cms_help
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=VARCHAR},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      title = #{row.title,jdbcType=VARCHAR},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      content = #{row.content,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_help
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=VARCHAR},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      read_count = #{record.readCount,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      title = #{row.title,jdbcType=VARCHAR},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      read_count = #{row.readCount,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

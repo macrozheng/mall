@@ -4,7 +4,7 @@ import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.model.SmsCouponHistory;
 import com.macro.mall.model.SmsCouponProductCategoryRelation;
 import com.macro.mall.model.SmsCouponProductRelation;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,10 +17,10 @@ import java.util.List;
 @Getter
 @Setter
 public class SmsCouponHistoryDetail extends SmsCouponHistory {
-    @ApiModelProperty("相关优惠券信息")
+    @Schema(title = "相关优惠券信息")
     private SmsCoupon coupon;
-    @ApiModelProperty("优惠券关联商品")
+    @Schema(title = "优惠券关联商品")
     private List<SmsCouponProductRelation> productRelationList;
-    @ApiModelProperty("优惠券关联商品分类")
+    @Schema(title = "优惠券关联商品分类")
     private List<SmsCouponProductCategoryRelation> categoryRelationList;
 }

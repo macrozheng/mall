@@ -18,7 +18,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     private boolean addRemarkComments = false;
     private static final String EXAMPLE_SUFFIX="Example";
     private static final String MAPPER_SUFFIX="Mapper";
-    private static final String API_MODEL_PROPERTY_FULL_CLASS_NAME="io.swagger.annotations.ApiModelProperty";
+    private static final String API_MODEL_PROPERTY_FULL_CLASS_NAME="io.swagger.v3.oas.annotations.media.Schema";
 
     /**
      * 设置用户配置的参数
@@ -44,7 +44,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
                 remarks = remarks.replace("\"","'");
             }
             //给model的字段添加swagger注解
-            field.addJavaDocLine("@ApiModelProperty(value = \""+remarks+"\")");
+            field.addJavaDocLine("@Schema(title = \""+remarks+"\")");
         }
     }
 

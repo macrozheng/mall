@@ -12,19 +12,19 @@ public interface UmsMemberTaskMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(UmsMemberTask record);
+    int insert(UmsMemberTask row);
 
-    int insertSelective(UmsMemberTask record);
+    int insertSelective(UmsMemberTask row);
 
     List<UmsMemberTask> selectByExample(UmsMemberTaskExample example);
 
     UmsMemberTask selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") UmsMemberTask record, @Param("example") UmsMemberTaskExample example);
+    int updateByExampleSelective(@Param("row") UmsMemberTask row, @Param("example") UmsMemberTaskExample example);
 
-    int updateByExample(@Param("record") UmsMemberTask record, @Param("example") UmsMemberTaskExample example);
+    int updateByExample(@Param("row") UmsMemberTask row, @Param("example") UmsMemberTaskExample example);
 
-    int updateByPrimaryKeySelective(UmsMemberTask record);
+    int updateByPrimaryKeySelective(UmsMemberTask row);
 
-    int updateByPrimaryKey(UmsMemberTask record);
+    int updateByPrimaryKey(UmsMemberTask row);
 }

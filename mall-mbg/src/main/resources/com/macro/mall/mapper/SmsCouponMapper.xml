@@ -251,86 +251,86 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_coupon
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.platform != null">
-        platform = #{record.platform,jdbcType=INTEGER},
+      <if test="row.platform != null">
+        platform = #{row.platform,jdbcType=INTEGER},
       </if>
-      <if test="record.count != null">
-        count = #{record.count,jdbcType=INTEGER},
+      <if test="row.count != null">
+        count = #{row.count,jdbcType=INTEGER},
       </if>
-      <if test="record.amount != null">
-        amount = #{record.amount,jdbcType=DECIMAL},
+      <if test="row.amount != null">
+        amount = #{row.amount,jdbcType=DECIMAL},
       </if>
-      <if test="record.perLimit != null">
-        per_limit = #{record.perLimit,jdbcType=INTEGER},
+      <if test="row.perLimit != null">
+        per_limit = #{row.perLimit,jdbcType=INTEGER},
       </if>
-      <if test="record.minPoint != null">
-        min_point = #{record.minPoint,jdbcType=DECIMAL},
+      <if test="row.minPoint != null">
+        min_point = #{row.minPoint,jdbcType=DECIMAL},
       </if>
-      <if test="record.startTime != null">
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      <if test="row.startTime != null">
+        start_time = #{row.startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      <if test="row.endTime != null">
+        end_time = #{row.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.useType != null">
-        use_type = #{record.useType,jdbcType=INTEGER},
+      <if test="row.useType != null">
+        use_type = #{row.useType,jdbcType=INTEGER},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.publishCount != null">
-        publish_count = #{record.publishCount,jdbcType=INTEGER},
+      <if test="row.publishCount != null">
+        publish_count = #{row.publishCount,jdbcType=INTEGER},
       </if>
-      <if test="record.useCount != null">
-        use_count = #{record.useCount,jdbcType=INTEGER},
+      <if test="row.useCount != null">
+        use_count = #{row.useCount,jdbcType=INTEGER},
       </if>
-      <if test="record.receiveCount != null">
-        receive_count = #{record.receiveCount,jdbcType=INTEGER},
+      <if test="row.receiveCount != null">
+        receive_count = #{row.receiveCount,jdbcType=INTEGER},
       </if>
-      <if test="record.enableTime != null">
-        enable_time = #{record.enableTime,jdbcType=TIMESTAMP},
+      <if test="row.enableTime != null">
+        enable_time = #{row.enableTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.code != null">
-        code = #{record.code,jdbcType=VARCHAR},
+      <if test="row.code != null">
+        code = #{row.code,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberLevel != null">
-        member_level = #{record.memberLevel,jdbcType=INTEGER},
+      <if test="row.memberLevel != null">
+        member_level = #{row.memberLevel,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_coupon
-    set id = #{record.id,jdbcType=BIGINT},
-      type = #{record.type,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      platform = #{record.platform,jdbcType=INTEGER},
-      count = #{record.count,jdbcType=INTEGER},
-      amount = #{record.amount,jdbcType=DECIMAL},
-      per_limit = #{record.perLimit,jdbcType=INTEGER},
-      min_point = #{record.minPoint,jdbcType=DECIMAL},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      use_type = #{record.useType,jdbcType=INTEGER},
-      note = #{record.note,jdbcType=VARCHAR},
-      publish_count = #{record.publishCount,jdbcType=INTEGER},
-      use_count = #{record.useCount,jdbcType=INTEGER},
-      receive_count = #{record.receiveCount,jdbcType=INTEGER},
-      enable_time = #{record.enableTime,jdbcType=TIMESTAMP},
-      code = #{record.code,jdbcType=VARCHAR},
-      member_level = #{record.memberLevel,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      type = #{row.type,jdbcType=INTEGER},
+      name = #{row.name,jdbcType=VARCHAR},
+      platform = #{row.platform,jdbcType=INTEGER},
+      count = #{row.count,jdbcType=INTEGER},
+      amount = #{row.amount,jdbcType=DECIMAL},
+      per_limit = #{row.perLimit,jdbcType=INTEGER},
+      min_point = #{row.minPoint,jdbcType=DECIMAL},
+      start_time = #{row.startTime,jdbcType=TIMESTAMP},
+      end_time = #{row.endTime,jdbcType=TIMESTAMP},
+      use_type = #{row.useType,jdbcType=INTEGER},
+      note = #{row.note,jdbcType=VARCHAR},
+      publish_count = #{row.publishCount,jdbcType=INTEGER},
+      use_count = #{row.useCount,jdbcType=INTEGER},
+      receive_count = #{row.receiveCount,jdbcType=INTEGER},
+      enable_time = #{row.enableTime,jdbcType=TIMESTAMP},
+      code = #{row.code,jdbcType=VARCHAR},
+      member_level = #{row.memberLevel,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

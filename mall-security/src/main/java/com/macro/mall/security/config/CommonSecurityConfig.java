@@ -48,19 +48,13 @@ public class CommonSecurityConfig {
 
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean
-    public DynamicAccessDecisionManager dynamicAccessDecisionManager() {
-        return new DynamicAccessDecisionManager();
-    }
-
-    @ConditionalOnBean(name = "dynamicSecurityService")
-    @Bean
     public DynamicSecurityMetadataSource dynamicSecurityMetadataSource() {
         return new DynamicSecurityMetadataSource();
     }
 
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean
-    public DynamicSecurityFilter dynamicSecurityFilter(){
-        return new DynamicSecurityFilter();
+    public DynamicAuthorizationManager dynamicAuthorizationManager() {
+        return new DynamicAuthorizationManager();
     }
 }

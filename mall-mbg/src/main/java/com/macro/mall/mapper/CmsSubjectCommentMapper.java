@@ -12,19 +12,19 @@ public interface CmsSubjectCommentMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsSubjectComment record);
+    int insert(CmsSubjectComment row);
 
-    int insertSelective(CmsSubjectComment record);
+    int insertSelective(CmsSubjectComment row);
 
     List<CmsSubjectComment> selectByExample(CmsSubjectCommentExample example);
 
     CmsSubjectComment selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsSubjectComment record, @Param("example") CmsSubjectCommentExample example);
+    int updateByExampleSelective(@Param("row") CmsSubjectComment row, @Param("example") CmsSubjectCommentExample example);
 
-    int updateByExample(@Param("record") CmsSubjectComment record, @Param("example") CmsSubjectCommentExample example);
+    int updateByExample(@Param("row") CmsSubjectComment row, @Param("example") CmsSubjectCommentExample example);
 
-    int updateByPrimaryKeySelective(CmsSubjectComment record);
+    int updateByPrimaryKeySelective(CmsSubjectComment row);
 
-    int updateByPrimaryKey(CmsSubjectComment record);
+    int updateByPrimaryKey(CmsSubjectComment row);
 }

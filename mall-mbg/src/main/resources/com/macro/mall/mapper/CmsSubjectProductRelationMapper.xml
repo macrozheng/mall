@@ -135,26 +135,26 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_subject_product_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.subjectId != null">
-        subject_id = #{record.subjectId,jdbcType=BIGINT},
+      <if test="row.subjectId != null">
+        subject_id = #{row.subjectId,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_subject_product_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      subject_id = #{record.subjectId,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      subject_id = #{row.subjectId,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

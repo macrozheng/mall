@@ -144,30 +144,30 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_full_reduction
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.fullPrice != null">
-        full_price = #{record.fullPrice,jdbcType=DECIMAL},
+      <if test="row.fullPrice != null">
+        full_price = #{row.fullPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.reducePrice != null">
-        reduce_price = #{record.reducePrice,jdbcType=DECIMAL},
+      <if test="row.reducePrice != null">
+        reduce_price = #{row.reducePrice,jdbcType=DECIMAL},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_full_reduction
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      full_price = #{record.fullPrice,jdbcType=DECIMAL},
-      reduce_price = #{record.reducePrice,jdbcType=DECIMAL}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      full_price = #{row.fullPrice,jdbcType=DECIMAL},
+      reduce_price = #{row.reducePrice,jdbcType=DECIMAL}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

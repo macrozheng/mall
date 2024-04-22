@@ -12,19 +12,19 @@ public interface PmsSkuStockMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsSkuStock record);
+    int insert(PmsSkuStock row);
 
-    int insertSelective(PmsSkuStock record);
+    int insertSelective(PmsSkuStock row);
 
     List<PmsSkuStock> selectByExample(PmsSkuStockExample example);
 
     PmsSkuStock selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsSkuStock record, @Param("example") PmsSkuStockExample example);
+    int updateByExampleSelective(@Param("row") PmsSkuStock row, @Param("example") PmsSkuStockExample example);
 
-    int updateByExample(@Param("record") PmsSkuStock record, @Param("example") PmsSkuStockExample example);
+    int updateByExample(@Param("row") PmsSkuStock row, @Param("example") PmsSkuStockExample example);
 
-    int updateByPrimaryKeySelective(PmsSkuStock record);
+    int updateByPrimaryKeySelective(PmsSkuStock row);
 
-    int updateByPrimaryKey(PmsSkuStock record);
+    int updateByPrimaryKey(PmsSkuStock row);
 }

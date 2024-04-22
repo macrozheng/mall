@@ -12,19 +12,19 @@ public interface OmsCompanyAddressMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(OmsCompanyAddress record);
+    int insert(OmsCompanyAddress row);
 
-    int insertSelective(OmsCompanyAddress record);
+    int insertSelective(OmsCompanyAddress row);
 
     List<OmsCompanyAddress> selectByExample(OmsCompanyAddressExample example);
 
     OmsCompanyAddress selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") OmsCompanyAddress record, @Param("example") OmsCompanyAddressExample example);
+    int updateByExampleSelective(@Param("row") OmsCompanyAddress row, @Param("example") OmsCompanyAddressExample example);
 
-    int updateByExample(@Param("record") OmsCompanyAddress record, @Param("example") OmsCompanyAddressExample example);
+    int updateByExample(@Param("row") OmsCompanyAddress row, @Param("example") OmsCompanyAddressExample example);
 
-    int updateByPrimaryKeySelective(OmsCompanyAddress record);
+    int updateByPrimaryKeySelective(OmsCompanyAddress row);
 
-    int updateByPrimaryKey(OmsCompanyAddress record);
+    int updateByPrimaryKey(OmsCompanyAddress row);
 }

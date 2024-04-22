@@ -13,7 +13,8 @@
     <springProperty name="LOG_STASH_HOST" scope="context" source="logstash.host" defaultValue="localhost"/>
     <!--是否开启LogStash插件内部日志-->
     <springProperty name="ENABLE_INNER_LOG" scope="context" source="logstash.enableInnerLog" defaultValue="false"/>
-
+    <!--配置不打印logback内部的状态信息，排查logback配置问题时可注释掉-->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
     <!--DEBUG日志输出到文件-->
     <appender name="FILE_DEBUG"
               class="ch.qos.logback.core.rolling.RollingFileAppender">

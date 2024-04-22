@@ -251,94 +251,94 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_comment
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberNickName != null">
-        member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
+      <if test="row.memberNickName != null">
+        member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.star != null">
-        star = #{record.star,jdbcType=INTEGER},
+      <if test="row.star != null">
+        star = #{row.star,jdbcType=INTEGER},
       </if>
-      <if test="record.memberIp != null">
-        member_ip = #{record.memberIp,jdbcType=VARCHAR},
+      <if test="row.memberIp != null">
+        member_ip = #{row.memberIp,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.productAttribute != null">
-        product_attribute = #{record.productAttribute,jdbcType=VARCHAR},
+      <if test="row.productAttribute != null">
+        product_attribute = #{row.productAttribute,jdbcType=VARCHAR},
       </if>
-      <if test="record.collectCouont != null">
-        collect_couont = #{record.collectCouont,jdbcType=INTEGER},
+      <if test="row.collectCouont != null">
+        collect_couont = #{row.collectCouont,jdbcType=INTEGER},
       </if>
-      <if test="record.readCount != null">
-        read_count = #{record.readCount,jdbcType=INTEGER},
+      <if test="row.readCount != null">
+        read_count = #{row.readCount,jdbcType=INTEGER},
       </if>
-      <if test="record.pics != null">
-        pics = #{record.pics,jdbcType=VARCHAR},
+      <if test="row.pics != null">
+        pics = #{row.pics,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberIcon != null">
-        member_icon = #{record.memberIcon,jdbcType=VARCHAR},
+      <if test="row.memberIcon != null">
+        member_icon = #{row.memberIcon,jdbcType=VARCHAR},
       </if>
-      <if test="record.replayCount != null">
-        replay_count = #{record.replayCount,jdbcType=INTEGER},
+      <if test="row.replayCount != null">
+        replay_count = #{row.replayCount,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=LONGVARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_comment
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      star = #{record.star,jdbcType=INTEGER},
-      member_ip = #{record.memberIp,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_attribute = #{record.productAttribute,jdbcType=VARCHAR},
-      collect_couont = #{record.collectCouont,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      pics = #{record.pics,jdbcType=VARCHAR},
-      member_icon = #{record.memberIcon,jdbcType=VARCHAR},
-      replay_count = #{record.replayCount,jdbcType=INTEGER},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      star = #{row.star,jdbcType=INTEGER},
+      member_ip = #{row.memberIp,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      product_attribute = #{row.productAttribute,jdbcType=VARCHAR},
+      collect_couont = #{row.collectCouont,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      pics = #{row.pics,jdbcType=VARCHAR},
+      member_icon = #{row.memberIcon,jdbcType=VARCHAR},
+      replay_count = #{row.replayCount,jdbcType=INTEGER},
+      content = #{row.content,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_comment
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      star = #{record.star,jdbcType=INTEGER},
-      member_ip = #{record.memberIp,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_attribute = #{record.productAttribute,jdbcType=VARCHAR},
-      collect_couont = #{record.collectCouont,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      pics = #{record.pics,jdbcType=VARCHAR},
-      member_icon = #{record.memberIcon,jdbcType=VARCHAR},
-      replay_count = #{record.replayCount,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      star = #{row.star,jdbcType=INTEGER},
+      member_ip = #{row.memberIp,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      product_attribute = #{row.productAttribute,jdbcType=VARCHAR},
+      collect_couont = #{row.collectCouont,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      pics = #{row.pics,jdbcType=VARCHAR},
+      member_icon = #{row.memberIcon,jdbcType=VARCHAR},
+      replay_count = #{row.replayCount,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

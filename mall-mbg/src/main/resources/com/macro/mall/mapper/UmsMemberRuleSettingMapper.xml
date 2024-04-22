@@ -168,42 +168,42 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_rule_setting
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.continueSignDay != null">
-        continue_sign_day = #{record.continueSignDay,jdbcType=INTEGER},
+      <if test="row.continueSignDay != null">
+        continue_sign_day = #{row.continueSignDay,jdbcType=INTEGER},
       </if>
-      <if test="record.continueSignPoint != null">
-        continue_sign_point = #{record.continueSignPoint,jdbcType=INTEGER},
+      <if test="row.continueSignPoint != null">
+        continue_sign_point = #{row.continueSignPoint,jdbcType=INTEGER},
       </if>
-      <if test="record.consumePerPoint != null">
-        consume_per_point = #{record.consumePerPoint,jdbcType=DECIMAL},
+      <if test="row.consumePerPoint != null">
+        consume_per_point = #{row.consumePerPoint,jdbcType=DECIMAL},
       </if>
-      <if test="record.lowOrderAmount != null">
-        low_order_amount = #{record.lowOrderAmount,jdbcType=DECIMAL},
+      <if test="row.lowOrderAmount != null">
+        low_order_amount = #{row.lowOrderAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.maxPointPerOrder != null">
-        max_point_per_order = #{record.maxPointPerOrder,jdbcType=INTEGER},
+      <if test="row.maxPointPerOrder != null">
+        max_point_per_order = #{row.maxPointPerOrder,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_rule_setting
-    set id = #{record.id,jdbcType=BIGINT},
-      continue_sign_day = #{record.continueSignDay,jdbcType=INTEGER},
-      continue_sign_point = #{record.continueSignPoint,jdbcType=INTEGER},
-      consume_per_point = #{record.consumePerPoint,jdbcType=DECIMAL},
-      low_order_amount = #{record.lowOrderAmount,jdbcType=DECIMAL},
-      max_point_per_order = #{record.maxPointPerOrder,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      continue_sign_day = #{row.continueSignDay,jdbcType=INTEGER},
+      continue_sign_point = #{row.continueSignPoint,jdbcType=INTEGER},
+      consume_per_point = #{row.consumePerPoint,jdbcType=DECIMAL},
+      low_order_amount = #{row.lowOrderAmount,jdbcType=DECIMAL},
+      max_point_per_order = #{row.maxPointPerOrder,jdbcType=INTEGER},
+      type = #{row.type,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

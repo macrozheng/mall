@@ -12,19 +12,19 @@ public interface CmsTopicCategoryMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsTopicCategory record);
+    int insert(CmsTopicCategory row);
 
-    int insertSelective(CmsTopicCategory record);
+    int insertSelective(CmsTopicCategory row);
 
     List<CmsTopicCategory> selectByExample(CmsTopicCategoryExample example);
 
     CmsTopicCategory selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsTopicCategory record, @Param("example") CmsTopicCategoryExample example);
+    int updateByExampleSelective(@Param("row") CmsTopicCategory row, @Param("example") CmsTopicCategoryExample example);
 
-    int updateByExample(@Param("record") CmsTopicCategory record, @Param("example") CmsTopicCategoryExample example);
+    int updateByExample(@Param("row") CmsTopicCategory row, @Param("example") CmsTopicCategoryExample example);
 
-    int updateByPrimaryKeySelective(CmsTopicCategory record);
+    int updateByPrimaryKeySelective(CmsTopicCategory row);
 
-    int updateByPrimaryKey(CmsTopicCategory record);
+    int updateByPrimaryKey(CmsTopicCategory row);
 }

@@ -167,42 +167,42 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_subject_comment
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.subjectId != null">
-        subject_id = #{record.subjectId,jdbcType=BIGINT},
+      <if test="row.subjectId != null">
+        subject_id = #{row.subjectId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberNickName != null">
-        member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
+      <if test="row.memberNickName != null">
+        member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberIcon != null">
-        member_icon = #{record.memberIcon,jdbcType=VARCHAR},
+      <if test="row.memberIcon != null">
+        member_icon = #{row.memberIcon,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_subject_comment
-    set id = #{record.id,jdbcType=BIGINT},
-      subject_id = #{record.subjectId,jdbcType=BIGINT},
-      member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
-      member_icon = #{record.memberIcon,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      show_status = #{record.showStatus,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      subject_id = #{row.subjectId,jdbcType=BIGINT},
+      member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
+      member_icon = #{row.memberIcon,jdbcType=VARCHAR},
+      content = #{row.content,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      show_status = #{row.showStatus,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

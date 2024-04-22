@@ -228,79 +228,79 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_category
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.parentId != null">
-        parent_id = #{record.parentId,jdbcType=BIGINT},
+      <if test="row.parentId != null">
+        parent_id = #{row.parentId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.level != null">
-        level = #{record.level,jdbcType=INTEGER},
+      <if test="row.level != null">
+        level = #{row.level,jdbcType=INTEGER},
       </if>
-      <if test="record.productCount != null">
-        product_count = #{record.productCount,jdbcType=INTEGER},
+      <if test="row.productCount != null">
+        product_count = #{row.productCount,jdbcType=INTEGER},
       </if>
-      <if test="record.productUnit != null">
-        product_unit = #{record.productUnit,jdbcType=VARCHAR},
+      <if test="row.productUnit != null">
+        product_unit = #{row.productUnit,jdbcType=VARCHAR},
       </if>
-      <if test="record.navStatus != null">
-        nav_status = #{record.navStatus,jdbcType=INTEGER},
+      <if test="row.navStatus != null">
+        nav_status = #{row.navStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
+      <if test="row.icon != null">
+        icon = #{row.icon,jdbcType=VARCHAR},
       </if>
-      <if test="record.keywords != null">
-        keywords = #{record.keywords,jdbcType=VARCHAR},
+      <if test="row.keywords != null">
+        keywords = #{row.keywords,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_product_category
-    set id = #{record.id,jdbcType=BIGINT},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      product_unit = #{record.productUnit,jdbcType=VARCHAR},
-      nav_status = #{record.navStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      keywords = #{record.keywords,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      parent_id = #{row.parentId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      level = #{row.level,jdbcType=INTEGER},
+      product_count = #{row.productCount,jdbcType=INTEGER},
+      product_unit = #{row.productUnit,jdbcType=VARCHAR},
+      nav_status = #{row.navStatus,jdbcType=INTEGER},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      keywords = #{row.keywords,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_category
-    set id = #{record.id,jdbcType=BIGINT},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      product_unit = #{record.productUnit,jdbcType=VARCHAR},
-      nav_status = #{record.navStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      keywords = #{record.keywords,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      parent_id = #{row.parentId,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      level = #{row.level,jdbcType=INTEGER},
+      product_count = #{row.productCount,jdbcType=INTEGER},
+      product_unit = #{row.productUnit,jdbcType=VARCHAR},
+      nav_status = #{row.navStatus,jdbcType=INTEGER},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      keywords = #{row.keywords,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

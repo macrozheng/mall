@@ -215,66 +215,66 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_level
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.growthPoint != null">
-        growth_point = #{record.growthPoint,jdbcType=INTEGER},
+      <if test="row.growthPoint != null">
+        growth_point = #{row.growthPoint,jdbcType=INTEGER},
       </if>
-      <if test="record.defaultStatus != null">
-        default_status = #{record.defaultStatus,jdbcType=INTEGER},
+      <if test="row.defaultStatus != null">
+        default_status = #{row.defaultStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.freeFreightPoint != null">
-        free_freight_point = #{record.freeFreightPoint,jdbcType=DECIMAL},
+      <if test="row.freeFreightPoint != null">
+        free_freight_point = #{row.freeFreightPoint,jdbcType=DECIMAL},
       </if>
-      <if test="record.commentGrowthPoint != null">
-        comment_growth_point = #{record.commentGrowthPoint,jdbcType=INTEGER},
+      <if test="row.commentGrowthPoint != null">
+        comment_growth_point = #{row.commentGrowthPoint,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgeFreeFreight != null">
-        priviledge_free_freight = #{record.priviledgeFreeFreight,jdbcType=INTEGER},
+      <if test="row.priviledgeFreeFreight != null">
+        priviledge_free_freight = #{row.priviledgeFreeFreight,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgeSignIn != null">
-        priviledge_sign_in = #{record.priviledgeSignIn,jdbcType=INTEGER},
+      <if test="row.priviledgeSignIn != null">
+        priviledge_sign_in = #{row.priviledgeSignIn,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgeComment != null">
-        priviledge_comment = #{record.priviledgeComment,jdbcType=INTEGER},
+      <if test="row.priviledgeComment != null">
+        priviledge_comment = #{row.priviledgeComment,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgePromotion != null">
-        priviledge_promotion = #{record.priviledgePromotion,jdbcType=INTEGER},
+      <if test="row.priviledgePromotion != null">
+        priviledge_promotion = #{row.priviledgePromotion,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgeMemberPrice != null">
-        priviledge_member_price = #{record.priviledgeMemberPrice,jdbcType=INTEGER},
+      <if test="row.priviledgeMemberPrice != null">
+        priviledge_member_price = #{row.priviledgeMemberPrice,jdbcType=INTEGER},
       </if>
-      <if test="record.priviledgeBirthday != null">
-        priviledge_birthday = #{record.priviledgeBirthday,jdbcType=INTEGER},
+      <if test="row.priviledgeBirthday != null">
+        priviledge_birthday = #{row.priviledgeBirthday,jdbcType=INTEGER},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_level
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      growth_point = #{record.growthPoint,jdbcType=INTEGER},
-      default_status = #{record.defaultStatus,jdbcType=INTEGER},
-      free_freight_point = #{record.freeFreightPoint,jdbcType=DECIMAL},
-      comment_growth_point = #{record.commentGrowthPoint,jdbcType=INTEGER},
-      priviledge_free_freight = #{record.priviledgeFreeFreight,jdbcType=INTEGER},
-      priviledge_sign_in = #{record.priviledgeSignIn,jdbcType=INTEGER},
-      priviledge_comment = #{record.priviledgeComment,jdbcType=INTEGER},
-      priviledge_promotion = #{record.priviledgePromotion,jdbcType=INTEGER},
-      priviledge_member_price = #{record.priviledgeMemberPrice,jdbcType=INTEGER},
-      priviledge_birthday = #{record.priviledgeBirthday,jdbcType=INTEGER},
-      note = #{record.note,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      growth_point = #{row.growthPoint,jdbcType=INTEGER},
+      default_status = #{row.defaultStatus,jdbcType=INTEGER},
+      free_freight_point = #{row.freeFreightPoint,jdbcType=DECIMAL},
+      comment_growth_point = #{row.commentGrowthPoint,jdbcType=INTEGER},
+      priviledge_free_freight = #{row.priviledgeFreeFreight,jdbcType=INTEGER},
+      priviledge_sign_in = #{row.priviledgeSignIn,jdbcType=INTEGER},
+      priviledge_comment = #{row.priviledgeComment,jdbcType=INTEGER},
+      priviledge_promotion = #{row.priviledgePromotion,jdbcType=INTEGER},
+      priviledge_member_price = #{row.priviledgeMemberPrice,jdbcType=INTEGER},
+      priviledge_birthday = #{row.priviledgeBirthday,jdbcType=INTEGER},
+      note = #{row.note,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

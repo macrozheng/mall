@@ -252,86 +252,86 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_cart_item
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.productSkuId != null">
-        product_sku_id = #{record.productSkuId,jdbcType=BIGINT},
+      <if test="row.productSkuId != null">
+        product_sku_id = #{row.productSkuId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.quantity != null">
-        quantity = #{record.quantity,jdbcType=INTEGER},
+      <if test="row.quantity != null">
+        quantity = #{row.quantity,jdbcType=INTEGER},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=DECIMAL},
+      <if test="row.price != null">
+        price = #{row.price,jdbcType=DECIMAL},
       </if>
-      <if test="record.productPic != null">
-        product_pic = #{record.productPic,jdbcType=VARCHAR},
+      <if test="row.productPic != null">
+        product_pic = #{row.productPic,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSubTitle != null">
-        product_sub_title = #{record.productSubTitle,jdbcType=VARCHAR},
+      <if test="row.productSubTitle != null">
+        product_sub_title = #{row.productSubTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSkuCode != null">
-        product_sku_code = #{record.productSkuCode,jdbcType=VARCHAR},
+      <if test="row.productSkuCode != null">
+        product_sku_code = #{row.productSkuCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberNickname != null">
-        member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
+      <if test="row.memberNickname != null">
+        member_nickname = #{row.memberNickname,jdbcType=VARCHAR},
       </if>
-      <if test="record.createDate != null">
-        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      <if test="row.createDate != null">
+        create_date = #{row.createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.modifyDate != null">
-        modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
+      <if test="row.modifyDate != null">
+        modify_date = #{row.modifyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      <if test="row.deleteStatus != null">
+        delete_status = #{row.deleteStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      <if test="row.productCategoryId != null">
+        product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.productBrand != null">
-        product_brand = #{record.productBrand,jdbcType=VARCHAR},
+      <if test="row.productBrand != null">
+        product_brand = #{row.productBrand,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSn != null">
-        product_sn = #{record.productSn,jdbcType=VARCHAR},
+      <if test="row.productSn != null">
+        product_sn = #{row.productSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.productAttr != null">
-        product_attr = #{record.productAttr,jdbcType=VARCHAR},
+      <if test="row.productAttr != null">
+        product_attr = #{row.productAttr,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_cart_item
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      product_sku_id = #{record.productSkuId,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      quantity = #{record.quantity,jdbcType=INTEGER},
-      price = #{record.price,jdbcType=DECIMAL},
-      product_pic = #{record.productPic,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_sub_title = #{record.productSubTitle,jdbcType=VARCHAR},
-      product_sku_code = #{record.productSkuCode,jdbcType=VARCHAR},
-      member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      create_date = #{record.createDate,jdbcType=TIMESTAMP},
-      modify_date = #{record.modifyDate,jdbcType=TIMESTAMP},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      product_brand = #{record.productBrand,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR},
-      product_attr = #{record.productAttr,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      product_sku_id = #{row.productSkuId,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      quantity = #{row.quantity,jdbcType=INTEGER},
+      price = #{row.price,jdbcType=DECIMAL},
+      product_pic = #{row.productPic,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      product_sub_title = #{row.productSubTitle,jdbcType=VARCHAR},
+      product_sku_code = #{row.productSkuCode,jdbcType=VARCHAR},
+      member_nickname = #{row.memberNickname,jdbcType=VARCHAR},
+      create_date = #{row.createDate,jdbcType=TIMESTAMP},
+      modify_date = #{row.modifyDate,jdbcType=TIMESTAMP},
+      delete_status = #{row.deleteStatus,jdbcType=INTEGER},
+      product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
+      product_brand = #{row.productBrand,jdbcType=VARCHAR},
+      product_sn = #{row.productSn,jdbcType=VARCHAR},
+      product_attr = #{row.productAttr,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

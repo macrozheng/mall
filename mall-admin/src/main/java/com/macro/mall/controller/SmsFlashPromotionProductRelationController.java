@@ -5,8 +5,7 @@ import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.SmsFlashPromotionProduct;
 import com.macro.mall.model.SmsFlashPromotionProductRelation;
 import com.macro.mall.service.SmsFlashPromotionProductRelationService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,13 @@ import java.util.List;
  * Created by macro on 2018/11/16.
  */
 @Controller
-@Api(tags = "SmsFlashPromotionProductRelationController")
 @Tag(name = "SmsFlashPromotionProductRelationController", description = "限时购和商品关系管理")
 @RequestMapping("/flashProductRelation")
 public class SmsFlashPromotionProductRelationController {
     @Autowired
     private SmsFlashPromotionProductRelationService relationService;
 
-    @ApiOperation("批量选择商品添加关联")
+    @Operation(summary = "批量选择商品添加关联")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsFlashPromotionProductRelation> relationList) {
@@ -37,7 +35,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改关联信息")
+    @Operation(summary = "修改关联信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsFlashPromotionProductRelation relation) {
@@ -48,7 +46,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("删除关联")
+    @Operation(summary = "删除关联")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -59,7 +57,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("获取关联商品促销信息")
+    @Operation(summary = "获取关联商品促销信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<SmsFlashPromotionProductRelation> getItem(@PathVariable Long id) {
@@ -67,7 +65,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.success(relation);
     }
 
-    @ApiOperation("分页查询不同场次关联及商品信息")
+    @Operation(summary = "分页查询不同场次关联及商品信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsFlashPromotionProduct>> list(@RequestParam(value = "flashPromotionId") Long flashPromotionId,
