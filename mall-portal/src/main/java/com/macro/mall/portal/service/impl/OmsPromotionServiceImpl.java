@@ -79,8 +79,9 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                     handleNoReduce(cartPromotionItemList,itemList,promotionProduct);
                 }
             } else if (promotionType == 4) {
+                //满减改成每满减
                 //满减
-                BigDecimal totalAmount= getCartItemAmount(itemList,promotionProductList);
+                BigDecimal totalAmount = getCartItemAmount(itemList,promotionProductList);
                 PmsProductFullReduction fullReduction = getProductFullReduction(totalAmount,promotionProduct.getProductFullReductionList());
                 if(fullReduction!=null){
                     for (OmsCartItem item : itemList) {
@@ -89,9 +90,11 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         String message = getFullReductionPromotionMessage(fullReduction);
                         cartPromotionItem.setPromotionMessage(message);
                         //(商品原价/总价)*满减金额
+                        //(商品原价)
                         PmsSkuStock skuStock= getOriginalPrice(promotionProduct, item.getProductSkuId());
                         BigDecimal originalPrice = skuStock.getPrice();
-                        BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN).multiply(fullReduction.getReducePrice());
+                        BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN)
+                          .multiply(calculateFullReduction(originalPrice, fullReduction));
                         cartPromotionItem.setReduceAmount(reduceAmount);
                         cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
                         cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
@@ -143,13 +146,11 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
      */
     private String getFullReductionPromotionMessage(PmsProductFullReduction fullReduction) {
         StringBuilder sb = new StringBuilder();
-        sb.append("满减优惠：");
-        sb.append("满");
-        sb.append(fullReduction.getFullPrice());
-        sb.append("元，");
-        sb.append("减");
+        sb.append("Full Reduction: ");
+        sb.append("Reduce $");
         sb.append(fullReduction.getReducePrice());
-        sb.append("元");
+        sb.append(" for every $");
+        sb.append(fullReduction.getFullPrice());
         return sb.toString();
     }
 
@@ -173,19 +174,34 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
     }
 
     private PmsProductFullReduction getProductFullReduction(BigDecimal totalAmount,List<PmsProductFullReduction> fullReductionList) {
-        //按条件从高到低排序
+        //按优惠的金额数从高到低排序
         fullReductionList.sort(new Comparator<PmsProductFullReduction>() {
             @Override
             public int compare(PmsProductFullReduction o1, PmsProductFullReduction o2) {
-                return o2.getFullPrice().subtract(o1.getFullPrice()).intValue();
+                return calculateFullReduction(totalAmount, o2).subtract(calculateFullReduction(totalAmount, o1)).intValue();
+                //return o2.getFullPrice().subtract(o1.getFullPrice()).intValue();
             }
         });
+        // 返回一个优惠力度最大的折扣
         for(PmsProductFullReduction fullReduction:fullReductionList){
             if(totalAmount.subtract(fullReduction.getFullPrice()).intValue()>=0){
                 return fullReduction;
             }
         }
         return null;
+    }
+
+  /**
+   * 计算每满减的优惠金额.
+   */
+    private BigDecimal calculateFullReduction(BigDecimal originPrice, PmsProductFullReduction reduction) {
+      BigDecimal reductionAmount = new BigDecimal(0);
+      BigDecimal newTotalAmount = BigDecimal.valueOf(originPrice.doubleValue());
+      while (newTotalAmount.subtract(reduction.getFullPrice()).intValue() >= 0) {
+        reductionAmount = reductionAmount.add(reduction.getReducePrice());
+        newTotalAmount = newTotalAmount.subtract(reduction.getFullPrice());
+      }
+      return reductionAmount;
     }
 
     /**

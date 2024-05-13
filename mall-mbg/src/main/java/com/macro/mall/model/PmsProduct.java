@@ -100,7 +100,7 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty(value = "活动限购数量")
     private Integer promotionPerLimit;
 
-    @ApiModelProperty(value = "促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购")
+    @ApiModelProperty(value = "促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格(每满减)；5->限时购")
     private Integer promotionType;
 
     @ApiModelProperty(value = "品牌名称")
