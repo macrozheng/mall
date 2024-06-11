@@ -21,7 +21,7 @@ public class JacksonConfig {
     @ConditionalOnMissingBean(ObjectMapper.class)
     public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
         ObjectMapper objectMapper = builder.createXmlMapper(false).build();
-        // 通过该方法对mapper对象进行设置，所有序列化的对象都将按该规则进行系列化
+        // 通过该方法对mapper对象进行设置，所有序列化的对象都将按该规则进行序列化
         // Include.ALWAYS 所有属性都序列化（默认）
         // Include.NON_DEFAULT 属性为默认值不序列化
         // Include.NON_EMPTY 属性为空（""）或者为NULL都不序列化
