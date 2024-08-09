@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
  * Created by macro on 2018/4/26.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class PmsBrandParam {
     @NotEmpty
     @ApiModelProperty(value = "品牌名称",required = true)

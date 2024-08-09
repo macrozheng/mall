@@ -67,4 +67,10 @@ public interface OmsPortalOrderService {
      * 用户根据订单ID删除订单
      */
     void deleteOrder(Long orderId);
+
+    /**
+     * 根据orderSn来实现的支付成功逻辑
+     */
+    @Transactional
+    void paySuccessByOrderSn(String orderSn, Integer payType);
 }

@@ -57,7 +57,7 @@ public class UmsResourceCategoryController {
         }
     }
 
-    @ApiOperation("根据ID删除后台资源")
+    @ApiOperation("根据ID删除后台资源分类")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {

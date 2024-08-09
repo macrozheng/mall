@@ -59,7 +59,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("获取管理商品促销信息")
+    @ApiOperation("获取关联商品促销信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<SmsFlashPromotionProductRelation> getItem(@PathVariable Long id) {

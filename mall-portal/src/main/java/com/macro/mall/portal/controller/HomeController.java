@@ -52,7 +52,7 @@ public class HomeController {
         return CommonResult.success(productCategoryList);
     }
 
-    @ApiOperation("根据分类获取专题")
+    @ApiOperation("根据分类分页获取专题")
     @RequestMapping(value = "/subjectList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsSubject>> getSubjectList(@RequestParam(required = false) Long cateId,

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 自定义返回结果：未登录或登录过期
+ * 自定义未登录或者token失效时的返回结果
  * Created by macro on 2018/5/14.
  */
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {

@@ -7,6 +7,7 @@ import java.util.Date;
 public class SmsFlashPromotion implements Serializable {
     private Long id;
 
+    @ApiModelProperty(value = "秒杀时间段名称")
     private String title;
 
     @ApiModelProperty(value = "开始日期")
@@ -18,7 +19,7 @@ public class SmsFlashPromotion implements Serializable {
     @ApiModelProperty(value = "上下线状态")
     private Integer status;
 
-    @ApiModelProperty(value = "秒杀时间段名称")
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

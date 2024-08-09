@@ -47,6 +47,7 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
         PmsProductExample example = new PmsProductExample();
         PmsProductExample.Criteria criteria = example.createCriteria();
         criteria.andDeleteStatusEqualTo(0);
+        criteria.andPublishStatusEqualTo(1);
         if (StrUtil.isNotEmpty(keyword)) {
             criteria.andNameLike("%" + keyword + "%");
         }
@@ -75,7 +76,8 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
         List<PmsProductCategory> allList = productCategoryMapper.selectByExample(example);
         List<PmsProductCategoryNode> result = allList.stream()
                 .filter(item -> item.getParentId().equals(0L))
-                .map(item -> covert(item, allList)).collect(Collectors.toList());
+                .map(item -> covert(item, allList))
+                .collect(Collectors.toList());
         return result;
     }
 

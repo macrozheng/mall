@@ -40,7 +40,7 @@ public interface PmsBrandService {
     /**
      * 分页查询品牌
      */
-    List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize);
+    List<PmsBrand> listBrand(String keyword, Integer showStatus, int pageNum, int pageSize);
 
     /**
      * 获取品牌详情

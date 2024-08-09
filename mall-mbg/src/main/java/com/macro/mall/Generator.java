@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用于生产MBG的代码
+ * MBG代码生成工具
  * Created by macro on 2018/4/26.
  */
 public class Generator {

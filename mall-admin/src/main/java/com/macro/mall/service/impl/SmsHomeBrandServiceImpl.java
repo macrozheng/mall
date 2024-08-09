@@ -8,7 +8,6 @@ import com.macro.mall.model.SmsHomeBrandExample;
 import com.macro.mall.service.SmsHomeBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 

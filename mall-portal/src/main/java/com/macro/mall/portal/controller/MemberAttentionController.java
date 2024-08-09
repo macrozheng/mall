@@ -47,7 +47,7 @@ public class MemberAttentionController {
         }
     }
 
-    @ApiOperation("显示当前用户品牌关注列表")
+    @ApiOperation("分页查询当前用户品牌关注列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -56,7 +56,7 @@ public class MemberAttentionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @ApiOperation("显示品牌关注详情")
+    @ApiOperation("根据品牌ID获取品牌关注详情")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {

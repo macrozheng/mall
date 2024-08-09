@@ -79,9 +79,10 @@ public class PmsBrandController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<PmsBrand>> getList(@RequestParam(value = "keyword", required = false) String keyword,
+                                                      @RequestParam(value = "showStatus",required = false) Integer showStatus,
                                                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        List<PmsBrand> brandList = brandService.listBrand(keyword, pageNum, pageSize);
+        List<PmsBrand> brandList = brandService.listBrand(keyword,showStatus,pageNum, pageSize);
         return CommonResult.success(CommonPage.restPage(brandList));
     }
 

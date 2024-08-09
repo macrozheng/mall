@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -31,23 +31,25 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
-        <docker.host>http://192.168.3.105:2375</docker.host>
-        <docker.maven.plugin.version>0.40.0</docker.maven.plugin.version>
-        <pagehelper-starter.version>1.4.2</pagehelper-starter.version>
-        <pagehelper.version>5.3.0</pagehelper.version>
-        <druid.version>1.2.9</druid.version>
-        <hutool.version>5.8.0</hutool.version>
+        <docker.host>http://192.168.3.101:2375</docker.host>
+        <docker.maven.plugin.version>0.40.2</docker.maven.plugin.version>
+        <pagehelper-starter.version>1.4.5</pagehelper-starter.version>
+        <pagehelper.version>5.3.2</pagehelper.version>
+        <druid.version>1.2.14</druid.version>
+        <hutool.version>5.8.9</hutool.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
         <swagger-models.version>1.6.0</swagger-models.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
         <mybatis-generator.version>1.4.1</mybatis-generator.version>
-        <mybatis.version>3.5.9</mybatis.version>
+        <mybatis.version>3.5.10</mybatis.version>
         <mysql-connector.version>8.0.29</mysql-connector.version>
-        <spring-data-commons.version>2.7.0</spring-data-commons.version>
+        <spring-data-commons.version>2.7.5</spring-data-commons.version>
         <jjwt.version>0.9.1</jjwt.version>
         <aliyun-oss.version>2.5.0</aliyun-oss.version>
+        <alipay-sdk.version>4.38.61.ALL</alipay-sdk.version>
         <logstash-logback.version>7.2</logstash-logback.version>
-        <minio.version>8.4.1</minio.version>
+        <minio.version>8.4.5</minio.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
@@ -79,6 +81,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <!--解决JDK 11 兼容性问题-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -225,7 +233,7 @@
                                 <!--定义镜像构建行为-->
                                 <build>
                                     <!--定义基础镜像-->
-                                    <from>java:8</from>
+                                    <from>openjdk:8</from>
                                     <args>
                                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                                     </args>
@@ -249,5 +257,19 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <!--使用aliyun的Maven镜像源提升下载速度-->
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>central2</id>
+            <name>central2</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 
 </project>

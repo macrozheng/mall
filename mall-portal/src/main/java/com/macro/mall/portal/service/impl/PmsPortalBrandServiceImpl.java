@@ -8,7 +8,7 @@ import com.macro.mall.model.PmsBrand;
 import com.macro.mall.model.PmsProduct;
 import com.macro.mall.model.PmsProductExample;
 import com.macro.mall.portal.dao.HomeDao;
-import com.macro.mall.portal.service.PortalBrandService;
+import com.macro.mall.portal.service.PmsPortalBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * Created by macro on 2020/5/15.
  */
 @Service
-public class PortalBrandServiceImpl implements PortalBrandService {
+public class PmsPortalBrandServiceImpl implements PmsPortalBrandService {
     @Autowired
     private HomeDao homeDao;
     @Autowired
@@ -43,6 +43,7 @@ public class PortalBrandServiceImpl implements PortalBrandService {
         PageHelper.startPage(pageNum,pageSize);
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andDeleteStatusEqualTo(0)
+                .andPublishStatusEqualTo(1)
                 .andBrandIdEqualTo(brandId);
         List<PmsProduct> productList = productMapper.selectByExample(example);
         return CommonPage.restPage(productList);

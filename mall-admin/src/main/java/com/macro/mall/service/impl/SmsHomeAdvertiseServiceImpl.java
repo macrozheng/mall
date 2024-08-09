@@ -8,7 +8,6 @@ import com.macro.mall.model.SmsHomeAdvertiseExample;
 import com.macro.mall.service.SmsHomeAdvertiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

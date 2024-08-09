@@ -29,7 +29,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -60,13 +59,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
+        //先从缓存中获取数据
         UmsAdmin admin = getCacheService().getAdmin(username);
-        if(admin!=null) return  admin;
+        if (admin != null) return admin;
+        //缓存中没有从数据库中获取
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
         if (adminList != null && adminList.size() > 0) {
             admin = adminList.get(0);
+            //将数据库中的数据存入缓存中
             getCacheService().setAdmin(admin);
             return admin;
         }
@@ -187,8 +189,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int delete(Long id) {
-        getCacheService().delAdmin(id);
         int count = adminMapper.deleteByPrimaryKey(id);
+        getCacheService().delAdmin(id);
         getCacheService().delResourceList(id);
         return count;
     }
@@ -222,12 +224,15 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsResource> getResourceList(Long adminId) {
+        //先从缓存中获取数据
         List<UmsResource> resourceList = getCacheService().getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             return  resourceList;
         }
+        //缓存中没有从数据库中获取
         resourceList = adminRoleRelationDao.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
+            //将数据库中的数据存入缓存中
             getCacheService().setResourceList(adminId,resourceList);
         }
         return resourceList;
@@ -270,5 +275,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public UmsAdminCacheService getCacheService() {
         return SpringUtil.getBean(UmsAdminCacheService.class);
+    }
+
+    @Override
+    public void logout(String username) {
+        //清空缓存中的用户相关数据
+        UmsAdmin admin = getCacheService().getAdmin(username);
+        getCacheService().delAdmin(admin.getId());
+        getCacheService().delResourceList(admin.getId());
     }
 }

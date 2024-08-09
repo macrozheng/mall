@@ -12,7 +12,7 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 public class PmsProductParam extends PmsProduct{
     @ApiModelProperty("商品阶梯价格设置")
     private List<PmsProductLadder> productLadderList;

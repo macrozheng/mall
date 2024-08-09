@@ -7,6 +7,7 @@ import com.macro.mall.demo.service.DemoService;
 import com.macro.mall.model.PmsBrand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ import java.util.List;
  * 品牌管理示例controller
  * Created by macro on 2019/4/8.
  */
-@Api(tags = "DemoController", description = "品牌管理示例接口")
+@Api(tags = "DemoController")
+@Tag(name = "DemoController",description = "品牌管理示例接口")
 @Controller
 public class DemoController {
     @Autowired

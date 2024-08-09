@@ -226,9 +226,9 @@ public class EsProductServiceImpl implements EsProductService {
         }
         //聚合搜索品牌名称
         builder.withAggregations(AggregationBuilders.terms("brandNames").field("brandName"));
-        //集合搜索分类名称
+        //聚合搜索分类名称
         builder.withAggregations(AggregationBuilders.terms("productCategoryNames").field("productCategoryName"));
-        //聚合搜索商品属性，去除type=1的属性
+        //聚合搜索商品属性，去除type=0的属性
         AbstractAggregationBuilder aggregationBuilder = AggregationBuilders.nested("allAttrValues","attrValueList")
                 .subAggregation(AggregationBuilders.filter("productAttrs",QueryBuilders.termQuery("attrValueList.type",1))
                         .subAggregation(AggregationBuilders.terms("attrIds")

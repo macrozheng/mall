@@ -22,7 +22,7 @@ public interface PmsProductService {
     int create(PmsProductParam productParam);
 
     /**
-     * 根据商品编号获取更新信息
+     * 根据商品ID获取商品信息（用于更新商品）
      */
     PmsProductResult getUpdateInfo(Long id);
 
@@ -39,7 +39,7 @@ public interface PmsProductService {
 
     /**
      * 批量修改审核状态
-     * @param ids 产品id
+     * @param ids 商品ID列表
      * @param verifyStatus 审核状态
      * @param detail 审核详情
      */

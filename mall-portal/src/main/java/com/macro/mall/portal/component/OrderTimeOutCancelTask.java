@@ -18,7 +18,7 @@ public class OrderTimeOutCancelTask {
     private OmsPortalOrderService portalOrderService;
 
     /**
-     * cron表达式：Seconds Minutes Hours DayofMonth Month DayofWeek [Year]
+     * cron表达式：Seconds Minutes Hours DayOfMonth Month DayOfWeek [Year]
      * 每10分钟扫描一次，扫描超时未支付订单，进行取消操作
      */
     @Scheduled(cron = "0 0/10 * ? * ?")
