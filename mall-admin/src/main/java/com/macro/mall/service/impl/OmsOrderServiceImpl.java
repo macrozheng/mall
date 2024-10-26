@@ -33,6 +33,12 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private OmsOrderOperateHistoryMapper orderOperateHistoryMapper;
 
     @Override
+    public int create(OmsOrder omsOrder) {
+        omsOrder.setCommentTime(new Date());
+        return orderMapper.insert(omsOrder);
+    }
+
+    @Override
     public List<OmsOrder> list(OmsOrderQueryParam queryParam, Integer pageSize, Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         return orderDao.getList(queryParam);
