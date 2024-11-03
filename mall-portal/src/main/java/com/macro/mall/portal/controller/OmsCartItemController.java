@@ -39,7 +39,17 @@ public class OmsCartItemController {
         }
         return CommonResult.failed();
     }
+    /*@ApiOperation("创建单一商品订单")
+    @RequestMapping(value = "/createOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult createOrder(@RequestBody OmsCartItem cartItem){
+        int count=cartItemService.createOrder(cartItem);
+        if(count>0){
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
 
+    }*/
     @ApiOperation("获取当前会员的购物车列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody

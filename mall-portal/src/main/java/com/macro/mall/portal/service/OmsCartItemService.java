@@ -53,4 +53,10 @@ public interface OmsCartItemService {
      * 清空购物车
      */
     int clear(Long memberId);
+
+    /**
+     * 创建订单
+     * @param cartItem
+     */
+   // int createOrder(OmsCartItem cartItem);
 }
