@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -78,25 +79,14 @@ public class EsProductServiceImpl implements EsProductService {
 
     @Override
     public EsProduct create(Long id) {
-        EsProduct result = null;
-        List<EsProduct> esProductList = productDao.getAllEsProductList(id);
-        if (esProductList.size() > 0) {
-            EsProduct esProduct = esProductList.get(0);
-            result = productRepository.save(esProduct);
-        }
-        return result;
+        Optional<EsProduct> firstEProduct = productDao.getAllEsProductList(id).stream().findFirst();
+        return firstEProduct.map(esProduct -> productRepository.save(esProduct)).orElse(null);
     }
 
     @Override
     public void delete(List<Long> ids) {
         if (!CollectionUtils.isEmpty(ids)) {
-            List<EsProduct> esProductList = new ArrayList<>();
-            for (Long id : ids) {
-                EsProduct esProduct = new EsProduct();
-                esProduct.setId(id);
-                esProductList.add(esProduct);
-            }
-            productRepository.deleteAll(esProductList);
+            ids.forEach(id->productRepository.deleteById(id));
         }
     }
 
