@@ -26,6 +26,18 @@ public class OmsOrderController {
     @Autowired
     private OmsOrderService orderService;
 
+
+    @ApiOperation("新增订单")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestBody OmsOrder omsOrder) {
+        int count = orderService.create(omsOrder);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
+
     @ApiOperation("查询订单")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
