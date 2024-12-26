@@ -31,7 +31,7 @@ public interface SmsFlashPromotionSessionService {
     int delete(Long id);
 
     /**
-     * 获取详情
+     * 获取场次详情
      */
     SmsFlashPromotionSession getItem(Long id);
 
