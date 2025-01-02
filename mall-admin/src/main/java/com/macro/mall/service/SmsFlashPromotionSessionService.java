@@ -36,7 +36,7 @@ public interface SmsFlashPromotionSessionService {
     SmsFlashPromotionSession getItem(Long id);
 
     /**
-     * 根据启用状态获取场次列表
+     * 获取全部场次列表
      */
     List<SmsFlashPromotionSession> list();
 
