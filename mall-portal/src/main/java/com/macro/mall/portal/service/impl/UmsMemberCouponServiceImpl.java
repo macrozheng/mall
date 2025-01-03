@@ -129,7 +129,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
                 //判断是否满足优惠起点
                 //计算购物车商品的总价
                 BigDecimal totalAmount = calcTotalAmount(cartItemList);
-                if(now.before(endTime)&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.before(endTime)&&totalAmount.subtract(minPoint).floatValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
@@ -142,7 +142,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
                     productCategoryIds.add(categoryRelation.getProductCategoryId());
                 }
                 BigDecimal totalAmount = calcTotalAmountByproductCategoryId(cartItemList,productCategoryIds);
-                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.before(endTime)&&totalAmount.floatValue()>0&&totalAmount.subtract(minPoint).floatValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
@@ -155,7 +155,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
                     productIds.add(productRelation.getProductId());
                 }
                 BigDecimal totalAmount = calcTotalAmountByProductId(cartItemList,productIds);
-                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.before(endTime)&&totalAmount.floatValue()>0&&totalAmount.subtract(minPoint).floatValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
