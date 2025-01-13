@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://hadoop101:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: root
+    password: Liuxiao2@
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
@@ -21,11 +21,35 @@ spring:
       port: 27017
       database: mall-port
   redis:
-    host: localhost # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
-    timeout: 300ms # 连接超时时间（毫秒）
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+      #数据库索引
+      database: ${REDIS_DB:0}
+      #    host: ${REDIS_HOST:hadoop101}
+      #    port: ${REDIS_PORT:6379}
+      #    password: ${REDIS_PWD:123456}
+    #集群模式
+    cluster:
+      nodes:
+        - hadoop101:6379
+        - hadoop101:6380
+        - hadoop102:6379
+        - hadoop102:6380
+        - hadoop103:6379
+        - hadoop103:6380
+      max-redirects: 3
+    password: 123456
+    #连接超时时间
+#    timeout: 5000
+#    host: localhost # Redis服务器地址
+#    database: 0 # Redis数据库索引（默认为0）
+#    port: 6379 # Redis服务器连接端口
+#    password: # Redis服务器连接密码（默认为空）
+#    timeout: 300ms # 连接超时时间（毫秒）
   rabbitmq:
     host: localhost
     port: 5672
