@@ -1,0 +1,31 @@
+From 6118310967186187684dac10d706f3e9c171d938 Mon Sep 17 00:00:00 2001
+From: yuxiao <qingmei@taobao.com>
+Date: Sun, 26 Jan 2025 16:18:53 +0800
+Subject: [PATCH] =?UTF-8?q?actorref:=20=E6=9B=B4=E6=96=B0=E4=BD=9C?=
+ =?UTF-8?q?=E8=80=85=E4=BF=A1=E6=81=AF?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- 将类 PmsProductAttributeServiceImpl 中的作者信息从 macro 修改为 yuxiao
+- 此修改仅涉及作者信息的更新，未
+---
+ .../macro/mall/service/impl/PmsProductAttributeServiceImpl.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mall-admin/src/main/java/com/macro/mall/service/impl/PmsProductAttributeServiceImpl.java b/mall-admin/src/main/java/com/macro/mall/service/impl/PmsProductAttributeServiceImpl.java
+index d8e21bc..fefba22 100644
+--- a/mall-admin/src/main/java/com/macro/mall/service/impl/PmsProductAttributeServiceImpl.java
++++ b/mall-admin/src/main/java/com/macro/mall/service/impl/PmsProductAttributeServiceImpl.java
+@@ -18,7 +18,7 @@ import java.util.List;
+ 
+ /**
+  * 商品属性管理Service实现类
+- * Created by macro on 2018/4/26.
++ * Created by yuxiao on 2018/4/26.
+  */
+ @Service
+ public class PmsProductAttributeServiceImpl implements PmsProductAttributeService {
+-- 
+2.30.1 (Apple Git-130)
+

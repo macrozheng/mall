@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 商品属性管理Service实现类
- * Created by macro on 2018/4/26.
+ * Created by yuxiao on 2018/4/26.
  */
 @Service
 public class PmsProductAttributeServiceImpl implements PmsProductAttributeService {
