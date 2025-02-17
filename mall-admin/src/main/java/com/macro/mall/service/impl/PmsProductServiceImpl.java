@@ -205,7 +205,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 
     @Override
     public List<PmsProduct> list(PmsProductQueryParam productQueryParam, Integer pageSize, Integer pageNum) {
-        // 启动分页功能，指定当前页码和页面大小
+        // 启动分页功能，指定当前页码和页面大小0219
         PageHelper.startPage(pageNum, pageSize);
         PmsProductExample productExample = new PmsProductExample();
         PmsProductExample.Criteria criteria = productExample.createCriteria();
@@ -302,7 +302,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     }
 
     /**
-     * 建立和插入关系表操作
+     * 建立和插入关系表操作，yuxiao0221
      *
      * @param dao       可以操作的dao
      * @param dataList  要插入的数据
