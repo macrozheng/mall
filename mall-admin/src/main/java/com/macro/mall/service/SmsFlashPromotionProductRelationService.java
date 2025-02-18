@@ -33,7 +33,7 @@ public interface SmsFlashPromotionProductRelationService {
     SmsFlashPromotionProductRelation getItem(Long id);
 
     /**
-     * 分页查询相关商品及限时购促销信息
+     * 根据限时购和场次id分页查询限时购商品信息
      *
      * @param flashPromotionId        限时购id
      * @param flashPromotionSessionId 限时购场次id
