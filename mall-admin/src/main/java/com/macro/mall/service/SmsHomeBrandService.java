@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface SmsHomeBrandService {
     /**
-     * 添加首页品牌推荐
+     * 添加品牌推荐
      */
     @Transactional
     int create(List<SmsHomeBrand> homeBrandList);
