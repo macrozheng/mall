@@ -205,3 +205,7 @@ mall
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
 
 Copyright (c) 2018-2025 macrozheng
+
+
+
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/ecchanger/mall?utm_source=oss&utm_medium=github&utm_campaign=ecchanger%2Fmall&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
