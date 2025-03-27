@@ -11,28 +11,28 @@ import java.util.List;
  */
 public interface SmsHomeNewProductService {
     /**
-     * 添加首页推荐
+     * 添加新品推荐
      */
     @Transactional
     int create(List<SmsHomeNewProduct> homeNewProductList);
 
     /**
-     * 修改推荐排序
+     * 修改新品推荐排序
      */
     int updateSort(Long id, Integer sort);
 
     /**
-     * 批量删除推荐
+     * 批量删除新品推荐
      */
     int delete(List<Long> ids);
 
     /**
-     * 批量更新推荐状态
+     * 批量更新新品推荐状态
      */
     int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 
     /**
-     * 分页查询推荐
+     * 分页查询新品推荐
      */
     List<SmsHomeNewProduct> list(String productName, Integer recommendStatus, Integer pageSize, Integer pageNum);
 }

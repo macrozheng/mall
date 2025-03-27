@@ -319,7 +319,7 @@ public class PmsProductServiceImpl implements PmsProductService {
             Method insertList = dao.getClass().getMethod("insertList", List.class);
             insertList.invoke(dao, dataList);
         } catch (Exception e) {
-            LOGGER.warn("创建产品出错:{}", e.getMessage());
+            LOGGER.warn("创建商品出错:{}", e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
     }

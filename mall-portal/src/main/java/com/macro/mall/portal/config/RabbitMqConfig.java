@@ -24,7 +24,7 @@ public class RabbitMqConfig {
     }
 
     /**
-     * 订单延迟队列队列所绑定的交换机
+     * 订单延迟队列所绑定的交换机
      */
     @Bean
     DirectExchange orderTtlDirect() {

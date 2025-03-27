@@ -35,7 +35,7 @@ public class PmsProductAttributeParam {
     @ApiModelProperty("检索类型；0->不需要进行检索；1->关键字检索；2->范围检索")
     @FlagValidator({"0","1","2"})
     private Integer searchType;
-    @ApiModelProperty("相同属性产品是否关联；0->不关联；1->关联")
+    @ApiModelProperty("相同属性商品是否关联；0->不关联；1->关联")
     @FlagValidator({"0","1"})
     private Integer relatedStatus;
     @ApiModelProperty("是否支持手动新增；0->不支持；1->支持")

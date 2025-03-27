@@ -25,7 +25,7 @@ public class SmsHomeRecommendSubjectController {
     @Autowired
     private SmsHomeRecommendSubjectService recommendSubjectService;
 
-    @ApiOperation("添加首页推荐专题")
+    @ApiOperation("添加首页专题推荐")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsHomeRecommendSubject> homeRecommendSubjectList) {
@@ -36,7 +36,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改推荐排序")
+    @ApiOperation("修改专题推荐排序")
     @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateSort(@PathVariable Long id, Integer sort) {
@@ -47,7 +47,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("批量删除推荐")
+    @ApiOperation("批量删除专题推荐")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@RequestParam("ids") List<Long> ids) {
@@ -58,7 +58,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("批量修改推荐状态")
+    @ApiOperation("批量修改专题推荐状态")
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
@@ -69,7 +69,7 @@ public class SmsHomeRecommendSubjectController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("分页查询推荐")
+    @ApiOperation("分页查询专题推荐")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsHomeRecommendSubject>> list(@RequestParam(value = "subjectName", required = false) String subjectName,

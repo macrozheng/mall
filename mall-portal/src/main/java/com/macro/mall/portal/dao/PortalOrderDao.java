@@ -37,4 +37,18 @@ public interface PortalOrderDao {
      */
     int releaseSkuStockLock(@Param("itemList") List<OmsOrderItem> orderItemList);
 
+    /**
+     * 根据商品的skuId来锁定库存
+     */
+    int lockStockBySkuId(@Param("productSkuId")Long productSkuId,@Param("quantity") Integer quantity);
+
+    /**
+     * 根据商品的skuId扣减真实库存
+     */
+    int reduceSkuStock(@Param("productSkuId")Long productSkuId,@Param("quantity") Integer quantity);
+
+    /**
+     * 根据商品的skuId释放库存
+     */
+    int releaseStockBySkuId(@Param("productSkuId")Long productSkuId,@Param("quantity") Integer quantity);
 }

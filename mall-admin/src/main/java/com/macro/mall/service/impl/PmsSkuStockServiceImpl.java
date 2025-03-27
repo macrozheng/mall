@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 商品SKU库存管理Service实现类
@@ -34,6 +35,9 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
 
     @Override
     public int update(Long pid, List<PmsSkuStock> skuStockList) {
-        return skuStockDao.replaceList(skuStockList);
+        List<PmsSkuStock> filterSkuList = skuStockList.stream()
+                .filter(item -> pid.equals(item.getProductId()))
+                .collect(Collectors.toList());
+        return skuStockDao.replaceList(filterSkuList);
     }
 }

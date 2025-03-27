@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * 添加更新产品分类的参数
+ * 添加更新商品分类的参数
  * Created by macro on 2018/4/26.
  */
 @Data
@@ -38,6 +38,6 @@ public class PmsProductCategoryParam {
     private String keywords;
     @ApiModelProperty("描述")
     private String description;
-    @ApiModelProperty("产品相关筛选属性集合")
+    @ApiModelProperty("商品相关筛选属性集合")
     private List<Long> productAttributeIdList;
 }

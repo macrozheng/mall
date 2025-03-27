@@ -27,9 +27,9 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //返回当前用户的角色
+        //返回当前用户所拥有的资源
         return resourceList.stream()
-                .map(role ->new SimpleGrantedAuthority(role.getId()+":"+role.getName()))
+                .map(resource ->new SimpleGrantedAuthority(resource.getId()+":"+resource.getName()))
                 .collect(Collectors.toList());
     }
 

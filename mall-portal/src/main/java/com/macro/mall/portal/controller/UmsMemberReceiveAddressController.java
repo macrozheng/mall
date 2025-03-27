@@ -57,7 +57,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("显示所有收货地址")
+    @ApiOperation("获取所有收货地址")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<UmsMemberReceiveAddress>> list() {

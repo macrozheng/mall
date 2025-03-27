@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface OmsOrderService {
     /**
-     * 订单查询
+     * 分页查询订单
      */
     List<OmsOrder> list(OmsOrderQueryParam queryParam, Integer pageSize, Integer pageNum);
 

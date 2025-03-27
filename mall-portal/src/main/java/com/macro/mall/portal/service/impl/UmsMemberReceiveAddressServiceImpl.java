@@ -43,6 +43,9 @@ public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddre
         UmsMember currentMember = memberService.getCurrentMember();
         UmsMemberReceiveAddressExample example = new UmsMemberReceiveAddressExample();
         example.createCriteria().andMemberIdEqualTo(currentMember.getId()).andIdEqualTo(id);
+        if(address.getDefaultStatus()==null){
+            address.setDefaultStatus(0);
+        }
         if(address.getDefaultStatus()==1){
             //先将原来的默认地址去除
             UmsMemberReceiveAddress record= new UmsMemberReceiveAddress();

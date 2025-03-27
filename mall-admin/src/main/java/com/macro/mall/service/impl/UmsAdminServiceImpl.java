@@ -29,7 +29,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -190,8 +189,8 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int delete(Long id) {
-        getCacheService().delAdmin(id);
         int count = adminMapper.deleteByPrimaryKey(id);
+        getCacheService().delAdmin(id);
         getCacheService().delResourceList(id);
         return count;
     }
@@ -276,5 +275,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public UmsAdminCacheService getCacheService() {
         return SpringUtil.getBean(UmsAdminCacheService.class);
+    }
+
+    @Override
+    public void logout(String username) {
+        //清空缓存中的用户相关数据
+        UmsAdmin admin = getCacheService().getAdmin(username);
+        getCacheService().delAdmin(admin.getId());
+        getCacheService().delResourceList(admin.getId());
     }
 }
