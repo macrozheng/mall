@@ -25,7 +25,7 @@ public interface SmsFlashPromotionService {
     int delete(Long id);
 
     /**
-     * 修改上下线状态
+     * 修改活动上下线状态
      */
     int updateStatus(Long id, Integer status);
 
