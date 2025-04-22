@@ -28,6 +28,9 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int createBrand(PmsBrandDto pmsBrandDto) {
+        if (pmsBrandDto != null) {
+            return 0;
+        }
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
         return brandMapper.insertSelective(pmsBrand);
