@@ -170,8 +170,10 @@ public class UmsMemberServiceImpl implements UmsMemberService {
             if(!passwordEncoder.matches(password,userDetails.getPassword())){
                 throw new BadCredentialsException("密码不正确");
             }
+            SecurityContext context = SecurityContextHolder.createEmptyContext();
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            context.setAuthentication(authentication);
+            SecurityContextHolder.setContext(context);
             token = jwtTokenUtil.generateToken(userDetails);
         } catch (AuthenticationException e) {
             LOGGER.warn("登录异常:{}", e.getMessage());
