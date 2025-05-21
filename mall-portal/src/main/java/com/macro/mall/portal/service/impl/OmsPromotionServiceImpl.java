@@ -87,12 +87,31 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         CartPromotionItem cartPromotionItem = new CartPromotionItem();
                         BeanUtils.copyProperties(item,cartPromotionItem);
                         String message = getFullReductionPromotionMessage(fullReduction);
-                        cartPromotionItem.setPromotionMessage(message);
-                        //(商品原价/总价)*满减金额
+                        cartPromotionItem.setPromotionMessage(message);                        //(商品原价/总价)*满减金额
                         PmsSkuStock skuStock= getOriginalPrice(promotionProduct, item.getProductSkuId());
                         BigDecimal originalPrice = skuStock.getPrice();
-                        BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN).multiply(fullReduction.getReducePrice());
-                        cartPromotionItem.setReduceAmount(reduceAmount);
+                        // 计算当前商品的占比
+                        BigDecimal ratio = originalPrice.divide(totalAmount, 10, RoundingMode.HALF_EVEN);
+                        BigDecimal reduceAmount = ratio.multiply(fullReduction.getReducePrice());                        // 最后一件商品处理舍入误差
+                        if (itemList.indexOf(item) == itemList.size() - 1) {
+                            // 计算已分配的优惠金额总和
+                            BigDecimal allocatedAmount = BigDecimal.ZERO;
+                            for (CartPromotionItem prevItem : cartPromotionItemList) {
+                                if (prevItem.getPromotionMessage() != null && 
+                                    prevItem.getPromotionMessage().contains("满减") && 
+                                    prevItem.getProductId().equals(promotionProduct.getId())) {
+                                    allocatedAmount = allocatedAmount.add(prevItem.getReduceAmount());
+                                }
+                            }
+                            // 最后一件商品的优惠金额 = 总优惠金额 - 已分配的优惠金额
+                            reduceAmount = fullReduction.getReducePrice().subtract(allocatedAmount);
+                        }
+                        // 确保优惠金额不为负数
+                        if (reduceAmount.compareTo(BigDecimal.ZERO) < 0) {
+                            reduceAmount = BigDecimal.ZERO;
+                        }
+                        // 设置该商品的优惠金额（保留两位小数）
+                        cartPromotionItem.setReduceAmount(reduceAmount.setScale(2, RoundingMode.HALF_UP));
                         cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
                         cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
                         cartPromotionItem.setGrowth(promotionProduct.getGiftGrowth());
