@@ -31,7 +31,7 @@ public interface UmsAdminCacheService {
     void delResourceListByRoleIds(List<Long> roleIds);
 
     /**
-     * 当资源信息改变时，删除资源项目后台用户缓存
+     * 当资源信息改变时，删除资源相关后台用户缓存
      */
     void delResourceListByResource(Long resourceId);
 
