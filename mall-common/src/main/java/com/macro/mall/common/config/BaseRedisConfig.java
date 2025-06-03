@@ -25,6 +25,10 @@ import java.time.Duration;
  */
 public class BaseRedisConfig {
 
+    /**
+     * key的序列化用RedisTemplate<>()
+     * value的序列化自己实现，即RedisSerializer<Object>，
+     * */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory,RedisSerializer<Object> redisSerializer) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();

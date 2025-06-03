@@ -66,7 +66,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
-        if (adminList != null && adminList.size() > 0) {
+        if (adminList != null && !adminList.isEmpty()) {
             admin = adminList.get(0);
             //将数据库中的数据存入缓存中
             getCacheService().setAdmin(admin);

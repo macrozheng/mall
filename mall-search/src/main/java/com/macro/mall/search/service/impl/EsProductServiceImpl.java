@@ -161,7 +161,7 @@ public class EsProductServiceImpl implements EsProductService {
     public Page<EsProduct> recommend(Long id, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         List<EsProduct> esProductList = productDao.getAllEsProductList(id);
-        if (esProductList.size() > 0) {
+        if (!esProductList.isEmpty()) {
             EsProduct esProduct = esProductList.get(0);
             String keyword = esProduct.getName();
             Long brandId = esProduct.getBrandId();
