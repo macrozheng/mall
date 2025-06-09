@@ -10,11 +10,16 @@ import com.macro.mall.mapper.SmsCouponMapper;
 import com.macro.mall.mapper.SmsCouponProductCategoryRelationMapper;
 import com.macro.mall.mapper.SmsCouponProductRelationMapper;
 import com.macro.mall.model.*;
+import com.macro.mall.service.SmsCouponCacheService;
 import com.macro.mall.service.SmsCouponService;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * 优惠券管理Service实现类
@@ -34,6 +39,9 @@ public class SmsCouponServiceImpl implements SmsCouponService {
     private SmsCouponProductCategoryRelationDao productCategoryRelationDao;
     @Autowired
     private SmsCouponDao couponDao;
+    @Autowired
+    private SmsCouponCacheService couponCacheService;
+
     @Override
     public int create(SmsCouponParam couponParam) {
         couponParam.setCount(couponParam.getPublishCount());
@@ -55,6 +63,10 @@ public class SmsCouponServiceImpl implements SmsCouponService {
             }
             productCategoryRelationDao.insertList(couponParam.getProductCategoryRelationList());
         }
+
+        // 将优惠卷信息加入到redis中
+        couponCacheService.create(couponParam);
+
         return count;
     }
 
@@ -66,6 +78,10 @@ public class SmsCouponServiceImpl implements SmsCouponService {
         deleteProductRelation(id);
         //删除商品分类关联
         deleteProductCategoryRelation(id);
+
+        // 删除redis优惠卷
+        couponCacheService.delete(id);
+
         return count;
     }
 
@@ -101,6 +117,9 @@ public class SmsCouponServiceImpl implements SmsCouponService {
             deleteProductCategoryRelation(id);
             productCategoryRelationDao.insertList(couponParam.getProductCategoryRelationList());
         }
+
+        // 更新优惠卷信息
+        couponCacheService.update(couponParam);
         return count;
     }
 

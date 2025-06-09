@@ -4,19 +4,20 @@ import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
+import com.macro.mall.portal.component.LuaScriptRegistry;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.domain.SmsCouponHistoryDetail;
+import com.macro.mall.portal.service.UmsMemberCouponCacheService;
 import com.macro.mall.portal.service.UmsMemberCouponService;
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.portal.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -39,9 +40,61 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
     @Autowired
     private PmsProductMapper productMapper;
+    @Autowired
+    private UmsMemberCouponCacheService memberCouponCacheService;
+    @Value("${redis.database}:")
+    private String REDIS_DATABASE;
+    @Value("${redis.key.coupon}")
+    private String COUPON_PREFIX;
+    @Value("${redis.key.userCoupon}")
+    private String USER_COUPON_PREFIX;
+    @Autowired
+    LuaScriptRegistry luaScriptRegistry;
+
+    /**
+     * TODO：使用消息队列，将redis的更改更新到数据库
+     * */
+
     @Override
     public void add(Long couponId) {
+        // 在redis中去找
+        Date enableTime = DateUtil.object2Date(memberCouponCacheService.get(couponId, "enableTime"));
+        if(enableTime == null) {
+            Asserts.fail("优惠卷不存在");
+        }
+        Date now = new Date();
+        if(now.before(enableTime)) {
+            Asserts.fail("优惠卷还没到领取日期");
+        }
+
+        // 在lua脚本中执行库存读取、判断、扣减，并将用户与优惠卷更新到redis，保证线程安全
+        String couponKey = REDIS_DATABASE + COUPON_PREFIX + couponId;
+        String userCouponKey = REDIS_DATABASE + USER_COUPON_PREFIX + couponId;
         UmsMember currentMember = memberService.getCurrentMember();
+        Long userId = currentMember.getId();
+        // 执行lua脚本
+        long scriptResult = memberCouponCacheService.luaExecute(
+                luaScriptRegistry.get("couponSale"), Arrays.asList(couponKey, userCouponKey), String.valueOf(userId));
+
+        switch ((int)scriptResult) {
+            case 0 :
+                Asserts.fail("lua脚本执行失败");
+                break;
+            case 1:
+                // TODO:领取成功，将信息发送到消息队列
+                break;
+            case -1:
+                Asserts.fail("优惠卷已经被领完了");
+                break;
+            case 2:
+                // TODO:再次领取成功，将信息发送到消息队列
+                break;
+            case -2:
+                Asserts.fail("超过每人领取数量");
+                break;
+        }
+
+        /*UmsMember currentMember = memberService.getCurrentMember();
         //获取优惠券信息，判断数量
         SmsCoupon coupon = couponMapper.selectByPrimaryKey(couponId);
         if(coupon==null){
@@ -76,7 +129,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         //修改优惠券表的数量、领取数量
         coupon.setCount(coupon.getCount()-1);
         coupon.setReceiveCount(coupon.getReceiveCount()==null?1:coupon.getReceiveCount()+1);
-        couponMapper.updateByPrimaryKey(coupon);
+        couponMapper.updateByPrimaryKey(coupon);*/
     }
 
     /**

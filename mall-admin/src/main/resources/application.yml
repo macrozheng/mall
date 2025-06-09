@@ -27,6 +27,7 @@ redis:
   key:
     admin: 'ums:admin'
     resourceList: 'ums:resourceList'
+    coupon: 'sms:couponId:'
   expire:
     common: 86400 # 24小时
 
