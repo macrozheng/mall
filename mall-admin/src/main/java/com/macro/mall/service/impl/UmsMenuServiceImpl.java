@@ -37,7 +37,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
             //没有父菜单时为一级菜单
             umsMenu.setLevel(0);
         } else {
-            //有父菜单时选择根据父菜单level设置
+            //有父菜单时为父菜单的level+1
             UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
             if (parentMenu != null) {
                 umsMenu.setLevel(parentMenu.getLevel() + 1);
