@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 申请信息封装
+ * 订单退货申请结果封装
  * Created by macro on 2018/10/18.
  */
 public class OmsOrderReturnApplyResult extends OmsOrderReturnApply {
