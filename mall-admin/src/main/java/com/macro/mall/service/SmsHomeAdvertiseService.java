@@ -20,7 +20,7 @@ public interface SmsHomeAdvertiseService {
     int delete(List<Long> ids);
 
     /**
-     * 修改上、下线状态
+     * 修改广告上、下线状态
      */
     int updateStatus(Long id, Integer status);
 

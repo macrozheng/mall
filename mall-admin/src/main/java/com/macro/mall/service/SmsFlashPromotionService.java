@@ -25,7 +25,7 @@ public interface SmsFlashPromotionService {
     int delete(Long id);
 
     /**
-     * 修改上下线状态
+     * 修改活动上下线状态
      */
     int updateStatus(Long id, Integer status);
 
@@ -35,7 +35,7 @@ public interface SmsFlashPromotionService {
     SmsFlashPromotion getItem(Long id);
 
     /**
-     * 分页查询活动
+     * 根据关键字分页查询活动
      */
     List<SmsFlashPromotion> list(String keyword, Integer pageSize, Integer pageNum);
 }
