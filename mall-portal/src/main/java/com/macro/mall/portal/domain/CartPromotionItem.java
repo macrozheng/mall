@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * 购物车中促销信息的封装
+ * 带促销信息的购物车商品封装
  * Created by macro on 2018/8/27.
  */
 @Getter
