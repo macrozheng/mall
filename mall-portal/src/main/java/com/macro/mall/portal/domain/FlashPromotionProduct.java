@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class FlashPromotionProduct extends PmsProduct{
     @ApiModelProperty("秒杀价格")
     private BigDecimal flashPromotionPrice;
-    @ApiModelProperty("用于秒杀到数量")
+    @ApiModelProperty("用于秒杀的数量")
     private Integer flashPromotionCount;
     @ApiModelProperty("秒杀限购数量")
     private Integer flashPromotionLimit;
