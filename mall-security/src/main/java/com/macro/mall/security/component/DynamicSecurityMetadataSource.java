@@ -36,8 +36,16 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
         if (configAttributeMap == null) this.loadDataSource();
         List<ConfigAttribute>  configAttributes = new ArrayList<>();
         //获取当前访问的路径
-        String url = ((FilterInvocation) o).getRequestUrl();
+        FilterInvocation filterInvocation = (FilterInvocation) o;
+        String url = filterInvocation.getRequestUrl();
         String path = URLUtil.getPath(url);
+        
+        // 移除 context-path 前缀，确保路径匹配正确
+        String contextPath = filterInvocation.getHttpRequest().getContextPath();
+        if (contextPath != null && !contextPath.isEmpty() && path.startsWith(contextPath)) {
+            path = path.substring(contextPath.length());
+        }
+        
         PathMatcher pathMatcher = new AntPathMatcher();
         Iterator<String> iterator = configAttributeMap.keySet().iterator();
         //获取访问该路径所需资源
