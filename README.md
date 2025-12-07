@@ -200,10 +200,10 @@ mall
 
 ![公众号图片](./document/resource/qrcode_for_macrozheng_258.jpg)
 
-
-
 ## enhance test
+
 此部分用于描述增强型测试策略，包括自动化测试流程、覆盖率要求及CI集成规范。
+
 ## 许可证
 
 [Apache License 2.0](https://github.com/macrozheng/mall/blob/master/LICENSE)
