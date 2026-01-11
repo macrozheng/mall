@@ -89,7 +89,7 @@ public class UmsRoleController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("获取角色相关菜单")
+    @ApiOperation("根据角色ID获取菜单列表")
     @RequestMapping(value = "/listMenu/{roleId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<UmsMenu>> listMenu(@PathVariable Long roleId) {
