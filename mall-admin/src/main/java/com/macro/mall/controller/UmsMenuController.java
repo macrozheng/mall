@@ -72,7 +72,7 @@ public class UmsMenuController {
         }
     }
 
-    @ApiOperation("分页查询后台菜单")
+    @ApiOperation("根据上级菜单ID分页查询菜单")
     @RequestMapping(value = "/list/{parentId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<UmsMenu>> list(@PathVariable Long parentId,
@@ -90,7 +90,7 @@ public class UmsMenuController {
         return CommonResult.success(list);
     }
 
-    @ApiOperation("修改菜单显示状态")
+    @ApiOperation("根据ID修改菜单显示状态")
     @RequestMapping(value = "/updateHidden/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateHidden(@PathVariable Long id, @RequestParam("hidden") Integer hidden) {
