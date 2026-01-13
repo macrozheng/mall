@@ -47,7 +47,7 @@ public class SmsFlashPromotionSessionController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改启用状态")
+    @ApiOperation("根据ID修改场次启用状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult updateStatus(@PathVariable Long id, Integer status) {
