@@ -58,7 +58,7 @@ public class SmsFlashPromotionController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改上下线状态")
+    @ApiOperation("修改活动上下线状态")
     @RequestMapping(value = "/update/status/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, Integer status) {
@@ -77,7 +77,7 @@ public class SmsFlashPromotionController {
         return CommonResult.success(flashPromotion);
     }
 
-    @ApiOperation("根据活动名称分页查询")
+    @ApiOperation("根据活动名称分页查询活动")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsFlashPromotion>> getItem(@RequestParam(value = "keyword", required = false) String keyword,
