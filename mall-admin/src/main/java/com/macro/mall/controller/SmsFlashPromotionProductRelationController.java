@@ -37,7 +37,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改关联信息")
+    @ApiOperation("根据ID修改关联信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody SmsFlashPromotionProductRelation relation) {
@@ -48,7 +48,7 @@ public class SmsFlashPromotionProductRelationController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("删除关联")
+    @ApiOperation("根据ID删除关联信息")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
