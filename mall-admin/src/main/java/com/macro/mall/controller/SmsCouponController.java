@@ -36,7 +36,7 @@ public class SmsCouponController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("删除优惠券")
+    @ApiOperation("根据ID删除优惠券")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
