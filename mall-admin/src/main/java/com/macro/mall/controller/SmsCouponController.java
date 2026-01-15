@@ -47,7 +47,7 @@ public class SmsCouponController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改优惠券")
+    @ApiOperation("根据ID修改优惠券")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id,@RequestBody SmsCouponParam couponParam) {
