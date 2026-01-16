@@ -25,7 +25,7 @@ public class SmsHomeNewProductController {
     @Autowired
     private SmsHomeNewProductService homeNewProductService;
 
-    @ApiOperation("添加首页新品")
+    @ApiOperation("批量添加首页新品")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody List<SmsHomeNewProduct> homeNewProductList) {
