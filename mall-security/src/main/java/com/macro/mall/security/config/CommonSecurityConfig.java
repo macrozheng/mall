@@ -5,6 +5,7 @@ import com.macro.mall.security.util.JwtTokenUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -48,8 +49,20 @@ public class CommonSecurityConfig {
 
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean
-    public DynamicAccessDecisionManager dynamicAccessDecisionManager() {
-        return new DynamicAccessDecisionManager();
+    public AccessDecisionManager yxdynamicAccessDecisionManager() {
+        return new YxDynamicAccessDecisionManager();
+    }
+
+//    @ConditionalOnBean(name = "dynamicSecurityService")
+//    @Bean
+//    public DynamicAccessDecisionManager dynamicAccessDecisionManager() {
+//        return new DynamicAccessDecisionManager();
+//    }
+
+    @ConditionalOnBean(name = "dynamicSecurityService")
+    @Bean
+    public YxDynamincSecurityMetadataSource yxDynamincSecurityMetadataSource() {
+        return new YxDynamincSecurityMetadataSource();
     }
 
     @ConditionalOnBean(name = "dynamicSecurityService")
@@ -60,7 +73,15 @@ public class CommonSecurityConfig {
 
     @ConditionalOnBean(name = "dynamicSecurityService")
     @Bean
-    public DynamicSecurityFilter dynamicSecurityFilter(){
-        return new DynamicSecurityFilter();
+    public YxDynamicSecurityFilter yxdynamicSecurityFilter(){
+        return new YxDynamicSecurityFilter();
     }
+
+//    @ConditionalOnBean(name = "dynamicSecurityService")
+//    @Bean
+//    public DynamicSecurityFilter dynamicSecurityFilter(){
+//        return new DynamicSecurityFilter();
+//    }
+
+
 }

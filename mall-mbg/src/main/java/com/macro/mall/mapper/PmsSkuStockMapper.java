@@ -20,6 +20,8 @@ public interface PmsSkuStockMapper {
 
     PmsSkuStock selectByPrimaryKey(Long id);
 
+    PmsSkuStock selectByPrimaryKeyForUpdate(Long id);
+
     int updateByExampleSelective(@Param("record") PmsSkuStock record, @Param("example") PmsSkuStockExample example);
 
     int updateByExample(@Param("record") PmsSkuStock record, @Param("example") PmsSkuStockExample example);

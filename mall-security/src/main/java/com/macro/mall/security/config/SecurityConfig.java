@@ -33,7 +33,7 @@ public class SecurityConfig {
     @Autowired(required = false)
     private DynamicSecurityService dynamicSecurityService;
     @Autowired(required = false)
-    private DynamicSecurityFilter dynamicSecurityFilter;
+    private YxDynamicSecurityFilter dynamicSecurityFilter;
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {

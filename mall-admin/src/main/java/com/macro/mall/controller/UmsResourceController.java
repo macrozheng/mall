@@ -4,6 +4,7 @@ import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.UmsResource;
 import com.macro.mall.security.component.DynamicSecurityMetadataSource;
+import com.macro.mall.security.component.YxDynamincSecurityMetadataSource;
 import com.macro.mall.service.UmsResourceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +28,7 @@ public class UmsResourceController {
     @Autowired
     private UmsResourceService resourceService;
     @Autowired
-    private DynamicSecurityMetadataSource dynamicSecurityMetadataSource;
+    private YxDynamincSecurityMetadataSource dynamicSecurityMetadataSource;
 
     @ApiOperation("添加后台资源")
     @RequestMapping(value = "/create", method = RequestMethod.POST)

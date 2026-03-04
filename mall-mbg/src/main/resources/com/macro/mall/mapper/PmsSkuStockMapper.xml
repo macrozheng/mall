@@ -96,6 +96,12 @@
     from pms_sku_stock
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pms_sku_stock
+    where id = #{id,jdbcType=BIGINT} for update
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from pms_sku_stock
     where id = #{id,jdbcType=BIGINT}
