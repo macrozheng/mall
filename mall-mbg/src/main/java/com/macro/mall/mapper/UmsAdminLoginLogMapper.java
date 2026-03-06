@@ -12,19 +12,19 @@ public interface UmsAdminLoginLogMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(UmsAdminLoginLog record);
+    int insert(UmsAdminLoginLog row);
 
-    int insertSelective(UmsAdminLoginLog record);
+    int insertSelective(UmsAdminLoginLog row);
 
     List<UmsAdminLoginLog> selectByExample(UmsAdminLoginLogExample example);
 
     UmsAdminLoginLog selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") UmsAdminLoginLog record, @Param("example") UmsAdminLoginLogExample example);
+    int updateByExampleSelective(@Param("row") UmsAdminLoginLog row, @Param("example") UmsAdminLoginLogExample example);
 
-    int updateByExample(@Param("record") UmsAdminLoginLog record, @Param("example") UmsAdminLoginLogExample example);
+    int updateByExample(@Param("row") UmsAdminLoginLog row, @Param("example") UmsAdminLoginLogExample example);
 
-    int updateByPrimaryKeySelective(UmsAdminLoginLog record);
+    int updateByPrimaryKeySelective(UmsAdminLoginLog row);
 
-    int updateByPrimaryKey(UmsAdminLoginLog record);
+    int updateByPrimaryKey(UmsAdminLoginLog row);
 }

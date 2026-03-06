@@ -12,19 +12,19 @@ public interface PmsAlbumPicMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsAlbumPic record);
+    int insert(PmsAlbumPic row);
 
-    int insertSelective(PmsAlbumPic record);
+    int insertSelective(PmsAlbumPic row);
 
     List<PmsAlbumPic> selectByExample(PmsAlbumPicExample example);
 
     PmsAlbumPic selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsAlbumPic record, @Param("example") PmsAlbumPicExample example);
+    int updateByExampleSelective(@Param("row") PmsAlbumPic row, @Param("example") PmsAlbumPicExample example);
 
-    int updateByExample(@Param("record") PmsAlbumPic record, @Param("example") PmsAlbumPicExample example);
+    int updateByExample(@Param("row") PmsAlbumPic row, @Param("example") PmsAlbumPicExample example);
 
-    int updateByPrimaryKeySelective(PmsAlbumPic record);
+    int updateByPrimaryKeySelective(PmsAlbumPic row);
 
-    int updateByPrimaryKey(PmsAlbumPic record);
+    int updateByPrimaryKey(PmsAlbumPic row);
 }

@@ -158,38 +158,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_order_operate_history
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
+      <if test="row.orderId != null">
+        order_id = #{row.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.operateMan != null">
-        operate_man = #{record.operateMan,jdbcType=VARCHAR},
+      <if test="row.operateMan != null">
+        operate_man = #{row.operateMan,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.orderStatus != null">
-        order_status = #{record.orderStatus,jdbcType=INTEGER},
+      <if test="row.orderStatus != null">
+        order_status = #{row.orderStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_order_operate_history
-    set id = #{record.id,jdbcType=BIGINT},
-      order_id = #{record.orderId,jdbcType=BIGINT},
-      operate_man = #{record.operateMan,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      order_status = #{record.orderStatus,jdbcType=INTEGER},
-      note = #{record.note,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      order_id = #{row.orderId,jdbcType=BIGINT},
+      operate_man = #{row.operateMan,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      order_status = #{row.orderStatus,jdbcType=INTEGER},
+      note = #{row.note,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

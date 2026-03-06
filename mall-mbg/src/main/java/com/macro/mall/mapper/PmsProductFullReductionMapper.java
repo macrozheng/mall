@@ -12,19 +12,19 @@ public interface PmsProductFullReductionMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProductFullReduction record);
+    int insert(PmsProductFullReduction row);
 
-    int insertSelective(PmsProductFullReduction record);
+    int insertSelective(PmsProductFullReduction row);
 
     List<PmsProductFullReduction> selectByExample(PmsProductFullReductionExample example);
 
     PmsProductFullReduction selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProductFullReduction record, @Param("example") PmsProductFullReductionExample example);
+    int updateByExampleSelective(@Param("row") PmsProductFullReduction row, @Param("example") PmsProductFullReductionExample example);
 
-    int updateByExample(@Param("record") PmsProductFullReduction record, @Param("example") PmsProductFullReductionExample example);
+    int updateByExample(@Param("row") PmsProductFullReduction row, @Param("example") PmsProductFullReductionExample example);
 
-    int updateByPrimaryKeySelective(PmsProductFullReduction record);
+    int updateByPrimaryKeySelective(PmsProductFullReduction row);
 
-    int updateByPrimaryKey(PmsProductFullReduction record);
+    int updateByPrimaryKey(PmsProductFullReduction row);
 }

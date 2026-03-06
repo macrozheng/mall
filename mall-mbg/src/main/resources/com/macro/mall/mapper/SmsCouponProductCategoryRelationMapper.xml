@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_coupon_product_category_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.couponId != null">
-        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      <if test="row.couponId != null">
+        coupon_id = #{row.couponId,jdbcType=BIGINT},
       </if>
-      <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      <if test="row.productCategoryId != null">
+        product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.productCategoryName != null">
-        product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+      <if test="row.productCategoryName != null">
+        product_category_name = #{row.productCategoryName,jdbcType=VARCHAR},
       </if>
-      <if test="record.parentCategoryName != null">
-        parent_category_name = #{record.parentCategoryName,jdbcType=VARCHAR},
+      <if test="row.parentCategoryName != null">
+        parent_category_name = #{row.parentCategoryName,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_coupon_product_category_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      coupon_id = #{record.couponId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
-      parent_category_name = #{record.parentCategoryName,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      coupon_id = #{row.couponId,jdbcType=BIGINT},
+      product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
+      product_category_name = #{row.productCategoryName,jdbcType=VARCHAR},
+      parent_category_name = #{row.parentCategoryName,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

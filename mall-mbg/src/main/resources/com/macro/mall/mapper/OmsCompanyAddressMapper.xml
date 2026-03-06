@@ -191,54 +191,54 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_company_address
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.addressName != null">
-        address_name = #{record.addressName,jdbcType=VARCHAR},
+      <if test="row.addressName != null">
+        address_name = #{row.addressName,jdbcType=VARCHAR},
       </if>
-      <if test="record.sendStatus != null">
-        send_status = #{record.sendStatus,jdbcType=INTEGER},
+      <if test="row.sendStatus != null">
+        send_status = #{row.sendStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.receiveStatus != null">
-        receive_status = #{record.receiveStatus,jdbcType=INTEGER},
+      <if test="row.receiveStatus != null">
+        receive_status = #{row.receiveStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="row.phone != null">
+        phone = #{row.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.province != null">
-        province = #{record.province,jdbcType=VARCHAR},
+      <if test="row.province != null">
+        province = #{row.province,jdbcType=VARCHAR},
       </if>
-      <if test="record.city != null">
-        city = #{record.city,jdbcType=VARCHAR},
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
       </if>
-      <if test="record.region != null">
-        region = #{record.region,jdbcType=VARCHAR},
+      <if test="row.region != null">
+        region = #{row.region,jdbcType=VARCHAR},
       </if>
-      <if test="record.detailAddress != null">
-        detail_address = #{record.detailAddress,jdbcType=VARCHAR},
+      <if test="row.detailAddress != null">
+        detail_address = #{row.detailAddress,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_company_address
-    set id = #{record.id,jdbcType=BIGINT},
-      address_name = #{record.addressName,jdbcType=VARCHAR},
-      send_status = #{record.sendStatus,jdbcType=INTEGER},
-      receive_status = #{record.receiveStatus,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      province = #{record.province,jdbcType=VARCHAR},
-      city = #{record.city,jdbcType=VARCHAR},
-      region = #{record.region,jdbcType=VARCHAR},
-      detail_address = #{record.detailAddress,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      address_name = #{row.addressName,jdbcType=VARCHAR},
+      send_status = #{row.sendStatus,jdbcType=INTEGER},
+      receive_status = #{row.receiveStatus,jdbcType=INTEGER},
+      name = #{row.name,jdbcType=VARCHAR},
+      phone = #{row.phone,jdbcType=VARCHAR},
+      province = #{row.province,jdbcType=VARCHAR},
+      city = #{row.city,jdbcType=VARCHAR},
+      region = #{row.region,jdbcType=VARCHAR},
+      detail_address = #{row.detailAddress,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

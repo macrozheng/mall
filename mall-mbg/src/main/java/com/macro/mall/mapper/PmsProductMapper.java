@@ -12,9 +12,9 @@ public interface PmsProductMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProduct record);
+    int insert(PmsProduct row);
 
-    int insertSelective(PmsProduct record);
+    int insertSelective(PmsProduct row);
 
     List<PmsProduct> selectByExampleWithBLOBs(PmsProductExample example);
 
@@ -22,15 +22,15 @@ public interface PmsProductMapper {
 
     PmsProduct selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProduct record, @Param("example") PmsProductExample example);
+    int updateByExampleSelective(@Param("row") PmsProduct row, @Param("example") PmsProductExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") PmsProduct record, @Param("example") PmsProductExample example);
+    int updateByExampleWithBLOBs(@Param("row") PmsProduct row, @Param("example") PmsProductExample example);
 
-    int updateByExample(@Param("record") PmsProduct record, @Param("example") PmsProductExample example);
+    int updateByExample(@Param("row") PmsProduct row, @Param("example") PmsProductExample example);
 
-    int updateByPrimaryKeySelective(PmsProduct record);
+    int updateByPrimaryKeySelective(PmsProduct row);
 
-    int updateByPrimaryKeyWithBLOBs(PmsProduct record);
+    int updateByPrimaryKeyWithBLOBs(PmsProduct row);
 
-    int updateByPrimaryKey(PmsProduct record);
+    int updateByPrimaryKey(PmsProduct row);
 }

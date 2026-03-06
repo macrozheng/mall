@@ -12,19 +12,19 @@ public interface OmsOrderOperateHistoryMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(OmsOrderOperateHistory record);
+    int insert(OmsOrderOperateHistory row);
 
-    int insertSelective(OmsOrderOperateHistory record);
+    int insertSelective(OmsOrderOperateHistory row);
 
     List<OmsOrderOperateHistory> selectByExample(OmsOrderOperateHistoryExample example);
 
     OmsOrderOperateHistory selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") OmsOrderOperateHistory record, @Param("example") OmsOrderOperateHistoryExample example);
+    int updateByExampleSelective(@Param("row") OmsOrderOperateHistory row, @Param("example") OmsOrderOperateHistoryExample example);
 
-    int updateByExample(@Param("record") OmsOrderOperateHistory record, @Param("example") OmsOrderOperateHistoryExample example);
+    int updateByExample(@Param("row") OmsOrderOperateHistory row, @Param("example") OmsOrderOperateHistoryExample example);
 
-    int updateByPrimaryKeySelective(OmsOrderOperateHistory record);
+    int updateByPrimaryKeySelective(OmsOrderOperateHistory row);
 
-    int updateByPrimaryKey(OmsOrderOperateHistory record);
+    int updateByPrimaryKey(OmsOrderOperateHistory row);
 }

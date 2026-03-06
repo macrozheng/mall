@@ -167,42 +167,42 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_comment_replay
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.commentId != null">
-        comment_id = #{record.commentId,jdbcType=BIGINT},
+      <if test="row.commentId != null">
+        comment_id = #{row.commentId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberNickName != null">
-        member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
+      <if test="row.memberNickName != null">
+        member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberIcon != null">
-        member_icon = #{record.memberIcon,jdbcType=VARCHAR},
+      <if test="row.memberIcon != null">
+        member_icon = #{row.memberIcon,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_comment_replay
-    set id = #{record.id,jdbcType=BIGINT},
-      comment_id = #{record.commentId,jdbcType=BIGINT},
-      member_nick_name = #{record.memberNickName,jdbcType=VARCHAR},
-      member_icon = #{record.memberIcon,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      type = #{record.type,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      comment_id = #{row.commentId,jdbcType=BIGINT},
+      member_nick_name = #{row.memberNickName,jdbcType=VARCHAR},
+      member_icon = #{row.memberIcon,jdbcType=VARCHAR},
+      content = #{row.content,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      type = #{row.type,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

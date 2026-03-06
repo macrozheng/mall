@@ -12,19 +12,19 @@ public interface UmsAdminRoleRelationMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(UmsAdminRoleRelation record);
+    int insert(UmsAdminRoleRelation row);
 
-    int insertSelective(UmsAdminRoleRelation record);
+    int insertSelective(UmsAdminRoleRelation row);
 
     List<UmsAdminRoleRelation> selectByExample(UmsAdminRoleRelationExample example);
 
     UmsAdminRoleRelation selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") UmsAdminRoleRelation record, @Param("example") UmsAdminRoleRelationExample example);
+    int updateByExampleSelective(@Param("row") UmsAdminRoleRelation row, @Param("example") UmsAdminRoleRelationExample example);
 
-    int updateByExample(@Param("record") UmsAdminRoleRelation record, @Param("example") UmsAdminRoleRelationExample example);
+    int updateByExample(@Param("row") UmsAdminRoleRelation row, @Param("example") UmsAdminRoleRelationExample example);
 
-    int updateByPrimaryKeySelective(UmsAdminRoleRelation record);
+    int updateByPrimaryKeySelective(UmsAdminRoleRelation row);
 
-    int updateByPrimaryKey(UmsAdminRoleRelation record);
+    int updateByPrimaryKey(UmsAdminRoleRelation row);
 }

@@ -32,8 +32,7 @@ public class OmsOrderController {
     public CommonResult<CommonPage<OmsOrder>> list(OmsOrderQueryParam queryParam,
                                                    @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsOrder> orderList = orderService.list(queryParam, pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(orderList));
+        return CommonResult.success(CommonPage.restPage(orderService.list(queryParam, pageSize, pageNum)));
     }
 
     @ApiOperation("批量发货")

@@ -167,42 +167,42 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_flash_promotion_log
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=INTEGER},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=INTEGER},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=INTEGER},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberPhone != null">
-        member_phone = #{record.memberPhone,jdbcType=VARCHAR},
+      <if test="row.memberPhone != null">
+        member_phone = #{row.memberPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.subscribeTime != null">
-        subscribe_time = #{record.subscribeTime,jdbcType=TIMESTAMP},
+      <if test="row.subscribeTime != null">
+        subscribe_time = #{row.subscribeTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.sendTime != null">
-        send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      <if test="row.sendTime != null">
+        send_time = #{row.sendTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_flash_promotion_log
-    set id = #{record.id,jdbcType=INTEGER},
-      member_id = #{record.memberId,jdbcType=INTEGER},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      member_phone = #{record.memberPhone,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      subscribe_time = #{record.subscribeTime,jdbcType=TIMESTAMP},
-      send_time = #{record.sendTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=INTEGER},
+      member_id = #{row.memberId,jdbcType=INTEGER},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      member_phone = #{row.memberPhone,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      subscribe_time = #{row.subscribeTime,jdbcType=TIMESTAMP},
+      send_time = #{row.sendTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

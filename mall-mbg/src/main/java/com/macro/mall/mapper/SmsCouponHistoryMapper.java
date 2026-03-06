@@ -12,19 +12,19 @@ public interface SmsCouponHistoryMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(SmsCouponHistory record);
+    int insert(SmsCouponHistory row);
 
-    int insertSelective(SmsCouponHistory record);
+    int insertSelective(SmsCouponHistory row);
 
     List<SmsCouponHistory> selectByExample(SmsCouponHistoryExample example);
 
     SmsCouponHistory selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") SmsCouponHistory record, @Param("example") SmsCouponHistoryExample example);
+    int updateByExampleSelective(@Param("row") SmsCouponHistory row, @Param("example") SmsCouponHistoryExample example);
 
-    int updateByExample(@Param("record") SmsCouponHistory record, @Param("example") SmsCouponHistoryExample example);
+    int updateByExample(@Param("row") SmsCouponHistory row, @Param("example") SmsCouponHistoryExample example);
 
-    int updateByPrimaryKeySelective(SmsCouponHistory record);
+    int updateByPrimaryKeySelective(SmsCouponHistory row);
 
-    int updateByPrimaryKey(SmsCouponHistory record);
+    int updateByPrimaryKey(SmsCouponHistory row);
 }

@@ -12,19 +12,19 @@ public interface PmsProductAttributeMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProductAttribute record);
+    int insert(PmsProductAttribute row);
 
-    int insertSelective(PmsProductAttribute record);
+    int insertSelective(PmsProductAttribute row);
 
     List<PmsProductAttribute> selectByExample(PmsProductAttributeExample example);
 
     PmsProductAttribute selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProductAttribute record, @Param("example") PmsProductAttributeExample example);
+    int updateByExampleSelective(@Param("row") PmsProductAttribute row, @Param("example") PmsProductAttributeExample example);
 
-    int updateByExample(@Param("record") PmsProductAttribute record, @Param("example") PmsProductAttributeExample example);
+    int updateByExample(@Param("row") PmsProductAttribute row, @Param("example") PmsProductAttributeExample example);
 
-    int updateByPrimaryKeySelective(PmsProductAttribute record);
+    int updateByPrimaryKeySelective(PmsProductAttribute row);
 
-    int updateByPrimaryKey(PmsProductAttribute record);
+    int updateByPrimaryKey(PmsProductAttribute row);
 }

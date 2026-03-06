@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_member_price
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberLevelId != null">
-        member_level_id = #{record.memberLevelId,jdbcType=BIGINT},
+      <if test="row.memberLevelId != null">
+        member_level_id = #{row.memberLevelId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberPrice != null">
-        member_price = #{record.memberPrice,jdbcType=DECIMAL},
+      <if test="row.memberPrice != null">
+        member_price = #{row.memberPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.memberLevelName != null">
-        member_level_name = #{record.memberLevelName,jdbcType=VARCHAR},
+      <if test="row.memberLevelName != null">
+        member_level_name = #{row.memberLevelName,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_member_price
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      member_level_id = #{record.memberLevelId,jdbcType=BIGINT},
-      member_price = #{record.memberPrice,jdbcType=DECIMAL},
-      member_level_name = #{record.memberLevelName,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      member_level_id = #{row.memberLevelId,jdbcType=BIGINT},
+      member_price = #{row.memberPrice,jdbcType=DECIMAL},
+      member_level_name = #{row.memberLevelName,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

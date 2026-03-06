@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_ladder
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.count != null">
-        count = #{record.count,jdbcType=INTEGER},
+      <if test="row.count != null">
+        count = #{row.count,jdbcType=INTEGER},
       </if>
-      <if test="record.discount != null">
-        discount = #{record.discount,jdbcType=DECIMAL},
+      <if test="row.discount != null">
+        discount = #{row.discount,jdbcType=DECIMAL},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=DECIMAL},
+      <if test="row.price != null">
+        price = #{row.price,jdbcType=DECIMAL},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_ladder
-    set id = #{record.id,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      count = #{record.count,jdbcType=INTEGER},
-      discount = #{record.discount,jdbcType=DECIMAL},
-      price = #{record.price,jdbcType=DECIMAL}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      count = #{row.count,jdbcType=INTEGER},
+      discount = #{row.discount,jdbcType=DECIMAL},
+      price = #{row.price,jdbcType=DECIMAL}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

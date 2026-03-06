@@ -135,26 +135,26 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_member_tag_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.tagId != null">
-        tag_id = #{record.tagId,jdbcType=BIGINT},
+      <if test="row.tagId != null">
+        tag_id = #{row.tagId,jdbcType=BIGINT},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_member_tag_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      tag_id = #{record.tagId,jdbcType=BIGINT}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      tag_id = #{row.tagId,jdbcType=BIGINT}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

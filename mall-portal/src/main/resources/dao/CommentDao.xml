@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.portal.dao.CommentDao">
+    <resultMap id="commentResult" type="com.macro.mall.portal.dto.Comment"/>
+    <select id="getSonComments" resultMap="commentResult">
+        select
+            c.id,
+            c.parent_id as parentId,
+            cc.content,
+            c.like_num as likeNum,
+            c.reply_num as replyNum,
+            c.create_time as createTime,
+            cc.pic_url as picUrl,
+            c.score
+        from
+            cms_comment c
+        left join
+            cms_comment_content cc
+        on c.content_id = cc.id
+        where
+            c.parent_id = #{parentId} order by createTime desc
+    </select>
+    <select id="getComments" resultMap="commentResult">
+        select
+            c.id,
+            c.parent_id as parentId,
+            cc.content,
+            c.like_num as likeNum,
+            c.reply_num as replyNum,
+            cc.pic_url as picUrl,
+            c.score
+        from
+            cms_comment c
+        left join cms_comment_content cc
+        on c.content_id = cc.id
+        <bind name="offset" value="(page-1)*pageSize"/>
+        where
+            c.parent_id = 0 and c.good_id = #{goodId} order by c.score desc limit #{offset},#{pageSize}
+    </select>
+    <insert id="createCommentContent">
+        insert into cms_comment_content
+        (comment.content,comment.picUrl)
+        value (
+        #{comment.parentId},
+        #{comment.score},
+        #{comment.userId},
+        #{comment.contentId},
+        #{comment.goodId}
+        )
+    </insert>
+    <insert id="createCommentMetaData">
+        insert into cms_comment
+        (parent_id, score, user_id, content_id, good_id)
+        value (
+            #{comment.parentId},
+            #{comment.score},
+            #{comment.userId},
+            #{comment.goodId}
+        )
+    </insert>
+    <update id="incrementLikeNumById">
+        updata cms_comment
+        set like_num = like_num+1
+        where id = #{commentId}
+    </update>
+    <update id="decrementLikeNumById">
+        updata cms_comment
+        set like_num = like_num-1
+        where id = #{commentId}
+    </update>
+    <insert id="createUserCommentLike">
+        insert into cms_user_comment_like
+        (user_id,comment_id)
+        value (#{userId},#{commentId})
+    </insert>
+</mapper>

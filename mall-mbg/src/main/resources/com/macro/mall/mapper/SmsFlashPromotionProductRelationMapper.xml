@@ -175,46 +175,46 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_flash_promotion_product_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.flashPromotionId != null">
-        flash_promotion_id = #{record.flashPromotionId,jdbcType=BIGINT},
+      <if test="row.flashPromotionId != null">
+        flash_promotion_id = #{row.flashPromotionId,jdbcType=BIGINT},
       </if>
-      <if test="record.flashPromotionSessionId != null">
-        flash_promotion_session_id = #{record.flashPromotionSessionId,jdbcType=BIGINT},
+      <if test="row.flashPromotionSessionId != null">
+        flash_promotion_session_id = #{row.flashPromotionSessionId,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.flashPromotionPrice != null">
-        flash_promotion_price = #{record.flashPromotionPrice,jdbcType=DECIMAL},
+      <if test="row.flashPromotionPrice != null">
+        flash_promotion_price = #{row.flashPromotionPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.flashPromotionCount != null">
-        flash_promotion_count = #{record.flashPromotionCount,jdbcType=INTEGER},
+      <if test="row.flashPromotionCount != null">
+        flash_promotion_count = #{row.flashPromotionCount,jdbcType=INTEGER},
       </if>
-      <if test="record.flashPromotionLimit != null">
-        flash_promotion_limit = #{record.flashPromotionLimit,jdbcType=INTEGER},
+      <if test="row.flashPromotionLimit != null">
+        flash_promotion_limit = #{row.flashPromotionLimit,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_flash_promotion_product_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      flash_promotion_id = #{record.flashPromotionId,jdbcType=BIGINT},
-      flash_promotion_session_id = #{record.flashPromotionSessionId,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      flash_promotion_price = #{record.flashPromotionPrice,jdbcType=DECIMAL},
-      flash_promotion_count = #{record.flashPromotionCount,jdbcType=INTEGER},
-      flash_promotion_limit = #{record.flashPromotionLimit,jdbcType=INTEGER},
-      sort = #{record.sort,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      flash_promotion_id = #{row.flashPromotionId,jdbcType=BIGINT},
+      flash_promotion_session_id = #{row.flashPromotionSessionId,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      flash_promotion_price = #{row.flashPromotionPrice,jdbcType=DECIMAL},
+      flash_promotion_count = #{row.flashPromotionCount,jdbcType=INTEGER},
+      flash_promotion_limit = #{row.flashPromotionLimit,jdbcType=INTEGER},
+      sort = #{row.sort,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

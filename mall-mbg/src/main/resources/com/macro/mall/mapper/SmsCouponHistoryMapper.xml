@@ -198,58 +198,58 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_coupon_history
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.couponId != null">
-        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      <if test="row.couponId != null">
+        coupon_id = #{row.couponId,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.couponCode != null">
-        coupon_code = #{record.couponCode,jdbcType=VARCHAR},
+      <if test="row.couponCode != null">
+        coupon_code = #{row.couponCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberNickname != null">
-        member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
+      <if test="row.memberNickname != null">
+        member_nickname = #{row.memberNickname,jdbcType=VARCHAR},
       </if>
-      <if test="record.getType != null">
-        get_type = #{record.getType,jdbcType=INTEGER},
+      <if test="row.getType != null">
+        get_type = #{row.getType,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.useStatus != null">
-        use_status = #{record.useStatus,jdbcType=INTEGER},
+      <if test="row.useStatus != null">
+        use_status = #{row.useStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.useTime != null">
-        use_time = #{record.useTime,jdbcType=TIMESTAMP},
+      <if test="row.useTime != null">
+        use_time = #{row.useTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
+      <if test="row.orderId != null">
+        order_id = #{row.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.orderSn != null">
-        order_sn = #{record.orderSn,jdbcType=VARCHAR},
+      <if test="row.orderSn != null">
+        order_sn = #{row.orderSn,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_coupon_history
-    set id = #{record.id,jdbcType=BIGINT},
-      coupon_id = #{record.couponId,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      coupon_code = #{record.couponCode,jdbcType=VARCHAR},
-      member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      get_type = #{record.getType,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      use_status = #{record.useStatus,jdbcType=INTEGER},
-      use_time = #{record.useTime,jdbcType=TIMESTAMP},
-      order_id = #{record.orderId,jdbcType=BIGINT},
-      order_sn = #{record.orderSn,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      coupon_id = #{row.couponId,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      coupon_code = #{row.couponCode,jdbcType=VARCHAR},
+      member_nickname = #{row.memberNickname,jdbcType=VARCHAR},
+      get_type = #{row.getType,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      use_status = #{row.useStatus,jdbcType=INTEGER},
+      use_time = #{row.useTime,jdbcType=TIMESTAMP},
+      order_id = #{row.orderId,jdbcType=BIGINT},
+      order_sn = #{row.orderSn,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

@@ -175,46 +175,46 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_integration_change_history
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberId != null">
-        member_id = #{record.memberId,jdbcType=BIGINT},
+      <if test="row.memberId != null">
+        member_id = #{row.memberId,jdbcType=BIGINT},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.changeType != null">
-        change_type = #{record.changeType,jdbcType=INTEGER},
+      <if test="row.changeType != null">
+        change_type = #{row.changeType,jdbcType=INTEGER},
       </if>
-      <if test="record.changeCount != null">
-        change_count = #{record.changeCount,jdbcType=INTEGER},
+      <if test="row.changeCount != null">
+        change_count = #{row.changeCount,jdbcType=INTEGER},
       </if>
-      <if test="record.operateMan != null">
-        operate_man = #{record.operateMan,jdbcType=VARCHAR},
+      <if test="row.operateMan != null">
+        operate_man = #{row.operateMan,jdbcType=VARCHAR},
       </if>
-      <if test="record.operateNote != null">
-        operate_note = #{record.operateNote,jdbcType=VARCHAR},
+      <if test="row.operateNote != null">
+        operate_note = #{row.operateNote,jdbcType=VARCHAR},
       </if>
-      <if test="record.sourceType != null">
-        source_type = #{record.sourceType,jdbcType=INTEGER},
+      <if test="row.sourceType != null">
+        source_type = #{row.sourceType,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_integration_change_history
-    set id = #{record.id,jdbcType=BIGINT},
-      member_id = #{record.memberId,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      change_type = #{record.changeType,jdbcType=INTEGER},
-      change_count = #{record.changeCount,jdbcType=INTEGER},
-      operate_man = #{record.operateMan,jdbcType=VARCHAR},
-      operate_note = #{record.operateNote,jdbcType=VARCHAR},
-      source_type = #{record.sourceType,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_id = #{row.memberId,jdbcType=BIGINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      change_type = #{row.changeType,jdbcType=INTEGER},
+      change_count = #{row.changeCount,jdbcType=INTEGER},
+      operate_man = #{row.operateMan,jdbcType=VARCHAR},
+      operate_note = #{row.operateNote,jdbcType=VARCHAR},
+      source_type = #{row.sourceType,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

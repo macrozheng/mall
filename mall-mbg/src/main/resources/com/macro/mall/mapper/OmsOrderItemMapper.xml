@@ -276,98 +276,98 @@
   <update id="updateByExampleSelective" parameterType="map">
     update oms_order_item
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
+      <if test="row.orderId != null">
+        order_id = #{row.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.orderSn != null">
-        order_sn = #{record.orderSn,jdbcType=VARCHAR},
+      <if test="row.orderSn != null">
+        order_sn = #{row.orderSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.productPic != null">
-        product_pic = #{record.productPic,jdbcType=VARCHAR},
+      <if test="row.productPic != null">
+        product_pic = #{row.productPic,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productBrand != null">
-        product_brand = #{record.productBrand,jdbcType=VARCHAR},
+      <if test="row.productBrand != null">
+        product_brand = #{row.productBrand,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSn != null">
-        product_sn = #{record.productSn,jdbcType=VARCHAR},
+      <if test="row.productSn != null">
+        product_sn = #{row.productSn,jdbcType=VARCHAR},
       </if>
-      <if test="record.productPrice != null">
-        product_price = #{record.productPrice,jdbcType=DECIMAL},
+      <if test="row.productPrice != null">
+        product_price = #{row.productPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.productQuantity != null">
-        product_quantity = #{record.productQuantity,jdbcType=INTEGER},
+      <if test="row.productQuantity != null">
+        product_quantity = #{row.productQuantity,jdbcType=INTEGER},
       </if>
-      <if test="record.productSkuId != null">
-        product_sku_id = #{record.productSkuId,jdbcType=BIGINT},
+      <if test="row.productSkuId != null">
+        product_sku_id = #{row.productSkuId,jdbcType=BIGINT},
       </if>
-      <if test="record.productSkuCode != null">
-        product_sku_code = #{record.productSkuCode,jdbcType=VARCHAR},
+      <if test="row.productSkuCode != null">
+        product_sku_code = #{row.productSkuCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      <if test="row.productCategoryId != null">
+        product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.promotionName != null">
-        promotion_name = #{record.promotionName,jdbcType=VARCHAR},
+      <if test="row.promotionName != null">
+        promotion_name = #{row.promotionName,jdbcType=VARCHAR},
       </if>
-      <if test="record.promotionAmount != null">
-        promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
+      <if test="row.promotionAmount != null">
+        promotion_amount = #{row.promotionAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.couponAmount != null">
-        coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      <if test="row.couponAmount != null">
+        coupon_amount = #{row.couponAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.integrationAmount != null">
-        integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
+      <if test="row.integrationAmount != null">
+        integration_amount = #{row.integrationAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.realAmount != null">
-        real_amount = #{record.realAmount,jdbcType=DECIMAL},
+      <if test="row.realAmount != null">
+        real_amount = #{row.realAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.giftIntegration != null">
-        gift_integration = #{record.giftIntegration,jdbcType=INTEGER},
+      <if test="row.giftIntegration != null">
+        gift_integration = #{row.giftIntegration,jdbcType=INTEGER},
       </if>
-      <if test="record.giftGrowth != null">
-        gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
+      <if test="row.giftGrowth != null">
+        gift_growth = #{row.giftGrowth,jdbcType=INTEGER},
       </if>
-      <if test="record.productAttr != null">
-        product_attr = #{record.productAttr,jdbcType=VARCHAR},
+      <if test="row.productAttr != null">
+        product_attr = #{row.productAttr,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update oms_order_item
-    set id = #{record.id,jdbcType=BIGINT},
-      order_id = #{record.orderId,jdbcType=BIGINT},
-      order_sn = #{record.orderSn,jdbcType=VARCHAR},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      product_pic = #{record.productPic,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_brand = #{record.productBrand,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR},
-      product_price = #{record.productPrice,jdbcType=DECIMAL},
-      product_quantity = #{record.productQuantity,jdbcType=INTEGER},
-      product_sku_id = #{record.productSkuId,jdbcType=BIGINT},
-      product_sku_code = #{record.productSkuCode,jdbcType=VARCHAR},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      promotion_name = #{record.promotionName,jdbcType=VARCHAR},
-      promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
-      coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
-      integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
-      real_amount = #{record.realAmount,jdbcType=DECIMAL},
-      gift_integration = #{record.giftIntegration,jdbcType=INTEGER},
-      gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
-      product_attr = #{record.productAttr,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      order_id = #{row.orderId,jdbcType=BIGINT},
+      order_sn = #{row.orderSn,jdbcType=VARCHAR},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      product_pic = #{row.productPic,jdbcType=VARCHAR},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      product_brand = #{row.productBrand,jdbcType=VARCHAR},
+      product_sn = #{row.productSn,jdbcType=VARCHAR},
+      product_price = #{row.productPrice,jdbcType=DECIMAL},
+      product_quantity = #{row.productQuantity,jdbcType=INTEGER},
+      product_sku_id = #{row.productSkuId,jdbcType=BIGINT},
+      product_sku_code = #{row.productSkuCode,jdbcType=VARCHAR},
+      product_category_id = #{row.productCategoryId,jdbcType=BIGINT},
+      promotion_name = #{row.promotionName,jdbcType=VARCHAR},
+      promotion_amount = #{row.promotionAmount,jdbcType=DECIMAL},
+      coupon_amount = #{row.couponAmount,jdbcType=DECIMAL},
+      integration_amount = #{row.integrationAmount,jdbcType=DECIMAL},
+      real_amount = #{row.realAmount,jdbcType=DECIMAL},
+      gift_integration = #{row.giftIntegration,jdbcType=INTEGER},
+      gift_growth = #{row.giftGrowth,jdbcType=INTEGER},
+      product_attr = #{row.productAttr,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

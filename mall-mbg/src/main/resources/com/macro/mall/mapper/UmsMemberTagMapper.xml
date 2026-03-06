@@ -144,30 +144,30 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member_tag
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.finishOrderCount != null">
-        finish_order_count = #{record.finishOrderCount,jdbcType=INTEGER},
+      <if test="row.finishOrderCount != null">
+        finish_order_count = #{row.finishOrderCount,jdbcType=INTEGER},
       </if>
-      <if test="record.finishOrderAmount != null">
-        finish_order_amount = #{record.finishOrderAmount,jdbcType=DECIMAL},
+      <if test="row.finishOrderAmount != null">
+        finish_order_amount = #{row.finishOrderAmount,jdbcType=DECIMAL},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member_tag
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      finish_order_count = #{record.finishOrderCount,jdbcType=INTEGER},
-      finish_order_amount = #{record.finishOrderAmount,jdbcType=DECIMAL}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      finish_order_count = #{row.finishOrderCount,jdbcType=INTEGER},
+      finish_order_amount = #{row.finishOrderAmount,jdbcType=DECIMAL}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

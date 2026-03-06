@@ -12,19 +12,19 @@ public interface PmsProductCategoryAttributeRelationMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProductCategoryAttributeRelation record);
+    int insert(PmsProductCategoryAttributeRelation row);
 
-    int insertSelective(PmsProductCategoryAttributeRelation record);
+    int insertSelective(PmsProductCategoryAttributeRelation row);
 
     List<PmsProductCategoryAttributeRelation> selectByExample(PmsProductCategoryAttributeRelationExample example);
 
     PmsProductCategoryAttributeRelation selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProductCategoryAttributeRelation record, @Param("example") PmsProductCategoryAttributeRelationExample example);
+    int updateByExampleSelective(@Param("row") PmsProductCategoryAttributeRelation row, @Param("example") PmsProductCategoryAttributeRelationExample example);
 
-    int updateByExample(@Param("record") PmsProductCategoryAttributeRelation record, @Param("example") PmsProductCategoryAttributeRelationExample example);
+    int updateByExample(@Param("row") PmsProductCategoryAttributeRelation row, @Param("example") PmsProductCategoryAttributeRelationExample example);
 
-    int updateByPrimaryKeySelective(PmsProductCategoryAttributeRelation record);
+    int updateByPrimaryKeySelective(PmsProductCategoryAttributeRelation row);
 
-    int updateByPrimaryKey(PmsProductCategoryAttributeRelation record);
+    int updateByPrimaryKey(PmsProductCategoryAttributeRelation row);
 }

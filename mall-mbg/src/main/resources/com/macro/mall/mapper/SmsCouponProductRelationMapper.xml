@@ -151,34 +151,34 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_coupon_product_relation
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.couponId != null">
-        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      <if test="row.couponId != null">
+        coupon_id = #{row.couponId,jdbcType=BIGINT},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=BIGINT},
+      <if test="row.productId != null">
+        product_id = #{row.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="row.productName != null">
+        product_name = #{row.productName,jdbcType=VARCHAR},
       </if>
-      <if test="record.productSn != null">
-        product_sn = #{record.productSn,jdbcType=VARCHAR},
+      <if test="row.productSn != null">
+        product_sn = #{row.productSn,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_coupon_product_relation
-    set id = #{record.id,jdbcType=BIGINT},
-      coupon_id = #{record.couponId,jdbcType=BIGINT},
-      product_id = #{record.productId,jdbcType=BIGINT},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_sn = #{record.productSn,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      coupon_id = #{row.couponId,jdbcType=BIGINT},
+      product_id = #{row.productId,jdbcType=BIGINT},
+      product_name = #{row.productName,jdbcType=VARCHAR},
+      product_sn = #{row.productSn,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

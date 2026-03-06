@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.CmsCommentMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.CmsComment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="score" jdbcType="BIGINT" property="score" />
+    <result column="reply_num" jdbcType="INTEGER" property="replyNum" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="content_id" jdbcType="BIGINT" property="contentId" />
+    <result column="good_id" jdbcType="BIGINT" property="goodId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, parent_id, like_num, create_time, score, reply_num, user_id, content_id, good_id
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.CmsCommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cms_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cms_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cms_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.CmsCommentExample">
+    delete from cms_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.CmsComment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into cms_comment (parent_id, like_num, create_time, 
+      score, reply_num, user_id, 
+      content_id, good_id)
+    values (#{parentId,jdbcType=INTEGER}, #{likeNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{score,jdbcType=BIGINT}, #{replyNum,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{contentId,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.CmsComment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into cms_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="replyNum != null">
+        reply_num,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="contentId != null">
+        content_id,
+      </if>
+      <if test="goodId != null">
+        good_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=BIGINT},
+      </if>
+      <if test="replyNum != null">
+        #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="contentId != null">
+        #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="goodId != null">
+        #{goodId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.CmsCommentExample" resultType="java.lang.Long">
+    select count(*) from cms_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cms_comment
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.parentId != null">
+        parent_id = #{row.parentId,jdbcType=INTEGER},
+      </if>
+      <if test="row.likeNum != null">
+        like_num = #{row.likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.score != null">
+        score = #{row.score,jdbcType=BIGINT},
+      </if>
+      <if test="row.replyNum != null">
+        reply_num = #{row.replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="row.userId != null">
+        user_id = #{row.userId,jdbcType=BIGINT},
+      </if>
+      <if test="row.contentId != null">
+        content_id = #{row.contentId,jdbcType=BIGINT},
+      </if>
+      <if test="row.goodId != null">
+        good_id = #{row.goodId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cms_comment
+    set id = #{row.id,jdbcType=BIGINT},
+      parent_id = #{row.parentId,jdbcType=INTEGER},
+      like_num = #{row.likeNum,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      score = #{row.score,jdbcType=BIGINT},
+      reply_num = #{row.replyNum,jdbcType=INTEGER},
+      user_id = #{row.userId,jdbcType=BIGINT},
+      content_id = #{row.contentId,jdbcType=BIGINT},
+      good_id = #{row.goodId,jdbcType=BIGINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.CmsComment">
+    update cms_comment
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=BIGINT},
+      </if>
+      <if test="replyNum != null">
+        reply_num = #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="contentId != null">
+        content_id = #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.CmsComment">
+    update cms_comment
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=BIGINT},
+      reply_num = #{replyNum,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      content_id = #{contentId,jdbcType=BIGINT},
+      good_id = #{goodId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

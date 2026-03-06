@@ -12,19 +12,19 @@ public interface CmsHelpCategoryMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(CmsHelpCategory record);
+    int insert(CmsHelpCategory row);
 
-    int insertSelective(CmsHelpCategory record);
+    int insertSelective(CmsHelpCategory row);
 
     List<CmsHelpCategory> selectByExample(CmsHelpCategoryExample example);
 
     CmsHelpCategory selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") CmsHelpCategory record, @Param("example") CmsHelpCategoryExample example);
+    int updateByExampleSelective(@Param("row") CmsHelpCategory row, @Param("example") CmsHelpCategoryExample example);
 
-    int updateByExample(@Param("record") CmsHelpCategory record, @Param("example") CmsHelpCategoryExample example);
+    int updateByExample(@Param("row") CmsHelpCategory row, @Param("example") CmsHelpCategoryExample example);
 
-    int updateByPrimaryKeySelective(CmsHelpCategory record);
+    int updateByPrimaryKeySelective(CmsHelpCategory row);
 
-    int updateByPrimaryKey(CmsHelpCategory record);
+    int updateByPrimaryKey(CmsHelpCategory row);
 }

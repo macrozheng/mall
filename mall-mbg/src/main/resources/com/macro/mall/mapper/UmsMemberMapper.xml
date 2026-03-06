@@ -259,90 +259,90 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_member
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.memberLevelId != null">
-        member_level_id = #{record.memberLevelId,jdbcType=BIGINT},
+      <if test="row.memberLevelId != null">
+        member_level_id = #{row.memberLevelId,jdbcType=BIGINT},
       </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="row.username != null">
+        username = #{row.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="row.password != null">
+        password = #{row.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.nickname != null">
-        nickname = #{record.nickname,jdbcType=VARCHAR},
+      <if test="row.nickname != null">
+        nickname = #{row.nickname,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="row.phone != null">
+        phone = #{row.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
+      <if test="row.icon != null">
+        icon = #{row.icon,jdbcType=VARCHAR},
       </if>
-      <if test="record.gender != null">
-        gender = #{record.gender,jdbcType=INTEGER},
+      <if test="row.gender != null">
+        gender = #{row.gender,jdbcType=INTEGER},
       </if>
-      <if test="record.birthday != null">
-        birthday = #{record.birthday,jdbcType=DATE},
+      <if test="row.birthday != null">
+        birthday = #{row.birthday,jdbcType=DATE},
       </if>
-      <if test="record.city != null">
-        city = #{record.city,jdbcType=VARCHAR},
+      <if test="row.city != null">
+        city = #{row.city,jdbcType=VARCHAR},
       </if>
-      <if test="record.job != null">
-        job = #{record.job,jdbcType=VARCHAR},
+      <if test="row.job != null">
+        job = #{row.job,jdbcType=VARCHAR},
       </if>
-      <if test="record.personalizedSignature != null">
-        personalized_signature = #{record.personalizedSignature,jdbcType=VARCHAR},
+      <if test="row.personalizedSignature != null">
+        personalized_signature = #{row.personalizedSignature,jdbcType=VARCHAR},
       </if>
-      <if test="record.sourceType != null">
-        source_type = #{record.sourceType,jdbcType=INTEGER},
+      <if test="row.sourceType != null">
+        source_type = #{row.sourceType,jdbcType=INTEGER},
       </if>
-      <if test="record.integration != null">
-        integration = #{record.integration,jdbcType=INTEGER},
+      <if test="row.integration != null">
+        integration = #{row.integration,jdbcType=INTEGER},
       </if>
-      <if test="record.growth != null">
-        growth = #{record.growth,jdbcType=INTEGER},
+      <if test="row.growth != null">
+        growth = #{row.growth,jdbcType=INTEGER},
       </if>
-      <if test="record.luckeyCount != null">
-        luckey_count = #{record.luckeyCount,jdbcType=INTEGER},
+      <if test="row.luckeyCount != null">
+        luckey_count = #{row.luckeyCount,jdbcType=INTEGER},
       </if>
-      <if test="record.historyIntegration != null">
-        history_integration = #{record.historyIntegration,jdbcType=INTEGER},
+      <if test="row.historyIntegration != null">
+        history_integration = #{row.historyIntegration,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_member
-    set id = #{record.id,jdbcType=BIGINT},
-      member_level_id = #{record.memberLevelId,jdbcType=BIGINT},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=INTEGER},
-      birthday = #{record.birthday,jdbcType=DATE},
-      city = #{record.city,jdbcType=VARCHAR},
-      job = #{record.job,jdbcType=VARCHAR},
-      personalized_signature = #{record.personalizedSignature,jdbcType=VARCHAR},
-      source_type = #{record.sourceType,jdbcType=INTEGER},
-      integration = #{record.integration,jdbcType=INTEGER},
-      growth = #{record.growth,jdbcType=INTEGER},
-      luckey_count = #{record.luckeyCount,jdbcType=INTEGER},
-      history_integration = #{record.historyIntegration,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      member_level_id = #{row.memberLevelId,jdbcType=BIGINT},
+      username = #{row.username,jdbcType=VARCHAR},
+      password = #{row.password,jdbcType=VARCHAR},
+      nickname = #{row.nickname,jdbcType=VARCHAR},
+      phone = #{row.phone,jdbcType=VARCHAR},
+      status = #{row.status,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      icon = #{row.icon,jdbcType=VARCHAR},
+      gender = #{row.gender,jdbcType=INTEGER},
+      birthday = #{row.birthday,jdbcType=DATE},
+      city = #{row.city,jdbcType=VARCHAR},
+      job = #{row.job,jdbcType=VARCHAR},
+      personalized_signature = #{row.personalizedSignature,jdbcType=VARCHAR},
+      source_type = #{row.sourceType,jdbcType=INTEGER},
+      integration = #{row.integration,jdbcType=INTEGER},
+      growth = #{row.growth,jdbcType=INTEGER},
+      luckey_count = #{row.luckeyCount,jdbcType=INTEGER},
+      history_integration = #{row.historyIntegration,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

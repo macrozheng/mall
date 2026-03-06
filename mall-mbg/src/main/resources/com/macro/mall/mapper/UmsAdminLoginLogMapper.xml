@@ -158,38 +158,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update ums_admin_login_log
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.adminId != null">
-        admin_id = #{record.adminId,jdbcType=BIGINT},
+      <if test="row.adminId != null">
+        admin_id = #{row.adminId,jdbcType=BIGINT},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
+      <if test="row.ip != null">
+        ip = #{row.ip,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="row.address != null">
+        address = #{row.address,jdbcType=VARCHAR},
       </if>
-      <if test="record.userAgent != null">
-        user_agent = #{record.userAgent,jdbcType=VARCHAR},
+      <if test="row.userAgent != null">
+        user_agent = #{row.userAgent,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ums_admin_login_log
-    set id = #{record.id,jdbcType=BIGINT},
-      admin_id = #{record.adminId,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      user_agent = #{record.userAgent,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      admin_id = #{row.adminId,jdbcType=BIGINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      ip = #{row.ip,jdbcType=VARCHAR},
+      address = #{row.address,jdbcType=VARCHAR},
+      user_agent = #{row.userAgent,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

@@ -205,62 +205,62 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sms_home_advertise
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null">
-        type = #{record.type,jdbcType=INTEGER},
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
       </if>
-      <if test="record.pic != null">
-        pic = #{record.pic,jdbcType=VARCHAR},
+      <if test="row.pic != null">
+        pic = #{row.pic,jdbcType=VARCHAR},
       </if>
-      <if test="record.startTime != null">
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      <if test="row.startTime != null">
+        start_time = #{row.startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.endTime != null">
-        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      <if test="row.endTime != null">
+        end_time = #{row.endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=INTEGER},
       </if>
-      <if test="record.clickCount != null">
-        click_count = #{record.clickCount,jdbcType=INTEGER},
+      <if test="row.clickCount != null">
+        click_count = #{row.clickCount,jdbcType=INTEGER},
       </if>
-      <if test="record.orderCount != null">
-        order_count = #{record.orderCount,jdbcType=INTEGER},
+      <if test="row.orderCount != null">
+        order_count = #{row.orderCount,jdbcType=INTEGER},
       </if>
-      <if test="record.url != null">
-        url = #{record.url,jdbcType=VARCHAR},
+      <if test="row.url != null">
+        url = #{row.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="row.note != null">
+        note = #{row.note,jdbcType=VARCHAR},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="row.sort != null">
+        sort = #{row.sort,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update sms_home_advertise
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=INTEGER},
-      pic = #{record.pic,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=TIMESTAMP},
-      end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER},
-      click_count = #{record.clickCount,jdbcType=INTEGER},
-      order_count = #{record.orderCount,jdbcType=INTEGER},
-      url = #{record.url,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      type = #{row.type,jdbcType=INTEGER},
+      pic = #{row.pic,jdbcType=VARCHAR},
+      start_time = #{row.startTime,jdbcType=TIMESTAMP},
+      end_time = #{row.endTime,jdbcType=TIMESTAMP},
+      status = #{row.status,jdbcType=INTEGER},
+      click_count = #{row.clickCount,jdbcType=INTEGER},
+      order_count = #{row.orderCount,jdbcType=INTEGER},
+      url = #{row.url,jdbcType=VARCHAR},
+      note = #{row.note,jdbcType=VARCHAR},
+      sort = #{row.sort,jdbcType=INTEGER}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

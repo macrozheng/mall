@@ -12,9 +12,9 @@ public interface PmsCommentMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsComment record);
+    int insert(PmsComment row);
 
-    int insertSelective(PmsComment record);
+    int insertSelective(PmsComment row);
 
     List<PmsComment> selectByExampleWithBLOBs(PmsCommentExample example);
 
@@ -22,15 +22,15 @@ public interface PmsCommentMapper {
 
     PmsComment selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsComment record, @Param("example") PmsCommentExample example);
+    int updateByExampleSelective(@Param("row") PmsComment row, @Param("example") PmsCommentExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") PmsComment record, @Param("example") PmsCommentExample example);
+    int updateByExampleWithBLOBs(@Param("row") PmsComment row, @Param("example") PmsCommentExample example);
 
-    int updateByExample(@Param("record") PmsComment record, @Param("example") PmsCommentExample example);
+    int updateByExample(@Param("row") PmsComment row, @Param("example") PmsCommentExample example);
 
-    int updateByPrimaryKeySelective(PmsComment record);
+    int updateByPrimaryKeySelective(PmsComment row);
 
-    int updateByPrimaryKeyWithBLOBs(PmsComment record);
+    int updateByPrimaryKeyWithBLOBs(PmsComment row);
 
-    int updateByPrimaryKey(PmsComment record);
+    int updateByPrimaryKey(PmsComment row);
 }

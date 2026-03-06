@@ -260,99 +260,99 @@
   <update id="updateByExampleSelective" parameterType="map">
     update cms_subject
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
+      <if test="row.categoryId != null">
+        category_id = #{row.categoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+      <if test="row.title != null">
+        title = #{row.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.pic != null">
-        pic = #{record.pic,jdbcType=VARCHAR},
+      <if test="row.pic != null">
+        pic = #{row.pic,jdbcType=VARCHAR},
       </if>
-      <if test="record.productCount != null">
-        product_count = #{record.productCount,jdbcType=INTEGER},
+      <if test="row.productCount != null">
+        product_count = #{row.productCount,jdbcType=INTEGER},
       </if>
-      <if test="record.recommendStatus != null">
-        recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
+      <if test="row.recommendStatus != null">
+        recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.collectCount != null">
-        collect_count = #{record.collectCount,jdbcType=INTEGER},
+      <if test="row.collectCount != null">
+        collect_count = #{row.collectCount,jdbcType=INTEGER},
       </if>
-      <if test="record.readCount != null">
-        read_count = #{record.readCount,jdbcType=INTEGER},
+      <if test="row.readCount != null">
+        read_count = #{row.readCount,jdbcType=INTEGER},
       </if>
-      <if test="record.commentCount != null">
-        comment_count = #{record.commentCount,jdbcType=INTEGER},
+      <if test="row.commentCount != null">
+        comment_count = #{row.commentCount,jdbcType=INTEGER},
       </if>
-      <if test="record.albumPics != null">
-        album_pics = #{record.albumPics,jdbcType=VARCHAR},
+      <if test="row.albumPics != null">
+        album_pics = #{row.albumPics,jdbcType=VARCHAR},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=VARCHAR},
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+      <if test="row.showStatus != null">
+        show_status = #{row.showStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.forwardCount != null">
-        forward_count = #{record.forwardCount,jdbcType=INTEGER},
+      <if test="row.forwardCount != null">
+        forward_count = #{row.forwardCount,jdbcType=INTEGER},
       </if>
-      <if test="record.categoryName != null">
-        category_name = #{record.categoryName,jdbcType=VARCHAR},
+      <if test="row.categoryName != null">
+        category_name = #{row.categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=LONGVARCHAR},
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update cms_subject
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      pic = #{record.pic,jdbcType=VARCHAR},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      collect_count = #{record.collectCount,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      comment_count = #{record.commentCount,jdbcType=INTEGER},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      forward_count = #{record.forwardCount,jdbcType=INTEGER},
-      category_name = #{record.categoryName,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      title = #{row.title,jdbcType=VARCHAR},
+      pic = #{row.pic,jdbcType=VARCHAR},
+      product_count = #{row.productCount,jdbcType=INTEGER},
+      recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      collect_count = #{row.collectCount,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      comment_count = #{row.commentCount,jdbcType=INTEGER},
+      album_pics = #{row.albumPics,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=VARCHAR},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      forward_count = #{row.forwardCount,jdbcType=INTEGER},
+      category_name = #{row.categoryName,jdbcType=VARCHAR},
+      content = #{row.content,jdbcType=LONGVARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update cms_subject
-    set id = #{record.id,jdbcType=BIGINT},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      pic = #{record.pic,jdbcType=VARCHAR},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      recommend_status = #{record.recommendStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      collect_count = #{record.collectCount,jdbcType=INTEGER},
-      read_count = #{record.readCount,jdbcType=INTEGER},
-      comment_count = #{record.commentCount,jdbcType=INTEGER},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      forward_count = #{record.forwardCount,jdbcType=INTEGER},
-      category_name = #{record.categoryName,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    set id = #{row.id,jdbcType=BIGINT},
+      category_id = #{row.categoryId,jdbcType=BIGINT},
+      title = #{row.title,jdbcType=VARCHAR},
+      pic = #{row.pic,jdbcType=VARCHAR},
+      product_count = #{row.productCount,jdbcType=INTEGER},
+      recommend_status = #{row.recommendStatus,jdbcType=INTEGER},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      collect_count = #{row.collectCount,jdbcType=INTEGER},
+      read_count = #{row.readCount,jdbcType=INTEGER},
+      comment_count = #{row.commentCount,jdbcType=INTEGER},
+      album_pics = #{row.albumPics,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=VARCHAR},
+      show_status = #{row.showStatus,jdbcType=INTEGER},
+      forward_count = #{row.forwardCount,jdbcType=INTEGER},
+      category_name = #{row.categoryName,jdbcType=VARCHAR}
+    <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>

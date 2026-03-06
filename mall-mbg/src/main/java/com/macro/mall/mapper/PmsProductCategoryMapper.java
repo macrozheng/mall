@@ -12,9 +12,9 @@ public interface PmsProductCategoryMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(PmsProductCategory record);
+    int insert(PmsProductCategory row);
 
-    int insertSelective(PmsProductCategory record);
+    int insertSelective(PmsProductCategory row);
 
     List<PmsProductCategory> selectByExampleWithBLOBs(PmsProductCategoryExample example);
 
@@ -22,15 +22,15 @@ public interface PmsProductCategoryMapper {
 
     PmsProductCategory selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") PmsProductCategory record, @Param("example") PmsProductCategoryExample example);
+    int updateByExampleSelective(@Param("row") PmsProductCategory row, @Param("example") PmsProductCategoryExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") PmsProductCategory record, @Param("example") PmsProductCategoryExample example);
+    int updateByExampleWithBLOBs(@Param("row") PmsProductCategory row, @Param("example") PmsProductCategoryExample example);
 
-    int updateByExample(@Param("record") PmsProductCategory record, @Param("example") PmsProductCategoryExample example);
+    int updateByExample(@Param("row") PmsProductCategory row, @Param("example") PmsProductCategoryExample example);
 
-    int updateByPrimaryKeySelective(PmsProductCategory record);
+    int updateByPrimaryKeySelective(PmsProductCategory row);
 
-    int updateByPrimaryKeyWithBLOBs(PmsProductCategory record);
+    int updateByPrimaryKeyWithBLOBs(PmsProductCategory row);
 
-    int updateByPrimaryKey(PmsProductCategory record);
+    int updateByPrimaryKey(PmsProductCategory row);
 }

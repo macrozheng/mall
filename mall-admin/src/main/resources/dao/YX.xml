@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.OmsOrderDao">
+    <resultMap id="OmsOrderDaoResult" type="com.macro.mall.dto.OmsOrderDetail" extends="com.macro.mall.mapper.OmsOrderMapper.BaseResultMap">
+        <collection property="historyList" resultMap="com.macro.mall.mapper.OmsOrderOperateHistoryMapper.BaseResultMap" columnPrefix="history_" />
+        <collection property="orderItemList" resultMap="com.macro.mall.mapper.OmsOrderItemMapper.BaseResultMap" columnPrefix="item_"/>
+    </resultMap>
+    <select id="getList" resultMap="com.macro.mall.mapper.OmsOrderMapper.BaseResultMap">
+        select *
+        from oms_order
+        where
+        delete_status = 0
+        <if test="queryParam.orderSn != null and queryParam.orderSn != ''">
+            and order_sn = #{queryParam.orderSn}
+        </if>
+        <if test="queryParam.orderType != null">
+            and order_type = #{queryParam.orderType}
+        </if>
+        <if test="queryParam.sourceType != null">
+            and source_type = #{queryParam.sourceType}
+        </if>
+        <if test="queryParam.status != null">
+            and status = #{queryParam.status}
+        </if>
+        <if test="queryParam.receiverKeyword != null and queryParam.receiverKeyword != ''">
+            and (receiver_name like concat(#{queryParam.receiverKeyword},"%")
+            or receiver_phone like concat(#{queryParam.receiverKeyword},"%")
+            )
+        </if>
+        <if test="queryParam.createTime != null and queryParam.createTime != ''">
+            and create_time like concat(#{queryParam.createTime},"%")
+        </if>
+    </select>
+    <select id="getDetail" resultMap="OmsOrderDaoResult">
+        select *
+        from oms_order oo
+        left join oms_order_operate_history oooh on oo.id = oooh.order_id
+        left join oms_order_item ooi on oo.id = ooi.order_id
+        where oo.id = #{id}
+    </select>
+</mapper>

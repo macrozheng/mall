@@ -12,19 +12,19 @@ public interface SmsFlashPromotionProductRelationMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(SmsFlashPromotionProductRelation record);
+    int insert(SmsFlashPromotionProductRelation row);
 
-    int insertSelective(SmsFlashPromotionProductRelation record);
+    int insertSelective(SmsFlashPromotionProductRelation row);
 
     List<SmsFlashPromotionProductRelation> selectByExample(SmsFlashPromotionProductRelationExample example);
 
     SmsFlashPromotionProductRelation selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") SmsFlashPromotionProductRelation record, @Param("example") SmsFlashPromotionProductRelationExample example);
+    int updateByExampleSelective(@Param("row") SmsFlashPromotionProductRelation row, @Param("example") SmsFlashPromotionProductRelationExample example);
 
-    int updateByExample(@Param("record") SmsFlashPromotionProductRelation record, @Param("example") SmsFlashPromotionProductRelationExample example);
+    int updateByExample(@Param("row") SmsFlashPromotionProductRelation row, @Param("example") SmsFlashPromotionProductRelationExample example);
 
-    int updateByPrimaryKeySelective(SmsFlashPromotionProductRelation record);
+    int updateByPrimaryKeySelective(SmsFlashPromotionProductRelation row);
 
-    int updateByPrimaryKey(SmsFlashPromotionProductRelation record);
+    int updateByPrimaryKey(SmsFlashPromotionProductRelation row);
 }
