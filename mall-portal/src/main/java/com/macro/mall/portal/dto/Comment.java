@@ -12,9 +12,11 @@ public class Comment {
     private String content;
     private String picUrl;
     private int likeNum;
-    private int replyNum;
+    private int repostNum;
     private int parentId;
     private String createTime;
     private Long score;
     private String userName;
+    private boolean isLiked;
+    private Long goodId;
 }

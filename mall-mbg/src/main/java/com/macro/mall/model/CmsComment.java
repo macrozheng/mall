@@ -20,7 +20,7 @@ public class CmsComment implements Serializable {
     private Long score;
 
     @ApiModelProperty(value = "回复数量")
-    private Integer replyNum;
+    private Integer repostNum;
 
     @ApiModelProperty(value = "用户ID")
     private Long userId;
@@ -73,12 +73,12 @@ public class CmsComment implements Serializable {
         this.score = score;
     }
 
-    public Integer getReplyNum() {
-        return replyNum;
+    public Integer getRepostNum() {
+        return repostNum;
     }
 
-    public void setReplyNum(Integer replyNum) {
-        this.replyNum = replyNum;
+    public void setRepostNum(Integer repostNum) {
+        this.repostNum = repostNum;
     }
 
     public Long getUserId() {
@@ -116,7 +116,7 @@ public class CmsComment implements Serializable {
         sb.append(", likeNum=").append(likeNum);
         sb.append(", createTime=").append(createTime);
         sb.append(", score=").append(score);
-        sb.append(", replyNum=").append(replyNum);
+        sb.append(", repostNum=").append(repostNum);
         sb.append(", userId=").append(userId);
         sb.append(", contentId=").append(contentId);
         sb.append(", goodId=").append(goodId);

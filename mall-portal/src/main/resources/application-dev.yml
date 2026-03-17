@@ -32,6 +32,16 @@ spring:
     virtual-host: /mall
     username: mall
     password: mall
+redisson:
+  config: |
+    singleServerConfig:
+      address: "redis://localhost:6379"
+      password: null  # 明确指定为null
+      connectionPoolSize: 10
+      connectionMinimumIdleSize: 5
+    threads: 0
+    nettyThreads: 0
+    codec: !<org.redisson.codec.JsonJacksonCodec> {}
 
 logging:
   level:

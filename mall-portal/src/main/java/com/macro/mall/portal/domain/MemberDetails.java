@@ -58,4 +58,8 @@ public class MemberDetails implements UserDetails {
     public UmsMember getUmsMember() {
         return umsMember;
     }
+
+    public Long getId() {
+        return umsMember.getId();
+    }
 }

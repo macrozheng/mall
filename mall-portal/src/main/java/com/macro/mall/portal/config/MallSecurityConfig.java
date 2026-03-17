@@ -1,6 +1,7 @@
 package com.macro.mall.portal.config;
 
 import com.macro.mall.portal.service.UmsMemberService;
+import com.macro.mall.security.component.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

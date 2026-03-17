@@ -7,7 +7,7 @@
     <result column="like_num" jdbcType="INTEGER" property="likeNum" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="score" jdbcType="BIGINT" property="score" />
-    <result column="reply_num" jdbcType="INTEGER" property="replyNum" />
+    <result column="repost_num" jdbcType="INTEGER" property="repostNum" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="content_id" jdbcType="BIGINT" property="contentId" />
     <result column="good_id" jdbcType="BIGINT" property="goodId" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, parent_id, like_num, create_time, score, reply_num, user_id, content_id, good_id
+    id, parent_id, like_num, create_time, score, repost_num, user_id, content_id, good_id
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.CmsCommentExample" resultMap="BaseResultMap">
     select
@@ -108,10 +108,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into cms_comment (parent_id, like_num, create_time, 
-      score, reply_num, user_id, 
+      score, repost_num, user_id, 
       content_id, good_id)
     values (#{parentId,jdbcType=INTEGER}, #{likeNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{score,jdbcType=BIGINT}, #{replyNum,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{score,jdbcType=BIGINT}, #{repostNum,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
       #{contentId,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.CmsComment">
@@ -132,8 +132,8 @@
       <if test="score != null">
         score,
       </if>
-      <if test="replyNum != null">
-        reply_num,
+      <if test="repostNum != null">
+        repost_num,
       </if>
       <if test="userId != null">
         user_id,
@@ -158,8 +158,8 @@
       <if test="score != null">
         #{score,jdbcType=BIGINT},
       </if>
-      <if test="replyNum != null">
-        #{replyNum,jdbcType=INTEGER},
+      <if test="repostNum != null">
+        #{repostNum,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
@@ -196,8 +196,8 @@
       <if test="row.score != null">
         score = #{row.score,jdbcType=BIGINT},
       </if>
-      <if test="row.replyNum != null">
-        reply_num = #{row.replyNum,jdbcType=INTEGER},
+      <if test="row.repostNum != null">
+        repost_num = #{row.repostNum,jdbcType=INTEGER},
       </if>
       <if test="row.userId != null">
         user_id = #{row.userId,jdbcType=BIGINT},
@@ -220,7 +220,7 @@
       like_num = #{row.likeNum,jdbcType=INTEGER},
       create_time = #{row.createTime,jdbcType=TIMESTAMP},
       score = #{row.score,jdbcType=BIGINT},
-      reply_num = #{row.replyNum,jdbcType=INTEGER},
+      repost_num = #{row.repostNum,jdbcType=INTEGER},
       user_id = #{row.userId,jdbcType=BIGINT},
       content_id = #{row.contentId,jdbcType=BIGINT},
       good_id = #{row.goodId,jdbcType=BIGINT}
@@ -243,8 +243,8 @@
       <if test="score != null">
         score = #{score,jdbcType=BIGINT},
       </if>
-      <if test="replyNum != null">
-        reply_num = #{replyNum,jdbcType=INTEGER},
+      <if test="repostNum != null">
+        repost_num = #{repostNum,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=BIGINT},
@@ -264,7 +264,7 @@
       like_num = #{likeNum,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       score = #{score,jdbcType=BIGINT},
-      reply_num = #{replyNum,jdbcType=INTEGER},
+      repost_num = #{repostNum,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=BIGINT},
       content_id = #{contentId,jdbcType=BIGINT},
       good_id = #{goodId,jdbcType=BIGINT}

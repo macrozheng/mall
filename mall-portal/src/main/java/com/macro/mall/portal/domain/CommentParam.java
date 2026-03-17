@@ -8,5 +8,5 @@ public class CommentParam {
     private String content;
     private Long goodId;
     private String picUrl;
-    private int parentId;
+    private Long parentId;
 }

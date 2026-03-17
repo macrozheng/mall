@@ -8,10 +8,11 @@
             c.parent_id as parentId,
             cc.content,
             c.like_num as likeNum,
-            c.reply_num as replyNum,
+            c.repost_num as repostNum,
             c.create_time as createTime,
             cc.pic_url as picUrl,
-            c.score
+            c.score,
+            c.good_id as goodId
         from
             cms_comment c
         left join
@@ -26,9 +27,11 @@
             c.parent_id as parentId,
             cc.content,
             c.like_num as likeNum,
-            c.reply_num as replyNum,
+            c.repost_num as repostNum,
             cc.pic_url as picUrl,
-            c.score
+            c.create_time as createTime,
+            c.score,
+            c.good_id as goodId
         from
             cms_comment c
         left join cms_comment_content cc
@@ -73,4 +76,26 @@
         (user_id,comment_id)
         value (#{userId},#{commentId})
     </insert>
+    <select id="existsByCommentIdAndUserId" resultType="java.lang.Boolean">
+        select exists(select 1 from cms_user_comment_like where user_id = #{userId} and comment_id = #{commentId})
+    </select>
+    <select id="selectUserCommentLikeAll" resultType="com.macro.mall.model.CmsUserCommentLike">
+        select
+            user_id as userId,
+            comment_id as commentId
+        from
+            cms_user_comment_like
+    </select>
+    <update id="updateLikeNumBatch">
+        update cms_comment
+        set like_num = case
+        <foreach collection="likeMap" index="key" item="val" separator="">
+            when id = #{key} then like_num + #{val}
+        </foreach>
+        end
+        where id in
+        <foreach collection="likeMap" index="key" item="val" separator="," open="(" close=")">
+            #{key}
+        </foreach>
+    </update>
 </mapper>

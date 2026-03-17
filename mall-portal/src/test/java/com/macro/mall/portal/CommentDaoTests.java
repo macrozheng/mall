@@ -15,6 +15,6 @@ public class CommentDaoTests {
     }
     @Test
     public void testGetSonComments() {
-        System.out.println(commentDao.getSonComments(1));
+        System.out.println(commentDao.getSonComments(1L));
     }
 }

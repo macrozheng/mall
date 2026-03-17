@@ -405,63 +405,63 @@ public class CmsCommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumIsNull() {
-            addCriterion("reply_num is null");
+        public Criteria andRepostNumIsNull() {
+            addCriterion("repost_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumIsNotNull() {
-            addCriterion("reply_num is not null");
+        public Criteria andRepostNumIsNotNull() {
+            addCriterion("repost_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumEqualTo(Integer value) {
-            addCriterion("reply_num =", value, "replyNum");
+        public Criteria andRepostNumEqualTo(Integer value) {
+            addCriterion("repost_num =", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumNotEqualTo(Integer value) {
-            addCriterion("reply_num <>", value, "replyNum");
+        public Criteria andRepostNumNotEqualTo(Integer value) {
+            addCriterion("repost_num <>", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumGreaterThan(Integer value) {
-            addCriterion("reply_num >", value, "replyNum");
+        public Criteria andRepostNumGreaterThan(Integer value) {
+            addCriterion("repost_num >", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("reply_num >=", value, "replyNum");
+        public Criteria andRepostNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("repost_num >=", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumLessThan(Integer value) {
-            addCriterion("reply_num <", value, "replyNum");
+        public Criteria andRepostNumLessThan(Integer value) {
+            addCriterion("repost_num <", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumLessThanOrEqualTo(Integer value) {
-            addCriterion("reply_num <=", value, "replyNum");
+        public Criteria andRepostNumLessThanOrEqualTo(Integer value) {
+            addCriterion("repost_num <=", value, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumIn(List<Integer> values) {
-            addCriterion("reply_num in", values, "replyNum");
+        public Criteria andRepostNumIn(List<Integer> values) {
+            addCriterion("repost_num in", values, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumNotIn(List<Integer> values) {
-            addCriterion("reply_num not in", values, "replyNum");
+        public Criteria andRepostNumNotIn(List<Integer> values) {
+            addCriterion("repost_num not in", values, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumBetween(Integer value1, Integer value2) {
-            addCriterion("reply_num between", value1, value2, "replyNum");
+        public Criteria andRepostNumBetween(Integer value1, Integer value2) {
+            addCriterion("repost_num between", value1, value2, "repostNum");
             return (Criteria) this;
         }
 
-        public Criteria andReplyNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("reply_num not between", value1, value2, "replyNum");
+        public Criteria andRepostNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("repost_num not between", value1, value2, "repostNum");
             return (Criteria) this;
         }
 
