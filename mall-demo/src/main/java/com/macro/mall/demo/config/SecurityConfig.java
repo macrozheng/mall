@@ -7,14 +7,20 @@ import com.macro.mall.model.UmsAdminExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.List;
 
@@ -24,57 +30,47 @@ import java.util.List;
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
     @Autowired
     private UmsAdminMapper umsAdminMapper;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()//配置权限
-//                .antMatchers("/").access("hasRole('TEST')")//该路径需要TEST角色
-//                .antMatchers("/brand/list").hasAuthority("TEST")//该路径需要TEST权限
-                .antMatchers("/**").permitAll()
-                .and()//启用基于http的认证
-                .httpBasic()
-                .realmName("/")
-                .and()//配置登录页面
-                .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error=true")
-                .and()//配置退出路径
-                .logout()
-                .logoutSuccessUrl("/")
-//                .and()//记住密码功能
-//                .rememberMe()
-//                .tokenValiditySeconds(60*60*24)
-//                .key("rememberMeKey")
-                .and()//关闭跨域伪造
-                .csrf()
-                .disable()
-                .headers()//去除X-Frame-Options
-                .frameOptions()
-                .disable();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().permitAll())
+                .httpBasic(basic -> basic
+                        .realmName("/"))
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .failureUrl("/login?error=true"))
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/"))
+                .csrf(csrf -> csrf.disable());
+        return httpSecurity.build();
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                UmsAdminExample example = new UmsAdminExample();
-                example.createCriteria().andUsernameEqualTo(username);
-                List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
-                if (umsAdminList != null && umsAdminList.size() > 0) {
-                    return new AdminUserDetails(umsAdminList.get(0));
-                }
-                throw new UsernameNotFoundException("用户名或密码错误");
+        return username -> {
+            UmsAdminExample example = new UmsAdminExample();
+            example.createCriteria().andUsernameEqualTo(username);
+            List<UmsAdmin> adminList = umsAdminMapper.selectByExample(example);
+            if (adminList != null && adminList.size() > 0) {
+                return new AdminUserDetails(adminList.get(0));
             }
+            throw new UsernameNotFoundException("用户名或密码错误");
         };
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

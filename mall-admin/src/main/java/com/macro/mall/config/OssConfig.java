@@ -2,6 +2,7 @@ package com.macro.mall.config;
 
 import com.aliyun.oss.OSSClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,6 +19,7 @@ public class OssConfig {
     @Value("${aliyun.oss.accessKeySecret}")
     private String ALIYUN_OSS_ACCESSKEYSECRET;
     @Bean
+    @ConditionalOnProperty(value = "aliyun.oss.enable", havingValue = "true", matchIfMissing = false)
     public OSSClient ossClient(){
         return new OSSClient(ALIYUN_OSS_ENDPOINT,ALIYUN_OSS_ACCESSKEYID,ALIYUN_OSS_ACCESSKEYSECRET);
     }

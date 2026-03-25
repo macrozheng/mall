@@ -1,0 +1,426 @@
+使用JDK版本: java version "17.0.3" 2022-04-19 LTS
+开始启动Spring Boot应用...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] mall                                                               [pom]
+[INFO] mall-common                                                        [jar]
+[INFO] mall-mbg                                                           [jar]
+[INFO] mall-security                                                      [jar]
+[INFO] mall-admin                                                         [jar]
+[INFO] 
+[INFO] ------------------------< com.macro.mall:mall >-------------------------
+[INFO] Building mall 1.0-SNAPSHOT                                         [1/5]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ mall ---
+[INFO] 
+[INFO] --- maven-install-plugin:3.1.1:install (default-install) @ mall ---
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/pom.xml to /Users/chijing/javatool/maven-repo/com/macro/mall/mall/1.0-SNAPSHOT/mall-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------------< com.macro.mall:mall-common >---------------------
+[INFO] Building mall-common 1.0-SNAPSHOT                                  [2/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ mall-common ---
+[INFO] Deleting /Volumes/sanDisk/cj-workspace/github/mall/mall-common/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ mall-common ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ mall-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to /Volumes/sanDisk/cj-workspace/github/mall/mall-common/target/classes
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-common/src/main/java/com/macro/mall/common/config/BaseRedisConfig.java: /Volumes/sanDisk/cj-workspace/github/mall/mall-common/src/main/java/com/macro/mall/common/config/BaseRedisConfig.java 使用或覆盖了标记为待删除的已过时 API。
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-common/src/main/java/com/macro/mall/common/config/BaseRedisConfig.java: 有关详细信息, 请使用 -Xlint:removal 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ mall-common ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-common/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ mall-common ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ mall-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ mall-common ---
+[INFO] Building jar: /Volumes/sanDisk/cj-workspace/github/mall/mall-common/target/mall-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.1.1:install (default-install) @ mall-common ---
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-common/pom.xml to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-common/1.0-SNAPSHOT/mall-common-1.0-SNAPSHOT.pom
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-common/target/mall-common-1.0-SNAPSHOT.jar to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-common/1.0-SNAPSHOT/mall-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------------< com.macro.mall:mall-mbg >-----------------------
+[INFO] Building mall-mbg 1.0-SNAPSHOT                                     [3/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ mall-mbg ---
+[INFO] Deleting /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ mall-mbg ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] Copying 78 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ mall-mbg ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 230 source files to /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ mall-mbg ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ mall-mbg ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ mall-mbg ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ mall-mbg ---
+[INFO] Building jar: /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/target/mall-mbg-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.1.1:install (default-install) @ mall-mbg ---
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/pom.xml to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-mbg/1.0-SNAPSHOT/mall-mbg-1.0-SNAPSHOT.pom
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-mbg/target/mall-mbg-1.0-SNAPSHOT.jar to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-mbg/1.0-SNAPSHOT/mall-mbg-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --------------------< com.macro.mall:mall-security >--------------------
+[INFO] Building mall-security 1.0-SNAPSHOT                                [4/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ mall-security ---
+[INFO] Deleting /Volumes/sanDisk/cj-workspace/github/mall/mall-security/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ mall-security ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-security/src/main/resources
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-security/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ mall-security ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to /Volumes/sanDisk/cj-workspace/github/mall/mall-security/target/classes
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-security/src/main/java/com/macro/mall/security/component/DynamicSecurityFilter.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-security/src/main/java/com/macro/mall/security/component/DynamicSecurityFilter.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ mall-security ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-security/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ mall-security ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ mall-security ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ mall-security ---
+[INFO] Building jar: /Volumes/sanDisk/cj-workspace/github/mall/mall-security/target/mall-security-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:3.1.1:install (default-install) @ mall-security ---
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-security/pom.xml to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-security/1.0-SNAPSHOT/mall-security-1.0-SNAPSHOT.pom
+[INFO] Installing /Volumes/sanDisk/cj-workspace/github/mall/mall-security/target/mall-security-1.0-SNAPSHOT.jar to /Users/chijing/javatool/maven-repo/com/macro/mall/mall-security/1.0-SNAPSHOT/mall-security-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] ---------------------< com.macro.mall:mall-admin >----------------------
+[INFO] Building mall-admin 1.0-SNAPSHOT                                   [5/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ mall-admin ---
+[INFO] Deleting /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ mall-admin ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 23 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ mall-admin ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 152 source files to /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target/classes
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/src/main/java/com/macro/mall/service/impl/UmsAdminCacheServiceImpl.java: /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/src/main/java/com/macro/mall/service/impl/UmsAdminCacheServiceImpl.java使用了未经检查或不安全的操作。
+[INFO] /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/src/main/java/com/macro/mall/service/impl/UmsAdminCacheServiceImpl.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ mall-admin ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ mall-admin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ mall-admin ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ mall-admin ---
+[INFO] Building jar: /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target/mall-admin-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:3.2.0:repackage (repackage) @ mall-admin ---
+[INFO] Replacing main artifact /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target/mall-admin-1.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target/mall-admin-1.0-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- docker-maven-plugin:0.40.2:build (build-image) @ mall-admin ---
+[ERROR] DOCKER> Cannot create docker access object  [Connect to 192.168.3.101:2375 [/192.168.3.101] failed: Operation timed out]
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for mall 1.0-SNAPSHOT:
+[INFO] 
+[INFO] mall ............................................... SUCCESS [  0.133 s]
+[INFO] mall-common ........................................ SUCCESS [  2.722 s]
+[INFO] mall-mbg ........................................... SUCCESS [  5.831 s]
+[INFO] mall-security ...................................... SUCCESS [  1.079 s]
+[INFO] mall-admin ......................................... FAILURE [01:20 min]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:30 min
+[INFO] Finished at: 2026-03-25T08:49:25+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal io.fabric8:docker-maven-plugin:0.40.2:build (build-image) on project mall-admin: Cannot create docker access object : Connect to 192.168.3.101:2375 [/192.168.3.101] failed: Operation timed out -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ConnectException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :mall-admin
+构建完成，开始启动应用...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.macro.mall:mall-admin >----------------------
+[INFO] Building mall-admin 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot-maven-plugin:3.2.0:run (default-cli) > test-compile @ mall-admin >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ mall-admin ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 23 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ mall-admin ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ mall-admin ---
+[INFO] skip non existing resourceDirectory /Volumes/sanDisk/cj-workspace/github/mall/mall-admin/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ mall-admin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:3.2.0:run (default-cli) < test-compile @ mall-admin <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:3.2.0:run (default-cli) @ mall-admin ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+08:49:27,988 |-INFO in ch.qos.logback.classic.LoggerContext[default] - This is logback-classic version 1.4.11
+08:49:27,991 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Here is a list of configurators discovered as a service, by rank: 
+08:49:27,991 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 -   org.springframework.boot.logging.logback.RootLogLevelConfigurator
+08:49:27,991 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - They will be invoked in order until ExecutionStatus.DO_NOT_INVOKE_NEXT_IF_ANY is returned.
+08:49:27,991 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Constructed configurator of type class org.springframework.boot.logging.logback.RootLogLevelConfigurator
+08:49:28,002 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - org.springframework.boot.logging.logback.RootLogLevelConfigurator.configure() call lasted 1 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+08:49:28,002 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Trying to configure with ch.qos.logback.classic.joran.SerializedModelConfigurator
+08:49:28,003 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Constructed configurator of type class ch.qos.logback.classic.joran.SerializedModelConfigurator
+08:49:28,065 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.scmo]
+08:49:28,066 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.scmo]
+08:49:28,066 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - ch.qos.logback.classic.joran.SerializedModelConfigurator.configure() call lasted 63 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+08:49:28,066 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Trying to configure with ch.qos.logback.classic.util.DefaultJoranConfigurator
+08:49:28,066 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Constructed configurator of type class ch.qos.logback.classic.util.DefaultJoranConfigurator
+08:49:28,067 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+08:49:28,067 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.xml]
+08:49:28,067 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - ch.qos.logback.classic.util.DefaultJoranConfigurator.configure() call lasted 1 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+08:49:28,067 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Trying to configure with ch.qos.logback.classic.BasicConfigurator
+08:49:28,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - Constructed configurator of type class ch.qos.logback.classic.BasicConfigurator
+08:49:28,068 |-INFO in ch.qos.logback.classic.BasicConfigurator@64d7b720 - Setting up default configuration.
+08:49:28,099 |-INFO in ch.qos.logback.classic.util.ContextInitializer@6e0d4a8 - ch.qos.logback.classic.BasicConfigurator.configure() call lasted 31 milliseconds. ExecutionStatus=NEUTRAL
+08:49:28,438 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@30272916 - URL [jar:file:/Users/chijing/javatool/maven-repo/com/macro/mall/mall-common/1.0-SNAPSHOT/mall-common-1.0-SNAPSHOT.jar!/logback-spring.xml] is not of type file
+08:49:28,477 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@5bb3d42d - Adding [jar:file:/Users/chijing/javatool/maven-repo/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+08:49:28,477 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@30272916 - URL [jar:file:/Users/chijing/javatool/maven-repo/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/defaults.xml] is not of type file
+08:49:28,479 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+08:49:28,479 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+08:49:28,479 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+08:49:28,479 |-INFO in ch.qos.logback.core.joran.action.ConversionRuleAction - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+08:49:28,480 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@5bb3d42d - Adding [jar:file:/Users/chijing/javatool/maven-repo/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/console-appender.xml] to configuration watch list.
+08:49:28,480 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@30272916 - URL [jar:file:/Users/chijing/javatool/maven-repo/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0.jar!/org/springframework/boot/logging/logback/console-appender.xml] is not of type file
+08:49:28,515 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+08:49:28,516 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+08:49:28,516 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+08:49:28,517 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+08:49:28,517 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+08:49:28,521 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+08:49:28,532 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [FILE_DEBUG]
+08:49:28,532 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+08:49:28,534 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+08:49:28,539 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@46259342 - Archive files will be limited to [10 MB] each.
+08:49:28,540 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@46259342 - No compression will be used
+08:49:28,541 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@46259342 - Will use the pattern /var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/debug/mall-admin-%d{yyyy-MM-dd}-%i.log for the active file
+08:49:28,553 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@b273a59 - The date pattern is 'yyyy-MM-dd' from file name pattern '/var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/debug/mall-admin-%d{yyyy-MM-dd}-%i.log'.
+08:49:28,553 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@b273a59 - Roll-over at midnight.
+08:49:28,558 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@b273a59 - Setting initial period to 2026-03-25T00:49:28.558Z
+08:49:28,559 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_DEBUG] - Active log file name: /var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/debug/mall-admin-2026-03-25-0.log
+08:49:28,559 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_DEBUG] - File property is set to [null]
+08:49:28,560 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [FILE_ERROR]
+08:49:28,560 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+08:49:28,561 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+08:49:28,562 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@1316001196 - Archive files will be limited to [10 MB] each.
+08:49:28,562 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@1316001196 - No compression will be used
+08:49:28,562 |-INFO in c.q.l.core.rolling.SizeAndTimeBasedRollingPolicy@1316001196 - Will use the pattern /var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/error/mall-admin-%d{yyyy-MM-dd}-%i.log for the active file
+08:49:28,562 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@251ebf23 - The date pattern is 'yyyy-MM-dd' from file name pattern '/var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/error/mall-admin-%d{yyyy-MM-dd}-%i.log'.
+08:49:28,562 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@251ebf23 - Roll-over at midnight.
+08:49:28,562 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@251ebf23 - Setting initial period to 2026-03-25T00:49:28.562Z
+08:49:28,563 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - Active log file name: /var/folders/c1/84dr7m655sn6gly29f9ry_pm0000gn/T//logs/error/mall-admin-2026-03-25-0.log
+08:49:28,563 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - File property is set to [null]
+08:49:28,563 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [LOG_STASH_DEBUG]
+08:49:28,563 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [net.logstash.logback.appender.LogstashTcpSocketAppender]
+08:49:28,577 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders] for [providers] property
+08:49:28,581 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventFormattedTimestampJsonProvider] for [timestamp] property
+08:49:28,582 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider] for [pattern] property
+08:49:28,766 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [LOG_STASH_ERROR]
+08:49:28,766 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [net.logstash.logback.appender.LogstashTcpSocketAppender]
+08:49:28,766 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders] for [providers] property
+08:49:28,767 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventFormattedTimestampJsonProvider] for [timestamp] property
+08:49:28,767 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider] for [pattern] property
+08:49:28,784 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [LOG_STASH_BUSINESS]
+08:49:28,784 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [net.logstash.logback.appender.LogstashTcpSocketAppender]
+08:49:28,785 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders] for [providers] property
+08:49:28,785 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventFormattedTimestampJsonProvider] for [timestamp] property
+08:49:28,785 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider] for [pattern] property
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_DEBUG] - Log destination localhost/<unresolved>:4560: connection failed. java.net.ConnectException: Connection refused
+	at java.net.ConnectException: Connection refused
+	at 	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at 	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at 	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at 	at java.base/java.net.Socket.connect(Socket.java:633)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.openSocket(AbstractLogstashTcpSocketAppender.java:762)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.onStart(AbstractLogstashTcpSocketAppender.java:681)
+	at 	at net.logstash.logback.appender.AsyncDisruptorAppender$EventClearingEventHandler.onStart(AsyncDisruptorAppender.java:382)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.notifyStart(BatchEventProcessor.java:224)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:120)
+	at 	at java.base/java.lang.Thread.run(Thread.java:833)
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_ERROR] - Log destination localhost/<unresolved>:4561: connection failed. java.net.ConnectException: Connection refused
+	at java.net.ConnectException: Connection refused
+	at 	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at 	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at 	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at 	at java.base/java.net.Socket.connect(Socket.java:633)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.openSocket(AbstractLogstashTcpSocketAppender.java:762)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.onStart(AbstractLogstashTcpSocketAppender.java:681)
+	at 	at net.logstash.logback.appender.AsyncDisruptorAppender$EventClearingEventHandler.onStart(AsyncDisruptorAppender.java:382)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.notifyStart(BatchEventProcessor.java:224)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:120)
+	at 	at java.base/java.lang.Thread.run(Thread.java:833)
+08:49:28,789 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [LOG_STASH_RECORD]
+08:49:28,789 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [net.logstash.logback.appender.LogstashTcpSocketAppender]
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_DEBUG] - Log destination localhost/<unresolved>:4560: Waiting 29976ms before attempting reconnection.
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_ERROR] - Log destination localhost/<unresolved>:4561: Waiting 29995ms before attempting reconnection.
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_BUSINESS] - Log destination localhost/<unresolved>:4562: connection failed. java.net.ConnectException: Connection refused
+	at java.net.ConnectException: Connection refused
+	at 	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at 	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at 	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at 	at java.base/java.net.Socket.connect(Socket.java:633)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.openSocket(AbstractLogstashTcpSocketAppender.java:762)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.onStart(AbstractLogstashTcpSocketAppender.java:681)
+	at 	at net.logstash.logback.appender.AsyncDisruptorAppender$EventClearingEventHandler.onStart(AsyncDisruptorAppender.java:382)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.notifyStart(BatchEventProcessor.java:224)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:120)
+	at 	at java.base/java.lang.Thread.run(Thread.java:833)
+08:49:28,789 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_BUSINESS] - Log destination localhost/<unresolved>:4562: Waiting 30000ms before attempting reconnection.
+08:49:28,789 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventJsonProviders] for [providers] property
+08:49:28,789 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventFormattedTimestampJsonProvider] for [timestamp] property
+08:49:28,790 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider] for [pattern] property
+08:49:28,792 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.slf4j] to INFO
+08:49:28,792 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating INFO level on Logger[org.slf4j] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [springfox] to INFO
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating INFO level on Logger[springfox] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [io.swagger] to INFO
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating INFO level on Logger[io.swagger] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to INFO
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating INFO level on Logger[org.springframework] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator] to INFO
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating INFO level on Logger[org.hibernate.validator] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to DEBUG
+08:49:28,793 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_RECORD] - Log destination localhost/<unresolved>:4563: connection failed. java.net.ConnectException: Connection refused
+	at java.net.ConnectException: Connection refused
+	at 	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at 	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at 	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at 	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at 	at java.base/java.net.Socket.connect(Socket.java:633)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.openSocket(AbstractLogstashTcpSocketAppender.java:762)
+	at 	at net.logstash.logback.appender.AbstractLogstashTcpSocketAppender$TcpSendingEventHandler.onStart(AbstractLogstashTcpSocketAppender.java:681)
+	at 	at net.logstash.logback.appender.AsyncDisruptorAppender$EventClearingEventHandler.onStart(AsyncDisruptorAppender.java:382)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.notifyStart(BatchEventProcessor.java:224)
+	at 	at net.logstash.logback.encoder.com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:120)
+	at 	at java.base/java.lang.Thread.run(Thread.java:833)
+08:49:28,793 |-WARN in net.logstash.logback.appender.LogstashTcpSocketAppender[LOG_STASH_RECORD] - Log destination localhost/<unresolved>:4563: Waiting 30000ms before attempting reconnection.
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [FILE_DEBUG] to Logger[ROOT]
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [FILE_ERROR] to Logger[ROOT]
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [LOG_STASH_DEBUG] to Logger[ROOT]
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [LOG_STASH_ERROR] to Logger[ROOT]
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.macro.mall.common.log.WebLogAspect] to DEBUG
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating DEBUG level on Logger[com.macro.mall.common.log.WebLogAspect] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [LOG_STASH_RECORD] to Logger[com.macro.mall.common.log.WebLogAspect]
+08:49:28,793 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.macro.mall] to DEBUG
+08:49:28,793 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5bf61e67 - Propagating DEBUG level on Logger[com.macro.mall] onto the JUL framework
+08:49:28,793 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [LOG_STASH_BUSINESS] to Logger[com.macro.mall]
+08:49:28,794 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@1162410a - End of configuration.
+08:49:28,794 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@b09fac1 - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-03-25T08:49:28.863+08:00  INFO 14727 --- [mall-admin] [           main] com.macro.mall.MallAdminApplication      : Starting MallAdminApplication using Java 17.0.3 with PID 14727 (/Volumes/sanDisk/cj-workspace/github/mall/mall-admin/target/classes started by chijing in /Volumes/sanDisk/cj-workspace/github/mall/mall-admin)
+2026-03-25T08:49:28.867+08:00 DEBUG 14727 --- [mall-admin] [           main] com.macro.mall.MallAdminApplication      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-25T08:49:28.867+08:00  INFO 14727 --- [mall-admin] [           main] com.macro.mall.MallAdminApplication      : The following 1 profile is active: "dev"
+2026-03-25T08:49:29.806+08:00  INFO 14727 --- [mall-admin] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-25T08:49:29.808+08:00  INFO 14727 --- [mall-admin] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-25T08:49:29.874+08:00  INFO 14727 --- [mall-admin] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 0 Redis repository interfaces.
+2026-03-25T08:49:30.854+08:00  INFO 14727 --- [mall-admin] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-03-25T08:49:30.862+08:00  INFO 14727 --- [mall-admin] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T08:49:30.862+08:00  INFO 14727 --- [mall-admin] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-03-25T08:49:30.916+08:00  INFO 14727 --- [mall-admin] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T08:49:30.916+08:00  INFO 14727 --- [mall-admin] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2017 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-03-25T08:49:32.697+08:00  INFO 14727 --- [mall-admin] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T08:49:32.857+08:00  INFO 14727 --- [mall-admin] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7894a250
+2026-03-25T08:49:32.858+08:00  INFO 14727 --- [mall-admin] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T08:49:32.865+08:00 DEBUG 14727 --- [mall-admin] [           main] c.m.m.m.U.selectByExample                : ==>  Preparing: select id, create_time, name, url, description, category_id from ums_resource
+2026-03-25T08:49:32.886+08:00 DEBUG 14727 --- [mall-admin] [           main] c.m.m.m.U.selectByExample                : ==> Parameters: 
+2026-03-25T08:49:32.912+08:00 DEBUG 14727 --- [mall-admin] [           main] c.m.m.m.U.selectByExample                : <==      Total: 31
+2026-03-25T08:49:32.924+08:00  WARN 14727 --- [mall-admin] [           main] c.m.m.s.component.DynamicSecurityFilter  : Could not validate configuration attributes as the SecurityMetadataSource did not return any attributes from getAllConfigAttributes()
+2026-03-25T08:49:33.012+08:00 DEBUG 14727 --- [mall-admin] [           main] c.m.m.s.c.JwtAuthenticationTokenFilter   : Filter 'jwtAuthenticationTokenFilter' configured for use
+2026-03-25T08:49:35.124+08:00  INFO 14727 --- [mall-admin] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-03-25T08:49:35.210+08:00  INFO 14727 --- [mall-admin] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7fac3ce0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e3b41cb, org.springframework.security.web.context.SecurityContextHolderFilter@7e0fc5d0, org.springframework.security.web.header.HeaderWriterFilter@4dfe14d4, org.springframework.web.filter.CorsFilter@62f37bfd, org.springframework.security.web.authentication.logout.LogoutFilter@466d6ea5, com.macro.mall.security.component.JwtAuthenticationTokenFilter@3549c070, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f0ab520, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@340f4723, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14bb16ee, org.springframework.security.web.session.SessionManagementFilter@7f1581bb, org.springframework.security.web.access.ExceptionTranslationFilter@9198fe3, com.macro.mall.security.component.DynamicSecurityFilter@14b0b7f9, org.springframework.security.web.access.intercept.AuthorizationFilter@361065d1]
+2026-03-25T08:49:36.280+08:00  INFO 14727 --- [mall-admin] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-03-25T08:49:36.299+08:00  INFO 14727 --- [mall-admin] [           main] com.macro.mall.MallAdminApplication      : Started MallAdminApplication in 8.122 seconds (process running for 8.459)
+                                                                                                                                                                                                                             [INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:08 min
+[INFO] Finished at: 2026-03-25T08:50:02+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.2.0:run (default-cli) on project mall-admin: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

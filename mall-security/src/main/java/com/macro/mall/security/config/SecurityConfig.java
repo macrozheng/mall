@@ -37,38 +37,32 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = httpSecurity
-                .authorizeRequests();
+        httpSecurity
+                //关闭跨站请求防护
+                .csrf(csrf -> csrf.disable())
+                //不使用session
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                //自定义权限拒绝处理类
+                .exceptionHandling(exception -> exception
+                        .accessDeniedHandler(restfulAccessDeniedHandler)
+                        .authenticationEntryPoint(restAuthenticationEntryPoint))
+                //自定义权限拦截器JWT过滤器
+                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        
         //不需要保护的资源路径允许访问
         for (String url : ignoreUrlsConfig.getUrls()) {
-            registry.antMatchers(url).permitAll();
+            httpSecurity.authorizeHttpRequests(authorize -> authorize.requestMatchers(url).permitAll());
         }
         //允许跨域请求的OPTIONS请求
-        registry.antMatchers(HttpMethod.OPTIONS)
-                .permitAll();
+        httpSecurity.authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.OPTIONS).permitAll());
         //任何请求都需要身份认证
-        registry.and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                //关闭跨站请求防护及不使用session
-                .and()
-                .csrf()
-                .disable()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                //自定义权限拒绝处理类
-                .and()
-                .exceptionHandling()
-                .accessDeniedHandler(restfulAccessDeniedHandler)
-                .authenticationEntryPoint(restAuthenticationEntryPoint)
-                //自定义权限拦截器JWT过滤器
-                .and()
-                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
+        
         //有动态权限配置时添加动态权限校验过滤器
         if(dynamicSecurityService!=null){
-            registry.and().addFilterBefore(dynamicSecurityFilter, FilterSecurityInterceptor.class);
+            httpSecurity.addFilterBefore(dynamicSecurityFilter, FilterSecurityInterceptor.class);
         }
+        
         return httpSecurity.build();
     }
 

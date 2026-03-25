@@ -1,6 +1,5 @@
 package com.macro.mall.model;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class SmsCouponProductRelation implements Serializable {
@@ -10,10 +9,8 @@ public class SmsCouponProductRelation implements Serializable {
 
     private Long productId;
 
-    @ApiModelProperty(value = "商品名称")
     private String productName;
 
-    @ApiModelProperty(value = "商品编码")
     private String productSn;
 
     private static final long serialVersionUID = 1L;

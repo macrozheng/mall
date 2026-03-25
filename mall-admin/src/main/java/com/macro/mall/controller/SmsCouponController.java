@@ -5,8 +5,6 @@ import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.dto.SmsCouponParam;
 import com.macro.mall.model.SmsCoupon;
 import com.macro.mall.service.SmsCouponService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +17,11 @@ import java.util.List;
  * Created by macro on 2018/8/28.
  */
 @Controller
-@Api(tags = "SmsCouponController")
 @Tag(name = "SmsCouponController", description = "优惠券管理")
 @RequestMapping("/coupon")
 public class SmsCouponController {
     @Autowired
     private SmsCouponService couponService;
-    @ApiOperation("添加优惠券")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@RequestBody SmsCouponParam couponParam) {
@@ -36,7 +32,6 @@ public class SmsCouponController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("根据ID删除优惠券")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -47,7 +42,6 @@ public class SmsCouponController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("根据ID修改优惠券")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id,@RequestBody SmsCouponParam couponParam) {
@@ -58,7 +52,6 @@ public class SmsCouponController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("根据优惠券名称和类型分页获取优惠券列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<SmsCoupon>> list(
@@ -70,7 +63,6 @@ public class SmsCouponController {
         return CommonResult.success(CommonPage.restPage(couponList));
     }
 
-    @ApiOperation("获取单个优惠券的详细信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<SmsCouponParam> getItem(@PathVariable Long id) {

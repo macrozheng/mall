@@ -1,6 +1,5 @@
 package com.macro.mall.model;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class CmsPrefrenceArea implements Serializable {
@@ -14,7 +13,6 @@ public class CmsPrefrenceArea implements Serializable {
 
     private Integer showStatus;
 
-    @ApiModelProperty(value = "展示图片")
     private byte[] pic;
 
     private static final long serialVersionUID = 1L;
