@@ -1,9 +1,8 @@
 package com.macro.mall.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.OmsOrderReturnReasonMapper;
+import com.macro.mall.common.util.SpecificationBuilder;
+import com.macro.mall.repository.OmsOrderReturnReasonRepository;
 import com.macro.mall.model.OmsOrderReturnReason;
-import com.macro.mall.model.OmsOrderReturnReasonExample;
 import com.macro.mall.service.OmsOrderReturnReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,32 +17,31 @@ import java.util.List;
 @Service
 public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonService {
     @Autowired
-    private OmsOrderReturnReasonMapper returnReasonMapper;
+    private OmsOrderReturnReasonRepository returnReasonRepository;
+
     @Override
     public int create(OmsOrderReturnReason returnReason) {
         returnReason.setCreateTime(new Date());
-        return returnReasonMapper.insert(returnReason);
+        returnReasonRepository.save(returnReason);
+        return 1;
     }
 
     @Override
     public int update(Long id, OmsOrderReturnReason returnReason) {
         returnReason.setId(id);
-        return returnReasonMapper.updateByPrimaryKey(returnReason);
+        returnReasonRepository.save(returnReason);
+        return 1;
     }
 
     @Override
     public int delete(List<Long> ids) {
-        OmsOrderReturnReasonExample example = new OmsOrderReturnReasonExample();
-        example.createCriteria().andIdIn(ids);
-        return returnReasonMapper.deleteByExample(example);
+        returnReasonRepository.deleteAllByIdInBatch(ids);
+        return ids.size();
     }
 
     @Override
     public List<OmsOrderReturnReason> list(Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        OmsOrderReturnReasonExample example = new OmsOrderReturnReasonExample();
-        example.setOrderByClause("sort desc");
-        return returnReasonMapper.selectByExample(example);
+        return returnReasonRepository.findAll();
     }
 
     @Override
@@ -51,15 +49,16 @@ public class OmsOrderReturnReasonServiceImpl implements OmsOrderReturnReasonServ
         if(!status.equals(0)&&!status.equals(1)){
             return 0;
         }
-        OmsOrderReturnReason record = new OmsOrderReturnReason();
-        record.setStatus(status);
-        OmsOrderReturnReasonExample example = new OmsOrderReturnReasonExample();
-        example.createCriteria().andIdIn(ids);
-        return returnReasonMapper.updateByExampleSelective(record,example);
+        List<OmsOrderReturnReason> reasons = returnReasonRepository.findAllById(ids);
+        for (OmsOrderReturnReason reason : reasons) {
+            reason.setStatus(status);
+        }
+        returnReasonRepository.saveAll(reasons);
+        return ids.size();
     }
 
     @Override
     public OmsOrderReturnReason getItem(Long id) {
-        return returnReasonMapper.selectByPrimaryKey(id);
+        return returnReasonRepository.findById(id).orElse(null);
     }
 }

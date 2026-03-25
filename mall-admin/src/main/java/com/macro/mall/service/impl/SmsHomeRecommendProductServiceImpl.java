@@ -1,10 +1,10 @@
 package com.macro.mall.service.impl;
 
+
+import com.macro.mall.common.util.SpecificationBuilder;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.SmsHomeRecommendProductMapper;
+import com.macro.mall.repository.SmsHomeRecommendProductRepository;
 import com.macro.mall.model.SmsHomeRecommendProduct;
-import com.macro.mall.model.SmsHomeRecommendProductExample;
 import com.macro.mall.service.SmsHomeRecommendProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ import java.util.List;
 @Service
 public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProductService {
     @Autowired
-    private SmsHomeRecommendProductMapper recommendProductMapper;
+    private SmsHomeRecommendProductRepository recommendProductRepository;
     @Override
     public int create(List<SmsHomeRecommendProduct> homeRecommendProductList) {
         for (SmsHomeRecommendProduct recommendProduct : homeRecommendProductList) {
             recommendProduct.setRecommendStatus(1);
             recommendProduct.setSort(0);
-            recommendProductMapper.insert(recommendProduct);
+            recommendProductRepository.save(recommendProduct);
         }
         return homeRecommendProductList.size();
     }
@@ -34,37 +34,35 @@ public class SmsHomeRecommendProductServiceImpl implements SmsHomeRecommendProdu
         SmsHomeRecommendProduct recommendProduct = new SmsHomeRecommendProduct();
         recommendProduct.setId(id);
         recommendProduct.setSort(sort);
-        return recommendProductMapper.updateByPrimaryKeySelective(recommendProduct);
+        recommendProductRepository.save(recommendProduct);
+        return 1;
     }
 
     @Override
     public int delete(List<Long> ids) {
-        SmsHomeRecommendProductExample example = new SmsHomeRecommendProductExample();
-        example.createCriteria().andIdIn(ids);
-        return recommendProductMapper.deleteByExample(example);
+        recommendProductRepository.deleteAllByIdInBatch(ids);
+        return ids.size();
     }
 
     @Override
     public int updateRecommendStatus(List<Long> ids, Integer recommendStatus) {
-        SmsHomeRecommendProductExample example = new SmsHomeRecommendProductExample();
-        example.createCriteria().andIdIn(ids);
-        SmsHomeRecommendProduct record = new SmsHomeRecommendProduct();
-        record.setRecommendStatus(recommendStatus);
-        return recommendProductMapper.updateByExampleSelective(record,example);
+        List<SmsHomeRecommendProduct> products = recommendProductRepository.findAllById(ids);
+        for (SmsHomeRecommendProduct product : products) {
+            product.setRecommendStatus(recommendStatus);
+        }
+        recommendProductRepository.saveAll(products);
+        return products.size();
     }
 
     @Override
     public List<SmsHomeRecommendProduct> list(String productName, Integer recommendStatus, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        SmsHomeRecommendProductExample example = new SmsHomeRecommendProductExample();
-        SmsHomeRecommendProductExample.Criteria criteria = example.createCriteria();
+        SpecificationBuilder<SmsHomeRecommendProduct> builder = SpecificationBuilder.create();
         if(!StrUtil.isEmpty(productName)){
-            criteria.andProductNameLike("%"+productName+"%");
+            builder.like("productName", productName);
         }
         if(recommendStatus!=null){
-            criteria.andRecommendStatusEqualTo(recommendStatus);
+            builder.eq("recommendStatus", recommendStatus);
         }
-        example.setOrderByClause("sort desc");
-        return recommendProductMapper.selectByExample(example);
+        return recommendProductRepository.findAll(builder.build());
     }
 }

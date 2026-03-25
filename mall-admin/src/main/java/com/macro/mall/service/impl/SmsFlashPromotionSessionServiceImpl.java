@@ -1,9 +1,9 @@
 package com.macro.mall.service.impl;
 
+import com.macro.mall.common.util.SpecificationBuilder;
 import com.macro.mall.dto.SmsFlashPromotionSessionDetail;
-import com.macro.mall.mapper.SmsFlashPromotionSessionMapper;
+import com.macro.mall.repository.SmsFlashPromotionSessionRepository;
 import com.macro.mall.model.SmsFlashPromotionSession;
-import com.macro.mall.model.SmsFlashPromotionSessionExample;
 import com.macro.mall.service.SmsFlashPromotionProductRelationService;
 import com.macro.mall.service.SmsFlashPromotionSessionService;
 import org.springframework.beans.BeanUtils;
@@ -21,20 +21,22 @@ import java.util.List;
 @Service
 public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSessionService {
     @Autowired
-    private SmsFlashPromotionSessionMapper promotionSessionMapper;
+    private SmsFlashPromotionSessionRepository promotionSessionRepository;
     @Autowired
     private SmsFlashPromotionProductRelationService relationService;
 
     @Override
     public int create(SmsFlashPromotionSession promotionSession) {
         promotionSession.setCreateTime(new Date());
-        return promotionSessionMapper.insert(promotionSession);
+        promotionSessionRepository.save(promotionSession);
+        return 1;
     }
 
     @Override
     public int update(Long id, SmsFlashPromotionSession promotionSession) {
         promotionSession.setId(id);
-        return promotionSessionMapper.updateByPrimaryKey(promotionSession);
+        promotionSessionRepository.save(promotionSession);
+        return 1;
     }
 
     @Override
@@ -42,31 +44,30 @@ public class SmsFlashPromotionSessionServiceImpl implements SmsFlashPromotionSes
         SmsFlashPromotionSession promotionSession = new SmsFlashPromotionSession();
         promotionSession.setId(id);
         promotionSession.setStatus(status);
-        return promotionSessionMapper.updateByPrimaryKeySelective(promotionSession);
+        promotionSessionRepository.save(promotionSession);
+        return 1;
     }
 
     @Override
     public int delete(Long id) {
-        return promotionSessionMapper.deleteByPrimaryKey(id);
+        promotionSessionRepository.deleteById(id);
+        return 1;
     }
 
     @Override
     public SmsFlashPromotionSession getItem(Long id) {
-        return promotionSessionMapper.selectByPrimaryKey(id);
+        return promotionSessionRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<SmsFlashPromotionSession> list() {
-        SmsFlashPromotionSessionExample example = new SmsFlashPromotionSessionExample();
-        return promotionSessionMapper.selectByExample(example);
+        return promotionSessionRepository.findAll();
     }
 
     @Override
     public List<SmsFlashPromotionSessionDetail> selectList(Long flashPromotionId) {
         List<SmsFlashPromotionSessionDetail> result = new ArrayList<>();
-        SmsFlashPromotionSessionExample example = new SmsFlashPromotionSessionExample();
-        example.createCriteria().andStatusEqualTo(1);
-        List<SmsFlashPromotionSession> list = promotionSessionMapper.selectByExample(example);
+        List<SmsFlashPromotionSession> list = promotionSessionRepository.findAll();
         for (SmsFlashPromotionSession promotionSession : list) {
             SmsFlashPromotionSessionDetail detail = new SmsFlashPromotionSessionDetail();
             BeanUtils.copyProperties(promotionSession, detail);

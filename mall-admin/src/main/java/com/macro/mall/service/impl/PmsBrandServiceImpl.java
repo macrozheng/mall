@@ -1,17 +1,18 @@
 package com.macro.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
 import com.macro.mall.dto.PmsBrandParam;
-import com.macro.mall.mapper.PmsBrandMapper;
-import com.macro.mall.mapper.PmsProductMapper;
 import com.macro.mall.model.PmsBrand;
-import com.macro.mall.model.PmsBrandExample;
 import com.macro.mall.model.PmsProduct;
-import com.macro.mall.model.PmsProductExample;
+import com.macro.mall.repository.PmsBrandRepository;
+import com.macro.mall.repository.PmsProductRepository;
 import com.macro.mall.service.PmsBrandService;
+import com.macro.mall.common.util.SpecificationBuilder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,13 +24,13 @@ import java.util.List;
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
     @Autowired
-    private PmsBrandMapper brandMapper;
+    private PmsBrandRepository brandRepository;
     @Autowired
-    private PmsProductMapper productMapper;
+    private PmsProductRepository productRepository;
 
     @Override
     public List<PmsBrand> listAllBrand() {
-        return brandMapper.selectByExample(new PmsBrandExample());
+        return brandRepository.findAll();
     }
 
     @Override
@@ -40,7 +41,8 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         if (StrUtil.isEmpty(pmsBrand.getFirstLetter())) {
             pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
-        return brandMapper.insertSelective(pmsBrand);
+        PmsBrand saved = brandRepository.save(pmsBrand);
+        return saved != null ? 1 : 0;
     }
 
     @Override
@@ -53,61 +55,66 @@ public class PmsBrandServiceImpl implements PmsBrandService {
             pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
         }
         //更新品牌时要更新商品中的品牌名称
-        PmsProduct product = new PmsProduct();
-        product.setBrandName(pmsBrand.getName());
-        PmsProductExample example = new PmsProductExample();
-        example.createCriteria().andBrandIdEqualTo(id);
-        productMapper.updateByExampleSelective(product,example);
-        return brandMapper.updateByPrimaryKeySelective(pmsBrand);
+        List<PmsProduct> products = productRepository.findAll(
+            SpecificationBuilder.<PmsProduct>create().eq("brandId", id).build()
+        );
+        for (PmsProduct product : products) {
+            product.setBrandName(pmsBrand.getName());
+            productRepository.save(product);
+        }
+        PmsBrand saved = brandRepository.save(pmsBrand);
+        return saved != null ? 1 : 0;
     }
 
     @Override
     public int deleteBrand(Long id) {
-        return brandMapper.deleteByPrimaryKey(id);
+        brandRepository.deleteById(id);
+        return 1;
     }
 
     @Override
     public int deleteBrand(List<Long> ids) {
-        PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        pmsBrandExample.createCriteria().andIdIn(ids);
-        return brandMapper.deleteByExample(pmsBrandExample);
+        List<PmsBrand> brands = brandRepository.findAllById(ids);
+        brandRepository.deleteAll(brands);
+        return brands.size();
     }
 
     @Override
     public List<PmsBrand> listBrand(String keyword, Integer showStatus, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        pmsBrandExample.setOrderByClause("sort desc");
-        PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
-        if (!StrUtil.isEmpty(keyword)) {
-            criteria.andNameLike("%" + keyword + "%");
+        SpecificationBuilder<PmsBrand> builder = SpecificationBuilder.create();
+        if (StrUtil.isNotEmpty(keyword)) {
+            builder.like("name", keyword);
         }
-        if(showStatus!=null){
-            criteria.andShowStatusEqualTo(showStatus);
+        if (showStatus != null) {
+            builder.eq("showStatus", showStatus);
         }
-        return brandMapper.selectByExample(pmsBrandExample);
+        PageRequest pageRequest = PageRequest.of(pageNum - 1, pageSize, Sort.by(Sort.Direction.DESC, "sort"));
+        Page<PmsBrand> page = brandRepository.findAll(builder.build(), pageRequest);
+        return page.getContent();
     }
 
     @Override
     public PmsBrand getBrand(Long id) {
-        return brandMapper.selectByPrimaryKey(id);
+        return brandRepository.findById(id).orElse(null);
     }
 
     @Override
     public int updateShowStatus(List<Long> ids, Integer showStatus) {
-        PmsBrand pmsBrand = new PmsBrand();
-        pmsBrand.setShowStatus(showStatus);
-        PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        pmsBrandExample.createCriteria().andIdIn(ids);
-        return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
+        List<PmsBrand> brands = brandRepository.findAllById(ids);
+        for (PmsBrand brand : brands) {
+            brand.setShowStatus(showStatus);
+        }
+        brandRepository.saveAll(brands);
+        return brands.size();
     }
 
     @Override
     public int updateFactoryStatus(List<Long> ids, Integer factoryStatus) {
-        PmsBrand pmsBrand = new PmsBrand();
-        pmsBrand.setFactoryStatus(factoryStatus);
-        PmsBrandExample pmsBrandExample = new PmsBrandExample();
-        pmsBrandExample.createCriteria().andIdIn(ids);
-        return brandMapper.updateByExampleSelective(pmsBrand, pmsBrandExample);
+        List<PmsBrand> brands = brandRepository.findAllById(ids);
+        for (PmsBrand brand : brands) {
+            brand.setFactoryStatus(factoryStatus);
+        }
+        brandRepository.saveAll(brands);
+        return brands.size();
     }
 }

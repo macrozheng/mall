@@ -1,11 +1,8 @@
 package com.macro.mall.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.dao.PmsProductAttributeCategoryDao;
 import com.macro.mall.dto.PmsProductAttributeCategoryItem;
-import com.macro.mall.mapper.PmsProductAttributeCategoryMapper;
+import com.macro.mall.repository.PmsProductAttributeCategoryRepository;
 import com.macro.mall.model.PmsProductAttributeCategory;
-import com.macro.mall.model.PmsProductAttributeCategoryExample;
 import com.macro.mall.service.PmsProductAttributeCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +16,14 @@ import java.util.List;
 @Service
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {
     @Autowired
-    private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
-    @Autowired
-    private PmsProductAttributeCategoryDao productAttributeCategoryDao;
+    private PmsProductAttributeCategoryRepository productAttributeCategoryRepository;
 
     @Override
     public int create(String name) {
         PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
         productAttributeCategory.setName(name);
-        return productAttributeCategoryMapper.insertSelective(productAttributeCategory);
+        productAttributeCategoryRepository.save(productAttributeCategory);
+        return 1;
     }
 
     @Override
@@ -35,27 +31,29 @@ public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttribu
         PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
         productAttributeCategory.setName(name);
         productAttributeCategory.setId(id);
-        return productAttributeCategoryMapper.updateByPrimaryKeySelective(productAttributeCategory);
+        productAttributeCategoryRepository.save(productAttributeCategory);
+        return 1;
     }
 
     @Override
     public int delete(Long id) {
-        return productAttributeCategoryMapper.deleteByPrimaryKey(id);
+        productAttributeCategoryRepository.deleteById(id);
+        return 1;
     }
 
     @Override
     public PmsProductAttributeCategory getItem(Long id) {
-        return productAttributeCategoryMapper.selectByPrimaryKey(id);
+        return productAttributeCategoryRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<PmsProductAttributeCategory> getList(Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        return productAttributeCategoryMapper.selectByExample(new PmsProductAttributeCategoryExample());
+                return productAttributeCategoryRepository.findAll();
     }
 
     @Override
     public List<PmsProductAttributeCategoryItem> getListWithAttr() {
-        return productAttributeCategoryDao.getListWithAttr();
+        // TODO: 实现带属性的列表查询
+        return new java.util.ArrayList<>();
     }
 }

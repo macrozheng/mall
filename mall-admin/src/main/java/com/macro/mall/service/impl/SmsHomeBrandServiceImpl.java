@@ -1,10 +1,10 @@
 package com.macro.mall.service.impl;
 
+
+import com.macro.mall.common.util.SpecificationBuilder;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.SmsHomeBrandMapper;
+import com.macro.mall.repository.SmsHomeBrandRepository;
 import com.macro.mall.model.SmsHomeBrand;
-import com.macro.mall.model.SmsHomeBrandExample;
 import com.macro.mall.service.SmsHomeBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ import java.util.List;
 @Service
 public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
     @Autowired
-    private SmsHomeBrandMapper homeBrandMapper;
+    private SmsHomeBrandRepository homeBrandRepository;
     @Override
     public int create(List<SmsHomeBrand> homeBrandList) {
         for (SmsHomeBrand smsHomeBrand : homeBrandList) {
             smsHomeBrand.setRecommendStatus(1);
             smsHomeBrand.setSort(0);
-            homeBrandMapper.insert(smsHomeBrand);
+            homeBrandRepository.save(smsHomeBrand);
         }
         return homeBrandList.size();
     }
@@ -34,37 +34,35 @@ public class SmsHomeBrandServiceImpl implements SmsHomeBrandService {
         SmsHomeBrand homeBrand = new SmsHomeBrand();
         homeBrand.setId(id);
         homeBrand.setSort(sort);
-        return homeBrandMapper.updateByPrimaryKeySelective(homeBrand);
+        homeBrandRepository.save(homeBrand);
+        return 1;
     }
 
     @Override
     public int delete(List<Long> ids) {
-        SmsHomeBrandExample example = new SmsHomeBrandExample();
-        example.createCriteria().andIdIn(ids);
-        return homeBrandMapper.deleteByExample(example);
+        homeBrandRepository.deleteAllByIdInBatch(ids);
+        return ids.size();
     }
 
     @Override
     public int updateRecommendStatus(List<Long> ids, Integer recommendStatus) {
-        SmsHomeBrandExample example = new SmsHomeBrandExample();
-        example.createCriteria().andIdIn(ids);
-        SmsHomeBrand record = new SmsHomeBrand();
-        record.setRecommendStatus(recommendStatus);
-        return homeBrandMapper.updateByExampleSelective(record,example);
+        List<SmsHomeBrand> brands = homeBrandRepository.findAllById(ids);
+        for (SmsHomeBrand brand : brands) {
+            brand.setRecommendStatus(recommendStatus);
+        }
+        homeBrandRepository.saveAll(brands);
+        return brands.size();
     }
 
     @Override
     public List<SmsHomeBrand> list(String brandName, Integer recommendStatus, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        SmsHomeBrandExample example = new SmsHomeBrandExample();
-        SmsHomeBrandExample.Criteria criteria = example.createCriteria();
+        SpecificationBuilder<SmsHomeBrand> builder = SpecificationBuilder.create();
         if(!StrUtil.isEmpty(brandName)){
-            criteria.andBrandNameLike("%"+brandName+"%");
+            builder.like("brandName", brandName);
         }
         if(recommendStatus!=null){
-            criteria.andRecommendStatusEqualTo(recommendStatus);
+            builder.eq("recommendStatus", recommendStatus);
         }
-        example.setOrderByClause("sort desc");
-        return homeBrandMapper.selectByExample(example);
+        return homeBrandRepository.findAll(builder.build());
     }
 }

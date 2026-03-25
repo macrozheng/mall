@@ -1,8 +1,8 @@
 package com.macro.mall.service.impl;
 
-import com.github.pagehelper.PageHelper;
+import com.macro.mall.common.util.SpecificationBuilder;
 import com.macro.mall.dto.UmsMenuNode;
-import com.macro.mall.mapper.UmsMenuMapper;
+import com.macro.mall.repository.UmsMenuRepository;
 import com.macro.mall.model.*;
 import com.macro.mall.service.UmsMenuService;
 import org.springframework.beans.BeanUtils;
@@ -20,13 +20,14 @@ import java.util.stream.Collectors;
 @Service
 public class UmsMenuServiceImpl implements UmsMenuService {
     @Autowired
-    private UmsMenuMapper menuMapper;
+    private UmsMenuRepository menuRepository;
 
     @Override
     public int create(UmsMenu umsMenu) {
         umsMenu.setCreateTime(new Date());
         updateLevel(umsMenu);
-        return menuMapper.insert(umsMenu);
+        menuRepository.save(umsMenu);
+        return 1;
     }
 
     /**
@@ -38,7 +39,7 @@ public class UmsMenuServiceImpl implements UmsMenuService {
             umsMenu.setLevel(0);
         } else {
             //有父菜单时为父菜单的level+1
-            UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
+            UmsMenu parentMenu = menuRepository.findById(umsMenu.getParentId()).orElse(null);
             if (parentMenu != null) {
                 umsMenu.setLevel(parentMenu.getLevel() + 1);
             } else {
@@ -51,31 +52,33 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     public int update(Long id, UmsMenu umsMenu) {
         umsMenu.setId(id);
         updateLevel(umsMenu);
-        return menuMapper.updateByPrimaryKeySelective(umsMenu);
+        menuRepository.save(umsMenu);
+        return 1;
     }
 
     @Override
     public UmsMenu getItem(Long id) {
-        return menuMapper.selectByPrimaryKey(id);
+        return menuRepository.findById(id).orElse(null);
     }
 
     @Override
     public int delete(Long id) {
-        return menuMapper.deleteByPrimaryKey(id);
+        menuRepository.deleteById(id);
+        return 1;
     }
 
     @Override
     public List<UmsMenu> list(Long parentId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        UmsMenuExample example = new UmsMenuExample();
-        example.setOrderByClause("sort desc");
-        example.createCriteria().andParentIdEqualTo(parentId);
-        return menuMapper.selectByExample(example);
+        SpecificationBuilder<UmsMenu> builder = SpecificationBuilder.create();
+        if (parentId != null) {
+            builder.eq("parentId", parentId);
+        }
+        return menuRepository.findAll(builder.build());
     }
 
     @Override
     public List<UmsMenuNode> treeList() {
-        List<UmsMenu> menuList = menuMapper.selectByExample(new UmsMenuExample());
+        List<UmsMenu> menuList = menuRepository.findAll();
         List<UmsMenuNode> result = menuList.stream()
                 .filter(menu -> menu.getParentId().equals(0L))
                 .map(menu -> covertMenuNode(menu, menuList))
@@ -85,10 +88,13 @@ public class UmsMenuServiceImpl implements UmsMenuService {
 
     @Override
     public int updateHidden(Long id, Integer hidden) {
-        UmsMenu umsMenu = new UmsMenu();
-        umsMenu.setId(id);
+        UmsMenu umsMenu = menuRepository.findById(id).orElse(null);
+        if (umsMenu == null) {
+            return 0;
+        }
         umsMenu.setHidden(hidden);
-        return menuMapper.updateByPrimaryKeySelective(umsMenu);
+        menuRepository.save(umsMenu);
+        return 1;
     }
 
     /**

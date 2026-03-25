@@ -10,12 +10,14 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
-mybatis:
-  mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/mapper/*.xml
-  type-aliases-package: com.macro.mall.model
+  jpa:
+    hibernate:
+      ddl-auto: none # 不自动创建/更新表结构
+    show-sql: false # 生产环境关闭SQL日志
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

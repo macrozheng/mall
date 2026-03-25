@@ -1,10 +1,10 @@
 package com.macro.mall.service.impl;
 
+
+import com.macro.mall.common.util.SpecificationBuilder;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.CmsSubjectMapper;
+import com.macro.mall.repository.CmsSubjectRepository;
 import com.macro.mall.model.CmsSubject;
-import com.macro.mall.model.CmsSubjectExample;
 import com.macro.mall.service.CmsSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,21 +18,19 @@ import java.util.List;
 @Service
 public class CmsSubjectServiceImpl implements CmsSubjectService {
     @Autowired
-    private CmsSubjectMapper subjectMapper;
+    private CmsSubjectRepository subjectRepository;
 
     @Override
     public List<CmsSubject> listAll() {
-        return subjectMapper.selectByExample(new CmsSubjectExample());
+        return subjectRepository.findAll();
     }
 
     @Override
     public List<CmsSubject> list(String keyword, Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        CmsSubjectExample example = new CmsSubjectExample();
-        CmsSubjectExample.Criteria criteria = example.createCriteria();
+        SpecificationBuilder<CmsSubject> builder = SpecificationBuilder.create();
         if (!StrUtil.isEmpty(keyword)) {
-            criteria.andTitleLike("%" + keyword + "%");
+            builder.like("title", keyword);
         }
-        return subjectMapper.selectByExample(example);
+        return subjectRepository.findAll(builder.build());
     }
 }

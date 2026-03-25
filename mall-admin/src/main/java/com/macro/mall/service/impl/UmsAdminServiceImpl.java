@@ -2,25 +2,26 @@ package com.macro.mall.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
 import com.macro.mall.bo.AdminUserDetails;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.common.util.RequestUtil;
-import com.macro.mall.dao.UmsAdminRoleRelationDao;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
-import com.macro.mall.mapper.UmsAdminLoginLogMapper;
-import com.macro.mall.mapper.UmsAdminMapper;
-import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
+import com.macro.mall.repository.UmsAdminLoginLogRepository;
+import com.macro.mall.repository.UmsAdminRepository;
+import com.macro.mall.repository.UmsAdminRoleRelationRepository;
 import com.macro.mall.model.*;
 import com.macro.mall.security.util.JwtTokenUtil;
 import com.macro.mall.security.util.SpringUtil;
 import com.macro.mall.service.UmsAdminCacheService;
 import com.macro.mall.service.UmsAdminService;
+import com.macro.mall.common.util.SpecificationBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +37,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 后台用户管理Service实现类
@@ -49,13 +51,11 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private UmsAdminMapper adminMapper;
+    private UmsAdminRepository adminRepository;
     @Autowired
-    private UmsAdminRoleRelationMapper adminRoleRelationMapper;
+    private UmsAdminLoginLogRepository loginLogRepository;
     @Autowired
-    private UmsAdminRoleRelationDao adminRoleRelationDao;
-    @Autowired
-    private UmsAdminLoginLogMapper loginLogMapper;
+    private UmsAdminRoleRelationRepository adminRoleRelationRepository;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
@@ -63,11 +63,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         UmsAdmin admin = getCacheService().getAdmin(username);
         if (admin != null) return admin;
         //缓存中没有再从数据库中获取
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        List<UmsAdmin> adminList = adminMapper.selectByExample(example);
-        if (adminList != null && adminList.size() > 0) {
-            admin = adminList.get(0);
+        Optional<UmsAdmin> adminOpt = adminRepository.findByUsername(username);
+        if (adminOpt.isPresent()) {
+            admin = adminOpt.get();
             //将数据库中的数据存入缓存中
             getCacheService().setAdmin(admin);
             return admin;
@@ -82,17 +80,14 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         umsAdmin.setCreateTime(new Date());
         umsAdmin.setStatus(1);
         //查询是否有相同用户名的用户
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
-        List<UmsAdmin> umsAdminList = adminMapper.selectByExample(example);
-        if (umsAdminList.size() > 0) {
+        Optional<UmsAdmin> existingAdmin = adminRepository.findByUsername(umsAdmin.getUsername());
+        if (existingAdmin.isPresent()) {
             return null;
         }
         //将密码进行加密操作
         String encodePassword = passwordEncoder.encode(umsAdmin.getPassword());
         umsAdmin.setPassword(encodePassword);
-        adminMapper.insert(umsAdmin);
-        return umsAdmin;
+        return adminRepository.save(umsAdmin);
     }
 
     @Override
@@ -110,7 +105,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             token = jwtTokenUtil.generateToken(userDetails);
-//            updateLoginTimeByUsername(username);
             insertLoginLog(username);
         } catch (AuthenticationException e) {
             LOGGER.warn("登录异常:{}", e.getMessage());
@@ -131,18 +125,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         loginLog.setIp(RequestUtil.getRequestIp(request));
-        loginLogMapper.insert(loginLog);
-    }
-
-    /**
-     * 根据用户名修改登录时间
-     */
-    private void updateLoginTimeByUsername(String username) {
-        UmsAdmin record = new UmsAdmin();
-        record.setLoginTime(new Date());
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        adminMapper.updateByExampleSelective(record, example);
+        loginLogRepository.save(loginLog);
     }
 
     @Override
@@ -152,26 +135,25 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public UmsAdmin getItem(Long id) {
-        return adminMapper.selectByPrimaryKey(id);
+        return adminRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        UmsAdminExample example = new UmsAdminExample();
-        UmsAdminExample.Criteria criteria = example.createCriteria();
-        if (!StrUtil.isEmpty(keyword)) {
-            criteria.andUsernameLike("%" + keyword + "%");
-            example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
+        SpecificationBuilder<UmsAdmin> builder = SpecificationBuilder.create();
+        if (StrUtil.isNotEmpty(keyword)) {
+            builder.like("username", keyword);
         }
-        return adminMapper.selectByExample(example);
+        PageRequest pageRequest = PageRequest.of(pageNum - 1, pageSize);
+        Page<UmsAdmin> page = adminRepository.findAll(builder.build(), pageRequest);
+        return page.getContent();
     }
 
     @Override
     public int update(Long id, UmsAdmin admin) {
         admin.setId(id);
-        UmsAdmin rawAdmin = adminMapper.selectByPrimaryKey(id);
-        if(rawAdmin.getPassword().equals(admin.getPassword())){
+        UmsAdmin rawAdmin = adminRepository.findById(id).orElse(null);
+        if(rawAdmin != null && rawAdmin.getPassword().equals(admin.getPassword())){
             //与原加密密码相同的不需要修改
             admin.setPassword(null);
         }else{
@@ -182,26 +164,27 @@ public class UmsAdminServiceImpl implements UmsAdminService {
                 admin.setPassword(passwordEncoder.encode(admin.getPassword()));
             }
         }
-        int count = adminMapper.updateByPrimaryKeySelective(admin);
+        adminRepository.save(admin);
         getCacheService().delAdmin(id);
-        return count;
+        return 1;
     }
 
     @Override
     public int delete(Long id) {
         getCacheService().delAdmin(id);
-        int count = adminMapper.deleteByPrimaryKey(id);
+        adminRepository.deleteById(id);
         getCacheService().delResourceList(id);
-        return count;
+        return 1;
     }
 
     @Override
     public int updateRole(Long adminId, List<Long> roleIds) {
         int count = roleIds == null ? 0 : roleIds.size();
         //先删除原来的关系
-        UmsAdminRoleRelationExample adminRoleRelationExample = new UmsAdminRoleRelationExample();
-        adminRoleRelationExample.createCriteria().andAdminIdEqualTo(adminId);
-        adminRoleRelationMapper.deleteByExample(adminRoleRelationExample);
+        List<UmsAdminRoleRelation> existingRelations = adminRoleRelationRepository.findAll(
+            SpecificationBuilder.<UmsAdminRoleRelation>create().eq("adminId", adminId).build()
+        );
+        adminRoleRelationRepository.deleteAll(existingRelations);
         //建立新关系
         if (!CollectionUtils.isEmpty(roleIds)) {
             List<UmsAdminRoleRelation> list = new ArrayList<>();
@@ -211,7 +194,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
                 roleRelation.setRoleId(roleId);
                 list.add(roleRelation);
             }
-            adminRoleRelationDao.insertList(list);
+            adminRoleRelationRepository.saveAll(list);
         }
         getCacheService().delResourceList(adminId);
         return count;
@@ -219,7 +202,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsRole> getRoleList(Long adminId) {
-        return adminRoleRelationDao.getRoleList(adminId);
+        return adminRoleRelationRepository.getRoleList(adminId);
     }
 
     @Override
@@ -227,10 +210,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         //先从缓存中获取数据
         List<UmsResource> resourceList = getCacheService().getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
-            return  resourceList;
+            return resourceList;
         }
         //缓存中没有从数据库中获取
-        resourceList = adminRoleRelationDao.getResourceList(adminId);
+        resourceList = adminRoleRelationRepository.getResourceList(adminId);
         if(CollUtil.isNotEmpty(resourceList)){
             //将数据库中的数据存入缓存中
             getCacheService().setResourceList(adminId,resourceList);
@@ -245,18 +228,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
                 ||StrUtil.isEmpty(param.getNewPassword())){
             return -1;
         }
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(param.getUsername());
-        List<UmsAdmin> adminList = adminMapper.selectByExample(example);
-        if(CollUtil.isEmpty(adminList)){
+        Optional<UmsAdmin> adminOpt = adminRepository.findByUsername(param.getUsername());
+        if(adminOpt.isEmpty()){
             return -2;
         }
-        UmsAdmin umsAdmin = adminList.get(0);
+        UmsAdmin umsAdmin = adminOpt.get();
         if(!passwordEncoder.matches(param.getOldPassword(),umsAdmin.getPassword())){
             return -3;
         }
         umsAdmin.setPassword(passwordEncoder.encode(param.getNewPassword()));
-        adminMapper.updateByPrimaryKey(umsAdmin);
+        adminRepository.save(umsAdmin);
         getCacheService().delAdmin(umsAdmin.getId());
         return 1;
     }

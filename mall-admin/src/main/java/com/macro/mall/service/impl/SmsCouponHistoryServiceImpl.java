@@ -1,10 +1,10 @@
 package com.macro.mall.service.impl;
 
+
+import com.macro.mall.common.util.SpecificationBuilder;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.SmsCouponHistoryMapper;
+import com.macro.mall.repository.SmsCouponHistoryRepository;
 import com.macro.mall.model.SmsCouponHistory;
-import com.macro.mall.model.SmsCouponHistoryExample;
 import com.macro.mall.service.SmsCouponHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,21 +18,19 @@ import java.util.List;
 @Service
 public class SmsCouponHistoryServiceImpl implements SmsCouponHistoryService {
     @Autowired
-    private SmsCouponHistoryMapper historyMapper;
+    private SmsCouponHistoryRepository historyRepository;
     @Override
     public List<SmsCouponHistory> list(Long couponId, Integer useStatus, String orderSn, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        SmsCouponHistoryExample example = new SmsCouponHistoryExample();
-        SmsCouponHistoryExample.Criteria criteria = example.createCriteria();
+        SpecificationBuilder<SmsCouponHistory> builder = SpecificationBuilder.create();
         if(couponId!=null){
-            criteria.andCouponIdEqualTo(couponId);
+            builder.eq("couponId", couponId);
         }
         if(useStatus!=null){
-            criteria.andUseStatusEqualTo(useStatus);
+            builder.eq("useStatus", useStatus);
         }
         if(!StrUtil.isEmpty(orderSn)){
-            criteria.andOrderSnEqualTo(orderSn);
+            builder.eq("orderSn", orderSn);
         }
-        return historyMapper.selectByExample(example);
+        return historyRepository.findAll(builder.build());
     }
 }

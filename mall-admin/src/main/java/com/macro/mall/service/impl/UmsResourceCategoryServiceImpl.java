@@ -1,8 +1,8 @@
 package com.macro.mall.service.impl;
 
-import com.macro.mall.mapper.UmsResourceCategoryMapper;
+import com.macro.mall.common.util.SpecificationBuilder;
+import com.macro.mall.repository.UmsResourceCategoryRepository;
 import com.macro.mall.model.UmsResourceCategory;
-import com.macro.mall.model.UmsResourceCategoryExample;
 import com.macro.mall.service.UmsResourceCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,29 +17,30 @@ import java.util.List;
 @Service
 public class UmsResourceCategoryServiceImpl implements UmsResourceCategoryService {
     @Autowired
-    private UmsResourceCategoryMapper resourceCategoryMapper;
+    private UmsResourceCategoryRepository resourceCategoryRepository;
 
     @Override
     public List<UmsResourceCategory> listAll() {
-        UmsResourceCategoryExample example = new UmsResourceCategoryExample();
-        example.setOrderByClause("sort desc");
-        return resourceCategoryMapper.selectByExample(example);
+        return resourceCategoryRepository.findAll();
     }
 
     @Override
     public int create(UmsResourceCategory umsResourceCategory) {
         umsResourceCategory.setCreateTime(new Date());
-        return resourceCategoryMapper.insert(umsResourceCategory);
+        resourceCategoryRepository.save(umsResourceCategory);
+        return 1;
     }
 
     @Override
     public int update(Long id, UmsResourceCategory umsResourceCategory) {
         umsResourceCategory.setId(id);
-        return resourceCategoryMapper.updateByPrimaryKeySelective(umsResourceCategory);
+        resourceCategoryRepository.save(umsResourceCategory);
+        return 1;
     }
 
     @Override
     public int delete(Long id) {
-        return resourceCategoryMapper.deleteByPrimaryKey(id);
+        resourceCategoryRepository.deleteById(id);
+        return 1;
     }
 }

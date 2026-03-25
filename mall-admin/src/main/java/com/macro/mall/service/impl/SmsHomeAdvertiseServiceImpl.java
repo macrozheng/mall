@@ -1,10 +1,10 @@
 package com.macro.mall.service.impl;
 
+
+import com.macro.mall.common.util.SpecificationBuilder;
 import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.mapper.SmsHomeAdvertiseMapper;
+import com.macro.mall.repository.SmsHomeAdvertiseRepository;
 import com.macro.mall.model.SmsHomeAdvertise;
-import com.macro.mall.model.SmsHomeAdvertiseExample;
 import com.macro.mall.service.SmsHomeAdvertiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,20 +21,20 @@ import java.util.List;
 @Service
 public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
     @Autowired
-    private SmsHomeAdvertiseMapper advertiseMapper;
+    private SmsHomeAdvertiseRepository advertiseRepository;
 
     @Override
     public int create(SmsHomeAdvertise advertise) {
         advertise.setClickCount(0);
         advertise.setOrderCount(0);
-        return advertiseMapper.insert(advertise);
+        advertiseRepository.save(advertise);
+        return 1;
     }
 
     @Override
     public int delete(List<Long> ids) {
-        SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
-        example.createCriteria().andIdIn(ids);
-        return advertiseMapper.deleteByExample(example);
+        advertiseRepository.deleteAllByIdInBatch(ids);
+        return ids.size();
     }
 
     @Override
@@ -42,30 +42,30 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
         SmsHomeAdvertise record = new SmsHomeAdvertise();
         record.setId(id);
         record.setStatus(status);
-        return advertiseMapper.updateByPrimaryKeySelective(record);
+        advertiseRepository.save(record);
+        return 1;
     }
 
     @Override
     public SmsHomeAdvertise getItem(Long id) {
-        return advertiseMapper.selectByPrimaryKey(id);
+        return advertiseRepository.findById(id).orElse(null);
     }
 
     @Override
     public int update(Long id, SmsHomeAdvertise advertise) {
         advertise.setId(id);
-        return advertiseMapper.updateByPrimaryKeySelective(advertise);
+        advertiseRepository.save(advertise);
+        return 1;
     }
 
     @Override
     public List<SmsHomeAdvertise> list(String name, Integer type, String endTime, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        SmsHomeAdvertiseExample example = new SmsHomeAdvertiseExample();
-        SmsHomeAdvertiseExample.Criteria criteria = example.createCriteria();
+        SpecificationBuilder<SmsHomeAdvertise> builder = SpecificationBuilder.create();
         if (!StrUtil.isEmpty(name)) {
-            criteria.andNameLike("%" + name + "%");
+            builder.like("name", name);
         }
         if (type != null) {
-            criteria.andTypeEqualTo(type);
+            builder.eq("type", type);
         }
         if (!StrUtil.isEmpty(endTime)) {
             String startStr = endTime + " 00:00:00";
@@ -84,10 +84,9 @@ public class SmsHomeAdvertiseServiceImpl implements SmsHomeAdvertiseService {
                 e.printStackTrace();
             }
             if (start != null && end != null) {
-                criteria.andEndTimeBetween(start, end);
+                builder.between("endTime", start, end);
             }
         }
-        example.setOrderByClause("sort desc");
-        return advertiseMapper.selectByExample(example);
+        return advertiseRepository.findAll(builder.build());
     }
 }

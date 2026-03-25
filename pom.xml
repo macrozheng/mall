@@ -11,7 +11,6 @@
 
     <modules>
         <module>mall-common</module>
-        <module>mall-mbg</module>
         <module>mall-security</module>
         <module>mall-demo</module>
         <module>mall-admin</module>
@@ -33,14 +32,9 @@
         <skipTests>true</skipTests>
         <docker.host>http://192.168.3.101:2375</docker.host>
         <docker.maven.plugin.version>0.40.2</docker.maven.plugin.version>
-        <pagehelper-starter.version>2.1.0</pagehelper-starter.version>
-        <pagehelper.version>6.1.0</pagehelper.version>
-        <mybatis-spring-boot.version>3.0.3</mybatis-spring-boot.version>
         <druid.version>1.2.23</druid.version>
         <hutool.version>5.8.9</hutool.version>
         <springdoc-openapi.version>2.0.4</springdoc-openapi.version>
-        <mybatis-generator.version>1.4.1</mybatis-generator.version>
-        <mybatis.version>3.5.10</mybatis.version>
         <mysql-connector.version>8.0.29</mysql-connector.version>
 
         <jjwt.version>0.11.5</jjwt.version>
@@ -50,7 +44,7 @@
         <minio.version>8.4.5</minio.version>
 
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
-        <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
+
         <mall-security.version>1.0-SNAPSHOT</mall-security.version>
     </properties>
 
@@ -62,6 +56,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,41 +96,12 @@
                 <artifactId>mall-common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
-            <!--mall中MBG生成模块-->
-            <dependency>
-                <groupId>com.macro.mall</groupId>
-                <artifactId>mall-mbg</artifactId>
-                <version>${mall-mbg.version}</version>
-            </dependency>
+
             <!--mall安全模块-->
             <dependency>
                 <groupId>com.macro.mall</groupId>
                 <artifactId>mall-security</artifactId>
                 <version>${mall-security.version}</version>
-            </dependency>
-            <!--MyBatis Spring Boot Starter-->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot.version}</version>
-            </dependency>
-            <!--MyBatis分页插件starter-->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper-starter.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.mybatis.spring.boot</groupId>
-                        <artifactId>mybatis-spring-boot-starter</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <!--MyBatis分页插件-->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper.version}</version>
             </dependency>
             <!--集成druid连接池-->
             <dependency>
@@ -145,19 +114,6 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
-            </dependency>
-
-            <!-- MyBatis 生成器 -->
-            <dependency>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-core</artifactId>
-                <version>${mybatis-generator.version}</version>
-            </dependency>
-            <!-- MyBatis-->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
             </dependency>
             <!--Mysql数据库驱动-->
             <dependency>
@@ -203,7 +159,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.11.0</version>
                     <configuration>
                         <source>17</source>
                         <target>17</target>

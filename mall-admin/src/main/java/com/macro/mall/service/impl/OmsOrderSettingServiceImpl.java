@@ -1,6 +1,6 @@
 package com.macro.mall.service.impl;
 
-import com.macro.mall.mapper.OmsOrderSettingMapper;
+import com.macro.mall.repository.OmsOrderSettingRepository;
 import com.macro.mall.model.OmsOrderSetting;
 import com.macro.mall.service.OmsOrderSettingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +13,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class OmsOrderSettingServiceImpl implements OmsOrderSettingService {
     @Autowired
-    private OmsOrderSettingMapper orderSettingMapper;
+    private OmsOrderSettingRepository orderSettingRepository;
 
     @Override
     public OmsOrderSetting getItem(Long id) {
-        return orderSettingMapper.selectByPrimaryKey(id);
+        return orderSettingRepository.findById(id).orElse(null);
     }
 
     @Override
     public int update(Long id, OmsOrderSetting orderSetting) {
         orderSetting.setId(id);
-        return orderSettingMapper.updateByPrimaryKey(orderSetting);
+        orderSettingRepository.save(orderSetting);
+        return 1;
     }
 }

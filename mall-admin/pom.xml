@@ -17,10 +17,7 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.macro.mall</groupId>
-            <artifactId>mall-mbg</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-security</artifactId>

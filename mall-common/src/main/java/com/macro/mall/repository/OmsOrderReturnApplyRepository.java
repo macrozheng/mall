@@ -1,0 +1,10 @@
+package com.macro.mall.repository;
+
+import com.macro.mall.model.OmsOrderReturnApply;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OmsOrderReturnApplyRepository extends JpaRepository<OmsOrderReturnApply, Long>, JpaSpecificationExecutor<OmsOrderReturnApply> {
+}

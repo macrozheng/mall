@@ -1,6 +1,5 @@
 package com.macro.mall.common.api;
 
-import com.github.pagehelper.PageInfo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -32,29 +31,29 @@ public class CommonPage<T> {
     private List<T> list;
 
     /**
-     * 将PageHelper分页后的list转为分页信息
-     */
-    public static <T> CommonPage<T> restPage(List<T> list) {
-        CommonPage<T> result = new CommonPage<T>();
-        PageInfo<T> pageInfo = new PageInfo<T>(list);
-        result.setTotalPage(pageInfo.getPages());
-        result.setPageNum(pageInfo.getPageNum());
-        result.setPageSize(pageInfo.getPageSize());
-        result.setTotal(pageInfo.getTotal());
-        result.setList(pageInfo.getList());
-        return result;
-    }
-
-    /**
      * 将SpringData分页后的list转为分页信息
+     * 注意：Spring Data页码从0开始，转换为从1开始
      */
     public static <T> CommonPage<T> restPage(Page<T> pageInfo) {
         CommonPage<T> result = new CommonPage<T>();
         result.setTotalPage(pageInfo.getTotalPages());
-        result.setPageNum(pageInfo.getNumber());
+        result.setPageNum(pageInfo.getNumber() + 1); // Spring Data页码从0开始，+1转换为从1开始
         result.setPageSize(pageInfo.getSize());
         result.setTotal(pageInfo.getTotalElements());
         result.setList(pageInfo.getContent());
+        return result;
+    }
+
+    /**
+     * 将List转换为分页信息（不分页，全部返回）
+     */
+    public static <T> CommonPage<T> restPage(List<T> list) {
+        CommonPage<T> result = new CommonPage<T>();
+        result.setTotalPage(1);
+        result.setPageNum(1);
+        result.setPageSize(list.size());
+        result.setTotal((long) list.size());
+        result.setList(list);
         return result;
     }
 

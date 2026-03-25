@@ -1,10 +1,9 @@
 package com.macro.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.macro.mall.dao.PmsSkuStockDao;
-import com.macro.mall.mapper.PmsSkuStockMapper;
+import com.macro.mall.common.util.SpecificationBuilder;
+import com.macro.mall.repository.PmsSkuStockRepository;
 import com.macro.mall.model.PmsSkuStock;
-import com.macro.mall.model.PmsSkuStockExample;
 import com.macro.mall.service.PmsSkuStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,19 +17,18 @@ import java.util.stream.Collectors;
  */
 @Service
 public class PmsSkuStockServiceImpl implements PmsSkuStockService {
+
     @Autowired
-    private PmsSkuStockMapper skuStockMapper;
-    @Autowired
-    private PmsSkuStockDao skuStockDao;
+    private PmsSkuStockRepository skuStockRepository;
 
     @Override
     public List<PmsSkuStock> getList(Long pid, String keyword) {
-        PmsSkuStockExample example = new PmsSkuStockExample();
-        PmsSkuStockExample.Criteria criteria = example.createCriteria().andProductIdEqualTo(pid);
-        if (!StrUtil.isEmpty(keyword)) {
-            criteria.andSkuCodeLike("%" + keyword + "%");
+        SpecificationBuilder<PmsSkuStock> builder = SpecificationBuilder.<PmsSkuStock>create()
+            .eq("productId", pid);
+        if (StrUtil.isNotEmpty(keyword)) {
+            builder.like("skuCode", keyword);
         }
-        return skuStockMapper.selectByExample(example);
+        return skuStockRepository.findAll(builder.build());
     }
 
     @Override
@@ -38,6 +36,7 @@ public class PmsSkuStockServiceImpl implements PmsSkuStockService {
         List<PmsSkuStock> filterSkuList = skuStockList.stream()
                 .filter(item -> pid.equals(item.getProductId()))
                 .collect(Collectors.toList());
-        return skuStockDao.replaceList(filterSkuList);
+        skuStockRepository.saveAll(filterSkuList);
+        return filterSkuList.size();
     }
 }
