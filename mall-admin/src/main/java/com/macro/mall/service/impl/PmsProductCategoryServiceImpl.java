@@ -151,4 +151,15 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
             }
         }
     }
+
+    @Override
+    public PmsProductCategory getParentCategoryByChildId(Long childCategoryId) {
+        //先获取二级分类
+        PmsProductCategory childCategory = productCategoryMapper.selectByPrimaryKey(childCategoryId);
+        if (childCategory != null && childCategory.getLevel() == 1) { //确保是二级分类
+            //获取一级分类
+            return productCategoryMapper.selectByPrimaryKey(childCategory.getParentId());
+        }
+        return null;
+    }
 }

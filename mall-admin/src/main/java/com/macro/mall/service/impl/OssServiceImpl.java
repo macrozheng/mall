@@ -3,8 +3,7 @@ package com.macro.mall.service.impl;
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.common.utils.BinaryUtil;
-import com.aliyun.oss.model.MatchMode;
-import com.aliyun.oss.model.PolicyConditions;
+import com.aliyun.oss.model.*;
 import com.macro.mall.dto.OssCallbackParam;
 import com.macro.mall.dto.OssCallbackResult;
 import com.macro.mall.dto.OssPolicyResult;
@@ -14,10 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Oss对象存储管理Service实现类
@@ -97,6 +100,29 @@ public class OssServiceImpl implements OssService {
 		result.setWidth(request.getParameter("width"));
 		result.setHeight(request.getParameter("height"));
 		return result;
+	}
+
+	@Override
+	public String uploadProductImage(MultipartFile file) {
+		try {
+			// 生成文件路径
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+			String dir = ALIYUN_OSS_DIR_PREFIX + "product/" + sdf.format(new Date()) + "/";
+			String originalFilename = file.getOriginalFilename();
+			String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
+			String fileName = UUID.randomUUID().toString() + fileExtension;
+			String key = dir + fileName;
+
+			// 上传文件
+			InputStream inputStream = file.getInputStream();
+			ossClient.putObject(new PutObjectRequest(ALIYUN_OSS_BUCKET_NAME, key, inputStream));
+			
+			// 返回文件URL
+			return "http://" + ALIYUN_OSS_BUCKET_NAME + "." + ALIYUN_OSS_ENDPOINT + "/" + key;
+		} catch (IOException e) {
+			LOGGER.error("上传商品图片失败", e);
+			throw new RuntimeException("上传商品图片失败", e);
+		}
 	}
 
 }
