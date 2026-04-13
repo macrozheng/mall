@@ -300,6 +300,24 @@ public class PmsProductServiceImpl implements PmsProductService {
         return productMapper.selectByExample(productExample);
     }
 
+    @Override
+    public List<PmsProduct> searchByCategoryAndKeyword(Long productCategoryId, String keyword) {
+        PmsProductExample productExample = new PmsProductExample();
+        PmsProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andDeleteStatusEqualTo(0);
+        // 必须指定二级分类
+        if (productCategoryId != null) {
+            criteria.andProductCategoryIdEqualTo(productCategoryId);
+        }
+        // 根据关键字模糊查询商品名称
+        if (!StrUtil.isEmpty(keyword)) {
+            criteria.andNameLike("%" + keyword + "%");
+        }
+        // 限制返回数量，用于联想搜索
+        PageHelper.startPage(1, 10);
+        return productMapper.selectByExample(productExample);
+    }
+
     /**
      * 建立和插入关系表操作
      *

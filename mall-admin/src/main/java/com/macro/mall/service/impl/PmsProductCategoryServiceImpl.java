@@ -134,6 +134,17 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         return productCategoryDao.listWithChildren();
     }
 
+    @Override
+    public PmsProductCategory getParentCategory(Long id) {
+        // 先获取当前分类
+        PmsProductCategory category = productCategoryMapper.selectByPrimaryKey(id);
+        if (category == null || category.getParentId() == null || category.getParentId() == 0) {
+            return null;
+        }
+        // 根据parentId查询一级分类
+        return productCategoryMapper.selectByPrimaryKey(category.getParentId());
+    }
+
     /**
      * 根据分类的parentId设置分类的level
      */

@@ -70,4 +70,9 @@ public interface PmsProductService {
      * 根据商品名称或者货号模糊查询
      */
     List<PmsProduct> list(String keyword);
+
+    /**
+     * 根据二级分类和关键字搜索商品（联想搜索）
+     */
+    List<PmsProduct> searchByCategoryAndKeyword(Long productCategoryId, String keyword);
 }

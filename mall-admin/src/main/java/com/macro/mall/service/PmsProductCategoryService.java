@@ -53,4 +53,9 @@ public interface PmsProductCategoryService {
      * 以层级形式获取商品分类
      */
     List<PmsProductCategoryWithChildrenItem> listWithChildren();
+
+    /**
+     * 根据二级分类ID查询一级分类
+     */
+    PmsProductCategory getParentCategory(Long id);
 }

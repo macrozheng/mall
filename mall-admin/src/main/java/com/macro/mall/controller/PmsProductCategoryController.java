@@ -115,4 +115,16 @@ public class PmsProductCategoryController {
         List<PmsProductCategoryWithChildrenItem> list = productCategoryService.listWithChildren();
         return CommonResult.success(list);
     }
+
+    @ApiOperation("根据二级分类ID查询一级分类")
+    @RequestMapping(value = "/parent/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsProductCategory> getParentCategory(@PathVariable Long id) {
+        PmsProductCategory parentCategory = productCategoryService.getParentCategory(id);
+        if (parentCategory != null) {
+            return CommonResult.success(parentCategory);
+        } else {
+            return CommonResult.failed("该分类不存在或没有父分类");
+        }
+    }
 }
