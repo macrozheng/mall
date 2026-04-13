@@ -143,4 +143,13 @@ public class PmsProductController {
             return CommonResult.failed();
         }
     }
+
+    @ApiOperation("根据二级分类和关键词搜索联想商品")
+    @RequestMapping(value = "/searchSuggestions", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProduct>> searchSuggestions(@RequestParam("categoryId") Long categoryId,
+                                                            @RequestParam(value = "keyword", required = false) String keyword) {
+        List<PmsProduct> productList = productService.searchSuggestions(categoryId, keyword);
+        return CommonResult.success(productList);
+    }
 }

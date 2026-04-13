@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,6 +44,18 @@ public class OssController {
     public CommonResult<OssCallbackResult> callback(HttpServletRequest request) {
         OssCallbackResult ossCallbackResult = ossService.callback(request);
         return CommonResult.success(ossCallbackResult);
+    }
+
+    @ApiOperation(value = "上传商品图片")
+    @RequestMapping(value = "/product/image", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<String> uploadProductImage(@RequestParam("file") MultipartFile file) {
+        try {
+            String url = ossService.uploadProductImage(file);
+            return CommonResult.success(url);
+        } catch (Exception e) {
+            return CommonResult.failed("上传商品图片失败: " + e.getMessage());
+        }
     }
 
 }
