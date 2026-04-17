@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.UmsIntegrationLevelMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.UmsIntegrationLevel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="min_integration" jdbcType="INTEGER" property="minIntegration" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="background" jdbcType="VARCHAR" property="background" />
+    <result column="priviledge_discount" jdbcType="DECIMAL" property="priviledgeDiscount" />
+    <result column="priviledge_integration_rate" jdbcType="DECIMAL" property="priviledgeIntegrationRate" />
+    <result column="priviledge_birthday_integration" jdbcType="INTEGER" property="priviledgeBirthdayIntegration" />
+    <result column="priviledge_free_shipping" jdbcType="INTEGER" property="priviledgeFreeShipping" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, level_name, min_integration, icon, background, priviledge_discount, priviledge_integration_rate, 
+    priviledge_birthday_integration, priviledge_free_shipping, sort, status, create_time, 
+    update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.UmsIntegrationLevelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ums_integration_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ums_integration_level
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ums_integration_level
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.UmsIntegrationLevelExample">
+    delete from ums_integration_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.UmsIntegrationLevel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_level (level_name, min_integration, icon, 
+      background, priviledge_discount, priviledge_integration_rate, 
+      priviledge_birthday_integration, priviledge_free_shipping, sort, status, 
+      create_time, update_time)
+    values (#{levelName,jdbcType=VARCHAR}, #{minIntegration,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, 
+      #{background,jdbcType=VARCHAR}, #{priviledgeDiscount,jdbcType=DECIMAL}, #{priviledgeIntegrationRate,jdbcType=DECIMAL}, 
+      #{priviledgeBirthdayIntegration,jdbcType=INTEGER}, #{priviledgeFreeShipping,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntegrationLevel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="minIntegration != null">
+        min_integration,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="background != null">
+        background,
+      </if>
+      <if test="priviledgeDiscount != null">
+        priviledge_discount,
+      </if>
+      <if test="priviledgeIntegrationRate != null">
+        priviledge_integration_rate,
+      </if>
+      <if test="priviledgeBirthdayIntegration != null">
+        priviledge_birthday_integration,
+      </if>
+      <if test="priviledgeFreeShipping != null">
+        priviledge_free_shipping,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="minIntegration != null">
+        #{minIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+        #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="priviledgeDiscount != null">
+        #{priviledgeDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="priviledgeIntegrationRate != null">
+        #{priviledgeIntegrationRate,jdbcType=DECIMAL},
+      </if>
+      <if test="priviledgeBirthdayIntegration != null">
+        #{priviledgeBirthdayIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="priviledgeFreeShipping != null">
+        #{priviledgeFreeShipping,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationLevelExample" resultType="java.lang.Long">
+    select count(*) from ums_integration_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ums_integration_level
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.levelName != null">
+        level_name = #{record.levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.minIntegration != null">
+        min_integration = #{record.minIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.background != null">
+        background = #{record.background,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priviledgeDiscount != null">
+        priviledge_discount = #{record.priviledgeDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.priviledgeIntegrationRate != null">
+        priviledge_integration_rate = #{record.priviledgeIntegrationRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.priviledgeBirthdayIntegration != null">
+        priviledge_birthday_integration = #{record.priviledgeBirthdayIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="record.priviledgeFreeShipping != null">
+        priviledge_free_shipping = #{record.priviledgeFreeShipping,jdbcType=INTEGER},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ums_integration_level
+    set id = #{record.id,jdbcType=BIGINT},
+      level_name = #{record.levelName,jdbcType=VARCHAR},
+      min_integration = #{record.minIntegration,jdbcType=INTEGER},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      background = #{record.background,jdbcType=VARCHAR},
+      priviledge_discount = #{record.priviledgeDiscount,jdbcType=DECIMAL},
+      priviledge_integration_rate = #{record.priviledgeIntegrationRate,jdbcType=DECIMAL},
+      priviledge_birthday_integration = #{record.priviledgeBirthdayIntegration,jdbcType=INTEGER},
+      priviledge_free_shipping = #{record.priviledgeFreeShipping,jdbcType=INTEGER},
+      sort = #{record.sort,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.UmsIntegrationLevel">
+    update ums_integration_level
+    <set>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="minIntegration != null">
+        min_integration = #{minIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+        background = #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="priviledgeDiscount != null">
+        priviledge_discount = #{priviledgeDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="priviledgeIntegrationRate != null">
+        priviledge_integration_rate = #{priviledgeIntegrationRate,jdbcType=DECIMAL},
+      </if>
+      <if test="priviledgeBirthdayIntegration != null">
+        priviledge_birthday_integration = #{priviledgeBirthdayIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="priviledgeFreeShipping != null">
+        priviledge_free_shipping = #{priviledgeFreeShipping,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.UmsIntegrationLevel">
+    update ums_integration_level
+    set level_name = #{levelName,jdbcType=VARCHAR},
+      min_integration = #{minIntegration,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR},
+      background = #{background,jdbcType=VARCHAR},
+      priviledge_discount = #{priviledgeDiscount,jdbcType=DECIMAL},
+      priviledge_integration_rate = #{priviledgeIntegrationRate,jdbcType=DECIMAL},
+      priviledge_birthday_integration = #{priviledgeBirthdayIntegration,jdbcType=INTEGER},
+      priviledge_free_shipping = #{priviledgeFreeShipping,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

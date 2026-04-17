@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.UmsIntegrationExpireSettingMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.UmsIntegrationExpireSetting">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="expire_type" jdbcType="INTEGER" property="expireType" />
+    <result column="valid_days" jdbcType="INTEGER" property="validDays" />
+    <result column="expire_month" jdbcType="INTEGER" property="expireMonth" />
+    <result column="expire_day" jdbcType="INTEGER" property="expireDay" />
+    <result column="expire_year_offset" jdbcType="INTEGER" property="expireYearOffset" />
+    <result column="auto_expire" jdbcType="INTEGER" property="autoExpire" />
+    <result column="notify_before_days" jdbcType="INTEGER" property="notifyBeforeDays" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, expire_type, valid_days, expire_month, expire_day, expire_year_offset, auto_expire, 
+    notify_before_days, status, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.UmsIntegrationExpireSettingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ums_integration_expire_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ums_integration_expire_setting
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ums_integration_expire_setting
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.UmsIntegrationExpireSettingExample">
+    delete from ums_integration_expire_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.UmsIntegrationExpireSetting">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_expire_setting (expire_type, valid_days, expire_month, 
+      expire_day, expire_year_offset, auto_expire, notify_before_days, status, 
+      create_time, update_time)
+    values (#{expireType,jdbcType=INTEGER}, #{validDays,jdbcType=INTEGER}, #{expireMonth,jdbcType=INTEGER}, 
+      #{expireDay,jdbcType=INTEGER}, #{expireYearOffset,jdbcType=INTEGER}, #{autoExpire,jdbcType=INTEGER}, #{notifyBeforeDays,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntegrationExpireSetting">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_expire_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="expireType != null">
+        expire_type,
+      </if>
+      <if test="validDays != null">
+        valid_days,
+      </if>
+      <if test="expireMonth != null">
+        expire_month,
+      </if>
+      <if test="expireDay != null">
+        expire_day,
+      </if>
+      <if test="expireYearOffset != null">
+        expire_year_offset,
+      </if>
+      <if test="autoExpire != null">
+        auto_expire,
+      </if>
+      <if test="notifyBeforeDays != null">
+        notify_before_days,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="expireType != null">
+        #{expireType,jdbcType=INTEGER},
+      </if>
+      <if test="validDays != null">
+        #{validDays,jdbcType=INTEGER},
+      </if>
+      <if test="expireMonth != null">
+        #{expireMonth,jdbcType=INTEGER},
+      </if>
+      <if test="expireDay != null">
+        #{expireDay,jdbcType=INTEGER},
+      </if>
+      <if test="expireYearOffset != null">
+        #{expireYearOffset,jdbcType=INTEGER},
+      </if>
+      <if test="autoExpire != null">
+        #{autoExpire,jdbcType=INTEGER},
+      </if>
+      <if test="notifyBeforeDays != null">
+        #{notifyBeforeDays,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationExpireSettingExample" resultType="java.lang.Long">
+    select count(*) from ums_integration_expire_setting
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ums_integration_expire_setting
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.expireType != null">
+        expire_type = #{record.expireType,jdbcType=INTEGER},
+      </if>
+      <if test="record.validDays != null">
+        valid_days = #{record.validDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.expireMonth != null">
+        expire_month = #{record.expireMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.expireDay != null">
+        expire_day = #{record.expireDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.expireYearOffset != null">
+        expire_year_offset = #{record.expireYearOffset,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoExpire != null">
+        auto_expire = #{record.autoExpire,jdbcType=INTEGER},
+      </if>
+      <if test="record.notifyBeforeDays != null">
+        notify_before_days = #{record.notifyBeforeDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ums_integration_expire_setting
+    set id = #{record.id,jdbcType=BIGINT},
+      expire_type = #{record.expireType,jdbcType=INTEGER},
+      valid_days = #{record.validDays,jdbcType=INTEGER},
+      expire_month = #{record.expireMonth,jdbcType=INTEGER},
+      expire_day = #{record.expireDay,jdbcType=INTEGER},
+      expire_year_offset = #{record.expireYearOffset,jdbcType=INTEGER},
+      auto_expire = #{record.autoExpire,jdbcType=INTEGER},
+      notify_before_days = #{record.notifyBeforeDays,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.UmsIntegrationExpireSetting">
+    update ums_integration_expire_setting
+    <set>
+      <if test="expireType != null">
+        expire_type = #{expireType,jdbcType=INTEGER},
+      </if>
+      <if test="validDays != null">
+        valid_days = #{validDays,jdbcType=INTEGER},
+      </if>
+      <if test="expireMonth != null">
+        expire_month = #{expireMonth,jdbcType=INTEGER},
+      </if>
+      <if test="expireDay != null">
+        expire_day = #{expireDay,jdbcType=INTEGER},
+      </if>
+      <if test="expireYearOffset != null">
+        expire_year_offset = #{expireYearOffset,jdbcType=INTEGER},
+      </if>
+      <if test="autoExpire != null">
+        auto_expire = #{autoExpire,jdbcType=INTEGER},
+      </if>
+      <if test="notifyBeforeDays != null">
+        notify_before_days = #{notifyBeforeDays,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.UmsIntegrationExpireSetting">
+    update ums_integration_expire_setting
+    set expire_type = #{expireType,jdbcType=INTEGER},
+      valid_days = #{validDays,jdbcType=INTEGER},
+      expire_month = #{expireMonth,jdbcType=INTEGER},
+      expire_day = #{expireDay,jdbcType=INTEGER},
+      expire_year_offset = #{expireYearOffset,jdbcType=INTEGER},
+      auto_expire = #{autoExpire,jdbcType=INTEGER},
+      notify_before_days = #{notifyBeforeDays,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.UmsIntegrationExchangeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.UmsIntegrationExchangeRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="member_username" jdbcType="VARCHAR" property="memberUsername" />
+    <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="product_quantity" jdbcType="INTEGER" property="productQuantity" />
+    <result column="point_price" jdbcType="INTEGER" property="pointPrice" />
+    <result column="total_point" jdbcType="INTEGER" property="totalPoint" />
+    <result column="cash_price" jdbcType="DECIMAL" property="cashPrice" />
+    <result column="total_cash" jdbcType="DECIMAL" property="totalCash" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+    <result column="receiver_post_code" jdbcType="VARCHAR" property="receiverPostCode" />
+    <result column="receiver_province" jdbcType="VARCHAR" property="receiverProvince" />
+    <result column="receiver_city" jdbcType="VARCHAR" property="receiverCity" />
+    <result column="receiver_region" jdbcType="VARCHAR" property="receiverRegion" />
+    <result column="receiver_detail_address" jdbcType="VARCHAR" property="receiverDetailAddress" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="logistics_company" jdbcType="VARCHAR" property="logisticsCompany" />
+    <result column="logistics_sn" jdbcType="VARCHAR" property="logisticsSn" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_sn, member_id, member_username, member_nickname, product_id, product_name, 
+    product_pic, product_quantity, point_price, total_point, cash_price, total_cash, 
+    receiver_name, receiver_phone, receiver_post_code, receiver_province, receiver_city, 
+    receiver_region, receiver_detail_address, status, order_type, logistics_company, logistics_sn, 
+    delivery_time, receive_time, remark, delete_status, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ums_integration_exchange_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ums_integration_exchange_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ums_integration_exchange_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecordExample">
+    delete from ums_integration_exchange_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecord">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_exchange_record (order_sn, member_id, member_username, 
+      member_nickname, product_id, product_name, product_pic, product_quantity, point_price, 
+      total_point, cash_price, total_cash, receiver_name, receiver_phone, receiver_post_code, 
+      receiver_province, receiver_city, receiver_region, receiver_detail_address, status, 
+      order_type, logistics_company, logistics_sn, delivery_time, receive_time, 
+      remark, delete_status, create_time, update_time)
+    values (#{orderSn,jdbcType=VARCHAR}, #{memberId,jdbcType=BIGINT}, #{memberUsername,jdbcType=VARCHAR}, 
+      #{memberNickname,jdbcType=VARCHAR}, #{productId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, #{productQuantity,jdbcType=INTEGER}, #{pointPrice,jdbcType=INTEGER}, 
+      #{totalPoint,jdbcType=INTEGER}, #{cashPrice,jdbcType=DECIMAL}, #{totalCash,jdbcType=DECIMAL}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, #{receiverPostCode,jdbcType=VARCHAR}, 
+      #{receiverProvince,jdbcType=VARCHAR}, #{receiverCity,jdbcType=VARCHAR}, #{receiverRegion,jdbcType=VARCHAR}, #{receiverDetailAddress,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{orderType,jdbcType=INTEGER}, #{logisticsCompany,jdbcType=VARCHAR}, #{logisticsSn,jdbcType=VARCHAR}, #{deliveryTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecord">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_integration_exchange_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="memberUsername != null">
+        member_username,
+      </if>
+      <if test="memberNickname != null">
+        member_nickname,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productPic != null">
+        product_pic,
+      </if>
+      <if test="productQuantity != null">
+        product_quantity,
+      </if>
+      <if test="pointPrice != null">
+        point_price,
+      </if>
+      <if test="totalPoint != null">
+        total_point,
+      </if>
+      <if test="cashPrice != null">
+        cash_price,
+      </if>
+      <if test="totalCash != null">
+        total_cash,
+      </if>
+      <if test="receiverName != null">
+        receiver_name,
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone,
+      </if>
+      <if test="receiverPostCode != null">
+        receiver_post_code,
+      </if>
+      <if test="receiverProvince != null">
+        receiver_province,
+      </if>
+      <if test="receiverCity != null">
+        receiver_city,
+      </if>
+      <if test="receiverRegion != null">
+        receiver_region,
+      </if>
+      <if test="receiverDetailAddress != null">
+        receiver_detail_address,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company,
+      </if>
+      <if test="logisticsSn != null">
+        logistics_sn,
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time,
+      </if>
+      <if test="receiveTime != null">
+        receive_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="memberUsername != null">
+        #{memberUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNickname != null">
+        #{memberNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null">
+        #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null">
+        #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="pointPrice != null">
+        #{pointPrice,jdbcType=INTEGER},
+      </if>
+      <if test="totalPoint != null">
+        #{totalPoint,jdbcType=INTEGER},
+      </if>
+      <if test="cashPrice != null">
+        #{cashPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCash != null">
+        #{totalCash,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverName != null">
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPostCode != null">
+        #{receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverProvince != null">
+        #{receiverProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverCity != null">
+        #{receiverCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRegion != null">
+        #{receiverRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverDetailAddress != null">
+        #{receiverDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCompany != null">
+        #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsSn != null">
+        #{logisticsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecordExample" resultType="java.lang.Long">
+    select count(*) from ums_integration_exchange_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ums_integration_exchange_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderSn != null">
+        order_sn = #{record.orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberId != null">
+        member_id = #{record.memberId,jdbcType=BIGINT},
+      </if>
+      <if test="record.memberUsername != null">
+        member_username = #{record.memberUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberNickname != null">
+        member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productPic != null">
+        product_pic = #{record.productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productQuantity != null">
+        product_quantity = #{record.productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.pointPrice != null">
+        point_price = #{record.pointPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalPoint != null">
+        total_point = #{record.totalPoint,jdbcType=INTEGER},
+      </if>
+      <if test="record.cashPrice != null">
+        cash_price = #{record.cashPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalCash != null">
+        total_cash = #{record.totalCash,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiverName != null">
+        receiver_name = #{record.receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverPhone != null">
+        receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverPostCode != null">
+        receiver_post_code = #{record.receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverProvince != null">
+        receiver_province = #{record.receiverProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverCity != null">
+        receiver_city = #{record.receiverCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverRegion != null">
+        receiver_region = #{record.receiverRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverDetailAddress != null">
+        receiver_detail_address = #{record.receiverDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsCompany != null">
+        logistics_company = #{record.logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsSn != null">
+        logistics_sn = #{record.logisticsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliveryTime != null">
+        delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receiveTime != null">
+        receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleteStatus != null">
+        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecord">
+    update ums_integration_exchange_record
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="memberUsername != null">
+        member_username = #{memberUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNickname != null">
+        member_nickname = #{memberNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null">
+        product_pic = #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null">
+        product_quantity = #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="pointPrice != null">
+        point_price = #{pointPrice,jdbcType=INTEGER},
+      </if>
+      <if test="totalPoint != null">
+        total_point = #{totalPoint,jdbcType=INTEGER},
+      </if>
+      <if test="cashPrice != null">
+        cash_price = #{cashPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCash != null">
+        total_cash = #{totalCash,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverName != null">
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPostCode != null">
+        receiver_post_code = #{receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverProvince != null">
+        receiver_province = #{receiverProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverCity != null">
+        receiver_city = #{receiverCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverRegion != null">
+        receiver_region = #{receiverRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverDetailAddress != null">
+        receiver_detail_address = #{receiverDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCompany != null">
+        logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsSn != null">
+        logistics_sn = #{logisticsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null">
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.UmsIntegrationExchangeRecord">
+    update ums_integration_exchange_record
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=BIGINT},
+      member_username = #{memberUsername,jdbcType=VARCHAR},
+      member_nickname = #{memberNickname,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_pic = #{productPic,jdbcType=VARCHAR},
+      product_quantity = #{productQuantity,jdbcType=INTEGER},
+      point_price = #{pointPrice,jdbcType=INTEGER},
+      total_point = #{totalPoint,jdbcType=INTEGER},
+      cash_price = #{cashPrice,jdbcType=DECIMAL},
+      total_cash = #{totalCash,jdbcType=DECIMAL},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      receiver_post_code = #{receiverPostCode,jdbcType=VARCHAR},
+      receiver_province = #{receiverProvince,jdbcType=VARCHAR},
+      receiver_city = #{receiverCity,jdbcType=VARCHAR},
+      receiver_region = #{receiverRegion,jdbcType=VARCHAR},
+      receiver_detail_address = #{receiverDetailAddress,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      logistics_company = #{logisticsCompany,jdbcType=VARCHAR},
+      logistics_sn = #{logisticsSn,jdbcType=VARCHAR},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
