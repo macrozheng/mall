@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupTeamMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupTeam">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_activity_id" jdbcType="BIGINT" property="groupActivityId" />
+    <result column="group_product_id" jdbcType="BIGINT" property="groupProductId" />
+    <result column="team_number" jdbcType="VARCHAR" property="teamNumber" />
+    <result column="leader_id" jdbcType="BIGINT" property="leaderId" />
+    <result column="leader_name" jdbcType="VARCHAR" property="leaderName" />
+    <result column="leader_icon" jdbcType="VARCHAR" property="leaderIcon" />
+    <result column="group_count" jdbcType="INTEGER" property="groupCount" />
+    <result column="join_count" jdbcType="INTEGER" property="joinCount" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_activity_id, group_product_id, team_number, leader_id, leader_name, 
+    leader_icon, group_count, join_count, expire_time, status, create_time, 
+    complete_time, cancel_time
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.SmsGroupTeamExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sms_group_team
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sms_group_team
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_team
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.SmsGroupTeamExample">
+    delete from sms_group_team
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupTeam">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_team (group_activity_id, group_product_id, team_number, 
+      leader_id, leader_name, leader_icon, 
+      group_count, join_count, expire_time, 
+      status, create_time, complete_time, 
+      cancel_time)
+    values (#{groupActivityId,jdbcType=BIGINT}, #{groupProductId,jdbcType=BIGINT}, #{teamNumber,jdbcType=VARCHAR}, 
+      #{leaderId,jdbcType=BIGINT}, #{leaderName,jdbcType=VARCHAR}, #{leaderIcon,jdbcType=VARCHAR}, 
+      #{groupCount,jdbcType=INTEGER}, #{joinCount,jdbcType=INTEGER}, #{expireTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}, 
+      #{cancelTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupTeam">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupActivityId != null">
+        group_activity_id,
+      </if>
+      <if test="groupProductId != null">
+        group_product_id,
+      </if>
+      <if test="teamNumber != null">
+        team_number,
+      </if>
+      <if test="leaderId != null">
+        leader_id,
+      </if>
+      <if test="leaderName != null">
+        leader_name,
+      </if>
+      <if test="leaderIcon != null">
+        leader_icon,
+      </if>
+      <if test="groupCount != null">
+        group_count,
+      </if>
+      <if test="joinCount != null">
+        join_count,
+      </if>
+      <if test="expireTime != null">
+        expire_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="completeTime != null">
+        complete_time,
+      </if>
+      <if test="cancelTime != null">
+        cancel_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupActivityId != null">
+        #{groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="groupProductId != null">
+        #{groupProductId,jdbcType=BIGINT},
+      </if>
+      <if test="teamNumber != null">
+        #{teamNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=BIGINT},
+      </if>
+      <if test="leaderName != null">
+        #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderIcon != null">
+        #{leaderIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCount != null">
+        #{groupCount,jdbcType=INTEGER},
+      </if>
+      <if test="joinCount != null">
+        #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.SmsGroupTeamExample" resultType="java.lang.Long">
+    select count(*) from sms_group_team
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sms_group_team
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.groupActivityId != null">
+        group_activity_id = #{record.groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="record.groupProductId != null">
+        group_product_id = #{record.groupProductId,jdbcType=BIGINT},
+      </if>
+      <if test="record.teamNumber != null">
+        team_number = #{record.teamNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaderId != null">
+        leader_id = #{record.leaderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.leaderName != null">
+        leader_name = #{record.leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaderIcon != null">
+        leader_icon = #{record.leaderIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupCount != null">
+        group_count = #{record.groupCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.joinCount != null">
+        join_count = #{record.joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.expireTime != null">
+        expire_time = #{record.expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.completeTime != null">
+        complete_time = #{record.completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cancelTime != null">
+        cancel_time = #{record.cancelTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sms_group_team
+    set id = #{record.id,jdbcType=BIGINT},
+      group_activity_id = #{record.groupActivityId,jdbcType=BIGINT},
+      group_product_id = #{record.groupProductId,jdbcType=BIGINT},
+      team_number = #{record.teamNumber,jdbcType=VARCHAR},
+      leader_id = #{record.leaderId,jdbcType=BIGINT},
+      leader_name = #{record.leaderName,jdbcType=VARCHAR},
+      leader_icon = #{record.leaderIcon,jdbcType=VARCHAR},
+      group_count = #{record.groupCount,jdbcType=INTEGER},
+      join_count = #{record.joinCount,jdbcType=INTEGER},
+      expire_time = #{record.expireTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      complete_time = #{record.completeTime,jdbcType=TIMESTAMP},
+      cancel_time = #{record.cancelTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupTeam">
+    update sms_group_team
+    <set>
+      <if test="groupActivityId != null">
+        group_activity_id = #{groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="groupProductId != null">
+        group_product_id = #{groupProductId,jdbcType=BIGINT},
+      </if>
+      <if test="teamNumber != null">
+        team_number = #{teamNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        leader_id = #{leaderId,jdbcType=BIGINT},
+      </if>
+      <if test="leaderName != null">
+        leader_name = #{leaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderIcon != null">
+        leader_icon = #{leaderIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCount != null">
+        group_count = #{groupCount,jdbcType=INTEGER},
+      </if>
+      <if test="joinCount != null">
+        join_count = #{joinCount,jdbcType=INTEGER},
+      </if>
+      <if test="expireTime != null">
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupTeam">
+    update sms_group_team
+    set group_activity_id = #{groupActivityId,jdbcType=BIGINT},
+      group_product_id = #{groupProductId,jdbcType=BIGINT},
+      team_number = #{teamNumber,jdbcType=VARCHAR},
+      leader_id = #{leaderId,jdbcType=BIGINT},
+      leader_name = #{leaderName,jdbcType=VARCHAR},
+      leader_icon = #{leaderIcon,jdbcType=VARCHAR},
+      group_count = #{groupCount,jdbcType=INTEGER},
+      join_count = #{joinCount,jdbcType=INTEGER},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

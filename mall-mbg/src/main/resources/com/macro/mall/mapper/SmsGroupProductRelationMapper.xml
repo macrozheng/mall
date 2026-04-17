@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupProductRelationMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupProductRelation">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_activity_id" jdbcType="BIGINT" property="groupActivityId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="group_price" jdbcType="DECIMAL" property="groupPrice" />
+    <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
+    <result column="group_stock" jdbcType="INTEGER" property="groupStock" />
+    <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
+    <result column="sold_stock" jdbcType="INTEGER" property="soldStock" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_activity_id, product_id, group_price, original_price, group_stock, 
+    lock_stock, sold_stock, sort
+  </sql>
+  <select id="selectByExample" parameterType="com.macro.mall.model.SmsGroupProductRelationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sms_group_product_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sms_group_product_relation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_product_relation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.macro.mall.model.SmsGroupProductRelationExample">
+    delete from sms_group_product_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupProductRelation">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_product_relation (group_activity_id, product_id, group_price, 
+      original_price, group_stock, lock_stock, 
+      sold_stock, sort)
+    values (#{groupActivityId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{groupPrice,jdbcType=DECIMAL}, 
+      #{originalPrice,jdbcType=DECIMAL}, #{groupStock,jdbcType=INTEGER}, #{lockStock,jdbcType=INTEGER}, 
+      #{soldStock,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupProductRelation">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_product_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupActivityId != null">
+        group_activity_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="groupPrice != null">
+        group_price,
+      </if>
+      <if test="originalPrice != null">
+        original_price,
+      </if>
+      <if test="groupStock != null">
+        group_stock,
+      </if>
+      <if test="lockStock != null">
+        lock_stock,
+      </if>
+      <if test="soldStock != null">
+        sold_stock,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupActivityId != null">
+        #{groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="groupPrice != null">
+        #{groupPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPrice != null">
+        #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="groupStock != null">
+        #{groupStock,jdbcType=INTEGER},
+      </if>
+      <if test="lockStock != null">
+        #{lockStock,jdbcType=INTEGER},
+      </if>
+      <if test="soldStock != null">
+        #{soldStock,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.macro.mall.model.SmsGroupProductRelationExample" resultType="java.lang.Long">
+    select count(*) from sms_group_product_relation
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sms_group_product_relation
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.groupActivityId != null">
+        group_activity_id = #{record.groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=BIGINT},
+      </if>
+      <if test="record.groupPrice != null">
+        group_price = #{record.groupPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.originalPrice != null">
+        original_price = #{record.originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.groupStock != null">
+        group_stock = #{record.groupStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.lockStock != null">
+        lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.soldStock != null">
+        sold_stock = #{record.soldStock,jdbcType=INTEGER},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sms_group_product_relation
+    set id = #{record.id,jdbcType=BIGINT},
+      group_activity_id = #{record.groupActivityId,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      group_price = #{record.groupPrice,jdbcType=DECIMAL},
+      original_price = #{record.originalPrice,jdbcType=DECIMAL},
+      group_stock = #{record.groupStock,jdbcType=INTEGER},
+      lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      sold_stock = #{record.soldStock,jdbcType=INTEGER},
+      sort = #{record.sort,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupProductRelation">
+    update sms_group_product_relation
+    <set>
+      <if test="groupActivityId != null">
+        group_activity_id = #{groupActivityId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="groupPrice != null">
+        group_price = #{groupPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPrice != null">
+        original_price = #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="groupStock != null">
+        group_stock = #{groupStock,jdbcType=INTEGER},
+      </if>
+      <if test="lockStock != null">
+        lock_stock = #{lockStock,jdbcType=INTEGER},
+      </if>
+      <if test="soldStock != null">
+        sold_stock = #{soldStock,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupProductRelation">
+    update sms_group_product_relation
+    set group_activity_id = #{groupActivityId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      group_price = #{groupPrice,jdbcType=DECIMAL},
+      original_price = #{originalPrice,jdbcType=DECIMAL},
+      group_stock = #{groupStock,jdbcType=INTEGER},
+      lock_stock = #{lockStock,jdbcType=INTEGER},
+      sold_stock = #{soldStock,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
