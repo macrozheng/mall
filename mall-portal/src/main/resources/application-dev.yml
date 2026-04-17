@@ -32,6 +32,9 @@ spring:
     virtual-host: /mall
     username: mall
     password: mall
+    listener:
+      simple:
+        auto-startup: false
 
 logging:
   level:
