@@ -55,6 +55,12 @@ public class OmsOrder implements Serializable {
     @ApiModelProperty(value = "订单类型：0->正常订单；1->秒杀订单")
     private Integer orderType;
 
+    @ApiModelProperty(value = "拼团活动ID(非拼团订单为NULL)")
+    private Long groupActivityId;
+
+    @ApiModelProperty(value = "拼团团ID(非拼团订单为NULL)")
+    private Long groupTeamId;
+
     @ApiModelProperty(value = "物流公司(配送方式)")
     private String deliveryCompany;
 
@@ -272,6 +278,22 @@ public class OmsOrder implements Serializable {
 
     public void setOrderType(Integer orderType) {
         this.orderType = orderType;
+    }
+
+    public Long getGroupActivityId() {
+        return groupActivityId;
+    }
+
+    public void setGroupActivityId(Long groupActivityId) {
+        this.groupActivityId = groupActivityId;
+    }
+
+    public Long getGroupTeamId() {
+        return groupTeamId;
+    }
+
+    public void setGroupTeamId(Long groupTeamId) {
+        this.groupTeamId = groupTeamId;
     }
 
     public String getDeliveryCompany() {

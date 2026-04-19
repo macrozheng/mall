@@ -76,4 +76,62 @@ public class RabbitMqConfig {
                 .with(QueueEnum.QUEUE_TTL_ORDER_CANCEL.getRouteKey());
     }
 
+    /**
+     * 拼团超时实际消费队列所绑定的交换机
+     */
+    @Bean
+    DirectExchange groupBuyDirect() {
+        return ExchangeBuilder
+                .directExchange(QueueEnum.QUEUE_GROUP_BUY_TIMEOUT.getExchange())
+                .durable(true)
+                .build();
+    }
+
+    /**
+     * 拼团超时延迟队列所绑定的交换机
+     */
+    @Bean
+    DirectExchange groupBuyTtlDirect() {
+        return ExchangeBuilder
+                .directExchange(QueueEnum.QUEUE_TTL_GROUP_BUY_TIMEOUT.getExchange())
+                .durable(true)
+                .build();
+    }
+
+    /**
+     * 拼团超时实际消费队列
+     */
+    @Bean
+    public Queue groupBuyQueue() {
+        return new Queue(QueueEnum.QUEUE_GROUP_BUY_TIMEOUT.getName());
+    }
+
+    /**
+     * 拼团超时延迟队列(死信队列)
+     */
+    @Bean
+    public Queue groupBuyTtlQueue() {
+        return QueueBuilder
+                .durable(QueueEnum.QUEUE_TTL_GROUP_BUY_TIMEOUT.getName())
+                .withArgument("x-dead-letter-exchange", QueueEnum.QUEUE_GROUP_BUY_TIMEOUT.getExchange())
+                .withArgument("x-dead-letter-routing-key", QueueEnum.QUEUE_GROUP_BUY_TIMEOUT.getRouteKey())
+                .build();
+    }
+
+    @Bean
+    Binding groupBuyBinding(DirectExchange groupBuyDirect, Queue groupBuyQueue) {
+        return BindingBuilder
+                .bind(groupBuyQueue)
+                .to(groupBuyDirect)
+                .with(QueueEnum.QUEUE_GROUP_BUY_TIMEOUT.getRouteKey());
+    }
+
+    @Bean
+    Binding groupBuyTtlBinding(DirectExchange groupBuyTtlDirect, Queue groupBuyTtlQueue) {
+        return BindingBuilder
+                .bind(groupBuyTtlQueue)
+                .to(groupBuyTtlDirect)
+                .with(QueueEnum.QUEUE_TTL_GROUP_BUY_TIMEOUT.getRouteKey());
+    }
+
 }

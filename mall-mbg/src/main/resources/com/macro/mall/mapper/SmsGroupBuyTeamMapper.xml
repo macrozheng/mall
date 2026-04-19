@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupBuyTeamMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupBuyTeam">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="team_no" jdbcType="VARCHAR" property="teamNo" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_sku_id" jdbcType="BIGINT" property="productSkuId" />
+    <result column="group_price" jdbcType="DECIMAL" property="groupPrice" />
+    <result column="leader_member_id" jdbcType="BIGINT" property="leaderMemberId" />
+    <result column="leader_nickname" jdbcType="VARCHAR" property="leaderNickname" />
+    <result column="target_num" jdbcType="INTEGER" property="targetNum" />
+    <result column="current_num" jdbcType="INTEGER" property="currentNum" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="success_time" jdbcType="TIMESTAMP" property="successTime" />
+    <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+    <result column="virtual_flag" jdbcType="INTEGER" property="virtualFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, team_no, activity_id, product_id, product_sku_id, group_price, leader_member_id,
+    leader_nickname, target_num, current_num, status, start_time, expire_time,
+    success_time, close_time, virtual_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_group_buy_team
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_buy_team
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupBuyTeam">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_team (team_no, activity_id, product_id, product_sku_id,
+      group_price, leader_member_id, leader_nickname, target_num, current_num, status,
+      start_time, expire_time, success_time, close_time, virtual_flag)
+    values (#{teamNo,jdbcType=VARCHAR}, #{activityId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
+      #{productSkuId,jdbcType=BIGINT}, #{groupPrice,jdbcType=DECIMAL},
+      #{leaderMemberId,jdbcType=BIGINT}, #{leaderNickname,jdbcType=VARCHAR},
+      #{targetNum,jdbcType=INTEGER}, #{currentNum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{startTime,jdbcType=TIMESTAMP}, #{expireTime,jdbcType=TIMESTAMP},
+      #{successTime,jdbcType=TIMESTAMP}, #{closeTime,jdbcType=TIMESTAMP},
+      #{virtualFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupBuyTeam">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teamNo != null">team_no,</if>
+      <if test="activityId != null">activity_id,</if>
+      <if test="productId != null">product_id,</if>
+      <if test="productSkuId != null">product_sku_id,</if>
+      <if test="groupPrice != null">group_price,</if>
+      <if test="leaderMemberId != null">leader_member_id,</if>
+      <if test="leaderNickname != null">leader_nickname,</if>
+      <if test="targetNum != null">target_num,</if>
+      <if test="currentNum != null">current_num,</if>
+      <if test="status != null">status,</if>
+      <if test="startTime != null">start_time,</if>
+      <if test="expireTime != null">expire_time,</if>
+      <if test="successTime != null">success_time,</if>
+      <if test="closeTime != null">close_time,</if>
+      <if test="virtualFlag != null">virtual_flag,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teamNo != null">#{teamNo,jdbcType=VARCHAR},</if>
+      <if test="activityId != null">#{activityId,jdbcType=BIGINT},</if>
+      <if test="productId != null">#{productId,jdbcType=BIGINT},</if>
+      <if test="productSkuId != null">#{productSkuId,jdbcType=BIGINT},</if>
+      <if test="groupPrice != null">#{groupPrice,jdbcType=DECIMAL},</if>
+      <if test="leaderMemberId != null">#{leaderMemberId,jdbcType=BIGINT},</if>
+      <if test="leaderNickname != null">#{leaderNickname,jdbcType=VARCHAR},</if>
+      <if test="targetNum != null">#{targetNum,jdbcType=INTEGER},</if>
+      <if test="currentNum != null">#{currentNum,jdbcType=INTEGER},</if>
+      <if test="status != null">#{status,jdbcType=INTEGER},</if>
+      <if test="startTime != null">#{startTime,jdbcType=TIMESTAMP},</if>
+      <if test="expireTime != null">#{expireTime,jdbcType=TIMESTAMP},</if>
+      <if test="successTime != null">#{successTime,jdbcType=TIMESTAMP},</if>
+      <if test="closeTime != null">#{closeTime,jdbcType=TIMESTAMP},</if>
+      <if test="virtualFlag != null">#{virtualFlag,jdbcType=INTEGER},</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupBuyTeam">
+    update sms_group_buy_team
+    <set>
+      <if test="teamNo != null">team_no = #{teamNo,jdbcType=VARCHAR},</if>
+      <if test="activityId != null">activity_id = #{activityId,jdbcType=BIGINT},</if>
+      <if test="productId != null">product_id = #{productId,jdbcType=BIGINT},</if>
+      <if test="productSkuId != null">product_sku_id = #{productSkuId,jdbcType=BIGINT},</if>
+      <if test="groupPrice != null">group_price = #{groupPrice,jdbcType=DECIMAL},</if>
+      <if test="leaderMemberId != null">leader_member_id = #{leaderMemberId,jdbcType=BIGINT},</if>
+      <if test="leaderNickname != null">leader_nickname = #{leaderNickname,jdbcType=VARCHAR},</if>
+      <if test="targetNum != null">target_num = #{targetNum,jdbcType=INTEGER},</if>
+      <if test="currentNum != null">current_num = #{currentNum,jdbcType=INTEGER},</if>
+      <if test="status != null">status = #{status,jdbcType=INTEGER},</if>
+      <if test="startTime != null">start_time = #{startTime,jdbcType=TIMESTAMP},</if>
+      <if test="expireTime != null">expire_time = #{expireTime,jdbcType=TIMESTAMP},</if>
+      <if test="successTime != null">success_time = #{successTime,jdbcType=TIMESTAMP},</if>
+      <if test="closeTime != null">close_time = #{closeTime,jdbcType=TIMESTAMP},</if>
+      <if test="virtualFlag != null">virtual_flag = #{virtualFlag,jdbcType=INTEGER},</if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupBuyTeam">
+    update sms_group_buy_team
+    set team_no = #{teamNo,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_sku_id = #{productSkuId,jdbcType=BIGINT},
+      group_price = #{groupPrice,jdbcType=DECIMAL},
+      leader_member_id = #{leaderMemberId,jdbcType=BIGINT},
+      leader_nickname = #{leaderNickname,jdbcType=VARCHAR},
+      target_num = #{targetNum,jdbcType=INTEGER},
+      current_num = #{currentNum,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      success_time = #{successTime,jdbcType=TIMESTAMP},
+      close_time = #{closeTime,jdbcType=TIMESTAMP},
+      virtual_flag = #{virtualFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.SmsGroupBuyActivityDao">
+
+    <select id="listActivity" resultMap="com.macro.mall.mapper.SmsGroupBuyActivityMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyActivityMapper.Base_Column_List"/>
+        FROM sms_group_buy_activity
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND title LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <select id="countOngoingTeam" resultType="int">
+        SELECT COUNT(1)
+        FROM sms_group_buy_team
+        WHERE activity_id = #{activityId}
+          AND status = 0
+    </select>
+
+    <select id="listProductByActivity" resultMap="com.macro.mall.mapper.SmsGroupBuyProductMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyProductMapper.Base_Column_List"/>
+        FROM sms_group_buy_product
+        WHERE activity_id = #{activityId}
+        ORDER BY sort DESC, id ASC
+    </select>
+
+    <select id="listTeam" resultMap="com.macro.mall.mapper.SmsGroupBuyTeamMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyTeamMapper.Base_Column_List"/>
+        FROM sms_group_buy_team
+        <where>
+            <if test="activityId != null">
+                AND activity_id = #{activityId}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="teamNo != null and teamNo != ''">
+                AND team_no = #{teamNo}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+</mapper>

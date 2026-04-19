@@ -15,7 +15,15 @@ public enum QueueEnum {
     /**
      * 消息通知ttl队列
      */
-    QUEUE_TTL_ORDER_CANCEL("mall.order.direct.ttl", "mall.order.cancel.ttl", "mall.order.cancel.ttl");
+    QUEUE_TTL_ORDER_CANCEL("mall.order.direct.ttl", "mall.order.cancel.ttl", "mall.order.cancel.ttl"),
+    /**
+     * 拼团超时消费队列
+     */
+    QUEUE_GROUP_BUY_TIMEOUT("mall.groupBuy.direct", "mall.groupBuy.timeout", "mall.groupBuy.timeout"),
+    /**
+     * 拼团超时TTL延时队列
+     */
+    QUEUE_TTL_GROUP_BUY_TIMEOUT("mall.groupBuy.direct.ttl", "mall.groupBuy.timeout.ttl", "mall.groupBuy.timeout.ttl");
 
     /**
      * 交换名称

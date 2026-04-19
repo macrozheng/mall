@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupBuyLogMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupBuyLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="team_id" jdbcType="BIGINT" property="teamId" />
+    <result column="team_no" jdbcType="VARCHAR" property="teamNo" />
+    <result column="record_id" jdbcType="BIGINT" property="recordId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="operate_type" jdbcType="INTEGER" property="operateType" />
+    <result column="operate_source" jdbcType="INTEGER" property="operateSource" />
+    <result column="before_status" jdbcType="INTEGER" property="beforeStatus" />
+    <result column="after_status" jdbcType="INTEGER" property="afterStatus" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, member_id, member_nickname, activity_id, team_id, team_no, record_id, order_sn,
+    operate_type, operate_source, before_status, after_status, detail, ip, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_group_buy_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_buy_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupBuyLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_log (member_id, member_nickname, activity_id, team_id, team_no,
+      record_id, order_sn, operate_type, operate_source, before_status, after_status,
+      detail, ip, create_time)
+    values (#{memberId,jdbcType=BIGINT}, #{memberNickname,jdbcType=VARCHAR},
+      #{activityId,jdbcType=BIGINT}, #{teamId,jdbcType=BIGINT}, #{teamNo,jdbcType=VARCHAR},
+      #{recordId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR},
+      #{operateType,jdbcType=INTEGER}, #{operateSource,jdbcType=INTEGER},
+      #{beforeStatus,jdbcType=INTEGER}, #{afterStatus,jdbcType=INTEGER},
+      #{detail,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupBuyLog">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">member_id,</if>
+      <if test="memberNickname != null">member_nickname,</if>
+      <if test="activityId != null">activity_id,</if>
+      <if test="teamId != null">team_id,</if>
+      <if test="teamNo != null">team_no,</if>
+      <if test="recordId != null">record_id,</if>
+      <if test="orderSn != null">order_sn,</if>
+      <if test="operateType != null">operate_type,</if>
+      <if test="operateSource != null">operate_source,</if>
+      <if test="beforeStatus != null">before_status,</if>
+      <if test="afterStatus != null">after_status,</if>
+      <if test="detail != null">detail,</if>
+      <if test="ip != null">ip,</if>
+      <if test="createTime != null">create_time,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">#{memberId,jdbcType=BIGINT},</if>
+      <if test="memberNickname != null">#{memberNickname,jdbcType=VARCHAR},</if>
+      <if test="activityId != null">#{activityId,jdbcType=BIGINT},</if>
+      <if test="teamId != null">#{teamId,jdbcType=BIGINT},</if>
+      <if test="teamNo != null">#{teamNo,jdbcType=VARCHAR},</if>
+      <if test="recordId != null">#{recordId,jdbcType=BIGINT},</if>
+      <if test="orderSn != null">#{orderSn,jdbcType=VARCHAR},</if>
+      <if test="operateType != null">#{operateType,jdbcType=INTEGER},</if>
+      <if test="operateSource != null">#{operateSource,jdbcType=INTEGER},</if>
+      <if test="beforeStatus != null">#{beforeStatus,jdbcType=INTEGER},</if>
+      <if test="afterStatus != null">#{afterStatus,jdbcType=INTEGER},</if>
+      <if test="detail != null">#{detail,jdbcType=VARCHAR},</if>
+      <if test="ip != null">#{ip,jdbcType=VARCHAR},</if>
+      <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupBuyLog">
+    update sms_group_buy_log
+    <set>
+      <if test="memberId != null">member_id = #{memberId,jdbcType=BIGINT},</if>
+      <if test="memberNickname != null">member_nickname = #{memberNickname,jdbcType=VARCHAR},</if>
+      <if test="activityId != null">activity_id = #{activityId,jdbcType=BIGINT},</if>
+      <if test="teamId != null">team_id = #{teamId,jdbcType=BIGINT},</if>
+      <if test="teamNo != null">team_no = #{teamNo,jdbcType=VARCHAR},</if>
+      <if test="recordId != null">record_id = #{recordId,jdbcType=BIGINT},</if>
+      <if test="orderSn != null">order_sn = #{orderSn,jdbcType=VARCHAR},</if>
+      <if test="operateType != null">operate_type = #{operateType,jdbcType=INTEGER},</if>
+      <if test="operateSource != null">operate_source = #{operateSource,jdbcType=INTEGER},</if>
+      <if test="beforeStatus != null">before_status = #{beforeStatus,jdbcType=INTEGER},</if>
+      <if test="afterStatus != null">after_status = #{afterStatus,jdbcType=INTEGER},</if>
+      <if test="detail != null">detail = #{detail,jdbcType=VARCHAR},</if>
+      <if test="ip != null">ip = #{ip,jdbcType=VARCHAR},</if>
+      <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupBuyLog">
+    update sms_group_buy_log
+    set member_id = #{memberId,jdbcType=BIGINT},
+      member_nickname = #{memberNickname,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      team_id = #{teamId,jdbcType=BIGINT},
+      team_no = #{teamNo,jdbcType=VARCHAR},
+      record_id = #{recordId,jdbcType=BIGINT},
+      order_sn = #{orderSn,jdbcType=VARCHAR},
+      operate_type = #{operateType,jdbcType=INTEGER},
+      operate_source = #{operateSource,jdbcType=INTEGER},
+      before_status = #{beforeStatus,jdbcType=INTEGER},
+      after_status = #{afterStatus,jdbcType=INTEGER},
+      detail = #{detail,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

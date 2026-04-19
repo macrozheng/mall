@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupBuyProductMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupBuyProduct">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_sku_id" jdbcType="BIGINT" property="productSkuId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
+    <result column="group_price" jdbcType="DECIMAL" property="groupPrice" />
+    <result column="group_stock" jdbcType="INTEGER" property="groupStock" />
+    <result column="locked_stock" jdbcType="INTEGER" property="lockedStock" />
+    <result column="sold_count" jdbcType="INTEGER" property="soldCount" />
+    <result column="limit_per_order" jdbcType="INTEGER" property="limitPerOrder" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activity_id, product_id, product_sku_id, product_name, product_pic, sku_code,
+    original_price, group_price, group_stock, locked_stock, sold_count, limit_per_order, sort
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_group_buy_product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_buy_product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupBuyProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_product (activity_id, product_id, product_sku_id,
+      product_name, product_pic, sku_code, original_price, group_price, group_stock,
+      locked_stock, sold_count, limit_per_order, sort)
+    values (#{activityId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{productSkuId,jdbcType=BIGINT},
+      #{productName,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, #{skuCode,jdbcType=VARCHAR},
+      #{originalPrice,jdbcType=DECIMAL}, #{groupPrice,jdbcType=DECIMAL}, #{groupStock,jdbcType=INTEGER},
+      #{lockedStock,jdbcType=INTEGER}, #{soldCount,jdbcType=INTEGER}, #{limitPerOrder,jdbcType=INTEGER},
+      #{sort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupBuyProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityId != null">activity_id,</if>
+      <if test="productId != null">product_id,</if>
+      <if test="productSkuId != null">product_sku_id,</if>
+      <if test="productName != null">product_name,</if>
+      <if test="productPic != null">product_pic,</if>
+      <if test="skuCode != null">sku_code,</if>
+      <if test="originalPrice != null">original_price,</if>
+      <if test="groupPrice != null">group_price,</if>
+      <if test="groupStock != null">group_stock,</if>
+      <if test="lockedStock != null">locked_stock,</if>
+      <if test="soldCount != null">sold_count,</if>
+      <if test="limitPerOrder != null">limit_per_order,</if>
+      <if test="sort != null">sort,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityId != null">#{activityId,jdbcType=BIGINT},</if>
+      <if test="productId != null">#{productId,jdbcType=BIGINT},</if>
+      <if test="productSkuId != null">#{productSkuId,jdbcType=BIGINT},</if>
+      <if test="productName != null">#{productName,jdbcType=VARCHAR},</if>
+      <if test="productPic != null">#{productPic,jdbcType=VARCHAR},</if>
+      <if test="skuCode != null">#{skuCode,jdbcType=VARCHAR},</if>
+      <if test="originalPrice != null">#{originalPrice,jdbcType=DECIMAL},</if>
+      <if test="groupPrice != null">#{groupPrice,jdbcType=DECIMAL},</if>
+      <if test="groupStock != null">#{groupStock,jdbcType=INTEGER},</if>
+      <if test="lockedStock != null">#{lockedStock,jdbcType=INTEGER},</if>
+      <if test="soldCount != null">#{soldCount,jdbcType=INTEGER},</if>
+      <if test="limitPerOrder != null">#{limitPerOrder,jdbcType=INTEGER},</if>
+      <if test="sort != null">#{sort,jdbcType=INTEGER},</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupBuyProduct">
+    update sms_group_buy_product
+    <set>
+      <if test="activityId != null">activity_id = #{activityId,jdbcType=BIGINT},</if>
+      <if test="productId != null">product_id = #{productId,jdbcType=BIGINT},</if>
+      <if test="productSkuId != null">product_sku_id = #{productSkuId,jdbcType=BIGINT},</if>
+      <if test="productName != null">product_name = #{productName,jdbcType=VARCHAR},</if>
+      <if test="productPic != null">product_pic = #{productPic,jdbcType=VARCHAR},</if>
+      <if test="skuCode != null">sku_code = #{skuCode,jdbcType=VARCHAR},</if>
+      <if test="originalPrice != null">original_price = #{originalPrice,jdbcType=DECIMAL},</if>
+      <if test="groupPrice != null">group_price = #{groupPrice,jdbcType=DECIMAL},</if>
+      <if test="groupStock != null">group_stock = #{groupStock,jdbcType=INTEGER},</if>
+      <if test="lockedStock != null">locked_stock = #{lockedStock,jdbcType=INTEGER},</if>
+      <if test="soldCount != null">sold_count = #{soldCount,jdbcType=INTEGER},</if>
+      <if test="limitPerOrder != null">limit_per_order = #{limitPerOrder,jdbcType=INTEGER},</if>
+      <if test="sort != null">sort = #{sort,jdbcType=INTEGER},</if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupBuyProduct">
+    update sms_group_buy_product
+    set activity_id = #{activityId,jdbcType=BIGINT},
+      product_id = #{productId,jdbcType=BIGINT},
+      product_sku_id = #{productSkuId,jdbcType=BIGINT},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_pic = #{productPic,jdbcType=VARCHAR},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      original_price = #{originalPrice,jdbcType=DECIMAL},
+      group_price = #{groupPrice,jdbcType=DECIMAL},
+      group_stock = #{groupStock,jdbcType=INTEGER},
+      locked_stock = #{lockedStock,jdbcType=INTEGER},
+      sold_count = #{soldCount,jdbcType=INTEGER},
+      limit_per_order = #{limitPerOrder,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

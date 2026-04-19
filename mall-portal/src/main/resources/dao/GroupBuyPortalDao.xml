@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.portal.dao.GroupBuyPortalDao">
+
+    <select id="listOngoingActivity" resultMap="com.macro.mall.mapper.SmsGroupBuyActivityMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyActivityMapper.Base_Column_List"/>
+        FROM sms_group_buy_activity
+        WHERE status = 1
+          AND start_time &lt;= NOW()
+          AND end_time &gt;= NOW()
+        ORDER BY id DESC
+    </select>
+
+    <select id="listActivityProduct" resultMap="com.macro.mall.mapper.SmsGroupBuyProductMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyProductMapper.Base_Column_List"/>
+        FROM sms_group_buy_product
+        WHERE activity_id = #{activityId}
+        ORDER BY sort DESC, id ASC
+    </select>
+
+    <select id="getProductBySku" resultMap="com.macro.mall.mapper.SmsGroupBuyProductMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyProductMapper.Base_Column_List"/>
+        FROM sms_group_buy_product
+        WHERE activity_id = #{activityId} AND product_sku_id = #{skuId}
+        LIMIT 1
+    </select>
+
+    <select id="getProductForUpdate" resultMap="com.macro.mall.mapper.SmsGroupBuyProductMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyProductMapper.Base_Column_List"/>
+        FROM sms_group_buy_product
+        WHERE id = #{id}
+        FOR UPDATE
+    </select>
+
+    <update id="lockStock">
+        UPDATE sms_group_buy_product
+        SET group_stock = group_stock - #{quantity},
+            locked_stock = locked_stock + #{quantity}
+        WHERE id = #{id}
+          AND group_stock &gt;= #{quantity}
+    </update>
+
+    <update id="releaseStock">
+        UPDATE sms_group_buy_product
+        SET group_stock = group_stock + #{quantity},
+            locked_stock = locked_stock - #{quantity}
+        WHERE id = #{id}
+          AND locked_stock &gt;= #{quantity}
+    </update>
+
+    <update id="finalizeStock">
+        UPDATE sms_group_buy_product
+        SET locked_stock = locked_stock - #{quantity},
+            sold_count = sold_count + #{quantity}
+        WHERE id = #{id}
+          AND locked_stock &gt;= #{quantity}
+    </update>
+
+    <select id="getTeamByNo" resultMap="com.macro.mall.mapper.SmsGroupBuyTeamMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyTeamMapper.Base_Column_List"/>
+        FROM sms_group_buy_team
+        WHERE team_no = #{teamNo}
+        LIMIT 1
+    </select>
+
+    <update id="incrementTeamCurrentNum">
+        UPDATE sms_group_buy_team
+        SET current_num = current_num + 1
+        WHERE id = #{teamId}
+          AND status = 0
+          AND current_num &lt; target_num
+    </update>
+
+    <select id="listRecordsByTeam" resultMap="com.macro.mall.mapper.SmsGroupBuyRecordMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyRecordMapper.Base_Column_List"/>
+        FROM sms_group_buy_record
+        WHERE team_id = #{teamId}
+        ORDER BY is_leader DESC, id ASC
+    </select>
+
+    <select id="getRecordByOrderSn" resultMap="com.macro.mall.mapper.SmsGroupBuyRecordMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyRecordMapper.Base_Column_List"/>
+        FROM sms_group_buy_record
+        WHERE order_sn = #{orderSn}
+        LIMIT 1
+    </select>
+
+    <update id="finalizeRecords">
+        UPDATE sms_group_buy_record
+        SET join_status = 2, finish_time = NOW()
+        WHERE team_id = #{teamId}
+          AND join_status = 1
+    </update>
+
+    <update id="failRecords">
+        UPDATE sms_group_buy_record
+        SET join_status = CASE WHEN join_status = 1 THEN 3 WHEN join_status = 0 THEN 4 ELSE join_status END,
+            finish_time = NOW()
+        WHERE team_id = #{teamId}
+          AND join_status IN (0, 1)
+    </update>
+
+    <select id="countMemberJoin" resultType="int">
+        SELECT COUNT(1)
+        FROM sms_group_buy_record
+        WHERE activity_id = #{activityId}
+          AND member_id = #{memberId}
+          AND join_status != 4
+    </select>
+
+    <select id="listOngoingTeamByActivity" resultMap="com.macro.mall.mapper.SmsGroupBuyTeamMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyTeamMapper.Base_Column_List"/>
+        FROM sms_group_buy_team
+        WHERE activity_id = #{activityId}
+          AND status = 0
+          AND expire_time &gt; NOW()
+          AND current_num &lt; target_num
+        ORDER BY expire_time ASC
+    </select>
+
+    <select id="listMemberRecords" resultMap="com.macro.mall.mapper.SmsGroupBuyRecordMapper.BaseResultMap">
+        SELECT
+        <include refid="com.macro.mall.mapper.SmsGroupBuyRecordMapper.Base_Column_List"/>
+        FROM sms_group_buy_record
+        WHERE member_id = #{memberId}
+        ORDER BY id DESC
+    </select>
+
+    <update id="incrementTotalGroupCount">
+        UPDATE sms_group_buy_activity
+        SET total_group_count = total_group_count + 1
+        WHERE id = #{activityId}
+    </update>
+
+    <update id="incrementSuccessGroupCount">
+        UPDATE sms_group_buy_activity
+        SET success_group_count = success_group_count + 1
+        WHERE id = #{activityId}
+    </update>
+
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.mapper.SmsGroupBuyActivityMapper">
+  <resultMap id="BaseResultMap" type="com.macro.mall.model.SmsGroupBuyActivity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="group_size" jdbcType="INTEGER" property="groupSize" />
+    <result column="valid_hours" jdbcType="INTEGER" property="validHours" />
+    <result column="limit_per_member" jdbcType="INTEGER" property="limitPerMember" />
+    <result column="virtual_group_flag" jdbcType="INTEGER" property="virtualGroupFlag" />
+    <result column="allow_leader_free" jdbcType="INTEGER" property="allowLeaderFree" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="total_group_count" jdbcType="INTEGER" property="totalGroupCount" />
+    <result column="success_group_count" jdbcType="INTEGER" property="successGroupCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, sub_title, pic, start_time, end_time, group_size, valid_hours, limit_per_member,
+    virtual_group_flag, allow_leader_free, status, total_group_count, success_group_count,
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sms_group_buy_activity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sms_group_buy_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.macro.mall.model.SmsGroupBuyActivity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_activity (title, sub_title, pic, start_time, end_time,
+      group_size, valid_hours, limit_per_member, virtual_group_flag, allow_leader_free,
+      status, total_group_count, success_group_count, create_time, update_time)
+    values (#{title,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR},
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
+      #{groupSize,jdbcType=INTEGER}, #{validHours,jdbcType=INTEGER}, #{limitPerMember,jdbcType=INTEGER},
+      #{virtualGroupFlag,jdbcType=INTEGER}, #{allowLeaderFree,jdbcType=INTEGER},
+      #{status,jdbcType=INTEGER}, #{totalGroupCount,jdbcType=INTEGER}, #{successGroupCount,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.macro.mall.model.SmsGroupBuyActivity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sms_group_buy_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">title,</if>
+      <if test="subTitle != null">sub_title,</if>
+      <if test="pic != null">pic,</if>
+      <if test="startTime != null">start_time,</if>
+      <if test="endTime != null">end_time,</if>
+      <if test="groupSize != null">group_size,</if>
+      <if test="validHours != null">valid_hours,</if>
+      <if test="limitPerMember != null">limit_per_member,</if>
+      <if test="virtualGroupFlag != null">virtual_group_flag,</if>
+      <if test="allowLeaderFree != null">allow_leader_free,</if>
+      <if test="status != null">status,</if>
+      <if test="totalGroupCount != null">total_group_count,</if>
+      <if test="successGroupCount != null">success_group_count,</if>
+      <if test="createTime != null">create_time,</if>
+      <if test="updateTime != null">update_time,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">#{title,jdbcType=VARCHAR},</if>
+      <if test="subTitle != null">#{subTitle,jdbcType=VARCHAR},</if>
+      <if test="pic != null">#{pic,jdbcType=VARCHAR},</if>
+      <if test="startTime != null">#{startTime,jdbcType=TIMESTAMP},</if>
+      <if test="endTime != null">#{endTime,jdbcType=TIMESTAMP},</if>
+      <if test="groupSize != null">#{groupSize,jdbcType=INTEGER},</if>
+      <if test="validHours != null">#{validHours,jdbcType=INTEGER},</if>
+      <if test="limitPerMember != null">#{limitPerMember,jdbcType=INTEGER},</if>
+      <if test="virtualGroupFlag != null">#{virtualGroupFlag,jdbcType=INTEGER},</if>
+      <if test="allowLeaderFree != null">#{allowLeaderFree,jdbcType=INTEGER},</if>
+      <if test="status != null">#{status,jdbcType=INTEGER},</if>
+      <if test="totalGroupCount != null">#{totalGroupCount,jdbcType=INTEGER},</if>
+      <if test="successGroupCount != null">#{successGroupCount,jdbcType=INTEGER},</if>
+      <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+      <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.SmsGroupBuyActivity">
+    update sms_group_buy_activity
+    <set>
+      <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
+      <if test="subTitle != null">sub_title = #{subTitle,jdbcType=VARCHAR},</if>
+      <if test="pic != null">pic = #{pic,jdbcType=VARCHAR},</if>
+      <if test="startTime != null">start_time = #{startTime,jdbcType=TIMESTAMP},</if>
+      <if test="endTime != null">end_time = #{endTime,jdbcType=TIMESTAMP},</if>
+      <if test="groupSize != null">group_size = #{groupSize,jdbcType=INTEGER},</if>
+      <if test="validHours != null">valid_hours = #{validHours,jdbcType=INTEGER},</if>
+      <if test="limitPerMember != null">limit_per_member = #{limitPerMember,jdbcType=INTEGER},</if>
+      <if test="virtualGroupFlag != null">virtual_group_flag = #{virtualGroupFlag,jdbcType=INTEGER},</if>
+      <if test="allowLeaderFree != null">allow_leader_free = #{allowLeaderFree,jdbcType=INTEGER},</if>
+      <if test="status != null">status = #{status,jdbcType=INTEGER},</if>
+      <if test="totalGroupCount != null">total_group_count = #{totalGroupCount,jdbcType=INTEGER},</if>
+      <if test="successGroupCount != null">success_group_count = #{successGroupCount,jdbcType=INTEGER},</if>
+      <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+      <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.SmsGroupBuyActivity">
+    update sms_group_buy_activity
+    set title = #{title,jdbcType=VARCHAR},
+      sub_title = #{subTitle,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      group_size = #{groupSize,jdbcType=INTEGER},
+      valid_hours = #{validHours,jdbcType=INTEGER},
+      limit_per_member = #{limitPerMember,jdbcType=INTEGER},
+      virtual_group_flag = #{virtualGroupFlag,jdbcType=INTEGER},
+      allow_leader_free = #{allowLeaderFree,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      total_group_count = #{totalGroupCount,jdbcType=INTEGER},
+      success_group_count = #{successGroupCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
