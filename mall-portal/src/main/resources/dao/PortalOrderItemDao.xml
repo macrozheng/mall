@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macro.mall.portal.dao.PortalOrderItemDao">
-    <insert id="insertList">
+    <insert id="insertList" parameterType="java.util.List">
         insert into oms_order_item (order_id, order_sn, product_id,
         product_pic, product_name, product_brand,
         product_sn, product_price, product_quantity,
