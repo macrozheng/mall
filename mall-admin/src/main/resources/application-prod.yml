@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://db:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
-    username: reader
-    password: 123456
+    username: ${DB_USERNAME:reader}
+    password: ${DB_PASSWORD:123456}
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
@@ -23,8 +23,8 @@ spring:
 minio:
   endpoint: http://192.168.3.101:9090 #MinIO服务所在地址
   bucketName: mall #存储桶名称
-  accessKey: minioadmin #访问的key
-  secretKey: minioadmin #访问的秘钥
+  accessKey: ${MINIO_ACCESS_KEY:minioadmin} #访问的key
+  secretKey: ${MINIO_SECRET_KEY:minioadmin} #访问的秘钥
 
 logging:
   file:
