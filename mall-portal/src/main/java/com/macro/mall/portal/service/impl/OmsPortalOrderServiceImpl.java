@@ -650,9 +650,21 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      */
     private void calcPerCouponAmount(List<OmsOrderItem> orderItemList, SmsCoupon coupon) {
         BigDecimal totalAmount = calcTotalAmount(orderItemList);
-        for (OmsOrderItem orderItem : orderItemList) {
-            //(商品价格/可用商品总价)*优惠券面额
-            BigDecimal couponAmount = orderItem.getProductPrice().divide(totalAmount, 3, RoundingMode.HALF_EVEN).multiply(coupon.getAmount());
+        BigDecimal couponAmountTotal = coupon.getAmount();
+        BigDecimal remainingAmount = couponAmountTotal;
+        int size = orderItemList.size();
+        for (int i = 0; i < size; i++) {
+            OmsOrderItem orderItem = orderItemList.get(i);
+            BigDecimal couponAmount;
+            if (i < size - 1) {
+                //(商品价格/可用商品总价)*优惠券面额
+                couponAmount = orderItem.getProductPrice().divide(totalAmount, 3, RoundingMode.HALF_EVEN).multiply(couponAmountTotal);
+                remainingAmount = remainingAmount.subtract(couponAmount);
+            } else {
+                // last item gets the remainder to ensure total equals coupon amount
+                couponAmount = remainingAmount;
+            }
+            couponAmount = couponAmount.setScale(2, RoundingMode.HALF_UP);
             orderItem.setCouponAmount(couponAmount);
         }
     }
