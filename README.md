@@ -12,10 +12,10 @@
 
 ## 友情提示
 
-> 1. **快速体验项目**：[在线访问地址](https://www.macrozheng.com/admin/index.html) 。
-> 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
-> 3. **视频教程**：[《mall视频教程》](https://www.macrozheng.com/mall/catalog/mall_video.html) 。
-> 4. **微服务版本**：基于Spring Cloud Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm) 。
+> 1. **快速体验项目**：[在线访问地址](https://www.macrozheng.com/admin/index.html)。
+> 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com)。
+> 3. **视频教程**：[《mall视频教程》](https://www.macrozheng.com/mall/catalog/mall_video.html)。
+> 4. **微服务版本**：基于Spring Cloud Alibaba的项目：[mall-swarm](https://github.com/macrozheng/mall-swarm)。
 > 5. **分支说明**：`master`分支基于Spring Boot 3.5+JDK 17，`dev-v2`分支基于Spring Boot 2.7+JDK 8。
 
 ## 前言
@@ -184,7 +184,7 @@ mall
 - Windows环境搭建请参考：[mall在Windows环境下的部署](https://www.macrozheng.com/mall/deploy/mall_deploy_windows.html);
 - 注意：如果只启动`mall-admin`模块，仅需安装MySQL、Redis即可;
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译：[前端项目地址](https://github.com/macrozheng/mall-admin-web);
-- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://www.macrozheng.com/mall/deploy/mall_deploy_web.html) 。
+- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://www.macrozheng.com/mall/deploy/mall_deploy_web.html)。
 
 > Docker环境部署
 
@@ -199,7 +199,7 @@ mall
 - ELK日志收集系统的搭建请参考：[mall项目ELK日志收集解决方案](https://www.macrozheng.com/project/mall_kibana_start.html);
 - 使用MinIO存储文件请参考：[使用MinIO实现文件存储](https://www.macrozheng.com/project/minio_console_start.html);
 - 读写分离解决方案请参考：[你还在代码里做读写分离么，试试这个中间件吧](https://www.macrozheng.com/project/gaea.html);
-- Redis集群解决方案请参考：[Docker环境下秒建Redis集群](https://www.macrozheng.com/blog/redis_cluster.html) 。
+- Redis集群解决方案请参考：[Docker环境下秒建Redis集群](https://www.macrozheng.com/blog/redis_cluster.html)。
 
 ## 公众号
 
