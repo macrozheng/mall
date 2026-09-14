@@ -89,6 +89,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--Fix CVE-2026-65182: force patched tomcat-embed-core-->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>10.1.58</version>
+            </dependency>
             <!--mall通用模块-->
             <dependency>
                 <groupId>com.macro.mall</groupId>
