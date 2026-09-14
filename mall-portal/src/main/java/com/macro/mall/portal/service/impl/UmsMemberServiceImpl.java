@@ -108,6 +108,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public String generateAuthCode(String telephone) {
+        // 此处使用模拟生成验证码逻辑，真实环境应接入短信服务，可使用SMS4J来实现
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for(int i=0;i<6;i++){
