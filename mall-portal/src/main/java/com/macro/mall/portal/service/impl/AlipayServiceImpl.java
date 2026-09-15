@@ -9,7 +9,9 @@ import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.alipay.api.response.AlipayTradeQueryResponse;
+import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.OmsOrderMapper;
+import com.macro.mall.model.OmsOrder;
 import com.macro.mall.portal.config.AlipayConfig;
 import com.macro.mall.portal.domain.AliPayParam;
 import com.macro.mall.portal.service.AlipayService;
@@ -18,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -52,8 +55,14 @@ public class AlipayServiceImpl implements AlipayService {
         JSONObject bizContent = new JSONObject();
         //商户订单号，商家自定义，保持唯一性
         bizContent.put("out_trade_no", aliPayParam.getOutTradeNo());
+        //订单总金额以数据库中订单表中为准
+        OmsOrder order = portalOrderService.getOrderByOrderSn(aliPayParam.getOutTradeNo());
+        if(order==null||order.getPayAmount()==null){
+            Asserts.fail("订单信息或金额不能为空！");
+        }
+        BigDecimal totalAmount = order.getPayAmount();
         //支付金额，最小值0.01元
-        bizContent.put("total_amount", aliPayParam.getTotalAmount());
+        bizContent.put("total_amount", totalAmount);
         //订单标题，不可使用特殊符号
         bizContent.put("subject", aliPayParam.getSubject());
         //电脑网站支付场景固定传值FAST_INSTANT_TRADE_PAY
@@ -144,8 +153,14 @@ public class AlipayServiceImpl implements AlipayService {
         JSONObject bizContent = new JSONObject();
         //商户订单号，商家自定义，保持唯一性
         bizContent.put("out_trade_no", aliPayParam.getOutTradeNo());
+        //订单总金额以数据库中订单表中为准
+        OmsOrder order = portalOrderService.getOrderByOrderSn(aliPayParam.getOutTradeNo());
+        if(order==null||order.getPayAmount()==null){
+            Asserts.fail("订单信息或金额不能为空！");
+        }
+        BigDecimal totalAmount = order.getPayAmount();
         //支付金额，最小值0.01元
-        bizContent.put("total_amount", aliPayParam.getTotalAmount());
+        bizContent.put("total_amount", totalAmount);
         //订单标题，不可使用特殊符号
         bizContent.put("subject", aliPayParam.getSubject());
         //手机网站支付默认传值FAST_INSTANT_TRADE_PAY

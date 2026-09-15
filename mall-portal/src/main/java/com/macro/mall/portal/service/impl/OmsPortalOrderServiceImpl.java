@@ -421,6 +421,14 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
     @Override
     public void paySuccessByOrderSn(String orderSn, Integer payType) {
+        OmsOrder order = getOrderByOrderSn(orderSn);
+        if(order!=null){
+            this.paySuccess(order.getId(),payType);
+        }
+    }
+
+    @Override
+    public OmsOrder getOrderByOrderSn(String orderSn) {
         OmsOrderExample example =  new OmsOrderExample();
         example.createCriteria()
                 .andOrderSnEqualTo(orderSn)
@@ -428,9 +436,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
                 .andDeleteStatusEqualTo(0);
         List<OmsOrder> orderList = orderMapper.selectByExample(example);
         if(CollUtil.isNotEmpty(orderList)){
-            OmsOrder order = orderList.get(0);
-            paySuccess(order.getId(),payType);
-        }
+            return orderList.get(0);
+        }else return null;
     }
 
     /**

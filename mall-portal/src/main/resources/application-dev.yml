@@ -47,6 +47,6 @@ alipay:
   appId: your appId
   alipayPublicKey: your alipayPublicKey
   appPrivateKey: your appPrivateKey
-  returnUrl: http://localhost:8060/#/pages/money/paySuccess
+  returnUrl: http://localhost:5173/#/pages/money/paySuccess
   notifyUrl:
 
