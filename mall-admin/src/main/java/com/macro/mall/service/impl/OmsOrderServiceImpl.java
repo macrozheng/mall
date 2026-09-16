@@ -13,6 +13,7 @@ import com.macro.mall.service.OmsOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -117,12 +118,32 @@ public class OmsOrderServiceImpl implements OmsOrderService {
 
     @Override
     public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
-        OmsOrder order = new OmsOrder();
-        order.setId(moneyInfoParam.getOrderId());
+
+        OmsOrder order = orderMapper.selectByPrimaryKey(moneyInfoParam.getOrderId());
+        if (order == null) {
+            return 0;
+        }
         order.setFreightAmount(moneyInfoParam.getFreightAmount());
         order.setDiscountAmount(moneyInfoParam.getDiscountAmount());
         order.setModifyTime(new Date());
-        int count = orderMapper.updateByPrimaryKeySelective(order);
+
+        BigDecimal totalAmount = order.getTotalAmount() != null ? order.getTotalAmount() : BigDecimal.ZERO;
+        BigDecimal freightAmount = order.getFreightAmount() != null ? order.getFreightAmount() : BigDecimal.ZERO;
+        BigDecimal promotionAmount = order.getPromotionAmount() != null ? order.getPromotionAmount() : BigDecimal.ZERO;
+        BigDecimal couponAmount = order.getCouponAmount() != null ? order.getCouponAmount() : BigDecimal.ZERO;
+        BigDecimal integrationAmount = order.getIntegrationAmount() != null ? order.getIntegrationAmount() : BigDecimal.ZERO;
+        BigDecimal discountAmount = order.getDiscountAmount() != null ? order.getDiscountAmount() : BigDecimal.ZERO;
+
+        BigDecimal payAmount = totalAmount.add(freightAmount)
+            .subtract(promotionAmount)
+            .subtract(couponAmount)
+            .subtract(integrationAmount)
+            .subtract(discountAmount);
+
+        order.setPayAmount(payAmount);
+
+        int count = orderMapper.updateByPrimaryKey(order);
+
         //插入操作记录
         OmsOrderOperateHistory history = new OmsOrderOperateHistory();
         history.setOrderId(moneyInfoParam.getOrderId());
