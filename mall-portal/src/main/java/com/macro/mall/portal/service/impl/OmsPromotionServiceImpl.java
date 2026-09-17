@@ -88,10 +88,10 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
                         BeanUtils.copyProperties(item,cartPromotionItem);
                         String message = getFullReductionPromotionMessage(fullReduction);
                         cartPromotionItem.setPromotionMessage(message);
-                        //(商品原价/总价)*满减金额
+                        //(商品原价/总价)*满减金额，使用 multiply-divide 顺序避免 divide 精度损失
                         PmsSkuStock skuStock= getOriginalPrice(promotionProduct, item.getProductSkuId());
                         BigDecimal originalPrice = skuStock.getPrice();
-                        BigDecimal reduceAmount = originalPrice.divide(totalAmount,RoundingMode.HALF_EVEN).multiply(fullReduction.getReducePrice());
+                        BigDecimal reduceAmount = originalPrice.multiply(fullReduction.getReducePrice()).divide(totalAmount, 2, RoundingMode.HALF_EVEN);
                         cartPromotionItem.setReduceAmount(reduceAmount);
                         cartPromotionItem.setRealStock(skuStock.getStock()-skuStock.getLockStock());
                         cartPromotionItem.setIntegration(promotionProduct.getGiftPoint());
