@@ -123,13 +123,14 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         for (SmsCouponHistoryDetail couponHistoryDetail : allList) {
             Integer useType = couponHistoryDetail.getCoupon().getUseType();
             BigDecimal minPoint = couponHistoryDetail.getCoupon().getMinPoint();
+            Date startTime = couponHistoryDetail.getCoupon().getStartTime();
             Date endTime = couponHistoryDetail.getCoupon().getEndTime();
             if(useType.equals(0)){
                 //0->全场通用
                 //判断是否满足优惠起点
                 //计算购物车商品的总价
                 BigDecimal totalAmount = calcTotalAmount(cartItemList);
-                if(now.before(endTime)&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.after(startTime)&&now.before(endTime)&&totalAmount.subtract(minPoint).intValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
@@ -142,7 +143,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
                     productCategoryIds.add(categoryRelation.getProductCategoryId());
                 }
                 BigDecimal totalAmount = calcTotalAmountByproductCategoryId(cartItemList,productCategoryIds);
-                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.after(startTime)&&now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
@@ -155,7 +156,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
                     productIds.add(productRelation.getProductId());
                 }
                 BigDecimal totalAmount = calcTotalAmountByProductId(cartItemList,productIds);
-                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
+                if(now.after(startTime)&&now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){
                     enableList.add(couponHistoryDetail);
                 }else{
                     disableList.add(couponHistoryDetail);
