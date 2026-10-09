@@ -50,6 +50,13 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         if(coupon.getCount()<=0){
             Asserts.fail("优惠券已经领完了");
         }
+        //校验会员等级限制：0->无限时，其它值仅对应等级会员可领取
+        Integer couponMemberLevel = coupon.getMemberLevel();
+        Long memberLevelId = currentMember.getMemberLevelId();
+        if(couponMemberLevel!=null && !couponMemberLevel.equals(0)
+                && (memberLevelId==null || couponMemberLevel.longValue()!=memberLevelId.longValue())){
+            Asserts.fail("该优惠券仅限指定会员等级领取");
+        }
         Date now = new Date();
         if(now.before(coupon.getEnableTime())){
             Asserts.fail("优惠券还没到领取时间");
@@ -121,6 +128,14 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         List<SmsCouponHistoryDetail> enableList = new ArrayList<>();
         List<SmsCouponHistoryDetail> disableList = new ArrayList<>();
         for (SmsCouponHistoryDetail couponHistoryDetail : allList) {
+            //校验会员等级限制：0->无限时，其它值仅对应等级会员可用
+            Integer couponMemberLevel = couponHistoryDetail.getCoupon().getMemberLevel();
+            Long memberLevelId = currentMember.getMemberLevelId();
+            if(couponMemberLevel!=null && !couponMemberLevel.equals(0)
+                    && (memberLevelId==null || couponMemberLevel.longValue()!=memberLevelId.longValue())){
+                disableList.add(couponHistoryDetail);
+                continue;
+            }
             Integer useType = couponHistoryDetail.getCoupon().getUseType();
             BigDecimal minPoint = couponHistoryDetail.getCoupon().getMinPoint();
             Date endTime = couponHistoryDetail.getCoupon().getEndTime();
