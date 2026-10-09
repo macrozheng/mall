@@ -88,4 +88,14 @@
             #{item.productSkuId}
         </foreach>
     </update>
+    <update id="updateCouponHistoryId">
+        UPDATE oms_order
+        SET coupon_history_id = #{couponHistoryId}
+        WHERE id = #{orderId}
+    </update>
+    <select id="getCouponHistoryId" resultType="java.lang.Long">
+        SELECT coupon_history_id
+        FROM oms_order
+        WHERE id = #{orderId}
+    </select>
 </mapper>

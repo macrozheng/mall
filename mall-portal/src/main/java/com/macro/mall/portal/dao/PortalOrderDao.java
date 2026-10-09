@@ -37,4 +37,14 @@ public interface PortalOrderDao {
      */
     int releaseSkuStockLock(@Param("itemList") List<OmsOrderItem> orderItemList);
 
+    /**
+     * 记录订单实际使用的优惠券领取记录id
+     */
+    int updateCouponHistoryId(@Param("orderId") Long orderId, @Param("couponHistoryId") Long couponHistoryId);
+
+    /**
+     * 获取订单实际使用的优惠券领取记录id
+     */
+    Long getCouponHistoryId(@Param("orderId") Long orderId);
+
 }

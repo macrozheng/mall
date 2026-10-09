@@ -445,6 +445,7 @@ CREATE TABLE `oms_order`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `member_id` bigint(20) NOT NULL,
   `coupon_id` bigint(20) NULL DEFAULT NULL,
+  `coupon_history_id` bigint(20) NULL DEFAULT NULL COMMENT '下单实际使用的优惠券领取记录id（sms_coupon_history.id）',
   `order_sn` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '订单编号',
   `create_time` datetime NULL DEFAULT NULL COMMENT '提交时间',
   `member_username` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户帐号',

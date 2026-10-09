@@ -125,6 +125,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             Asserts.fail("库存不足，无法下单");
         }
         //判断使用使用了优惠券
+        SmsCouponHistoryDetail usedCouponHistory = null;
         if (orderParam.getCouponId() == null) {
             //不用优惠券
             for (OmsOrderItem orderItem : orderItemList) {
@@ -132,12 +133,12 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             }
         } else {
             //使用优惠券
-            SmsCouponHistoryDetail couponHistoryDetail = getUseCoupon(cartPromotionItemList, orderParam.getCouponId());
-            if (couponHistoryDetail == null) {
+            usedCouponHistory = getUseCoupon(cartPromotionItemList, orderParam.getCouponId());
+            if (usedCouponHistory == null) {
                 Asserts.fail("该优惠券不可用");
             }
             //对下单商品的优惠券进行处理
-            handleCouponAmount(orderItemList, couponHistoryDetail);
+            handleCouponAmount(orderItemList, usedCouponHistory);
         }
         //判断是否使用积分
         if (orderParam.getUseIntegration() == null||orderParam.getUseIntegration().equals(0)) {
@@ -229,7 +230,9 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         orderItemDao.insertList(orderItemList);
         //如使用优惠券更新优惠券使用状态
         if (orderParam.getCouponId() != null) {
-            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1);
+            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1, usedCouponHistory.getId());
+            //记录订单实际使用的优惠券领取记录，取消/超时时返还同一张
+            portalOrderDao.updateCouponHistoryId(order.getId(), usedCouponHistory.getId());
         }
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
@@ -283,7 +286,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             //解除订单商品库存锁定
             portalOrderDao.releaseSkuStockLock(timeOutOrder.getOrderItemList());
             //修改优惠券使用状态
-            updateCouponStatus(timeOutOrder.getCouponId(), timeOutOrder.getMemberId(), 0);
+            updateCouponStatus(timeOutOrder.getCouponId(), timeOutOrder.getMemberId(), 0,
+                    portalOrderDao.getCouponHistoryId(timeOutOrder.getId()));
             //返还使用积分
             if (timeOutOrder.getUseIntegration() != null) {
                 UmsMember member = memberService.getById(timeOutOrder.getMemberId());
@@ -315,7 +319,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
                 portalOrderDao.releaseSkuStockLock(orderItemList);
             }
             //修改优惠券使用状态
-            updateCouponStatus(cancelOrder.getCouponId(), cancelOrder.getMemberId(), 0);
+            updateCouponStatus(cancelOrder.getCouponId(), cancelOrder.getMemberId(), 0,
+                    portalOrderDao.getCouponHistoryId(cancelOrder.getId()));
             //返还使用积分
             if (cancelOrder.getUseIntegration() != null) {
                 UmsMember member = memberService.getById(cancelOrder.getMemberId());
@@ -499,16 +504,26 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      * @param couponId  优惠券id
      * @param memberId  会员id
      * @param useStatus 0->未使用；1->已使用
+     * @param couponHistoryId 订单实际使用的优惠券领取记录id；为空时（历史订单未记录关联）回退为按同券同会员查找
      */
-    private void updateCouponStatus(Long couponId, Long memberId, Integer useStatus) {
+    private void updateCouponStatus(Long couponId, Long memberId, Integer useStatus, Long couponHistoryId) {
         if (couponId == null) return;
-        //查询第一张优惠券
-        SmsCouponHistoryExample example = new SmsCouponHistoryExample();
-        example.createCriteria().andMemberIdEqualTo(memberId)
-                .andCouponIdEqualTo(couponId).andUseStatusEqualTo(useStatus == 0 ? 1 : 0);
-        List<SmsCouponHistory> couponHistoryList = couponHistoryMapper.selectByExample(example);
-        if (!CollectionUtils.isEmpty(couponHistoryList)) {
-            SmsCouponHistory couponHistory = couponHistoryList.get(0);
+        SmsCouponHistory couponHistory = null;
+        if (couponHistoryId != null) {
+            //按订单关联的领取记录定位，避免同一券模板多张时翻错记录
+            couponHistory = couponHistoryMapper.selectByPrimaryKey(couponHistoryId);
+        }
+        if (couponHistory == null) {
+            //查询第一张优惠券
+            SmsCouponHistoryExample example = new SmsCouponHistoryExample();
+            example.createCriteria().andMemberIdEqualTo(memberId)
+                    .andCouponIdEqualTo(couponId).andUseStatusEqualTo(useStatus == 0 ? 1 : 0);
+            List<SmsCouponHistory> couponHistoryList = couponHistoryMapper.selectByExample(example);
+            if (!CollectionUtils.isEmpty(couponHistoryList)) {
+                couponHistory = couponHistoryList.get(0);
+            }
+        }
+        if (couponHistory != null) {
             couponHistory.setUseTime(new Date());
             couponHistory.setUseStatus(useStatus);
             couponHistoryMapper.updateByPrimaryKeySelective(couponHistory);
