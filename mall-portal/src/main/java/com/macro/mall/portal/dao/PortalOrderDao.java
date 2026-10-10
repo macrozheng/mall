@@ -37,4 +37,15 @@ public interface PortalOrderDao {
      */
     int releaseSkuStockLock(@Param("itemList") List<OmsOrderItem> orderItemList);
 
+    /**
+     * 原子锁定库存：仅当可用库存（stock-lock_stock）不小于下单数量时增加锁定数
+     * @return 影响行数（0表示可用库存不足，锁定失败）
+     */
+    int lockSkuStock(@Param("skuId") Long skuId, @Param("quantity") Integer quantity);
+
+    /**
+     * 释放单个sku的锁定库存（锁定失败时回退用）
+     */
+    int unlockSkuStock(@Param("skuId") Long skuId, @Param("quantity") Integer quantity);
+
 }

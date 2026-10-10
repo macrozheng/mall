@@ -88,4 +88,17 @@
             #{item.productSkuId}
         </foreach>
     </update>
+    <update id="lockSkuStock">
+        UPDATE pms_sku_stock
+        SET lock_stock = lock_stock + #{quantity}
+        WHERE
+            id = #{skuId}
+            AND stock - lock_stock &gt;= #{quantity}
+    </update>
+    <update id="unlockSkuStock">
+        UPDATE pms_sku_stock
+        SET lock_stock = lock_stock - #{quantity}
+        WHERE
+            id = #{skuId}
+    </update>
 </mapper>
