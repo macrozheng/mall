@@ -604,8 +604,12 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      */
     private BigDecimal getUseIntegrationAmount(Integer useIntegration, BigDecimal totalAmount, UmsMember currentMember, boolean hasCoupon) {
         BigDecimal zeroAmount = new BigDecimal(0);
-        //判断用户是否有这么多积分
-        if (useIntegration.compareTo(currentMember.getIntegration()) > 0) {
+        //判断用户是否有这么多积分（历史会员积分列可能为空，按0处理）
+        Integer memberIntegration = currentMember.getIntegration();
+        if (memberIntegration == null) {
+            memberIntegration = 0;
+        }
+        if (useIntegration.compareTo(memberIntegration) > 0) {
             return zeroAmount;
         }
         //根据积分使用规则判断是否可用

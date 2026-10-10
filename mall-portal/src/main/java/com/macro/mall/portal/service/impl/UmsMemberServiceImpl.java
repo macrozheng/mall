@@ -95,6 +95,8 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         umsMember.setPassword(passwordEncoder.encode(password));
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
+        //新注册会员积分余额初始化为0，避免积分列为空导致积分相关计算空指针
+        umsMember.setIntegration(0);
         //获取默认会员等级并设置
         UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
         levelExample.createCriteria().andDefaultStatusEqualTo(1);
