@@ -219,6 +219,10 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         if(CollUtil.isNotEmpty(orderSettings)){
             order.setAutoConfirmDay(orderSettings.get(0).getConfirmOvertime());
         }
+        //如使用积分先把所用积分写入订单（取消/超时返还积分时需要读取该字段）
+        if (orderParam.getUseIntegration() != null) {
+            order.setUseIntegration(orderParam.getUseIntegration());
+        }
         // TODO: 2018/9/3 bill_*,delivery_*
         //插入order表和order_item表
         orderMapper.insert(order);
@@ -233,7 +237,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
-            order.setUseIntegration(orderParam.getUseIntegration());
             if(currentMember.getIntegration()==null){
                 currentMember.setIntegration(0);
             }
