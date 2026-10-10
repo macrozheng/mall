@@ -395,6 +395,11 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Override
     public OmsOrderDetail detail(Long orderId) {
         OmsOrder omsOrder = orderMapper.selectByPrimaryKey(orderId);
+        //校验订单归属，不能查看他人订单详情
+        UmsMember member = memberService.getCurrentMember();
+        if (omsOrder == null || !member.getId().equals(omsOrder.getMemberId())) {
+            Asserts.fail("不能查看他人订单详情！");
+        }
         OmsOrderItemExample example = new OmsOrderItemExample();
         example.createCriteria().andOrderIdEqualTo(orderId);
         List<OmsOrderItem> orderItemList = orderItemMapper.selectByExample(example);
