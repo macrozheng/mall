@@ -1,6 +1,7 @@
 package com.macro.mall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.dao.OmsOrderDao;
 import com.macro.mall.dao.OmsOrderOperateHistoryDao;
 import com.macro.mall.dto.*;
@@ -13,6 +14,7 @@ import com.macro.mall.service.OmsOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -117,10 +119,23 @@ public class OmsOrderServiceImpl implements OmsOrderService {
 
     @Override
     public int updateMoneyInfo(OmsMoneyInfoParam moneyInfoParam) {
+        OmsOrder oldOrder = orderMapper.selectByPrimaryKey(moneyInfoParam.getOrderId());
+        if (oldOrder == null) {
+            Asserts.fail("订单不存在");
+        }
         OmsOrder order = new OmsOrder();
         order.setId(moneyInfoParam.getOrderId());
         order.setFreightAmount(moneyInfoParam.getFreightAmount());
         order.setDiscountAmount(moneyInfoParam.getDiscountAmount());
+        //按新运费与折扣重算应付金额，保持费用字段与应付金额一致
+        //应付金额=总金额+运费-促销优惠-优惠券优惠-积分抵扣-后台折扣
+        BigDecimal payAmount = nvl(oldOrder.getTotalAmount())
+                .add(nvl(moneyInfoParam.getFreightAmount()))
+                .subtract(nvl(oldOrder.getPromotionAmount()))
+                .subtract(nvl(oldOrder.getCouponAmount()))
+                .subtract(nvl(oldOrder.getIntegrationAmount()))
+                .subtract(nvl(moneyInfoParam.getDiscountAmount()));
+        order.setPayAmount(payAmount);
         order.setModifyTime(new Date());
         int count = orderMapper.updateByPrimaryKeySelective(order);
         //插入操作记录
@@ -132,6 +147,10 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         history.setNote("修改费用信息");
         orderOperateHistoryMapper.insert(history);
         return count;
+    }
+
+    private BigDecimal nvl(BigDecimal value) {
+        return value == null ? BigDecimal.ZERO : value;
     }
 
     @Override
