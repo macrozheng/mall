@@ -46,6 +46,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
     @Autowired
+    private PmsProductMapper productMapper;
+    @Autowired
     private OmsOrderMapper orderMapper;
     @Autowired
     private PortalOrderItemDao orderItemDao;
@@ -101,6 +103,13 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         UmsMember currentMember = memberService.getCurrentMember();
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId(), orderParam.getCartIds());
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
+            //校验商品上下架与删除状态：下架或已删除商品不允许下单
+            PmsProduct product = productMapper.selectByPrimaryKey(cartPromotionItem.getProductId());
+            if (product == null
+                    || !Integer.valueOf(1).equals(product.getPublishStatus())
+                    || !Integer.valueOf(0).equals(product.getDeleteStatus())) {
+                Asserts.fail("商品已下架，无法下单");
+            }
             //生成下单商品信息
             OmsOrderItem orderItem = new OmsOrderItem();
             orderItem.setProductId(cartPromotionItem.getProductId());
