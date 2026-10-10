@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.*;
 import com.macro.mall.model.*;
+import com.macro.mall.portal.dao.PortalSmsCouponDao;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.CartPromotionItem;
 import com.macro.mall.portal.domain.SmsCouponHistoryDetail;
@@ -34,6 +35,8 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
     @Autowired
+    private PortalSmsCouponDao portalSmsCouponDao;
+    @Autowired
     private SmsCouponProductRelationMapper couponProductRelationMapper;
     @Autowired
     private SmsCouponProductCategoryRelationMapper couponProductCategoryRelationMapper;
@@ -61,6 +64,11 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         if(count>=coupon.getPerLimit()){
             Asserts.fail("您已经领取过该优惠券");
         }
+        //原子扣减可用数量并累加领取数量：并发请求在行锁上排队，数量不足时影响行数为0
+        int deductCount = portalSmsCouponDao.deductCouponCount(couponId);
+        if (deductCount == 0) {
+            Asserts.fail("优惠券已经领完了");
+        }
         //生成领取优惠券历史
         SmsCouponHistory couponHistory = new SmsCouponHistory();
         couponHistory.setCouponId(couponId);
@@ -73,10 +81,6 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         //未使用
         couponHistory.setUseStatus(0);
         couponHistoryMapper.insert(couponHistory);
-        //修改优惠券表的数量、领取数量
-        coupon.setCount(coupon.getCount()-1);
-        coupon.setReceiveCount(coupon.getReceiveCount()==null?1:coupon.getReceiveCount()+1);
-        couponMapper.updateByPrimaryKey(coupon);
     }
 
     /**
