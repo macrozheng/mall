@@ -266,10 +266,21 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
     @Override
     public Integer cancelTimeOutOrder() {
+        //计划任务全局关闭：memberId为空则处理所有会员的超时订单
+        return cancelTimeOutOrders(null);
+    }
+
+    @Override
+    public Integer cancelTimeOutOrder(Long memberId) {
+        //用户端接口只允许关闭调用者本人的超时订单
+        return cancelTimeOutOrders(memberId);
+    }
+
+    private Integer cancelTimeOutOrders(Long memberId) {
         Integer count=0;
         OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
         //查询超时、未支付的订单及订单详情
-        List<OmsOrderDetail> timeOutOrders = portalOrderDao.getTimeOutOrders(orderSetting.getNormalOrderOvertime());
+        List<OmsOrderDetail> timeOutOrders = portalOrderDao.getTimeOutOrders(orderSetting.getNormalOrderOvertime(), memberId);
         if (CollectionUtils.isEmpty(timeOutOrders)) {
             return count;
         }

@@ -39,6 +39,12 @@ public interface OmsPortalOrderService {
     Integer cancelTimeOutOrder();
 
     /**
+     * 取消指定会员的超时未支付订单（用户端接口只允许操作本人订单）
+     * @param memberId 会员ID
+     */
+    Integer cancelTimeOutOrder(Long memberId);
+
+    /**
      * 取消单个超时订单
      */
     @Transactional

@@ -24,8 +24,9 @@ public interface PortalOrderDao {
     /**
      * 获取超时订单
      * @param minute 超时时间（分）
+     * @param memberId 会员ID（为空则查询所有会员的超时订单）
      */
-    List<OmsOrderDetail> getTimeOutOrders(@Param("minute") Integer minute);
+    List<OmsOrderDetail> getTimeOutOrders(@Param("minute") Integer minute, @Param("memberId") Long memberId);
 
     /**
      * 批量修改订单状态

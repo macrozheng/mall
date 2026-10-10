@@ -44,7 +44,10 @@
             LEFT JOIN oms_order_item ot ON o.id = ot.order_id
         WHERE
             o.status = 0
-            AND o.create_time &lt; date_add(NOW(), INTERVAL -#{minute} MINUTE);
+            AND o.create_time &lt; date_add(NOW(), INTERVAL -#{minute} MINUTE)
+            <if test="memberId != null">
+                AND o.member_id = #{memberId}
+            </if>
     </select>
 
     <update id="updateSkuStock">

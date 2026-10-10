@@ -5,7 +5,9 @@ import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.ConfirmOrderResult;
 import com.macro.mall.portal.domain.OmsOrderDetail;
 import com.macro.mall.portal.domain.OrderParam;
+import com.macro.mall.model.UmsMember;
 import com.macro.mall.portal.service.OmsPortalOrderService;
+import com.macro.mall.portal.service.UmsMemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -28,6 +30,8 @@ import java.util.Map;
 public class OmsPortalOrderController {
     @Autowired
     private OmsPortalOrderService portalOrderService;
+    @Autowired
+    private UmsMemberService memberService;
 
     @Operation(summary = "根据购物车信息生成确认单")
     @RequestMapping(value = "/generateConfirmOrder", method = RequestMethod.POST)
@@ -57,7 +61,9 @@ public class OmsPortalOrderController {
     @RequestMapping(value = "/cancelTimeOutOrder", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult cancelTimeOutOrder() {
-        portalOrderService.cancelTimeOutOrder();
+        //只允许关闭当前登录会员本人的超时订单
+        UmsMember currentMember = memberService.getCurrentMember();
+        portalOrderService.cancelTimeOutOrder(currentMember.getId());
         return CommonResult.success(null);
     }
 
