@@ -11,6 +11,7 @@ import com.macro.mall.model.*;
 import com.macro.mall.portal.component.CancelOrderSender;
 import com.macro.mall.portal.dao.PortalOrderDao;
 import com.macro.mall.portal.dao.PortalOrderItemDao;
+import com.macro.mall.portal.dao.PortalSmsCouponDao;
 import com.macro.mall.portal.dao.SmsCouponHistoryDao;
 import com.macro.mall.portal.domain.*;
 import com.macro.mall.portal.service.*;
@@ -45,6 +46,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private PmsSkuStockMapper skuStockMapper;
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
+    @Autowired
+    private PortalSmsCouponDao portalSmsCouponDao;
     @Autowired
     private OmsOrderMapper orderMapper;
     @Autowired
@@ -161,6 +164,13 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
         //计算order_item的实付金额
         handleRealAmount(orderItemList);
+        //如使用优惠券，下单前原子核销：并发请求只有一个能置为已使用，防止同券重复抵扣
+        if (orderParam.getCouponId() != null) {
+            int claimCount = portalSmsCouponDao.claimCouponHistory(orderParam.getCouponId(), currentMember.getId());
+            if (claimCount == 0) {
+                Asserts.fail("该优惠券不可用");
+            }
+        }
         //进行库存锁定
         lockStock(cartPromotionItemList);
         //根据商品合计、运费、活动优惠、优惠券、积分计算应付金额
@@ -227,10 +237,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             orderItem.setOrderSn(order.getOrderSn());
         }
         orderItemDao.insertList(orderItemList);
-        //如使用优惠券更新优惠券使用状态
-        if (orderParam.getCouponId() != null) {
-            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1);
-        }
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
             order.setUseIntegration(orderParam.getUseIntegration());
