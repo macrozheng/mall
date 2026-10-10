@@ -304,6 +304,11 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         }
         OmsOrder cancelOrder = cancelOrderList.get(0);
         if (cancelOrder != null) {
+            //校验订单归属，不能取消他人订单
+            UmsMember currentMember = memberService.getCurrentMember();
+            if (!currentMember.getId().equals(cancelOrder.getMemberId())) {
+                Asserts.fail("不能取消他人订单！");
+            }
             //修改订单状态为取消
             cancelOrder.setStatus(4);
             orderMapper.updateByPrimaryKeySelective(cancelOrder);
