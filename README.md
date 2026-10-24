@@ -69,7 +69,7 @@ mall
 | -------------------- | ------------------- | ---------------------------------------------- |
 | SpringBoot           | Web应用开发框架      | https://spring.io/projects/spring-boot         |
 | SpringSecurity       | 认证和授权框架      | https://spring.io/projects/spring-security     |
-| MyBatis              | ORM框架             | http://www.mybatis.org/mybatis-3/zh/index.html |
+| MyBatis              | ORM框架             | https://mybatis.org/mybatis-3/zh_CN/ |
 | MyBatisGenerator     | 数据层代码生成器     | http://www.mybatis.org/generator/index.html    |
 | Elasticsearch        | 搜索引擎            | https://github.com/elastic/elasticsearch       |
 | RabbitMQ             | 消息队列            | https://www.rabbitmq.com/                      |
@@ -181,10 +181,10 @@ mall
 
 > Windows环境部署
 
-- Windows环境搭建请参考：[mall在Windows环境下的部署](https://www.macrozheng.com/mall/deploy/mall_deploy_windows.html);
+- Windows环境搭建请参考：[mall在Windows环境下的部署](document/reference/deploy-windows.md);
 - 注意：如果只启动`mall-admin`模块，仅需安装MySQL、Redis即可;
 - 克隆`mall-admin-web`项目，并导入到IDEA中完成编译：[前端项目地址](https://github.com/macrozheng/mall-admin-web);
-- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://www.macrozheng.com/mall/deploy/mall_deploy_web.html) 。
+- `mall-admin-web`项目的安装及部署请参考：[mall前端项目的安装与部署](https://github.com/macrozheng/mall-admin-web#搭建步骤) 。
 
 > Docker环境部署
 
