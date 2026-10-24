@@ -64,7 +64,7 @@ elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/
 ## rabbitmq
 
 - 安装Erlang：http://erlang.org/download/otp_win64_21.3.exe
-- 下载rabbitmq：https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe
+- 下载rabbitmq：https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.14/rabbitmq-server-3.7.14.exe
 - 按照提示进行安装，安装完成后进入rabbitmq的安装目录:D:\RabbitMQ Server\rabbitmq_server-3.7.14\sbin
 - 在地址栏输入cmd并回车启动命令行输入以下命令：rabbitmq-plugins enable rabbitmq_management
 - 访问地址查看是否安装成功：http://127.0.0.1:15672/
